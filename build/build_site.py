@@ -315,8 +315,9 @@ def compare_links(cats):
     return f'<div class="cmpbox"><strong>東京都の他自治体と比べる</strong><ul>{a}</ul></div>'
 
 # ── 比較ページ（被リンク磁石）────────────────────────────────────────────────
-def build_compare(cid, entries):
+def build_compare(cid, entries, counts=None):
     """entries: [(m, slug, program, amount, idx), ...]  同一カテゴリの全自治体分"""
+    counts = counts or {}
     label, ev = CAT_BY_ID[cid][1], CAT_BY_ID[cid][2]
     ev_name = EVENTS.get(ev,("",""))[0]
     url = f"/hikaku/{cid}/"
@@ -328,8 +329,8 @@ def build_compare(cid, entries):
         if cur is None: best[mid]=e; continue
         def rank(x): return (1 if x[3] else 0, 1 if x[4] else 0)  # amountあり, index対象
         if rank(e)>rank(cur): best[mid]=e
-    # 自治体表示順: 区→市→町村（DB id順）
-    entries = sorted(best.values(), key=lambda e: e[0]["id"])
+    # 表示順: 金額の記載がある自治体を上に → 同条件はDB id順（区→市→町村）
+    entries = sorted(best.values(), key=lambda e: (0 if e[3] else 1, e[0]["id"]))
     rows=[]
     for m, slug, p, amount, idx in entries:
         mn=m["municipality_name"]
@@ -337,31 +338,53 @@ def build_compare(cid, entries):
         rows.append(f'<tr><td class="mn"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(mn)}</a></td>'
                     f'<td>{amt}</td><td class="dt">{esc(p["last_verified_at"] or "")}</td></tr>')
     have=len(entries)
+    n_amt=sum(1 for e in entries if e[3])
     missing=[m["municipality_name"] for m in munis if m["id"] not in {e[0]["id"] for e in entries}]
     miss_html=""
     if missing:
         miss_html=(f'<p class="miss"><strong>この制度が未確認の自治体（{len(missing)}）：</strong>'
                    f'{esc("、".join(missing))}<br><span class="na">※制度が無い場合と、当サイトで未収集の場合があります。</span></p>')
+
+    # 同じライフイベントの他カテゴリ比較への内部リンク
+    sibs=[(c[0],c[1]) for c in TAXONOMY if c[2]==ev and c[0]!=cid and counts.get(c[0],0)>=3]
+    rel_html=""
+    if sibs:
+        lis="".join(f'<li><a href="/hikaku/{sid}/">東京都の「{esc(sl)}」を比較 ▶</a></li>' for sid,sl in sibs[:8])
+        rel_html=f'<div class="cmpbox"><strong>同じ「{esc(ev_name)}」で自治体を比べる</strong><ul>{lis}</ul></div>'
+
+    # FAQ（可視 + 構造化データ）
+    faq=[(f"東京都で{label}があるのはどの自治体ですか？",
+          f"当サイトでは東京都{have}自治体で「{label}」に該当する制度を確認しています。各自治体の内容・金額・最終確認日はこのページの一覧で比較できます。"),
+         (f"{label}の金額は自治体によって違いますか？",
+          f"はい。同じ{label}でも自治体ごとに金額・対象・条件が異なります。金額は制度改定で変わるため、申請前に各自治体の公式ページ（出典リンク）で最新情報をご確認ください。")]
+    faq_html="".join(f'<div class="fact"><dt>{esc(q)}</dt><dd>{esc(a)}</dd></div>' for q,a in faq)
+
     title=f"【{ev_name}】{label} 東京都62自治体を比較｜金額・対象一覧"
     desc=clip(f"東京都の{label}を{have}自治体分まとめて比較。自治体ごとの金額・対象・最終確認日を一覧化。どの区市町村が手厚いかを出典付きで確認できます。",118)
+    amt_note=(f"うち{n_amt}自治体は具体的な支給額・助成額を掲載しています。金額の記載がある自治体を上に表示しています。"
+              if n_amt else "")
     body=f"""
 <span class="badge">{esc(ev_name)}</span>
 <h1>東京都の{esc(label)}を自治体で比較</h1>
-<p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。
-金額欄は各自治体の代表的な支給額・助成額の記載です。詳細は自治体名から各ページでご確認ください。</p>
+<p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>
 <div class="tablewrap"><table class="cmp">
 <thead><tr><th>自治体</th><th>支給額・助成額</th><th>確認日</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table></div>
 {miss_html}
 <p class="note">※金額は制度改定で変わります。申請前に必ず各自治体の公式ページ（各自治体ページ内の出典リンク）でご確認ください。</p>
+{rel_html}
+<h2>よくある質問</h2>
+<dl class="facts">{faq_html}</dl>
 <p><a href="/hikaku/">◀ 制度カテゴリ比較の一覧にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{label} 自治体比較",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":e[0]["municipality_name"],
           "url":f"{BASE_URL}/area/tokyo/{e[1]}/seido/{e[2]['id']}/"} for i,e in enumerate(entries)]}
+    faq_ld={"@context":"https://schema.org","@type":"FAQPage",
+        "mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]}
     bc=[("トップ","/"),("制度を比較する","/hikaku/"),(label,None)]
     robots="index,follow" if have>=3 else "noindex,follow"
     page(path=url+"index.html",title=title,description=desc,canonical=url,
-         jsonld=[il],robots=robots,breadcrumb=bc,body=body)
+         jsonld=[il,faq_ld],robots=robots,breadcrumb=bc,body=body)
     dates=[e[2]["last_verified_at"] for e in entries if e[2]["last_verified_at"]]
     if have>=3: sitemap_urls.append((url,"0.9", max(dates) if dates else None))
     return have
@@ -458,6 +481,21 @@ def build_static_pages():
         return ('<article class="doc">'+inner+
                 '<p class="backtop"><a href="/">◀ トップにもどる</a></p></article>')
 
+    # 運営者名・連絡先が未設定（【要記入】のまま）でも体裁が崩れないよう分岐
+    has_op = "【" not in OPERATOR_NAME
+    has_ct = "【" not in CONTACT_EMAIL
+    contact_link = f'<a href="mailto:{esc(CONTACT_EMAIL)}">{esc(CONTACT_EMAIL)}</a>' if has_ct else ""
+    report_html = (f'<p>内容に誤りや古い情報を見つけられた場合は、{contact_link} までご連絡ください。'
+                   '確認のうえ、可能な範囲で速やかに反映します。</p>' if has_ct else
+                   '<p>内容の誤り・更新のご指摘を受け付ける窓口は準備中です。準備が整い次第、こちらでご案内します。</p>')
+    inquiry_html = (f'<p>本ポリシーに関するお問い合わせは {contact_link} までお願いします。</p>' if has_ct else
+                    '<p>お問い合わせ窓口は準備中です。</p>')
+    op_row = f'<div class="fact"><dt>運営者</dt><dd>{esc(OPERATOR_NAME)}</dd></div>' if has_op else ''
+    ct_row = f'<div class="fact"><dt>連絡先</dt><dd>{contact_link}</dd></div>' if has_ct else ''
+    op_note = ('' if has_op else
+               '<p>本サイトは、各自治体・公的機関の公表情報をもとに個人で運営している情報サイトです。'
+               '運営者の詳細情報は準備中です。</p>')
+
     # 運営者情報
     about = wrap(f"""
 <h1>運営者情報</h1>
@@ -466,10 +504,11 @@ def build_static_pages():
 <h2>運営者</h2>
 <dl class="facts">
 <div class="fact"><dt>サイト名</dt><dd>{esc(SITE_NAME)}</dd></div>
-<div class="fact"><dt>運営者</dt><dd>{esc(OPERATOR_NAME)}</dd></div>
-<div class="fact"><dt>連絡先</dt><dd>{esc(CONTACT_EMAIL)}</dd></div>
+{op_row}
+{ct_row}
 <div class="fact"><dt>公開開始</dt><dd>{esc(ESTABLISHED)}年</dd></div>
 </dl>
+{op_note}
 <h2>サイトの目的</h2>
 <p>「自分の住む街・引っ越し先で、どんな公的支援が受けられるのか」を、
 自治体ごとにバラバラな情報を横断して比較できるようにすることを目的としています。
@@ -508,9 +547,7 @@ def build_static_pages():
 <li>定期的な再確認により、最終確認日を更新する場合</li>
 </ul>
 <h2>誤り・古い情報のご指摘</h2>
-<p>内容に誤りや古い情報を見つけられた場合は、
-{("<a href='mailto:"+esc(CONTACT_EMAIL)+"'>"+esc(CONTACT_EMAIL)+"</a>") if "【" not in CONTACT_EMAIL else esc(CONTACT_EMAIL)}
-までご連絡ください。確認のうえ、可能な範囲で速やかに反映します。</p>
+{report_html}
 """)
     page(path="/update-policy/index.html", title=f"情報の更新方針・編集方針｜{SITE_NAME}",
          description="制度ナビの情報源・品質基準・更新タイミング・訂正対応など、掲載情報の更新方針と編集方針を説明しています。",
@@ -554,9 +591,7 @@ def build_static_pages():
 <p>本サイトは各自治体・公的機関などの外部サイトへのリンクを含みます。リンク先での個人情報の取り扱いについては、
 各サイトのポリシーをご確認ください。</p>
 <h2>お問い合わせ</h2>
-<p>本ポリシーに関するお問い合わせは
-{("<a href='mailto:"+esc(CONTACT_EMAIL)+"'>"+esc(CONTACT_EMAIL)+"</a>") if "【" not in CONTACT_EMAIL else esc(CONTACT_EMAIL)}
-までお願いします。</p>
+{inquiry_html}
 """)
     page(path="/privacy/index.html", title=f"プライバシーポリシー｜{SITE_NAME}",
          description="制度ナビのプライバシーポリシー。取得する情報・Cookie・アクセス解析・外部リンクの取り扱いについて説明しています。",
@@ -609,11 +644,12 @@ def main():
             for cid in cats:
                 cat_entries.setdefault(cid,[]).append((m, slug, p, amount, idx))
         muni_stats.append((m, slug, len(progs)))
-    # 比較ページ
+    # 比較ページ（先に自治体数を数え、関連カテゴリの内部リンク判定に使う）
+    pre_counts={cid: len({e[0]["id"] for e in cat_entries[cid]}) for cid in cat_entries}
     cat_counts={}
     for cid in CAT_BY_ID:
         if cid in cat_entries:
-            cat_counts[cid]=build_compare(cid, cat_entries[cid])
+            cat_counts[cid]=build_compare(cid, cat_entries[cid], pre_counts)
     build_compare_index(cat_counts)
     build_static_pages()
     build_home(muni_stats)
