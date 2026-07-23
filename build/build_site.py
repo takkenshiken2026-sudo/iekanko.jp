@@ -59,6 +59,24 @@ EVENTS = {  # slug -> (表示名, 導入文)
  "elderly_care":("高齢・介護","高齢者・介護が必要な方が受けられる助成・サービスをまとめています。"),
 }
 
+# ライフイベント別メタ（目的・年代の発見導線／カラー＝検証済みパレット slot1-5／アイコン）
+EV_META = {
+ "pregnancy_birth":("これから出産する方","妊娠・出産期","#e87ba4",
+   '<path d="M12 21C7 17 4 14 4 10.5 4 8 6 6 8.5 6c1.6 0 2.9 1 3.5 2C12.6 7 13.9 6 15.5 6 18 6 20 8 20 10.5 20 14 17 17 12 21Z"/>'),
+ "childcare":("子育て世帯","子育て世代","#2a78d6",
+   '<circle cx="12" cy="8" r="3.2"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>'),
+ "moving":("引っ越し・住まい探し","住み替え・全世代","#1baf7a",
+   '<path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/>'),
+ "retirement_unemployment":("退職・失業した方","現役〜シニア","#eda100",
+   '<rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>'),
+ "elderly_care":("シニア・介護","シニア世代","#eb6834",
+   '<circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/>'),
+}
+def icon_svg(ev):
+    paths = EV_META[ev][3]
+    return ('<svg class="ev-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths+'</svg>')
+
 # fact_type -> (表示ラベル, 表示順)。未定義は末尾に。
 FACT_LABELS = {
  "target":("対象者",10),"target_detail":("対象の詳細",11),"amount":("支給額・助成額",20),
@@ -143,6 +161,27 @@ def clip(s, n):
     s = re.sub(r"\s+"," ", (s or "").strip())
     return s if len(s) <= n else s[:n-1] + "…"
 
+# ── SVG横棒グラフ（量表現＝単一色相。JS不要・直接ラベルで識別）──────────────────
+def svg_bars(rows, maxval=100, unit="%"):
+    """rows: [(label, value, avg_or_None, note_or_'')]"""
+    W=560; padL=118; padR=92; barH=16; rowH=31; top=10
+    plotW=W-padL-padR
+    H=top+rowH*len(rows)+6
+    p=[f'<svg viewBox="0 0 {W} {H}" class="chart" role="img" preserveAspectRatio="xMinYMin meet">']
+    for i,(label,val,avg,note) in enumerate(rows):
+        y=top+rowH*i; cy=y+barH/2
+        bw=plotW*(min(val,maxval)/maxval if maxval else 0)
+        p.append(f'<text x="{padL-8}" y="{cy:.0f}" class="c-lbl" text-anchor="end" dominant-baseline="central">{esc(label)}</text>')
+        p.append(f'<rect x="{padL}" y="{y}" width="{plotW}" height="{barH}" rx="4" class="c-track"/>')
+        p.append(f'<rect x="{padL}" y="{y}" width="{max(bw,3):.1f}" height="{barH}" rx="4" class="c-bar"/>')
+        if avg is not None:
+            ax=padL+plotW*(min(avg,maxval)/maxval if maxval else 0)
+            p.append(f'<line x1="{ax:.1f}" y1="{y-3}" x2="{ax:.1f}" y2="{y+barH+3}" class="c-avg"><title>都平均 {avg:.0f}{unit}</title></line>')
+        vlab=f'{val:.0f}{unit}'+(f' · {esc(note)}' if note else '')
+        p.append(f'<text x="{padL+bw+6:.1f}" y="{cy:.0f}" class="c-val" dominant-baseline="central">{vlab}</text>')
+    p.append('</svg>')
+    return ''.join(p)
+
 # ── ページ骨格 ──────────────────────────────────────────────────────────────
 def page(*, path, title, description, canonical, jsonld=None, robots="index,follow",
          breadcrumb=None, body=""):
@@ -189,7 +228,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 </main>
 <footer class="site">
 <nav class="fnav" aria-label="サイト情報">
-<a href="/">トップ</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>
+<a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>
 </nav>
 <p>本サイトは各自治体・公的機関の公表情報をもとに整理した比較・案内サービスです。
 最新かつ正確な内容は必ず各制度の公式ページでご確認ください。</p>
@@ -230,6 +269,32 @@ def gate_index(p, facts):
     conf = [f[4] for f in facts if f[4] is not None]
     if not conf: return False
     return (sum(conf)/len(conf)) >= GATE_MIN_CONFIDENCE
+
+# ── 自治体スコア（分野カバー率＝公平指標。DB拡充で自動的に精度向上）──────────────
+def compute_scores():
+    ev_total={}
+    for cid,label,ev,inc,exc in TAXONOMY:
+        ev_total[ev]=ev_total.get(ev,0)+1
+    muni_cat={}; muni_ev_prog={}
+    for m in munis:
+        for p in programs_of(m["id"]):
+            cats=classify(p["title"],p["summary"],p["benefit_description"],p["target_description"])
+            if not cats: continue
+            muni_cat.setdefault(m["id"],set()).update(cats)
+            evs={CAT_BY_ID[cid][2] for cid in cats if cid in CAT_BY_ID}
+            d=muni_ev_prog.setdefault(m["id"],{})
+            for ev in evs: d[ev]=d.get(ev,0)+1
+    score={}
+    for m in munis:
+        mid=m["id"]; s={}
+        for ev in EVENTS:
+            covered=len([cid for cid in muni_cat.get(mid,()) if CAT_BY_ID.get(cid,(None,None,None))[2]==ev])
+            total=ev_total.get(ev,0) or 1
+            s[ev]={"cov":covered/total*100,"covered":covered,"total":total,
+                   "prog":muni_ev_prog.get(mid,{}).get(ev,0)}
+        score[mid]=s
+    avg={ev: sum(score[m["id"]][ev]["cov"] for m in munis)/len(munis) for ev in EVENTS}
+    return score, avg
 
 # ── 制度詳細ページ ──────────────────────────────────────────────────────────
 sitemap_urls = []  # (loc, priority)
@@ -409,6 +474,77 @@ def build_compare_index(cat_counts):
          canonical=url,breadcrumb=[("トップ","/"),("制度を比較する",None)],body=body)
     sitemap_urls.append((url,"0.9"))
 
+# ── 目的・年代の発見導線＋ランキング（差別化の核）──────────────────────────────
+def rel_rankings(cur):
+    ls="".join(f'<li><a href="/ranking/{ev}/">{esc(EVENTS[ev][0])}支援ランキング ▶</a></li>'
+               for ev in EVENTS if ev!=cur)
+    return f'<div class="cmpbox"><strong>ほかの目的でも探す</strong><ul>{ls}</ul></div>'
+
+def build_ranking(ev, score, avg):
+    persona,age,color,_ = EV_META[ev]
+    ev_name = EVENTS[ev][0]
+    url=f"/ranking/{ev}/"
+    ranked=sorted(munis, key=lambda m:(-score[m["id"]][ev]["cov"], -score[m["id"]][ev]["prog"], m["id"]))
+    top=ranked[:15]
+    rows=[(m["municipality_name"], score[m["id"]][ev]["cov"], None,
+           f'{score[m["id"]][ev]["covered"]}/{score[m["id"]][ev]["total"]}分野') for m in top]
+    chart=svg_bars(rows,100,"%")
+    trs=[]
+    for rank,m in enumerate(ranked,1):
+        s=score[m["id"]][ev]; slug=muni_slug(m)
+        cls=' class="top3"' if rank<=3 else ''
+        trs.append(f'<tr{cls}><td class="rk">{rank}</td>'
+                   f'<td class="mn"><a href="/area/tokyo/{slug}/{ev}/">{esc(m["municipality_name"])}</a></td>'
+                   f'<td>{s["cov"]:.0f}%</td><td class="dt">{s["covered"]}/{s["total"]}分野</td>'
+                   f'<td class="dt">{s["prog"]}制度</td></tr>')
+    title=f"{ev_name}支援が充実している東京都の自治体ランキング｜分野カバー率で比較"
+    desc=clip(f"{persona}向けに、{ev_name}の支援制度が充実している東京都62自治体を分野カバー率でランキング。上位自治体の内容を出典つきで確認できます。",118)
+    body=f"""
+<span class="badge" style="--pc:{color}">{esc(age)}</span>
+<h1>{esc(ev_name)}支援が充実している東京都の自治体ランキング</h1>
+<p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}の代表的な支援制度をどれだけ幅広くそろえているか（<strong>分野カバー率</strong>）で東京都62自治体をランキングしました（都平均 約{avg[ev]:.0f}%）。</p>
+<div class="chartcard" style="--pc:{color}">{chart}
+<p class="cap">上位15自治体の分野カバー率（棒＝カバー率／ラベル＝カバー分野数）</p></div>
+<div class="tablewrap"><table class="cmp rank">
+<thead><tr><th>順位</th><th>自治体</th><th>カバー率</th><th>カバー分野</th><th>収録制度</th></tr></thead>
+<tbody>{''.join(trs)}</tbody></table></div>
+<p class="notice">この順位は<strong>当サイトが収録する制度の「分野カバー率」に基づく参考指標</strong>です。金額の多寡や実際の手厚さを保証するものではなく、当サイトで未収集の制度があると実際より低く表示される場合があります。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
+{rel_rankings(ev)}
+<p><a href="/find/">◀ 目的・年代から探す にもどる</a></p>"""
+    il={"@context":"https://schema.org","@type":"ItemList","name":f"{ev_name}支援が充実している東京都の自治体",
+        "itemListElement":[{"@type":"ListItem","position":i+1,"name":m["municipality_name"],
+          "url":f"{BASE_URL}/area/tokyo/{muni_slug(m)}/{ev}/"} for i,m in enumerate(ranked[:20])]}
+    bc=[("トップ","/"),("目的・年代から探す","/find/"),(f"{ev_name}ランキング",None)]
+    page(path=url+"index.html",title=title,description=desc,canonical=url,
+         jsonld=[il],breadcrumb=bc,body=body)
+    sitemap_urls.append((url,"0.8"))
+
+def build_find_hub(score):
+    def top1(ev):
+        best=max(munis,key=lambda m:(score[m["id"]][ev]["cov"],score[m["id"]][ev]["prog"]))
+        return best["municipality_name"], score[best["id"]][ev]["cov"]
+    cards=[]
+    for ev,(persona,age,color,_) in EV_META.items():
+        ev_name=EVENTS[ev][0]; tn,tc=top1(ev)
+        cards.append(f'<a class="pcard" href="/ranking/{ev}/" style="--pc:{color}">'
+            f'<span class="pic">{icon_svg(ev)}</span>'
+            f'<span class="ptxt"><strong>{esc(persona)}</strong>'
+            f'<span class="page">{esc(age)}</span>'
+            f'<span class="pdesc">{esc(ev_name)}支援が充実している自治体ランキング</span>'
+            f'<span class="ptop">現在の1位：{esc(tn)}（カバー率{tc:.0f}%）</span></span>'
+            f'<span class="parrow" aria-hidden="true">▶</span></a>')
+    body=f"""
+<h1>目的・年代から「制度が整った地域」を探す</h1>
+<p class="lead">ライフステージや目的を選ぶと、その支援が充実している東京都の自治体をランキングで確認できます。
+「引っ越し先選び」や「いま住む街の手厚さ確認」にお使いください。</p>
+<div class="pgrid">{''.join(cards)}</div>
+<p class="note">※ランキングは当サイト収録制度の分野カバー率に基づく参考指標です。詳細・最新情報は各自治体の公式ページでご確認ください。</p>
+<p><a href="/hikaku/">制度カテゴリごとの自治体比較を見る ▶</a></p>"""
+    page(path="/find/index.html",title="目的・年代から探す｜制度が整った東京都の地域ランキング",
+         description="子育て・シニア・引っ越し・出産・退職など、目的や年代から、支援制度が充実している東京都の自治体をランキングで見つけられます。",
+         canonical="/find/",breadcrumb=[("トップ","/"),("目的・年代から探す",None)],body=body)
+    sitemap_urls.append(("/find/","0.9"))
+
 # ── 自治体 × ライフイベント ─────────────────────────────────────────────────
 def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     mn = m["municipality_name"]
@@ -437,7 +573,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     if items: sitemap_urls.append((url,"0.6"))
 
 # ── 自治体ハブ ──────────────────────────────────────────────────────────────
-def build_muni(m, slug):
+def build_muni(m, slug, score, avg):
     mn = m["municipality_name"]; url = f"/area/tokyo/{slug}/"
     progs = programs_of(m["id"])
     # ライフイベント別セクション
@@ -451,11 +587,23 @@ def build_muni(m, slug):
         more = f'<a class="more" href="/area/tokyo/{slug}/{ev_slug}/">{ev_name}の制度をすべて見る（{len(items)}件）▶</a>' if items else ""
         sections.append(f'<section class="ev"><h2><a href="/area/tokyo/{slug}/{ev_slug}/">{esc(ev_name)}</a> '
                         f'<span class="cnt">{len(items)}</span></h2><ul class="proglist">{lis}</ul>{more}</section>')
+    mid=m["id"]
+    prof_rows=[(EVENTS[ev][0], score[mid][ev]["cov"], avg[ev], f'{score[mid][ev]["prog"]}制度') for ev in EVENTS]
+    prof_chart=svg_bars(prof_rows,100,"%")
+    strengths=[ev for ev in sorted(EVENTS, key=lambda ev:-score[mid][ev]["cov"]) if score[mid][ev]["cov"]>0][:2]
+    strong_txt="・".join(EVENTS[ev][0] for ev in strengths)
+    strong_html=f'<p class="strong">とくに <b>{esc(strong_txt)}</b> の支援分野が充実しています。</p>' if strong_txt else ''
+    prof_html=(f'<section class="profile"><h2>この街の支援カバー状況</h2>'
+               f'<div class="chartcard">{prof_chart}<p class="cap">5分野の分野カバー率（点線＝東京都平均）</p></div>'
+               f'{strong_html}'
+               f'<p class="note">※当サイト収録制度の分野カバー率に基づく参考指標です。'
+               f'<a href="/find/">目的・年代から地域を探す ▶</a></p></section>')
     title = f"{mn}で受けられる給付・手当・助成 一覧｜対象・金額まとめ"
     desc = clip(f"{mn}で受けられる給付金・手当・助成・支援制度を{len(progs)}件、ライフイベント別に出典付きでまとめました。妊娠出産・子育て・引っ越し・退職失業・高齢介護の制度が一目でわかります。",118)
     body = f"""
 <h1>{esc(mn)}で受けられる給付・手当・助成 一覧</h1>
 <p class="lead">{esc(mn)}にお住まいの方が使える制度を、ライフイベント別にまとめました（全{len(progs)}件・出典/最終確認日つき）。</p>
+{prof_html}
 {''.join(sections)}
 """
     bc=[("トップ","/"),(mn,None)]
@@ -599,7 +747,7 @@ def build_static_pages():
     sitemap_urls.append(("/privacy/","0.3"))
 
 # ── トップ ──────────────────────────────────────────────────────────────────
-def build_home(muni_stats):
+def build_home(muni_stats, score):
     wards=[x for x in muni_stats if x[0]["municipality_type"]=="ward"]
     cities=[x for x in muni_stats if x[0]["municipality_type"]=="city"]
     others=[x for x in muni_stats if x[0]["municipality_type"] in ("town","village")]
@@ -607,10 +755,20 @@ def build_home(muni_stats):
         return '<ul class="mgrid">'+''.join(
           f'<li><a href="/area/tokyo/{s}/">{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
           for m,s,n in rows)+'</ul>'
+    # 目的・年代の発見カード（トップの主要導線）
+    pcards="".join(
+      f'<a class="pchip" href="/ranking/{ev}/" style="--pc:{EV_META[ev][2]}">'
+      f'<span class="pic">{icon_svg(ev)}</span><span>{esc(EV_META[ev][0])}</span></a>'
+      for ev in EV_META)
     body=f"""
 <h1>東京都の給付・手当・助成を、自治体ごとに比較</h1>
 <p class="lead">東京都62自治体で受けられる給付金・手当・助成制度を、出典と最終確認日つきで整理。
 「住んでいる街・引っ越し先でどんな支援が受けられるか」を一目で比較できます。</p>
+<section class="finder">
+<h2 class="fh">目的・年代から「制度が整った地域」を探す</h2>
+<div class="pchips">{pcards}</div>
+<p class="fmore"><a href="/find/">▶ 目的・年代から探す（ランキング）</a></p>
+</section>
 <div class="cmpbox"><strong>制度ごとに自治体を比べる</strong>
 <p>児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62自治体で横断比較できます。</p>
 <p><a href="/hikaku/">▶ 制度カテゴリ別の自治体比較を見る</a></p></div>
@@ -625,13 +783,14 @@ def build_home(muni_stats):
 
 # ── 実行 ────────────────────────────────────────────────────────────────────
 def main():
+    score, avg = compute_scores()
     muni_stats=[]; total_prog=0; indexed=0
     cat_entries={}
     for m in munis:
         slug = muni_slug(m)
         if not slug:
             print("NO SLUG:", m["municipality_name"]); continue
-        progs, counts = build_muni(m, slug)
+        progs, counts = build_muni(m, slug, score, avg)
         for ev_slug,(ev_name,ev_intro) in EVENTS.items():
             build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs)
         for p in progs:
@@ -651,8 +810,11 @@ def main():
         if cid in cat_entries:
             cat_counts[cid]=build_compare(cid, cat_entries[cid], pre_counts)
     build_compare_index(cat_counts)
+    build_find_hub(score)
+    for ev in EVENTS:
+        build_ranking(ev, score, avg)
     build_static_pages()
-    build_home(muni_stats)
+    build_home(muni_stats, score)
     write_sitemap(); write_robots(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
     print(f"生成完了: 自治体{len(muni_stats)} / 制度ページ{total_prog}（index {indexed} / noindex {total_prog-indexed}）")
@@ -734,6 +896,46 @@ footer .copy{margin:.3rem 0 0}
 ul.plainlist{margin:.3rem 0 .3rem 1.1rem;padding:0}
 ul.plainlist li{margin:.2rem 0}
 .backtop{margin-top:1.6rem;font-size:.9rem}
+
+/* ── ライフイベント・アクセント（--pc で切替。常にラベル同伴）── */
+.badge[style*="--pc"]{background:color-mix(in srgb,var(--pc) 16%,#fff);color:color-mix(in srgb,var(--pc) 72%,#111)}
+.ev-ic{width:22px;height:22px;display:block}
+
+/* ── SVGグラフ ── */
+.chartcard{border:1px solid var(--line);border-radius:12px;padding:.7rem .8rem .4rem;margin:.6rem 0;--pc:var(--accent)}
+.chart{width:100%;max-width:560px;height:auto;display:block}
+.chart .c-track{fill:#eef1f6}
+.chart .c-bar{fill:var(--pc)}
+.chart .c-avg{stroke:#8a94a6;stroke-width:2;stroke-dasharray:2 2}
+.chart .c-lbl{fill:var(--fg);font-size:15px}
+.chart .c-val{fill:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.cap{font-size:.76rem;color:var(--muted);margin:.35rem 0 .2rem}
+.profile{margin:1.2rem 0 1.4rem}
+.profile .strong{margin:.2rem 0 .3rem}
+.profile .strong b{color:var(--accent)}
+
+/* ── 目的・年代の発見カード ── */
+.finder{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin:1.2rem 0}
+.finder .fh{font-size:1.08rem;margin:.1rem 0 .7rem;border:0;padding:0}
+.pchips{display:flex;flex-wrap:wrap;gap:.5rem}
+.pchip{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.4rem .8rem .4rem .55rem;font-size:.9rem;font-weight:600;color:var(--fg)}
+.pchip .pic{display:inline-flex;color:#fff;background:var(--pc);border-radius:50%;padding:4px}
+.pchip .pic .ev-ic{width:16px;height:16px}
+.pchip:hover{border-color:var(--pc);text-decoration:none}
+.fmore{margin:.7rem 0 0;font-size:.92rem}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.7rem;margin:.6rem 0 1rem}
+.pcard{display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);border-left:4px solid var(--pc);border-radius:12px;padding:.8rem .9rem;color:var(--fg);background:#fff}
+.pcard:hover{background:color-mix(in srgb,var(--pc) 7%,#fff);text-decoration:none}
+.pcard .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:12px;padding:9px}
+.pcard .ptxt{display:flex;flex-direction:column;min-width:0}
+.pcard .ptxt strong{font-size:1rem}
+.pcard .page{font-size:.74rem;color:var(--muted)}
+.pcard .pdesc{font-size:.82rem;color:#333;margin-top:.15rem}
+.pcard .ptop{font-size:.76rem;color:var(--pc);font-weight:700;margin-top:.2rem}
+.pcard .parrow{margin-left:auto;color:var(--pc);font-weight:700}
+table.cmp.rank td.rk{width:2.4rem;text-align:center;color:var(--muted);font-variant-numeric:tabular-nums}
+table.cmp.rank tr.top3 td.rk{color:var(--accent);font-weight:800}
+table.cmp.rank tr.top3 td.mn a{font-weight:700}
 """
 
 if __name__ == "__main__":

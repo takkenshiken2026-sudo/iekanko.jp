@@ -57,3 +57,43 @@ footer .copy{margin:.3rem 0 0}
 ul.plainlist{margin:.3rem 0 .3rem 1.1rem;padding:0}
 ul.plainlist li{margin:.2rem 0}
 .backtop{margin-top:1.6rem;font-size:.9rem}
+
+/* ── ライフイベント・アクセント（--pc で切替。常にラベル同伴）── */
+.badge[style*="--pc"]{background:color-mix(in srgb,var(--pc) 16%,#fff);color:color-mix(in srgb,var(--pc) 72%,#111)}
+.ev-ic{width:22px;height:22px;display:block}
+
+/* ── SVGグラフ ── */
+.chartcard{border:1px solid var(--line);border-radius:12px;padding:.7rem .8rem .4rem;margin:.6rem 0;--pc:var(--accent)}
+.chart{width:100%;max-width:560px;height:auto;display:block}
+.chart .c-track{fill:#eef1f6}
+.chart .c-bar{fill:var(--pc)}
+.chart .c-avg{stroke:#8a94a6;stroke-width:2;stroke-dasharray:2 2}
+.chart .c-lbl{fill:var(--fg);font-size:15px}
+.chart .c-val{fill:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.cap{font-size:.76rem;color:var(--muted);margin:.35rem 0 .2rem}
+.profile{margin:1.2rem 0 1.4rem}
+.profile .strong{margin:.2rem 0 .3rem}
+.profile .strong b{color:var(--accent)}
+
+/* ── 目的・年代の発見カード ── */
+.finder{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin:1.2rem 0}
+.finder .fh{font-size:1.08rem;margin:.1rem 0 .7rem;border:0;padding:0}
+.pchips{display:flex;flex-wrap:wrap;gap:.5rem}
+.pchip{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.4rem .8rem .4rem .55rem;font-size:.9rem;font-weight:600;color:var(--fg)}
+.pchip .pic{display:inline-flex;color:#fff;background:var(--pc);border-radius:50%;padding:4px}
+.pchip .pic .ev-ic{width:16px;height:16px}
+.pchip:hover{border-color:var(--pc);text-decoration:none}
+.fmore{margin:.7rem 0 0;font-size:.92rem}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.7rem;margin:.6rem 0 1rem}
+.pcard{display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);border-left:4px solid var(--pc);border-radius:12px;padding:.8rem .9rem;color:var(--fg);background:#fff}
+.pcard:hover{background:color-mix(in srgb,var(--pc) 7%,#fff);text-decoration:none}
+.pcard .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:12px;padding:9px}
+.pcard .ptxt{display:flex;flex-direction:column;min-width:0}
+.pcard .ptxt strong{font-size:1rem}
+.pcard .page{font-size:.74rem;color:var(--muted)}
+.pcard .pdesc{font-size:.82rem;color:#333;margin-top:.15rem}
+.pcard .ptop{font-size:.76rem;color:var(--pc);font-weight:700;margin-top:.2rem}
+.pcard .parrow{margin-left:auto;color:var(--pc);font-weight:700}
+table.cmp.rank td.rk{width:2.4rem;text-align:center;color:var(--muted);font-variant-numeric:tabular-nums}
+table.cmp.rank tr.top3 td.rk{color:var(--accent);font-weight:800}
+table.cmp.rank tr.top3 td.mn a{font-weight:700}
