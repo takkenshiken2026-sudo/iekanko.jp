@@ -51,6 +51,23 @@ SLUGS = {
  "三宅村":"miyake","御蔵島村":"mikurajima","八丈町":"hachijo","青ヶ島村":"aogashima","小笠原村":"ogasawara",
 }
 
+# ── 62自治体の読み（五十音順の並べ替え用。区/市/町村を対等に一覧するため）──────────
+YOMI = {
+ "千代田区":"ちよだ","中央区":"ちゅうおう","港区":"みなと","新宿区":"しんじゅく","文京区":"ぶんきょう",
+ "台東区":"たいとう","墨田区":"すみだ","江東区":"こうとう","品川区":"しながわ","目黒区":"めぐろ",
+ "大田区":"おおた","世田谷区":"せたがや","渋谷区":"しぶや","中野区":"なかの","杉並区":"すぎなみ",
+ "豊島区":"としま","北区":"きた","荒川区":"あらかわ","板橋区":"いたばし","練馬区":"ねりま",
+ "足立区":"あだち","葛飾区":"かつしか","江戸川区":"えどがわ",
+ "八王子市":"はちおうじ","立川市":"たちかわ","武蔵野市":"むさしの","三鷹市":"みたか","青梅市":"おうめ",
+ "府中市":"ふちゅう","昭島市":"あきしま","調布市":"ちょうふ","町田市":"まちだ","小金井市":"こがねい",
+ "小平市":"こだいら","日野市":"ひの","東村山市":"ひがしむらやま","国分寺市":"こくぶんじ","国立市":"くにたち",
+ "福生市":"ふっさ","狛江市":"こまえ","東大和市":"ひがしやまと","清瀬市":"きよせ","東久留米市":"ひがしくるめ",
+ "武蔵村山市":"むさしむらやま","多摩市":"たま","稲城市":"いなぎ","羽村市":"はむら","あきる野市":"あきるの",
+ "西東京市":"にしとうきょう","瑞穂町":"みずほ","日の出町":"ひので","檜原村":"ひのはら","奥多摩町":"おくたま",
+ "大島町":"おおしま","利島村":"としま","新島村":"にいじま","神津島村":"こうづしま","三宅村":"みやけ",
+ "御蔵島村":"みくらじま","八丈町":"はちじょう","青ヶ島村":"あおがしま","小笠原村":"おがさわら",
+}
+
 EVENTS = {  # slug -> (表示名, 導入文)
  "pregnancy_birth":("妊娠・出産","妊娠がわかってから出産までにもらえる給付金・助成と、必要な手続きをまとめています。"),
  "childcare":("子育て","児童手当・医療費助成・保育料軽減など、子育て世帯が受けられる支援をまとめています。"),
@@ -806,12 +823,13 @@ def build_static_pages():
 
 # ── トップ ──────────────────────────────────────────────────────────────────
 def build_home(muni_stats, score):
-    wards=[x for x in muni_stats if x[0]["municipality_type"]=="ward"]
-    cities=[x for x in muni_stats if x[0]["municipality_type"]=="city"]
-    others=[x for x in muni_stats if x[0]["municipality_type"] in ("town","village")]
+    _tj={"ward":"区","city":"市","town":"町","village":"村"}
+    # 62市区町村を対等に：五十音順の単一グリッド（区/市/町村の階層を廃し、種別は小バッジで表示）
+    all62=sorted(muni_stats, key=lambda x: (YOMI.get(x[0]["municipality_name"], x[0]["municipality_name"]), x[1]))
     def grid(rows):
         return '<ul class="mgrid">'+''.join(
-          f'<li><a href="/area/tokyo/{s}/">{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
+          f'<li><a href="/area/tokyo/{s}/"><em class="mt">{_tj.get(m["municipality_type"],"")}</em>'
+          f'{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
           for m,s,n in rows)+'</ul>'
     # 目的・年代の発見カード（トップの主要導線）
     pcards="".join(
@@ -830,9 +848,9 @@ def build_home(muni_stats, score):
 <div class="cmpbox"><strong>制度ごとに自治体を比べる</strong>
 <p>児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62自治体で横断比較できます。</p>
 <p><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p></div>
-<h2 id="area">23区から探す</h2>{grid(wards)}
-<h2>市部から探す</h2>{grid(cities)}
-<h2>町村・島しょから探す</h2>{grid(others)}
+<h2 id="area">お住まいの市区町村から探す（東京都62市区町村）</h2>
+<p class="lead2">23区・多摩地域の市・町村・島しょを区別なく、五十音順で一覧しています。どの市区町村も同じ粒度で制度をまとめています。</p>
+{grid(all62)}
 """
     page(path="index.html", title=SITE_NAME,
          description="東京都62自治体の給付金・手当・助成制度を、出典・最終確認日つきで自治体ごとに比較できるサービス。妊娠出産・子育て・引っ越し・退職失業・高齢介護のもらえるお金がわかります。",
@@ -934,6 +952,9 @@ ul.proglist .pt{font-size:.74rem;color:var(--muted)}
 ul.mgrid{list-style:none;padding:0;margin:.4rem 0 1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem}
 ul.mgrid li{border:1px solid var(--line);border-radius:9px;padding:.5rem .7rem;display:flex;justify-content:space-between;align-items:baseline}
 ul.mgrid li span{font-size:.75rem;color:var(--muted)}
+ul.mgrid li a{display:inline-flex;align-items:baseline;gap:.35rem}
+em.mt{font-style:normal;font-size:.66rem;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 .28rem;line-height:1.5;flex:none}
+p.lead2{color:var(--muted);font-size:.86rem;margin:.1rem 0 .6rem}
 footer.site{border-top:1px solid var(--line);padding:1.2rem 1.1rem;color:var(--muted);font-size:.8rem;max-width:820px;margin:0 auto}
 footer.site a{color:var(--muted)}
 .cmpbox{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:1.2rem 0}

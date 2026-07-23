@@ -37,6 +37,9 @@ ul.proglist .pt{font-size:.74rem;color:var(--muted)}
 ul.mgrid{list-style:none;padding:0;margin:.4rem 0 1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem}
 ul.mgrid li{border:1px solid var(--line);border-radius:9px;padding:.5rem .7rem;display:flex;justify-content:space-between;align-items:baseline}
 ul.mgrid li span{font-size:.75rem;color:var(--muted)}
+ul.mgrid li a{display:inline-flex;align-items:baseline;gap:.35rem}
+em.mt{font-style:normal;font-size:.66rem;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 .28rem;line-height:1.5;flex:none}
+p.lead2{color:var(--muted);font-size:.86rem;margin:.1rem 0 .6rem}
 footer.site{border-top:1px solid var(--line);padding:1.2rem 1.1rem;color:var(--muted);font-size:.8rem;max-width:820px;margin:0 auto}
 footer.site a{color:var(--muted)}
 .cmpbox{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:1.2rem 0}
