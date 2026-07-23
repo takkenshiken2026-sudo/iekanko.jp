@@ -833,11 +833,14 @@ def build_static_pages():
 # ── トップ ──────────────────────────────────────────────────────────────────
 def build_home(muni_stats, score):
     _tj={"ward":"区","city":"市","town":"町","village":"村"}
+    _grp={"ward":"ku","city":"shi","town":"cho","village":"cho"}
     # 62市区町村を対等に：五十音順の単一グリッド（区/市/町村の階層を廃し、種別は小バッジで表示）
     all62=sorted(muni_stats, key=lambda x: (YOMI.get(x[0]["municipality_name"], x[0]["municipality_name"]), x[1]))
     def grid(rows):
-        return '<ul class="mgrid">'+''.join(
-          f'<li><a href="/area/tokyo/{s}/"><em class="mt">{_tj.get(m["municipality_type"],"")}</em>'
+        return '<ul class="mgrid" id="mgrid">'+''.join(
+          f'<li data-nm="{esc(m["municipality_name"])}" data-yo="{esc(YOMI.get(m["municipality_name"],""))}" '
+          f'data-ro="{s}" data-g="{_grp.get(m["municipality_type"],"cho")}">'
+          f'<a href="/area/tokyo/{s}/"><em class="mt">{_tj.get(m["municipality_type"],"")}</em>'
           f'{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
           for m,s,n in rows)+'</ul>'
     # 目的・年代の発見カード（トップの主要導線）
@@ -859,7 +862,43 @@ def build_home(muni_stats, score):
 <p><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p></div>
 <h2 id="area">お住まいの市区町村から探す（東京都62市区町村）</h2>
 <p class="lead2">23区・多摩地域の市・町村・島しょを区別なく、五十音順で一覧しています。どの市区町村も同じ粒度で制度をまとめています。</p>
+<div class="mfilter">
+<input type="search" id="msearch" placeholder="市区町村名で検索（例：世田谷 / せたがや / setagaya）" aria-label="市区町村名で検索" autocomplete="off">
+<div class="mchips" role="group" aria-label="種別で絞り込み">
+<button type="button" class="mchip on" data-f="all">すべて<b>62</b></button>
+<button type="button" class="mchip" data-f="ku">区<b>23</b></button>
+<button type="button" class="mchip" data-f="shi">市<b>26</b></button>
+<button type="button" class="mchip" data-f="cho">町村・島しょ<b>13</b></button>
+</div>
+</div>
 {grid(all62)}
+<p class="mnone" id="mnone" hidden>該当する市区町村が見つかりません。条件を変えてお試しください。</p>
+<script>
+(function(){{
+ var q=document.getElementById('msearch'),g=document.getElementById('mgrid'),
+     none=document.getElementById('mnone'),
+     chips=[].slice.call(document.querySelectorAll('.mchip')),
+     lis=[].slice.call(g.querySelectorAll('li')),f='all';
+ function nz(s){{return (s||'').toLowerCase();}}
+ function apply(){{
+  var t=nz(q.value.trim()),shown=0;
+  lis.forEach(function(li){{
+   var okF=(f==='all'||li.getAttribute('data-g')===f);
+   var okT=(!t||nz(li.getAttribute('data-nm')).indexOf(t)>=0
+            ||nz(li.getAttribute('data-yo')).indexOf(t)>=0
+            ||nz(li.getAttribute('data-ro')).indexOf(t)>=0);
+   var vis=okF&&okT;li.hidden=!vis;if(vis)shown++;
+  }});
+  none.hidden=shown>0;
+ }}
+ q.addEventListener('input',apply);
+ chips.forEach(function(c){{c.addEventListener('click',function(){{
+  f=c.getAttribute('data-f');
+  chips.forEach(function(x){{x.classList.toggle('on',x===c);x.setAttribute('aria-pressed',x===c);}});
+  apply();
+ }});}});
+}})();
+</script>
 """
     page(path="index.html", title=SITE_NAME,
          description="東京都62自治体の給付金・手当・助成制度を、出典・最終確認日つきで自治体ごとに比較できるサービス。妊娠出産・子育て・引っ越し・退職失業・高齢介護のもらえるお金がわかります。",
@@ -964,6 +1003,16 @@ ul.mgrid li span{font-size:.75rem;color:var(--muted)}
 ul.mgrid li a{display:inline-flex;align-items:baseline;gap:.35rem}
 em.mt{font-style:normal;font-size:.66rem;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 .28rem;line-height:1.5;flex:none}
 p.lead2{color:var(--muted);font-size:.86rem;margin:.1rem 0 .6rem}
+.mfilter{margin:.2rem 0 .7rem}
+#msearch{width:100%;box-sizing:border-box;padding:.6rem .8rem;font-size:1rem;border:1px solid var(--line);border-radius:9px;background:var(--bg,#fff);color:inherit}
+#msearch:focus{outline:2px solid var(--accent,#2563eb);outline-offset:1px}
+.mchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.mchip{font:inherit;font-size:.82rem;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:.28rem .7rem;display:inline-flex;align-items:center;gap:.3rem}
+.mchip b{font-weight:600;font-size:.72rem;opacity:.7}
+.mchip.on{background:var(--accent,#2563eb);border-color:var(--accent,#2563eb);color:#fff}
+.mchip.on b{opacity:.85}
+ul.mgrid li[hidden]{display:none}
+p.mnone{color:var(--muted);font-size:.9rem;padding:.6rem 0}
 footer.site{border-top:1px solid var(--line);padding:1.2rem 1.1rem;color:var(--muted);font-size:.8rem;max-width:820px;margin:0 auto}
 footer.site a{color:var(--muted)}
 .cmpbox{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:1.2rem 0}
