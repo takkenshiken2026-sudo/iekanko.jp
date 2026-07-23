@@ -5,9 +5,6 @@ on:
     branches:
       - claude/seido-navi-db-publish-9t2kq4
       - main
-    paths:
-      - docs/**
-      - .github/workflows/deploy-pages.yml
   workflow_dispatch:
 
 permissions:
