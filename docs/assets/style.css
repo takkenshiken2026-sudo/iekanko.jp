@@ -1,6 +1,6 @@
 :root{--fg:#1a2233;--muted:#5b6577;--line:#e5e8ef;--bg:#fff;--accent:#1558d6;--soft:#f5f7fb;--badge:#eaf1fe}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7}
+body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);padding:.55rem 1.1rem;border-bottom:1px solid var(--line)}
 .hbar{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
@@ -67,6 +67,8 @@ ul.plainlist li{margin:.2rem 0}
 /* ── ライフイベント・アクセント（--pc で切替。常にラベル同伴）── */
 .badge[style*="--pc"]{background:color-mix(in srgb,var(--pc) 16%,#fff);color:color-mix(in srgb,var(--pc) 72%,#111)}
 .ev-ic{width:22px;height:22px;display:block}
+.chev{width:.72em;height:.72em;vertical-align:-.08em;display:inline-block;flex:0 0 auto}
+.parrow{display:inline-flex}.parrow .chev{width:1.05em;height:1.05em}
 
 /* ── SVGグラフ ── */
 .chartcard{border:1px solid var(--line);border-radius:12px;padding:.7rem .8rem .4rem;margin:.6rem 0;--pc:var(--accent)}

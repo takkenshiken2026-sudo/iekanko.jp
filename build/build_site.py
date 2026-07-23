@@ -77,6 +77,12 @@ def icon_svg(ev):
     return ('<svg class="ev-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
             'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths+'</svg>')
 
+# モノクロのシェブロン・アイコン（三角記号{CHEV_R}{CHEV_L}▲の代替。currentColorで文字色に追従）
+_CHV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="%s"/></svg>'
+CHEV_R=_CHV % "M9 5l7 7-7 7"
+CHEV_L=_CHV % "M15 5l-7 7 7 7"
+CHEV_U=_CHV % "M5 15l7-7 7 7"
+
 # fact_type -> (表示ラベル, 表示順)。未定義は末尾に。
 FACT_LABELS = {
  "target":("対象者",10),"target_detail":("対象の詳細",11),"amount":("支給額・助成額",20),
@@ -217,6 +223,9 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <meta property="og:url" content="{esc(canon)}">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap">
 <link rel="stylesheet" href="/assets/style.css">
 {ld}</head>
 <body id="top">
@@ -232,7 +241,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 {body}
 </main>
 <footer class="site">
-<p class="totop"><a href="#top">▲ ページの先頭へ</a></p>
+<p class="totop"><a href="#top">{CHEV_U} ページの先頭へ</a></p>
 <nav class="fnav" aria-label="サイト情報">
 <a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>
 </nav>
@@ -357,7 +366,7 @@ def build_program(m, slug, p, cats, progs=None):
 
     summary_html = f'<p class="lead">{esc(p["plain_summary"] or p["summary"] or "")}</p>' if (p["plain_summary"] or p["summary"]) else ""
     official = p["official_url"] or (m["official_site_url"] or "")
-    src_block = f'<p class="official">▶ 公式ページ: <a href="{esc(official)}" target="_blank" rel="nofollow noopener">{esc(official)}</a></p>' if official else ""
+    src_block = f'<p class="official">{CHEV_R} 公式ページ: <a href="{esc(official)}" target="_blank" rel="nofollow noopener">{esc(official)}</a></p>' if official else ""
     ev_notice = "" if idx else '<p class="notice">※この情報は自動収集した暫定データで、内容確認中です。必ず公式ページでご確認ください。</p>'
 
     body = f"""
@@ -398,7 +407,7 @@ def build_program(m, slug, p, cats, progs=None):
 def compare_links(cats):
     ls=[c for c in cats if c in CAT_BY_ID]
     if not ls: return ""
-    a="".join(f'<li><a href="/hikaku/{cid}/">東京都で「{esc(CAT_BY_ID[cid][1])}」を自治体比較 ▶</a></li>' for cid in ls)
+    a="".join(f'<li><a href="/hikaku/{cid}/">東京都で「{esc(CAT_BY_ID[cid][1])}」を自治体比較 {CHEV_R}</a></li>' for cid in ls)
     return f'<div class="cmpbox"><strong>東京都の他自治体と比べる</strong><ul>{a}</ul></div>'
 
 # ── 比較ページ（被リンク磁石）────────────────────────────────────────────────
@@ -436,7 +445,7 @@ def build_compare(cid, entries, counts=None):
     sibs=[(c[0],c[1]) for c in TAXONOMY if c[2]==ev and c[0]!=cid and counts.get(c[0],0)>=3]
     rel_html=""
     if sibs:
-        lis="".join(f'<li><a href="/hikaku/{sid}/">東京都の「{esc(sl)}」を比較 ▶</a></li>' for sid,sl in sibs[:8])
+        lis="".join(f'<li><a href="/hikaku/{sid}/">東京都の「{esc(sl)}」を比較 {CHEV_R}</a></li>' for sid,sl in sibs[:8])
         rel_html=f'<div class="cmpbox"><strong>同じ「{esc(ev_name)}」で自治体を比べる</strong><ul>{lis}</ul></div>'
 
     # FAQ（可視 + 構造化データ）
@@ -462,7 +471,7 @@ def build_compare(cid, entries, counts=None):
 {rel_html}
 <h2>よくある質問</h2>
 <dl class="facts">{faq_html}</dl>
-<p><a href="/hikaku/">◀ 制度カテゴリ比較の一覧にもどる</a></p>"""
+<p><a href="/hikaku/">{CHEV_L} 制度カテゴリ比較の一覧にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{label} 自治体比較",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":e[0]["municipality_name"],
           "url":f"{BASE_URL}/area/tokyo/{e[1]}/seido/{e[2]['id']}/"} for i,e in enumerate(entries)]}
@@ -498,7 +507,7 @@ def build_compare_index(cat_counts):
 
 # ── 目的・年代の発見導線＋ランキング（差別化の核）──────────────────────────────
 def rel_rankings(cur):
-    ls="".join(f'<li><a href="/ranking/{ev}/">{esc(EVENTS[ev][0])}支援ランキング ▶</a></li>'
+    ls="".join(f'<li><a href="/ranking/{ev}/">{esc(EVENTS[ev][0])}支援ランキング {CHEV_R}</a></li>'
                for ev in EVENTS if ev!=cur)
     return f'<div class="cmpbox"><strong>ほかの目的でも探す</strong><ul>{ls}</ul></div>'
 
@@ -532,7 +541,7 @@ def build_ranking(ev, score, avg):
 <tbody>{''.join(trs)}</tbody></table></div>
 <p class="notice">この順位は<strong>当サイトが収録する制度の「分野カバー率」に基づく参考指標</strong>です。金額の多寡や実際の手厚さを保証するものではなく、当サイトで未収集の制度があると実際より低く表示される場合があります。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
 {rel_rankings(ev)}
-<p><a href="/find/">◀ 目的・年代から探す にもどる</a></p>"""
+<p><a href="/find/">{CHEV_L} 目的・年代から探す にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{ev_name}支援が充実している東京都の自治体",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":m["municipality_name"],
           "url":f"{BASE_URL}/area/tokyo/{muni_slug(m)}/{ev}/"} for i,m in enumerate(ranked[:20])]}
@@ -554,14 +563,14 @@ def build_find_hub(score):
             f'<span class="page">{esc(age)}</span>'
             f'<span class="pdesc">{esc(ev_name)}支援が充実している自治体ランキング</span>'
             f'<span class="ptop">現在の1位：{esc(tn)}（カバー率{tc:.0f}%）</span></span>'
-            f'<span class="parrow" aria-hidden="true">▶</span></a>')
+            f'<span class="parrow" aria-hidden="true">{CHEV_R}</span></a>')
     body=f"""
 <h1>目的・年代から「制度が整った地域」を探す</h1>
 <p class="lead">ライフステージや目的を選ぶと、その支援が充実している東京都の自治体をランキングで確認できます。
 「引っ越し先選び」や「いま住む街の手厚さ確認」にお使いください。</p>
 <div class="pgrid">{''.join(cards)}</div>
 <p class="note">※ランキングは当サイト収録制度の分野カバー率に基づく参考指標です。詳細・最新情報は各自治体の公式ページでご確認ください。</p>
-<p><a href="/hikaku/">制度カテゴリごとの自治体比較を見る ▶</a></p>"""
+<p><a href="/hikaku/">制度カテゴリごとの自治体比較を見る {CHEV_R}</a></p>"""
     page(path="/find/index.html",title="目的・年代から探す｜制度が整った東京都の地域ランキング",
          description="子育て・シニア・引っ越し・出産・退職など、目的や年代から、支援制度が充実している東京都の自治体をランキングで見つけられます。",
          canonical="/find/",breadcrumb=[("トップ","/"),("目的・年代から探す",None)],body=body)
@@ -577,10 +586,10 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
         lis.append(f'<li><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a>'
                    f'<span class="pt">{esc(PT_JA.get(p["program_type"],""))}</span></li>')
     listing = f'<ul class="proglist">{"".join(lis)}</ul>' if lis else "<p>該当する制度は現在準備中です。</p>"
-    other_lis="".join(f'<li><a href="/area/tokyo/{slug}/{s}/">{esc(mn)}の{esc(EVENTS[s][0])}の制度 ▶</a></li>'
+    other_lis="".join(f'<li><a href="/area/tokyo/{slug}/{s}/">{esc(mn)}の{esc(EVENTS[s][0])}の制度 {CHEV_R}</a></li>'
                       for s in EVENTS if s!=ev_slug)
     relbox=(f'<div class="cmpbox" style="--pc:{EV_META[ev_slug][2]}"><strong>関連して探す</strong><ul>'
-            f'<li><a href="/ranking/{ev_slug}/">{esc(ev_name)}支援が充実している自治体ランキング ▶</a></li>'
+            f'<li><a href="/ranking/{ev_slug}/">{esc(ev_name)}支援が充実している自治体ランキング {CHEV_R}</a></li>'
             f'{other_lis}</ul></div>')
     title = f"{mn}で{ev_name}のときに使える制度・手当・助成【一覧】"
     desc = clip(f"{mn}で{ev_name}のときに受けられる給付金・手当・助成制度を一覧でまとめました。{ev_intro}", 118)
@@ -591,7 +600,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
 <p class="meta">{esc(mn)}・{esc(ev_name)}関連の制度 {len(items)}件</p>
 {listing}
 {relbox}
-<p><a href="/area/tokyo/{slug}/">◀ {esc(mn)}の制度一覧にもどる</a></p>"""
+<p><a href="/area/tokyo/{slug}/">{CHEV_L} {esc(mn)}の制度一覧にもどる</a></p>"""
     il = {"@context":"https://schema.org","@type":"ItemList","itemListElement":[
         {"@type":"ListItem","position":i+1,"name":p["title"],
          "url":f"{BASE_URL}/area/tokyo/{slug}/seido/{p['id']}/"} for i,p in enumerate(items)]}
@@ -614,14 +623,14 @@ def build_muni(m, slug, score, avg):
         if not items: continue
         lis="".join(f'<li><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a></li>' for p in items[:8])
         color=EV_META[ev_slug][2]
-        more = f'<a class="more" href="/area/tokyo/{slug}/{ev_slug}/">{ev_name}の制度をすべて見る（{len(items)}件）▶</a>' if items else ""
+        more = f'<a class="more" href="/area/tokyo/{slug}/{ev_slug}/">{ev_name}の制度をすべて見る（{len(items)}件）{CHEV_R}</a>' if items else ""
         sections.append(
             f'<section class="ev" style="--pc:{color}">'
             f'<h2><span class="evh"><span class="evi">{icon_svg(ev_slug)}</span>'
             f'<a href="/area/tokyo/{slug}/{ev_slug}/">{esc(ev_name)}</a></span>'
             f'<span class="cnt">{len(items)}</span></h2>'
             f'<ul class="proglist">{lis}</ul>{more}'
-            f'<p class="evlinks"><a href="/ranking/{ev_slug}/">{esc(ev_name)}支援が充実している自治体ランキング ▶</a></p>'
+            f'<p class="evlinks"><a href="/ranking/{ev_slug}/">{esc(ev_name)}支援が充実している自治体ランキング {CHEV_R}</a></p>'
             f'</section>')
     mid=m["id"]
     prof_rows=[(EVENTS[ev][0], score[mid][ev]["cov"], avg[ev], f'{score[mid][ev]["prog"]}制度') for ev in EVENTS]
@@ -633,7 +642,7 @@ def build_muni(m, slug, score, avg):
                f'<div class="chartcard">{prof_chart}<p class="cap">5分野の分野カバー率（点線＝東京都平均）</p></div>'
                f'{strong_html}'
                f'<p class="note">※当サイト収録制度の分野カバー率に基づく参考指標です。'
-               f'<a href="/find/">目的・年代から地域を探す ▶</a></p></section>')
+               f'<a href="/find/">目的・年代から地域を探す {CHEV_R}</a></p></section>')
     same=[x for x in munis if x["municipality_type"]==m["municipality_type"] and x["id"]!=mid and muni_slug(x)]
     type_ja={"ward":"区","city":"市","town":"町","village":"村"}.get(m["municipality_type"],"自治体")
     others_html=""
@@ -671,7 +680,7 @@ def site_graph():
 def build_static_pages():
     def wrap(inner):
         return ('<article class="doc">'+inner+
-                '<p class="backtop"><a href="/">◀ トップにもどる</a></p></article>')
+                f'<p class="backtop"><a href="/">{CHEV_L} トップにもどる</a></p></article>')
 
     # 運営者名・連絡先が未設定（【要記入】のまま）でも体裁が崩れないよう分岐
     has_op = "【" not in OPERATOR_NAME
@@ -811,11 +820,11 @@ def build_home(muni_stats, score):
 <section class="finder">
 <h2 class="fh">目的・年代から「制度が整った地域」を探す</h2>
 <div class="pchips">{pcards}</div>
-<p class="fmore"><a href="/find/">▶ 目的・年代から探す（ランキング）</a></p>
+<p class="fmore"><a href="/find/">{CHEV_R} 目的・年代から探す（ランキング）</a></p>
 </section>
 <div class="cmpbox"><strong>制度ごとに自治体を比べる</strong>
 <p>児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62自治体で横断比較できます。</p>
-<p><a href="/hikaku/">▶ 制度カテゴリ別の自治体比較を見る</a></p></div>
+<p><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p></div>
 <h2 id="area">23区から探す</h2>{grid(wards)}
 <h2>市部から探す</h2>{grid(cities)}
 <h2>町村・島しょから探す</h2>{grid(others)}
@@ -883,7 +892,7 @@ def write_css():
 
 CSS = """:root{--fg:#1a2233;--muted:#5b6577;--line:#e5e8ef;--bg:#fff;--accent:#1558d6;--soft:#f5f7fb;--badge:#eaf1fe}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7}
+body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);padding:.55rem 1.1rem;border-bottom:1px solid var(--line)}
 .hbar{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
@@ -950,6 +959,8 @@ ul.plainlist li{margin:.2rem 0}
 /* ── ライフイベント・アクセント（--pc で切替。常にラベル同伴）── */
 .badge[style*="--pc"]{background:color-mix(in srgb,var(--pc) 16%,#fff);color:color-mix(in srgb,var(--pc) 72%,#111)}
 .ev-ic{width:22px;height:22px;display:block}
+.chev{width:.72em;height:.72em;vertical-align:-.08em;display:inline-block;flex:0 0 auto}
+.parrow{display:inline-flex}.parrow .chev{width:1.05em;height:1.05em}
 
 /* ── SVGグラフ ── */
 .chartcard{border:1px solid var(--line);border-radius:12px;padding:.7rem .8rem .4rem;margin:.6rem 0;--pc:var(--accent)}
