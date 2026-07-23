@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-制度ナビ 静的サイトジェネレータ (SSG)
+くらしの制度ナビ 静的サイトジェネレータ (SSG)
 DB(gov_life_support.sqlite3) から SEO最適化済みの静的HTMLを生成する。
 
 生成物 -> docs/  (GitHub Pages 公開ディレクトリ)
@@ -22,8 +22,8 @@ OUT  = os.path.join(ROOT, "docs")
 
 # ▼ 本番ドメイン（canonical / sitemap / OGP に使用）。環境変数 SEIDO_BASE_URL で上書き可。
 BASE_URL = os.environ.get("SEIDO_BASE_URL", "https://iekanko.jp").rstrip("/")
-SITE_NAME = "制度ナビ｜東京都の給付・手当・助成 まるわかり比較"
-SITE_SHORT = "制度ナビ"
+SITE_NAME = "くらしの制度ナビ｜東京都の給付・手当・助成 まるわかり比較"
+SITE_SHORT = "くらしの制度ナビ"
 
 # ── 運営者情報（E-E-A-T用。★実名・連絡先を記入すると信頼性ページが完成します）──────
 OPERATOR_NAME  = os.environ.get("SEIDO_OPERATOR",  "【要記入：運営者名または屋号】")
@@ -181,7 +181,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <link rel="stylesheet" href="/assets/style.css">
 {ld}</head>
 <body>
-<header class="site"><a class="brand" href="/">制度ナビ</a>
+<header class="site"><a class="brand" href="/">{esc(SITE_SHORT)}</a>
 <span class="tag">東京都の給付・手当・助成 比較</span></header>
 <main>
 {crumbs}
@@ -525,7 +525,7 @@ def build_static_pages():
 （<a href="/disclaimer/">免責事項</a>）。</p>
 """)
     page(path="/about/index.html", title=f"運営者情報｜{SITE_NAME}",
-         description="制度ナビの運営者情報・サイトの目的・情報の作り方について。東京都62自治体の給付・手当・助成を出典つきで比較する情報サービスです。",
+         description=f"{SITE_SHORT}の運営者情報・サイトの目的・情報の作り方について。東京都62自治体の給付・手当・助成を出典つきで比較する情報サービスです。",
          canonical="/about/", breadcrumb=[("トップ","/"),("運営者情報",None)], body=about)
     sitemap_urls.append(("/about/","0.3"))
 
@@ -550,7 +550,7 @@ def build_static_pages():
 {report_html}
 """)
     page(path="/update-policy/index.html", title=f"情報の更新方針・編集方針｜{SITE_NAME}",
-         description="制度ナビの情報源・品質基準・更新タイミング・訂正対応など、掲載情報の更新方針と編集方針を説明しています。",
+         description=f"{SITE_SHORT}の情報源・品質基準・更新タイミング・訂正対応など、掲載情報の更新方針と編集方針を説明しています。",
          canonical="/update-policy/", breadcrumb=[("トップ","/"),("情報の更新方針",None)], body=policy)
     sitemap_urls.append(("/update-policy/","0.3"))
 
@@ -570,7 +570,7 @@ def build_static_pages():
 また、本サイトからリンクする外部サイトの内容についても責任を負いません。</p>
 """)
     page(path="/disclaimer/index.html", title=f"免責事項｜{SITE_NAME}",
-         description="制度ナビの免責事項。掲載情報の正確性や、公式ページでの最終確認のお願い、損害責任の範囲について説明しています。",
+         description=f"{SITE_SHORT}の免責事項。掲載情報の正確性や、公式ページでの最終確認のお願い、損害責任の範囲について説明しています。",
          canonical="/disclaimer/", breadcrumb=[("トップ","/"),("免責事項",None)], body=disc)
     sitemap_urls.append(("/disclaimer/","0.3"))
 
@@ -594,7 +594,7 @@ def build_static_pages():
 {inquiry_html}
 """)
     page(path="/privacy/index.html", title=f"プライバシーポリシー｜{SITE_NAME}",
-         description="制度ナビのプライバシーポリシー。取得する情報・Cookie・アクセス解析・外部リンクの取り扱いについて説明しています。",
+         description=f"{SITE_SHORT}のプライバシーポリシー。取得する情報・Cookie・アクセス解析・外部リンクの取り扱いについて説明しています。",
          canonical="/privacy/", breadcrumb=[("トップ","/"),("プライバシーポリシー",None)], body=priv)
     sitemap_urls.append(("/privacy/","0.3"))
 
