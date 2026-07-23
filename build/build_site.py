@@ -665,13 +665,22 @@ def build_muni(m, slug, score, avg):
                f'{strong_html}'
                f'<p class="note">※当サイト収録制度の分野カバー率に基づく参考指標です。'
                f'<a href="/find/">目的・年代から地域を探す {CHEV_R}</a></p></section>')
-    same=[x for x in munis if x["municipality_type"]==m["municipality_type"] and x["id"]!=mid and muni_slug(x)]
-    type_ja={"ward":"区","city":"市","town":"町","village":"村"}.get(m["municipality_type"],"自治体")
+    # ほかの市区町村（種別を問わず五十音順の近隣）を対等に回遊
+    _tj={"ward":"区","city":"市","town":"町","village":"村"}
+    _ordered=[x for x in sorted(munis, key=lambda z: YOMI.get(z["municipality_name"], z["municipality_name"])) if muni_slug(x)]
+    _n=len(_ordered)
+    _idx=next((i for i,x in enumerate(_ordered) if x["id"]==mid), None)
     others_html=""
-    if same:
-        chips="".join(f'<a href="/area/tokyo/{muni_slug(x)}/">{esc(x["municipality_name"])}</a>' for x in same)
-        others_html=(f'<section class="others"><h2>ほかの{esc(type_ja)}を見る</h2>'
-                     f'<div class="ostrip">{chips}</div></section>')
+    if _idx is not None and _n>1:
+        lo=max(0,_idx-6); hi=min(_n,_idx+7)
+        if hi-lo<13:
+            if lo==0: hi=min(_n,13)
+            else: lo=max(0,_n-13)
+        near=[_ordered[i] for i in range(lo,hi) if i!=_idx]
+        chips="".join(f'<a href="/area/tokyo/{muni_slug(x)}/"><em class="mt">{_tj.get(x["municipality_type"],"")}</em>{esc(x["municipality_name"])}</a>' for x in near)
+        others_html=(f'<section class="others"><h2>ほかの市区町村を見る</h2>'
+                     f'<div class="ostrip">{chips}</div>'
+                     f'<p class="more"><a href="/#area">{CHEV_R} 東京都62市区町村の一覧から探す</a></p></section>')
     title = f"{mn}で受けられる給付・手当・助成 一覧｜対象・金額まとめ"
     desc = clip(f"{mn}で受けられる給付金・手当・助成・支援制度を{len(progs)}件、ライフイベント別に出典付きでまとめました。妊娠出産・子育て・引っ越し・退職失業・高齢介護の制度が一目でわかります。",118)
     body = f"""
