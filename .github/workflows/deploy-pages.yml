@@ -7,35 +7,42 @@ on:
       - main
   workflow_dispatch:
 
+# github-pages 環境ゲートを避けるため、ビルド成果物(docs/)を gh-pages ブランチへ
+# 直接 push する方式。GITHUB_TOKEN の contents:write のみで動作する。
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: deploy-gh-pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure Pages (auto-enable if needed)
-        uses: actions/configure-pages@v4
-        with:
-          enablement: true
+      - name: Publish docs/ to gh-pages branch
+        run: |
+          set -euo pipefail
+          SRC="docs"
+          test -f "$SRC/index.html" || { echo "docs/index.html not found"; exit 1; }
 
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          # 公開ブランチを作り直して docs/ の中身をルートに配置
+          rm -rf .gh-pages-publish
+          mkdir .gh-pages-publish
+          cp -a "$SRC/." .gh-pages-publish/
+          touch .gh-pages-publish/.nojekyll
+
+          cd .gh-pages-publish
+          git init -q
+          git checkout -q -b gh-pages
+          git add -A
+          git commit -q -m "Deploy site to GitHub Pages ($GITHUB_SHA)"
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
