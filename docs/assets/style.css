@@ -49,3 +49,11 @@ table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:.8rem}
 ul.cmplist{list-style:none;padding:0;margin:.3rem 0}
 ul.cmplist li{padding:.5rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 ul.cmplist .cnt2{font-size:.75rem;color:var(--muted);white-space:nowrap}
+.fnav{margin:0 0 .7rem;line-height:2}
+.fnav a{color:var(--muted)}
+footer .copy{margin:.3rem 0 0}
+.doc h2{font-size:1.08rem}
+.doc .lead{margin-bottom:1rem}
+ul.plainlist{margin:.3rem 0 .3rem 1.1rem;padding:0}
+ul.plainlist li{margin:.2rem 0}
+.backtop{margin-top:1.6rem;font-size:.9rem}

@@ -23,6 +23,14 @@ OUT  = os.path.join(ROOT, "docs")
 # ▼ 本番ドメイン（canonical / sitemap / OGP に使用）。環境変数 SEIDO_BASE_URL で上書き可。
 BASE_URL = os.environ.get("SEIDO_BASE_URL", "https://iekanko.jp").rstrip("/")
 SITE_NAME = "制度ナビ｜東京都の給付・手当・助成 まるわかり比較"
+SITE_SHORT = "制度ナビ"
+
+# ── 運営者情報（E-E-A-T用。★実名・連絡先を記入すると信頼性ページが完成します）──────
+OPERATOR_NAME  = os.environ.get("SEIDO_OPERATOR",  "【要記入：運営者名または屋号】")
+CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "【要記入：連絡先メールアドレス】")
+ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
+# GoogleアナリティクスなどのタグID（設定するとプライバシーポリシーに反映）。未設定なら記載を省略。
+ANALYTICS_NOTE = os.environ.get("SEIDO_ANALYTICS", "")
 
 # ── 品質ゲート（YMYL: 未検証の薄いページをインデックスさせない）────────────
 GATE_MIN_CONFIDENCE = 82   # 制度の平均confidenceがこれ未満なら noindex
@@ -161,7 +169,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
-<meta name="robots" content="{robots}">
+<meta name="robots" content="{robots},max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="{esc(canon)}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{esc(SITE_NAME)}">
@@ -180,9 +188,12 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 {body}
 </main>
 <footer class="site">
+<nav class="fnav" aria-label="サイト情報">
+<a href="/">トップ</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>
+</nav>
 <p>本サイトは各自治体・公的機関の公表情報をもとに整理した比較・案内サービスです。
 最新かつ正確な内容は必ず各制度の公式ページでご確認ください。</p>
-<p><a href="/">トップ</a> ・ 東京都62自治体 ・ 出典付き / 最終確認日を明記</p>
+<p class="copy">© {ESTABLISHED} {esc(SITE_SHORT)}（東京都62自治体・出典付き / 最終確認日を明記）</p>
 </footer>
 </body></html>"""
     write(path, doc)
@@ -294,7 +305,7 @@ def build_program(m, slug, p, cats):
     bc = [("トップ","/"),(f"{mn}",f"/area/tokyo/{slug}/"),(title,None)]
     page(path=url+"index.html", title=page_title, description=desc, canonical=url,
          jsonld=blocks, robots=robots, breadcrumb=bc, body=body)
-    if idx: sitemap_urls.append((url, "0.8"))
+    if idx: sitemap_urls.append((url, "0.8", p["last_verified_at"]))
     return idx
 
 def compare_links(cats):
@@ -351,7 +362,8 @@ def build_compare(cid, entries):
     robots="index,follow" if have>=3 else "noindex,follow"
     page(path=url+"index.html",title=title,description=desc,canonical=url,
          jsonld=[il],robots=robots,breadcrumb=bc,body=body)
-    if have>=3: sitemap_urls.append((url,"0.9"))
+    dates=[e[2]["last_verified_at"] for e in entries if e[2]["last_verified_at"]]
+    if have>=3: sitemap_urls.append((url,"0.9", max(dates) if dates else None))
     return have
 
 def build_compare_index(cat_counts):
@@ -428,6 +440,129 @@ def build_muni(m, slug):
     sitemap_urls.append((url,"0.7"))
     return progs, counts
 
+# ── 運営者エンティティ（E-E-A-T：発行元を明確化）────────────────────────────
+def site_graph():
+    org = {"@type":"Organization","@id":BASE_URL+"/#org","name":SITE_SHORT,
+           "url":BASE_URL+"/",
+           "description":"東京都62自治体の給付金・手当・助成制度を、公式情報の出典と最終確認日つきで横断比較する情報サービス。"}
+    if "【" not in CONTACT_EMAIL:
+        org["contactPoint"] = {"@type":"ContactPoint","email":CONTACT_EMAIL,
+                               "contactType":"customer support","areaServed":"JP","availableLanguage":"ja"}
+    web = {"@type":"WebSite","@id":BASE_URL+"/#website","url":BASE_URL+"/",
+           "name":SITE_NAME,"inLanguage":"ja","publisher":{"@id":BASE_URL+"/#org"}}
+    return {"@context":"https://schema.org","@graph":[org, web]}
+
+# ── 静的ページ（運営者情報・更新方針・免責・プライバシー：YMYLの信頼性ページ）──────
+def build_static_pages():
+    def wrap(inner):
+        return ('<article class="doc">'+inner+
+                '<p class="backtop"><a href="/">◀ トップにもどる</a></p></article>')
+
+    # 運営者情報
+    about = wrap(f"""
+<h1>運営者情報</h1>
+<p class="lead">「{esc(SITE_SHORT)}」は、東京都62自治体の給付金・手当・助成・減免などの制度を、
+公式情報をもとに整理し、自治体をまたいで比較できるようにした情報サービスです。</p>
+<h2>運営者</h2>
+<dl class="facts">
+<div class="fact"><dt>サイト名</dt><dd>{esc(SITE_NAME)}</dd></div>
+<div class="fact"><dt>運営者</dt><dd>{esc(OPERATOR_NAME)}</dd></div>
+<div class="fact"><dt>連絡先</dt><dd>{esc(CONTACT_EMAIL)}</dd></div>
+<div class="fact"><dt>公開開始</dt><dd>{esc(ESTABLISHED)}年</dd></div>
+</dl>
+<h2>サイトの目的</h2>
+<p>「自分の住む街・引っ越し先で、どんな公的支援が受けられるのか」を、
+自治体ごとにバラバラな情報を横断して比較できるようにすることを目的としています。
+妊娠・出産、子育て、引っ越し、退職・失業、高齢・介護といったライフイベント別に、
+受けられる制度を出典つきで整理しています。</p>
+<h2>情報の作り方</h2>
+<p>掲載内容は、各自治体・公的機関が公表している情報を根拠に整理しています。
+制度ごとに出典URLと最終確認日を明記し、確認が不十分なページは検索エンジンにインデックスさせない
+品質基準（未検証ページの非公開）を設けています。詳しくは
+<a href="/update-policy/">情報の更新方針</a>をご覧ください。</p>
+<h2>ご注意</h2>
+<p>本サイトは公的機関ではなく、公式の申請窓口でもありません。実際の金額・対象・期限・申請方法は
+制度改定などで変わることがあります。申請前に必ず各制度の公式ページでご確認ください
+（<a href="/disclaimer/">免責事項</a>）。</p>
+""")
+    page(path="/about/index.html", title=f"運営者情報｜{SITE_NAME}",
+         description="制度ナビの運営者情報・サイトの目的・情報の作り方について。東京都62自治体の給付・手当・助成を出典つきで比較する情報サービスです。",
+         canonical="/about/", breadcrumb=[("トップ","/"),("運営者情報",None)], body=about)
+    sitemap_urls.append(("/about/","0.3"))
+
+    # 情報の更新方針
+    policy = wrap(f"""
+<h1>情報の更新方針・編集方針</h1>
+<p class="lead">「{esc(SITE_SHORT)}」の掲載情報を、どのように収集・確認・更新しているかの方針です。</p>
+<h2>情報源</h2>
+<p>掲載する制度の内容は、各自治体および公的機関が公式サイト等で公表している情報を根拠としています。
+各制度ページには、根拠とした公式ページへの<strong>出典リンク</strong>と、
+内容を確認した<strong>最終確認日</strong>を表示しています。</p>
+<h2>品質基準（YMYL対応）</h2>
+<p>お金や暮らしに関わる情報のため、確認が不十分な制度ページは検索エンジンにインデックスさせない
+基準（noindex）を設けています。金額・対象・期限などの重要項目は、公式情報との整合を確認したうえで掲載します。</p>
+<h2>更新のタイミング</h2>
+<ul class="plainlist">
+<li>制度の新設・改定・廃止を確認した場合</li>
+<li>公式ページの内容に更新があった場合</li>
+<li>定期的な再確認により、最終確認日を更新する場合</li>
+</ul>
+<h2>誤り・古い情報のご指摘</h2>
+<p>内容に誤りや古い情報を見つけられた場合は、
+{("<a href='mailto:"+esc(CONTACT_EMAIL)+"'>"+esc(CONTACT_EMAIL)+"</a>") if "【" not in CONTACT_EMAIL else esc(CONTACT_EMAIL)}
+までご連絡ください。確認のうえ、可能な範囲で速やかに反映します。</p>
+""")
+    page(path="/update-policy/index.html", title=f"情報の更新方針・編集方針｜{SITE_NAME}",
+         description="制度ナビの情報源・品質基準・更新タイミング・訂正対応など、掲載情報の更新方針と編集方針を説明しています。",
+         canonical="/update-policy/", breadcrumb=[("トップ","/"),("情報の更新方針",None)], body=policy)
+    sitemap_urls.append(("/update-policy/","0.3"))
+
+    # 免責事項
+    disc = wrap(f"""
+<h1>免責事項</h1>
+<p class="lead">本サイト「{esc(SITE_SHORT)}」をご利用の前に、以下をご確認ください。</p>
+<h2>情報の正確性について</h2>
+<p>本サイトは、各自治体・公的機関が公表する情報をもとに整理していますが、内容の正確性・完全性・最新性を
+保証するものではありません。制度の金額・対象・期限・申請方法などは、制度改定や自治体の判断により変更される
+ことがあります。</p>
+<h2>公式情報での確認のお願い</h2>
+<p>本サイトは公的機関が運営するものではなく、公式の申請窓口でもありません。実際に制度を利用・申請される際は、
+必ず各制度ページに記載の<strong>公式ページ（出典リンク）</strong>および各自治体の窓口で最新情報をご確認ください。</p>
+<h2>免責</h2>
+<p>本サイトの情報を利用したことにより生じたいかなる損害についても、運営者は責任を負いかねます。
+また、本サイトからリンクする外部サイトの内容についても責任を負いません。</p>
+""")
+    page(path="/disclaimer/index.html", title=f"免責事項｜{SITE_NAME}",
+         description="制度ナビの免責事項。掲載情報の正確性や、公式ページでの最終確認のお願い、損害責任の範囲について説明しています。",
+         canonical="/disclaimer/", breadcrumb=[("トップ","/"),("免責事項",None)], body=disc)
+    sitemap_urls.append(("/disclaimer/","0.3"))
+
+    # プライバシーポリシー
+    ga = (f"<h2>アクセス解析について</h2><p>本サイトでは、サービス改善のためアクセス解析ツール"
+          f"（{esc(ANALYTICS_NOTE)}）を利用する場合があります。これにより収集される情報に個人を特定するものは含まれません。</p>"
+          ) if ANALYTICS_NOTE else ""
+    priv = wrap(f"""
+<h1>プライバシーポリシー</h1>
+<p class="lead">本サイト「{esc(SITE_SHORT)}」における個人情報・アクセス情報の取り扱い方針です。</p>
+<h2>取得する情報</h2>
+<p>本サイトは、閲覧のみで利用でき、氏名・住所などの個人情報の入力を求めることはありません。
+サーバーやアクセス解析により、アクセス日時・ブラウザ種別などの技術的な情報を取得する場合があります。</p>
+{ga}
+<h2>Cookieについて</h2>
+<p>アクセス状況の把握のためにCookieを利用する場合があります。ブラウザの設定でCookieを無効にすることもできます。</p>
+<h2>外部リンク</h2>
+<p>本サイトは各自治体・公的機関などの外部サイトへのリンクを含みます。リンク先での個人情報の取り扱いについては、
+各サイトのポリシーをご確認ください。</p>
+<h2>お問い合わせ</h2>
+<p>本ポリシーに関するお問い合わせは
+{("<a href='mailto:"+esc(CONTACT_EMAIL)+"'>"+esc(CONTACT_EMAIL)+"</a>") if "【" not in CONTACT_EMAIL else esc(CONTACT_EMAIL)}
+までお願いします。</p>
+""")
+    page(path="/privacy/index.html", title=f"プライバシーポリシー｜{SITE_NAME}",
+         description="制度ナビのプライバシーポリシー。取得する情報・Cookie・アクセス解析・外部リンクの取り扱いについて説明しています。",
+         canonical="/privacy/", breadcrumb=[("トップ","/"),("プライバシーポリシー",None)], body=priv)
+    sitemap_urls.append(("/privacy/","0.3"))
+
 # ── トップ ──────────────────────────────────────────────────────────────────
 def build_home(muni_stats):
     wards=[x for x in muni_stats if x[0]["municipality_type"]=="ward"]
@@ -450,7 +585,7 @@ def build_home(muni_stats):
 """
     page(path="index.html", title=SITE_NAME,
          description="東京都62自治体の給付金・手当・助成制度を、出典・最終確認日つきで自治体ごとに比較できるサービス。妊娠出産・子育て・引っ越し・退職失業・高齢介護のもらえるお金がわかります。",
-         canonical="/", breadcrumb=None, body=body)
+         canonical="/", jsonld=[site_graph()], breadcrumb=None, body=body)
     sitemap_urls.append(("/","1.0"))
 
 # ── 実行 ────────────────────────────────────────────────────────────────────
@@ -480,6 +615,7 @@ def main():
         if cid in cat_entries:
             cat_counts[cid]=build_compare(cid, cat_entries[cid])
     build_compare_index(cat_counts)
+    build_static_pages()
     build_home(muni_stats)
     write_sitemap(); write_robots(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
@@ -489,8 +625,13 @@ def main():
     print(f"BASE_URL={BASE_URL}  （本番前に SEIDO_BASE_URL を設定してください）")
 
 def write_sitemap():
-    items="".join(f'<url><loc>{esc(BASE_URL+u)}</loc><priority>{p}</priority></url>' for u,p in sitemap_urls)
-    write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{items}</urlset>')
+    parts=[]
+    for entry in sitemap_urls:
+        loc, prio = entry[0], entry[1]
+        lastmod = entry[2] if len(entry) > 2 else None
+        lm = f'<lastmod>{esc(lastmod)}</lastmod>' if lastmod else ''
+        parts.append(f'<url><loc>{esc(BASE_URL+loc)}</loc>{lm}<priority>{prio}</priority></url>')
+    write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{"".join(parts)}</urlset>')
 
 def write_robots():
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}/sitemap.xml\n")
@@ -549,6 +690,14 @@ table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:.8rem}
 ul.cmplist{list-style:none;padding:0;margin:.3rem 0}
 ul.cmplist li{padding:.5rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 ul.cmplist .cnt2{font-size:.75rem;color:var(--muted);white-space:nowrap}
+.fnav{margin:0 0 .7rem;line-height:2}
+.fnav a{color:var(--muted)}
+footer .copy{margin:.3rem 0 0}
+.doc h2{font-size:1.08rem}
+.doc .lead{margin-bottom:1rem}
+ul.plainlist{margin:.3rem 0 .3rem 1.1rem;padding:0}
+ul.plainlist li{margin:.2rem 0}
+.backtop{margin-top:1.6rem;font-size:.9rem}
 """
 
 if __name__ == "__main__":
