@@ -29,8 +29,8 @@ jobs:
           SRC="docs"
           test -f "$SRC/index.html" || { echo "docs/index.html not found"; exit 1; }
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           # 公開ブランチを作り直して docs/ の中身をルートに配置
           rm -rf .gh-pages-publish
