@@ -220,13 +220,13 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <link rel="stylesheet" href="/assets/style.css">
 {ld}</head>
 <body id="top">
-<header class="site">
+<header class="site"><div class="hbar">
 <a class="brand" href="/">{esc(SITE_SHORT)}</a>
 <nav class="gnav" aria-label="メインナビゲーション">
 <a href="/find/">目的で探す</a>
 <a href="/hikaku/">制度を比較</a>
 <a href="/#area">自治体一覧</a>
-</nav></header>
+</nav></div></header>
 <main>
 {crumbs}
 {body}
@@ -885,13 +885,15 @@ CSS = """:root{--fg:#1a2233;--muted:#5b6577;--line:#e5e8ef;--bg:#fff;--accent:#1
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);display:flex;align-items:center;gap:.4rem 1rem;padding:.6rem 1.1rem;border-bottom:1px solid var(--line);flex-wrap:wrap}
+header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);padding:.55rem 1.1rem;border-bottom:1px solid var(--line)}
+.hbar{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
 .brand{font-weight:800;font-size:1.12rem;color:var(--fg)}
 .gnav{display:flex;gap:.1rem;margin-left:auto;flex-wrap:wrap}
 .gnav a{color:var(--fg);font-weight:600;font-size:.9rem;padding:.34rem .6rem;border-radius:8px}
 .gnav a:hover{background:var(--soft);text-decoration:none}
-@media(max-width:520px){.gnav a{padding:.3rem .48rem;font-size:.83rem}.brand{font-size:1.02rem}header.site{gap:.3rem .5rem;padding:.55rem .8rem}}
-:target{scroll-margin-top:56px}
+@media(max-width:520px){.gnav a{padding:.3rem .44rem;font-size:.82rem}.brand{font-size:1rem}header.site{padding:.5rem .8rem}}
+@media(max-width:360px){.gnav{gap:0}.gnav a{padding:.3rem .34rem;font-size:.78rem}}
+:target{scroll-margin-top:60px}
 main{max-width:820px;margin:0 auto;padding:1.1rem 1.1rem 3rem}
 .crumbs{font-size:.82rem;color:var(--muted);margin:.2rem 0 1rem}
 .crumbs a{color:var(--muted)}
