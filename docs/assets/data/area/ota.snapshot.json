@@ -1,0 +1,366 @@
+{
+  "slug": "ota",
+  "name": "大田区",
+  "benefits": [
+    {
+      "cid": "house_taishin",
+      "label": "耐震改修助成",
+      "unit": "改修上限",
+      "group": "moving",
+      "group_label": "住まい",
+      "yen": 1500000,
+      "href": "/area/tokyo/ota/seido/1963/",
+      "rank": 12,
+      "n_ranked": 30,
+      "hikaku": "/hikaku/house_taishin/"
+    },
+    {
+      "cid": "eld_hochoki",
+      "label": "補聴器助成",
+      "unit": "購入上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 50000,
+      "href": "/area/tokyo/ota/seido/2843/",
+      "rank": 21,
+      "n_ranked": 38,
+      "hikaku": "/hikaku/eld_hochoki/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/ota/seido/710/",
+      "rank": 44,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 563000,
+      "median_commercial_yen_sqm": 792000,
+      "n_points": 124,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 152
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 1203,
+        "avg_price": 48151704,
+        "avg_area": 57.4,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 792,
+          "avg_price": 45359974,
+          "avg_area": 59.3,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 770,
+          "avg_price": 46883766,
+          "avg_area": 58.8,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 905,
+          "avg_price": 47554585,
+          "avg_area": 59.6,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 1203,
+          "avg_price": 48151704,
+          "avg_area": 57.4,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 107,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 32,
+    "top": [
+      {
+        "name": "蒲田",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 242214,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 292674
+          },
+          {
+            "year": 2019,
+            "passengers": 292674
+          },
+          {
+            "year": 2020,
+            "passengers": 206930
+          },
+          {
+            "year": 2021,
+            "passengers": 208676
+          },
+          {
+            "year": 2022,
+            "passengers": 227292
+          },
+          {
+            "year": 2023,
+            "passengers": 242214
+          }
+        ]
+      },
+      {
+        "name": "大森",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 156466,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 193944
+          },
+          {
+            "year": 2019,
+            "passengers": 193944
+          },
+          {
+            "year": 2020,
+            "passengers": 139714
+          },
+          {
+            "year": 2021,
+            "passengers": 137502
+          },
+          {
+            "year": 2022,
+            "passengers": 145136
+          },
+          {
+            "year": 2023,
+            "passengers": 156466
+          }
+        ]
+      },
+      {
+        "name": "京急蒲田",
+        "company": "京浜急行電鉄",
+        "line": "本線",
+        "passengers": 59288,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 64280
+          },
+          {
+            "year": 2019,
+            "passengers": 65123
+          },
+          {
+            "year": 2020,
+            "passengers": 44191
+          },
+          {
+            "year": 2021,
+            "passengers": 47126
+          },
+          {
+            "year": 2022,
+            "passengers": 54259
+          },
+          {
+            "year": 2023,
+            "passengers": 59288
+          }
+        ]
+      },
+      {
+        "name": "西馬込",
+        "company": "東京都",
+        "line": "1号線浅草線",
+        "passengers": 42045,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 48687
+          },
+          {
+            "year": 2019,
+            "passengers": 49538
+          },
+          {
+            "year": 2020,
+            "passengers": 37273
+          },
+          {
+            "year": 2021,
+            "passengers": 37078
+          },
+          {
+            "year": 2022,
+            "passengers": 39302
+          },
+          {
+            "year": 2023,
+            "passengers": 42045
+          }
+        ]
+      },
+      {
+        "name": "平和島",
+        "company": "京浜急行電鉄",
+        "line": "本線",
+        "passengers": 42038,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 48608
+          },
+          {
+            "year": 2019,
+            "passengers": 48639
+          },
+          {
+            "year": 2020,
+            "passengers": 36392
+          },
+          {
+            "year": 2021,
+            "passengers": 36555
+          },
+          {
+            "year": 2022,
+            "passengers": 38971
+          },
+          {
+            "year": 2023,
+            "passengers": 42038
+          }
+        ]
+      },
+      {
+        "name": "池上",
+        "company": "東急電鉄",
+        "line": "池上線",
+        "passengers": 34089,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 36929
+          },
+          {
+            "year": 2019,
+            "passengers": 36564
+          },
+          {
+            "year": 2020,
+            "passengers": 27763
+          },
+          {
+            "year": 2021,
+            "passengers": 30775
+          },
+          {
+            "year": 2022,
+            "passengers": 32969
+          },
+          {
+            "year": 2023,
+            "passengers": 34089
+          }
+        ]
+      },
+      {
+        "name": "下丸子",
+        "company": "東急電鉄",
+        "line": "東急多摩川線",
+        "passengers": 30381,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 36883
+          },
+          {
+            "year": 2019,
+            "passengers": 36829
+          },
+          {
+            "year": 2020,
+            "passengers": 27087
+          },
+          {
+            "year": 2021,
+            "passengers": 29099
+          },
+          {
+            "year": 2022,
+            "passengers": 29684
+          },
+          {
+            "year": 2023,
+            "passengers": 30381
+          }
+        ]
+      },
+      {
+        "name": "雑色",
+        "company": "京浜急行電鉄",
+        "line": "本線",
+        "passengers": 29756,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 31941
+          },
+          {
+            "year": 2019,
+            "passengers": 32138
+          },
+          {
+            "year": 2020,
+            "passengers": 24401
+          },
+          {
+            "year": 2021,
+            "passengers": 25458
+          },
+          {
+            "year": 2022,
+            "passengers": 27889
+          },
+          {
+            "year": 2023,
+            "passengers": 29756
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 542051,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "slug": "akiruno",
+  "name": "あきる野市",
+  "benefits": [
+    {
+      "cid": "house_taishin",
+      "label": "耐震改修助成",
+      "unit": "改修上限",
+      "group": "moving",
+      "group_label": "住まい",
+      "yen": 1100000,
+      "href": "/area/tokyo/akiruno/seido/1988/",
+      "rank": 15,
+      "n_ranked": 30,
+      "hikaku": "/hikaku/house_taishin/"
+    },
+    {
+      "cid": "eld_hochoki",
+      "label": "補聴器助成",
+      "unit": "購入上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 40000,
+      "href": "/area/tokyo/akiruno/seido/2844/",
+      "rank": 24,
+      "n_ranked": 38,
+      "hikaku": "/hikaku/eld_hochoki/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/akiruno/seido/2596/",
+      "rank": 9,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    },
+    {
+      "cid": "eld_omutsu",
+      "label": "高齢者紙おむつ",
+      "unit": "月額上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 5000,
+      "href": "/area/tokyo/akiruno/seido/1891/",
+      "rank": 18,
+      "n_ranked": 23,
+      "hikaku": "/hikaku/eld_omutsu/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 96700,
+      "median_commercial_yen_sqm": 142000,
+      "n_points": 36,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 26
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 2,
+        "avg_price": 21000000,
+        "avg_area": 67.5,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 3,
+          "avg_price": 17333333,
+          "avg_area": 61.7,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 3,
+          "avg_price": 24666666,
+          "avg_area": 63.3,
+          "price_classification": "01"
+        },
+        {
+          "year": 2024,
+          "n": 1,
+          "avg_price": 18000000,
+          "avg_area": 65.0,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 2,
+          "avg_price": 21000000,
+          "avg_area": 67.5,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 47,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 5,
+    "top": [
+      {
+        "name": "秋川",
+        "company": "東日本旅客鉄道",
+        "line": "五日市線",
+        "passengers": 11800,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 13380
+          },
+          {
+            "year": 2019,
+            "passengers": 13380
+          },
+          {
+            "year": 2020,
+            "passengers": 10088
+          },
+          {
+            "year": 2021,
+            "passengers": 10700
+          },
+          {
+            "year": 2022,
+            "passengers": 11464
+          },
+          {
+            "year": 2023,
+            "passengers": 11800
+          }
+        ]
+      },
+      {
+        "name": "東秋留",
+        "company": "東日本旅客鉄道",
+        "line": "五日市線",
+        "passengers": 8502,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 9438
+          },
+          {
+            "year": 2019,
+            "passengers": 9438
+          },
+          {
+            "year": 2020,
+            "passengers": 6956
+          },
+          {
+            "year": 2021,
+            "passengers": 7486
+          },
+          {
+            "year": 2022,
+            "passengers": 8086
+          },
+          {
+            "year": 2023,
+            "passengers": 8502
+          }
+        ]
+      },
+      {
+        "name": "武蔵引田",
+        "company": "東日本旅客鉄道",
+        "line": "五日市線",
+        "passengers": 7942,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 6204
+          },
+          {
+            "year": 2019,
+            "passengers": 6204
+          },
+          {
+            "year": 2020,
+            "passengers": 4860
+          },
+          {
+            "year": 2021,
+            "passengers": 5280
+          },
+          {
+            "year": 2022,
+            "passengers": 7222
+          },
+          {
+            "year": 2023,
+            "passengers": 7942
+          }
+        ]
+      },
+      {
+        "name": "武蔵五日市",
+        "company": "東日本旅客鉄道",
+        "line": "五日市線",
+        "passengers": 7384,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 8752
+          },
+          {
+            "year": 2019,
+            "passengers": 8752
+          },
+          {
+            "year": 2020,
+            "passengers": 6268
+          },
+          {
+            "year": 2021,
+            "passengers": 6732
+          },
+          {
+            "year": 2022,
+            "passengers": 7154
+          },
+          {
+            "year": 2023,
+            "passengers": 7384
+          }
+        ]
+      },
+      {
+        "name": "武蔵増戸",
+        "company": "東日本旅客鉄道",
+        "line": "五日市線",
+        "passengers": 4596,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 5168
+          },
+          {
+            "year": 2019,
+            "passengers": 5168
+          },
+          {
+            "year": 2020,
+            "passengers": 3750
+          },
+          {
+            "year": 2021,
+            "passengers": 3978
+          },
+          {
+            "year": 2022,
+            "passengers": 4390
+          },
+          {
+            "year": 2023,
+            "passengers": 4596
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 40224,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

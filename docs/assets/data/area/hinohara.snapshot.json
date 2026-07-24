@@ -1,0 +1,86 @@
+{
+  "slug": "hinohara",
+  "name": "檜原村",
+  "benefits": [
+    {
+      "cid": "child_iwai",
+      "label": "出産・入学祝金",
+      "unit": "支給額",
+      "group": "childcare",
+      "group_label": "子育て",
+      "yen": 50000,
+      "href": "/area/tokyo/hinohara/seido/1721/",
+      "rank": 4,
+      "n_ranked": 8,
+      "hikaku": "/hikaku/child_iwai/"
+    },
+    {
+      "cid": "low_aircon",
+      "label": "エアコン設置助成",
+      "unit": "助成上限",
+      "group": "retirement_unemployment",
+      "group_label": "生活支援",
+      "yen": 100000,
+      "href": "/area/tokyo/hinohara/seido/898/",
+      "rank": 10,
+      "n_ranked": 20,
+      "hikaku": "/hikaku/low_aircon/"
+    },
+    {
+      "cid": "eld_hochoki",
+      "label": "補聴器助成",
+      "unit": "購入上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 70000,
+      "href": "/area/tokyo/hinohara/seido/901/",
+      "rank": 13,
+      "n_ranked": 38,
+      "hikaku": "/hikaku/eld_hochoki/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/hinohara/seido/2599/",
+      "rank": 20,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 19200,
+      "median_commercial_yen_sqm": null,
+      "n_points": 3,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 5
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": null,
+      "yearly": [],
+      "vs_tokyo_pct": null,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

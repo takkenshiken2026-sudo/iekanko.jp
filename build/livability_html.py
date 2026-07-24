@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""自治体ページ用：住まい相場・駅乗降のHTML断片生成（reinfolib_tokyo.db 由来JSON）。"""
+"""
+自治体ハブ「数字でみる」ダッシュボード HTML。
+方針: 数字優先 / 3層（もらえる・かかる・まち）/ グラフは比較と推移だけに絞る。
+"""
 from __future__ import annotations
 
 import html
@@ -17,221 +20,290 @@ def esc(s):
     return html.escape(str(s or ""), quote=True)
 
 
-def fmt_yen(v: Optional[int]) -> str:
+def fmt_yen(v: Optional[int], kind="absolute") -> str:
     if not v:
         return "—"
+    if kind == "sqm":
+        if v >= 10000:
+            s = f"{v/10000:.1f}".rstrip("0").rstrip(".")
+            return f"{s}万円/㎡"
+        return f"{v:,}円/㎡"
     if v >= 100000000:
-        return f"{v/100000000:.1f}".rstrip("0").rstrip(".") + "億円"
+        s = f"{v/100000000:.2f}".rstrip("0").rstrip(".")
+        return f"{s}億円"
     if v >= 10000:
-        return f"{v/10000:.0f}万円" if v % 10000 == 0 else f"{v/10000:.1f}".rstrip("0").rstrip(".") + "万円"
+        man = v / 10000
+        if man >= 100:
+            return f"{man:,.0f}万円"
+        s = f"{man:.1f}".rstrip("0").rstrip(".")
+        return f"{s}万円"
     return f"{v:,}円"
 
 
-def fmt_yen_sqm(v: Optional[int]) -> str:
+def fmt_pax(v: Optional[int]) -> str:
     if not v:
         return "—"
     if v >= 10000:
-        return f"{v/10000:.1f}".rstrip("0").rstrip(".") + "万円/㎡"
-    return f"{v:,}円/㎡"
+        s = f"{v/10000:.1f}".rstrip("0").rstrip(".")
+        return f"{s}万人"
+    return f"{v:,}人"
 
 
-def fmt_passengers(v: Optional[int]) -> str:
-    if not v:
-        return "—"
-    if v >= 10000:
-        return f"{v/10000:.1f}".rstrip("0").rstrip(".") + "万人/日"
-    return f"{v:,}人/日"
-
-
-def _bar_chart(items, value_key, label_key, color="#1baf7a"):
-    items = [x for x in items if x.get(value_key)]
-    if not items:
-        return ""
-    max_v = max(x[value_key] for x in items)
-    if max_v <= 0:
-        return ""
-    row_h = 28
-    h = 16 + row_h * len(items)
-    w = 420
-    label_w = 108
-    bars = []
-    for i, it in enumerate(items):
-        y = 8 + i * row_h
-        bw = max(2, int((w - label_w - 80) * (it[value_key] / max_v)))
-        bars.append(
-            f'<text x="0" y="{y+14}" class="lv-lbl">{esc(it[label_key])}</text>'
-            f'<rect x="{label_w}" y="{y+2}" width="{bw}" height="16" rx="3" fill="{color}" opacity="0.9"/>'
-            f'<text x="{label_w+bw+6}" y="{y+14}" class="lv-val">{esc(it.get("display") or it[value_key])}</text>'
-        )
-    return (
-        f'<svg class="lv-chart" viewBox="0 0 {w} {h}" role="img" '
-        f'aria-label="比較グラフ" preserveAspectRatio="xMinYMin meet">'
-        f'<style>.lv-lbl{{font:600 11px sans-serif;fill:#222}}.lv-val{{font:11px sans-serif;fill:#444}}</style>'
-        f'{"".join(bars)}</svg>'
-    )
-
-
-def _column_chart(items, value_key, label_key, color="#2a78d6"):
-    items = [x for x in items if x.get(value_key)]
-    if not items:
-        return ""
-    max_v = max(x[value_key] for x in items)
-    if max_v <= 0:
-        return ""
-    w, h = 420, 150
-    pad_l, pad_b, pad_t = 8, 28, 18
-    usable_w = w - pad_l * 2
-    usable_h = h - pad_b - pad_t
-    gap = 8
-    bw = max(12, (usable_w - gap * (len(items) - 1)) // len(items))
-    bars = []
-    for i, it in enumerate(items):
-        x = pad_l + i * (bw + gap)
-        bh = max(2, int(usable_h * (it[value_key] / max_v)))
-        y = pad_t + usable_h - bh
-        bars.append(
-            f'<rect x="{x}" y="{y}" width="{bw}" height="{bh}" rx="3" fill="{color}" opacity="0.9"/>'
-            f'<text x="{x+bw/2}" y="{y-4}" text-anchor="middle" class="lv-val">{esc(it.get("display") or "")}</text>'
-            f'<text x="{x+bw/2}" y="{h-8}" text-anchor="middle" class="lv-lbl">{esc(it[label_key])}</text>'
-        )
-    return (
-        f'<svg class="lv-chart" viewBox="0 0 {w} {h}" role="img" '
-        f'aria-label="年次推移グラフ" preserveAspectRatio="xMinYMin meet">'
-        f'<style>.lv-lbl{{font:600 11px sans-serif;fill:#222}}.lv-val{{font:10px sans-serif;fill:#444}}</style>'
-        f'{"".join(bars)}</svg>'
-    )
-
-
-def load_summary(slug: str) -> Optional[dict]:
-    path = os.path.join(JSON_DIR, f"{slug}.json")
+def load_snapshot(slug: str) -> Optional[dict]:
+    path = os.path.join(JSON_DIR, f"{slug}.snapshot.json")
     if not os.path.isfile(path):
-        return None
+        # fallback to reinfolib json only
+        base = os.path.join(JSON_DIR, f"{slug}.json")
+        if not os.path.isfile(base):
+            return None
+        with open(base, encoding="utf-8") as f:
+            h = json.load(f)
+        return {
+            "slug": slug,
+            "name": h.get("name") or slug,
+            "benefits": [],
+            "housing": {
+                "land": h.get("land"),
+                "condo": h.get("condo"),
+                "tokyo_median_residential_yen_sqm": h.get("tokyo_median_residential_yen_sqm"),
+                "tokyo_median_condo_price": h.get("tokyo_median_condo_price"),
+            },
+            "stations": h.get("stations"),
+            "source": h.get("source"),
+        }
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
-def livability_section_html(slug: str, data: Optional[dict] = None) -> str:
-    data = data or load_summary(slug)
+def _sparkline(values, w=160, h=36, color="#2a78d6"):
+    vals = [v for v in values if v is not None and v > 0]
+    if len(vals) < 2:
+        return ""
+    mn, mx = min(vals), max(vals)
+    span = (mx - mn) or 1
+    n = len(vals)
+    pts = []
+    for i, v in enumerate(vals):
+        x = 2 + (w - 4) * i / (n - 1)
+        y = h - 4 - (h - 8) * (v - mn) / span
+        pts.append(f"{x:.1f},{y:.1f}")
+    last = pts[-1].split(",")
+    return (
+        f'<svg class="fig-spark" viewBox="0 0 {w} {h}" width="{w}" height="{h}" '
+        f'aria-hidden="true" preserveAspectRatio="none">'
+        f'<polyline fill="none" stroke="{color}" stroke-width="2" stroke-linecap="round" '
+        f'stroke-linejoin="round" points="{" ".join(pts)}"/>'
+        f'<circle cx="{last[0]}" cy="{last[1]}" r="3" fill="{color}"/>'
+        f"</svg>"
+    )
+
+
+def _compare_meter(value, ref, color="#2a78d6"):
+    """この地域 vs 都内中央値。value/ref を1本のメーターで示す。"""
+    if not value or not ref:
+        return ""
+    # scale so the larger of the two is 100%
+    top = max(value, ref)
+    pct_v = max(4, min(100, round(100 * value / top)))
+    pct_r = max(4, min(100, round(100 * ref / top)))
+    return (
+        f'<div class="fig-meter" style="--c:{color}">'
+        f'<div class="fig-meter-row"><span>この地域</span>'
+        f'<div class="fig-meter-track"><i style="width:{pct_v}%"></i></div></div>'
+        f'<div class="fig-meter-row muted"><span>都内中央値</span>'
+        f'<div class="fig-meter-track"><i class="ref" style="width:{pct_r}%"></i></div></div>'
+        f"</div>"
+    )
+
+
+def _station_bars(top):
+    items = [t for t in (top or []) if t.get("passengers")]
+    if not items:
+        return ""
+    mx = max(t["passengers"] for t in items)
+    rows = []
+    for t in items[:5]:
+        pct = max(3, round(100 * t["passengers"] / mx))
+        rows.append(
+            f'<li><span class="fig-st-name">{esc(t["name"])}</span>'
+            f'<span class="fig-st-bar"><i style="--w:{pct}%"></i></span>'
+            f'<span class="fig-st-n">{esc(fmt_pax(t["passengers"]))}/日</span></li>'
+        )
+    return f'<ul class="fig-st-list">{"".join(rows)}</ul>'
+
+
+def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
+    data = data or load_snapshot(slug)
     if not data:
         return ""
     name = data.get("name") or slug
-    land = data.get("land") or {}
-    condo = data.get("condo") or {}
-    st = data.get("stations") or {}
-    tokyo_land = data.get("tokyo_median_residential_yen_sqm")
-    tokyo_condo = data.get("tokyo_median_condo_price")
-    med = land.get("median_residential_yen_sqm")
-    med_com = land.get("median_commercial_yen_sqm")
-    latest_condo = condo.get("latest")
-    vs_land = land.get("vs_tokyo_pct")
-    vs_condo = condo.get("vs_tokyo_pct")
-
-    stats = []
-    if latest_condo:
-        cls = "成約" if latest_condo.get("price_classification") == "02" else "取引"
-        area = latest_condo.get("avg_area")
-        area_txt = f"・平均{area}㎡" if area else ""
-        vs_txt = f"・都内中央値の約<strong>{vs_condo}%</strong>" if vs_condo else ""
-        stats.append(
-            f'<div class="lvstat"><span class="lvl">中古マンション平均（{latest_condo["year"]}・{cls}）</span>'
-            f'<span class="lvv">{esc(fmt_yen(latest_condo["avg_price"]))}</span>'
-            f'<span class="lvs">{latest_condo.get("n") or 0}件{area_txt}{vs_txt}</span></div>'
-        )
-    if med:
-        stats.append(
-            f'<div class="lvstat"><span class="lvl">住宅地価（中央値・{land.get("year","")}）</span>'
-            f'<span class="lvv">{esc(fmt_yen_sqm(med))}</span>'
-            f'{f"<span class=\"lvs\">都内中央値の約<strong>{vs_land}%</strong></span>" if vs_land else ""}</div>'
-        )
-    if med_com:
-        stats.append(
-            f'<div class="lvstat"><span class="lvl">商業地価（中央値）</span>'
-            f'<span class="lvv">{esc(fmt_yen_sqm(med_com))}</span></div>'
-        )
-    top = st.get("top") or []
-    if top:
-        stats.append(
-            f'<div class="lvstat"><span class="lvl">乗降が多い駅</span>'
-            f'<span class="lvv">{esc(top[0]["name"])}</span>'
-            f'<span class="lvs">{esc(fmt_passengers(top[0]["passengers"]))}</span></div>'
-        )
-
-    charts = []
+    benefits = data.get("benefits") or []
+    housing = data.get("housing") or {}
+    land = housing.get("land") or {}
+    condo = housing.get("condo") or {}
+    stations = data.get("stations") or {}
+    tokyo_land = housing.get("tokyo_median_residential_yen_sqm")
+    tokyo_condo = housing.get("tokyo_median_condo_price")
+    latest = condo.get("latest")
     yearly = condo.get("yearly") or []
-    if len(yearly) >= 2:
-        col_items = [{
-            "label": str(y["year"]),
-            "value": y["avg_price"],
-            "display": fmt_yen(y["avg_price"]).replace("万円", "万"),
-        } for y in yearly[-5:]]
-        charts.append(
-            f'<div class="lvbox"><h3>中古マンション平均価格の推移</h3>'
-            f'{_column_chart(col_items, "value", "label", color="#2a78d6")}</div>'
+
+    # ── もらえるお金 ──
+    tag_class = {
+        "childcare": "g-child",
+        "pregnancy_birth": "g-birth",
+        "moving": "g-house",
+        "retirement_unemployment": "g-life",
+        "elderly_care": "g-senior",
+    }
+    benefit_rows = []
+    for b in benefits:
+        rank_txt = ""
+        if b.get("rank") and b.get("n_ranked"):
+            rank_txt = f'<span class="fig-rank">都内{b["rank"]}/{b["n_ranked"]}</span>'
+        tc = tag_class.get(b.get("group"), "")
+        benefit_rows.append(
+            f'<a class="fig-brow" href="{esc(b["href"])}">'
+            f'<span class="fig-btag {tc}">{esc(b["group_label"])}</span>'
+            f'<span class="fig-blabel">{esc(b["label"])}</span>'
+            f'<span class="fig-bunit">{esc(b["unit"])}</span>'
+            f'<span class="fig-bval">{esc(fmt_yen(b["yen"]))}</span>'
+            f"{rank_txt}</a>"
         )
-    if med and tokyo_land:
-        price_items = [
-            {"label": name, "value": med, "display": fmt_yen_sqm(med)},
-            {"label": "都内中央値", "value": tokyo_land, "display": fmt_yen_sqm(tokyo_land)},
-        ]
-        charts.append(
-            f'<div class="lvbox"><h3>地価の目安（住宅）</h3>'
-            f'{_bar_chart(price_items, "value", "label", color="#eb6834")}</div>'
+    benefit_block = ""
+    if benefit_rows:
+        benefit_block = (
+            '<div class="fig-panel" data-fig="benefit">'
+            '<header class="fig-head">'
+            "<h3>もらえるお金の目安</h3>"
+            "<p>自治体で差が出やすい手当・助成（金額が分かるもの）</p>"
+            "</header>"
+            f'<div class="fig-brows">{"".join(benefit_rows)}</div>'
+            f'<p class="fig-more"><a href="/hikaku/">制度ごとの自治体比較を見る</a></p>'
+            "</div>"
         )
 
-    if latest_condo and tokyo_condo and len(yearly) < 2:
-        condo_items = [
-            {"label": name, "value": latest_condo["avg_price"], "display": fmt_yen(latest_condo["avg_price"])},
-            {"label": "都内中央値", "value": tokyo_condo, "display": fmt_yen(tokyo_condo)},
-        ]
-        charts.append(
-            f'<div class="lvbox"><h3>中古マンション平均の比較</h3>'
-            f'{_bar_chart(condo_items, "value", "label", color="#2a78d6")}</div>'
+    # ── かかるお金 ──
+    cost_parts = []
+    if latest:
+        spark_vals = [y["avg_price"] for y in yearly]
+        spark = _sparkline(spark_vals, color="#2a78d6")
+        cls = "成約" if latest.get("price_classification") == "02" else "取引"
+        vs = condo.get("vs_tokyo_pct")
+        vs_html = f'<span class="fig-vs">都内中央値の <strong>{vs}%</strong></span>' if vs else ""
+        area = latest.get("avg_area")
+        sub = f'{latest.get("n") or 0}件'
+        if area:
+            sub += f" · 平均{area}㎡"
+        cost_parts.append(
+            f'<div class="fig-cost">'
+            f'<div class="fig-cost-main">'
+            f'<span class="fig-kicker">中古マンション平均 · {latest["year"]}年（{cls}）</span>'
+            f'<span class="fig-big">{esc(fmt_yen(latest["avg_price"]))}</span>'
+            f'<span class="fig-sub">{esc(sub)}</span>'
+            f"{vs_html}</div>"
+            f'<div class="fig-cost-side"><span class="fig-side-label">推移</span>{spark}'
+            f'{_compare_meter(latest["avg_price"], tokyo_condo, "#2a78d6")}</div>'
+            f"</div>"
+        )
+    med = land.get("median_residential_yen_sqm")
+    if med:
+        vs = land.get("vs_tokyo_pct")
+        vs_html = f'<span class="fig-vs">都内中央値の <strong>{vs}%</strong></span>' if vs else ""
+        cost_parts.append(
+            f'<div class="fig-cost">'
+            f'<div class="fig-cost-main">'
+            f'<span class="fig-kicker">住宅地価の中央値 · {land.get("year","")}年</span>'
+            f'<span class="fig-big">{esc(fmt_yen(med, "sqm"))}</span>'
+            f"{vs_html}</div>"
+            f'<div class="fig-cost-side">'
+            f'{_compare_meter(med, tokyo_land, "#c45c26")}</div>'
+            f"</div>"
+        )
+    med_com = land.get("median_commercial_yen_sqm")
+    if med_com:
+        cost_parts.append(
+            f'<div class="fig-cost slim">'
+            f'<span class="fig-kicker">商業地価の中央値</span>'
+            f'<span class="fig-mid">{esc(fmt_yen(med_com, "sqm"))}</span>'
+            f"</div>"
         )
 
-    st_items = [{
-        "label": t["name"],
-        "value": t["passengers"],
-        "display": fmt_passengers(t["passengers"]),
-    } for t in top[:5]]
-    if st_items:
-        charts.append(
-            f'<div class="lvbox"><h3>駅の乗降客数（上位）</h3>'
-            f'{_bar_chart(st_items, "value", "label", color="#1baf7a")}</div>'
+    cost_block = ""
+    if cost_parts:
+        cost_block = (
+            '<div class="fig-panel" data-fig="cost">'
+            '<header class="fig-head">'
+            "<h3>住まいにかかるお金</h3>"
+            "<p>実際の取引・地価から見る、この地域の住宅コスト</p>"
+            "</header>"
+            f'<div class="fig-costs">{"".join(cost_parts)}</div>'
+            "</div>"
         )
 
-    if not stats and not charts:
+    # ── 交通 ──
+    top = stations.get("top") or []
+    transit_block = ""
+    st_html = _station_bars(top)
+    if st_html:
+        transit_block = (
+            '<div class="fig-panel" data-fig="transit">'
+            '<header class="fig-head">'
+            "<h3>駅の利用者数</h3>"
+            f'<p>1日あたり乗降の目安（{stations.get("year") or "最新"}年）</p>'
+            "</header>"
+            f"{st_html}"
+            "</div>"
+        )
+
+    if not (benefit_block or cost_block or transit_block):
         return ""
 
     src = data.get("source") or {}
     note = (
-        f'出典: {esc(src.get("trade","取引価格情報"))} ／ {esc(src.get("land","地価公示"))} ／ '
-        f'{esc(src.get("stations","駅別乗降客数"))}（{esc(src.get("license","国土交通省系オープンデータ"))}）。'
-        'マンション価格は件数加重平均、地価は公示等の中央値、乗降は1日あたりの目安です。'
+        "手当は各制度の公式情報から抽出した上限・月額の目安です。"
+        f"住宅は{esc(src.get('trade','取引・成約価格'))}と{esc(src.get('land','地価公示等'))}、"
+        f"駅は{esc(src.get('stations','駅別乗降客数'))}に基づきます。"
+        "条件・時点により実際の金額は異なります。"
     )
 
     return (
-        '<section class="livability" id="sumai">'
-        '<h2 class="fh">住まいの相場・交通の目安</h2>'
-        f'<p class="lead2">{esc(name)}の中古マンション相場・地価・主な駅の乗降客数から、住み替えの参考指標を確認できます。</p>'
-        f'<div class="lvstats">{"".join(stats)}</div>'
-        f'<div class="lvcharts">{"".join(charts)}</div>'
-        f'<p class="note">{note}</p>'
-        '</section>'
+        '<section class="figures" id="figures">'
+        '<div class="figures-intro">'
+        '<h2>数字でみるこの地域</h2>'
+        f"<p>{esc(name)}で受けられる手当の目安と、住まい・交通にかかる数字を一覧にしました。</p>"
+        "</div>"
+        f'<div class="figures-grid">'
+        f"{benefit_block}{cost_block}{transit_block}"
+        "</div>"
+        f'<p class="figures-note">{note}</p>'
+        '<script>(function(){var r=document.querySelector(".figures");if(!r)return;'
+        'if(window.matchMedia("(prefers-reduced-motion:reduce)").matches){r.classList.add("on");return;}'
+        'var io=new IntersectionObserver(function(es){es.forEach(function(e){'
+        'if(e.isIntersecting){r.classList.add("on");io.disconnect();}});},{threshold:.15});'
+        "io.observe(r);})();</script>"
+        "</section>"
     )
 
 
+# 互換: 旧 livability 呼び出し名
+def livability_section_html(slug: str, data: Optional[dict] = None) -> str:
+    return figures_section_html(slug, data)
+
+
 def inject_into_area_html(html_text: str, slug: str) -> str:
-    sec = livability_section_html(slug)
+    sec = figures_section_html(slug)
     if not sec:
         return html_text
-    if 'class="livability"' in html_text:
-        return re.sub(
-            r'<section class="livability"[^>]*>.*?</section>',
+    # replace old livability OR figures
+    if 'class="figures"' in html_text or 'class="livability"' in html_text:
+        html_text = re.sub(
+            r'<section class="(?:figures|livability)"[^>]*>.*?</section>',
             sec,
             html_text,
             count=1,
             flags=re.S,
         )
+        return html_text
     m = re.search(r'(<p class="lead">.*?</p>)', html_text, re.S)
     if not m:
         return html_text
@@ -241,4 +313,4 @@ def inject_into_area_html(html_text: str, slug: str) -> str:
 if __name__ == "__main__":
     import sys
     slug = sys.argv[1] if len(sys.argv) > 1 else "shibuya"
-    print(livability_section_html(slug)[:1200])
+    print(figures_section_html(slug)[:1500])

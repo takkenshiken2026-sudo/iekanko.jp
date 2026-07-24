@@ -1,0 +1,342 @@
+{
+  "slug": "machida",
+  "name": "町田市",
+  "benefits": [
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/machida/seido/1366/",
+      "rank": 29,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 153000,
+      "median_commercial_yen_sqm": 358500,
+      "n_points": 141,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 41
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 297,
+        "avg_price": 33017845,
+        "avg_area": 72.9,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 218,
+          "avg_price": 29907339,
+          "avg_area": 72.2,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 256,
+          "avg_price": 31914062,
+          "avg_area": 72.9,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 275,
+          "avg_price": 34697818,
+          "avg_area": 72.9,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 297,
+          "avg_price": 33017845,
+          "avg_area": 72.9,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 73,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 9,
+    "top": [
+      {
+        "name": "町田",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 254478,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 293572
+          },
+          {
+            "year": 2019,
+            "passengers": 289419
+          },
+          {
+            "year": 2020,
+            "passengers": 200781
+          },
+          {
+            "year": 2021,
+            "passengers": 221094
+          },
+          {
+            "year": 2022,
+            "passengers": 246459
+          },
+          {
+            "year": 2023,
+            "passengers": 254478
+          }
+        ]
+      },
+      {
+        "name": "鶴川",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 59849,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 69239
+          },
+          {
+            "year": 2019,
+            "passengers": 68992
+          },
+          {
+            "year": 2020,
+            "passengers": 46377
+          },
+          {
+            "year": 2021,
+            "passengers": 51717
+          },
+          {
+            "year": 2022,
+            "passengers": 57563
+          },
+          {
+            "year": 2023,
+            "passengers": 59849
+          }
+        ]
+      },
+      {
+        "name": "南町田グランベリーパーク",
+        "company": "東急電鉄",
+        "line": "田園都市線",
+        "passengers": 45095,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 30209
+          },
+          {
+            "year": 2019,
+            "passengers": 40084
+          },
+          {
+            "year": 2020,
+            "passengers": 34329
+          },
+          {
+            "year": 2021,
+            "passengers": 37963
+          },
+          {
+            "year": 2022,
+            "passengers": 42591
+          },
+          {
+            "year": 2023,
+            "passengers": 45095
+          }
+        ]
+      },
+      {
+        "name": "玉川学園前",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 40777,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 47990
+          },
+          {
+            "year": 2019,
+            "passengers": 46581
+          },
+          {
+            "year": 2020,
+            "passengers": 26876
+          },
+          {
+            "year": 2021,
+            "passengers": 34424
+          },
+          {
+            "year": 2022,
+            "passengers": 39653
+          },
+          {
+            "year": 2023,
+            "passengers": 40777
+          }
+        ]
+      },
+      {
+        "name": "成瀬",
+        "company": "東日本旅客鉄道",
+        "line": "横浜線",
+        "passengers": 33848,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 38366
+          },
+          {
+            "year": 2019,
+            "passengers": 38366
+          },
+          {
+            "year": 2020,
+            "passengers": 28570
+          },
+          {
+            "year": 2021,
+            "passengers": 30490
+          },
+          {
+            "year": 2022,
+            "passengers": 32738
+          },
+          {
+            "year": 2023,
+            "passengers": 33848
+          }
+        ]
+      },
+      {
+        "name": "多摩境",
+        "company": "京王電鉄",
+        "line": "相模原線",
+        "passengers": 20368,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 20587
+          },
+          {
+            "year": 2019,
+            "passengers": 20530
+          },
+          {
+            "year": 2020,
+            "passengers": 16147
+          },
+          {
+            "year": 2021,
+            "passengers": 17891
+          },
+          {
+            "year": 2022,
+            "passengers": 19389
+          },
+          {
+            "year": 2023,
+            "passengers": 20368
+          }
+        ]
+      },
+      {
+        "name": "相原",
+        "company": "東日本旅客鉄道",
+        "line": "横浜線",
+        "passengers": 19290,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 21234
+          },
+          {
+            "year": 2019,
+            "passengers": 21234
+          },
+          {
+            "year": 2020,
+            "passengers": 11570
+          },
+          {
+            "year": 2021,
+            "passengers": 15042
+          },
+          {
+            "year": 2022,
+            "passengers": 17816
+          },
+          {
+            "year": 2023,
+            "passengers": 19290
+          }
+        ]
+      },
+      {
+        "name": "つくし野",
+        "company": "東急電鉄",
+        "line": "田園都市線",
+        "passengers": 10579,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 11799
+          },
+          {
+            "year": 2019,
+            "passengers": 11544
+          },
+          {
+            "year": 2020,
+            "passengers": 8217
+          },
+          {
+            "year": 2021,
+            "passengers": 9413
+          },
+          {
+            "year": 2022,
+            "passengers": 10260
+          },
+          {
+            "year": 2023,
+            "passengers": 10579
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 434047,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

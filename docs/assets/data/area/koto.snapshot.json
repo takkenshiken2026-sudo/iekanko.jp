@@ -1,0 +1,133 @@
+{
+  "slug": "koto",
+  "name": "江東区",
+  "benefits": [
+    {
+      "cid": "child_hoiku_gen",
+      "label": "保育料補助",
+      "unit": "月額上限",
+      "group": "childcare",
+      "group_label": "子育て",
+      "yen": 80000,
+      "href": "/area/tokyo/koto/seido/143/",
+      "rank": 5,
+      "n_ranked": 10,
+      "hikaku": "/hikaku/child_hoiku_gen/"
+    },
+    {
+      "cid": "house_taishin",
+      "label": "耐震改修助成",
+      "unit": "改修上限",
+      "group": "moving",
+      "group_label": "住まい",
+      "yen": 1500000,
+      "href": "/area/tokyo/koto/seido/1962/",
+      "rank": 10,
+      "n_ranked": 30,
+      "hikaku": "/hikaku/house_taishin/"
+    },
+    {
+      "cid": "eld_hochoki",
+      "label": "補聴器助成",
+      "unit": "購入上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 72450,
+      "href": "/area/tokyo/koto/seido/228/",
+      "rank": 8,
+      "n_ranked": 38,
+      "hikaku": "/hikaku/eld_hochoki/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/koto/seido/2603/",
+      "rank": 27,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    },
+    {
+      "cid": "eld_omutsu",
+      "label": "高齢者紙おむつ",
+      "unit": "月額上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 7500,
+      "href": "/area/tokyo/koto/seido/229/",
+      "rank": 8,
+      "n_ranked": 23,
+      "hikaku": "/hikaku/eld_omutsu/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 585000,
+      "median_commercial_yen_sqm": 930000,
+      "n_points": 66,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 158
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 1867,
+        "avg_price": 79209212,
+        "avg_area": 65.9,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 1454,
+          "avg_price": 60347180,
+          "avg_area": 67.9,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 1499,
+          "avg_price": 64587925,
+          "avg_area": 68.2,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 1457,
+          "avg_price": 71483253,
+          "avg_area": 67.9,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 1867,
+          "avg_price": 79209212,
+          "avg_area": 65.9,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 176,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

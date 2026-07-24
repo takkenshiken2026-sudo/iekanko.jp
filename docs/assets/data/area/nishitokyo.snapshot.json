@@ -1,0 +1,206 @@
+{
+  "slug": "nishitokyo",
+  "name": "西東京市",
+  "benefits": [
+    {
+      "cid": "low_aircon",
+      "label": "エアコン設置助成",
+      "unit": "助成上限",
+      "group": "retirement_unemployment",
+      "group_label": "生活支援",
+      "yen": 100000,
+      "href": "/area/tokyo/nishitokyo/seido/1289/",
+      "rank": 17,
+      "n_ranked": 20,
+      "hikaku": "/hikaku/low_aircon/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/nishitokyo/seido/1304/",
+      "rank": 40,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    },
+    {
+      "cid": "eld_omutsu",
+      "label": "高齢者紙おむつ",
+      "unit": "月額上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 4500,
+      "href": "/area/tokyo/nishitokyo/seido/1892/",
+      "rank": 21,
+      "n_ranked": 23,
+      "hikaku": "/hikaku/eld_omutsu/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 312000,
+      "median_commercial_yen_sqm": 456500,
+      "n_points": 53,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 84
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 217,
+        "avg_price": 39725345,
+        "avg_area": 70.4,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 175,
+          "avg_price": 38187428,
+          "avg_area": 71.4,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 181,
+          "avg_price": 38938121,
+          "avg_area": 70.1,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 175,
+          "avg_price": 41207428,
+          "avg_area": 72.5,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 217,
+          "avg_price": 39725345,
+          "avg_area": 70.4,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 88,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 3,
+    "top": [
+      {
+        "name": "田無",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 66551,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 75996
+          },
+          {
+            "year": 2019,
+            "passengers": 75418
+          },
+          {
+            "year": 2020,
+            "passengers": 56667
+          },
+          {
+            "year": 2021,
+            "passengers": 59316
+          },
+          {
+            "year": 2022,
+            "passengers": 63936
+          },
+          {
+            "year": 2023,
+            "passengers": 66551
+          }
+        ]
+      },
+      {
+        "name": "東伏見",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 21285,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 25240
+          },
+          {
+            "year": 2019,
+            "passengers": 24951
+          },
+          {
+            "year": 2020,
+            "passengers": 17179
+          },
+          {
+            "year": 2021,
+            "passengers": 18710
+          },
+          {
+            "year": 2022,
+            "passengers": 20488
+          },
+          {
+            "year": 2023,
+            "passengers": 21285
+          }
+        ]
+      },
+      {
+        "name": "西武柳沢",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 15433,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 16727
+          },
+          {
+            "year": 2019,
+            "passengers": 16616
+          },
+          {
+            "year": 2020,
+            "passengers": 12424
+          },
+          {
+            "year": 2021,
+            "passengers": 13381
+          },
+          {
+            "year": 2022,
+            "passengers": 14614
+          },
+          {
+            "year": 2023,
+            "passengers": 15433
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 103269,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

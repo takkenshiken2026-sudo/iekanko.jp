@@ -1,0 +1,346 @@
+{
+  "slug": "chiyoda",
+  "name": "千代田区",
+  "benefits": [
+    {
+      "cid": "child_hoiku_gen",
+      "label": "保育料補助",
+      "unit": "月額上限",
+      "group": "childcare",
+      "group_label": "子育て",
+      "yen": 37000,
+      "href": "/area/tokyo/chiyoda/seido/465/",
+      "rank": 10,
+      "n_ranked": 10,
+      "hikaku": "/hikaku/child_hoiku_gen/"
+    },
+    {
+      "cid": "preg_shussanhi",
+      "label": "出産費用助成",
+      "unit": "支給額",
+      "group": "pregnancy_birth",
+      "group_label": "出産",
+      "yen": 310000,
+      "href": "/area/tokyo/chiyoda/seido/175/",
+      "rank": 1,
+      "n_ranked": 3,
+      "hikaku": "/hikaku/preg_shussanhi/"
+    },
+    {
+      "cid": "eld_hochoki",
+      "label": "補聴器助成",
+      "unit": "購入上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 144900,
+      "href": "/area/tokyo/chiyoda/seido/215/",
+      "rank": 1,
+      "n_ranked": 38,
+      "hikaku": "/hikaku/eld_hochoki/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 13500,
+      "href": "/area/tokyo/chiyoda/seido/2578/",
+      "rank": 55,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 3485000,
+      "median_commercial_yen_sqm": 3935000,
+      "n_points": 86,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 939
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 355,
+        "avg_price": 122090140,
+        "avg_area": 53.5,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 299,
+          "avg_price": 79926421,
+          "avg_area": 51.8,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 261,
+          "avg_price": 83471264,
+          "avg_area": 51.3,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 266,
+          "avg_price": 88360902,
+          "avg_area": 48.4,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 355,
+          "avg_price": 122090140,
+          "avg_area": 53.5,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 271,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 8,
+    "top": [
+      {
+        "name": "四ツ谷",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 171852,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 197262
+          },
+          {
+            "year": 2019,
+            "passengers": 197262
+          },
+          {
+            "year": 2020,
+            "passengers": 130080
+          },
+          {
+            "year": 2021,
+            "passengers": 141896
+          },
+          {
+            "year": 2022,
+            "passengers": 159008
+          },
+          {
+            "year": 2023,
+            "passengers": 171852
+          }
+        ]
+      },
+      {
+        "name": "飯田橋",
+        "company": "東京地下鉄",
+        "line": "5号線東西線",
+        "passengers": 150786,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 198296
+          },
+          {
+            "year": 2019,
+            "passengers": 194569
+          },
+          {
+            "year": 2020,
+            "passengers": 116578
+          },
+          {
+            "year": 2021,
+            "passengers": 119584
+          },
+          {
+            "year": 2022,
+            "passengers": 138426
+          },
+          {
+            "year": 2023,
+            "passengers": 150786
+          }
+        ]
+      },
+      {
+        "name": "市ヶ谷",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 98948,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 126132
+          },
+          {
+            "year": 2019,
+            "passengers": 126132
+          },
+          {
+            "year": 2020,
+            "passengers": 79250
+          },
+          {
+            "year": 2021,
+            "passengers": 83694
+          },
+          {
+            "year": 2022,
+            "passengers": 92626
+          },
+          {
+            "year": 2023,
+            "passengers": 98948
+          }
+        ]
+      },
+      {
+        "name": "永田町",
+        "company": "東京地下鉄",
+        "line": "7号線南北線",
+        "passengers": 72244,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 84403
+          },
+          {
+            "year": 2019,
+            "passengers": 91240
+          },
+          {
+            "year": 2020,
+            "passengers": 54159
+          },
+          {
+            "year": 2021,
+            "passengers": 55754
+          },
+          {
+            "year": 2022,
+            "passengers": 66041
+          },
+          {
+            "year": 2023,
+            "passengers": 72244
+          }
+        ]
+      },
+      {
+        "name": "半蔵門",
+        "company": "東京地下鉄",
+        "line": "11号線半蔵門線",
+        "passengers": 71847,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 92264
+          },
+          {
+            "year": 2019,
+            "passengers": 91881
+          },
+          {
+            "year": 2020,
+            "passengers": 54757
+          },
+          {
+            "year": 2021,
+            "passengers": 56541
+          },
+          {
+            "year": 2022,
+            "passengers": 66059
+          },
+          {
+            "year": 2023,
+            "passengers": 71847
+          }
+        ]
+      },
+      {
+        "name": "麹町",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 54142,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 66433
+          },
+          {
+            "year": 2019,
+            "passengers": 65607
+          },
+          {
+            "year": 2020,
+            "passengers": 43592
+          },
+          {
+            "year": 2021,
+            "passengers": 44936
+          },
+          {
+            "year": 2022,
+            "passengers": 49806
+          },
+          {
+            "year": 2023,
+            "passengers": 54142
+          }
+        ]
+      },
+      {
+        "name": "国会議事堂前",
+        "company": "東京地下鉄",
+        "line": "9号線千代田線",
+        "passengers": 38545,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 44039
+          },
+          {
+            "year": 2019,
+            "passengers": 43239
+          },
+          {
+            "year": 2020,
+            "passengers": 29480
+          },
+          {
+            "year": 2021,
+            "passengers": 30613
+          },
+          {
+            "year": 2022,
+            "passengers": 34496
+          },
+          {
+            "year": 2023,
+            "passengers": 38545
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 565677,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}
