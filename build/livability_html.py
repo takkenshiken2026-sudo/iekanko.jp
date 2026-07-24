@@ -187,8 +187,11 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
             "</div>"
         )
 
-    # ── かかるお金 ──
-    cost_parts = []
+    # ── 住まい・交通（3列） ──
+    near_names = [n["name"] for n in (data.get("neighbors") or [])]
+    near_note = f'近隣は{"・".join(near_names)}と比較。' if near_names else ""
+    place_cards = []
+
     if latest:
         cls = "成約" if latest.get("price_classification") == "02" else "取引"
         vs = condo.get("vs_tokyo_pct")
@@ -198,109 +201,89 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
         if area:
             sub += f" · 平均{area}㎡"
         bars = _compare_bars(compare.get("condo"), kind="absolute", color="#2a78d6")
-        cost_parts.append(
-            f'<div class="fig-cost">'
-            f'<div class="fig-cost-main">'
+        place_cards.append(
+            f'<div class="fig-card" data-card="condo">'
             f'<span class="fig-kicker">中古マンション平均 · {latest["year"]}年（{cls}）</span>'
             f'<span class="fig-big">{esc(fmt_yen(latest["avg_price"]))}</span>'
             f'<span class="fig-sub">{esc(sub)}</span>'
-            f"{vs_html}</div>"
+            f"{vs_html}"
             f'<div class="fig-cost-chart">'
-            f'<span class="fig-side-label">近隣エリア・都内中央値との比較</span>'
+            f'<span class="fig-side-label">近隣・都内中央値</span>'
             f"{bars}</div>"
             f"</div>"
         )
+
     med = land.get("median_residential_yen_sqm")
     if med:
         vs = land.get("vs_tokyo_pct")
         vs_html = f'<span class="fig-vs">都内中央値の <strong>{vs}%</strong></span>' if vs else ""
         bars = _compare_bars(compare.get("land"), kind="sqm", color="#c45c26")
-        cost_parts.append(
-            f'<div class="fig-cost">'
-            f'<div class="fig-cost-main">'
+        place_cards.append(
+            f'<div class="fig-card" data-card="land">'
             f'<span class="fig-kicker">住宅地価の中央値 · {land.get("year","")}年</span>'
             f'<span class="fig-big">{esc(fmt_yen(med, "sqm"))}</span>'
-            f"{vs_html}</div>"
+            f'<span class="fig-sub">公示地価ポイントの中央値</span>'
+            f"{vs_html}"
             f'<div class="fig-cost-chart">'
-            f'<span class="fig-side-label">近隣エリア・都内中央値との比較</span>'
+            f'<span class="fig-side-label">近隣・都内中央値</span>'
             f"{bars}</div>"
             f"</div>"
         )
-    med_com = land.get("median_commercial_yen_sqm")
-    if med_com:
-        cost_parts.append(
-            f'<div class="fig-cost slim">'
-            f'<span class="fig-kicker">商業地価の中央値</span>'
-            f'<span class="fig-mid">{esc(fmt_yen(med_com, "sqm"))}</span>'
+
+    top = stations.get("top") or []
+    sum5 = stations.get("sum_top5_passengers")
+    st_list = _station_bars(top)
+    if sum5:
+        vs = stations.get("vs_tokyo_pct")
+        vs_html = f'<span class="fig-vs">都内中央値の <strong>{vs}%</strong></span>' if vs else ""
+        year = stations.get("year") or "最新"
+        top_name = (top[0].get("name") if top else None) or ""
+        sub = "上位5駅の合計"
+        if top_name:
+            sub += f" · 最大は{top_name}"
+        bars = _compare_bars(compare.get("stations"), kind="pax", color="#1baf7a")
+        place_cards.append(
+            f'<div class="fig-card" data-card="station">'
+            f'<span class="fig-kicker">駅の利用者数 · {esc(str(year))}年</span>'
+            f'<span class="fig-big">{esc(fmt_pax(sum5))}/日</span>'
+            f'<span class="fig-sub">{esc(sub)}</span>'
+            f"{vs_html}"
+            f'<div class="fig-cost-chart">'
+            f'<span class="fig-side-label">近隣・都内中央値</span>'
+            f"{bars}</div>"
             f"</div>"
         )
 
-    cost_block = ""
-    if cost_parts:
-        near_names = [n["name"] for n in (data.get("neighbors") or [])]
-        near_note = f'近隣は{ "・".join(near_names) }と比較。' if near_names else ""
-        cost_block = (
-            '<div class="fig-panel" data-fig="cost">'
-            '<header class="fig-head">'
-            "<h3>住まいにかかるお金</h3>"
-            f"<p>この地域と近隣エリア、都内中央値を並べて比較します。{esc(near_note)}</p>"
-            "</header>"
-            f'<div class="fig-costs">{"".join(cost_parts)}</div>'
-            "</div>"
-        )
-
-    # ── 交通 ──
-    top = stations.get("top") or []
-    sum5 = stations.get("sum_top5_passengers")
-    transit_block = ""
-    bars = _compare_bars(compare.get("stations"), kind="pax", color="#1baf7a")
-    st_list = _station_bars(top)
-    if sum5 or st_list:
-        near_names = [n["name"] for n in (data.get("neighbors") or [])]
-        near_note = f'近隣は{"・".join(near_names)}と比較。' if near_names else ""
-        year = stations.get("year") or "最新"
-        parts = []
-        if sum5:
-            vs = stations.get("vs_tokyo_pct")
-            vs_html = f'<span class="fig-vs">都内中央値の <strong>{vs}%</strong></span>' if vs else ""
-            top_name = (top[0].get("name") if top else None) or ""
-            sub = f'上位5駅の合計'
-            if top_name:
-                sub += f' · 最大は{top_name}'
-            chart = ""
-            if bars:
-                chart = (
-                    f'<div class="fig-cost-chart">'
-                    f'<span class="fig-side-label">近隣エリア・都内中央値との比較</span>'
-                    f"{bars}</div>"
-                )
-            parts.append(
-                f'<div class="fig-cost">'
-                f'<div class="fig-cost-main">'
-                f'<span class="fig-kicker">駅の利用者数 · {esc(str(year))}年</span>'
-                f'<span class="fig-big">{esc(fmt_pax(sum5))}/日</span>'
-                f'<span class="fig-sub">{esc(sub)}</span>'
-                f"{vs_html}</div>"
-                f"{chart}"
+    place_block = ""
+    if place_cards:
+        extras = []
+        med_com = land.get("median_commercial_yen_sqm")
+        if med_com:
+            extras.append(
+                f'<div class="fig-cost slim">'
+                f'<span class="fig-kicker">商業地価の中央値</span>'
+                f'<span class="fig-mid">{esc(fmt_yen(med_com, "sqm"))}</span>'
                 f"</div>"
             )
         if st_list:
-            parts.append(
+            extras.append(
                 f'<div class="fig-st-wrap">'
                 f'<span class="fig-side-label">この地域の主な駅</span>'
                 f"{st_list}</div>"
             )
-        transit_block = (
-            '<div class="fig-panel" data-fig="transit">'
+        place_block = (
+            '<div class="fig-panel" data-fig="place">'
             '<header class="fig-head">'
-            "<h3>駅の利用者数</h3>"
-            f"<p>この地域と近隣エリア、都内中央値を並べて比較します。{esc(near_note)}</p>"
+            "<h3>住まい・交通のかかる数字</h3>"
+            f"<p>中古マンション・住宅地価・駅利用者を、近隣エリアと都内中央値と並べて比較します。"
+            f"{esc(near_note)}</p>"
             "</header>"
-            f'<div class="fig-costs">{"".join(parts)}</div>'
+            f'<div class="fig-tri">{"".join(place_cards)}</div>'
+            f'{"".join(extras)}'
             "</div>"
         )
 
-    if not (benefit_block or cost_block or transit_block):
+    if not (benefit_block or place_block):
         return ""
 
     src = data.get("source") or {}
@@ -318,7 +301,7 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
         f"<p>{esc(name)}で受けられる手当の目安と、住まい・交通にかかる数字を一覧にしました。</p>"
         "</div>"
         f'<div class="figures-grid">'
-        f"{benefit_block}{cost_block}{transit_block}"
+        f"{benefit_block}{place_block}"
         "</div>"
         f'<p class="figures-note">{note}</p>'
         '<script>(function(){var r=document.querySelector(".figures");if(!r)return;'
