@@ -172,7 +172,7 @@ TAXONOMY = [
 ]
 CAT_BY_ID = {c[0]:c for c in TAXONOMY}
 
-# トップ掲載：目的カテゴリ別の金額ランキング
+# トップ掲載：目的カテゴリ別の金額ランキング（各カテゴリ2制度以上）
 # (event_slug, [(cid, 見出し, 単位ラベル, 抽出モード), ...])
 AMOUNT_RANK_BY_EVENT = [
  ("childcare", [
@@ -181,12 +181,16 @@ AMOUNT_RANK_BY_EVENT = [
  ]),
  ("pregnancy_birth", [
    ("child_iwai", "自治体の出産祝金・クーポン", "支給額の目安", "birth_gift"),
+   ("preg_shussanhi", "出産費用の自治体助成", "支給額の目安", "birth_aid"),
+   ("preg_funin", "不妊・不育治療助成", "助成上限の目安", "funin_cap"),
  ]),
  ("moving", [
    ("house_yachin", "家賃補助", "月額の目安", "rent_monthly"),
+   ("house_taishin", "耐震改修の助成", "改修上限の目安", "taishin_cap"),
  ]),
  ("retirement_unemployment", [
    ("low_aircon", "エアコン設置助成", "助成上限の目安", "aircon_cap"),
+   ("job_kashitsuke", "緊急小口・生活福祉資金", "貸付上限の目安", "loan_cap"),
  ]),
  ("elderly_care", [
    ("eld_omutsu", "高齢者の紙おむつ助成", "月額上限の目安", "monthly_cap"),
@@ -314,15 +318,72 @@ def extract_rank_yen(text, mode):
         if m:
             return _yen_int(m.group(1))
         return None
+    if mode == "birth_aid":
+        # 国の出産育児一時金（約50万円）や伴走型は除外し、自治体独自の助成のみ
+        if any(k in t for k in (
+            "産科医療補償", "国民健康保険の被保険者向け", "健康保険加入者",
+            "出産・子育て応援給付", "妊婦のための支援給付", "伴走型",
+        )):
+            return None
+        vals = []
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*万円", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"([0-9,]+)\s*円", t):
+            v = _yen_int(m.group(1))
+            if 30000 <= v <= 400000:
+                vals.append(v)
+        vals = [v for v in vals if v not in (500000, 488000)]
+        return max(vals) if vals else None
+    if mode == "funin_cap":
+        vals = []
+        for m in re.finditer(r"(?:上限|まで)\s*(\d+(?:\.\d+)?)\s*万円", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*万円(?:を)?上限", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"上限\s*([0-9,]+)\s*円", t):
+            vals.append(_yen_int(m.group(1)))
+        for m in re.finditer(r"([0-9,]+)\s*円上限", t):
+            vals.append(_yen_int(m.group(1)))
+        vals = [v for v in vals if 10000 <= v <= 500000]
+        return max(vals) if vals else None
+    if mode == "taishin_cap":
+        vals = []
+        for m in re.finditer(
+            r"(?:耐震改修工事助成|耐震補強工事助成|耐震改修助成|耐震改修(?:費用)?補助|耐震補強工事助成)"
+            r"[^。]{0,24}上限\s*(\d+(?:\.\d+)?)\s*万円",
+            t,
+        ):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"改修工事上限\s*(\d+(?:\.\d+)?)\s*万円", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"限度額\s*(\d+(?:\.\d+)?)\s*万円", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        vals = [v for v in vals if 300000 <= v <= 5000000]
+        return max(vals) if vals else None
+    if mode == "loan_cap":
+        # 塾代など誤分類を除外
+        if any(k in t for k in ("塾", "受験", "就学", "奨学", "高額療養")):
+            return None
+        vals = []
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*万円まで", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"([0-9,]+)\s*円まで", t):
+            vals.append(_yen_int(m.group(1)))
+        for m in re.finditer(r"(?:上限|以内)\s*(\d+(?:\.\d+)?)\s*万円", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*万円以内", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        vals = [v for v in vals if 30000 <= v <= 500000]
+        return max(vals) if vals else None
     return None
 
 def format_rank_yen(yen, mode):
     s = f"{yen:,}円"
     if mode in ("monthly_cap", "monthly", "rent_monthly", "hoiku_cap"):
         return "月額 " + s
-    if mode in ("purchase_cap", "aircon_cap"):
+    if mode in ("purchase_cap", "aircon_cap", "funin_cap", "taishin_cap", "loan_cap"):
         return "上限 " + s
-    if mode in ("child_gift", "birth_gift"):
+    if mode in ("child_gift", "birth_gift", "birth_aid"):
         return s
     return s
 
@@ -395,11 +456,11 @@ def amount_rankings_html(cat_entries=None, top_n=5):
                 rows = amount_rank_rows(cat_entries[cid], mode, top_n)
             else:
                 rows = _rank_rows_from_hikaku(cid, mode, top_n)
-            min_n = 2 if ev == "moving" else 3
+            min_n = 2 if ev in ("moving", "pregnancy_birth", "retirement_unemployment") else 3
             if len(rows) < min_n:
                 continue
             boxes.append(_amount_box_html(cid, title, unit, mode, color, rows))
-        if not boxes:
+        if len(boxes) < 2:
             continue
         on = " on" if first else ""
         pressed = "true" if first else "false"
