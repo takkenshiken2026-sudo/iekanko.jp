@@ -1680,6 +1680,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .evi{display:inline-flex;color:#fff;background:var(--pc,var(--accent));border-radius:7px;padding:3px}
 .evi .ev-ic{width:15px;height:15px}
 .ev>h2 .cnt{background:var(--pc,var(--accent))}
+.ev>h2 .csum{color:var(--pc,var(--accent))}
 .evlinks{font-size:.85rem;margin:.35rem 0 .1rem}
 .evlinks a{color:var(--pc,var(--accent))}
 .cmpbox[style*="--pc"] strong{color:var(--pc)}
