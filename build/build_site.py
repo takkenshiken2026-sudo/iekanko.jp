@@ -998,11 +998,11 @@ header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);ba
 .hbar{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
 .brand{font-weight:800;font-size:1.12rem;color:var(--fg);display:inline-flex;align-items:center;gap:.45rem;line-height:1.2}
 .brand:hover{text-decoration:none}
-.brand-mark{width:1.55rem;height:1.55rem;border-radius:.42rem;flex:none;display:block}
+.brand-mark{width:1.45rem;height:1.45rem;flex:none;display:block}
 .gnav{display:flex;gap:.1rem;margin-left:auto;flex-wrap:wrap}
 .gnav a{color:var(--fg);font-weight:600;font-size:.9rem;padding:.34rem .6rem;border-radius:8px}
 .gnav a:hover{background:var(--soft);text-decoration:none}
-@media(max-width:520px){.gnav a{padding:.3rem .44rem;font-size:.82rem}.brand{font-size:1rem}.brand-mark{width:1.4rem;height:1.4rem}header.site{padding:.5rem .8rem}}
+@media(max-width:520px){.gnav a{padding:.3rem .44rem;font-size:.82rem}.brand{font-size:1rem}.brand-mark{width:1.3rem;height:1.3rem}header.site{padding:.5rem .8rem}}
 @media(max-width:360px){.gnav{gap:0}.gnav a{padding:.3rem .34rem;font-size:.78rem}}
 :target{scroll-margin-top:60px}
 main{max-width:820px;margin:0 auto;padding:1.1rem 1.1rem 3rem}
