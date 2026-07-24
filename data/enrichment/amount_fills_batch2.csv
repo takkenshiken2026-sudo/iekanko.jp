@@ -1,0 +1,403 @@
+page,municipality,title,amount_text,status,chunk
+area/tokyo/koganei/seido/1006,koganei,小金井市養育費確保支援事業補助金,補助対象者一人当たり上限5万円（公正証書等作成経費または養育費保証契約締結経費のいずれか一区分につき）,found,H
+area/tokyo/koganei/seido/1005,koganei,母子家庭及び父子家庭自立支援給付金,教育訓練給付金：受講料の60%（上限20万円）／専門実践教育訓練：最大85%（上限60万円×修業年数）／高等職業訓練促進給付金：課税状況により支給額が異なる,found,H
+area/tokyo/koganei/seido/1012,koganei,障害者交通手当,月額2200円（重度等）／3級は月額1100円,found,H
+area/tokyo/koganei/seido/2952,koganei,小金井市 難病者福祉手当,月額7000円,found,H
+area/tokyo/koganei/seido/816,koganei,義務教育就学児医療費助成制度（マル子）,通院1回につき200円の自己負担／入院・調剤・訪問看護は自己負担なし,found,H
+area/tokyo/koganei/seido/2730,koganei,小金井市 保育料等の第1子無償化・多子世帯軽減,認可・認証等の2歳以下第1子も保育料無償化（保育料0円）／区分別具体額の記載なし,found,H
+area/tokyo/koganei/seido/1004,koganei,ひとり親家庭等医療費助成,医療保険の自己負担額から一部負担金を控除した額を助成（具体的金額の記載なし）,no_amount,H
+area/tokyo/koganei/seido/1003,koganei,児童育成手当,育成手当：月額13500円（1人）／障害手当：月額25000円（1人）,found,H
+area/tokyo/koganei/seido/2553,koganei,小金井市 敬老事業（100歳訪問・記念品贈呈）,元URLが404／現行の祝金・記念品金額を公式で確認できず,fetch_failed,H
+area/tokyo/koganei/seido/1007,koganei,心身障害者医療費助成制度（マル障）,医療費（保険診療分）の自己負担額の一部を助成（具体的金額の記載なし）,no_amount,H
+area/tokyo/katsushika/seido/138,katsushika,子どもの医療費助成,都内取扱医療機関で医療証提示時は自己負担なし,found,H
+area/tokyo/katsushika/seido/190,katsushika,ひとり親家庭等医療費助成,課税世帯：通院1割・月上限18000円（年144000円）／入院1割・月上限57600円（多数回44400円）／非課税世帯：通院自己負担なし,found,H
+area/tokyo/katsushika/seido/2974,katsushika,葛飾区 ベビーカー購入等費用助成事業,購入・レンタル費用の2分の1／対象児童1人当たり上限15000円,found,H
+area/tokyo/katsushika/seido/2623,katsushika,葛飾区 住居確保給付金,支給額はPDF別掲で本ページに記載なし（世帯人数・家賃により変動）,no_amount,H
+area/tokyo/ota/seido/538,ota,多胎児家庭移動経費助成事業,タクシー利用費用を対象期間（0歳・1歳・2歳）ごとに上限24000円,found,H
+area/tokyo/ota/seido/515,ota,預かり保育料の補助,利用日数×450円（8月は1050円）（実支払額が少ない場合はその額）,found,H
+area/tokyo/ota/seido/737,ota,感震ブレーカー支給・設置費用助成,補助基準額の4分の3／一括遮断型（工事あり）80000円・（工事なし）20000円・特定機器遮断型7000円,found,H
+area/tokyo/ota/seido/370,ota,転入届（区外から大田区へ）,手続き案内ページで金額の対象外,no_amount,H
+area/tokyo/ota/seido/731,ota,住まいの防犯対策補助金,防犯機器等の購入・設置費用の4分の3／補助上限30000円,found,H
+area/tokyo/ota/seido/468,ota,認可外保育施設等保護者負担軽減補助金,認証・認可外：0～2歳80000円・3～5歳77000円／特定子ども子育て支援施設：0～2歳42000円・3～5歳37000円／ベビーシッター利用支援：33000円（いずれも月額上限）,found,H
+area/tokyo/ota/seido/492,ota,幼児教育無償化に伴う保護者補助金,入園料上限130000円／授業料 旧制度月額上限40000円・新制度月額上限14300円／預かり保育 利用日数×450円（8月1050円）,found,H
+area/tokyo/ota/seido/61,ota,児童医療費助成制度,保険診療の自己負担分等を助成（具体的金額の記載なし）,no_amount,H
+area/tokyo/bunkyo/seido/562,bunkyo,子育て支援事業利用料等助成制度,半額助成：ファミサポ・おうち家事育児サポート／全額助成：病児病後児保育・一時保育（上限なし）／ベビーシッター利用料助成：児童1人年度4万円まで,found,H
+area/tokyo/bunkyo/seido/474,bunkyo,認証保育所等保育料補助制度,補助基準額（月額）0～2歳クラス80000円／3～5歳クラス77000円（課税状況で施設負担・補助の内訳が異なる）,found,H
+area/tokyo/bunkyo/seido/711,bunkyo,住居確保給付金,支給上限額（月額）単身53700円／2人世帯64000円／3人世帯69800円,found,H
+area/tokyo/bunkyo/seido/169,bunkyo,ひとり親家庭等医療費助成,非課税世帯：自己負担3割を全額助成／課税世帯：自己負担3割の3分の2を助成／通院月18000円超・世帯57600円超（多数回44400円）・年144000円超は還付,found,H
+area/tokyo/bunkyo/seido/426,bunkyo,小児慢性特定疾病医療費助成制度,患者負担割合2割／自己負担上限月額は世帯の課税額等に応じて決定,found,H
+area/tokyo/bunkyo/seido/493,bunkyo,ベビーシッター利用料助成事業,7時～22時：1時間2500円／22時～翌7時：1時間3500円（年144時間・障害児等は288時間まで）,found,H
+area/tokyo/bunkyo/seido/135,bunkyo,こども医療費助成,保険診療の自己負担分を区が負担（自己負担なし）,found,H
+area/tokyo/bunkyo/seido/2847,bunkyo,文京区 長寿ふれあい食堂（高齢者食事サービス）,運営団体への経費補助で利用料・補助額の記載なし,no_amount,H
+area/tokyo/higashikurume/seido/781,higashikurume,紙おむつ等の購入助成支給事業,対象要件のみ記載で助成金額の記載なし,no_amount,H
+area/tokyo/higashikurume/seido/1249,higashikurume,ひとり親家庭等医療費助成制度（マル親）,課税世帯：総医療費の1割自己負担／通院月18000円超・世帯57600円超（4回目以降44400円）・年144000円超は払戻／非課税世帯：軽減,found,H
+area/tokyo/higashikurume/seido/2141,higashikurume,東久留米市障害者グループホーム等支援事業（居室家賃助成）,都要領第9条の規定により算定した額を助成（具体的な月額上限の記載なし）,no_amount,H
+area/tokyo/higashikurume/seido/1237,higashikurume,住居確保給付金事業（転居費用補助）,支給上限額は転居先自治体により異なり本ページに具体額の記載なし,no_amount,H
+area/tokyo/higashikurume/seido/1243,higashikurume,ひとり親世帯等子育て生活支援給付金,児童育成手当対象児童1人当たり一律27000円,found,H
+area/tokyo/higashikurume/seido/835,higashikurume,乳幼児医療費助成制度（マル乳）,各種医療保険の自己負担分を助成（具体的金額の記載なし）,no_amount,H
+area/tokyo/higashikurume/seido/2854,higashikurume,東久留米市 雨水貯留浸透施設（ます）設置補助,設置状況により経費の全部または一部を補助（補助率・上限の記載なし／参考工事費単価300型26000円・250型23000円）,no_amount,H
+area/tokyo/higashikurume/seido/2562,higashikurume,東久留米市 長寿のお祝い（記念品贈呈）,記念品を贈呈（金額の記載なし）,no_amount,H
+area/tokyo/higashikurume/seido/1260,higashikurume,難病医療費の助成,健康保険内医療の自己負担分の一部または全額を助成（具体的金額の記載なし）,no_amount,H
+area/tokyo/tama/seido/952,tama,ひとり親家庭等の医療費助成,課税世帯：保険診療医療費の1割自己負担／非課税世帯：自己負担なし,found,H
+area/tokyo/tama/seido/955,tama,心身障害者医療費助成制度（マル障）,非課税：入院時の食事療養・生活療養標準負担額のみ／課税：1割自己負担（通院・入院時上限あり）,found,H
+area/tokyo/aogashima/seido/880,aogashima,ひとり親家庭等医療費助成,例規ページが403で取得不可,fetch_failed,H
+area/tokyo/aogashima/seido/794,aogashima,航空路運賃助成事業助成金,広報PDFを解読できず助成率・上限を確認不可,fetch_failed,H
+area/tokyo/aogashima/seido/881,aogashima,高齢者肺炎球菌予防接種費助成,例規ページが403で取得不可,fetch_failed,H
+area/tokyo/aogashima/seido/879,aogashima,高校生等医療費助成,例規ページが403で取得不可,fetch_failed,H
+area/tokyo/aogashima/seido/1828,aogashima,帯状疱疹ワクチン予防接種費用助成,元URLが村トップページで金額を公式に確認できず,fetch_failed,H
+area/tokyo/aogashima/seido/1480,aogashima,青ヶ島村 生活困窮者自立支援制度・住居確保給付金,都のページで家賃相当額を有期給付とのみ記載（具体的金額の記載なし）,no_amount,H
+area/tokyo/musashimurayama/seido/1324,musashimurayama,ひとり親医療費助成制度,課税世帯：総医療費の1割と入院時食事代／外来月上限18000円・入院57600円（多数回44400円）／非課税世帯：入院時食事代のみ,found,H
+area/tokyo/musashimurayama/seido/3050,musashimurayama,武蔵村山市 私立幼稚園保護者負担軽減補助金,在住在園期間・世帯所得に応じ入園料・保育料を限度に補助（具体的金額はパンフレット掲載で本ページに記載なし）,no_amount,H
+area/tokyo/ome/seido/2750,ome,青梅市 保育料の第2子以降無償化（多子世帯軽減）・副食費,第1子・第2子以降とも保育料無償化（3～5歳児は0円）／副食費補助 ひと月当たり上限4900円,found,H
+area/tokyo/ome/seido/1405,ome,心身障害者福祉手当（市制度）,月額8000円（区分による差なし一律）,found,H
+area/tokyo/okutama/seido/785,okutama,乳幼児の医療費助成,保険適用分を全額助成,ok,I
+area/tokyo/okutama/seido/3060,okutama,奥多摩町 若者定住応援住宅・いなか暮らし支援住宅,若者定住応援住宅：月額6000円～13000円／いなか暮らし支援住宅：年額1000円～40000円,ok,I
+area/tokyo/okutama/seido/1441,okutama,障害者住宅改造費用助成,記載なし,no_amount,I
+area/tokyo/okutama/seido/2569,okutama,奥多摩町 敬老祝い金（贈呈）,PDF解析不可,fetch_failed,I
+area/tokyo/okutama/seido/1444,okutama,奥多摩町 住居確保給付金,src_url開けず・公式額不明,fetch_failed,I
+area/tokyo/okutama/seido/2885,okutama,奥多摩町 空家等活用促進事業交付金（空き家活用助成）,上限200万円,ok,I
+area/tokyo/okutama/seido/858,okutama,こども応援事業,小学校入学祝金3万円／中学校入学祝金5万円／高校生等応援支援金 年6万円（最大3年）／乳児おむつ購入費助成 上限6万円,ok,I
+area/tokyo/okutama/seido/887,okutama,心身障害者医療費助成（マル障）,記載なし,no_amount,I
+area/tokyo/okutama/seido/2142,okutama,奥多摩町 定住支援（家賃補助・転居費用補助）,src_url開けず,fetch_failed,I
+area/tokyo/okutama/seido/2745,okutama,奥多摩町 保育料・給食費 全額助成（子ども・子育て支援推進事業）,保育料・給食費 全額助成,ok,I
+area/tokyo/minato/seido/69,minato,妊娠高血圧症候群等の医療費助成,記載なし,no_amount,I
+area/tokyo/minato/seido/736,minato,自転車乗車用ヘルメット購入費助成,2000円分（みなトクPAYポイント）,ok,I
+area/tokyo/minato/seido/1924,minato,子ども医療費助成,記載なし,no_amount,I
+area/tokyo/minato/seido/470,minato,認可外保育施設保育料助成,0～2歳児：月額上限100000円／3～5歳児：月額上限97000円,ok,I
+area/tokyo/minato/seido/73,minato,小児慢性特定疾病医療費助成,記載なし,no_amount,I
+area/tokyo/akiruno/seido/3048,akiruno,あきる野市 初回産科受診料助成金,記載なし,no_amount,I
+area/tokyo/akiruno/seido/2630,akiruno,あきる野市 住居確保給付金,記載なし,no_amount,I
+area/tokyo/akiruno/seido/1412,akiruno,児童育成手当（育成手当）,児童1人あたり月額13500円,ok,I
+area/tokyo/hachioji/seido/1348,hachioji,心身障害者医療費助成制度（マル障）,外来：月18000円（年間上限144000円）／入院：月57600円（多数回44400円）,ok,I
+area/tokyo/hachioji/seido/1350,hachioji,心身障害者福祉手当,月額15500円,ok,I
+area/tokyo/hachioji/seido/2686,hachioji,八王子市 出産費用助成（入院助産等）,記載なし,no_amount,I
+area/tokyo/hachioji/seido/2625,hachioji,八王子市 住居確保給付金,家賃補助（月額上限）単身53700円／2人64000円／3人以上69800円,ok,I
+area/tokyo/kodaira/seido/1107,kodaira,児童育成手当（障害手当）,対象児童1人あたり月額15500円,ok,I
+area/tokyo/kodaira/seido/1109,kodaira,母子家庭及び父子家庭 自立支援教育訓練給付金,補助率60%（一般教育訓練 上限20万円／専門実践教育訓練 上限160万円）,ok,I
+area/tokyo/kodaira/seido/1110,kodaira,高等職業訓練促進給付金,記載なし,no_amount,I
+area/tokyo/kodaira/seido/1106,kodaira,児童育成手当（育成手当）,対象児童1人あたり月額13500円,ok,I
+area/tokyo/kodaira/seido/1111,kodaira,心身障害者医療費助成制度（マル障）,記載なし,no_amount,I
+area/tokyo/kodaira/seido/1115,kodaira,小平市心身障害者福祉手当,記載なし,no_amount,I
+area/tokyo/kodaira/seido/1098,kodaira,住居確保給付金（転居費用補助）,記載なし,no_amount,I
+area/tokyo/shinagawa/seido/184,shinagawa,ひとり親家庭等医療費助成,非課税：0円（全額助成）／課税：1割（外来 月18000円・年144000円／入院 月57600円・多数回44400円）,ok,I
+area/tokyo/shinagawa/seido/490,shinagawa,私立幼稚園入園料・保育料・特定負担額補助金,入園料 上限100000円／保育料 月額上限40000円／特定負担額 月額上限14300円,ok,I
+area/tokyo/shinagawa/seido/559,shinagawa,産後家事育児支援訪問費助成事業（産後ドゥーラ）,プランニング1回1000円／支援サービス1時間2700円,ok,I
+area/tokyo/shinagawa/seido/182,shinagawa,子どもすこやか医療費助成,保険診療の自己負担分を助成（窓口負担なし）,ok,I
+area/tokyo/shinagawa/seido/577,shinagawa,転入届（別の自治体から品川区に引っ越したとき）,手続きページ（金額なし）,no_amount,I
+area/tokyo/shinagawa/seido/2615,shinagawa,品川区 住居確保給付金の支給,家賃補助（月額上限）1人53700円／2人64000円／3人以上69800円,ok,I
+area/tokyo/shinjuku/seido/83,shinjuku,子ども医療費助成,記載なし,no_amount,I
+area/tokyo/shinjuku/seido/2608,shinjuku,新宿区 住居確保給付金の支給,記載なし,no_amount,I
+area/tokyo/shinjuku/seido/2994,shinjuku,新宿区 高齢者等入居支援（家賃等債務保証料助成等）,記載なし,no_amount,I
+area/tokyo/shinjuku/seido/494,shinjuku,私立幼稚園等の入園料・保育料等補助金申請,記載なし,no_amount,I
+area/tokyo/shinjuku/seido/90,shinjuku,ひとり親家庭等医療費助成制度,課税：1割（外来 月18000円／世帯 月57600円／4回目以降44400円）／非課税：負担なし,ok,I
+area/tokyo/shinjuku/seido/750,shinjuku,感震ブレーカー等設置費用助成,分電盤：3/4（上限6万円）／非課税世帯：5/6（上限7万5千円）／新築住宅：定額1万円,ok,I
+area/tokyo/shinjuku/seido/91,shinjuku,高校生等医療費助成（マル青）,記載なし,no_amount,I
+area/tokyo/shinjuku/seido/2065,shinjuku,新宿区誕生祝い品・バースデーサポート事業,記載なし（木のおもちゃ等の現物）,no_amount,I
+area/tokyo/shinjuku/seido/2218,shinjuku,新宿区多世代近居同居助成,複数世帯：上限20万円／単身世帯：上限10万円,ok,I
+area/tokyo/akishima/seido/2728,akishima,昭島市 認可保育所等に通う第2子以降の保育料無償化,第2子以降の保育料を無償化,ok,I
+area/tokyo/akishima/seido/1063,akishima,児童育成手当（育成手当）,対象児童1人につき月額13500円,ok,I
+area/tokyo/akishima/seido/1064,akishima,児童育成手当（障害手当）,対象児童1人につき月額15500円,ok,I
+area/tokyo/akishima/seido/1056,akishima,住居確保給付金（転居費用補助）,記載なし,no_amount,I
+area/tokyo/akishima/seido/1071,akishima,心身障害者医療費助成制度（マル障）,課税：1割（通院 月18000円・年144000円／入院 月57600円・多数回44400円）／非課税：負担なし,ok,I
+area/tokyo/akishima/seido/1074,akishima,心身障害者福祉手当（都・市制度）,都手当：月額15500円／市手当：月額4000円,ok,I
+area/tokyo/akishima/seido/2084,akishima,昭島市誕生祝記念品贈呈事業・バースデーサポートあきしま,記載なし,no_amount,I
+area/tokyo/akishima/seido/1067,akishima,自立支援教育訓練給付金,受講料の60％（上限40万円、12 000円以下は対象外）,ok,J
+area/tokyo/akishima/seido/1066,akishima,ひとり親家庭等医療費助成制度,非課税世帯：自己負担なし／課税世帯：1割（外来月18 000円・年144 000円、入院月57 600円）,ok,J
+area/tokyo/arakawa/seido/472,arakawa,高齢者スマホ購入費助成金交付事業,上限30 000円（1人1回限り）,ok,J
+area/tokyo/arakawa/seido/177,arakawa,ひとり親家庭医療費助成,課税世帯：1割（外来月18 000円・年144 000円、入院57 600円）／非課税世帯：自己負担なし,ok,J
+area/tokyo/arakawa/seido/748,arakawa,住まいの防犯対策補助金交付制度,補助率1/2。上限：防犯対策品15 000円／録画機能付ドアホン17 000円／防犯カメラ30 000円／自動通話録音電話機5 000円／共同住宅5戸以下30 000円・6戸以上150 000円,ok,J
+area/tokyo/arakawa/seido/449,arakawa,健康づくりの支援・助成,,no_amount,J
+area/tokyo/arakawa/seido/377,arakawa,転入届,,no_amount,J
+area/tokyo/arakawa/seido/154,arakawa,乳幼児・子ども・高校生等医療費助成,,no_amount,J
+area/tokyo/arakawa/seido/503,arakawa,ベビーシッター利用支援事業（一時預かり利用支援）補助金,助成上限単価：日中2 500円/時、夜間3 500円/時（年144時間、障害児・ひとり親・多胎児は288時間）,ok,J
+area/tokyo/taito/seido/602,taito,転入・転居・転出・世帯変更の届出,,no_amount,J
+area/tokyo/taito/seido/466,taito,認証保育所等保育料助成制度,上限月額：0-2歳課税80 000円／0-2歳非課税38 000円（R8/10以降34 300円）／3-5歳40 000円（R8/10以降36 700円）,ok,J
+area/tokyo/taito/seido/1945,taito,長寿のお祝い（満100歳到達者）,,no_amount,J
+area/tokyo/taito/seido/512,taito,私立幼稚園等保護者補助金,保育料補助：都1 800～6 200円/月・区1 200～9 900円/月／預かり保育：月額最大16 300円（450円×利用日数）,ok,J
+area/tokyo/taito/seido/167,taito,ひとり親家庭等医療費助成,課税世帯：1割（外来月18 000円、入院57 600円）／非課税世帯：自己負担なし,ok,J
+area/tokyo/taito/seido/166,taito,子ども医療費助成,,no_amount,J
+area/tokyo/taito/seido/756,taito,脱炭素推進助成金,LED改修50%上限75万円／太陽光5万円/kW上限20-50万円／蓄電池1万円/kWh上限10万円／エネファーム14万円/台／断熱改修20%上限15万円 等,ok,J
+area/tokyo/shibuya/seido/3001,shibuya,渋谷区 休日保育利用料金助成,1時間あたり1 000円まで（1日10時間まで）、年間上限250 000円,ok,J
+area/tokyo/shibuya/seido/8,shibuya,転入届（区外から渋谷区へ）,,no_amount,J
+area/tokyo/shibuya/seido/2008,shibuya,再生可能エネルギー電力利用促進助成・EV充電設備導入助成 等,再生可能エネルギー電力利用促進助成（家庭向け）：30 000ハチペイポイント,ok,J
+area/tokyo/shibuya/seido/7,shibuya,子ども医療費助成,,no_amount,J
+area/tokyo/shibuya/seido/725,shibuya,ひとり親家庭の手当・助成,児童扶養手当（全部支給）1人48 050円・2人目以降11 350円加算／児童育成手当13 500円/月／医療費助成 課税1割・非課税自己負担なし,ok,J
+area/tokyo/shibuya/seido/715,shibuya,心身障がい者の医療費助成,,no_amount,J
+area/tokyo/shibuya/seido/2605,shibuya,渋谷区 住居確保給付金,転居費用上限：1人世帯279 200円／2人300 000円／3人324 000円／4人344 000円／5人364 000円,ok,J
+area/tokyo/tachikawa/seido/1950,tachikawa,敬老金の贈呈,10 000円（88歳・99歳以上、一律）,ok,J
+area/tokyo/tachikawa/seido/2853,tachikawa,立川市 雨水浸透施設設置費補助（住宅の雨水・環境設備助成）,上限200 000円（浸透ます250mm5万円・300mm5.9万円・350mm8万円等、付帯工事限度56 000円）,ok,J
+area/tokyo/tachikawa/seido/1048,tachikawa,心身障害者医療費助成制度（マル障）,,no_amount,J
+area/tokyo/tachikawa/seido/2985,tachikawa,立川市 子どもインフルエンザ任意接種助成,注射用HAワクチン：1回1 500円（1-2回）／経鼻生ワクチン：1回3 000円（1回）,ok,J
+area/tokyo/tachikawa/seido/1037,tachikawa,住居確保給付金（家賃補助）,,no_amount,J
+area/tokyo/tachikawa/seido/800,tachikawa,義務教育就学児医療費助成制度,,no_amount,J
+area/tokyo/tachikawa/seido/1041,tachikawa,児童育成手当（育成手当）,1人13 500円/月,ok,J
+area/tokyo/tachikawa/seido/1044,tachikawa,母子家庭及び父子家庭自立支援教育訓練給付金,一般・特定一般：受講費用の60%上限20万円／専門実践：60%上限（修業年数×40万円）,ok,J
+area/tokyo/tachikawa/seido/1038,tachikawa,住居確保給付金（転居費用補助）,世帯別上限：1人279 200円／2人300 000円／3人324 000円／4人344 000円／5人364 000円／6人364 000円／7人以上388 000円,ok,J
+area/tokyo/tachikawa/seido/1043,tachikawa,ひとり親家庭等医療費助成制度（マル親医療証）,,no_amount,J
+area/tokyo/nakano/seido/730,nakano,住まいの防犯対策助成,補助率3/4、上限3万円,ok,J
+area/tokyo/nakano/seido/162,nakano,児童育成手当,育成手当13 500円/月／障害手当15 500円/月,ok,J
+area/tokyo/nakano/seido/366,nakano,転入届（区外から中野区へ）,,no_amount,J
+area/tokyo/nakano/seido/720,nakano,ひとり親家庭等医療費助成制度（マル親）,課税世帯：1割（外来月18 000円・年144 000円、入院57 600円）／非課税世帯：自己負担なし,ok,J
+area/tokyo/nakano/seido/161,nakano,子ども医療費助成制度,保険診療の自己負担分を全額公費助成（自己負担なし）,ok,J
+area/tokyo/kunitachi/seido/968,kunitachi,住居確保給付金（転居費用補助）,,no_amount,J
+area/tokyo/kunitachi/seido/824,kunitachi,こども医療費助成制度,小学生以上の通院：1回最大200円の一部負担（未就学児は負担なし）,ok,J
+area/tokyo/kunitachi/seido/970,kunitachi,ひとり親家庭等の医療費助成制度,課税世帯：通院1割・入院自己負担なし／非課税世帯：自己負担なし,ok,J
+area/tokyo/kunitachi/seido/3032,kunitachi,国立市 学校給食費の公費負担（無償化）,全額公費負担（無償）,ok,J
+area/tokyo/kunitachi/seido/977,kunitachi,心身障害者医療費助成制度（マル障）,,no_amount,J
+area/tokyo/niijima/seido/2688,niijima,新島村 出産費用助成（島外医療機関受診に係る交通費等の助成）,交通費1回25 000円×8回／出産宿泊費1回上限5 000円×8回／産後1か月健診までの宿泊費1泊上限2 000円×30日,ok,J
+area/tokyo/niijima/seido/1473,niijima,新島村 生活困窮者自立支援制度・住居確保給付金,,no_amount,J
+area/tokyo/niijima/seido/906,niijima,ひとり親家庭等の医療費助成,,no_amount,J
+area/tokyo/niijima/seido/789,niijima,子ども医療費助成,保険診療の自己負担分なし（無料）,ok,J
+area/tokyo/niijima/seido/1823,niijima,帯状疱疹ワクチン予防接種費用助成,,fetch_failed,J
+area/tokyo/niijima/seido/2961,niijima,新島村 定住化対策事業交付金（空き家改修・除却等）,改修等：補助率80%上限500万円／伐開：補助率50%上限50万円,ok,J
+area/tokyo/niijima/seido/2959,niijima,新島村 島外医療機関受診に係る交通費等助成,交通費1回往復4 000円（緊急ヘリ2 000円）／宿泊費1泊4 000円／証明書手数料500円/通／診断書手数料3 000円/通,ok,J
+area/tokyo/higashimurayama/seido/2026,higashimurayama,住宅用地球温暖化対策設備設置費補助金,"太陽光発電または蓄電池いずれか一方 上限50,000円（家庭用燃料電池・断熱窓改修も対象）",ok,K
+area/tokyo/higashimurayama/seido/1191,higashimurayama,住居確保給付金（家賃補助）,家賃相当額（住宅扶助基準額を上限、原則3か月・最大9か月）※金額表は公式ページ取得不可,fetch_failed,K
+area/tokyo/higashimurayama/seido/1811,higashimurayama,帯状疱疹ワクチン予防接種費用助成,生ワクチンまたは不活化ワクチンいずれか一方を助成（生涯1回）※助成額は公式ページ取得不可,fetch_failed,K
+area/tokyo/higashimurayama/seido/1205,higashimurayama,母子家庭等高等職業訓練促進給付金,"月額 非課税世帯100,000円／課税世帯70,500円",ok,K
+area/tokyo/higashimurayama/seido/855,higashimurayama,義務教育就学児医療費助成制度,保険診療の自己負担分を助成（令和8年4月より通院1回200円の一部負担金撤廃、自己負担なし）,ok,K
+area/tokyo/higashimurayama/seido/1204,higashimurayama,母子家庭等自立支援教育訓練給付金,受講料の60%（上限 修学年数×20万円、最大4年）,ok,K
+area/tokyo/chiyoda/seido/2612,chiyoda,千代田区 住居確保給付金（家賃補助）,家賃相当額を一定期間支給（具体的金額はPDF参照、ページ記載なし）,no_amount,K
+area/tokyo/chiyoda/seido/696,chiyoda,ひとり親家庭等の医療費助成,"課税者:自己負担3割のうち2割助成（自己負担1割）／非課税者:自己負担分全額助成。自己負担限度額 外来月18,000円・年144,000円／入院月57,600円（多数回44,400円）",ok,K
+area/tokyo/chiyoda/seido/368,chiyoda,転入届,転入手続きのため金額なし,no_amount,K
+area/tokyo/chiyoda/seido/2578,chiyoda,千代田区 心身障害者福祉手当（区の制度）,"月額 高額支給15,500円／低額支給10,500円",ok,K
+area/tokyo/chiyoda/seido/127,chiyoda,こども・高校生等医療費助成制度,保険診療の窓口負担額を助成（自己負担割合等の具体的金額記載なし）,no_amount,K
+area/tokyo/chuo/seido/576,chuo,転入届（本人または同じ世帯の方が手続きするとき）,転入手続きのため金額なし,no_amount,K
+area/tokyo/chuo/seido/707,chuo,住居確保給付金,"家賃補助 月額 単身69,800円／2人75,000円／3人81,000円／4人86,000円",ok,K
+area/tokyo/chuo/seido/2114,chuo,中央区家賃債務保証制度利用助成,保証料の2分の1（上限額記載なし）,ok,K
+area/tokyo/mitaka/seido/990,mitaka,児童育成手当,"育成手当 月額13,500円／障害手当 月額15,500円",ok,K
+area/tokyo/mitaka/seido/988,mitaka,三鷹市生活・就労支援窓口（住居確保給付金）,家賃相当額を支給（原則3か月・最大9か月、具体的金額記載なし）,no_amount,K
+area/tokyo/mitaka/seido/995,mitaka,心身障害者医療費助成制度（マル障）,"課税者:医療費1割負担 外来月上限18,000円・年144,000円／入院含む月57,600円（多数回44,400円）、非課税者:一部負担なし",ok,K
+area/tokyo/mitaka/seido/2106,mitaka,三鷹市居住支援（家賃債務保証会社の初回保証料助成等）,初回保証料の助成・少額短期保険料負担（具体的金額記載なし）,no_amount,K
+area/tokyo/mitaka/seido/2727,mitaka,三鷹市 保育園の保育料無償化（第2子以降・多子世帯軽減）,"保育料 全児童無償（令和7年9月利用分以降、第1子含む）／給食費3～5歳児 月6,000円",ok,K
+area/tokyo/mitaka/seido/804,mitaka,子どもの医療費助成制度（マル乳・マル子・マル青）,保険診療の自己負担分を全額助成（所得制限なし、18歳年度末まで、窓口負担なし）,ok,K
+area/tokyo/mitaka/seido/991,mitaka,ひとり親家庭等医療費助成制度,課税世帯:自己負担1割に軽減／非課税世帯:自己負担分全額助成,ok,K
+area/tokyo/musashino/seido/1096,musashino,むさしの食と暮らしの応援事業,"一人当たり5,000円分（バニラVisaギフトカード、世帯人数分を1枚にチャージ）",ok,K
+area/tokyo/musashino/seido/1078,musashino,住居確保給付金（転居費用補助）,"転居費用一時金 上限 1人161,100円／2人192,000円／3～5人209,400円／6人225,000円／7人251,400円",ok,K
+area/tokyo/musashino/seido/1087,musashino,ひとり親家庭等医療費助成制度,課税世帯:自己負担3割のうち2割助成（自己負担1割）／非課税世帯:自己負担分全額助成,ok,K
+area/tokyo/musashino/seido/1089,musashino,母子家庭等高等職業訓練促進給付金,"月額 非課税世帯100,000円（最後の12月は140,000円）／課税世帯70,500円（最後の12月は110,500円）",ok,K
+area/tokyo/musashino/seido/1088,musashino,母子家庭等自立支援教育訓練給付金,経費の60%（上限 通常講座20万円／専門実践教育訓練 修学年数×40万円・最大160万円、1万2千円以下不支給）,ok,K
+area/tokyo/musashino/seido/1090,musashino,養育費確保支援事業補助金,"上限43,000円（公正証書・調停裁判・ADRいずれも）",ok,K
+area/tokyo/musashino/seido/802,musashino,子どもの医療費助成制度（マル乳・マル子・マル青）,保険診療の自己負担分を助成（マル乳2割助成・マル子/マル青3割助成、窓口負担なし）,ok,K
+area/tokyo/musashino/seido/1951,musashino,敬老祝品の配布・敬老福祉の集い・長寿祝品贈呈,現物給付（77歳以上に緑茶等、100歳以上に祝品）金額記載なし,no_amount,K
+area/tokyo/musashino/seido/2726,musashino,武蔵野市 保育料の第二子無償化及び一部助成,認可保育施設 第2子以降の保育料無償（令和5年10月利用分より）,ok,K
+area/tokyo/musashino/seido/1091,musashino,心身障害者医療費助成制度（マル障）,医療費（保険診療）の自己負担の一部を助成（具体的金額記載なし）,no_amount,K
+area/tokyo/musashino/seido/1094,musashino,心身障害者福祉手当,"月額 20歳以上:15,500円（1・2級等）／11,000円（3・4級等）、20歳未満:11,000円",ok,K
+area/tokyo/musashino/seido/1086,musashino,児童育成手当,"児童1人につき月額13,500円",ok,K
+area/tokyo/itabashi/seido/713,itabashi,心身障がい者福祉手当,"月額 高額15,500円／低額7,750円",ok,K
+area/tokyo/itabashi/seido/2621,itabashi,板橋区 住居確保給付金のご案内（家賃補助・転居費用）,家賃補助・転居費用補助（具体的金額記載なし）,no_amount,K
+area/tokyo/itabashi/seido/2548,itabashi,板橋区 敬老祝品の贈呈,"88歳4,000円分／95歳5,000円分／101歳以上3,000円分（区内共通商品券）",ok,K
+area/tokyo/itabashi/seido/171,itabashi,児童育成手当,"対象児童1人につき月額13,500円（育成手当）",ok,K
+area/tokyo/itabashi/seido/172,itabashi,子ども医療費助成,保険診療の範囲内で自己負担分を助成（具体的金額記載なし）,no_amount,K
+area/tokyo/itabashi/seido/234,itabashi,高齢者住宅改修費助成事業（板橋区）,介護予防住宅改修等が対象（助成額はパンフレット参照、ページ記載なし）,no_amount,K
+area/tokyo/itabashi/seido/580,itabashi,転入届（板橋区外から板橋区に転入した方）,転入手続きのため金額なし,no_amount,K
+area/tokyo/itabashi/seido/733,itabashi,住まいの防犯対策助成事業,"購入・設置費用（税込）の3/4、上限30,000円",ok,K
+area/tokyo/kita/seido/2075,kita,北区子育て応援団事業（子育て福袋・みんなでお祝い輝きバースデー）,子育てガイドブック・親子バッグ等の配布（金額記載なし）,no_amount,K
+area/tokyo/kita/seido/405,kita,オンラインによる転出届・転入（転居）予定連絡,転出入手続きのため金額なし,no_amount,K
+area/tokyo/kita/seido/152,kita,子ども医療費助成,保険診療の自己負担分を助成（所得制限なし、具体的金額記載なし）,no_amount,K
+area/tokyo/kita/seido/2861,kita,北区 身体障害者住宅設備改善費の助成（バリアフリー住宅改修）,小規模改修・中規模改修・屋内移動設備が対象（所得に応じ自己負担、助成額記載なし）,no_amount,K
+area/tokyo/kita/seido/2191,kita,北区特定不妊治療費（先進医療）助成（都助成への上乗せ）,上限5万円（都助成額を除いた自費先進医療費と5万円のいずれか低い額）,ok,K
+area/tokyo/kita/seido/263,kita,高齢者住宅改造費助成,助成対象額の1割～3割が自己負担（助成額の具体的記載なし）,no_amount,K
+area/tokyo/kita/seido/2546,kita,北区 長寿のお祝い,米寿に区内共通商品券、100歳・最高齢者にお祝い金と品（金額は公式ページ取得不可）,fetch_failed,K
+area/tokyo/kita/seido/2970,kita,北区 障害者世帯及びひとり親世帯転居費用助成,上限15万円（礼金と仲介手数料の合算額、立退料相当額は控除）,ok,K
+area/tokyo/kita/seido/367,kita,転入時の手続き,転入手続きのため金額なし,no_amount,K
+area/tokyo/kita/seido/420,kita,風しん抗体検査・予防接種費用助成,抗体検査:全額助成（1回）／風しん・麻しん風しん予防接種:いずれか1回全額助成（協力医療機関で自己負担なし）,ok,K
+area/tokyo/kita/seido/2971,kita,北区 ファミリー・サポート・センター利用料の一部助成,"謝礼金の2分の1(月20,000円上限)",ok,L
+area/tokyo/kita/seido/2787,kita,北区 障害者（児）日常生活用具の購入費用助成,,no_amount,L
+area/tokyo/suginami/seido/1936,suginami,長寿のお祝い（敬老祝い品）,,no_amount,L
+area/tokyo/suginami/seido/2606,suginami,杉並区 住居確保給付金の支給事業,"家賃上限 単身53,700円／2人64,000円／3～5人69,800円(月額)",ok,L
+area/tokyo/suginami/seido/1495,suginami,感震ブレーカー設置支援事業,"設置費用一律2,000円(特例対象者は無料)",ok,L
+area/tokyo/suginami/seido/495,suginami,私立幼稚園の保護者補助金等,,no_amount,L
+area/tokyo/suginami/seido/14,suginami,転入届：杉並区外から杉並区に住所を変更したとき,,no_amount,L
+area/tokyo/suginami/seido/724,suginami,ひとり親家庭等医療費の助成,"課税世帯 通院1割(月上限18,000円/年144,000円)・入院1割(月上限57,600円)／非課税世帯 自己負担なし",ok,L
+area/tokyo/suginami/seido/12,suginami,子ども医療費助成,,no_amount,L
+area/tokyo/koto/seido/3012,koto,江東区 後期高齢者健康診査（区独自追加項目）,無料,ok,L
+area/tokyo/koto/seido/401,koto,児童手当・子ども医療費助成の電子申請,,no_amount,L
+area/tokyo/koto/seido/89,koto,認可保育園等保育料の減額免除,,no_amount,L
+area/tokyo/koto/seido/2610,koto,江東区 住居確保給付金,"家賃上限 単身53,700円／2人64,000円／3～5人69,800円／6人75,000円(月額)",ok,L
+area/tokyo/koto/seido/142,koto,子ども医療費助成,自己負担0円(無料)、所得制限なし,ok,L
+area/tokyo/koto/seido/3011,koto,江東区 認可外保育施設等保護者負担軽減補助金（区独自上乗せ）,,no_amount,L
+area/tokyo/hinode/seido/851,hinode,こどもの医療費助成制度,,no_amount,L
+area/tokyo/hinode/seido/895,hinode,ひとり親家庭等医療費助成,課税世帯 医療費の1割負担／非課税世帯 自己負担なし,ok,L
+area/tokyo/hinode/seido/852,hinode,高校生等医療費助成制度（マル青）,外来1回200円の自己負担,ok,L
+area/tokyo/hinode/seido/2743,hinode,日の出町 保育所5歳児クラスの給食費（副食費）無償化・多子世帯軽減,,no_amount,L
+area/tokyo/hinode/seido/1437,hinode,日の出町 住居確保給付金,,fetch_failed,L
+area/tokyo/hinode/seido/897,hinode,青少年の医療費助成制度,,no_amount,L
+area/tokyo/oshima/seido/2954,oshima,大島町 移住者向け町営住宅（目的外使用）,,fetch_failed,L
+area/tokyo/oshima/seido/2827,oshima,大島町 島外医療機関受診・入院の交通費助成,,no_amount,L
+area/tokyo/oshima/seido/787,oshima,乳幼児及び義務教育就学児医療費助成制度,マル乳 医療費の2割を助成／マル子 3割を助成,ok,L
+area/tokyo/oshima/seido/1551,oshima,おたふくかぜワクチン任意接種費用助成,接種費用全額を町が負担,ok,L
+area/tokyo/oshima/seido/859,oshima,高校生等医療費助成制度（マル青）,,no_amount,L
+area/tokyo/oshima/seido/2570,oshima,大島町 敬老の日 祝品・記念品,,no_amount,L
+area/tokyo/meguro/seido/274,meguro,住宅用再生可能エネルギー及び省エネルギー設備設置費助成,太陽光1kW3万円(上限15万円)／蓄電池 本体価格の1/3(上限7万円)／燃料電池 上限7万円／CO2冷媒ヒートポンプ給湯器 上限5万円／ハイブリッド給湯器 上限5万円／マンション共用部LED 上限10万円／東京ゼロエミ住宅・ZEH 30万円,ok,L
+area/tokyo/meguro/seido/174,meguro,子ども医療費助成制度 医療証の交付,,no_amount,L
+area/tokyo/meguro/seido/471,meguro,認可外保育施設保育料助成制度,"0～2歳課税世帯 第1子80,000円(利用者支援40,000円+第1子支援40,000円)／非課税世帯38,000円／3～5歳 40,000円(月額上限)",ok,L
+area/tokyo/meguro/seido/2616,meguro,目黒区 住居確保給付金のごあんない,"家賃上限 単身53,700円／2人64,000円／3～5人69,800円／6人75,000円／7人以上83,800円(月額)",ok,L
+area/tokyo/meguro/seido/373,meguro,転入届,,no_amount,L
+area/tokyo/meguro/seido/173,meguro,ひとり親家庭等医療費助成制度,,no_amount,L
+area/tokyo/meguro/seido/448,meguro,転入届,,no_amount,L
+area/tokyo/meguro/seido/206,meguro,住宅リフォーム資金助成,一般 工事費(税抜)の10%(上限10万円)／省エネ 20%(上限20万円)／アスベスト除去 10%(上限20万円)／空き家バリアフリー 10%(上限10万円),ok,L
+area/tokyo/meguro/seido/547,meguro,家事育児サポーター（産後ドゥーラ）利用費助成事業,"プランニング1,000円(1回)／支援 1時間2,000円(単胎30時間・多胎60時間まで)",ok,L
+area/tokyo/edogawa/seido/372,edogawa,転入届,,no_amount,L
+area/tokyo/edogawa/seido/271,edogawa,特別障害給付金,"1級 月額58,650円／2級 月額46,920円",ok,L
+area/tokyo/edogawa/seido/543,edogawa,家事・育児支援事業 えどがわママパパ応援隊,1時間500円(0歳児家庭は1人14時間まで無料),ok,L
+area/tokyo/edogawa/seido/270,edogawa,ブロック塀等撤去費助成,"個人 対象費用の2/3または25,000円/mの低い額／法人 1/2または19,000円/m、上限200万円/件",ok,L
+area/tokyo/edogawa/seido/188,edogawa,ひとり親家庭等医療費助成,"課税世帯 通院1割(月18,000円/年144,000円)・入院1割(月57,600円、多数回44,400円)／非課税世帯 自己負担なし",ok,L
+area/tokyo/edogawa/seido/2129,edogawa,江戸川区ひとり親家庭 民間賃貸住宅家賃助成,"現在家賃との差額を上限月20,000円助成",ok,L
+area/tokyo/edogawa/seido/1927,edogawa,子ども医療費助成制度（マル乳・マル子・マル青医療証）,,no_amount,L
+area/tokyo/edogawa/seido/186,edogawa,児童育成手当,"児童1人につき月額13,500円",ok,L
+area/tokyo/edogawa/seido/3021,edogawa,江戸川区 保育料の第1子無償化,,no_amount,L
+area/tokyo/adachi/seido/460,adachi,認可外保育施設の保育料補助（定期利用補助金）,"0～2歳課税世帯80,000円／非課税・未申告38,000円／3～5歳40,000円(月額上限)",ok,L
+area/tokyo/adachi/seido/1926,adachi,子ども医療費助成制度（マル乳・マル子・マル青医療証）,,no_amount,L
+area/tokyo/adachi/seido/659,adachi,足立区独自 介護利用者負担額助成,介護費の最大45%を助成,ok,L
+area/tokyo/adachi/seido/2622,adachi,足立区 住居確保給付金,"家賃上限 単身53,700円／2人64,000円／3～5人69,800円／6人75,000円／7人以上83,800円(月額)",ok,L
+area/tokyo/adachi/seido/376,adachi,転入届,,no_amount,L
+area/tokyo/mizuho/seido/1422,mizuho,児童育成手当（育成・障害）,"育成 児童1人月額13,500円／障害 児童1人月額15,500円",ok,L
+area/tokyo/mizuho/seido/2717,mizuho,瑞穂町 認可外保育施設（認証保育所等）保育料補助,認可保育料相当額と認証保育所等保育料の差額を補助（具体額はPDF基準額表・記載なし）,no_amount,M
+area/tokyo/mizuho/seido/2101,mizuho,瑞穂町出産祝いの記念品贈呈,,fetch_failed,M
+area/tokyo/machida/seido/2627,machida,町田市 住居確保給付金,単身53700円／2人64000円／3～5人69800円／6人75000円／7人以上83800円（月額上限）,ok,M
+area/tokyo/machida/seido/2729,machida,町田市 0～2歳児第1子の保育料無償化（多子世帯支援の拡大）,0～2歳児第1子の保育料無償化（令和7年9月～）,ok,M
+area/tokyo/machida/seido/1364,machida,心身障害者（児）医療費助成制度（マル障）,保険診療自己負担分から一部負担金を差し引いた額を助成（具体額記載なし）,no_amount,M
+area/tokyo/machida/seido/814,machida,義務教育就学児医療費助成制度（マル子医療証）,,fetch_failed,M
+area/tokyo/machida/seido/1358,machida,在日外国人高齢者・障がい者等福祉給付金制度,支給額記載なし,no_amount,M
+area/tokyo/chofu/seido/1383,chofu,心身障害者医療費助成制度（マル障）,住民税課税状況により負担割合変動（具体額記載なし）,no_amount,M
+area/tokyo/chofu/seido/1388,chofu,ひとり親家庭等医療費助成制度,課税世帯／1割自己負担（外来上限月18000円・年144000円、外来入院上限月57600円・多数回44400円）、非課税世帯／全額助成,ok,M
+area/tokyo/chofu/seido/2698,chofu,調布市 認可外保育施設保育料助成事業,児童年齢・認定区分・所得により助成額が異なる（具体額はリーフレット・記載なし）,no_amount,M
+area/tokyo/chofu/seido/1390,chofu,養育費確保支援事業補助金,公正証書等作成支援／養育費保証契約支援 各1回上限5万円,ok,M
+area/tokyo/fussa/seido/1282,fussa,心身障害者医療費助成（マル障）,課税者／1割負担（通院上限月18000円・年144000円、入院上限月57600円・多数回44400円）、非課税者／負担なし,ok,M
+area/tokyo/fussa/seido/1273,fussa,母子家庭等自立支援教育訓練給付金事業,支給率・上限額はチラシ（PDF）・本文記載なし,no_amount,M
+area/tokyo/fussa/seido/2736,fussa,福生市 保育料の多子世帯軽減（第2子以降無償化）,0～2歳児クラスの保育料無償化（第1子含む、令和7年9月～）,ok,M
+area/tokyo/fussa/seido/1647,fussa,妊婦健康診査費用助成,多胎妊婦：1回あたり5460円（最大5回、令和8年3月末まで5280円）,ok,M
+area/tokyo/fussa/seido/2628,fussa,福生市 住居確保給付金,家賃相当額（上限あり）・具体額記載なし,no_amount,M
+area/tokyo/fussa/seido/1271,fussa,ひとり親家庭等医療費助成制度（マル親医療証）,1割負担者／通院上限月18000円・年144000円、入院上限月57600円・多数回44400円,ok,M
+area/tokyo/fussa/seido/1886,fussa,高齢者おむつ等助成,助成対象量のみ記載（紙おむつ1日5枚等）、金額記載なし,no_amount,M
+area/tokyo/fussa/seido/1272,fussa,母子家庭等高等職業訓練促進給付金等事業,非課税世帯／月10万円（最終年度月14万円）・修了支援5万円、課税世帯／月7万500円（最終年度月11万500円）・修了支援2万5千円,ok,M
+area/tokyo/hamura/seido/2034,hamura,羽村市環境配慮事業助成制度,設備区分別の助成額はメニューPDF・本文記載なし,no_amount,M
+area/tokyo/hamura/seido/1126,hamura,児童育成手当（育成手当）,児童1人につき月額13500円,ok,M
+area/tokyo/hamura/seido/1131,hamura,母子家庭及び父子家庭 自立支援教育訓練給付金,受講費用の6割相当（12001円～400000円）,ok,M
+area/tokyo/hamura/seido/1124,hamura,高齢者世帯等の水道・下水道料金助成,上下水道の最小口径（13mm）1水栓分の基本料金相当を助成（年3回振込）,ok,M
+area/tokyo/hamura/seido/1127,hamura,児童育成手当（障害手当）,都制度／月額15500円、市制度／月額12500円,ok,M
+area/tokyo/hamura/seido/1136,hamura,障害者（児）住宅設備改善費助成事業,種目別の助成額・上限記載なし,no_amount,M
+area/tokyo/hamura/seido/1132,hamura,母子家庭及び父子家庭 高等職業訓練促進給付金,非課税世帯／月10万円（最終年度月14万円）・修了5万円、課税世帯／月7万500円（最終年度月11万500円）・修了2万5千円（上限4年）,ok,M
+area/tokyo/hamura/seido/1133,hamura,心身障害者医療費助成制度（マル障）,課税者／1割負担（通院上限月18000円・年144000円、入院上限月57600円・多数回44400円）、非課税者／負担なし,ok,M
+area/tokyo/kozushima/seido/1826,kozushima,帯状疱疹ワクチン予防接種費用助成,助成金額記載なし,no_amount,M
+area/tokyo/kozushima/seido/790,kozushima,子ども医療費助成,保険診療自己負担分を助成（具体額記載なし）,no_amount,M
+area/tokyo/kozushima/seido/1746,kozushima,ひとり親家庭等医療費助成,助成内容・金額記載なし,no_amount,M
+area/tokyo/setagaya/seido/694,setagaya,ひとり親家庭等の医療費助成制度,保険診療自己負担分の一部を助成（具体額記載なし）,no_amount,M
+area/tokyo/setagaya/seido/2604,setagaya,世田谷区 住居確保給付金,家賃相当額（上限あり）・具体額記載なし,no_amount,M
+area/tokyo/setagaya/seido/51,setagaya,子ども等医療助成費の払い戻しの申請,保険診療の自己負担分及び入院時食事療養費を助成（具体額記載なし）,no_amount,M
+area/tokyo/setagaya/seido/2109,setagaya,“ずっと、世田谷。”子育て・若者夫婦世帯住み替え応援事業,補助金額はパンフレット・本文記載なし,no_amount,M
+area/tokyo/setagaya/seido/4,setagaya,子ども等医療費助成制度,保険診療の自己負担分・入院時食事の自己負担分を助成（具体額・所得制限記載なし）,no_amount,M
+area/tokyo/setagaya/seido/2724,setagaya,世田谷区 保育料の第二子以降無償化（多子世帯軽減）,認可保育施設に通う区内在住の全児童の保育料無償化（令和7年9月～）,ok,M
+area/tokyo/fuchu/seido/926,fuchu,ひとり親家庭等医療費助成,非課税世帯／0割負担、課税世帯／1割負担,ok,M
+area/tokyo/fuchu/seido/808,fuchu,子ども医療費助成,保険診療自己負担分を助成（具体額記載なし）,no_amount,M
+area/tokyo/fuchu/seido/933,fuchu,府中市心身障害者医療費助成,医療費の自己負担の一部を助成（具体額記載なし）,no_amount,M
+area/tokyo/fuchu/seido/2947,fuchu,府中市 高齢者等保養施設利用助成,1人3000円（年度内1泊まで）,ok,M
+area/tokyo/sumida/seido/2614,sumida,墨田区 住居確保給付金,家賃相当額（上限あり）・具体額記載なし,no_amount,M
+area/tokyo/sumida/seido/537,sumida,産後のお母さんを応援 産後ケア事業,宿泊型9000円～（1泊2日）／日帰り型3000円～／外来型1000円／訪問型1000円（利用者負担額、非課税・生保世帯は免除）,ok,M
+area/tokyo/sumida/seido/136,sumida,子どもの医療費の助成,保険診療の自己負担分を助成（具体額記載なし）,no_amount,M
+area/tokyo/sumida/seido/185,sumida,ひとり親家庭等医療費助成,課税世帯／1割負担（外来上限月18000円・年144000円、入院上限月57600円）、非課税世帯／自己負担なし,ok,M
+area/tokyo/sumida/seido/444,sumida,がん患者等アピアランスケア費用助成事業,購入・レンタル費用の上限10万円（全対象品目共通）,ok,M
+area/tokyo/sumida/seido/240,sumida,地球温暖化防止設備導入助成制度,太陽光発電1kWあたり5万円（上限20万円）／蓄電池上限5万円／V2H製品費25%（上限40万円）／充電設備工事費80%（上限7.5万円／基）／燃料電池工事費10%（上限5万円）／直管型LED工事費50%（戸建上限3万円・分譲マンション15万円）,ok,M
+area/tokyo/hinohara/seido/853,hinohara,ひとり親家庭等医療費助成制度,課税者がいる場合／1割負担、全員非課税／自己負担なし（全額助成）,ok,M
+area/tokyo/hinohara/seido/1530,hinohara,高齢者医療費助成金,医療費の被保険者負担額の2分の1を助成（入院時食事・生活療養標準負担額を除く）,ok,M
+area/tokyo/hinohara/seido/2884,hinohara,檜原村 再エネ設備（太陽光発電・蓄電池等）導入補助,太陽光（既存住宅）15万円/kW（3kW以下上限45万円）／蓄電池15万円/kWh（上限120万円/戸）／パワコン更新1/2（上限10万円/台）／V2H1/2（上限50万円）／太陽熱1/2（上限55万円/戸）／地中熱3/5（上限180万円/台）,ok,M
+area/tokyo/hinohara/seido/1447,hinohara,檜原村 住居確保給付金,,fetch_failed,M
+area/tokyo/hinohara/seido/786,hinohara,義務教育就学児医療費助成制度,各種健康保険の自己負担分を助成（具体額記載なし）,no_amount,M
+area/tokyo/hinohara/seido/2182,hinohara,檜原村高校生就学支援金（進学支援）,,no_amount,N
+area/tokyo/hinohara/seido/2744,hinohara,檜原村 子育て支援保育料等補助金（保育料・副食費軽減）,,no_amount,N
+area/tokyo/hino/seido/1022,hino,児童育成手当（障害手当）,月額15500円,ok,N
+area/tokyo/hino/seido/1031,hino,手当（心身障害者（児）福祉手当）,都制度（20歳以上）月額15500円／市制度20歳未満12000円／身体3・4級8000円／愛の手帳4度8000円／難病10000円／重複障害3000円加算,ok,N
+area/tokyo/hino/seido/1027,hino,心身障害者医療費助成制度（マル障）,,no_amount,N
+area/tokyo/hino/seido/1021,hino,児童育成手当（育成手当）,月額13500円,ok,N
+area/tokyo/hino/seido/1025,hino,母子家庭及び父子家庭高等職業訓練促進給付金,促進給付金 非課税月額100000円／課税月額70500円（最終年度 非課税140000円／課税110500円）、修了支援給付金 非課税50000円／課税25000円,ok,N
+area/tokyo/hino/seido/1949,hino,長寿祝品・祝状の贈呈,100歳対象（金額記載なし）,no_amount,N
+area/tokyo/hino/seido/2702,hino,日野市 認可外保育施設 保護者助成制度,,no_amount,N
+area/tokyo/hino/seido/1023,hino,ひとり親家庭等医療費助成制度,課税世帯 外来18000円/月（年上限144000円）・外来＋入院57600円/月（4回目以降44400円）／非課税世帯 負担なし,ok,N
+area/tokyo/hino/seido/820,hino,子ども医療費助成制度,,no_amount,N
+area/tokyo/toshimamura/seido/1825,toshimamura,帯状疱疹ワクチン予防接種費用助成,,no_amount,N
+area/tokyo/toshimamura/seido/1462,toshimamura,村営住宅・移住時の住宅事情,,no_amount,N
+area/tokyo/toshimamura/seido/918,toshimamura,ひとり親家族等医療助成,,no_amount,N
+area/tokyo/toshimamura/seido/861,toshimamura,15の春 子ども・家庭応援事業補助金,,no_amount,N
+area/tokyo/toshimamura/seido/862,toshimamura,高齢者向け事業（シニアカー購入助成・補聴器購入費助成）,,no_amount,N
+area/tokyo/toshimamura/seido/1560,toshimamura,住民健診・事業所健診・がん検診,,no_amount,N
+area/tokyo/toshimamura/seido/919,toshimamura,心身障害者医療費助成,,no_amount,N
+area/tokyo/toshimamura/seido/1463,toshimamura,利島村 生活困窮者自立支援制度・住居確保給付金,,no_amount,N
+area/tokyo/toshimamura/seido/2942,toshimamura,利島村 ひとり親家庭等医療費助成（マル親）,,fetch_failed,N
+area/tokyo/toshimamura/seido/788,toshimamura,乳幼児・義務教育就学児童医療助成,,no_amount,N
+area/tokyo/miyake/seido/1460,miyake,三宅村 生活困窮者自立支援制度・住居確保給付金,,no_amount,N
+area/tokyo/miyake/seido/1745,miyake,ひとり親家庭等医療費助成,,no_amount,N
+area/tokyo/miyake/seido/915,miyake,心身障害者（児）医療費助成（マル障）,,no_amount,N
+area/tokyo/miyake/seido/1824,miyake,帯状疱疹ワクチン予防接種費用助成,,no_amount,N
+area/tokyo/miyake/seido/2748,miyake,三宅村 保育料無償化（全世帯）,令和7年9月から全世帯保育料無償化（0円）,ok,N
+area/tokyo/higashiyamato/seido/1224,higashiyamato,自立支援教育訓練給付金,,no_amount,N
+area/tokyo/higashiyamato/seido/2738,higashiyamato,東大和市 保育料の多子世帯軽減（第2子半額・第3子以降無償）,,no_amount,N
+area/tokyo/higashiyamato/seido/2560,higashiyamato,東大和市 長寿祝金,,fetch_failed,N
+area/tokyo/higashiyamato/seido/1225,higashiyamato,高等職業訓練促進給付金,,no_amount,N
+area/tokyo/higashiyamato/seido/1231,higashiyamato,心身障害者医療費助成制度,,no_amount,N
+area/tokyo/higashiyamato/seido/831,higashiyamato,子ども医療費助成制度（マル乳・マル子・マル青）,,no_amount,N
+area/tokyo/higashiyamato/seido/1233,higashiyamato,心身障害者福祉手当,都制度 月額15500円／市制度 月額6100円,ok,N
+area/tokyo/toshima/seido/2019,toshima,豊島区エコ住宅普及促進費用助成金（個人住宅向け）,太陽光1kWあたり2万円（上限8万円）／蓄電1kWhあたり1万円（上限5万円）／エネファーム一律8万円／HEMS本体価格の1／3（上限2万円）／断熱改修窓 費用の1／4（上限10万円）／雨水貯水槽1万円または2万円,ok,N
+area/tokyo/toshima/seido/375,toshima,転入届,,no_amount,N
+area/tokyo/toshima/seido/482,toshima,認可外保育施設利用者への補助金,認証保育所3～5歳児 負担軽減補助37000円／その他認可外0～2歳児 上限80000円・3～5歳児 上限77000円（区分・年齢・課税状況で異なる）,ok,N
+area/tokyo/toshima/seido/2618,toshima,豊島区 住居確保給付金の支給（生活困窮者自立支援制度）,家賃月額上限 1人世帯53700円／2人世帯64000円／3人世帯69800円,ok,N
+area/tokyo/toshima/seido/1625,toshima,妊婦健康診査費用助成,多胎妊婦健診（15～19回目）1回5280円（令和8年4月以降5460円・最大5回）／産婦健診 1回5000円（最大2回）,ok,N
+area/tokyo/toshima/seido/155,toshima,子どもの医療費助成,,no_amount,N
+area/tokyo/nishitokyo/seido/2986,nishitokyo,西東京市 小児インフルエンザ任意予防接種費用助成,1回限り4000円助成（生後6か月～13歳未満）,ok,N
+area/tokyo/nishitokyo/seido/1314,nishitokyo,自動車燃料費の助成,自動車 月額3000円相当／二輪車 月額1500円相当,ok,N
+area/tokyo/nishitokyo/seido/1298,nishitokyo,高等職業訓練促進給付金,非課税月額100000円／課税月額70500円（最後の12か月は40000円加算）、修了支援給付金 非課税50000円／課税25000円,ok,N
+area/tokyo/nishitokyo/seido/1308,nishitokyo,心身障害者医療費助成（マル障）,課税世帯 総医療費の1割負担／非課税世帯 負担なし,ok,N
+area/tokyo/nishitokyo/seido/1299,nishitokyo,教育訓練給付金,入学料・受講料の6割・上限20万円（専門実践教育訓練は修業年数×40万円）,ok,N
+area/tokyo/nishitokyo/seido/1302,nishitokyo,小児慢性特定疾病医療費助成,,no_amount,N
+area/tokyo/nishitokyo/seido/1297,nishitokyo,ひとり親家庭等医療費助成制度,課税世帯 2割助成（自己負担1割）／非課税世帯 3割助成（自己負担なし）,ok,N
+area/tokyo/inagi/seido/1187,inagi,心身障害者福祉手当,身体1・2級15500円／3級12500円／4級5000円／愛の手帳1・2・3度15500円／4度12500円／脳性麻痺・進行性筋萎縮症15500円（月額）,ok,N
+area/tokyo/inagi/seido/841,inagi,乳幼児・義務教育就学児・高校生等医療費助成制度,マル乳 自己負担なし（全額助成）／マル子・マル青 通院1回200円自己負担・入院調剤は負担なし,ok,N
+area/tokyo/inagi/seido/2564,inagi,稲城市 長寿百歳記念品贈呈,,fetch_failed,N
+area/tokyo/inagi/seido/2033,inagi,稲城市カーボンニュートラル住宅設備等補助金,太陽光1kWあたり2万円（上限8万円）／燃料電池定額2万円／蓄電池定額4万円／木質ペレットストーブ機器費1／3（上限5万円）／FCV定額10万円／V2H3万円（上限機器費）／断熱改修 設置費用1／6（上限5万円）,ok,N
+area/tokyo/inagi/seido/3045,inagi,稲城市 満3歳児クラスの預かり保育補助金,日額450円×利用日数（複数施設利用時は月額上限16300円）,ok,N
+area/tokyo/inagi/seido/1186,inagi,心身障害者医療費助成制度（マル障）,,no_amount,O
+area/tokyo/inagi/seido/1190,inagi,自動車運転免許取得費の助成,"教習費用の3分の2を助成（上限：前年所得税0円164,800円／1～42,000円144,200円／42,001～400,000円123,600円）",ok,O
+area/tokyo/kiyose/seido/780,kiyose,中等度難聴児補聴器購入費助成制度,,no_amount,O
+area/tokyo/kiyose/seido/1138,kiyose,住居確保給付金（転居費用補助）,,no_amount,O
+area/tokyo/kiyose/seido/1154,kiyose,母子家庭等高等職業訓練促進給付金,"月額100,000円（非課税世帯）／月額70,500円（課税世帯）、修了支援給付金50,000円／25,000円",ok,O
+area/tokyo/kiyose/seido/833,kiyose,医療費助成（乳幼児・義務教育就学児・高校生等）,,no_amount,O
+area/tokyo/kiyose/seido/1150,kiyose,ひとり親家庭等の医療費助成,,no_amount,O
+area/tokyo/kiyose/seido/2709,kiyose,清瀬市 認可外保育施設等利用支援事業（認可外保育料補助）,"利用者支援 月額上限2,000円／多子世帯支援 月額上限40,000円",ok,O
+area/tokyo/mikurajima/seido/1827,mikurajima,帯状疱疹ワクチン予防接種費用助成,,fetch_failed,O
+area/tokyo/mikurajima/seido/870,mikurajima,ひとり親家庭の医療費助成,,no_amount,O
+area/tokyo/mikurajima/seido/869,mikurajima,高校生等の医療費助成,入院・調剤・訪問看護は0円／通院1回につき200円,ok,O
+area/tokyo/mikurajima/seido/1471,mikurajima,御蔵島村 生活困窮者自立支援制度・住居確保給付金,,no_amount,O
+area/tokyo/mikurajima/seido/792,mikurajima,子ども医療費助成制度,,fetch_failed,O
+area/tokyo/mikurajima/seido/923,mikurajima,高齢者ヘリコミューター運賃助成,島民割引運賃適用後の差額全額を助成,ok,O
+area/tokyo/nerima/seido/698,nerima,ひとり親家庭等医療費助成,"課税世帯は1割負担（外来 月18,000円・年144,000円／入院+外来 月57,600円・多数回44,400円）、非課税世帯は入院時食事療養標準負担額等のみ",ok,O
+area/tokyo/nerima/seido/1937,nerima,敬老祝品,,no_amount,O
+area/tokyo/nerima/seido/3018,nerima,練馬区 子育てスタート応援券,,no_amount,O
+area/tokyo/nerima/seido/17,nerima,引越し関連手続き（転入時）,,no_amount,O
+area/tokyo/nerima/seido/15,nerima,子ども医療費の助成（マル乳・マル子・マル青医療証）,,no_amount,O
+area/tokyo/nerima/seido/16,nerima,転入届（練馬区外から練馬区に引越したとき）,,no_amount,O
+area/tokyo/nerima/seido/414,nerima,風しん抗体検査・予防接種費用助成,抗体検査・予防接種とも自己負担なし（全額助成）,ok,O
+area/tokyo/nerima/seido/480,nerima,認可外保育施設等の保育料への各種助成,,no_amount,O
+area/tokyo/hachijo/seido/2956,hachijo,八丈町 雇用機会拡充事業補助金,,no_amount,O
+area/tokyo/hachijo/seido/1454,hachijo,児童育成手当,育成手当 月額13 500円／障害手当 月額15 500円,ok,O
+area/tokyo/hachijo/seido/793,hachijo,乳幼児・義務教育就学児・高校生等医療費助成制度,,no_amount,O
+area/tokyo/hachijo/seido/1822,hachijo,帯状疱疹ワクチン予防接種費用助成,,fetch_failed,O
+area/tokyo/hachijo/seido/2955,hachijo,八丈町 島外通院交通費一部助成,"往復交通費（八丈島～羽田・竹芝間）実費合計の1/2相当額（上限1人1回14,250円）、医師証明書文書料の1/2",ok,O
+area/tokyo/hachijo/seido/884,hachijo,ひとり親家庭等医療費助成,非課税世帯は自己負担（3割）を全額助成／課税世帯は3割のうち3分の2を助成,ok,O
+area/tokyo/hachijo/seido/882,hachijo,八丈町 島外医療機関通院交通費助成,"往復交通費（八丈島～羽田・竹芝間）実費合計の1/2相当額（上限1人1回14,250円）、医師証明書文書料の1/2",ok,O
+area/tokyo/hachijo/seido/2944,hachijo,八丈町 保育料の無償化（第2子以降の軽減を含む）,,fetch_failed,O
+area/tokyo/ogasawara/seido/894,ogasawara,ひとり親家庭の医療費助成,,no_amount,O
+area/tokyo/ogasawara/seido/2572,ogasawara,小笠原村 長寿祝品・米寿・白寿お祝い金,,no_amount,O
+area/tokyo/ogasawara/seido/795,ogasawara,医療費助成,子ども医療費は保険診療の自己負担分を全額助成／ひとり親（課税）は医療費の1割負担・非課税は入院時食事代のみ,ok,O
+area/tokyo/ogasawara/seido/1466,ogasawara,小笠原村 生活困窮者自立支援制度・住居確保給付金,,no_amount,O
+area/tokyo/ogasawara/seido/1829,ogasawara,帯状疱疹ワクチン予防接種費用助成,,no_amount,O
+area/tokyo/ogasawara/seido/2945,ogasawara,小笠原村 保育料の無償化（子育て支援）,,no_amount,O
+area/tokyo/ogasawara/seido/1932,ogasawara,子ども医療費助成（乳幼児・義務教育就学児・高校生等）,保険診療の自己負担分を全額助成（入院時食事療養標準負担額・差額ベッド代を除く）,ok,O
+area/tokyo/komae/seido/828,komae,義務教育就学児（マル子）医療費助成制度,通院1回につき200円（令和7年10月より廃止し自己負担なし）,ok,O
+area/tokyo/komae/seido/1399,komae,養育費確保支援事業助成金,,fetch_failed,O
+area/tokyo/komae/seido/2889,komae,狛江市 不妊・不育症治療費助成（市独自上乗せ）,,fetch_failed,O
+area/tokyo/komae/seido/2629,komae,狛江市 住居確保給付金（生活困窮者住居確保給付金）,"1人世帯 月53,700円／2人世帯 64,000円／3人世帯 69,800円（家賃支給上限）",ok,O
+area/tokyo/komae/seido/1397,komae,母子（父子）家庭自立支援教育訓練給付金,受講料の60％（一般教育訓練 上限20万円／専門実践教育訓練 上限40万円×修学年数・上限160万円、1万2千円以下は対象外）,ok,O
+area/tokyo/komae/seido/1395,komae,児童育成手当,育成手当 月額13 500円／障害手当 月額15 500円,ok,O
+area/tokyo/kokubunji/seido/2556,kokubunji,国分寺市 敬老事業（記念品贈呈・敬老会・訪問）,,no_amount,O
+area/tokyo/kokubunji/seido/940,kokubunji,住居確保給付金（転宅費用補助）,,no_amount,O
+area/tokyo/kokubunji/seido/941,kokubunji,ひとり親家庭等医療費助成制度,市民税課税世帯は自己負担分のうち1割負担、非課税世帯は食事療養標準負担額等を除き助成,ok,O
