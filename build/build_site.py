@@ -1297,9 +1297,22 @@ def build_home(muni_stats, score, cat_entries=None):
       for ev in EV_META)
     amt_sec = amount_rankings_html(cat_entries)
     body=f"""
-<h1>東京都の給付・手当・助成を、自治体ごとに比較</h1>
-<p class="lead">東京都62自治体で受けられる給付金・手当・助成制度を、出典と最終確認日つきで整理。
-「住んでいる街・引っ越し先でどんな支援が受けられるか」を一目で比較できます。</p>
+<section class="hero" aria-labelledby="hero-title">
+<p class="hero-eyebrow">東京都62自治体の制度比較</p>
+<h1 id="hero-title">住む街で<span class="hero-em">もらえるお金</span>が、<br class="hero-br">ひと目でわかる</h1>
+<p class="hero-lead">給付金・手当・助成を自治体ごとに整理。出典と最終確認日つきで、
+引っ越し先選びや制度申請の参考に。</p>
+<div class="hero-stats" aria-label="サービスの特徴">
+<span class="hero-stat"><strong>62</strong>市区町村</span>
+<span class="hero-stat"><strong>5</strong>ライフイベント</span>
+<span class="hero-stat">公式出典<strong>付き</strong></span>
+</div>
+<div class="hero-cta">
+<a class="hero-btn primary" href="/find/">目的から探す</a>
+<a class="hero-btn" href="/hikaku/">制度を比較</a>
+<a class="hero-btn ghost" href="#area">自治体一覧</a>
+</div>
+</section>
 <section class="finder">
 <h2 class="fh">目的・年代から制度がある地域を探す</h2>
 <div class="pchips">{pcards}</div>
@@ -1512,6 +1525,35 @@ ul.plainlist li{margin:.2rem 0}
 .profile{margin:1.2rem 0 1.4rem}
 .profile .strong{margin:.2rem 0 .3rem}
 .profile .strong b{color:var(--accent)}
+
+/* ── トップ：ヒーロー ── */
+.hero{margin:-1.1rem -1.1rem 1.6rem;padding:2.4rem 1.1rem 2.1rem;
+  background:linear-gradient(155deg,#eef4ff 0%,#f8faff 42%,#fff 100%);
+  border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-40%;right:-15%;width:min(420px,70vw);height:min(420px,70vw);
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 14%,transparent) 0%,transparent 70%);
+  pointer-events:none}
+.hero-eyebrow{margin:0 0 .65rem;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:none;
+  color:var(--accent);position:relative}
+.hero h1{font-size:clamp(1.65rem,5vw,2.35rem);line-height:1.28;margin:0 0 .85rem;font-weight:800;
+  letter-spacing:-.02em;position:relative}
+.hero-em{color:var(--accent);background:linear-gradient(transparent 62%,color-mix(in srgb,var(--accent) 18%,transparent) 62%)}
+.hero-br{display:none}
+.hero-lead{margin:0 0 1.15rem;font-size:clamp(.92rem,2.2vw,1.02rem);color:#334155;line-height:1.75;max-width:34em;position:relative}
+.hero-stats{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1.25rem;position:relative}
+.hero-stat{display:inline-flex;align-items:baseline;gap:.2rem;background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:.32rem .72rem;font-size:.82rem;color:var(--muted)}
+.hero-stat strong{color:var(--fg);font-size:1rem;font-weight:800;font-variant-numeric:tabular-nums}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.55rem;position:relative}
+.hero-btn{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-weight:700;
+  font-size:.92rem;padding:.62rem 1.05rem;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--fg);
+  text-decoration:none;transition:background .15s,border-color .15s,transform .15s}
+.hero-btn:hover{text-decoration:none;background:var(--soft);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.hero-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 28%,transparent)}
+.hero-btn.primary:hover{background:color-mix(in srgb,var(--accent) 88%,#000);border-color:color-mix(in srgb,var(--accent) 88%,#000);color:#fff}
+.hero-btn.ghost{background:transparent}
+@media(min-width:640px){.hero-br{display:inline}}
+@media(max-width:520px){.hero{padding:1.85rem 1rem 1.75rem}.hero-cta .hero-btn{flex:1 1 calc(50% - .3rem);min-width:0}.hero-cta .hero-btn.ghost{flex-basis:100%}}
 
 /* ── 目的・年代の発見カード ── */
 .finder{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin:1.2rem 0}

@@ -102,6 +102,35 @@ ul.plainlist li{margin:.2rem 0}
 .profile .strong{margin:.2rem 0 .3rem}
 .profile .strong b{color:var(--accent)}
 
+/* ── トップ：ヒーロー ── */
+.hero{margin:-1.1rem -1.1rem 1.6rem;padding:2.4rem 1.1rem 2.1rem;
+  background:linear-gradient(155deg,#eef4ff 0%,#f8faff 42%,#fff 100%);
+  border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-40%;right:-15%;width:min(420px,70vw);height:min(420px,70vw);
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 14%,transparent) 0%,transparent 70%);
+  pointer-events:none}
+.hero-eyebrow{margin:0 0 .65rem;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:none;
+  color:var(--accent);position:relative}
+.hero h1{font-size:clamp(1.65rem,5vw,2.35rem);line-height:1.28;margin:0 0 .85rem;font-weight:800;
+  letter-spacing:-.02em;position:relative}
+.hero-em{color:var(--accent);background:linear-gradient(transparent 62%,color-mix(in srgb,var(--accent) 18%,transparent) 62%)}
+.hero-br{display:none}
+.hero-lead{margin:0 0 1.15rem;font-size:clamp(.92rem,2.2vw,1.02rem);color:#334155;line-height:1.75;max-width:34em;position:relative}
+.hero-stats{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1.25rem;position:relative}
+.hero-stat{display:inline-flex;align-items:baseline;gap:.2rem;background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:.32rem .72rem;font-size:.82rem;color:var(--muted)}
+.hero-stat strong{color:var(--fg);font-size:1rem;font-weight:800;font-variant-numeric:tabular-nums}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.55rem;position:relative}
+.hero-btn{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-weight:700;
+  font-size:.92rem;padding:.62rem 1.05rem;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--fg);
+  text-decoration:none;transition:background .15s,border-color .15s,transform .15s}
+.hero-btn:hover{text-decoration:none;background:var(--soft);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.hero-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 28%,transparent)}
+.hero-btn.primary:hover{background:color-mix(in srgb,var(--accent) 88%,#000);border-color:color-mix(in srgb,var(--accent) 88%,#000);color:#fff}
+.hero-btn.ghost{background:transparent}
+@media(min-width:640px){.hero-br{display:inline}}
+@media(max-width:520px){.hero{padding:1.85rem 1rem 1.75rem}.hero-cta .hero-btn{flex:1 1 calc(50% - .3rem);min-width:0}.hero-cta .hero-btn.ghost{flex-basis:100%}}
+
 /* ── 目的・年代の発見カード ── */
 .finder{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin:1.2rem 0}
 .finder .fh{font-size:1.08rem;margin:.1rem 0 .7rem;border:0;padding:0}
