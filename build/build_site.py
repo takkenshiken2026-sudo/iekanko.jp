@@ -336,7 +336,7 @@ def gate_index(p, facts):
     if not conf: return False
     return (sum(conf)/len(conf)) >= GATE_MIN_CONFIDENCE
 
-# ── 自治体スコア（分野カバー率＝公平指標。DB拡充で自動的に精度向上）──────────────
+# ── 自治体スコア（制度掲載数など。発見導線の並べ替えに使用）──────────────────
 def compute_scores():
     ev_total={}
     for cid,label,ev,inc,exc in TAXONOMY:
@@ -554,72 +554,71 @@ def build_compare_index(cat_counts):
 
 # ── 目的・年代の発見導線＋ランキング（差別化の核）──────────────────────────────
 def rel_rankings(cur):
-    ls="".join(f'<li><a href="/ranking/{ev}/">{esc(EVENTS[ev][0])}支援ランキング {CHEV_R}</a></li>'
+    ls="".join(f'<li><a href="/ranking/{ev}/">{esc(EVENTS[ev][0])}の制度がある自治体 {CHEV_R}</a></li>'
                for ev in EVENTS if ev!=cur)
     return f'<div class="cmpbox"><strong>ほかの目的でも探す</strong><ul>{ls}</ul></div>'
 
-def build_ranking(ev, score, avg):
+def build_ranking(ev, score, avg=None):
     persona,age,color,_ = EV_META[ev]
     ev_name = EVENTS[ev][0]
     url=f"/ranking/{ev}/"
-    ranked=sorted(munis, key=lambda m:(-score[m["id"]][ev]["cov"], -score[m["id"]][ev]["prog"], m["id"]))
+    ranked=sorted(munis, key=lambda m:(-score[m["id"]][ev]["prog"], m["id"]))
     top=ranked[:15]
-    rows=[(m["municipality_name"], score[m["id"]][ev]["cov"], None,
-           f'{score[m["id"]][ev]["covered"]}/{score[m["id"]][ev]["total"]}分野') for m in top]
-    chart=svg_bars(rows,100,"%")
+    max_prog=max((score[m["id"]][ev]["prog"] for m in top), default=1) or 1
+    rows=[(m["municipality_name"], score[m["id"]][ev]["prog"], None, "") for m in top]
+    chart=svg_bars(rows, max_prog, "制度")
     trs=[]
     for rank,m in enumerate(ranked,1):
         s=score[m["id"]][ev]; slug=muni_slug(m)
         cls=' class="top3"' if rank<=3 else ''
         trs.append(f'<tr{cls}><td class="rk">{rank}</td>'
                    f'<td class="mn"><a href="/area/tokyo/{slug}/{ev}/">{esc(m["municipality_name"])}</a></td>'
-                   f'<td>{s["cov"]:.0f}%</td><td class="dt">{s["covered"]}/{s["total"]}分野</td>'
                    f'<td class="dt">{s["prog"]}制度</td></tr>')
-    title=f"{ev_name}支援が充実している東京都の自治体ランキング｜分野カバー率で比較"
-    desc=clip(f"{persona}向けに、{ev_name}の支援制度が充実している東京都62自治体を分野カバー率でランキング。上位自治体の内容を出典つきで確認できます。",118)
+    title=f"{ev_name}の制度がある東京都の自治体｜掲載数でみる"
+    desc=clip(f"{persona}向けに、{ev_name}関連の制度掲載数が多い東京都の自治体から順に確認できます。各自治体の制度一覧へ進めます。",118)
     body=f"""
 <span class="badge" style="--pc:{color}">{esc(age)}</span>
-<h1>{esc(ev_name)}支援が充実している東京都の自治体ランキング</h1>
-<p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}の代表的な支援制度をどれだけ幅広くそろえているか（<strong>分野カバー率</strong>）で東京都62自治体をランキングしました（都平均 約{avg[ev]:.0f}%）。</p>
+<h1>{esc(ev_name)}の制度がある東京都の自治体</h1>
+<p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}関連の制度を掲載している件数が多い自治体から順に並べています。</p>
 <div class="chartcard" style="--pc:{color}">{chart}
-<p class="cap">上位15自治体の分野カバー率（棒＝カバー率／ラベル＝カバー分野数）</p></div>
+<p class="cap">上位15自治体の掲載制度数</p></div>
 <div class="tablewrap"><table class="cmp rank">
-<thead><tr><th>順位</th><th>自治体</th><th>カバー率</th><th>カバー分野</th><th>収録制度</th></tr></thead>
+<thead><tr><th>順位</th><th>自治体</th><th>制度数</th></tr></thead>
 <tbody>{''.join(trs)}</tbody></table></div>
-<p class="notice">この順位は<strong>当サイトが収録する制度の「分野カバー率」に基づく参考指標</strong>です。金額の多寡や実際の手厚さを保証するものではなく、当サイトで未収集の制度があると実際より低く表示される場合があります。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
+<p class="notice">掲載件数は当サイトの収録状況に基づく目安です。金額の多寡や実際の手厚さを示すものではありません。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
 {rel_rankings(ev)}
 <p><a href="/find/">{CHEV_L} 目的・年代から探す にもどる</a></p>"""
-    il={"@context":"https://schema.org","@type":"ItemList","name":f"{ev_name}支援が充実している東京都の自治体",
+    il={"@context":"https://schema.org","@type":"ItemList","name":f"{ev_name}の制度がある東京都の自治体",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":m["municipality_name"],
           "url":f"{BASE_URL}/area/tokyo/{muni_slug(m)}/{ev}/"} for i,m in enumerate(ranked[:20])]}
-    bc=[("トップ","/"),("目的・年代から探す","/find/"),(f"{ev_name}ランキング",None)]
+    bc=[("トップ","/"),("目的・年代から探す","/find/"),(f"{ev_name}の自治体",None)]
     page(path=url+"index.html",title=title,description=desc,canonical=url,
          jsonld=[il],breadcrumb=bc,body=body)
     sitemap_urls.append((url,"0.8"))
 
 def build_find_hub(score):
     def top1(ev):
-        best=max(munis,key=lambda m:(score[m["id"]][ev]["cov"],score[m["id"]][ev]["prog"]))
-        return best["municipality_name"], score[best["id"]][ev]["cov"]
+        best=max(munis,key=lambda m:(score[m["id"]][ev]["prog"], -m["id"]))
+        return best["municipality_name"], score[best["id"]][ev]["prog"]
     cards=[]
     for ev,(persona,age,color,_) in EV_META.items():
-        ev_name=EVENTS[ev][0]; tn,tc=top1(ev)
+        ev_name=EVENTS[ev][0]; tn,tp=top1(ev)
         cards.append(f'<a class="pcard" href="/ranking/{ev}/" style="--pc:{color}">'
             f'<span class="pic">{icon_svg(ev)}</span>'
             f'<span class="ptxt"><strong>{esc(persona)}</strong>'
             f'<span class="page">{esc(age)}</span>'
-            f'<span class="pdesc">{esc(ev_name)}支援が充実している自治体ランキング</span>'
-            f'<span class="ptop">現在の1位：{esc(tn)}（カバー率{tc:.0f}%）</span></span>'
+            f'<span class="pdesc">{esc(ev_name)}の制度がある自治体をみる</span>'
+            f'<span class="ptop">掲載数が多い例：{esc(tn)}（{tp}制度）</span></span>'
             f'<span class="parrow" aria-hidden="true">{CHEV_R}</span></a>')
     body=f"""
-<h1>目的・年代から「制度が整った地域」を探す</h1>
-<p class="lead">ライフステージや目的を選ぶと、その支援が充実している東京都の自治体をランキングで確認できます。
-「引っ越し先選び」や「いま住む街の手厚さ確認」にお使いください。</p>
+<h1>目的・年代から制度がある地域を探す</h1>
+<p class="lead">ライフステージや目的を選ぶと、その分野の制度を掲載している東京都の自治体を件数順に確認できます。
+「引っ越し先選び」や「いま住む街で使える制度の確認」にお使いください。</p>
 <div class="pgrid">{''.join(cards)}</div>
-<p class="note">※ランキングは当サイト収録制度の分野カバー率に基づく参考指標です。詳細・最新情報は各自治体の公式ページでご確認ください。</p>
+<p class="note">※掲載件数は当サイトの収録状況に基づく目安です。詳細・最新情報は各自治体の公式ページでご確認ください。</p>
 <p><a href="/hikaku/">制度カテゴリごとの自治体比較を見る {CHEV_R}</a></p>"""
-    page(path="/find/index.html",title="目的・年代から探す｜制度が整った東京都の地域ランキング",
-         description="子育て・シニア・引っ越し・出産・退職など、目的や年代から、支援制度が充実している東京都の自治体をランキングで見つけられます。",
+    page(path="/find/index.html",title="目的・年代から探す｜東京都の制度がある自治体",
+         description="子育て・シニア・引っ越し・出産・退職など、目的や年代から、関連制度を掲載している東京都の自治体を見つけられます。",
          canonical="/find/",breadcrumb=[("トップ","/"),("目的・年代から探す",None)],body=body)
     sitemap_urls.append(("/find/","0.9"))
 
@@ -636,7 +635,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     other_lis="".join(f'<li><a href="/area/tokyo/{slug}/{s}/">{esc(mn)}の{esc(EVENTS[s][0])}の制度 {CHEV_R}</a></li>'
                       for s in EVENTS if s!=ev_slug)
     relbox=(f'<div class="cmpbox" style="--pc:{EV_META[ev_slug][2]}"><strong>関連して探す</strong><ul>'
-            f'<li><a href="/ranking/{ev_slug}/">{esc(ev_name)}支援が充実している自治体ランキング {CHEV_R}</a></li>'
+            f'<li><a href="/ranking/{ev_slug}/">{esc(ev_name)}の制度がある自治体をみる {CHEV_R}</a></li>'
             f'{other_lis}</ul></div>')
     title = f"{mn}で{ev_name}のときに使える制度・手当・助成【一覧】"
     desc = clip(f"{mn}で{ev_name}のときに受けられる給付金・手当・助成制度を一覧でまとめました。{ev_intro}", 118)
@@ -677,19 +676,9 @@ def build_muni(m, slug, score, avg):
             f'<a href="/area/tokyo/{slug}/{ev_slug}/">{esc(ev_name)}</a></span>'
             f'<span class="cnt">{len(items)}</span></h2>'
             f'<ul class="proglist">{lis}</ul>{more}'
-            f'<p class="evlinks"><a href="/ranking/{ev_slug}/">{esc(ev_name)}支援が充実している自治体ランキング {CHEV_R}</a></p>'
+            f'<p class="evlinks"><a href="/ranking/{ev_slug}/">{esc(ev_name)}の制度がある自治体をみる {CHEV_R}</a></p>'
             f'</section>')
     mid=m["id"]
-    prof_rows=[(EVENTS[ev][0], score[mid][ev]["cov"], avg[ev], f'{score[mid][ev]["prog"]}制度') for ev in EVENTS]
-    prof_chart=svg_bars(prof_rows,100,"%")
-    strengths=[ev for ev in sorted(EVENTS, key=lambda ev:-score[mid][ev]["cov"]) if score[mid][ev]["cov"]>0][:2]
-    strong_txt="・".join(EVENTS[ev][0] for ev in strengths)
-    strong_html=f'<p class="strong">とくに <b>{esc(strong_txt)}</b> の支援分野が充実しています。</p>' if strong_txt else ''
-    prof_html=(f'<section class="profile"><h2>この街の支援カバー状況</h2>'
-               f'<div class="chartcard">{prof_chart}<p class="cap">5分野の分野カバー率（点線＝東京都平均）</p></div>'
-               f'{strong_html}'
-               f'<p class="note">※当サイト収録制度の分野カバー率に基づく参考指標です。'
-               f'<a href="/find/">目的・年代から地域を探す {CHEV_R}</a></p></section>')
     # ほかの市区町村（種別を問わず五十音順の近隣）を対等に回遊
     _tj={"ward":"区","city":"市","town":"町","village":"村"}
     _ordered=[x for x in sorted(munis, key=lambda z: YOMI.get(z["municipality_name"], z["municipality_name"])) if muni_slug(x)]
@@ -711,7 +700,6 @@ def build_muni(m, slug, score, avg):
     body = f"""
 <h1>{esc(mn)}で受けられる給付・手当・助成 一覧</h1>
 <p class="lead">{esc(mn)}にお住まいの方が使える制度を、ライフイベント別にまとめました（全{len(progs)}件・出典/最終確認日つき）。</p>
-{prof_html}
 {''.join(sections)}
 {others_html}
 """
@@ -884,7 +872,7 @@ def build_home(muni_stats, score):
 <section class="finder">
 <h2 class="fh">目的・年代から「制度が整った地域」を探す</h2>
 <div class="pchips">{pcards}</div>
-<p class="fmore"><a href="/find/">{CHEV_R} 目的・年代から探す（ランキング）</a></p>
+<p class="fmore"><a href="/find/">{CHEV_R} 目的・年代から探す</a></p>
 </section>
 <div class="cmpbox"><strong>制度ごとに自治体を比べる</strong>
 <p>児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62自治体で横断比較できます。</p>
