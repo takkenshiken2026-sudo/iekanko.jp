@@ -1,0 +1,7 @@
+municipality_slug,municipality_name,title,program_type,target_description,amount_text,conditions,official_url,status
+minato,港区,産後母子ケア事業,サービス,港区に住民登録のある母子,非課税世帯無料／課税世帯は利用料1割(上限2000円),デイ・外来/訪問乳房ケア・宿泊ショートステイ。各6回まで。妊娠8か月〜利用14日前申請,https://www.city.minato.tokyo.jp/chiikihoken/kodomo/boshi-nyuboucare.html,verified
+hinohara,檜原村,産後ケア事業（通所型）,サービス,村内在住・出産後7か月以内でケアが必要な母子,1日2500円(5日まで無料)。多胎は1人2500円追加。非課税等免除,まるやま助産院で実施。母のケア・乳房ケア・沐浴・育児相談,https://www.vill.hinohara.tokyo.jp/0000001704.html,verified
+mikurajima,御蔵島村,産後ケア費用助成事業,助成金,産後の母子,産後ケア費用を助成（金額は要綱PDF未取得で要確認）,総務課民生係母子保健担当。費用助成方式,https://www.vill.mikurasima.tokyo.jp/hojojosei.html,needs_amount_check
+oshima,大島町,妊婦支援特別対策事業（島外出産支援）,助成金,島外出産が必要と医師が判断した妊婦,入院費1日5000円(上限25万)・交通費12000円・宿泊7400円/泊・証明書2000円,島しょ特性の島外分娩支援,https://www.town.oshima.tokyo.jp/soshiki/kenkou/ninpusien.html,verified
+kozushima,神津島村,初回産科受診料助成・妊婦タクシー券・島外妊婦健診費補助,助成金,妊婦,初回産科受診料上限1万円/妊娠・妊婦タクシー利用券・島外健診1回4万円×5回,分娩施設が島内になく本土出産前提,https://www.vill.kouzushima.tokyo.jp/,verified
+miyake,三宅村,妊婦の出産に係る交通費・宿泊費助成,助成金,母子手帳交付を受けた妊産婦,交通費(島民割後実費・往復5回)・宿泊費1泊上限2000円(妊娠34週〜出産後31日の74泊),対象は母子手帳取得〜出産後3か月,https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/ikuji_kyouiku/ninpu_nyuuyouji/syussan.html,verified
