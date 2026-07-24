@@ -3,7 +3,7 @@
 body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);padding:.55rem 1.1rem;border-bottom:1px solid var(--line)}
-.hbar{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
+.hbar{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
 .brand{font-weight:800;font-size:1.12rem;color:var(--fg);display:inline-flex;align-items:center;gap:.45rem;line-height:1.2}
 .brand:hover{text-decoration:none}
 .brand-mark{width:1.45rem;height:1.45rem;flex:none;display:block}
@@ -13,7 +13,7 @@ header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);ba
 @media(max-width:520px){.gnav a{padding:.3rem .44rem;font-size:.82rem}.brand{font-size:1rem}.brand-mark{width:1.3rem;height:1.3rem}header.site{padding:.5rem .8rem}}
 @media(max-width:360px){.gnav{gap:0}.gnav a{padding:.3rem .34rem;font-size:.78rem}}
 :target{scroll-margin-top:60px}
-main{max-width:820px;margin:0 auto;padding:1.1rem 1.1rem 3rem}
+main{max-width:960px;margin:0 auto;padding:1.1rem 1.1rem 3rem}
 .crumbs{font-size:.82rem;color:var(--muted);margin:.2rem 0 1rem}
 .crumbs a{color:var(--muted)}
 h1{font-size:1.5rem;line-height:1.35;margin:.2rem 0 .7rem}
@@ -52,7 +52,7 @@ p.lead2{color:var(--muted);font-size:.86rem;margin:.1rem 0 .6rem}
 .mchip.on b{opacity:.85}
 ul.mgrid li[hidden]{display:none}
 p.mnone{color:var(--muted);font-size:.9rem;padding:.6rem 0}
-footer.site{border-top:1px solid var(--line);padding:1.2rem 1.1rem;color:var(--muted);font-size:.8rem;max-width:820px;margin:0 auto}
+footer.site{border-top:1px solid var(--line);padding:1.2rem 1.1rem;color:var(--muted);font-size:.8rem;max-width:960px;margin:0 auto}
 footer.site a{color:var(--muted)}
 .cmpbox{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:1.2rem 0}
 .cmpbox strong{display:block;margin-bottom:.3rem}
