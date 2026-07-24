@@ -29,8 +29,13 @@ SITE_SHORT = "くらしの制度ナビ"
 OPERATOR_NAME  = os.environ.get("SEIDO_OPERATOR",  "【要記入：運営者名または屋号】")
 CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "【要記入：連絡先メールアドレス】")
 ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
-# GoogleアナリティクスなどのタグID（設定するとプライバシーポリシーに反映）。未設定なら記載を省略。
-ANALYTICS_NOTE = os.environ.get("SEIDO_ANALYTICS", "")
+# Google Analytics 4 測定ID（全ページの <head> に gtag を出力）。空文字で無効化可。
+GA_MEASUREMENT_ID = os.environ.get("SEIDO_GA_ID", "G-9TB0TXT8X0").strip()
+# プライバシーポリシーのアクセス解析表記。未設定なら記載を省略。
+ANALYTICS_NOTE = os.environ.get(
+    "SEIDO_ANALYTICS",
+    "Google Analytics 4（測定ID: %s）" % GA_MEASUREMENT_ID if GA_MEASUREMENT_ID else "",
+)
 
 # ── 品質ゲート（YMYL: 未検証の薄いページをインデックスさせない）────────────
 GATE_MIN_CONFIDENCE = 82   # 制度の平均confidenceがこれ未満なら noindex
@@ -229,6 +234,19 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
             parts.append(f'<a href="{u}">{esc(n)}</a>' if u else f'<span>{esc(n)}</span>')
         crumbs = '<nav class="crumbs" aria-label="パンくず">'+ " › ".join(parts) +'</nav>'
     canon = BASE_URL + canonical
+    ga_tag = ""
+    if GA_MEASUREMENT_ID:
+        ga_id = esc(GA_MEASUREMENT_ID)
+        ga_tag = (
+            f'<!-- Google tag (gtag.js) -->\n'
+            f'<script async src="https://www.googletagmanager.com/gtag/js?id={ga_id}"></script>\n'
+            f'<script>\n'
+            f'window.dataLayer=window.dataLayer||[];\n'
+            f'function gtag(){{dataLayer.push(arguments);}}\n'
+            f"gtag('js',new Date());\n"
+            f"gtag('config','{ga_id}');\n"
+            f'</script>\n'
+        )
     doc = f"""<!doctype html>
 <html lang="ja">
 <head>
@@ -249,7 +267,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap">
 <link rel="stylesheet" href="/assets/style.css">
-{ld}</head>
+{ga_tag}{ld}</head>
 <body id="top">
 <header class="site"><div class="hbar">
 <a class="brand" href="/">{esc(SITE_SHORT)}</a>
@@ -808,7 +826,10 @@ def build_static_pages():
 
     # プライバシーポリシー
     ga = (f"<h2>アクセス解析について</h2><p>本サイトでは、サービス改善のためアクセス解析ツール"
-          f"（{esc(ANALYTICS_NOTE)}）を利用する場合があります。これにより収集される情報に個人を特定するものは含まれません。</p>"
+          f"（{esc(ANALYTICS_NOTE)}）を利用しています。Cookie等を通じて閲覧ページ・アクセス日時・"
+          f"ブラウザ種別などの利用状況を収集しますが、これにより個人を特定することはありません。"
+          f"収集した情報はGoogle社のプライバシーポリシーに基づき取り扱われます。"
+          f'詳細は <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Googleのプライバシーポリシー</a> をご確認ください。</p>'
           ) if ANALYTICS_NOTE else ""
     priv = wrap(f"""
 <h1>プライバシーポリシー</h1>
