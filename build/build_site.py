@@ -1452,6 +1452,7 @@ CSS = """/* ── Design tokens ── */
   --fs-h2:1.12rem;
   --fs-h1:1.5rem;
   --fs-display:clamp(1.65rem,4.5vw,2.2rem);
+  --content-width:1000px;
   --fw-normal:400;
   --fw-semi:600;
   --fw-bold:700;
@@ -1461,7 +1462,7 @@ CSS = """/* ── Design tokens ── */
 body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7;font-weight:var(--fw-normal);font-size:var(--fs-lg)}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);padding:.55rem 1.1rem;border-bottom:1px solid var(--line)}
-.hbar{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
+.hbar{max-width:var(--content-width);margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
 .brand{font-weight:var(--fw-black);font-size:var(--fs-h2);color:var(--fg);display:inline-flex;align-items:center;gap:.45rem;line-height:1.2}
 .brand:hover{text-decoration:none}
 .brand-mark{width:1.45rem;height:1.45rem;flex:none;display:block}
@@ -1471,7 +1472,7 @@ header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);ba
 @media(max-width:520px){.gnav a{padding:.3rem .44rem;font-size:var(--fs-sm)}.brand{font-size:var(--fs-lg)}.brand-mark{width:1.3rem;height:1.3rem}header.site{padding:.5rem .8rem}}
 @media(max-width:360px){.gnav{gap:0}.gnav a{padding:.3rem .34rem}}
 :target{scroll-margin-top:60px}
-main{max-width:960px;margin:0 auto;padding:1.1rem 1.1rem 3rem}
+main{max-width:var(--content-width);margin:0 auto;padding:1.1rem 1.1rem 3rem}
 .crumbs{font-size:var(--fs-sm);color:var(--muted);margin:.2rem 0 1rem}
 .crumbs a{color:var(--muted)}
 h1{font-size:var(--fs-h1);line-height:1.35;margin:.2rem 0 .7rem;font-weight:var(--fw-bold)}
@@ -1519,7 +1520,7 @@ p.lead2{color:var(--muted);font-size:var(--fs-sm);margin:.1rem 0 .6rem}
 .mchip.on b{opacity:.85}
 ul.mgrid li[hidden]{display:none}
 p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
-footer.site{border-top:1px solid var(--line);padding:1.2rem 1.1rem;color:var(--muted);font-size:var(--fs-sm);max-width:960px;margin:0 auto}
+footer.site{border-top:1px solid var(--line);padding:1.2rem 1.1rem;color:var(--muted);font-size:var(--fs-sm);max-width:var(--content-width);margin:0 auto}
 footer.site a{color:var(--muted)}
 .cmpbox{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.9rem 1rem;margin:1.2rem 0}
 .cmpbox strong{display:block;margin-bottom:.35rem;font-size:var(--fs-h2);font-weight:var(--fw-bold);color:var(--fg)}
