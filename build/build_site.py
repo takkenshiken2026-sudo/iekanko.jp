@@ -1499,11 +1499,34 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .fig-sub{display:block;margin-top:.25rem;font-size:.8rem;color:var(--muted)}
 .fig-vs{display:block;margin-top:.35rem;font-size:.82rem;color:var(--muted)}
 .fig-vs strong{color:var(--fg);font-weight:700}
-.fig-cost-side{min-width:0}
+.fig-cost-side,.fig-cost-chart{min-width:0}
 .fig-side-label{display:block;font-size:.68rem;color:var(--muted);margin-bottom:.2rem}
 .fig-spark{display:block;width:100%;max-width:180px;height:36px}
 
-/* 比較メーター */
+/* 近隣＋都内中央値の横棒比較 */
+.fig-cmp{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.28rem}
+.fig-cmp li>a,.fig-cmp li>div{display:grid;grid-template-columns:4.8rem 1fr auto;gap:.4rem;align-items:center;
+  padding:.18rem 0;color:var(--fg);text-decoration:none}
+.fig-cmp li>a:hover{text-decoration:none;opacity:.85}
+.fig-cmp-name{font-size:.72rem;line-height:1.25;min-width:0}
+.fig-cmp-name em{display:block;font-style:normal;font-size:.62rem;color:var(--muted);font-weight:600}
+.fig-cmp li.fig-self .fig-cmp-name{font-weight:700}
+.fig-cmp li.fig-tokyo .fig-cmp-name{color:var(--muted)}
+.fig-cmp-bar{display:block;height:9px;background:#e8edf2;border-radius:999px;overflow:hidden}
+.fig-cmp-bar i{display:block;height:100%;width:var(--w,0);border-radius:999px;background:var(--c,#2a78d6);
+  transform:scaleX(0);transform-origin:left}
+.fig-cmp li.fig-tokyo .fig-cmp-bar i{background:#b7c0ca}
+.fig-cmp li.fig-near .fig-cmp-bar i{opacity:.72}
+.figures.on .fig-cmp-bar i{transform:scaleX(1);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.fig-cmp li:nth-child(1) .fig-cmp-bar i{transition-delay:.04s}
+.fig-cmp li:nth-child(2) .fig-cmp-bar i{transition-delay:.08s}
+.fig-cmp li:nth-child(3) .fig-cmp-bar i{transition-delay:.12s}
+.fig-cmp li:nth-child(4) .fig-cmp-bar i{transition-delay:.16s}
+.fig-cmp li:nth-child(5) .fig-cmp-bar i{transition-delay:.2s}
+.fig-cmp-n{font-variant-numeric:tabular-nums;font-size:.72rem;color:var(--muted);white-space:nowrap}
+.fig-cmp li.fig-self .fig-cmp-n{color:var(--fg);font-weight:700}
+
+/* 比較メーター（互換） */
 .fig-meter{display:flex;flex-direction:column;gap:.28rem;margin-top:.35rem}
 .fig-meter-row{display:grid;grid-template-columns:4.8rem 1fr;gap:.4rem;align-items:center;font-size:.7rem;color:var(--fg)}
 .fig-meter-row.muted{color:var(--muted)}
@@ -1530,7 +1553,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .figures-note{margin:.9rem 0 0;font-size:.76rem;color:var(--muted);line-height:1.5}
 
 @media(prefers-reduced-motion:reduce){
-  .figures .fig-meter-track i,.figures .fig-st-bar i{transform:none;transition:none}
+  .figures .fig-meter-track i,.figures .fig-st-bar i,.figures .fig-cmp-bar i{transform:none;transition:none}
 }
 
 @media(max-width:720px){
