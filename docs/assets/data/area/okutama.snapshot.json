@@ -46,6 +46,93 @@
     "tokyo_median_residential_yen_sqm": 371000,
     "tokyo_median_condo_price": 44987723
   },
+  "neighbors": [
+    {
+      "slug": "hinohara",
+      "name": "檜原村",
+      "condo_avg_price": null,
+      "land_median_yen_sqm": 19200,
+      "station_sum_top5": null
+    },
+    {
+      "slug": "hinode",
+      "name": "日の出町",
+      "condo_avg_price": null,
+      "land_median_yen_sqm": 74250,
+      "station_sum_top5": null
+    },
+    {
+      "slug": "ome",
+      "name": "青梅市",
+      "condo_avg_price": 11831250,
+      "land_median_yen_sqm": 84300,
+      "station_sum_top5": null
+    }
+  ],
+  "compare": {
+    "condo": [
+      {
+        "key": "near",
+        "slug": "ome",
+        "name": "青梅市",
+        "value": 11831250,
+        "href": "/area/tokyo/ome/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 44987723,
+        "href": null
+      }
+    ],
+    "land": [
+      {
+        "key": "self",
+        "slug": "okutama",
+        "name": "奥多摩町",
+        "value": 25500,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "hinohara",
+        "name": "檜原村",
+        "value": 19200,
+        "href": "/area/tokyo/hinohara/"
+      },
+      {
+        "key": "near",
+        "slug": "hinode",
+        "name": "日の出町",
+        "value": 74250,
+        "href": "/area/tokyo/hinode/"
+      },
+      {
+        "key": "near",
+        "slug": "ome",
+        "name": "青梅市",
+        "value": 84300,
+        "href": "/area/tokyo/ome/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
+        "href": null
+      }
+    ]
+  },
   "stations": {
     "year": null,
     "n_stations": 0,

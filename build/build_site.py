@@ -387,6 +387,69 @@ def format_rank_yen(yen, mode):
         return s
     return s
 
+
+def extract_any_yen(text):
+    """制度の支給額テキストから代表的な円額を1つ抽出（合計用）。"""
+    if not text:
+        return None
+    for mode in (
+        "taishin_cap", "funin_cap", "aircon_cap", "hoiku_cap", "rent_monthly",
+        "purchase_cap", "monthly_cap", "monthly", "birth_aid", "birth_gift",
+        "child_gift", "loan_cap",
+    ):
+        v = extract_rank_yen(text, mode)
+        if v:
+            return v
+    t = re.sub(r"<[^>]+>", "", text or "")
+    t = t.replace("，", ",")
+    if not t or "記載を確認中" in t or "公式ページで要確認" in t:
+        return None
+    vals = []
+    for m in re.finditer(r"(\d+(?:\.\d+)?)\s*万円", t):
+        vals.append(int(float(m.group(1)) * 10000))
+    for m in re.finditer(r"([0-9,]+)\s*円", t):
+        v = _yen_int(m.group(1))
+        if 1000 <= v <= 50000000:
+            vals.append(v)
+    return max(vals) if vals else None
+
+
+def format_sum_yen(yen):
+    """件数と並べる金額合計の短い表記。"""
+    if not yen:
+        return ""
+    if yen >= 100000000:
+        s = f"{yen/100000000:.2f}".rstrip("0").rstrip(".")
+        return f"{s}億円"
+    if yen >= 10000:
+        man = yen / 10000
+        if man >= 100:
+            return f"{man:,.0f}万円"
+        s = f"{man:.1f}".rstrip("0").rstrip(".")
+        return f"{s}万円"
+    return f"{yen:,}円"
+
+
+def amount_sum_of_programs(items):
+    """プログラム一覧の支給額合計と、金額が取れた件数。"""
+    total = 0
+    n_amt = 0
+    for p in items:
+        amt = amount_of(facts_of(p["id"]))
+        yen = extract_any_yen(amt) if amt else None
+        if yen:
+            total += yen
+            n_amt += 1
+    return total, n_amt
+
+
+def cnt_with_sum_html(n_prog, yen_sum):
+    """制度数バッジ + 金額合計バッジ。"""
+    html_s = f'<span class="cnt">{n_prog}</span>'
+    if yen_sum:
+        html_s += f'<span class="csum" title="金額が分かる制度の合計（上限・月額などの目安）">計{esc(format_sum_yen(yen_sum))}</span>'
+    return html_s
+
 def _rank_rows_from_hikaku(cid, mode, top_n=5):
     path = os.path.join(OUT, "hikaku", cid, "index.html")
     if not os.path.isfile(path):
@@ -665,7 +728,7 @@ def compute_scores():
     ev_total={}
     for cid,label,ev,inc,exc in TAXONOMY:
         ev_total[ev]=ev_total.get(ev,0)+1
-    muni_cat={}; muni_ev_prog={}
+    muni_cat={}; muni_ev_prog={}; muni_ev_yen={}
     for m in munis:
         for p in programs_of(m["id"]):
             cats=classify(p["title"],p["summary"],p["benefit_description"],p["target_description"])
@@ -673,7 +736,13 @@ def compute_scores():
             muni_cat.setdefault(m["id"],set()).update(cats)
             evs={CAT_BY_ID[cid][2] for cid in cats if cid in CAT_BY_ID}
             d=muni_ev_prog.setdefault(m["id"],{})
-            for ev in evs: d[ev]=d.get(ev,0)+1
+            y=muni_ev_yen.setdefault(m["id"],{})
+            amt = amount_of(facts_of(p["id"]))
+            yen = extract_any_yen(amt) if amt else None
+            for ev in evs:
+                d[ev]=d.get(ev,0)+1
+                if yen:
+                    y[ev]=y.get(ev,0)+yen
     score={}
     for m in munis:
         mid=m["id"]; s={}
@@ -681,7 +750,8 @@ def compute_scores():
             covered=len([cid for cid in muni_cat.get(mid,()) if CAT_BY_ID.get(cid,(None,None,None))[2]==ev])
             total=ev_total.get(ev,0) or 1
             s[ev]={"cov":covered/total*100,"covered":covered,"total":total,
-                   "prog":muni_ev_prog.get(mid,{}).get(ev,0)}
+                   "prog":muni_ev_prog.get(mid,{}).get(ev,0),
+                   "yen_sum":muni_ev_yen.get(mid,{}).get(ev,0)}
         score[mid]=s
     avg={ev: sum(score[m["id"]][ev]["cov"] for m in munis)/len(munis) for ev in EVENTS}
     return score, avg
@@ -886,30 +956,39 @@ def build_ranking(ev, score, avg=None):
     persona,age,color,_ = EV_META[ev]
     ev_name = EVENTS[ev][0]
     url=f"/ranking/{ev}/"
-    ranked=sorted(munis, key=lambda m:(-score[m["id"]][ev]["prog"], m["id"]))
+    # yen_sum をスコアに載せる（無い場合は0）
+    def yen_of(m):
+        return score[m["id"]][ev].get("yen_sum", 0) or 0
+    ranked=sorted(munis, key=lambda m:(-score[m["id"]][ev]["prog"], -yen_of(m), m["id"]))
     top=ranked[:15]
     max_prog=max((score[m["id"]][ev]["prog"] for m in top), default=1) or 1
-    rows=[(m["municipality_name"], score[m["id"]][ev]["prog"], None, "") for m in top]
+    rows=[]
+    for m in top:
+        s=score[m["id"]][ev]
+        note=f'計{format_sum_yen(s["yen_sum"])}' if s.get("yen_sum") else ""
+        rows.append((m["municipality_name"], s["prog"], None, note))
     chart=svg_bars(rows, max_prog, "制度")
     trs=[]
     for rank,m in enumerate(ranked,1):
         s=score[m["id"]][ev]; slug=muni_slug(m)
         cls=' class="top3"' if rank<=3 else ''
+        yen_cell = f'計{esc(format_sum_yen(s["yen_sum"]))}' if s.get("yen_sum") else "—"
         trs.append(f'<tr{cls}><td class="rk">{rank}</td>'
                    f'<td class="mn"><a href="/area/tokyo/{slug}/{ev}/">{esc(m["municipality_name"])}</a></td>'
-                   f'<td class="dt">{s["prog"]}制度</td></tr>')
-    title=f"{ev_name}の制度がある東京都の自治体｜掲載数でみる"
-    desc=clip(f"{persona}向けに、{ev_name}関連の制度掲載数が多い東京都の自治体から順に確認できます。各自治体の制度一覧へ進めます。",118)
+                   f'<td class="dt">{s["prog"]}制度</td>'
+                   f'<td class="dt yen">{yen_cell}</td></tr>')
+    title=f"{ev_name}の制度がある東京都の自治体｜掲載数・金額でみる"
+    desc=clip(f"{persona}向けに、{ev_name}関連の制度掲載数が多い東京都の自治体から順に確認できます。金額が分かる制度の合計もあわせて表示します。",118)
     body=f"""
 <span class="badge" style="--pc:{color}">{esc(age)}</span>
 <h1>{esc(ev_name)}の制度がある東京都の自治体</h1>
-<p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}関連の制度を掲載している件数が多い自治体から順に並べています。</p>
+<p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}関連の制度を掲載している件数が多い自治体から順に並べています。金額が分かる制度の合計（上限・月額などの目安）も併記します。</p>
 <div class="chartcard" style="--pc:{color}">{chart}
-<p class="cap">上位15自治体の掲載制度数</p></div>
+<p class="cap">上位15自治体の掲載制度数と金額合計</p></div>
 <div class="tablewrap"><table class="cmp rank">
-<thead><tr><th>順位</th><th>自治体</th><th>制度数</th></tr></thead>
+<thead><tr><th>順位</th><th>自治体</th><th>制度数</th><th>金額合計（目安）</th></tr></thead>
 <tbody>{''.join(trs)}</tbody></table></div>
-<p class="notice">掲載件数は当サイトの収録状況に基づく目安です。金額の多寡や実際の手厚さを示すものではありません。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
+<p class="notice">掲載件数・金額合計は当サイトの収録状況に基づく目安です。月額と一時金を単純合算しているため、実際の手厚さや受給可否を示すものではありません。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
 {rel_rankings(ev)}
 <p><a href="/find/">{CHEV_L} 目的・年代から探す にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{ev_name}の制度がある東京都の自治体",
@@ -922,24 +1001,28 @@ def build_ranking(ev, score, avg=None):
 
 def build_find_hub(score):
     def top1(ev):
-        best=max(munis,key=lambda m:(score[m["id"]][ev]["prog"], -m["id"]))
-        return best["municipality_name"], score[best["id"]][ev]["prog"]
+        best=max(munis,key=lambda m:(score[m["id"]][ev]["prog"], score[m["id"]][ev].get("yen_sum",0), -m["id"]))
+        return best["municipality_name"], score[best["id"]][ev]["prog"], score[best["id"]][ev].get("yen_sum",0)
     cards=[]
     for ev,(persona,age,color,_) in EV_META.items():
-        ev_name=EVENTS[ev][0]; tn,tp=top1(ev)
+        ev_name=EVENTS[ev][0]; tn,tp,ty=top1(ev)
+        top_note=f"掲載数が多い例：{esc(tn)}（{tp}制度"
+        if ty:
+            top_note += f"・計{esc(format_sum_yen(ty))}"
+        top_note += "）"
         cards.append(f'<a class="pcard" href="/ranking/{ev}/" style="--pc:{color}">'
             f'<span class="pic">{icon_svg(ev)}</span>'
             f'<span class="ptxt"><strong>{esc(persona)}</strong>'
             f'<span class="page">{esc(age)}</span>'
             f'<span class="pdesc">{esc(ev_name)}の制度がある自治体をみる</span>'
-            f'<span class="ptop">掲載数が多い例：{esc(tn)}（{tp}制度）</span></span>'
+            f'<span class="ptop">{top_note}</span></span>'
             f'<span class="parrow" aria-hidden="true">{CHEV_R}</span></a>')
     body=f"""
 <h1>目的・年代から制度がある地域を探す</h1>
 <p class="lead">ライフステージや目的を選ぶと、その分野の制度を掲載している東京都の自治体を件数順に確認できます。
-「引っ越し先選び」や「いま住む街で使える制度の確認」にお使いください。</p>
+「引っ越し先選び」や「いま住む街で使える制度の確認」にお使いください。金額が分かる制度の合計もあわせて表示します。</p>
 <div class="pgrid">{''.join(cards)}</div>
-<p class="note">※掲載件数は当サイトの収録状況に基づく目安です。詳細・最新情報は各自治体の公式ページでご確認ください。</p>
+<p class="note">※掲載件数・金額合計は当サイトの収録状況に基づく目安です。詳細・最新情報は各自治体の公式ページでご確認ください。</p>
 <p><a href="/hikaku/">制度カテゴリごとの自治体比較を見る {CHEV_R}</a></p>"""
     page(path="/find/index.html",title="目的・年代から探す｜東京都の制度がある自治体",
          description="子育て・シニア・引っ越し・出産・退職など、目的や年代から、関連制度を掲載している東京都の自治体を見つけられます。",
@@ -963,11 +1046,16 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
             f'{other_lis}</ul></div>')
     title = f"{mn}で{ev_name}のときに使える制度・手当・助成【一覧】"
     desc = clip(f"{mn}で{ev_name}のときに受けられる給付金・手当・助成制度を一覧でまとめました。{ev_intro}", 118)
+    yen_sum, n_amt = amount_sum_of_programs(items)
+    if yen_sum:
+        body_meta_extra = f'・金額が分かるもの合計 {esc(format_sum_yen(yen_sum))}（{n_amt}件）'
+    else:
+        body_meta_extra = ""
     body = f"""
 <span class="badge" style="--pc:{EV_META[ev_slug][2]}">{esc(ev_name)}</span>
 <h1>{esc(mn)}の{esc(ev_name)}で使える制度</h1>
 <p class="lead">{esc(ev_intro)}</p>
-<p class="meta">{esc(mn)}・{esc(ev_name)}関連の制度 {len(items)}件</p>
+<p class="meta">{esc(mn)}・{esc(ev_name)}関連の制度 {len(items)}件{body_meta_extra}</p>
 {listing}
 {relbox}
 <p><a href="/area/tokyo/{slug}/">{CHEV_L} {esc(mn)}の制度一覧にもどる</a></p>"""
@@ -987,9 +1075,12 @@ def build_muni(m, slug, score, avg):
     # ライフイベント別セクション
     sections=[]
     counts={}
+    yen_sums={}
     for ev_slug,(ev_name,ev_intro) in EVENTS.items():
         items=[p for p in progs if any(e["slug"]==ev_slug for e in events_of(p["id"]))]
         counts[ev_slug]=len(items)
+        yen_sum, _n_amt = amount_sum_of_programs(items)
+        yen_sums[ev_slug]=yen_sum
         if not items: continue
         lis="".join(f'<li><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a></li>' for p in items[:8])
         color=EV_META[ev_slug][2]
@@ -998,10 +1089,13 @@ def build_muni(m, slug, score, avg):
             f'<section class="ev" style="--pc:{color}">'
             f'<h2><span class="evh"><span class="evi">{icon_svg(ev_slug)}</span>'
             f'<a href="/area/tokyo/{slug}/{ev_slug}/">{esc(ev_name)}</a></span>'
-            f'<span class="cnt">{len(items)}</span></h2>'
+            f'{cnt_with_sum_html(len(items), yen_sum)}</h2>'
             f'<ul class="proglist">{lis}</ul>{more}'
             f'<p class="evlinks"><a href="/ranking/{ev_slug}/">{esc(ev_name)}の制度がある自治体をみる {CHEV_R}</a></p>'
             f'</section>')
+    total_yen = sum(yen_sums.values())
+    # 同一制度が複数ライフイベントに紐づく場合があるため、全体合計はプログラム単位で再計算
+    total_yen, total_amt_n = amount_sum_of_programs(progs)
     mid=m["id"]
     # ほかの市区町村（種別を問わず五十音順の近隣）を対等に回遊
     _tj={"ward":"区","city":"市","town":"町","village":"村"}
@@ -1029,9 +1123,12 @@ def build_muni(m, slug, score, avg):
         live_sec = figures_section_html(slug)
     except Exception:
         live_sec = ""
+    lead_extra = f"全{len(progs)}件"
+    if total_yen:
+        lead_extra += f"・金額が分かるもの合計{format_sum_yen(total_yen)}（{total_amt_n}件）"
     body = f"""
 <h1>{esc(mn)}で受けられる給付・手当・助成 一覧</h1>
-<p class="lead">{esc(mn)}にお住まいの方が使える制度を、ライフイベント別にまとめました（全{len(progs)}件・出典/最終確認日つき）。</p>
+<p class="lead">{esc(mn)}にお住まいの方が使える制度を、ライフイベント別にまとめました（{esc(lead_extra)}・出典/最終確認日つき）。</p>
 {live_sec}
 {''.join(sections)}
 {others_html}
@@ -1350,6 +1447,9 @@ ul.proglist{list-style:none;padding:0;margin:.3rem 0}
 ul.proglist li{padding:.55rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:.6rem;align-items:baseline}
 ul.proglist .pt{font-size:.74rem;color:var(--muted)}
 .ev h2 .cnt{font-size:.8rem;color:#fff;background:var(--accent);border-radius:999px;padding:.05rem .5rem;margin-left:.4rem;vertical-align:middle}
+.ev h2 .csum{font-size:.75rem;color:var(--pc,var(--accent));background:color-mix(in srgb,var(--pc,var(--accent)) 12%,#fff);
+  border:1px solid color-mix(in srgb,var(--pc,var(--accent)) 28%,#fff);border-radius:999px;padding:.05rem .5rem;margin-left:.3rem;vertical-align:middle;font-weight:700}
+table.cmp.rank td.yen{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--fg)}
 .more{display:inline-block;margin:.5rem 0 1rem;font-size:.9rem}
 ul.mgrid{list-style:none;padding:0;margin:.4rem 0 1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem}
 ul.mgrid li{border:1px solid var(--line);border-radius:9px;padding:.5rem .7rem;display:flex;justify-content:space-between;align-items:baseline}
@@ -1499,11 +1599,34 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .fig-sub{display:block;margin-top:.25rem;font-size:.8rem;color:var(--muted)}
 .fig-vs{display:block;margin-top:.35rem;font-size:.82rem;color:var(--muted)}
 .fig-vs strong{color:var(--fg);font-weight:700}
-.fig-cost-side{min-width:0}
+.fig-cost-side,.fig-cost-chart{min-width:0}
 .fig-side-label{display:block;font-size:.68rem;color:var(--muted);margin-bottom:.2rem}
 .fig-spark{display:block;width:100%;max-width:180px;height:36px}
 
-/* 比較メーター */
+/* 近隣＋都内中央値の横棒比較 */
+.fig-cmp{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.28rem}
+.fig-cmp li>a,.fig-cmp li>div{display:grid;grid-template-columns:4.8rem 1fr auto;gap:.4rem;align-items:center;
+  padding:.18rem 0;color:var(--fg);text-decoration:none}
+.fig-cmp li>a:hover{text-decoration:none;opacity:.85}
+.fig-cmp-name{font-size:.72rem;line-height:1.25;min-width:0}
+.fig-cmp-name em{display:block;font-style:normal;font-size:.62rem;color:var(--muted);font-weight:600}
+.fig-cmp li.fig-self .fig-cmp-name{font-weight:700}
+.fig-cmp li.fig-tokyo .fig-cmp-name{color:var(--muted)}
+.fig-cmp-bar{display:block;height:9px;background:#e8edf2;border-radius:999px;overflow:hidden}
+.fig-cmp-bar i{display:block;height:100%;width:var(--w,0);border-radius:999px;background:var(--c,#2a78d6);
+  transform:scaleX(0);transform-origin:left}
+.fig-cmp li.fig-tokyo .fig-cmp-bar i{background:#b7c0ca}
+.fig-cmp li.fig-near .fig-cmp-bar i{opacity:.72}
+.figures.on .fig-cmp-bar i{transform:scaleX(1);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.fig-cmp li:nth-child(1) .fig-cmp-bar i{transition-delay:.04s}
+.fig-cmp li:nth-child(2) .fig-cmp-bar i{transition-delay:.08s}
+.fig-cmp li:nth-child(3) .fig-cmp-bar i{transition-delay:.12s}
+.fig-cmp li:nth-child(4) .fig-cmp-bar i{transition-delay:.16s}
+.fig-cmp li:nth-child(5) .fig-cmp-bar i{transition-delay:.2s}
+.fig-cmp-n{font-variant-numeric:tabular-nums;font-size:.72rem;color:var(--muted);white-space:nowrap}
+.fig-cmp li.fig-self .fig-cmp-n{color:var(--fg);font-weight:700}
+
+/* 比較メーター（互換） */
 .fig-meter{display:flex;flex-direction:column;gap:.28rem;margin-top:.35rem}
 .fig-meter-row{display:grid;grid-template-columns:4.8rem 1fr;gap:.4rem;align-items:center;font-size:.7rem;color:var(--fg)}
 .fig-meter-row.muted{color:var(--muted)}
@@ -1528,9 +1651,10 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .figures.on .fig-st-bar i{transform:scaleX(1);transition:transform .65s cubic-bezier(.2,.7,.2,1)}
 .fig-st-n{font-variant-numeric:tabular-nums;font-size:.82rem;color:var(--muted);white-space:nowrap}
 .figures-note{margin:.9rem 0 0;font-size:.76rem;color:var(--muted);line-height:1.5}
+.fig-st-wrap{padding:.35rem 0 .15rem}
 
 @media(prefers-reduced-motion:reduce){
-  .figures .fig-meter-track i,.figures .fig-st-bar i{transform:none;transition:none}
+  .figures .fig-meter-track i,.figures .fig-st-bar i,.figures .fig-cmp-bar i{transform:none;transition:none}
 }
 
 @media(max-width:720px){
@@ -1556,6 +1680,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .evi{display:inline-flex;color:#fff;background:var(--pc,var(--accent));border-radius:7px;padding:3px}
 .evi .ev-ic{width:15px;height:15px}
 .ev>h2 .cnt{background:var(--pc,var(--accent))}
+.ev>h2 .csum{color:var(--pc,var(--accent))}
 .evlinks{font-size:.85rem;margin:.35rem 0 .1rem}
 .evlinks a{color:var(--pc,var(--accent))}
 .cmpbox[style*="--pc"] strong{color:var(--pc)}
