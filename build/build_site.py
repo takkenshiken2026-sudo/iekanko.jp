@@ -172,12 +172,27 @@ TAXONOMY = [
 ]
 CAT_BY_ID = {c[0]:c for c in TAXONOMY}
 
-# トップ掲載用：金額差が出やすい制度のランキング定義
-# (cid, 見出し, 単位ラベル, 抽出モード, アクセント色)
-AMOUNT_RANK_SPECS = [
- ("eld_omutsu",  "高齢者の紙おむつ助成", "月額上限の目安", "monthly_cap", "#eb6834"),
- ("eld_hochoki", "補聴器の購入助成",     "助成上限の目安", "purchase_cap", "#2a78d6"),
- ("dis_teate",   "心身障害者福祉手当",   "月額の目安",     "monthly",      "#1baf7a"),
+# トップ掲載：目的カテゴリ別の金額ランキング
+# (event_slug, [(cid, 見出し, 単位ラベル, 抽出モード), ...])
+AMOUNT_RANK_BY_EVENT = [
+ ("childcare", [
+   ("child_hoiku_gen", "認可外・認証保育の補助", "月額上限の目安", "hoiku_cap"),
+   ("child_iwai", "出産・入学祝金・クーポン", "支給額の目安", "child_gift"),
+ ]),
+ ("pregnancy_birth", [
+   ("child_iwai", "自治体の出産祝金・クーポン", "支給額の目安", "birth_gift"),
+ ]),
+ ("moving", [
+   ("house_yachin", "家賃補助", "月額の目安", "rent_monthly"),
+ ]),
+ ("retirement_unemployment", [
+   ("low_aircon", "エアコン設置助成", "助成上限の目安", "aircon_cap"),
+ ]),
+ ("elderly_care", [
+   ("eld_omutsu", "高齢者の紙おむつ助成", "月額上限の目安", "monthly_cap"),
+   ("eld_hochoki", "補聴器の購入助成", "助成上限の目安", "purchase_cap"),
+   ("dis_teate", "心身障害者福祉手当", "月額の目安", "monthly"),
+ ]),
 ]
 
 def _yen_int(s):
@@ -232,17 +247,106 @@ def extract_rank_yen(text, mode):
             if 3000 <= v <= 200000:
                 vals.append(v)
         return max(vals) if vals else None
+    if mode in ("child_gift", "birth_gift"):
+        # 国の伴走型給付（ほぼ全市共通）は除外し、自治体独自のみ
+        if any(k in t for k in ("出産・子育て応援給付", "妊婦のための支援給付", "妊婦給付認定後")):
+            return None
+        if mode == "birth_gift" and re.search(r"入学|学用品", t) and not re.search(r"出生|出産|新生児|妊娠|クーポン", t):
+            return None
+        vals = []
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*万円", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"([0-9,]+)\s*円", t):
+            v = _yen_int(m.group(1))
+            if 5000 <= v <= 300000:
+                vals.append(v)
+        return max(vals) if vals else None
+    if mode == "hoiku_cap":
+        if re.search(r"(商品券|タクシー|第[3-9]子|第\d子)", t):
+            return None
+        vals = []
+        for m in re.finditer(r"(?:月額)?(?:補助)?(?:上限額?|限度額)?[^。\d]{0,6}(\d+(?:\.\d+)?)\s*万円", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"(?:月額)?(?:補助)?上限額?\s*([0-9,]+)\s*円", t):
+            vals.append(_yen_int(m.group(1)))
+        for m in re.finditer(r"月額\s*([0-9,]+)\s*円", t):
+            vals.append(_yen_int(m.group(1)))
+        for m in re.finditer(r"上限\s*([0-9,]+)\s*円", t):
+            vals.append(_yen_int(m.group(1)))
+        vals = [v for v in vals if 20000 <= v <= 150000]
+        return max(vals) if vals else None
+    if mode == "rent_monthly":
+        # 所得月額などの閾値は除外し、家賃補助の上限・月額を優先
+        if re.search(r"所得月額", t):
+            m = re.search(r"(?:家賃|補助)?(?:月額)?\s*([0-9,]+)\s*円(?:を)?限度", t)
+            if m:
+                return _yen_int(m.group(1))
+            m = re.search(r"限度\s*([0-9,]+)\s*円", t)
+            if m:
+                return _yen_int(m.group(1))
+            return None
+        m = re.search(r"月額\s*(\d+(?:\.\d+)?)\s*万円", t)
+        if m:
+            return int(float(m.group(1)) * 10000)
+        m = re.search(r"月額\s*([0-9,]+)\s*円限度", t)
+        if m:
+            return _yen_int(m.group(1))
+        m = re.search(r"([0-9,]+)\s*円限度", t)
+        if m:
+            return _yen_int(m.group(1))
+        m = re.search(r"月額\s*([0-9,]+)\s*円", t)
+        if m:
+            return _yen_int(m.group(1))
+        return None
+    if mode == "aircon_cap":
+        if any(k in t for k in ("児童扶養", "児童手当", "全部支給：本体")):
+            return None
+        m = re.search(r"上限\s*(\d+)\s*万円", t)
+        if m:
+            return int(m.group(1)) * 10000
+        m = re.search(r"(\d+)\s*万円を上限", t)
+        if m:
+            return int(m.group(1)) * 10000
+        m = re.search(r"上限\s*([0-9,]+)\s*円", t)
+        if m:
+            return _yen_int(m.group(1))
+        m = re.search(r"([0-9,]+)\s*円を上限", t)
+        if m:
+            return _yen_int(m.group(1))
+        return None
     return None
 
 def format_rank_yen(yen, mode):
     s = f"{yen:,}円"
-    if mode == "monthly_cap":
+    if mode in ("monthly_cap", "monthly", "rent_monthly", "hoiku_cap"):
         return "月額 " + s
-    if mode == "purchase_cap":
+    if mode in ("purchase_cap", "aircon_cap"):
         return "上限 " + s
-    if mode == "monthly":
-        return "月額 " + s
+    if mode in ("child_gift", "birth_gift"):
+        return s
     return s
+
+def _rank_rows_from_hikaku(cid, mode, top_n=5):
+    path = os.path.join(OUT, "hikaku", cid, "index.html")
+    if not os.path.isfile(path):
+        return []
+    with open(path, encoding="utf-8") as f:
+        html_t = f.read()
+    rows = []
+    for href, name, amt in re.findall(
+            r'<tr><td class="mn"><a href="([^"]+)">([^<]+)</a></td><td>(.*?)</td>',
+            html_t, re.S):
+        amt_plain = re.sub(r"<[^>]+>", "", amt).strip()
+        yen = extract_rank_yen(amt_plain, mode)
+        if yen is None:
+            continue
+        rows.append((yen, name, href, amt_plain))
+    uniq = {}
+    for yen, name, href, amt in rows:
+        cur = uniq.get(name)
+        if cur is None or yen > cur[0]:
+            uniq[name] = (yen, name, href, amt)
+    return sorted(uniq.values(), key=lambda x: (-x[0], x[1]))[:top_n]
 
 def amount_rank_rows(entries, mode, top_n=5):
     """entries: [(m, slug, program, amount_text, idx), ...] -> [(yen, muni_name, href, amount_text)]"""
@@ -261,60 +365,73 @@ def amount_rank_rows(entries, mode, top_n=5):
     rows = sorted(best.values(), key=lambda x: (-x[0], x[1]))
     return rows[:top_n]
 
-def amount_rankings_html(cat_entries=None, top_n=5):
-    """トップ用の金額ランキングHTML。cat_entriesが無い場合は hikaku HTML から復元。"""
-    blocks = []
-    for cid, title, unit, mode, color in AMOUNT_RANK_SPECS:
-        rows = []
-        if cat_entries and cid in cat_entries:
-            rows = amount_rank_rows(cat_entries[cid], mode, top_n)
-        else:
-            # 静的再生成用：既存の比較ページから読む
-            path = os.path.join(OUT, "hikaku", cid, "index.html")
-            if os.path.isfile(path):
-                with open(path, encoding="utf-8") as f:
-                    html_t = f.read()
-                for href, name, amt in re.findall(
-                        r'<tr><td class="mn"><a href="([^"]+)">([^<]+)</a></td><td>(.*?)</td>',
-                        html_t, re.S):
-                    amt_plain = re.sub(r"<[^>]+>", "", amt).strip()
-                    yen = extract_rank_yen(amt_plain, mode)
-                    if yen is None:
-                        continue
-                    rows.append((yen, name, href, amt_plain))
-                # 自治体名で重複排除（最高額を残す）
-                uniq = {}
-                for yen, name, href, amt in rows:
-                    cur = uniq.get(name)
-                    if cur is None or yen > cur[0]:
-                        uniq[name] = (yen, name, href, amt)
-                rows = sorted(uniq.values(), key=lambda x: (-x[0], x[1]))[:top_n]
-        if len(rows) < 3:
-            continue
-        lis = []
-        for i, (yen, name, href, _amt) in enumerate(rows, 1):
-            lis.append(
-                f'<li><span class="arrk">{i}</span>'
-                f'<a class="armn" href="{esc(href)}">{esc(name)}</a>'
-                f'<span class="aramt">{esc(format_rank_yen(yen, mode))}</span></li>'
-            )
-        blocks.append(
-            f'<div class="arbox" style="--pc:{color}">'
-            f'<h3><a href="/hikaku/{cid}/">{esc(title)}</a></h3>'
-            f'<p class="arunit">{esc(unit)}</p>'
-            f'<ol class="arlist">{"".join(lis)}</ol>'
-            f'<p class="armore"><a href="/hikaku/{cid}/">{CHEV_R} 全市区町村の金額を比較</a></p>'
-            f'</div>'
+def _amount_box_html(cid, title, unit, mode, color, rows):
+    lis = []
+    for i, (yen, name, href, _amt) in enumerate(rows, 1):
+        lis.append(
+            f'<li><span class="arrk">{i}</span>'
+            f'<a class="armn" href="{esc(href)}">{esc(name)}</a>'
+            f'<span class="aramt">{esc(format_rank_yen(yen, mode))}</span></li>'
         )
-    if not blocks:
+    return (
+        f'<div class="arbox" style="--pc:{color}">'
+        f'<h3><a href="/hikaku/{cid}/">{esc(title)}</a></h3>'
+        f'<p class="arunit">{esc(unit)}</p>'
+        f'<ol class="arlist">{"".join(lis)}</ol>'
+        f'<p class="armore"><a href="/hikaku/{cid}/">{CHEV_R} 全市区町村の金額を比較</a></p>'
+        f'</div>'
+    )
+
+def amount_rankings_html(cat_entries=None, top_n=5):
+    """目的カテゴリ切替つきの金額ランキングHTML。"""
+    chips = []
+    panels = []
+    first = True
+    for ev, specs in AMOUNT_RANK_BY_EVENT:
+        persona, _age, color, _ = EV_META[ev]
+        boxes = []
+        for cid, title, unit, mode in specs:
+            if cat_entries and cid in cat_entries:
+                rows = amount_rank_rows(cat_entries[cid], mode, top_n)
+            else:
+                rows = _rank_rows_from_hikaku(cid, mode, top_n)
+            min_n = 2 if ev == "moving" else 3
+            if len(rows) < min_n:
+                continue
+            boxes.append(_amount_box_html(cid, title, unit, mode, color, rows))
+        if not boxes:
+            continue
+        on = " on" if first else ""
+        pressed = "true" if first else "false"
+        hidden = "" if first else " hidden"
+        chips.append(
+            f'<button type="button" class="mchip archip{on}" data-ar="{ev}" '
+            f'style="--pc:{color}" aria-pressed="{pressed}">{esc(persona)}</button>'
+        )
+        panels.append(
+            f'<div class="arpanel" data-ar="{ev}"{hidden}>'
+            f'<div class="argrid">{"".join(boxes)}</div></div>'
+        )
+        first = False
+    if not panels:
         return ""
     return (
         '<section class="amtrank">'
-        '<h2 class="fh">支給額・助成額が高い自治体（制度別）</h2>'
-        '<p class="lead2">同じ制度でも上限額は自治体で違います。金額が分かる制度から、上位の自治体を紹介します。</p>'
-        f'<div class="argrid">{"".join(blocks)}</div>'
+        '<h2 class="fh">支給額・助成額が高い自治体</h2>'
+        '<p class="lead2">目的・年代を選ぶと、金額差が出やすい制度の上位自治体を確認できます。</p>'
+        f'<div class="mchips archips" role="tablist" aria-label="金額ランキングの目的">{"".join(chips)}</div>'
+        f'{"".join(panels)}'
         '<p class="note">※掲載の金額は公式情報から抽出した上限・月額の目安です。対象条件・世帯状況により異なる場合があります。'
         '申請前に必ず各制度の公式ページでご確認ください。</p>'
+        '<script>(function(){'
+        'var chips=[].slice.call(document.querySelectorAll(".archip"));'
+        'var panels=[].slice.call(document.querySelectorAll(".arpanel"));'
+        'chips.forEach(function(c){c.addEventListener("click",function(){'
+        'var ar=c.getAttribute("data-ar");'
+        'chips.forEach(function(x){var on=x===c;x.classList.toggle("on",on);x.setAttribute("aria-pressed",on);});'
+        'panels.forEach(function(p){p.hidden=p.getAttribute("data-ar")!==ar;});'
+        '});});'
+        '})();</script>'
         '</section>'
     )
 
@@ -1249,10 +1366,14 @@ table.cmp.rank td.rk{width:2.4rem;text-align:center;color:var(--muted);font-vari
 table.cmp.rank tr.top3 td.rk{color:var(--accent);font-weight:800}
 table.cmp.rank tr.top3 td.mn a{font-weight:700}
 
-/* ── トップ：金額ランキング ── */
+/* ── トップ：金額ランキング（目的カテゴリ切替） ── */
 .amtrank{margin:1.4rem 0 1.6rem}
 .amtrank .fh{font-size:1.08rem;margin:.1rem 0 .35rem;border:0;padding:0}
-.argrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin:.7rem 0 .5rem}
+.amtrank .lead2{margin:.15rem 0 .35rem}
+.archips{margin:.45rem 0 .1rem}
+.archip.on{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:#fff}
+.arpanel{margin:0}
+.argrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.7rem;margin:.55rem 0 .5rem}
 @media(max-width:820px){.argrid{grid-template-columns:1fr}}
 .arbox{border:1px solid var(--line);border-top:3px solid var(--pc,var(--accent));border-radius:12px;padding:.75rem .85rem .7rem;background:#fff}
 .arbox h3{margin:0 0 .15rem;font-size:.98rem;border:0;padding:0}
