@@ -1,0 +1,75 @@
+{
+  "city_code": "13212",
+  "name": "日野市",
+  "slug": "hino",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 227000,
+    "median_commercial_yen_sqm": 374000,
+    "n_points": 46,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 65
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 10,
+    "top": [
+      {
+        "name": "豊田",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 64440
+      },
+      {
+        "name": "高幡不動",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 49872
+      },
+      {
+        "name": "日野",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 45858
+      },
+      {
+        "name": "南平",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 9759
+      },
+      {
+        "name": "甲州街道",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 9088
+      },
+      {
+        "name": "万願寺",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 8126
+      },
+      {
+        "name": "平山城址公園",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 7740
+      },
+      {
+        "name": "百草園",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 7434
+      }
+    ],
+    "sum_top5_passengers": 179017,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

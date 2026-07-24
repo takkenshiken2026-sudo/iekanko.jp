@@ -1,0 +1,51 @@
+{
+  "city_code": "13220",
+  "name": "東大和市",
+  "slug": "higashiyamato",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 176000,
+    "median_commercial_yen_sqm": 184000,
+    "n_points": 26,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 50
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 4,
+    "top": [
+      {
+        "name": "玉川上水",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 24712
+      },
+      {
+        "name": "東大和市",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 23998
+      },
+      {
+        "name": "上北台",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 13333
+      },
+      {
+        "name": "桜街道",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 6949
+      }
+    ],
+    "sum_top5_passengers": 68992,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

@@ -1021,9 +1021,18 @@ def build_muni(m, slug, score, avg):
                      f'<p class="more"><a href="/#area">{CHEV_R} 東京都62市区町村の一覧から探す</a></p></section>')
     title = f"{mn}で受けられる給付・手当・助成 一覧｜対象・金額まとめ"
     desc = clip(f"{mn}で受けられる給付金・手当・助成・支援制度を{len(progs)}件、ライフイベント別に出典付きでまとめました。妊娠出産・子育て・引っ越し・退職失業・高齢介護の制度が一目でわかります。",118)
+    try:
+        _build_dir = os.path.dirname(os.path.abspath(__file__))
+        if _build_dir not in sys.path:
+            sys.path.insert(0, _build_dir)
+        from livability_html import livability_section_html
+        live_sec = livability_section_html(slug)
+    except Exception:
+        live_sec = ""
     body = f"""
 <h1>{esc(mn)}で受けられる給付・手当・助成 一覧</h1>
 <p class="lead">{esc(mn)}にお住まいの方が使える制度を、ライフイベント別にまとめました（全{len(progs)}件・出典/最終確認日つき）。</p>
+{live_sec}
 {''.join(sections)}
 {others_html}
 """
@@ -1449,6 +1458,21 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .aramt{color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.86rem}
 .armore{margin:.45rem 0 0;font-size:.84rem}
 .armore a{color:var(--pc,var(--accent))}
+
+/* ── 自治体：住まい相場・交通 ── */
+.livability{margin:1.3rem 0 1.6rem;padding:1rem 1.05rem;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,#f7faf8 0%,#fff 55%)}
+.livability .fh{font-size:1.08rem;margin:0 0 .35rem;border:0;padding:0}
+.livability .lead2{margin:0 0 .75rem;color:var(--muted);font-size:.92rem}
+.lvstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.55rem;margin:0 0 .85rem}
+.lvstat{padding:.55rem .65rem;border:1px solid var(--line);border-radius:10px;background:#fff}
+.lvstat .lvl{display:block;font-size:.72rem;color:var(--muted);margin-bottom:.15rem}
+.lvstat .lvv{display:block;font-size:1.02rem;font-weight:700;font-variant-numeric:tabular-nums}
+.lvstat .lvs{display:block;font-size:.78rem;color:var(--muted);margin-top:.1rem}
+.lvcharts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.7rem}
+.lvbox{border:1px solid var(--line);border-radius:10px;padding:.65rem .75rem .5rem;background:#fff}
+.lvbox h3{margin:0 0 .4rem;font-size:.88rem;border:0;padding:0;color:var(--fg)}
+.lv-chart{width:100%;height:auto;display:block}
+.livability .note{margin:.7rem 0 0;font-size:.78rem;color:var(--muted)}
 
 /* ── 分野別に色分けした自治体ハブのセクション ── */
 .ev{border-left:3px solid var(--pc,var(--accent));padding-left:.75rem;margin:1.4rem 0}

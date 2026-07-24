@@ -1,0 +1,75 @@
+{
+  "city_code": "13104",
+  "name": "新宿区",
+  "slug": "shinjuku",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 1185000,
+    "median_commercial_yen_sqm": 2500000,
+    "n_points": 76,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 339
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 28,
+    "top": [
+      {
+        "name": "新宿",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 1333618
+      },
+      {
+        "name": "高田馬場",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 359332
+      },
+      {
+        "name": "新宿三丁目",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 152460
+      },
+      {
+        "name": "西武新宿",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 147390
+      },
+      {
+        "name": "市ヶ谷",
+        "company": "東京地下鉄",
+        "line": "7号線南北線",
+        "passengers": 133367
+      },
+      {
+        "name": "四ツ谷",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 117584
+      },
+      {
+        "name": "新大久保",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 98492
+      },
+      {
+        "name": "西新宿",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 85481
+      }
+    ],
+    "sum_top5_passengers": 2126167,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

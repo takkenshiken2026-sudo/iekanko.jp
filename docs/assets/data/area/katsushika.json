@@ -1,0 +1,75 @@
+{
+  "city_code": "13122",
+  "name": "葛飾区",
+  "slug": "katsushika",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 378000,
+    "median_commercial_yen_sqm": 477000,
+    "n_points": 63,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 108
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 12,
+    "top": [
+      {
+        "name": "新小岩",
+        "company": "東日本旅客鉄道",
+        "line": "総武線",
+        "passengers": 146776
+      },
+      {
+        "name": "京成高砂",
+        "company": "京成電鉄",
+        "line": "本線",
+        "passengers": 102056
+      },
+      {
+        "name": "金町",
+        "company": "東日本旅客鉄道",
+        "line": "常磐線",
+        "passengers": 99396
+      },
+      {
+        "name": "亀有",
+        "company": "東日本旅客鉄道",
+        "line": "常磐線",
+        "passengers": 79818
+      },
+      {
+        "name": "青砥",
+        "company": "京成電鉄",
+        "line": "本線",
+        "passengers": 48727
+      },
+      {
+        "name": "京成立石",
+        "company": "京成電鉄",
+        "line": "押上線",
+        "passengers": 34621
+      },
+      {
+        "name": "お花茶屋",
+        "company": "京成電鉄",
+        "line": "本線",
+        "passengers": 32727
+      },
+      {
+        "name": "京成金町",
+        "company": "京成電鉄",
+        "line": "金町線",
+        "passengers": 23574
+      }
+    ],
+    "sum_top5_passengers": 476773,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

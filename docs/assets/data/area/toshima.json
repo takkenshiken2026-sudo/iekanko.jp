@@ -1,0 +1,75 @@
+{
+  "city_code": "13116",
+  "name": "豊島区",
+  "slug": "toshima",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 819000,
+    "median_commercial_yen_sqm": 1470000,
+    "n_points": 54,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 234
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 26,
+    "top": [
+      {
+        "name": "池袋",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 998256
+      },
+      {
+        "name": "巣鴨",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 134320
+      },
+      {
+        "name": "大塚",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 108702
+      },
+      {
+        "name": "駒込",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 87080
+      },
+      {
+        "name": "目白",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 67082
+      },
+      {
+        "name": "東池袋",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 45348
+      },
+      {
+        "name": "要町",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 40890
+      },
+      {
+        "name": "千川",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 39136
+      }
+    ],
+    "sum_top5_passengers": 1395440,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

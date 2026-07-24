@@ -1,0 +1,75 @@
+{
+  "city_code": "13208",
+  "name": "調布市",
+  "slug": "chofu",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 410000,
+    "median_commercial_yen_sqm": 510000,
+    "n_points": 46,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 117
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 9,
+    "top": [
+      {
+        "name": "調布",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 118575
+      },
+      {
+        "name": "仙川",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 70712
+      },
+      {
+        "name": "つつじヶ丘",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 40628
+      },
+      {
+        "name": "国領",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 32992
+      },
+      {
+        "name": "飛田給",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 26692
+      },
+      {
+        "name": "西調布",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 16652
+      },
+      {
+        "name": "柴崎",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 16316
+      },
+      {
+        "name": "京王多摩川",
+        "company": "京王電鉄",
+        "line": "相模原線",
+        "passengers": 14983
+      }
+    ],
+    "sum_top5_passengers": 289599,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

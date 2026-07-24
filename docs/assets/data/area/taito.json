@@ -1,0 +1,75 @@
+{
+  "city_code": "13106",
+  "name": "台東区",
+  "slug": "taito",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 1030000,
+    "median_commercial_yen_sqm": 1415000,
+    "n_points": 53,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 294
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 19,
+    "top": [
+      {
+        "name": "上野",
+        "company": "東日本旅客鉄道",
+        "line": "東北線",
+        "passengers": 340084
+      },
+      {
+        "name": "御徒町",
+        "company": "東日本旅客鉄道",
+        "line": "東北線",
+        "passengers": 125968
+      },
+      {
+        "name": "浅草",
+        "company": "東京地下鉄",
+        "line": "3号線銀座線",
+        "passengers": 108544
+      },
+      {
+        "name": "浅草橋",
+        "company": "東日本旅客鉄道",
+        "line": "総武線",
+        "passengers": 99886
+      },
+      {
+        "name": "鶯谷",
+        "company": "東日本旅客鉄道",
+        "line": "東北線",
+        "passengers": 48920
+      },
+      {
+        "name": "京成上野",
+        "company": "京成電鉄",
+        "line": "本線",
+        "passengers": 48475
+      },
+      {
+        "name": "新御徒町",
+        "company": "首都圏新都市鉄道",
+        "line": "常磐新線",
+        "passengers": 48374
+      },
+      {
+        "name": "三ノ輪",
+        "company": "東京地下鉄",
+        "line": "2号線日比谷線",
+        "passengers": 46924
+      }
+    ],
+    "sum_top5_passengers": 723402,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

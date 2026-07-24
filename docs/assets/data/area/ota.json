@@ -1,0 +1,75 @@
+{
+  "city_code": "13111",
+  "name": "大田区",
+  "slug": "ota",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 614500,
+    "median_commercial_yen_sqm": 725000,
+    "n_points": 96,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 176
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 40,
+    "top": [
+      {
+        "name": "蒲田",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 251560
+      },
+      {
+        "name": "大森",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 165460
+      },
+      {
+        "name": "羽田空港第1・第2ターミナル",
+        "company": "京浜急行電鉄",
+        "line": "空港線",
+        "passengers": 111697
+      },
+      {
+        "name": "京急蒲田",
+        "company": "京浜急行電鉄",
+        "line": "本線",
+        "passengers": 61303
+      },
+      {
+        "name": "平和島",
+        "company": "京浜急行電鉄",
+        "line": "本線",
+        "passengers": 44102
+      },
+      {
+        "name": "西馬込",
+        "company": "東京都",
+        "line": "1号線浅草線",
+        "passengers": 43636
+      },
+      {
+        "name": "羽田空港第3ターミナル",
+        "company": "京浜急行電鉄",
+        "line": "空港線",
+        "passengers": 36613
+      },
+      {
+        "name": "池上",
+        "company": "東急電鉄",
+        "line": "池上線",
+        "passengers": 35181
+      }
+    ],
+    "sum_top5_passengers": 634122,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

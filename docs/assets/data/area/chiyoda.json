@@ -1,0 +1,75 @@
+{
+  "city_code": "13101",
+  "name": "千代田区",
+  "slug": "chiyoda",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 2750000,
+    "median_commercial_yen_sqm": 3935000,
+    "n_points": 59,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 786
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 28,
+    "top": [
+      {
+        "name": "東京",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 869128
+      },
+      {
+        "name": "秋葉原",
+        "company": "東日本旅客鉄道",
+        "line": "総武線",
+        "passengers": 442842
+      },
+      {
+        "name": "大手町",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 334541
+      },
+      {
+        "name": "有楽町",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 253744
+      },
+      {
+        "name": "九段下",
+        "company": "東京地下鉄",
+        "line": "5号線東西線",
+        "passengers": 201105
+      },
+      {
+        "name": "神田",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 181056
+      },
+      {
+        "name": "四ツ谷",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 177874
+      },
+      {
+        "name": "御茶ノ水",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 176728
+      }
+    ],
+    "sum_top5_passengers": 2101360,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

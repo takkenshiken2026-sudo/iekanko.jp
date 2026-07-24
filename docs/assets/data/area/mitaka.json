@@ -1,0 +1,45 @@
+{
+  "city_code": "13204",
+  "name": "三鷹市",
+  "slug": "mitaka",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 470500,
+    "median_commercial_yen_sqm": 586000,
+    "n_points": 42,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 134
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 3,
+    "top": [
+      {
+        "name": "三鷹",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 173686
+      },
+      {
+        "name": "三鷹台",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 19570
+      },
+      {
+        "name": "井の頭公園",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 6657
+      }
+    ],
+    "sum_top5_passengers": 199913,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

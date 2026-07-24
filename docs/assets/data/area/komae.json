@@ -1,0 +1,45 @@
+{
+  "city_code": "13219",
+  "name": "狛江市",
+  "slug": "komae",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 350000,
+    "median_commercial_yen_sqm": 564500,
+    "n_points": 14,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 100
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 3,
+    "top": [
+      {
+        "name": "狛江",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 44674
+      },
+      {
+        "name": "喜多見",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 30793
+      },
+      {
+        "name": "和泉多摩川",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 14474
+      }
+    ],
+    "sum_top5_passengers": 89941,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

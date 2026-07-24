@@ -1,0 +1,75 @@
+{
+  "city_code": "13102",
+  "name": "中央区",
+  "slug": "chuo",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 2400000,
+    "median_commercial_yen_sqm": 3700000,
+    "n_points": 63,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 686
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 22,
+    "top": [
+      {
+        "name": "銀座",
+        "company": "東京地下鉄",
+        "line": "2号線日比谷線",
+        "passengers": 230271
+      },
+      {
+        "name": "日本橋",
+        "company": "東京地下鉄",
+        "line": "5号線東西線",
+        "passengers": 175343
+      },
+      {
+        "name": "三越前",
+        "company": "東京地下鉄",
+        "line": "11号線半蔵門線",
+        "passengers": 117531
+      },
+      {
+        "name": "茅場町",
+        "company": "東京地下鉄",
+        "line": "5号線東西線",
+        "passengers": 112343
+      },
+      {
+        "name": "八丁堀",
+        "company": "東京地下鉄",
+        "line": "2号線日比谷線",
+        "passengers": 102173
+      },
+      {
+        "name": "勝どき",
+        "company": "東京都",
+        "line": "12号線大江戸線",
+        "passengers": 91189
+      },
+      {
+        "name": "東銀座",
+        "company": "東京地下鉄",
+        "line": "2号線日比谷線",
+        "passengers": 82069
+      },
+      {
+        "name": "水天宮前",
+        "company": "東京地下鉄",
+        "line": "11号線半蔵門線",
+        "passengers": 74355
+      }
+    ],
+    "sum_top5_passengers": 737661,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

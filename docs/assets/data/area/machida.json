@@ -1,0 +1,75 @@
+{
+  "city_code": "13209",
+  "name": "町田市",
+  "slug": "machida",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 154000,
+    "median_commercial_yen_sqm": 393500,
+    "n_points": 97,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 44
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 9,
+    "top": [
+      {
+        "name": "町田",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 258628
+      },
+      {
+        "name": "鶴川",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 60371
+      },
+      {
+        "name": "南町田グランベリーパーク",
+        "company": "東急電鉄",
+        "line": "田園都市線",
+        "passengers": 46967
+      },
+      {
+        "name": "玉川学園前",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 41185
+      },
+      {
+        "name": "成瀬",
+        "company": "東日本旅客鉄道",
+        "line": "横浜線",
+        "passengers": 34478
+      },
+      {
+        "name": "多摩境",
+        "company": "京王電鉄",
+        "line": "相模原線",
+        "passengers": 20444
+      },
+      {
+        "name": "相原",
+        "company": "東日本旅客鉄道",
+        "line": "横浜線",
+        "passengers": 19964
+      },
+      {
+        "name": "つくし野",
+        "company": "東急電鉄",
+        "line": "田園都市線",
+        "passengers": 10686
+      }
+    ],
+    "sum_top5_passengers": 441629,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

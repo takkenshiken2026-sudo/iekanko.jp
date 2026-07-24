@@ -1,0 +1,45 @@
+{
+  "city_code": "13210",
+  "name": "小金井市",
+  "slug": "koganei",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 396000,
+    "median_commercial_yen_sqm": 583000,
+    "n_points": 24,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 113
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 3,
+    "top": [
+      {
+        "name": "武蔵小金井",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 113426
+      },
+      {
+        "name": "東小金井",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 59298
+      },
+      {
+        "name": "新小金井",
+        "company": "西武鉄道",
+        "line": "多摩川線",
+        "passengers": 4024
+      }
+    ],
+    "sum_top5_passengers": 176748,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

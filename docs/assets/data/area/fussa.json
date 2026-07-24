@@ -1,0 +1,45 @@
+{
+  "city_code": "13218",
+  "name": "福生市",
+  "slug": "fussa",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 176000,
+    "median_commercial_yen_sqm": 265000,
+    "n_points": 16,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 50
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 5,
+    "top": [
+      {
+        "name": "拝島",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 33874
+      },
+      {
+        "name": "福生",
+        "company": "東日本旅客鉄道",
+        "line": "青梅線",
+        "passengers": 30374
+      },
+      {
+        "name": "牛浜",
+        "company": "東日本旅客鉄道",
+        "line": "青梅線",
+        "passengers": 8634
+      }
+    ],
+    "sum_top5_passengers": 72882,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

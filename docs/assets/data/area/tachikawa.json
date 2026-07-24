@@ -1,0 +1,75 @@
+{
+  "city_code": "13202",
+  "name": "立川市",
+  "slug": "tachikawa",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 292500,
+    "median_commercial_yen_sqm": 670000,
+    "n_points": 39,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 84
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 13,
+    "top": [
+      {
+        "name": "立川",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 308182
+      },
+      {
+        "name": "立川北",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 44015
+      },
+      {
+        "name": "玉川上水",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 39460
+      },
+      {
+        "name": "立川南",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 31877
+      },
+      {
+        "name": "西国立",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 18656
+      },
+      {
+        "name": "立飛",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 14304
+      },
+      {
+        "name": "西立川",
+        "company": "東日本旅客鉄道",
+        "line": "青梅線",
+        "passengers": 12614
+      },
+      {
+        "name": "武蔵砂川",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 12150
+      }
+    ],
+    "sum_top5_passengers": 442190,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

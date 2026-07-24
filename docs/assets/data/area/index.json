@@ -1,0 +1,439 @@
+{
+  "tokyo_median_residential_yen_sqm": 350000,
+  "municipalities": [
+    {
+      "slug": "chiyoda",
+      "name": "千代田区",
+      "median_residential_yen_sqm": 2750000,
+      "top_station": "東京",
+      "top_station_passengers": 869128
+    },
+    {
+      "slug": "minato",
+      "name": "港区",
+      "median_residential_yen_sqm": 2700000,
+      "top_station": "品川",
+      "top_station_passengers": 575878
+    },
+    {
+      "slug": "chuo",
+      "name": "中央区",
+      "median_residential_yen_sqm": 2400000,
+      "top_station": "銀座",
+      "top_station_passengers": 230271
+    },
+    {
+      "slug": "shibuya",
+      "name": "渋谷区",
+      "median_residential_yen_sqm": 1760000,
+      "top_station": "渋谷",
+      "top_station_passengers": 1770430
+    },
+    {
+      "slug": "bunkyo",
+      "name": "文京区",
+      "median_residential_yen_sqm": 1280000,
+      "top_station": "後楽園",
+      "top_station_passengers": 104894
+    },
+    {
+      "slug": "shinjuku",
+      "name": "新宿区",
+      "median_residential_yen_sqm": 1185000,
+      "top_station": "新宿",
+      "top_station_passengers": 1333618
+    },
+    {
+      "slug": "meguro",
+      "name": "目黒区",
+      "median_residential_yen_sqm": 1130000,
+      "top_station": "中目黒",
+      "top_station_passengers": 381738
+    },
+    {
+      "slug": "shinagawa",
+      "name": "品川区",
+      "median_residential_yen_sqm": 1125000,
+      "top_station": "目黒",
+      "top_station_passengers": 379056
+    },
+    {
+      "slug": "taito",
+      "name": "台東区",
+      "median_residential_yen_sqm": 1030000,
+      "top_station": "上野",
+      "top_station_passengers": 340084
+    },
+    {
+      "slug": "nakano",
+      "name": "中野区",
+      "median_residential_yen_sqm": 848000,
+      "top_station": "中野",
+      "top_station_passengers": 406312
+    },
+    {
+      "slug": "toshima",
+      "name": "豊島区",
+      "median_residential_yen_sqm": 819000,
+      "top_station": "池袋",
+      "top_station_passengers": 998256
+    },
+    {
+      "slug": "setagaya",
+      "name": "世田谷区",
+      "median_residential_yen_sqm": 762000,
+      "top_station": "二子玉川",
+      "top_station_passengers": 140353
+    },
+    {
+      "slug": "musashino",
+      "name": "武蔵野市",
+      "median_residential_yen_sqm": 707500,
+      "top_station": "吉祥寺",
+      "top_station_passengers": 256492
+    },
+    {
+      "slug": "kita",
+      "name": "北区",
+      "median_residential_yen_sqm": 680000,
+      "top_station": "赤羽",
+      "top_station_passengers": 188334
+    },
+    {
+      "slug": "suginami",
+      "name": "杉並区",
+      "median_residential_yen_sqm": 674000,
+      "top_station": "荻窪",
+      "top_station_passengers": 164158
+    },
+    {
+      "slug": "arakawa",
+      "name": "荒川区",
+      "median_residential_yen_sqm": 652000,
+      "top_station": "日暮里",
+      "top_station_passengers": 214154
+    },
+    {
+      "slug": "sumida",
+      "name": "墨田区",
+      "median_residential_yen_sqm": 650000,
+      "top_station": "押上",
+      "top_station_passengers": 222826
+    },
+    {
+      "slug": "koto",
+      "name": "江東区",
+      "median_residential_yen_sqm": 641000,
+      "top_station": "豊洲",
+      "top_station_passengers": 210782
+    },
+    {
+      "slug": "ota",
+      "name": "大田区",
+      "median_residential_yen_sqm": 614500,
+      "top_station": "蒲田",
+      "top_station_passengers": 251560
+    },
+    {
+      "slug": "itabashi",
+      "name": "板橋区",
+      "median_residential_yen_sqm": 519000,
+      "top_station": "板橋",
+      "top_station_passengers": 65264
+    },
+    {
+      "slug": "mitaka",
+      "name": "三鷹市",
+      "median_residential_yen_sqm": 470500,
+      "top_station": "三鷹",
+      "top_station_passengers": 173686
+    },
+    {
+      "slug": "nerima",
+      "name": "練馬区",
+      "median_residential_yen_sqm": 470000,
+      "top_station": "小竹向原",
+      "top_station_passengers": 317839
+    },
+    {
+      "slug": "edogawa",
+      "name": "江戸川区",
+      "median_residential_yen_sqm": 424000,
+      "top_station": "小岩",
+      "top_station_passengers": 120166
+    },
+    {
+      "slug": "chofu",
+      "name": "調布市",
+      "median_residential_yen_sqm": 410000,
+      "top_station": "調布",
+      "top_station_passengers": 118575
+    },
+    {
+      "slug": "koganei",
+      "name": "小金井市",
+      "median_residential_yen_sqm": 396000,
+      "top_station": "武蔵小金井",
+      "top_station_passengers": 113426
+    },
+    {
+      "slug": "katsushika",
+      "name": "葛飾区",
+      "median_residential_yen_sqm": 378000,
+      "top_station": "新小岩",
+      "top_station_passengers": 146776
+    },
+    {
+      "slug": "kunitachi",
+      "name": "国立市",
+      "median_residential_yen_sqm": 367000,
+      "top_station": "国立",
+      "top_station_passengers": 97096
+    },
+    {
+      "slug": "adachi",
+      "name": "足立区",
+      "median_residential_yen_sqm": 357000,
+      "top_station": "北千住",
+      "top_station_passengers": 688265
+    },
+    {
+      "slug": "komae",
+      "name": "狛江市",
+      "median_residential_yen_sqm": 350000,
+      "top_station": "狛江",
+      "top_station_passengers": 44674
+    },
+    {
+      "slug": "kokubunji",
+      "name": "国分寺市",
+      "median_residential_yen_sqm": 340000,
+      "top_station": "国分寺",
+      "top_station_passengers": 202312
+    },
+    {
+      "slug": "nishitokyo",
+      "name": "西東京市",
+      "median_residential_yen_sqm": 316500,
+      "top_station": "ひばりヶ丘",
+      "top_station_passengers": 68792
+    },
+    {
+      "slug": "fuchu",
+      "name": "府中市",
+      "median_residential_yen_sqm": 315500,
+      "top_station": "分倍河原",
+      "top_station_passengers": 85928
+    },
+    {
+      "slug": "tachikawa",
+      "name": "立川市",
+      "median_residential_yen_sqm": 292500,
+      "top_station": "立川",
+      "top_station_passengers": 308182
+    },
+    {
+      "slug": "inagi",
+      "name": "稲城市",
+      "median_residential_yen_sqm": 270500,
+      "top_station": "稲城",
+      "top_station_passengers": 19257
+    },
+    {
+      "slug": "kodaira",
+      "name": "小平市",
+      "median_residential_yen_sqm": 253000,
+      "top_station": "花小金井",
+      "top_station_passengers": 54491
+    },
+    {
+      "slug": "hino",
+      "name": "日野市",
+      "median_residential_yen_sqm": 227000,
+      "top_station": "豊田",
+      "top_station_passengers": 64440
+    },
+    {
+      "slug": "higashikurume",
+      "name": "東久留米市",
+      "median_residential_yen_sqm": 226000,
+      "top_station": "東久留米",
+      "top_station_passengers": 51222
+    },
+    {
+      "slug": "higashimurayama",
+      "name": "東村山市",
+      "median_residential_yen_sqm": 198500,
+      "top_station": "秋津",
+      "top_station_passengers": 76596
+    },
+    {
+      "slug": "akishima",
+      "name": "昭島市",
+      "median_residential_yen_sqm": 197000,
+      "top_station": "拝島",
+      "top_station_passengers": 56842
+    },
+    {
+      "slug": "tama",
+      "name": "多摩市",
+      "median_residential_yen_sqm": 197000,
+      "top_station": "京王多摩センター",
+      "top_station_passengers": 78801
+    },
+    {
+      "slug": "kiyose",
+      "name": "清瀬市",
+      "median_residential_yen_sqm": 193000,
+      "top_station": "清瀬",
+      "top_station_passengers": 62526
+    },
+    {
+      "slug": "fussa",
+      "name": "福生市",
+      "median_residential_yen_sqm": 176000,
+      "top_station": "拝島",
+      "top_station_passengers": 33874
+    },
+    {
+      "slug": "higashiyamato",
+      "name": "東大和市",
+      "median_residential_yen_sqm": 176000,
+      "top_station": "玉川上水",
+      "top_station_passengers": 24712
+    },
+    {
+      "slug": "machida",
+      "name": "町田市",
+      "median_residential_yen_sqm": 154000,
+      "top_station": "町田",
+      "top_station_passengers": 258628
+    },
+    {
+      "slug": "hamura",
+      "name": "羽村市",
+      "median_residential_yen_sqm": 138000,
+      "top_station": "小作",
+      "top_station_passengers": 30194
+    },
+    {
+      "slug": "musashimurayama",
+      "name": "武蔵村山市",
+      "median_residential_yen_sqm": 123000,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "hachioji",
+      "name": "八王子市",
+      "median_residential_yen_sqm": 119000,
+      "top_station": "八王子",
+      "top_station_passengers": 154802
+    },
+    {
+      "slug": "mizuho",
+      "name": "瑞穂町",
+      "median_residential_yen_sqm": 109000,
+      "top_station": "箱根ヶ崎",
+      "top_station_passengers": 7948
+    },
+    {
+      "slug": "akiruno",
+      "name": "あきる野市",
+      "median_residential_yen_sqm": 102000,
+      "top_station": "秋川",
+      "top_station_passengers": 11938
+    },
+    {
+      "slug": "ome",
+      "name": "青梅市",
+      "median_residential_yen_sqm": 95900,
+      "top_station": "河辺",
+      "top_station_passengers": 24334
+    },
+    {
+      "slug": "hinode",
+      "name": "日の出町",
+      "median_residential_yen_sqm": 80900,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "ogasawara",
+      "name": "小笠原村",
+      "median_residential_yen_sqm": 58000,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "oshima",
+      "name": "大島町",
+      "median_residential_yen_sqm": 12600,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "hachijo",
+      "name": "八丈町",
+      "median_residential_yen_sqm": 12000,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "miyake",
+      "name": "三宅村",
+      "median_residential_yen_sqm": 9800,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "kozushima",
+      "name": "神津島村",
+      "median_residential_yen_sqm": 7600,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "niijima",
+      "name": "新島村",
+      "median_residential_yen_sqm": 7200,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "hinohara",
+      "name": "檜原村",
+      "median_residential_yen_sqm": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "okutama",
+      "name": "奥多摩町",
+      "median_residential_yen_sqm": null,
+      "top_station": "奥多摩",
+      "top_station_passengers": 1788
+    },
+    {
+      "slug": "toshimamura",
+      "name": "利島村",
+      "median_residential_yen_sqm": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "mikurajima",
+      "name": "御蔵島村",
+      "median_residential_yen_sqm": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "aogashima",
+      "name": "青ヶ島村",
+      "median_residential_yen_sqm": null,
+      "top_station": null,
+      "top_station_passengers": null
+    }
+  ]
+}

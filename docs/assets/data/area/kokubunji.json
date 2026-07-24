@@ -1,0 +1,45 @@
+{
+  "city_code": "13214",
+  "name": "国分寺市",
+  "slug": "kokubunji",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 340000,
+    "median_commercial_yen_sqm": 547000,
+    "n_points": 23,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 97
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 3,
+    "top": [
+      {
+        "name": "国分寺",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 202312
+      },
+      {
+        "name": "西国分寺",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 55728
+      },
+      {
+        "name": "恋ヶ窪",
+        "company": "西武鉄道",
+        "line": "国分寺線",
+        "passengers": 12502
+      }
+    ],
+    "sum_top5_passengers": 270542,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

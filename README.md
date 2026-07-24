@@ -13,13 +13,17 @@ docs/            公開する静的サイト本体（GitHub Pages の公開デ�
   index.html     トップ（自治体一覧）
   area/tokyo/…   自治体ハブ / ライフイベント別 / 制度詳細ページ
   hikaku/…       制度カテゴリ別の自治体横断比較
-  assets/        CSS
+  assets/        CSS / 自治体別の相場・駅データJSON
   sitemap.xml    サイトマップ
   robots.txt
   CNAME          カスタムドメイン設定（iekanko.jp）
   .nojekyll      Jekyll 変換を無効化
+data/
+  reinfolib_tokyo.db  地価・駅乗降の集計DB（国土数値情報）
 build/
   build_site.py  DB から docs/ を再生成する静的サイトジェネレータ
+  build_reinfolib_db.py  地価・駅データから reinfolib_tokyo.db を構築
+  livability_html.py     自治体ページの相場・交通セクション生成
   schema.sql     元データDBのスキーマ（参考）
 ```
 

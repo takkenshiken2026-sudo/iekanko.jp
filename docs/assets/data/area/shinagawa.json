@@ -1,0 +1,75 @@
+{
+  "city_code": "13109",
+  "name": "品川区",
+  "slug": "shinagawa",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 1125000,
+    "median_commercial_yen_sqm": 1545000,
+    "n_points": 59,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 321
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 26,
+    "top": [
+      {
+        "name": "目黒",
+        "company": "東急電鉄",
+        "line": "目黒線",
+        "passengers": 379056
+      },
+      {
+        "name": "大崎",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 290388
+      },
+      {
+        "name": "五反田",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 220642
+      },
+      {
+        "name": "大井町",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 176304
+      },
+      {
+        "name": "武蔵小山",
+        "company": "東急電鉄",
+        "line": "目黒線",
+        "passengers": 54004
+      },
+      {
+        "name": "旗の台",
+        "company": "東急電鉄",
+        "line": "池上線",
+        "passengers": 39338
+      },
+      {
+        "name": "西大井",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 39232
+      },
+      {
+        "name": "品川シーサイド",
+        "company": "東京臨海高速鉄道",
+        "line": "臨海副都心線",
+        "passengers": 37378
+      }
+    ],
+    "sum_top5_passengers": 1120394,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

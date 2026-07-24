@@ -1,0 +1,75 @@
+{
+  "city_code": "13117",
+  "name": "北区",
+  "slug": "kita",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 680000,
+    "median_commercial_yen_sqm": 916500,
+    "n_points": 54,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 194
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 19,
+    "top": [
+      {
+        "name": "赤羽",
+        "company": "東日本旅客鉄道",
+        "line": "東北線",
+        "passengers": 188334
+      },
+      {
+        "name": "王子",
+        "company": "東日本旅客鉄道",
+        "line": "東北線",
+        "passengers": 117716
+      },
+      {
+        "name": "赤羽岩淵",
+        "company": "東京地下鉄",
+        "line": "7号線南北線",
+        "passengers": 94035
+      },
+      {
+        "name": "田端",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 80958
+      },
+      {
+        "name": "十条",
+        "company": "東日本旅客鉄道",
+        "line": "赤羽線",
+        "passengers": 67506
+      },
+      {
+        "name": "東十条",
+        "company": "東日本旅客鉄道",
+        "line": "東北線",
+        "passengers": 45690
+      },
+      {
+        "name": "浮間舟渡",
+        "company": "東日本旅客鉄道",
+        "line": "東北線",
+        "passengers": 43438
+      },
+      {
+        "name": "北赤羽",
+        "company": "東日本旅客鉄道",
+        "line": "東北線",
+        "passengers": 36982
+      }
+    ],
+    "sum_top5_passengers": 548549,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

@@ -1,0 +1,75 @@
+{
+  "city_code": "13119",
+  "name": "板橋区",
+  "slug": "itabashi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 519000,
+    "median_commercial_yen_sqm": 657000,
+    "n_points": 69,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 148
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 20,
+    "top": [
+      {
+        "name": "板橋",
+        "company": "東日本旅客鉄道",
+        "line": "赤羽線",
+        "passengers": 65264
+      },
+      {
+        "name": "東武練馬",
+        "company": "東武鉄道",
+        "line": "東上本線",
+        "passengers": 56181
+      },
+      {
+        "name": "成増",
+        "company": "東武鉄道",
+        "line": "東上本線",
+        "passengers": 53301
+      },
+      {
+        "name": "上板橋",
+        "company": "東武鉄道",
+        "line": "東上本線",
+        "passengers": 51233
+      },
+      {
+        "name": "地下鉄成増",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 50698
+      },
+      {
+        "name": "大山",
+        "company": "東武鉄道",
+        "line": "東上本線",
+        "passengers": 48683
+      },
+      {
+        "name": "ときわ台",
+        "company": "東武鉄道",
+        "line": "東上本線",
+        "passengers": 43271
+      },
+      {
+        "name": "板橋本町",
+        "company": "東京都",
+        "line": "6号線三田線",
+        "passengers": 37555
+      }
+    ],
+    "sum_top5_passengers": 276677,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

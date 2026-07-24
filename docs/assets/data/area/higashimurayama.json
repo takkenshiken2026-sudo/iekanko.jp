@@ -1,0 +1,75 @@
+{
+  "city_code": "13213",
+  "name": "東村山市",
+  "slug": "higashimurayama",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 198500,
+    "median_commercial_yen_sqm": 317000,
+    "n_points": 31,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 57
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 9,
+    "top": [
+      {
+        "name": "秋津",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 76596
+      },
+      {
+        "name": "新秋津",
+        "company": "東日本旅客鉄道",
+        "line": "武蔵野線",
+        "passengers": 74644
+      },
+      {
+        "name": "東村山",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 45102
+      },
+      {
+        "name": "久米川",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 30875
+      },
+      {
+        "name": "萩山",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 9179
+      },
+      {
+        "name": "武蔵大和",
+        "company": "西武鉄道",
+        "line": "多摩湖線",
+        "passengers": 7452
+      },
+      {
+        "name": "八坂",
+        "company": "西武鉄道",
+        "line": "多摩湖線",
+        "passengers": 6368
+      },
+      {
+        "name": "西武園",
+        "company": "西武鉄道",
+        "line": "西武園線",
+        "passengers": 3187
+      }
+    ],
+    "sum_top5_passengers": 236396,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

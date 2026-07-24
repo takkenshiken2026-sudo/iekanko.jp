@@ -1,0 +1,75 @@
+{
+  "city_code": "13110",
+  "name": "目黒区",
+  "slug": "meguro",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 1130000,
+    "median_commercial_yen_sqm": 1370000,
+    "n_points": 49,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 323
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 9,
+    "top": [
+      {
+        "name": "中目黒",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 381738
+      },
+      {
+        "name": "自由が丘",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 136588
+      },
+      {
+        "name": "学芸大学",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 72696
+      },
+      {
+        "name": "大岡山",
+        "company": "東急電鉄",
+        "line": "目黒線",
+        "passengers": 47370
+      },
+      {
+        "name": "都立大学",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 46393
+      },
+      {
+        "name": "駒場東大前",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 35206
+      },
+      {
+        "name": "祐天寺",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 29907
+      },
+      {
+        "name": "洗足",
+        "company": "東急電鉄",
+        "line": "目黒線",
+        "passengers": 14288
+      }
+    ],
+    "sum_top5_passengers": 684785,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

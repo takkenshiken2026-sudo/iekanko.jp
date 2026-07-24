@@ -1,0 +1,75 @@
+{
+  "city_code": "13105",
+  "name": "文京区",
+  "slug": "bunkyo",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 1280000,
+    "median_commercial_yen_sqm": 1700000,
+    "n_points": 50,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 366
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 16,
+    "top": [
+      {
+        "name": "後楽園",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 104894
+      },
+      {
+        "name": "茗荷谷",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 78606
+      },
+      {
+        "name": "春日",
+        "company": "東京都",
+        "line": "6号線三田線",
+        "passengers": 65361
+      },
+      {
+        "name": "御茶ノ水",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 54548
+      },
+      {
+        "name": "本郷三丁目",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 51198
+      },
+      {
+        "name": "江戸川橋",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 49844
+      },
+      {
+        "name": "白山",
+        "company": "東京都",
+        "line": "6号線三田線",
+        "passengers": 48388
+      },
+      {
+        "name": "護国寺",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 40640
+      }
+    ],
+    "sum_top5_passengers": 354607,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

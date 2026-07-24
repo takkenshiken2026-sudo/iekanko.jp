@@ -1,0 +1,75 @@
+{
+  "city_code": "13107",
+  "name": "墨田区",
+  "slug": "sumida",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 650000,
+    "median_commercial_yen_sqm": 803500,
+    "n_points": 24,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 186
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 14,
+    "top": [
+      {
+        "name": "押上",
+        "company": "京成電鉄",
+        "line": "押上線",
+        "passengers": 222826
+      },
+      {
+        "name": "錦糸町",
+        "company": "東日本旅客鉄道",
+        "line": "総武線",
+        "passengers": 194098
+      },
+      {
+        "name": "両国",
+        "company": "東日本旅客鉄道",
+        "line": "総武線",
+        "passengers": 72096
+      },
+      {
+        "name": "両国",
+        "company": "東京都",
+        "line": "12号線大江戸線",
+        "passengers": 32508
+      },
+      {
+        "name": "曳舟",
+        "company": "東武鉄道",
+        "line": "伊勢崎線",
+        "passengers": 29890
+      },
+      {
+        "name": "菊川",
+        "company": "東京都",
+        "line": "10号線新宿線",
+        "passengers": 24573
+      },
+      {
+        "name": "本所吾妻橋",
+        "company": "東京都",
+        "line": "1号線浅草線",
+        "passengers": 21482
+      },
+      {
+        "name": "京成曳舟",
+        "company": "京成電鉄",
+        "line": "押上線",
+        "passengers": 19929
+      }
+    ],
+    "sum_top5_passengers": 551418,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

@@ -1,0 +1,69 @@
+{
+  "city_code": "13211",
+  "name": "小平市",
+  "slug": "kodaira",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 253000,
+    "median_commercial_yen_sqm": 305000,
+    "n_points": 43,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 72
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 7,
+    "top": [
+      {
+        "name": "花小金井",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 54491
+      },
+      {
+        "name": "小平",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 35442
+      },
+      {
+        "name": "小川",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 27117
+      },
+      {
+        "name": "鷹の台",
+        "company": "西武鉄道",
+        "line": "国分寺線",
+        "passengers": 24283
+      },
+      {
+        "name": "新小平",
+        "company": "東日本旅客鉄道",
+        "line": "武蔵野線",
+        "passengers": 22178
+      },
+      {
+        "name": "一橋学園",
+        "company": "西武鉄道",
+        "line": "多摩湖線",
+        "passengers": 20370
+      },
+      {
+        "name": "青梅街道",
+        "company": "西武鉄道",
+        "line": "多摩湖線",
+        "passengers": 7985
+      }
+    ],
+    "sum_top5_passengers": 163511,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

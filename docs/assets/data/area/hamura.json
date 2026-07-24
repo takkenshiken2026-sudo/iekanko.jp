@@ -1,0 +1,39 @@
+{
+  "city_code": "13227",
+  "name": "羽村市",
+  "slug": "hamura",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 138000,
+    "median_commercial_yen_sqm": 156000,
+    "n_points": 11,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 39
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 2,
+    "top": [
+      {
+        "name": "小作",
+        "company": "東日本旅客鉄道",
+        "line": "青梅線",
+        "passengers": 30194
+      },
+      {
+        "name": "羽村",
+        "company": "東日本旅客鉄道",
+        "line": "青梅線",
+        "passengers": 25008
+      }
+    ],
+    "sum_top5_passengers": 55202,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

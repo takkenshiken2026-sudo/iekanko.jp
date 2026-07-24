@@ -1,0 +1,75 @@
+{
+  "city_code": "13114",
+  "name": "中野区",
+  "slug": "nakano",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 848000,
+    "median_commercial_yen_sqm": 1345000,
+    "n_points": 51,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 242
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 12,
+    "top": [
+      {
+        "name": "中野",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 406312
+      },
+      {
+        "name": "東中野",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 73912
+      },
+      {
+        "name": "中野坂上",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 73237
+      },
+      {
+        "name": "新中野",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 33550
+      },
+      {
+        "name": "鷺ノ宮",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 30388
+      },
+      {
+        "name": "落合",
+        "company": "東京地下鉄",
+        "line": "5号線東西線",
+        "passengers": 26664
+      },
+      {
+        "name": "野方",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 23415
+      },
+      {
+        "name": "中野新橋",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線分岐線",
+        "passengers": 20570
+      }
+    ],
+    "sum_top5_passengers": 617399,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

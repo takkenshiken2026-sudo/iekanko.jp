@@ -1,0 +1,57 @@
+{
+  "city_code": "13225",
+  "name": "稲城市",
+  "slug": "inagi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 270500,
+    "median_commercial_yen_sqm": 310000,
+    "n_points": 29,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 77
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 5,
+    "top": [
+      {
+        "name": "稲城",
+        "company": "京王電鉄",
+        "line": "相模原線",
+        "passengers": 19257
+      },
+      {
+        "name": "矢野口",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 18294
+      },
+      {
+        "name": "稲城長沼",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 15668
+      },
+      {
+        "name": "京王よみうりランド",
+        "company": "京王電鉄",
+        "line": "相模原線",
+        "passengers": 14826
+      },
+      {
+        "name": "南多摩",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 12842
+      }
+    ],
+    "sum_top5_passengers": 80887,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

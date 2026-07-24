@@ -1,0 +1,26 @@
+{
+  "city_code": "13223",
+  "name": "武蔵村山市",
+  "slug": "musashimurayama",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 123000,
+    "median_commercial_yen_sqm": 137000,
+    "n_points": 19,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 35
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

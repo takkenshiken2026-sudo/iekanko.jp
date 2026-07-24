@@ -1,0 +1,75 @@
+{
+  "city_code": "13112",
+  "name": "世田谷区",
+  "slug": "setagaya",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 762000,
+    "median_commercial_yen_sqm": 937000,
+    "n_points": 141,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 218
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 38,
+    "top": [
+      {
+        "name": "二子玉川",
+        "company": "東急電鉄",
+        "line": "田園都市線",
+        "passengers": 140353
+      },
+      {
+        "name": "三軒茶屋",
+        "company": "東急電鉄",
+        "line": "田園都市線",
+        "passengers": 136375
+      },
+      {
+        "name": "下北沢",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 121505
+      },
+      {
+        "name": "明大前",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 91172
+      },
+      {
+        "name": "経堂",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 82232
+      },
+      {
+        "name": "成城学園前",
+        "company": "小田急電鉄",
+        "line": "小田原線",
+        "passengers": 80513
+      },
+      {
+        "name": "千歳烏山",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 79689
+      },
+      {
+        "name": "駒沢大学",
+        "company": "東急電鉄",
+        "line": "田園都市線",
+        "passengers": 74266
+      }
+    ],
+    "sum_top5_passengers": 571637,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

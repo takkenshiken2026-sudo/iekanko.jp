@@ -1,0 +1,75 @@
+{
+  "city_code": "13115",
+  "name": "杉並区",
+  "slug": "suginami",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 674000,
+    "median_commercial_yen_sqm": 1025000,
+    "n_points": 86,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 193
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 18,
+    "top": [
+      {
+        "name": "荻窪",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 164158
+      },
+      {
+        "name": "高円寺",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 95432
+      },
+      {
+        "name": "西荻窪",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 85340
+      },
+      {
+        "name": "阿佐ヶ谷",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 84048
+      },
+      {
+        "name": "方南町",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線分岐線",
+        "passengers": 40171
+      },
+      {
+        "name": "久我山",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 38168
+      },
+      {
+        "name": "高井戸",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 37789
+      },
+      {
+        "name": "八幡山",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 37716
+      }
+    ],
+    "sum_top5_passengers": 469149,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

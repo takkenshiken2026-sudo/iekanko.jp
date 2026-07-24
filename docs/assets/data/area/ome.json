@@ -1,0 +1,57 @@
+{
+  "city_code": "13205",
+  "name": "青梅市",
+  "slug": "ome",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 95900,
+    "median_commercial_yen_sqm": 176000,
+    "n_points": 33,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 27
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 12,
+    "top": [
+      {
+        "name": "河辺",
+        "company": "東日本旅客鉄道",
+        "line": "青梅線",
+        "passengers": 24334
+      },
+      {
+        "name": "東青梅",
+        "company": "東日本旅客鉄道",
+        "line": "青梅線",
+        "passengers": 12302
+      },
+      {
+        "name": "青梅",
+        "company": "東日本旅客鉄道",
+        "line": "青梅線",
+        "passengers": 10962
+      },
+      {
+        "name": "滝本",
+        "company": "御岳登山鉄道",
+        "line": "ケーブルカー",
+        "passengers": 580
+      },
+      {
+        "name": "御岳山",
+        "company": "御岳登山鉄道",
+        "line": "ケーブルカー",
+        "passengers": 557
+      }
+    ],
+    "sum_top5_passengers": 48735,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

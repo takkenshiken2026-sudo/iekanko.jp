@@ -1,0 +1,75 @@
+{
+  "city_code": "13206",
+  "name": "府中市",
+  "slug": "fuchu",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 315500,
+    "median_commercial_yen_sqm": 408500,
+    "n_points": 55,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 90
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 14,
+    "top": [
+      {
+        "name": "分倍河原",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 85928
+      },
+      {
+        "name": "府中",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 81516
+      },
+      {
+        "name": "府中本町",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 32500
+      },
+      {
+        "name": "北府中",
+        "company": "東日本旅客鉄道",
+        "line": "武蔵野線",
+        "passengers": 25152
+      },
+      {
+        "name": "中河原",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 24800
+      },
+      {
+        "name": "武蔵野台",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 22356
+      },
+      {
+        "name": "西府",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 21706
+      },
+      {
+        "name": "東府中",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 19944
+      }
+    ],
+    "sum_top5_passengers": 249896,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

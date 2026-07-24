@@ -1,0 +1,75 @@
+{
+  "city_code": "13201",
+  "name": "八王子市",
+  "slug": "hachioji",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 119000,
+    "median_commercial_yen_sqm": 200000,
+    "n_points": 147,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 34
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 22,
+    "top": [
+      {
+        "name": "八王子",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 154802
+      },
+      {
+        "name": "西八王子",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 60272
+      },
+      {
+        "name": "南大沢",
+        "company": "京王電鉄",
+        "line": "相模原線",
+        "passengers": 53927
+      },
+      {
+        "name": "高尾",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 51084
+      },
+      {
+        "name": "京王八王子",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 47824
+      },
+      {
+        "name": "八王子みなみ野",
+        "company": "東日本旅客鉄道",
+        "line": "横浜線",
+        "passengers": 34374
+      },
+      {
+        "name": "京王堀之内",
+        "company": "京王電鉄",
+        "line": "相模原線",
+        "passengers": 28968
+      },
+      {
+        "name": "中央大学・明星大学",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 27913
+      }
+    ],
+    "sum_top5_passengers": 367909,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

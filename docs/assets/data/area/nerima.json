@@ -1,0 +1,75 @@
+{
+  "city_code": "13120",
+  "name": "練馬区",
+  "slug": "nerima",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 470000,
+    "median_commercial_yen_sqm": 822500,
+    "n_points": 108,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 134
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 19,
+    "top": [
+      {
+        "name": "小竹向原",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 317839
+      },
+      {
+        "name": "練馬",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 121493
+      },
+      {
+        "name": "大泉学園",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 80236
+      },
+      {
+        "name": "石神井公園",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 76732
+      },
+      {
+        "name": "光が丘",
+        "company": "東京都",
+        "line": "12号線大江戸線",
+        "passengers": 56838
+      },
+      {
+        "name": "平和台",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 42893
+      },
+      {
+        "name": "上石神井",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 41728
+      },
+      {
+        "name": "地下鉄赤塚",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 40077
+      }
+    ],
+    "sum_top5_passengers": 653138,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

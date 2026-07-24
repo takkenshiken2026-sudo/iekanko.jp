@@ -1,0 +1,57 @@
+{
+  "city_code": "13229",
+  "name": "西東京市",
+  "slug": "nishitokyo",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 316500,
+    "median_commercial_yen_sqm": 427000,
+    "n_points": 38,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 90
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 5,
+    "top": [
+      {
+        "name": "ひばりヶ丘",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 68792
+      },
+      {
+        "name": "田無",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 68058
+      },
+      {
+        "name": "保谷",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 56960
+      },
+      {
+        "name": "東伏見",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 21835
+      },
+      {
+        "name": "西武柳沢",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 15973
+      }
+    ],
+    "sum_top5_passengers": 231618,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

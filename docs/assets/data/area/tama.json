@@ -1,0 +1,69 @@
+{
+  "city_code": "13224",
+  "name": "多摩市",
+  "slug": "tama",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 197000,
+    "median_commercial_yen_sqm": 464000,
+    "n_points": 36,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 56
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 7,
+    "top": [
+      {
+        "name": "京王多摩センター",
+        "company": "京王電鉄",
+        "line": "相模原線",
+        "passengers": 78801
+      },
+      {
+        "name": "聖蹟桜ヶ丘",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 58241
+      },
+      {
+        "name": "小田急多摩センター",
+        "company": "小田急電鉄",
+        "line": "多摩線",
+        "passengers": 46353
+      },
+      {
+        "name": "京王永山",
+        "company": "京王電鉄",
+        "line": "相模原線",
+        "passengers": 40122
+      },
+      {
+        "name": "多摩センター",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 34556
+      },
+      {
+        "name": "小田急永山",
+        "company": "小田急電鉄",
+        "line": "多摩線",
+        "passengers": 27212
+      },
+      {
+        "name": "唐木田",
+        "company": "小田急電鉄",
+        "line": "多摩線",
+        "passengers": 14316
+      }
+    ],
+    "sum_top5_passengers": 258073,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

@@ -1,0 +1,33 @@
+{
+  "city_code": "13303",
+  "name": "瑞穂町",
+  "slug": "mizuho",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 109000,
+    "median_commercial_yen_sqm": 120000,
+    "n_points": 15,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 31
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 1,
+    "top": [
+      {
+        "name": "箱根ヶ崎",
+        "company": "東日本旅客鉄道",
+        "line": "八高線",
+        "passengers": 7948
+      }
+    ],
+    "sum_top5_passengers": 7948,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

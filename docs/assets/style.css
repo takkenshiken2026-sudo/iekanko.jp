@@ -144,6 +144,22 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .aramt{color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.86rem}
 .armore{margin:.45rem 0 0;font-size:.84rem}
 .armore a{color:var(--pc,var(--accent))}
+
+/* ── 自治体：住まい相場・交通 ── */
+.livability{margin:1.3rem 0 1.6rem;padding:1rem 1.05rem;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,#f7faf8 0%,#fff 55%)}
+.livability .fh{font-size:1.08rem;margin:0 0 .35rem;border:0;padding:0}
+.livability .lead2{margin:0 0 .75rem;color:var(--muted);font-size:.92rem}
+.lvstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.55rem;margin:0 0 .85rem}
+.lvstat{padding:.55rem .65rem;border:1px solid var(--line);border-radius:10px;background:#fff}
+.lvstat .lvl{display:block;font-size:.72rem;color:var(--muted);margin-bottom:.15rem}
+.lvstat .lvv{display:block;font-size:1.02rem;font-weight:700;font-variant-numeric:tabular-nums}
+.lvstat .lvs{display:block;font-size:.78rem;color:var(--muted);margin-top:.1rem}
+.lvcharts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.7rem}
+.lvbox{border:1px solid var(--line);border-radius:10px;padding:.65rem .75rem .5rem;background:#fff}
+.lvbox h3{margin:0 0 .4rem;font-size:.88rem;border:0;padding:0;color:var(--fg)}
+.lv-chart{width:100%;height:auto;display:block}
+.livability .note{margin:.7rem 0 0;font-size:.78rem;color:var(--muted)}
+
 /* ── 分野別に色分けした自治体ハブのセクション ── */
 .ev{border-left:3px solid var(--pc,var(--accent));padding-left:.75rem;margin:1.4rem 0}
 .ev>h2{border:0;display:flex;align-items:center;justify-content:flex-start;gap:.5rem;margin:.1rem 0 .5rem;font-size:1.12rem}

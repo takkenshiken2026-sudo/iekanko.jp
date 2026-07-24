@@ -1,0 +1,39 @@
+{
+  "city_code": "13203",
+  "name": "武蔵野市",
+  "slug": "musashino",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 707500,
+    "median_commercial_yen_sqm": 1760000,
+    "n_points": 31,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 202
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 2,
+    "top": [
+      {
+        "name": "吉祥寺",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 256492
+      },
+      {
+        "name": "武蔵境",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 126936
+      }
+    ],
+    "sum_top5_passengers": 383428,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}

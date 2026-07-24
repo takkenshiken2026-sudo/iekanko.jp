@@ -1,0 +1,75 @@
+{
+  "city_code": "13103",
+  "name": "港区",
+  "slug": "minato",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 2700000,
+    "median_commercial_yen_sqm": 4750000,
+    "n_points": 81,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 771
+  },
+  "stations": {
+    "year": 2024,
+    "n_stations": 35,
+    "top": [
+      {
+        "name": "品川",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 575878
+      },
+      {
+        "name": "新橋",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 463256
+      },
+      {
+        "name": "浜松町",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 267804
+      },
+      {
+        "name": "田町",
+        "company": "東日本旅客鉄道",
+        "line": "東海道線",
+        "passengers": 251710
+      },
+      {
+        "name": "表参道",
+        "company": "東京地下鉄",
+        "line": "3号線銀座線",
+        "passengers": 176901
+      },
+      {
+        "name": "六本木",
+        "company": "東京地下鉄",
+        "line": "2号線日比谷線",
+        "passengers": 110298
+      },
+      {
+        "name": "神谷町",
+        "company": "東京地下鉄",
+        "line": "2号線日比谷線",
+        "passengers": 107982
+      },
+      {
+        "name": "三田",
+        "company": "東京都",
+        "line": "1号線浅草線",
+        "passengers": 107560
+      }
+    ],
+    "sum_top5_passengers": 1735549,
+    "unit": "人/日（乗降）"
+  },
+  "source": {
+    "land": "国土数値情報 地価公示（L01）2025年",
+    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
+    "license": "CC BY 4.0（国土交通省）"
+  },
+  "tokyo_median_residential_yen_sqm": 350000
+}
