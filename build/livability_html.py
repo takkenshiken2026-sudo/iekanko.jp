@@ -145,7 +145,6 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
     tokyo_land = housing.get("tokyo_median_residential_yen_sqm")
     tokyo_condo = housing.get("tokyo_median_condo_price")
     latest = condo.get("latest")
-    yearly = condo.get("yearly") or []
 
     # ── もらえるお金 ──
     tag_class = {

@@ -187,7 +187,6 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .fig-vs strong{color:var(--fg);font-weight:700}
 .fig-cost-side{min-width:0}
 .fig-side-label{display:block;font-size:.68rem;color:var(--muted);margin-bottom:.2rem}
-.fig-spark{display:block;width:100%;max-width:180px;height:36px}
 
 /* 比較メーター */
 .fig-meter{display:flex;flex-direction:column;gap:.28rem;margin-top:.35rem}
