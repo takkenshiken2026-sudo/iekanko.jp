@@ -262,7 +262,14 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{esc(canon)}">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="{esc(BASE_URL)}/assets/og.png">
+<meta name="twitter:image" content="{esc(BASE_URL)}/assets/og.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="/assets/site.webmanifest">
+<meta name="theme-color" content="#1558d6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap">
@@ -270,7 +277,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 {ga_tag}{ld}</head>
 <body id="top">
 <header class="site"><div class="hbar">
-<a class="brand" href="/">{esc(SITE_SHORT)}</a>
+<a class="brand" href="/"><img class="brand-mark" src="/assets/logo-mark.svg" width="28" height="28" alt="" decoding="async">{esc(SITE_SHORT)}</a>
 <nav class="gnav" aria-label="メインナビゲーション">
 <a href="/find/">目的で探す</a>
 <a href="/hikaku/">制度を比較</a>
@@ -717,6 +724,7 @@ def build_muni(m, slug, score, avg):
 def site_graph():
     org = {"@type":"Organization","@id":BASE_URL+"/#org","name":SITE_SHORT,
            "url":BASE_URL+"/",
+           "logo":BASE_URL+"/assets/logo-mark.svg",
            "description":"東京都62自治体の給付金・手当・助成制度を、公式情報の出典と最終確認日つきで横断比較する情報サービス。"}
     if "【" not in CONTACT_EMAIL:
         org["contactPoint"] = {"@type":"ContactPoint","email":CONTACT_EMAIL,
@@ -988,11 +996,13 @@ body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku 
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);padding:.55rem 1.1rem;border-bottom:1px solid var(--line)}
 .hbar{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
-.brand{font-weight:800;font-size:1.12rem;color:var(--fg)}
+.brand{font-weight:800;font-size:1.12rem;color:var(--fg);display:inline-flex;align-items:center;gap:.45rem;line-height:1.2}
+.brand:hover{text-decoration:none}
+.brand-mark{width:1.55rem;height:1.55rem;border-radius:.42rem;flex:none;display:block}
 .gnav{display:flex;gap:.1rem;margin-left:auto;flex-wrap:wrap}
 .gnav a{color:var(--fg);font-weight:600;font-size:.9rem;padding:.34rem .6rem;border-radius:8px}
 .gnav a:hover{background:var(--soft);text-decoration:none}
-@media(max-width:520px){.gnav a{padding:.3rem .44rem;font-size:.82rem}.brand{font-size:1rem}header.site{padding:.5rem .8rem}}
+@media(max-width:520px){.gnav a{padding:.3rem .44rem;font-size:.82rem}.brand{font-size:1rem}.brand-mark{width:1.4rem;height:1.4rem}header.site{padding:.5rem .8rem}}
 @media(max-width:360px){.gnav{gap:0}.gnav a{padding:.3rem .34rem;font-size:.78rem}}
 :target{scroll-margin-top:60px}
 main{max-width:820px;margin:0 auto;padding:1.1rem 1.1rem 3rem}
