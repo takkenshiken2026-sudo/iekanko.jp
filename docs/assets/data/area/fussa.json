@@ -2,44 +2,109 @@
   "city_code": "13218",
   "name": "福生市",
   "slug": "fussa",
+  "db_slug": "fussa-shi",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 176000,
-    "median_commercial_yen_sqm": 265000,
-    "n_points": 16,
+    "median_residential_yen_sqm": 171000,
+    "median_commercial_yen_sqm": 248000,
+    "n_points": 22,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 50
+    "vs_tokyo_pct": 46
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 42,
+      "avg_price": 17257142,
+      "avg_area": 60.1,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 28,
+        "avg_price": 12332142,
+        "avg_area": 55.7,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 27,
+        "avg_price": 17222222,
+        "avg_area": 64.6,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 17,
+        "avg_price": 16429411,
+        "avg_area": 63.8,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 42,
+        "avg_price": 17257142,
+        "avg_area": 60.1,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 38,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 673,
+    "recent_avg_price": 33036909
   },
   "stations": {
-    "year": 2024,
-    "n_stations": 5,
+    "year": 2023,
+    "n_stations": 3,
     "top": [
-      {
-        "name": "拝島",
-        "company": "西武鉄道",
-        "line": "拝島線",
-        "passengers": 33874
-      },
-      {
-        "name": "福生",
-        "company": "東日本旅客鉄道",
-        "line": "青梅線",
-        "passengers": 30374
-      },
       {
         "name": "牛浜",
         "company": "東日本旅客鉄道",
         "line": "青梅線",
-        "passengers": 8634
+        "passengers": 8426,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 9192
+          },
+          {
+            "year": 2019,
+            "passengers": 9192
+          },
+          {
+            "year": 2020,
+            "passengers": 6578
+          },
+          {
+            "year": 2021,
+            "passengers": 7092
+          },
+          {
+            "year": 2022,
+            "passengers": 8038
+          },
+          {
+            "year": 2023,
+            "passengers": 8426
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 72882,
+    "sum_top5_passengers": 8426,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

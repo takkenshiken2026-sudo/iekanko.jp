@@ -2,74 +2,333 @@
   "city_code": "13112",
   "name": "世田谷区",
   "slug": "setagaya",
+  "db_slug": "setagaya-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 762000,
-    "median_commercial_yen_sqm": 937000,
-    "n_points": 141,
+    "median_residential_yen_sqm": 742000,
+    "median_commercial_yen_sqm": 986000,
+    "n_points": 192,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 218
+    "vs_tokyo_pct": 200
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 1722,
+      "avg_price": 69472415,
+      "avg_area": 63.4,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 1322,
+        "avg_price": 59128593,
+        "avg_area": 65.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 1222,
+        "avg_price": 63864729,
+        "avg_area": 65.8,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 1271,
+        "avg_price": 65190952,
+        "avg_area": 65.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 1722,
+        "avg_price": 69472415,
+        "avg_area": 63.4,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 154,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 13912,
+    "recent_avg_price": 92496650
   },
   "stations": {
-    "year": 2024,
+    "year": 2023,
     "n_stations": 38,
     "top": [
-      {
-        "name": "二子玉川",
-        "company": "東急電鉄",
-        "line": "田園都市線",
-        "passengers": 140353
-      },
       {
         "name": "三軒茶屋",
         "company": "東急電鉄",
         "line": "田園都市線",
-        "passengers": 136375
+        "passengers": 186743,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 141133
+          },
+          {
+            "year": 2019,
+            "passengers": 142028
+          },
+          {
+            "year": 2020,
+            "passengers": 94477
+          },
+          {
+            "year": 2021,
+            "passengers": 110173
+          },
+          {
+            "year": 2022,
+            "passengers": 124990
+          },
+          {
+            "year": 2023,
+            "passengers": 186743
+          }
+        ]
+      },
+      {
+        "name": "二子玉川",
+        "company": "東急電鉄",
+        "line": "田園都市線",
+        "passengers": 138041,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 165421
+          },
+          {
+            "year": 2019,
+            "passengers": 163140
+          },
+          {
+            "year": 2020,
+            "passengers": 102470
+          },
+          {
+            "year": 2021,
+            "passengers": 119348
+          },
+          {
+            "year": 2022,
+            "passengers": 133086
+          },
+          {
+            "year": 2023,
+            "passengers": 138041
+          }
+        ]
       },
       {
         "name": "下北沢",
         "company": "小田急電鉄",
         "line": "小田原線",
-        "passengers": 121505
+        "passengers": 118852,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 118869
+          },
+          {
+            "year": 2019,
+            "passengers": 121739
+          },
+          {
+            "year": 2020,
+            "passengers": 82821
+          },
+          {
+            "year": 2021,
+            "passengers": 96539
+          },
+          {
+            "year": 2022,
+            "passengers": 112116
+          },
+          {
+            "year": 2023,
+            "passengers": 118852
+          }
+        ]
       },
       {
         "name": "明大前",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 91172
+        "passengers": 90831,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 110244
+          },
+          {
+            "year": 2019,
+            "passengers": 110961
+          },
+          {
+            "year": 2020,
+            "passengers": 60668
+          },
+          {
+            "year": 2021,
+            "passengers": 76005
+          },
+          {
+            "year": 2022,
+            "passengers": 37476
+          },
+          {
+            "year": 2023,
+            "passengers": 90831
+          }
+        ]
       },
       {
         "name": "経堂",
         "company": "小田急電鉄",
         "line": "小田原線",
-        "passengers": 82232
+        "passengers": 79305,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 80941
+          },
+          {
+            "year": 2019,
+            "passengers": 82540
+          },
+          {
+            "year": 2020,
+            "passengers": 57253
+          },
+          {
+            "year": 2021,
+            "passengers": 67898
+          },
+          {
+            "year": 2022,
+            "passengers": 75323
+          },
+          {
+            "year": 2023,
+            "passengers": 79305
+          }
+        ]
       },
       {
         "name": "成城学園前",
         "company": "小田急電鉄",
         "line": "小田原線",
-        "passengers": 80513
+        "passengers": 78145,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 89856
+          },
+          {
+            "year": 2019,
+            "passengers": 88692
+          },
+          {
+            "year": 2020,
+            "passengers": 58614
+          },
+          {
+            "year": 2021,
+            "passengers": 66680
+          },
+          {
+            "year": 2022,
+            "passengers": 74920
+          },
+          {
+            "year": 2023,
+            "passengers": 78145
+          }
+        ]
       },
       {
         "name": "千歳烏山",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 79689
+        "passengers": 77686,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 83666
+          },
+          {
+            "year": 2019,
+            "passengers": 83257
+          },
+          {
+            "year": 2020,
+            "passengers": 61848
+          },
+          {
+            "year": 2021,
+            "passengers": 68095
+          },
+          {
+            "year": 2022,
+            "passengers": 74178
+          },
+          {
+            "year": 2023,
+            "passengers": 77686
+          }
+        ]
       },
       {
         "name": "駒沢大学",
         "company": "東急電鉄",
         "line": "田園都市線",
-        "passengers": 74266
+        "passengers": 71168,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 80970
+          },
+          {
+            "year": 2019,
+            "passengers": 80468
+          },
+          {
+            "year": 2020,
+            "passengers": 44827
+          },
+          {
+            "year": 2021,
+            "passengers": 56268
+          },
+          {
+            "year": 2022,
+            "passengers": 67494
+          },
+          {
+            "year": 2023,
+            "passengers": 71168
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 571637,
+    "sum_top5_passengers": 613772,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

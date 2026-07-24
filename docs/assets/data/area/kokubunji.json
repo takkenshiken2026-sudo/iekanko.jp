@@ -2,44 +2,173 @@
   "city_code": "13214",
   "name": "国分寺市",
   "slug": "kokubunji",
+  "db_slug": "kokubunji-shi",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 340000,
-    "median_commercial_yen_sqm": 547000,
-    "n_points": 23,
+    "median_residential_yen_sqm": 316000,
+    "median_commercial_yen_sqm": 593500,
+    "n_points": 32,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 97
+    "vs_tokyo_pct": 85
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 151,
+      "avg_price": 57534437,
+      "avg_area": 69.7,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 125,
+        "avg_price": 46643200,
+        "avg_area": 67.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 101,
+        "avg_price": 47336633,
+        "avg_area": 65.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 105,
+        "avg_price": 52432380,
+        "avg_area": 67.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 151,
+        "avg_price": 57534437,
+        "avg_area": 69.7,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 128,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 1900,
+    "recent_avg_price": 58986263
   },
   "stations": {
-    "year": 2024,
+    "year": 2023,
     "n_stations": 3,
     "top": [
       {
         "name": "国分寺",
         "company": "東日本旅客鉄道",
         "line": "中央線",
-        "passengers": 202312
+        "passengers": 197982,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 226736
+          },
+          {
+            "year": 2019,
+            "passengers": 226736
+          },
+          {
+            "year": 2020,
+            "passengers": 156844
+          },
+          {
+            "year": 2021,
+            "passengers": 172398
+          },
+          {
+            "year": 2022,
+            "passengers": 189468
+          },
+          {
+            "year": 2023,
+            "passengers": 197982
+          }
+        ]
       },
       {
         "name": "西国分寺",
         "company": "東日本旅客鉄道",
         "line": "中央線",
-        "passengers": 55728
+        "passengers": 53782,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 59856
+          },
+          {
+            "year": 2019,
+            "passengers": 59856
+          },
+          {
+            "year": 2020,
+            "passengers": 44126
+          },
+          {
+            "year": 2021,
+            "passengers": 47088
+          },
+          {
+            "year": 2022,
+            "passengers": 50840
+          },
+          {
+            "year": 2023,
+            "passengers": 53782
+          }
+        ]
       },
       {
         "name": "恋ヶ窪",
         "company": "西武鉄道",
         "line": "国分寺線",
-        "passengers": 12502
+        "passengers": 12122,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 12718
+          },
+          {
+            "year": 2019,
+            "passengers": 12851
+          },
+          {
+            "year": 2020,
+            "passengers": 10082
+          },
+          {
+            "year": 2021,
+            "passengers": 10773
+          },
+          {
+            "year": 2022,
+            "passengers": 11713
+          },
+          {
+            "year": 2023,
+            "passengers": 12122
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 270542,
+    "sum_top5_passengers": 263886,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

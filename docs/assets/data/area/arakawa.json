@@ -2,74 +2,76 @@
   "city_code": "13118",
   "name": "荒川区",
   "slug": "arakawa",
+  "db_slug": "arakawa-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 652000,
-    "median_commercial_yen_sqm": 834500,
-    "n_points": 28,
+    "median_residential_yen_sqm": 612000,
+    "median_commercial_yen_sqm": 1030000,
+    "n_points": 39,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 186
+    "vs_tokyo_pct": 165
   },
-  "stations": {
-    "year": 2024,
-    "n_stations": 20,
-    "top": [
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 507,
+      "avg_price": 51944773,
+      "avg_area": 60.1,
+      "price_classification": "02"
+    },
+    "yearly": [
       {
-        "name": "日暮里",
-        "company": "東日本旅客鉄道",
-        "line": "常磐線",
-        "passengers": 214154
+        "year": 2022,
+        "n": 307,
+        "avg_price": 44065146,
+        "avg_area": 62.3,
+        "price_classification": "02"
       },
       {
-        "name": "西日暮里",
-        "company": "東日本旅客鉄道",
-        "line": "東北線",
-        "passengers": 179212
+        "year": 2023,
+        "n": 326,
+        "avg_price": 46197852,
+        "avg_area": 61.6,
+        "price_classification": "02"
       },
       {
-        "name": "町屋",
-        "company": "東京地下鉄",
-        "line": "9号線千代田線",
-        "passengers": 60574
+        "year": 2024,
+        "n": 328,
+        "avg_price": 50146036,
+        "avg_area": 61.6,
+        "price_classification": "02"
       },
       {
-        "name": "南千住",
-        "company": "東日本旅客鉄道",
-        "line": "常磐線",
-        "passengers": 34172
-      },
-      {
-        "name": "三河島",
-        "company": "東日本旅客鉄道",
-        "line": "常磐線",
-        "passengers": 24202
-      },
-      {
-        "name": "熊野前",
-        "company": "東京都",
-        "line": "日暮里・舎人ライナー",
-        "passengers": 9390
-      },
-      {
-        "name": "町屋駅前",
-        "company": "東京都",
-        "line": "荒川線",
-        "passengers": 8555
-      },
-      {
-        "name": "新三河島",
-        "company": "京成電鉄",
-        "line": "本線",
-        "passengers": 5882
+        "year": 2025,
+        "n": 507,
+        "avg_price": 51944773,
+        "avg_area": 60.1,
+        "price_classification": "02"
       }
     ],
-    "sum_top5_passengers": 512314,
+    "vs_tokyo_pct": 115,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 3669,
+    "recent_avg_price": 65652602
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

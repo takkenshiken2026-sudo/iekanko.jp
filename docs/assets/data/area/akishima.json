@@ -2,50 +2,237 @@
   "city_code": "13207",
   "name": "昭島市",
   "slug": "akishima",
+  "db_slug": "akirashima-shi",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 197000,
-    "median_commercial_yen_sqm": 296000,
-    "n_points": 22,
+    "median_residential_yen_sqm": 187000,
+    "median_commercial_yen_sqm": 276000,
+    "n_points": 32,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 56
+    "vs_tokyo_pct": 50
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 127,
+      "avg_price": 30419685,
+      "avg_area": 73.7,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 59,
+        "avg_price": 27110169,
+        "avg_area": 74.2,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 51,
+        "avg_price": 27303921,
+        "avg_area": 74.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 93,
+        "avg_price": 29397849,
+        "avg_area": 76.2,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 127,
+        "avg_price": 30419685,
+        "avg_area": 73.7,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 68,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 1396,
+    "recent_avg_price": 45126575
   },
   "stations": {
-    "year": 2024,
-    "n_stations": 4,
+    "year": 2023,
+    "n_stations": 5,
     "top": [
       {
         "name": "拝島",
         "company": "東日本旅客鉄道",
         "line": "青梅線",
-        "passengers": 56842
+        "passengers": 55242,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 60860
+          },
+          {
+            "year": 2019,
+            "passengers": 60860
+          },
+          {
+            "year": 2020,
+            "passengers": 45748
+          },
+          {
+            "year": 2021,
+            "passengers": 49150
+          },
+          {
+            "year": 2022,
+            "passengers": 52628
+          },
+          {
+            "year": 2023,
+            "passengers": 55242
+          }
+        ]
       },
       {
         "name": "昭島",
         "company": "東日本旅客鉄道",
         "line": "青梅線",
-        "passengers": 46582
+        "passengers": 45270,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 52516
+          },
+          {
+            "year": 2019,
+            "passengers": 52516
+          },
+          {
+            "year": 2020,
+            "passengers": 39142
+          },
+          {
+            "year": 2021,
+            "passengers": 40504
+          },
+          {
+            "year": 2022,
+            "passengers": 43414
+          },
+          {
+            "year": 2023,
+            "passengers": 45270
+          }
+        ]
       },
       {
         "name": "中神",
         "company": "東日本旅客鉄道",
         "line": "青梅線",
-        "passengers": 23020
+        "passengers": 22422,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 22816
+          },
+          {
+            "year": 2019,
+            "passengers": 22816
+          },
+          {
+            "year": 2020,
+            "passengers": 18210
+          },
+          {
+            "year": 2021,
+            "passengers": 19512
+          },
+          {
+            "year": 2022,
+            "passengers": 21206
+          },
+          {
+            "year": 2023,
+            "passengers": 22422
+          }
+        ]
       },
       {
         "name": "東中神",
         "company": "東日本旅客鉄道",
         "line": "青梅線",
-        "passengers": 14574
+        "passengers": 13714,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 14378
+          },
+          {
+            "year": 2019,
+            "passengers": 14378
+          },
+          {
+            "year": 2020,
+            "passengers": 11164
+          },
+          {
+            "year": 2021,
+            "passengers": 12064
+          },
+          {
+            "year": 2022,
+            "passengers": 12954
+          },
+          {
+            "year": 2023,
+            "passengers": 13714
+          }
+        ]
+      },
+      {
+        "name": "西立川",
+        "company": "東日本旅客鉄道",
+        "line": "青梅線",
+        "passengers": 12630,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 13656
+          },
+          {
+            "year": 2019,
+            "passengers": 13656
+          },
+          {
+            "year": 2020,
+            "passengers": 9464
+          },
+          {
+            "year": 2021,
+            "passengers": 10196
+          },
+          {
+            "year": 2022,
+            "passengers": 11858
+          },
+          {
+            "year": 2023,
+            "passengers": 12630
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 141018,
+    "sum_top5_passengers": 149278,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

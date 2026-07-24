@@ -2,44 +2,141 @@
   "city_code": "13219",
   "name": "狛江市",
   "slug": "komae",
+  "db_slug": "komae-shi",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 350000,
-    "median_commercial_yen_sqm": 564500,
-    "n_points": 14,
+    "median_residential_yen_sqm": 367500,
+    "median_commercial_yen_sqm": 511000,
+    "n_points": 19,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 100
+    "vs_tokyo_pct": 99
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 104,
+      "avg_price": 45557692,
+      "avg_area": 66.6,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 72,
+        "avg_price": 45716666,
+        "avg_area": 70.8,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 69,
+        "avg_price": 45391304,
+        "avg_area": 70.7,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 63,
+        "avg_price": 47868253,
+        "avg_area": 69.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 104,
+        "avg_price": 45557692,
+        "avg_area": 66.6,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 101,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 1143,
+    "recent_avg_price": 55902187
   },
   "stations": {
-    "year": 2024,
-    "n_stations": 3,
+    "year": 2023,
+    "n_stations": 2,
     "top": [
       {
         "name": "狛江",
         "company": "小田急電鉄",
         "line": "小田原線",
-        "passengers": 44674
-      },
-      {
-        "name": "喜多見",
-        "company": "小田急電鉄",
-        "line": "小田原線",
-        "passengers": 30793
+        "passengers": 43389,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 48346
+          },
+          {
+            "year": 2019,
+            "passengers": 48921
+          },
+          {
+            "year": 2020,
+            "passengers": 36661
+          },
+          {
+            "year": 2021,
+            "passengers": 38851
+          },
+          {
+            "year": 2022,
+            "passengers": 41774
+          },
+          {
+            "year": 2023,
+            "passengers": 43389
+          }
+        ]
       },
       {
         "name": "和泉多摩川",
         "company": "小田急電鉄",
         "line": "小田原線",
-        "passengers": 14474
+        "passengers": 14129,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 15831
+          },
+          {
+            "year": 2019,
+            "passengers": 15751
+          },
+          {
+            "year": 2020,
+            "passengers": 11667
+          },
+          {
+            "year": 2021,
+            "passengers": 12314
+          },
+          {
+            "year": 2022,
+            "passengers": 13358
+          },
+          {
+            "year": 2023,
+            "passengers": 14129
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 89941,
+    "sum_top5_passengers": 57518,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

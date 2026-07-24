@@ -2,74 +2,333 @@
   "city_code": "13109",
   "name": "品川区",
   "slug": "shinagawa",
+  "db_slug": "shinagawa-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 1125000,
-    "median_commercial_yen_sqm": 1545000,
-    "n_points": 59,
+    "median_residential_yen_sqm": 930000,
+    "median_commercial_yen_sqm": 1305000,
+    "n_points": 77,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 321
+    "vs_tokyo_pct": 251
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 1197,
+      "avg_price": 83644444,
+      "avg_area": 57.2,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 841,
+        "avg_price": 63976932,
+        "avg_area": 59.2,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 948,
+        "avg_price": 68875843,
+        "avg_area": 58.6,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 982,
+        "avg_price": 74753156,
+        "avg_area": 58.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 1197,
+        "avg_price": 83644444,
+        "avg_area": 57.2,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 186,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 8725,
+    "recent_avg_price": 84234269
   },
   "stations": {
-    "year": 2024,
-    "n_stations": 26,
+    "year": 2023,
+    "n_stations": 25,
     "top": [
       {
         "name": "目黒",
         "company": "東急電鉄",
         "line": "目黒線",
-        "passengers": 379056
+        "passengers": 455428,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 285661
+          },
+          {
+            "year": 2019,
+            "passengers": 286145
+          },
+          {
+            "year": 2020,
+            "passengers": 185621
+          },
+          {
+            "year": 2021,
+            "passengers": 199638
+          },
+          {
+            "year": 2022,
+            "passengers": 223329
+          },
+          {
+            "year": 2023,
+            "passengers": 455428
+          }
+        ]
       },
       {
         "name": "大崎",
         "company": "東日本旅客鉄道",
         "line": "山手線",
-        "passengers": 290388
+        "passengers": 375884,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 346272
+          },
+          {
+            "year": 2019,
+            "passengers": 346272
+          },
+          {
+            "year": 2020,
+            "passengers": 217684
+          },
+          {
+            "year": 2021,
+            "passengers": 207466
+          },
+          {
+            "year": 2022,
+            "passengers": 236978
+          },
+          {
+            "year": 2023,
+            "passengers": 375884
+          }
+        ]
       },
       {
         "name": "五反田",
         "company": "東日本旅客鉄道",
         "line": "山手線",
-        "passengers": 220642
+        "passengers": 215278,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 282702
+          },
+          {
+            "year": 2019,
+            "passengers": 282702
+          },
+          {
+            "year": 2020,
+            "passengers": 184508
+          },
+          {
+            "year": 2021,
+            "passengers": 187368
+          },
+          {
+            "year": 2022,
+            "passengers": 204974
+          },
+          {
+            "year": 2023,
+            "passengers": 215278
+          }
+        ]
       },
       {
         "name": "大井町",
         "company": "東日本旅客鉄道",
         "line": "東海道線",
-        "passengers": 176304
+        "passengers": 168378,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 211676
+          },
+          {
+            "year": 2019,
+            "passengers": 211676
+          },
+          {
+            "year": 2020,
+            "passengers": 140858
+          },
+          {
+            "year": 2021,
+            "passengers": 140648
+          },
+          {
+            "year": 2022,
+            "passengers": 154926
+          },
+          {
+            "year": 2023,
+            "passengers": 168378
+          }
+        ]
       },
       {
         "name": "武蔵小山",
         "company": "東急電鉄",
         "line": "目黒線",
-        "passengers": 54004
+        "passengers": 51900,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 53952
+          },
+          {
+            "year": 2019,
+            "passengers": 53193
+          },
+          {
+            "year": 2020,
+            "passengers": 39864
+          },
+          {
+            "year": 2021,
+            "passengers": 43946
+          },
+          {
+            "year": 2022,
+            "passengers": 48334
+          },
+          {
+            "year": 2023,
+            "passengers": 51900
+          }
+        ]
       },
       {
         "name": "旗の台",
         "company": "東急電鉄",
         "line": "池上線",
-        "passengers": 39338
+        "passengers": 38032,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 40633
+          },
+          {
+            "year": 2019,
+            "passengers": 40276
+          },
+          {
+            "year": 2020,
+            "passengers": 28449
+          },
+          {
+            "year": 2021,
+            "passengers": 32536
+          },
+          {
+            "year": 2022,
+            "passengers": 35613
+          },
+          {
+            "year": 2023,
+            "passengers": 38032
+          }
+        ]
       },
       {
         "name": "西大井",
         "company": "東日本旅客鉄道",
         "line": "東海道線",
-        "passengers": 39232
+        "passengers": 35376,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 31666
+          },
+          {
+            "year": 2019,
+            "passengers": 31666
+          },
+          {
+            "year": 2020,
+            "passengers": 25554
+          },
+          {
+            "year": 2021,
+            "passengers": 28374
+          },
+          {
+            "year": 2022,
+            "passengers": 31864
+          },
+          {
+            "year": 2023,
+            "passengers": 35376
+          }
+        ]
       },
       {
-        "name": "品川シーサイド",
-        "company": "東京臨海高速鉄道",
-        "line": "臨海副都心線",
-        "passengers": 37378
+        "name": "青物横丁",
+        "company": "京浜急行電鉄",
+        "line": "本線",
+        "passengers": 34242,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 43633
+          },
+          {
+            "year": 2019,
+            "passengers": 43796
+          },
+          {
+            "year": 2020,
+            "passengers": 29212
+          },
+          {
+            "year": 2021,
+            "passengers": 28663
+          },
+          {
+            "year": 2022,
+            "passengers": 30748
+          },
+          {
+            "year": 2023,
+            "passengers": 34242
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 1120394,
+    "sum_top5_passengers": 1266868,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

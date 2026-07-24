@@ -4,23 +4,23 @@
 
 ## ファイル
 
-- `reinfolib_tokyo.db` … 集計済みDB（地価公示・駅別乗降客数・自治体統計）
+- `reinfolib_tokyo.db` … 不動産情報ライブラリ由来の東京都データ
 - 公開用サマリーJSONは `docs/assets/data/area/<slug>.json`
 
-## 出典
+## 主なテーブル
 
-国土交通省「国土数値情報」（CC BY 4.0）
+| テーブル | 内容 |
+|---|---|
+| `municipalities` | 62自治体 |
+| `municipality_trade_stats` | 取引・成約価格の集計（マンション等） |
+| `land_price_points` | 地価公示・都道府県地価調査ポイント |
+| `station_passengers` | 駅別乗降客数 |
+| `municipality_page_meta` | 自治体ページ用メタ |
 
-- 地価公示（L01）2025年・東京都
-- 駅別乗降客数（S12）2024年
-- 行政区域（N03）2024年・東京都
-
-## 再構築
+## サマリー再生成
 
 ```bash
-# GeoJSON を /tmp/reinfolib に展開したうえで
-python3 build/build_reinfolib_db.py
+python3 build/export_reinfolib_summaries.py
 ```
 
-ローカルの `reinfolib_tokyo.db`（不動産情報ライブラリ由来）を使う場合は、
-同パスに配置してスキーマを合わせるか、取り込みスクリプトを追加してください。
+駅の自治体割当には、展開済みの行政区域GeoJSON（`N03`）があると精度が上がります。

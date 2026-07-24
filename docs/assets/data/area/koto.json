@@ -2,74 +2,76 @@
   "city_code": "13108",
   "name": "江東区",
   "slug": "koto",
+  "db_slug": "koutou-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 641000,
-    "median_commercial_yen_sqm": 773000,
-    "n_points": 47,
+    "median_residential_yen_sqm": 585000,
+    "median_commercial_yen_sqm": 930000,
+    "n_points": 66,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 183
+    "vs_tokyo_pct": 158
   },
-  "stations": {
-    "year": 2024,
-    "n_stations": 28,
-    "top": [
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 1867,
+      "avg_price": 79209212,
+      "avg_area": 65.9,
+      "price_classification": "02"
+    },
+    "yearly": [
       {
-        "name": "豊洲",
-        "company": "東京地下鉄",
-        "line": "8号線有楽町線",
-        "passengers": 210782
+        "year": 2022,
+        "n": 1454,
+        "avg_price": 60347180,
+        "avg_area": 67.9,
+        "price_classification": "02"
       },
       {
-        "name": "新木場",
-        "company": "東日本旅客鉄道",
-        "line": "京葉線",
-        "passengers": 140156
+        "year": 2023,
+        "n": 1499,
+        "avg_price": 64587925,
+        "avg_area": 68.2,
+        "price_classification": "02"
       },
       {
-        "name": "東陽町",
-        "company": "東京地下鉄",
-        "line": "5号線東西線",
-        "passengers": 114708
+        "year": 2024,
+        "n": 1457,
+        "avg_price": 71483253,
+        "avg_area": 67.9,
+        "price_classification": "02"
       },
       {
-        "name": "亀戸",
-        "company": "東日本旅客鉄道",
-        "line": "総武線",
-        "passengers": 110086
-      },
-      {
-        "name": "門前仲町",
-        "company": "東京地下鉄",
-        "line": "5号線東西線",
-        "passengers": 108733
-      },
-      {
-        "name": "森下",
-        "company": "東京都",
-        "line": "10号線新宿線",
-        "passengers": 74094
-      },
-      {
-        "name": "木場",
-        "company": "東京地下鉄",
-        "line": "5号線東西線",
-        "passengers": 72289
-      },
-      {
-        "name": "国際展示場",
-        "company": "東京臨海高速鉄道",
-        "line": "臨海副都心線",
-        "passengers": 70461
+        "year": 2025,
+        "n": 1867,
+        "avg_price": 79209212,
+        "avg_area": 65.9,
+        "price_classification": "02"
       }
     ],
-    "sum_top5_passengers": 684465,
+    "vs_tokyo_pct": 176,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 11827,
+    "recent_avg_price": 72538073
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

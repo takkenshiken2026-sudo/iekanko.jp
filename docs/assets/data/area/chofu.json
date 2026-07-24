@@ -2,74 +2,333 @@
   "city_code": "13208",
   "name": "調布市",
   "slug": "chofu",
+  "db_slug": "choufu-shi",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 410000,
-    "median_commercial_yen_sqm": 510000,
-    "n_points": 46,
+    "median_residential_yen_sqm": 405500,
+    "median_commercial_yen_sqm": 553000,
+    "n_points": 63,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 117
+    "vs_tokyo_pct": 109
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 414,
+      "avg_price": 43284541,
+      "avg_area": 65.8,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 268,
+        "avg_price": 37946268,
+        "avg_area": 64.6,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 239,
+        "avg_price": 41582426,
+        "avg_area": 64.9,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 291,
+        "avg_price": 47878694,
+        "avg_area": 68.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 414,
+        "avg_price": 43284541,
+        "avg_area": 65.8,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 96,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 3287,
+    "recent_avg_price": 52350486
   },
   "stations": {
-    "year": 2024,
+    "year": 2023,
     "n_stations": 9,
     "top": [
       {
         "name": "調布",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 118575
+        "passengers": 115507,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 129968
+          },
+          {
+            "year": 2019,
+            "passengers": 130065
+          },
+          {
+            "year": 2020,
+            "passengers": 90372
+          },
+          {
+            "year": 2021,
+            "passengers": 98916
+          },
+          {
+            "year": 2022,
+            "passengers": 109110
+          },
+          {
+            "year": 2023,
+            "passengers": 115507
+          }
+        ]
       },
       {
         "name": "仙川",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 70712
+        "passengers": 69377,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 82535
+          },
+          {
+            "year": 2019,
+            "passengers": 82714
+          },
+          {
+            "year": 2020,
+            "passengers": 57764
+          },
+          {
+            "year": 2021,
+            "passengers": 62685
+          },
+          {
+            "year": 2022,
+            "passengers": 67190
+          },
+          {
+            "year": 2023,
+            "passengers": 69377
+          }
+        ]
       },
       {
         "name": "つつじヶ丘",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 40628
+        "passengers": 39731,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 45778
+          },
+          {
+            "year": 2019,
+            "passengers": 45169
+          },
+          {
+            "year": 2020,
+            "passengers": 33096
+          },
+          {
+            "year": 2021,
+            "passengers": 35556
+          },
+          {
+            "year": 2022,
+            "passengers": 38162
+          },
+          {
+            "year": 2023,
+            "passengers": 39731
+          }
+        ]
       },
       {
         "name": "国領",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 32992
+        "passengers": 32622,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 39159
+          },
+          {
+            "year": 2019,
+            "passengers": 38713
+          },
+          {
+            "year": 2020,
+            "passengers": 28584
+          },
+          {
+            "year": 2021,
+            "passengers": 30015
+          },
+          {
+            "year": 2022,
+            "passengers": 31746
+          },
+          {
+            "year": 2023,
+            "passengers": 32622
+          }
+        ]
       },
       {
         "name": "飛田給",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 26692
-      },
-      {
-        "name": "西調布",
-        "company": "京王電鉄",
-        "line": "京王線",
-        "passengers": 16652
+        "passengers": 25467,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 29978
+          },
+          {
+            "year": 2019,
+            "passengers": 28284
+          },
+          {
+            "year": 2020,
+            "passengers": 16424
+          },
+          {
+            "year": 2021,
+            "passengers": 18854
+          },
+          {
+            "year": 2022,
+            "passengers": 22229
+          },
+          {
+            "year": 2023,
+            "passengers": 25467
+          }
+        ]
       },
       {
         "name": "柴崎",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 16316
+        "passengers": 16243,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 18114
+          },
+          {
+            "year": 2019,
+            "passengers": 18042
+          },
+          {
+            "year": 2020,
+            "passengers": 13833
+          },
+          {
+            "year": 2021,
+            "passengers": 14909
+          },
+          {
+            "year": 2022,
+            "passengers": 15817
+          },
+          {
+            "year": 2023,
+            "passengers": 16243
+          }
+        ]
+      },
+      {
+        "name": "西調布",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 16168,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 17698
+          },
+          {
+            "year": 2019,
+            "passengers": 17610
+          },
+          {
+            "year": 2020,
+            "passengers": 13029
+          },
+          {
+            "year": 2021,
+            "passengers": 14071
+          },
+          {
+            "year": 2022,
+            "passengers": 15112
+          },
+          {
+            "year": 2023,
+            "passengers": 16168
+          }
+        ]
       },
       {
         "name": "京王多摩川",
         "company": "京王電鉄",
         "line": "相模原線",
-        "passengers": 14983
+        "passengers": 14562,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 17701
+          },
+          {
+            "year": 2019,
+            "passengers": 17021
+          },
+          {
+            "year": 2020,
+            "passengers": 12409
+          },
+          {
+            "year": 2021,
+            "passengers": 12915
+          },
+          {
+            "year": 2022,
+            "passengers": 13949
+          },
+          {
+            "year": 2023,
+            "passengers": 14562
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 289599,
+    "sum_top5_passengers": 282704,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

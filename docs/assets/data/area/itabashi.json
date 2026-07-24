@@ -2,74 +2,76 @@
   "city_code": "13119",
   "name": "板橋区",
   "slug": "itabashi",
+  "db_slug": "itabashi-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 519000,
-    "median_commercial_yen_sqm": 657000,
-    "n_points": 69,
+    "median_residential_yen_sqm": 504000,
+    "median_commercial_yen_sqm": 894000,
+    "n_points": 92,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 148
+    "vs_tokyo_pct": 136
   },
-  "stations": {
-    "year": 2024,
-    "n_stations": 20,
-    "top": [
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 1020,
+      "avg_price": 41818921,
+      "avg_area": 58.5,
+      "price_classification": "02"
+    },
+    "yearly": [
       {
-        "name": "板橋",
-        "company": "東日本旅客鉄道",
-        "line": "赤羽線",
-        "passengers": 65264
+        "year": 2022,
+        "n": 670,
+        "avg_price": 36709552,
+        "avg_area": 59.2,
+        "price_classification": "02"
       },
       {
-        "name": "東武練馬",
-        "company": "東武鉄道",
-        "line": "東上本線",
-        "passengers": 56181
+        "year": 2023,
+        "n": 648,
+        "avg_price": 38927932,
+        "avg_area": 59.5,
+        "price_classification": "02"
       },
       {
-        "name": "成増",
-        "company": "東武鉄道",
-        "line": "東上本線",
-        "passengers": 53301
+        "year": 2024,
+        "n": 756,
+        "avg_price": 42302116,
+        "avg_area": 61.3,
+        "price_classification": "02"
       },
       {
-        "name": "上板橋",
-        "company": "東武鉄道",
-        "line": "東上本線",
-        "passengers": 51233
-      },
-      {
-        "name": "地下鉄成増",
-        "company": "東京地下鉄",
-        "line": "8号線有楽町線",
-        "passengers": 50698
-      },
-      {
-        "name": "大山",
-        "company": "東武鉄道",
-        "line": "東上本線",
-        "passengers": 48683
-      },
-      {
-        "name": "ときわ台",
-        "company": "東武鉄道",
-        "line": "東上本線",
-        "passengers": 43271
-      },
-      {
-        "name": "板橋本町",
-        "company": "東京都",
-        "line": "6号線三田線",
-        "passengers": 37555
+        "year": 2025,
+        "n": 1020,
+        "avg_price": 41818921,
+        "avg_area": 58.5,
+        "price_classification": "02"
       }
     ],
-    "sum_top5_passengers": 276677,
+    "vs_tokyo_pct": 93,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 9276,
+    "recent_avg_price": 52382912
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

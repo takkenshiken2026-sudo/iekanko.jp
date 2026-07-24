@@ -2,74 +2,76 @@
   "city_code": "13121",
   "name": "足立区",
   "slug": "adachi",
+  "db_slug": "adachi-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 357000,
-    "median_commercial_yen_sqm": 472000,
-    "n_points": 108,
+    "median_residential_yen_sqm": 340000,
+    "median_commercial_yen_sqm": 506000,
+    "n_points": 144,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 102
+    "vs_tokyo_pct": 92
   },
-  "stations": {
-    "year": 2024,
-    "n_stations": 24,
-    "top": [
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 910,
+      "avg_price": 37244615,
+      "avg_area": 62.7,
+      "price_classification": "02"
+    },
+    "yearly": [
       {
-        "name": "北千住",
-        "company": "東武鉄道",
-        "line": "伊勢崎線",
-        "passengers": 688265
+        "year": 2022,
+        "n": 556,
+        "avg_price": 32274280,
+        "avg_area": 64.6,
+        "price_classification": "02"
       },
       {
-        "name": "綾瀬",
-        "company": "東京地下鉄",
-        "line": "9号線千代田線",
-        "passengers": 384554
+        "year": 2023,
+        "n": 567,
+        "avg_price": 35510052,
+        "avg_area": 66.0,
+        "price_classification": "02"
       },
       {
-        "name": "竹ノ塚",
-        "company": "東武鉄道",
-        "line": "伊勢崎線",
-        "passengers": 67699
+        "year": 2024,
+        "n": 641,
+        "avg_price": 36660842,
+        "avg_area": 64.5,
+        "price_classification": "02"
       },
       {
-        "name": "西新井",
-        "company": "東武鉄道",
-        "line": "伊勢崎線",
-        "passengers": 62984
-      },
-      {
-        "name": "北綾瀬",
-        "company": "東京地下鉄",
-        "line": "9号線千代田線",
-        "passengers": 43371
-      },
-      {
-        "name": "五反野",
-        "company": "東武鉄道",
-        "line": "伊勢崎線",
-        "passengers": 36724
-      },
-      {
-        "name": "梅島",
-        "company": "東武鉄道",
-        "line": "伊勢崎線",
-        "passengers": 35416
-      },
-      {
-        "name": "六町",
-        "company": "首都圏新都市鉄道",
-        "line": "常磐新線",
-        "passengers": 34213
+        "year": 2025,
+        "n": 910,
+        "avg_price": 37244615,
+        "avg_area": 62.7,
+        "price_classification": "02"
       }
     ],
-    "sum_top5_passengers": 1246873,
+    "vs_tokyo_pct": 83,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 9258,
+    "recent_avg_price": 48100183
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

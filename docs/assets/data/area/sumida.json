@@ -2,74 +2,76 @@
   "city_code": "13107",
   "name": "墨田区",
   "slug": "sumida",
+  "db_slug": "sumida-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 650000,
-    "median_commercial_yen_sqm": 803500,
-    "n_points": 24,
+    "median_residential_yen_sqm": 537000,
+    "median_commercial_yen_sqm": 843000,
+    "n_points": 41,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 186
+    "vs_tokyo_pct": 145
   },
-  "stations": {
-    "year": 2024,
-    "n_stations": 14,
-    "top": [
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 714,
+      "avg_price": 50550140,
+      "avg_area": 53.9,
+      "price_classification": "02"
+    },
+    "yearly": [
       {
-        "name": "押上",
-        "company": "京成電鉄",
-        "line": "押上線",
-        "passengers": 222826
+        "year": 2022,
+        "n": 496,
+        "avg_price": 44752620,
+        "avg_area": 56.0,
+        "price_classification": "02"
       },
       {
-        "name": "錦糸町",
-        "company": "東日本旅客鉄道",
-        "line": "総武線",
-        "passengers": 194098
+        "year": 2023,
+        "n": 447,
+        "avg_price": 45152572,
+        "avg_area": 55.0,
+        "price_classification": "02"
       },
       {
-        "name": "両国",
-        "company": "東日本旅客鉄道",
-        "line": "総武線",
-        "passengers": 72096
+        "year": 2024,
+        "n": 489,
+        "avg_price": 46028220,
+        "avg_area": 54.4,
+        "price_classification": "02"
       },
       {
-        "name": "両国",
-        "company": "東京都",
-        "line": "12号線大江戸線",
-        "passengers": 32508
-      },
-      {
-        "name": "曳舟",
-        "company": "東武鉄道",
-        "line": "伊勢崎線",
-        "passengers": 29890
-      },
-      {
-        "name": "菊川",
-        "company": "東京都",
-        "line": "10号線新宿線",
-        "passengers": 24573
-      },
-      {
-        "name": "本所吾妻橋",
-        "company": "東京都",
-        "line": "1号線浅草線",
-        "passengers": 21482
-      },
-      {
-        "name": "京成曳舟",
-        "company": "京成電鉄",
-        "line": "押上線",
-        "passengers": 19929
+        "year": 2025,
+        "n": 714,
+        "avg_price": 50550140,
+        "avg_area": 53.9,
+        "price_classification": "02"
       }
     ],
-    "sum_top5_passengers": 551418,
+    "vs_tokyo_pct": 112,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 5982,
+    "recent_avg_price": 62935857
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

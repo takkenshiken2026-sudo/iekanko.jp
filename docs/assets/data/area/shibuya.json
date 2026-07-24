@@ -2,74 +2,333 @@
   "city_code": "13113",
   "name": "渋谷区",
   "slug": "shibuya",
+  "db_slug": "shibuya-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 1760000,
-    "median_commercial_yen_sqm": 4480000,
-    "n_points": 59,
+    "median_residential_yen_sqm": 1590000,
+    "median_commercial_yen_sqm": 4960000,
+    "n_points": 81,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 503
+    "vs_tokyo_pct": 429
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 897,
+      "avg_price": 117978483,
+      "avg_area": 57.3,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 616,
+        "avg_price": 82069805,
+        "avg_area": 55.8,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 686,
+        "avg_price": 86315889,
+        "avg_area": 56.3,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 714,
+        "avg_price": 101890896,
+        "avg_area": 56.9,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 897,
+        "avg_price": 117978483,
+        "avg_area": 57.3,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 262,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 5641,
+    "recent_avg_price": 165851444
   },
   "stations": {
-    "year": 2024,
+    "year": 2023,
     "n_stations": 19,
     "top": [
       {
         "name": "渋谷",
         "company": "東急電鉄",
         "line": "東横線",
-        "passengers": 1770430
+        "passengers": 1036352,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 1168717
+          },
+          {
+            "year": 2019,
+            "passengers": 1381618
+          },
+          {
+            "year": 2020,
+            "passengers": 732759
+          },
+          {
+            "year": 2021,
+            "passengers": 828303
+          },
+          {
+            "year": 2022,
+            "passengers": 936944
+          },
+          {
+            "year": 2023,
+            "passengers": 1036352
+          }
+        ]
       },
       {
         "name": "代々木上原",
         "company": "小田急電鉄",
         "line": "小田原線",
-        "passengers": 269075
+        "passengers": 257017,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 276210
+          },
+          {
+            "year": 2019,
+            "passengers": 283238
+          },
+          {
+            "year": 2020,
+            "passengers": 190176
+          },
+          {
+            "year": 2021,
+            "passengers": 207581
+          },
+          {
+            "year": 2022,
+            "passengers": 237023
+          },
+          {
+            "year": 2023,
+            "passengers": 257017
+          }
+        ]
       },
       {
         "name": "恵比寿",
         "company": "東日本旅客鉄道",
         "line": "山手線",
-        "passengers": 252020
+        "passengers": 242206,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 295398
+          },
+          {
+            "year": 2019,
+            "passengers": 295398
+          },
+          {
+            "year": 2020,
+            "passengers": 188004
+          },
+          {
+            "year": 2021,
+            "passengers": 198272
+          },
+          {
+            "year": 2022,
+            "passengers": 225204
+          },
+          {
+            "year": 2023,
+            "passengers": 242206
+          }
+        ]
       },
       {
         "name": "原宿",
         "company": "東日本旅客鉄道",
         "line": "山手線",
-        "passengers": 134814
+        "passengers": 129970,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 150682
+          },
+          {
+            "year": 2019,
+            "passengers": 150682
+          },
+          {
+            "year": 2020,
+            "passengers": 82160
+          },
+          {
+            "year": 2021,
+            "passengers": 92910
+          },
+          {
+            "year": 2022,
+            "passengers": 115448
+          },
+          {
+            "year": 2023,
+            "passengers": 129970
+          }
+        ]
       },
       {
         "name": "代々木",
         "company": "東日本旅客鉄道",
         "line": "中央線",
-        "passengers": 113164
+        "passengers": 109408,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 140958
+          },
+          {
+            "year": 2019,
+            "passengers": 140958
+          },
+          {
+            "year": 2020,
+            "passengers": 87280
+          },
+          {
+            "year": 2021,
+            "passengers": 91866
+          },
+          {
+            "year": 2022,
+            "passengers": 102192
+          },
+          {
+            "year": 2023,
+            "passengers": 109408
+          }
+        ]
       },
       {
         "name": "明治神宮前",
         "company": "東京地下鉄",
         "line": "9号線千代田線",
-        "passengers": 105665
+        "passengers": 96345,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 109528
+          },
+          {
+            "year": 2019,
+            "passengers": 111354
+          },
+          {
+            "year": 2020,
+            "passengers": 64768
+          },
+          {
+            "year": 2021,
+            "passengers": 72293
+          },
+          {
+            "year": 2022,
+            "passengers": 86222
+          },
+          {
+            "year": 2023,
+            "passengers": 96345
+          }
+        ]
       },
       {
         "name": "笹塚",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 73199
+        "passengers": 70603,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 82784
+          },
+          {
+            "year": 2019,
+            "passengers": 82813
+          },
+          {
+            "year": 2020,
+            "passengers": 60167
+          },
+          {
+            "year": 2021,
+            "passengers": 61710
+          },
+          {
+            "year": 2022,
+            "passengers": 66646
+          },
+          {
+            "year": 2023,
+            "passengers": 70603
+          }
+        ]
       },
       {
-        "name": "初台",
-        "company": "京王電鉄",
-        "line": "京王線",
-        "passengers": 59407
+        "name": "広尾",
+        "company": "東京地下鉄",
+        "line": "2号線日比谷線",
+        "passengers": 56837,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 63171
+          },
+          {
+            "year": 2019,
+            "passengers": 62588
+          },
+          {
+            "year": 2020,
+            "passengers": 41452
+          },
+          {
+            "year": 2021,
+            "passengers": 47467
+          },
+          {
+            "year": 2022,
+            "passengers": 53479
+          },
+          {
+            "year": 2023,
+            "passengers": 56837
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 2539503,
+    "sum_top5_passengers": 1774953,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

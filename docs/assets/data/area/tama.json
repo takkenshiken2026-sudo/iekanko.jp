@@ -2,68 +2,301 @@
   "city_code": "13224",
   "name": "多摩市",
   "slug": "tama",
+  "db_slug": "tama-shi",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 197000,
-    "median_commercial_yen_sqm": 464000,
-    "n_points": 36,
+    "median_residential_yen_sqm": 174500,
+    "median_commercial_yen_sqm": 301500,
+    "n_points": 52,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 56
+    "vs_tokyo_pct": 47
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 318,
+      "avg_price": 31046540,
+      "avg_area": 75.2,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 263,
+        "avg_price": 26806463,
+        "avg_area": 75.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 221,
+        "avg_price": 29714479,
+        "avg_area": 77.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 272,
+        "avg_price": 32293382,
+        "avg_area": 76.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 318,
+        "avg_price": 31046540,
+        "avg_area": 75.2,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 69,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 2215,
+    "recent_avg_price": 36440180
   },
   "stations": {
-    "year": 2024,
+    "year": 2023,
     "n_stations": 7,
     "top": [
       {
         "name": "京王多摩センター",
         "company": "京王電鉄",
         "line": "相模原線",
-        "passengers": 78801
+        "passengers": 77670,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 90216
+          },
+          {
+            "year": 2019,
+            "passengers": 90353
+          },
+          {
+            "year": 2020,
+            "passengers": 58026
+          },
+          {
+            "year": 2021,
+            "passengers": 65805
+          },
+          {
+            "year": 2022,
+            "passengers": 74516
+          },
+          {
+            "year": 2023,
+            "passengers": 77670
+          }
+        ]
       },
       {
         "name": "聖蹟桜ヶ丘",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 58241
+        "passengers": 57022,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 65131
+          },
+          {
+            "year": 2019,
+            "passengers": 65246
+          },
+          {
+            "year": 2020,
+            "passengers": 47521
+          },
+          {
+            "year": 2021,
+            "passengers": 51363
+          },
+          {
+            "year": 2022,
+            "passengers": 54749
+          },
+          {
+            "year": 2023,
+            "passengers": 57022
+          }
+        ]
       },
       {
         "name": "小田急多摩センター",
         "company": "小田急電鉄",
         "line": "多摩線",
-        "passengers": 46353
+        "passengers": 44153,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 51318
+          },
+          {
+            "year": 2019,
+            "passengers": 51315
+          },
+          {
+            "year": 2020,
+            "passengers": 31339
+          },
+          {
+            "year": 2021,
+            "passengers": 37375
+          },
+          {
+            "year": 2022,
+            "passengers": 43358
+          },
+          {
+            "year": 2023,
+            "passengers": 44153
+          }
+        ]
       },
       {
         "name": "京王永山",
         "company": "京王電鉄",
         "line": "相模原線",
-        "passengers": 40122
+        "passengers": 40579,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 46781
+          },
+          {
+            "year": 2019,
+            "passengers": 46013
+          },
+          {
+            "year": 2020,
+            "passengers": 33197
+          },
+          {
+            "year": 2021,
+            "passengers": 36995
+          },
+          {
+            "year": 2022,
+            "passengers": 39413
+          },
+          {
+            "year": 2023,
+            "passengers": 40579
+          }
+        ]
       },
       {
         "name": "多摩センター",
         "company": "多摩都市モノレール",
         "line": "多摩都市モノレール線",
-        "passengers": 34556
+        "passengers": 32921,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 18550
+          },
+          {
+            "year": 2019,
+            "passengers": 37449
+          },
+          {
+            "year": 2020,
+            "passengers": 19483
+          },
+          {
+            "year": 2021,
+            "passengers": 25271
+          },
+          {
+            "year": 2022,
+            "passengers": 33450
+          },
+          {
+            "year": 2023,
+            "passengers": 32921
+          }
+        ]
       },
       {
         "name": "小田急永山",
         "company": "小田急電鉄",
         "line": "多摩線",
-        "passengers": 27212
+        "passengers": 26819,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 31338
+          },
+          {
+            "year": 2019,
+            "passengers": 31056
+          },
+          {
+            "year": 2020,
+            "passengers": 22278
+          },
+          {
+            "year": 2021,
+            "passengers": 24914
+          },
+          {
+            "year": 2022,
+            "passengers": 26493
+          },
+          {
+            "year": 2023,
+            "passengers": 26819
+          }
+        ]
       },
       {
         "name": "唐木田",
         "company": "小田急電鉄",
         "line": "多摩線",
-        "passengers": 14316
+        "passengers": 13964,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 17544
+          },
+          {
+            "year": 2019,
+            "passengers": 17207
+          },
+          {
+            "year": 2020,
+            "passengers": 11753
+          },
+          {
+            "year": 2021,
+            "passengers": 13037
+          },
+          {
+            "year": 2022,
+            "passengers": 13716
+          },
+          {
+            "year": 2023,
+            "passengers": 13964
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 258073,
+    "sum_top5_passengers": 252345,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

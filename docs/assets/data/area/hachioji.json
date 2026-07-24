@@ -2,74 +2,333 @@
   "city_code": "13201",
   "name": "八王子市",
   "slug": "hachioji",
+  "db_slug": "hachiouji-shi",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 119000,
-    "median_commercial_yen_sqm": 200000,
-    "n_points": 147,
+    "median_residential_yen_sqm": 117500,
+    "median_commercial_yen_sqm": 277500,
+    "n_points": 220,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 34
+    "vs_tokyo_pct": 32
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 548,
+      "avg_price": 27790693,
+      "avg_area": 72.5,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 438,
+        "avg_price": 26474200,
+        "avg_area": 72.9,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 444,
+        "avg_price": 28212162,
+        "avg_area": 75.8,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 419,
+        "avg_price": 27866825,
+        "avg_area": 73.9,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 548,
+        "avg_price": 27790693,
+        "avg_area": 72.5,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 62,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 7535,
+    "recent_avg_price": 35450917
   },
   "stations": {
-    "year": 2024,
+    "year": 2023,
     "n_stations": 22,
     "top": [
       {
         "name": "八王子",
         "company": "東日本旅客鉄道",
         "line": "中央線",
-        "passengers": 154802
+        "passengers": 151038,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 170006
+          },
+          {
+            "year": 2019,
+            "passengers": 170006
+          },
+          {
+            "year": 2020,
+            "passengers": 117520
+          },
+          {
+            "year": 2021,
+            "passengers": 131142
+          },
+          {
+            "year": 2022,
+            "passengers": 144202
+          },
+          {
+            "year": 2023,
+            "passengers": 151038
+          }
+        ]
       },
       {
         "name": "西八王子",
         "company": "東日本旅客鉄道",
         "line": "中央線",
-        "passengers": 60272
+        "passengers": 58406,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 64432
+          },
+          {
+            "year": 2019,
+            "passengers": 64432
+          },
+          {
+            "year": 2020,
+            "passengers": 48756
+          },
+          {
+            "year": 2021,
+            "passengers": 52400
+          },
+          {
+            "year": 2022,
+            "passengers": 55998
+          },
+          {
+            "year": 2023,
+            "passengers": 58406
+          }
+        ]
       },
       {
         "name": "南大沢",
         "company": "京王電鉄",
         "line": "相模原線",
-        "passengers": 53927
+        "passengers": 53668,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 64285
+          },
+          {
+            "year": 2019,
+            "passengers": 63422
+          },
+          {
+            "year": 2020,
+            "passengers": 41288
+          },
+          {
+            "year": 2021,
+            "passengers": 48778
+          },
+          {
+            "year": 2022,
+            "passengers": 52585
+          },
+          {
+            "year": 2023,
+            "passengers": 53668
+          }
+        ]
       },
       {
         "name": "高尾",
         "company": "東日本旅客鉄道",
         "line": "中央線",
-        "passengers": 51084
+        "passengers": 49810,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 57742
+          },
+          {
+            "year": 2019,
+            "passengers": 57742
+          },
+          {
+            "year": 2020,
+            "passengers": 40898
+          },
+          {
+            "year": 2021,
+            "passengers": 45040
+          },
+          {
+            "year": 2022,
+            "passengers": 47870
+          },
+          {
+            "year": 2023,
+            "passengers": 49810
+          }
+        ]
       },
       {
         "name": "京王八王子",
         "company": "京王電鉄",
         "line": "京王線",
-        "passengers": 47824
+        "passengers": 48379,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 59486
+          },
+          {
+            "year": 2019,
+            "passengers": 58124
+          },
+          {
+            "year": 2020,
+            "passengers": 39358
+          },
+          {
+            "year": 2021,
+            "passengers": 43203
+          },
+          {
+            "year": 2022,
+            "passengers": 46932
+          },
+          {
+            "year": 2023,
+            "passengers": 48379
+          }
+        ]
       },
       {
         "name": "八王子みなみ野",
         "company": "東日本旅客鉄道",
         "line": "横浜線",
-        "passengers": 34374
+        "passengers": 33886,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 37442
+          },
+          {
+            "year": 2019,
+            "passengers": 37442
+          },
+          {
+            "year": 2020,
+            "passengers": 26490
+          },
+          {
+            "year": 2021,
+            "passengers": 29824
+          },
+          {
+            "year": 2022,
+            "passengers": 32578
+          },
+          {
+            "year": 2023,
+            "passengers": 33886
+          }
+        ]
       },
       {
         "name": "京王堀之内",
         "company": "京王電鉄",
         "line": "相模原線",
-        "passengers": 28968
+        "passengers": 28572,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 32879
+          },
+          {
+            "year": 2019,
+            "passengers": 32280
+          },
+          {
+            "year": 2020,
+            "passengers": 22859
+          },
+          {
+            "year": 2021,
+            "passengers": 25048
+          },
+          {
+            "year": 2022,
+            "passengers": 27194
+          },
+          {
+            "year": 2023,
+            "passengers": 28572
+          }
+        ]
       },
       {
         "name": "中央大学・明星大学",
         "company": "多摩都市モノレール",
         "line": "多摩都市モノレール線",
-        "passengers": 27913
+        "passengers": 26002,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 17283
+          },
+          {
+            "year": 2019,
+            "passengers": 33675
+          },
+          {
+            "year": 2020,
+            "passengers": 5917
+          },
+          {
+            "year": 2021,
+            "passengers": 14887
+          },
+          {
+            "year": 2022,
+            "passengers": 29320
+          },
+          {
+            "year": 2023,
+            "passengers": 26002
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 367909,
+    "sum_top5_passengers": 361301,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

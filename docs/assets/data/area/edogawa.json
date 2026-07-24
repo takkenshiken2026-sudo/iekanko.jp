@@ -2,74 +2,76 @@
   "city_code": "13123",
   "name": "江戸川区",
   "slug": "edogawa",
+  "db_slug": "edogawa-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 424000,
-    "median_commercial_yen_sqm": 495000,
-    "n_points": 89,
+    "median_residential_yen_sqm": 395000,
+    "median_commercial_yen_sqm": 605000,
+    "n_points": 118,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 121
+    "vs_tokyo_pct": 106
   },
-  "stations": {
-    "year": 2024,
-    "n_stations": 11,
-    "top": [
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 705,
+      "avg_price": 47877163,
+      "avg_area": 70.3,
+      "price_classification": "02"
+    },
+    "yearly": [
       {
-        "name": "小岩",
-        "company": "東日本旅客鉄道",
-        "line": "総武線",
-        "passengers": 120166
+        "year": 2022,
+        "n": 452,
+        "avg_price": 40384292,
+        "avg_area": 71.2,
+        "price_classification": "02"
       },
       {
-        "name": "葛西",
-        "company": "東京地下鉄",
-        "line": "5号線東西線",
-        "passengers": 99258
+        "year": 2023,
+        "n": 495,
+        "avg_price": 43425858,
+        "avg_area": 71.7,
+        "price_classification": "02"
       },
       {
-        "name": "西葛西",
-        "company": "東京地下鉄",
-        "line": "5号線東西線",
-        "passengers": 96546
+        "year": 2024,
+        "n": 529,
+        "avg_price": 43908128,
+        "avg_area": 69.9,
+        "price_classification": "02"
       },
       {
-        "name": "平井",
-        "company": "東日本旅客鉄道",
-        "line": "総武線",
-        "passengers": 62126
-      },
-      {
-        "name": "船堀",
-        "company": "東京都",
-        "line": "10号線新宿線",
-        "passengers": 58409
-      },
-      {
-        "name": "瑞江",
-        "company": "東京都",
-        "line": "10号線新宿線",
-        "passengers": 55028
-      },
-      {
-        "name": "一之江",
-        "company": "東京都",
-        "line": "10号線新宿線",
-        "passengers": 43043
-      },
-      {
-        "name": "篠崎",
-        "company": "東京都",
-        "line": "10号線新宿線",
-        "passengers": 39512
+        "year": 2025,
+        "n": 705,
+        "avg_price": 47877163,
+        "avg_area": 70.3,
+        "price_classification": "02"
       }
     ],
-    "sum_top5_passengers": 436505,
+    "vs_tokyo_pct": 106,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 7019,
+    "recent_avg_price": 56787945
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

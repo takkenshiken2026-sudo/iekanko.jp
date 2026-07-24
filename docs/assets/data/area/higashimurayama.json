@@ -2,74 +2,76 @@
   "city_code": "13213",
   "name": "東村山市",
   "slug": "higashimurayama",
+  "db_slug": "higashimurayama-shi",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 198500,
-    "median_commercial_yen_sqm": 317000,
-    "n_points": 31,
+    "median_residential_yen_sqm": 192000,
+    "median_commercial_yen_sqm": 343000,
+    "n_points": 42,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 57
+    "vs_tokyo_pct": 52
   },
-  "stations": {
-    "year": 2024,
-    "n_stations": 9,
-    "top": [
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 160,
+      "avg_price": 24911250,
+      "avg_area": 65.5,
+      "price_classification": "02"
+    },
+    "yearly": [
       {
-        "name": "秋津",
-        "company": "西武鉄道",
-        "line": "池袋線",
-        "passengers": 76596
+        "year": 2022,
+        "n": 135,
+        "avg_price": 23882222,
+        "avg_area": 65.5,
+        "price_classification": "02"
       },
       {
-        "name": "新秋津",
-        "company": "東日本旅客鉄道",
-        "line": "武蔵野線",
-        "passengers": 74644
+        "year": 2023,
+        "n": 113,
+        "avg_price": 24992035,
+        "avg_area": 64.5,
+        "price_classification": "02"
       },
       {
-        "name": "東村山",
-        "company": "西武鉄道",
-        "line": "新宿線",
-        "passengers": 45102
+        "year": 2024,
+        "n": 109,
+        "avg_price": 25558715,
+        "avg_area": 66.7,
+        "price_classification": "02"
       },
       {
-        "name": "久米川",
-        "company": "西武鉄道",
-        "line": "新宿線",
-        "passengers": 30875
-      },
-      {
-        "name": "萩山",
-        "company": "西武鉄道",
-        "line": "拝島線",
-        "passengers": 9179
-      },
-      {
-        "name": "武蔵大和",
-        "company": "西武鉄道",
-        "line": "多摩湖線",
-        "passengers": 7452
-      },
-      {
-        "name": "八坂",
-        "company": "西武鉄道",
-        "line": "多摩湖線",
-        "passengers": 6368
-      },
-      {
-        "name": "西武園",
-        "company": "西武鉄道",
-        "line": "西武園線",
-        "passengers": 3187
+        "year": 2025,
+        "n": 160,
+        "avg_price": 24911250,
+        "avg_area": 65.5,
+        "price_classification": "02"
       }
     ],
-    "sum_top5_passengers": 236396,
+    "vs_tokyo_pct": 55,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 2165,
+    "recent_avg_price": 35184110
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

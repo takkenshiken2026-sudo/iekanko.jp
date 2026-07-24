@@ -2,74 +2,237 @@
   "city_code": "13105",
   "name": "文京区",
   "slug": "bunkyo",
+  "db_slug": "bunkyou-ku",
   "land": {
     "year": 2025,
-    "median_residential_yen_sqm": 1280000,
-    "median_commercial_yen_sqm": 1700000,
-    "n_points": 50,
+    "median_residential_yen_sqm": 1220000,
+    "median_commercial_yen_sqm": 1885000,
+    "n_points": 63,
     "unit": "円/㎡",
-    "vs_tokyo_pct": 366
+    "vs_tokyo_pct": 329
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 803,
+      "avg_price": 75928144,
+      "avg_area": 54.5,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 550,
+        "avg_price": 63043636,
+        "avg_area": 55.3,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 656,
+        "avg_price": 65257774,
+        "avg_area": 55.6,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 612,
+        "avg_price": 69615849,
+        "avg_area": 55.1,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 803,
+        "avg_price": 75928144,
+        "avg_area": 54.5,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 169,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 5517,
+    "recent_avg_price": 92163512
   },
   "stations": {
-    "year": 2024,
-    "n_stations": 16,
+    "year": 2023,
+    "n_stations": 5,
     "top": [
-      {
-        "name": "後楽園",
-        "company": "東京地下鉄",
-        "line": "4号線丸ノ内線",
-        "passengers": 104894
-      },
       {
         "name": "茗荷谷",
         "company": "東京地下鉄",
         "line": "4号線丸ノ内線",
-        "passengers": 78606
-      },
-      {
-        "name": "春日",
-        "company": "東京都",
-        "line": "6号線三田線",
-        "passengers": 65361
-      },
-      {
-        "name": "御茶ノ水",
-        "company": "東京地下鉄",
-        "line": "4号線丸ノ内線",
-        "passengers": 54548
-      },
-      {
-        "name": "本郷三丁目",
-        "company": "東京地下鉄",
-        "line": "4号線丸ノ内線",
-        "passengers": 51198
+        "passengers": 76244,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 79328
+          },
+          {
+            "year": 2019,
+            "passengers": 78179
+          },
+          {
+            "year": 2020,
+            "passengers": 48571
+          },
+          {
+            "year": 2021,
+            "passengers": 57275
+          },
+          {
+            "year": 2022,
+            "passengers": 64833
+          },
+          {
+            "year": 2023,
+            "passengers": 76244
+          }
+        ]
       },
       {
         "name": "江戸川橋",
         "company": "東京地下鉄",
         "line": "8号線有楽町線",
-        "passengers": 49844
-      },
-      {
-        "name": "白山",
-        "company": "東京都",
-        "line": "6号線三田線",
-        "passengers": 48388
+        "passengers": 48975,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 54473
+          },
+          {
+            "year": 2019,
+            "passengers": 53897
+          },
+          {
+            "year": 2020,
+            "passengers": 40180
+          },
+          {
+            "year": 2021,
+            "passengers": 41470
+          },
+          {
+            "year": 2022,
+            "passengers": 45773
+          },
+          {
+            "year": 2023,
+            "passengers": 48975
+          }
+        ]
       },
       {
         "name": "護国寺",
         "company": "東京地下鉄",
         "line": "8号線有楽町線",
-        "passengers": 40640
+        "passengers": 39316,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 44691
+          },
+          {
+            "year": 2019,
+            "passengers": 43428
+          },
+          {
+            "year": 2020,
+            "passengers": 31445
+          },
+          {
+            "year": 2021,
+            "passengers": 34232
+          },
+          {
+            "year": 2022,
+            "passengers": 37393
+          },
+          {
+            "year": 2023,
+            "passengers": 39316
+          }
+        ]
+      },
+      {
+        "name": "千石",
+        "company": "東京都",
+        "line": "6号線三田線",
+        "passengers": 30408,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 31373
+          },
+          {
+            "year": 2019,
+            "passengers": 30729
+          },
+          {
+            "year": 2020,
+            "passengers": 22882
+          },
+          {
+            "year": 2021,
+            "passengers": 24687
+          },
+          {
+            "year": 2022,
+            "passengers": 28140
+          },
+          {
+            "year": 2023,
+            "passengers": 30408
+          }
+        ]
+      },
+      {
+        "name": "飯田橋",
+        "company": "東京都",
+        "line": "12号線大江戸線",
+        "passengers": 27039,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 34278
+          },
+          {
+            "year": 2019,
+            "passengers": 34055
+          },
+          {
+            "year": 2020,
+            "passengers": 22323
+          },
+          {
+            "year": 2021,
+            "passengers": 22404
+          },
+          {
+            "year": 2022,
+            "passengers": 24774
+          },
+          {
+            "year": 2023,
+            "passengers": 27039
+          }
+        ]
       }
     ],
-    "sum_top5_passengers": 354607,
+    "sum_top5_passengers": 221982,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }

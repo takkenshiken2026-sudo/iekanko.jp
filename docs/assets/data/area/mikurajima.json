@@ -2,24 +2,41 @@
   "city_code": "13382",
   "name": "御蔵島村",
   "slug": "mikurajima",
+  "db_slug": "mikurashima-mura",
   "land": {
     "year": 2025,
     "median_residential_yen_sqm": null,
     "median_commercial_yen_sqm": null,
     "n_points": 0,
-    "unit": "円/㎡"
+    "unit": "円/㎡",
+    "vs_tokyo_pct": null
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": null,
+    "yearly": [],
+    "vs_tokyo_pct": null,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": null,
+    "latest_quarter": null,
+    "total_transactions": 0,
+    "recent_avg_price": null
   },
   "stations": {
-    "year": 2024,
+    "year": null,
     "n_stations": 0,
     "top": [],
     "sum_top5_passengers": 0,
     "unit": "人/日（乗降）"
   },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
   "source": {
-    "land": "国土数値情報 地価公示（L01）2025年",
-    "stations": "国土数値情報 駅別乗降客数（S12）2024年",
-    "license": "CC BY 4.0（国土交通省）"
-  },
-  "tokyo_median_residential_yen_sqm": 350000
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
 }
