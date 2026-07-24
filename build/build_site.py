@@ -1603,6 +1603,17 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .fig-side-label{display:block;font-size:.68rem;color:var(--muted);margin-bottom:.2rem}
 .fig-spark{display:block;width:100%;max-width:180px;height:36px}
 
+/* 住まい・交通：3列 */
+.fig-tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.1rem;align-items:start;
+  padding:.35rem 0 .55rem}
+.fig-card{min-width:0;padding:.55rem 0 .2rem;border-top:1px solid var(--line)}
+.fig-card .fig-big{font-size:clamp(1.2rem,2.4vw,1.55rem)}
+.fig-card .fig-cost-chart{margin-top:.55rem}
+.fig-card .fig-cmp li>a,.fig-card .fig-cmp li>div{grid-template-columns:3.6rem 1fr auto;gap:.28rem}
+.fig-card .fig-cmp-name{font-size:.66rem}
+.fig-card .fig-cmp-name em{font-size:.58rem}
+.fig-card .fig-cmp-n{font-size:.66rem}
+
 /* 近隣＋都内中央値の横棒比較 */
 .fig-cmp{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.28rem}
 .fig-cmp li>a,.fig-cmp li>div{display:grid;grid-template-columns:4.8rem 1fr auto;gap:.4rem;align-items:center;
@@ -1663,6 +1674,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
   .fig-rank{grid-column:2;text-align:left;margin-top:-.15rem}
   .fig-bval{grid-column:3;grid-row:1/3;align-self:center}
   .fig-cost{grid-template-columns:1fr;gap:.45rem}
+  .fig-tri{grid-template-columns:1fr;gap:.65rem}
 }
 
 /* タグ色（グループ） */
