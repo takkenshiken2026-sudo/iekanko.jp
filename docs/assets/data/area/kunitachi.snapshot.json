@@ -98,19 +98,22 @@
       "slug": "kokubunji",
       "name": "国分寺市",
       "condo_avg_price": 57534437,
-      "land_median_yen_sqm": 316000
+      "land_median_yen_sqm": 316000,
+      "station_sum_top5": 263886
     },
     {
       "slug": "tachikawa",
       "name": "立川市",
       "condo_avg_price": 32247342,
-      "land_median_yen_sqm": 273000
+      "land_median_yen_sqm": 273000,
+      "station_sum_top5": 430705
     },
     {
       "slug": "fuchu",
       "name": "府中市",
       "condo_avg_price": 41578571,
-      "land_median_yen_sqm": 310000
+      "land_median_yen_sqm": 310000,
+      "station_sum_top5": 243746
     }
   ],
   "compare": {
@@ -185,6 +188,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "kunitachi",
+        "name": "国立市",
+        "value": 129088,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "kokubunji",
+        "name": "国分寺市",
+        "value": 263886,
+        "href": "/area/tokyo/kokubunji/"
+      },
+      {
+        "key": "near",
+        "slug": "tachikawa",
+        "name": "立川市",
+        "value": 430705,
+        "href": "/area/tokyo/tachikawa/"
+      },
+      {
+        "key": "near",
+        "slug": "fuchu",
+        "name": "府中市",
+        "value": 243746,
+        "href": "/area/tokyo/fuchu/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -291,7 +331,9 @@
       }
     ],
     "sum_top5_passengers": 129088,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 51
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

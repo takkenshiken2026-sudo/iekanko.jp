@@ -236,6 +236,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:700}
 .figures.on .fig-st-bar i{transform:scaleX(1);transition:transform .65s cubic-bezier(.2,.7,.2,1)}
 .fig-st-n{font-variant-numeric:tabular-nums;font-size:.82rem;color:var(--muted);white-space:nowrap}
 .figures-note{margin:.9rem 0 0;font-size:.76rem;color:var(--muted);line-height:1.5}
+.fig-st-wrap{padding:.35rem 0 .15rem}
 
 @media(prefers-reduced-motion:reduce){
   .figures .fig-meter-track i,.figures .fig-st-bar i,.figures .fig-cmp-bar i{transform:none;transition:none}

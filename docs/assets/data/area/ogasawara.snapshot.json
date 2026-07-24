@@ -39,19 +39,22 @@
       "slug": "ota",
       "name": "大田区",
       "condo_avg_price": 48151704,
-      "land_median_yen_sqm": 563000
+      "land_median_yen_sqm": 563000,
+      "station_sum_top5": 542051
     },
     {
       "slug": "okutama",
       "name": "奥多摩町",
       "condo_avg_price": null,
-      "land_median_yen_sqm": 25500
+      "land_median_yen_sqm": 25500,
+      "station_sum_top5": null
     },
     {
       "slug": "oshima",
       "name": "大島町",
       "condo_avg_price": null,
-      "land_median_yen_sqm": null
+      "land_median_yen_sqm": null,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -91,6 +94,22 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "near",
+        "slug": "ota",
+        "name": "大田区",
+        "value": 542051,
+        "href": "/area/tokyo/ota/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]

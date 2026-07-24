@@ -98,19 +98,22 @@
       "slug": "kodaira",
       "name": "小平市",
       "condo_avg_price": 36183425,
-      "land_median_yen_sqm": 250000
+      "land_median_yen_sqm": 250000,
+      "station_sum_top5": 158557
     },
     {
       "slug": "higashiyamato",
       "name": "東大和市",
       "condo_avg_price": 28375862,
-      "land_median_yen_sqm": 176000
+      "land_median_yen_sqm": 176000,
+      "station_sum_top5": 53418
     },
     {
       "slug": "higashikurume",
       "name": "東久留米市",
       "condo_avg_price": 20767647,
-      "land_median_yen_sqm": 207500
+      "land_median_yen_sqm": 207500,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -185,6 +188,29 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "near",
+        "slug": "kodaira",
+        "name": "小平市",
+        "value": 158557,
+        "href": "/area/tokyo/kodaira/"
+      },
+      {
+        "key": "near",
+        "slug": "higashiyamato",
+        "name": "東大和市",
+        "value": 53418,
+        "href": "/area/tokyo/higashiyamato/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]

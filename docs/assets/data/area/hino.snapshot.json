@@ -110,19 +110,22 @@
       "slug": "tachikawa",
       "name": "立川市",
       "condo_avg_price": 32247342,
-      "land_median_yen_sqm": 273000
+      "land_median_yen_sqm": 273000,
+      "station_sum_top5": 430705
     },
     {
       "slug": "kunitachi",
       "name": "国立市",
       "condo_avg_price": 45183809,
-      "land_median_yen_sqm": 362500
+      "land_median_yen_sqm": 362500,
+      "station_sum_top5": 129088
     },
     {
       "slug": "akishima",
       "name": "昭島市",
       "condo_avg_price": 30419685,
-      "land_median_yen_sqm": 187000
+      "land_median_yen_sqm": 187000,
+      "station_sum_top5": 149278
     }
   ],
   "compare": {
@@ -197,6 +200,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "hino",
+        "name": "日野市",
+        "value": 174926,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "tachikawa",
+        "name": "立川市",
+        "value": 430705,
+        "href": "/area/tokyo/tachikawa/"
+      },
+      {
+        "key": "near",
+        "slug": "kunitachi",
+        "name": "国立市",
+        "value": 129088,
+        "href": "/area/tokyo/kunitachi/"
+      },
+      {
+        "key": "near",
+        "slug": "akishima",
+        "name": "昭島市",
+        "value": 149278,
+        "href": "/area/tokyo/akishima/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -463,7 +503,9 @@
       }
     ],
     "sum_top5_passengers": 174926,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 69
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

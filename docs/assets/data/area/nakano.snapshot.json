@@ -98,19 +98,22 @@
       "slug": "suginami",
       "name": "杉並区",
       "condo_avg_price": 54510259,
-      "land_median_yen_sqm": 653500
+      "land_median_yen_sqm": 653500,
+      "station_sum_top5": 454190
     },
     {
       "slug": "shinjuku",
       "name": "新宿区",
       "condo_avg_price": 76579111,
-      "land_median_yen_sqm": 930000
+      "land_median_yen_sqm": 930000,
+      "station_sum_top5": 2065767
     },
     {
       "slug": "toshima",
       "name": "豊島区",
       "condo_avg_price": 64602713,
-      "land_median_yen_sqm": 780000
+      "land_median_yen_sqm": 780000,
+      "station_sum_top5": 1367104
     }
   ],
   "compare": {
@@ -185,6 +188,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "nakano",
+        "name": "中野区",
+        "value": 229976,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "suginami",
+        "name": "杉並区",
+        "value": 454190,
+        "href": "/area/tokyo/suginami/"
+      },
+      {
+        "key": "near",
+        "slug": "shinjuku",
+        "name": "新宿区",
+        "value": 2065767,
+        "href": "/area/tokyo/shinjuku/"
+      },
+      {
+        "key": "near",
+        "slug": "toshima",
+        "name": "豊島区",
+        "value": 1367104,
+        "href": "/area/tokyo/toshima/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -451,7 +491,9 @@
       }
     ],
     "sum_top5_passengers": 229976,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 91
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

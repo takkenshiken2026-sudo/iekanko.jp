@@ -98,19 +98,22 @@
       "slug": "hamura",
       "name": "羽村市",
       "condo_avg_price": 14731034,
-      "land_median_yen_sqm": 138500
+      "land_median_yen_sqm": 138500,
+      "station_sum_top5": null
     },
     {
       "slug": "akishima",
       "name": "昭島市",
       "condo_avg_price": 30419685,
-      "land_median_yen_sqm": 187000
+      "land_median_yen_sqm": 187000,
+      "station_sum_top5": 149278
     },
     {
       "slug": "mizuho",
       "name": "瑞穂町",
       "condo_avg_price": 5066666,
-      "land_median_yen_sqm": 102400
+      "land_median_yen_sqm": 102400,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -187,6 +190,29 @@
         "value": 371000,
         "href": null
       }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "fussa",
+        "name": "福生市",
+        "value": 8426,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "akishima",
+        "name": "昭島市",
+        "value": 149278,
+        "href": "/area/tokyo/akishima/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
+        "href": null
+      }
     ]
   },
   "stations": {
@@ -227,7 +253,9 @@
       }
     ],
     "sum_top5_passengers": 8426,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 3
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

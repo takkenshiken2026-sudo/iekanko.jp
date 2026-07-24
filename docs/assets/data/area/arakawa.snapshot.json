@@ -110,19 +110,22 @@
       "slug": "taito",
       "name": "台東区",
       "condo_avg_price": 57359806,
-      "land_median_yen_sqm": 937000
+      "land_median_yen_sqm": 937000,
+      "station_sum_top5": null
     },
     {
       "slug": "bunkyo",
       "name": "文京区",
       "condo_avg_price": 75928144,
-      "land_median_yen_sqm": 1220000
+      "land_median_yen_sqm": 1220000,
+      "station_sum_top5": 221982
     },
     {
       "slug": "adachi",
       "name": "足立区",
       "condo_avg_price": 37244615,
-      "land_median_yen_sqm": 340000
+      "land_median_yen_sqm": 340000,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -197,6 +200,22 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "near",
+        "slug": "bunkyo",
+        "name": "文京区",
+        "value": 221982,
+        "href": "/area/tokyo/bunkyo/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]

@@ -86,19 +86,22 @@
       "slug": "akishima",
       "name": "昭島市",
       "condo_avg_price": 30419685,
-      "land_median_yen_sqm": 187000
+      "land_median_yen_sqm": 187000,
+      "station_sum_top5": 149278
     },
     {
       "slug": "hino",
       "name": "日野市",
       "condo_avg_price": 29573913,
-      "land_median_yen_sqm": 221000
+      "land_median_yen_sqm": 221000,
+      "station_sum_top5": 174926
     },
     {
       "slug": "fussa",
       "name": "福生市",
       "condo_avg_price": 17257142,
-      "land_median_yen_sqm": 171000
+      "land_median_yen_sqm": 171000,
+      "station_sum_top5": 8426
     }
   ],
   "compare": {
@@ -173,6 +176,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "hachioji",
+        "name": "八王子市",
+        "value": 361301,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "akishima",
+        "name": "昭島市",
+        "value": 149278,
+        "href": "/area/tokyo/akishima/"
+      },
+      {
+        "key": "near",
+        "slug": "hino",
+        "name": "日野市",
+        "value": 174926,
+        "href": "/area/tokyo/hino/"
+      },
+      {
+        "key": "near",
+        "slug": "fussa",
+        "name": "福生市",
+        "value": 8426,
+        "href": "/area/tokyo/fussa/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -439,7 +479,9 @@
       }
     ],
     "sum_top5_passengers": 361301,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 143
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

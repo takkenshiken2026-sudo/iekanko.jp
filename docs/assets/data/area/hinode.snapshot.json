@@ -51,19 +51,22 @@
       "slug": "akiruno",
       "name": "あきる野市",
       "condo_avg_price": 21000000,
-      "land_median_yen_sqm": 96700
+      "land_median_yen_sqm": 96700,
+      "station_sum_top5": 40224
     },
     {
       "slug": "ome",
       "name": "青梅市",
       "condo_avg_price": 11831250,
-      "land_median_yen_sqm": 84300
+      "land_median_yen_sqm": 84300,
+      "station_sum_top5": null
     },
     {
       "slug": "hamura",
       "name": "羽村市",
       "condo_avg_price": 14731034,
-      "land_median_yen_sqm": 138500
+      "land_median_yen_sqm": 138500,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -131,6 +134,22 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "near",
+        "slug": "akiruno",
+        "name": "あきる野市",
+        "value": 40224,
+        "href": "/area/tokyo/akiruno/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]

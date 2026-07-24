@@ -105,7 +105,10 @@ def _compare_bars(rows, kind="absolute", color="#2a78d6"):
         label = esc(r["name"])
         if r.get("key") == "self":
             label = f'{label}<em>この地域</em>'
-        val = esc(fmt_yen(r["value"], "sqm" if kind == "sqm" else "absolute"))
+        if kind == "pax":
+            val = esc(fmt_pax(r["value"])) + "/日"
+        else:
+            val = esc(fmt_yen(r["value"], "sqm" if kind == "sqm" else "absolute"))
         inner = (
             f'<span class="fig-cmp-name">{label}</span>'
             f'<span class="fig-cmp-bar"><i style="--w:{pct}%"></i></span>'
@@ -248,16 +251,52 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
 
     # ── 交通 ──
     top = stations.get("top") or []
+    sum5 = stations.get("sum_top5_passengers")
     transit_block = ""
-    st_html = _station_bars(top)
-    if st_html:
+    bars = _compare_bars(compare.get("stations"), kind="pax", color="#1baf7a")
+    st_list = _station_bars(top)
+    if sum5 or st_list:
+        near_names = [n["name"] for n in (data.get("neighbors") or [])]
+        near_note = f'近隣は{"・".join(near_names)}と比較。' if near_names else ""
+        year = stations.get("year") or "最新"
+        parts = []
+        if sum5:
+            vs = stations.get("vs_tokyo_pct")
+            vs_html = f'<span class="fig-vs">都内中央値の <strong>{vs}%</strong></span>' if vs else ""
+            top_name = (top[0].get("name") if top else None) or ""
+            sub = f'上位5駅の合計'
+            if top_name:
+                sub += f' · 最大は{top_name}'
+            chart = ""
+            if bars:
+                chart = (
+                    f'<div class="fig-cost-chart">'
+                    f'<span class="fig-side-label">近隣エリア・都内中央値との比較</span>'
+                    f"{bars}</div>"
+                )
+            parts.append(
+                f'<div class="fig-cost">'
+                f'<div class="fig-cost-main">'
+                f'<span class="fig-kicker">駅の利用者数 · {esc(str(year))}年</span>'
+                f'<span class="fig-big">{esc(fmt_pax(sum5))}/日</span>'
+                f'<span class="fig-sub">{esc(sub)}</span>'
+                f"{vs_html}</div>"
+                f"{chart}"
+                f"</div>"
+            )
+        if st_list:
+            parts.append(
+                f'<div class="fig-st-wrap">'
+                f'<span class="fig-side-label">この地域の主な駅</span>'
+                f"{st_list}</div>"
+            )
         transit_block = (
             '<div class="fig-panel" data-fig="transit">'
             '<header class="fig-head">'
             "<h3>駅の利用者数</h3>"
-            f'<p>1日あたり乗降の目安（{stations.get("year") or "最新"}年）</p>'
+            f"<p>この地域と近隣エリア、都内中央値を並べて比較します。{esc(near_note)}</p>"
             "</header>"
-            f"{st_html}"
+            f'<div class="fig-costs">{"".join(parts)}</div>'
             "</div>"
         )
 

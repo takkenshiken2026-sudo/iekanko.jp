@@ -74,19 +74,22 @@
       "slug": "chofu",
       "name": "調布市",
       "condo_avg_price": 43284541,
-      "land_median_yen_sqm": 405500
+      "land_median_yen_sqm": 405500,
+      "station_sum_top5": 282704
     },
     {
       "slug": "mitaka",
       "name": "三鷹市",
       "condo_avg_price": 54268609,
-      "land_median_yen_sqm": 452000
+      "land_median_yen_sqm": 452000,
+      "station_sum_top5": 193101
     },
     {
       "slug": "setagaya",
       "name": "世田谷区",
       "condo_avg_price": 69472415,
-      "land_median_yen_sqm": 742000
+      "land_median_yen_sqm": 742000,
+      "station_sum_top5": 613772
     }
   ],
   "compare": {
@@ -163,6 +166,43 @@
         "value": 371000,
         "href": null
       }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "komae",
+        "name": "狛江市",
+        "value": 57518,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "chofu",
+        "name": "調布市",
+        "value": 282704,
+        "href": "/area/tokyo/chofu/"
+      },
+      {
+        "key": "near",
+        "slug": "mitaka",
+        "name": "三鷹市",
+        "value": 193101,
+        "href": "/area/tokyo/mitaka/"
+      },
+      {
+        "key": "near",
+        "slug": "setagaya",
+        "name": "世田谷区",
+        "value": 613772,
+        "href": "/area/tokyo/setagaya/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
+        "href": null
+      }
     ]
   },
   "stations": {
@@ -235,7 +275,9 @@
       }
     ],
     "sum_top5_passengers": 57518,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 23
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

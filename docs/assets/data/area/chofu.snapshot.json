@@ -122,19 +122,22 @@
       "slug": "komae",
       "name": "狛江市",
       "condo_avg_price": 45557692,
-      "land_median_yen_sqm": 367500
+      "land_median_yen_sqm": 367500,
+      "station_sum_top5": 57518
     },
     {
       "slug": "mitaka",
       "name": "三鷹市",
       "condo_avg_price": 54268609,
-      "land_median_yen_sqm": 452000
+      "land_median_yen_sqm": 452000,
+      "station_sum_top5": 193101
     },
     {
       "slug": "musashino",
       "name": "武蔵野市",
       "condo_avg_price": 61023015,
-      "land_median_yen_sqm": 620000
+      "land_median_yen_sqm": 620000,
+      "station_sum_top5": 373106
     }
   ],
   "compare": {
@@ -209,6 +212,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "chofu",
+        "name": "調布市",
+        "value": 282704,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "komae",
+        "name": "狛江市",
+        "value": 57518,
+        "href": "/area/tokyo/komae/"
+      },
+      {
+        "key": "near",
+        "slug": "mitaka",
+        "name": "三鷹市",
+        "value": 193101,
+        "href": "/area/tokyo/mitaka/"
+      },
+      {
+        "key": "near",
+        "slug": "musashino",
+        "name": "武蔵野市",
+        "value": 373106,
+        "href": "/area/tokyo/musashino/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -475,7 +515,9 @@
       }
     ],
     "sum_top5_passengers": 282704,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 112
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

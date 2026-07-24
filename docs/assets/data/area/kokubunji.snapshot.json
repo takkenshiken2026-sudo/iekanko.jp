@@ -98,19 +98,22 @@
       "slug": "kunitachi",
       "name": "国立市",
       "condo_avg_price": 45183809,
-      "land_median_yen_sqm": 362500
+      "land_median_yen_sqm": 362500,
+      "station_sum_top5": 129088
     },
     {
       "slug": "kodaira",
       "name": "小平市",
       "condo_avg_price": 36183425,
-      "land_median_yen_sqm": 250000
+      "land_median_yen_sqm": 250000,
+      "station_sum_top5": 158557
     },
     {
       "slug": "fuchu",
       "name": "府中市",
       "condo_avg_price": 41578571,
-      "land_median_yen_sqm": 310000
+      "land_median_yen_sqm": 310000,
+      "station_sum_top5": 243746
     }
   ],
   "compare": {
@@ -185,6 +188,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "kokubunji",
+        "name": "国分寺市",
+        "value": 263886,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "kunitachi",
+        "name": "国立市",
+        "value": 129088,
+        "href": "/area/tokyo/kunitachi/"
+      },
+      {
+        "key": "near",
+        "slug": "kodaira",
+        "name": "小平市",
+        "value": 158557,
+        "href": "/area/tokyo/kodaira/"
+      },
+      {
+        "key": "near",
+        "slug": "fuchu",
+        "name": "府中市",
+        "value": 243746,
+        "href": "/area/tokyo/fuchu/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -291,7 +331,9 @@
       }
     ],
     "sum_top5_passengers": 263886,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 104
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

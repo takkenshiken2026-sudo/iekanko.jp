@@ -122,19 +122,22 @@
       "slug": "fussa",
       "name": "福生市",
       "condo_avg_price": 17257142,
-      "land_median_yen_sqm": 171000
+      "land_median_yen_sqm": 171000,
+      "station_sum_top5": 8426
     },
     {
       "slug": "tachikawa",
       "name": "立川市",
       "condo_avg_price": 32247342,
-      "land_median_yen_sqm": 273000
+      "land_median_yen_sqm": 273000,
+      "station_sum_top5": 430705
     },
     {
       "slug": "musashimurayama",
       "name": "武蔵村山市",
       "condo_avg_price": 11100000,
-      "land_median_yen_sqm": 120500
+      "land_median_yen_sqm": 120500,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -209,6 +212,36 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "akishima",
+        "name": "昭島市",
+        "value": 149278,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "fussa",
+        "name": "福生市",
+        "value": 8426,
+        "href": "/area/tokyo/fussa/"
+      },
+      {
+        "key": "near",
+        "slug": "tachikawa",
+        "name": "立川市",
+        "value": 430705,
+        "href": "/area/tokyo/tachikawa/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -379,7 +412,9 @@
       }
     ],
     "sum_top5_passengers": 149278,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 59
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

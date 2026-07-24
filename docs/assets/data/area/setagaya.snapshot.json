@@ -98,19 +98,22 @@
       "slug": "meguro",
       "name": "目黒区",
       "condo_avg_price": 83058805,
-      "land_median_yen_sqm": 1060000
+      "land_median_yen_sqm": 1060000,
+      "station_sum_top5": 673009
     },
     {
       "slug": "suginami",
       "name": "杉並区",
       "condo_avg_price": 54510259,
-      "land_median_yen_sqm": 653500
+      "land_median_yen_sqm": 653500,
+      "station_sum_top5": 454190
     },
     {
       "slug": "komae",
       "name": "狛江市",
       "condo_avg_price": 45557692,
-      "land_median_yen_sqm": 367500
+      "land_median_yen_sqm": 367500,
+      "station_sum_top5": 57518
     }
   ],
   "compare": {
@@ -185,6 +188,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "setagaya",
+        "name": "世田谷区",
+        "value": 613772,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "meguro",
+        "name": "目黒区",
+        "value": 673009,
+        "href": "/area/tokyo/meguro/"
+      },
+      {
+        "key": "near",
+        "slug": "suginami",
+        "name": "杉並区",
+        "value": 454190,
+        "href": "/area/tokyo/suginami/"
+      },
+      {
+        "key": "near",
+        "slug": "komae",
+        "name": "狛江市",
+        "value": 57518,
+        "href": "/area/tokyo/komae/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -451,7 +491,9 @@
       }
     ],
     "sum_top5_passengers": 613772,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 243
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

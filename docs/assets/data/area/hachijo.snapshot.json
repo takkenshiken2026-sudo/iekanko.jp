@@ -39,19 +39,22 @@
       "slug": "hachioji",
       "name": "八王子市",
       "condo_avg_price": 27790693,
-      "land_median_yen_sqm": 117500
+      "land_median_yen_sqm": 117500,
+      "station_sum_top5": 361301
     },
     {
       "slug": "hamura",
       "name": "羽村市",
       "condo_avg_price": 14731034,
-      "land_median_yen_sqm": 138500
+      "land_median_yen_sqm": 138500,
+      "station_sum_top5": null
     },
     {
       "slug": "nerima",
       "name": "練馬区",
       "condo_avg_price": 44791638,
-      "land_median_yen_sqm": 449000
+      "land_median_yen_sqm": 449000,
+      "station_sum_top5": 252990
     }
   ],
   "compare": {
@@ -112,6 +115,29 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "near",
+        "slug": "hachioji",
+        "name": "八王子市",
+        "value": 361301,
+        "href": "/area/tokyo/hachioji/"
+      },
+      {
+        "key": "near",
+        "slug": "nerima",
+        "name": "練馬区",
+        "value": 252990,
+        "href": "/area/tokyo/nerima/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]

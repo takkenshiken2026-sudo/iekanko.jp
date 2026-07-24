@@ -110,19 +110,22 @@
       "slug": "hinode",
       "name": "日の出町",
       "condo_avg_price": null,
-      "land_median_yen_sqm": 74250
+      "land_median_yen_sqm": 74250,
+      "station_sum_top5": null
     },
     {
       "slug": "hamura",
       "name": "羽村市",
       "condo_avg_price": 14731034,
-      "land_median_yen_sqm": 138500
+      "land_median_yen_sqm": 138500,
+      "station_sum_top5": null
     },
     {
       "slug": "fussa",
       "name": "福生市",
       "condo_avg_price": 17257142,
-      "land_median_yen_sqm": 171000
+      "land_median_yen_sqm": 171000,
+      "station_sum_top5": 8426
     }
   ],
   "compare": {
@@ -190,6 +193,29 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "akiruno",
+        "name": "あきる野市",
+        "value": 40224,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "fussa",
+        "name": "福生市",
+        "value": 8426,
+        "href": "/area/tokyo/fussa/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -360,7 +386,9 @@
       }
     ],
     "sum_top5_passengers": 40224,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 16
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

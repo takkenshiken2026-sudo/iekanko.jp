@@ -98,19 +98,22 @@
       "slug": "shinagawa",
       "name": "品川区",
       "condo_avg_price": 83644444,
-      "land_median_yen_sqm": 930000
+      "land_median_yen_sqm": 930000,
+      "station_sum_top5": 1266868
     },
     {
       "slug": "meguro",
       "name": "目黒区",
       "condo_avg_price": 83058805,
-      "land_median_yen_sqm": 1060000
+      "land_median_yen_sqm": 1060000,
+      "station_sum_top5": 673009
     },
     {
       "slug": "minato",
       "name": "港区",
       "condo_avg_price": 155764075,
-      "land_median_yen_sqm": 2190000
+      "land_median_yen_sqm": 2190000,
+      "station_sum_top5": 1256259
     }
   ],
   "compare": {
@@ -185,6 +188,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "ota",
+        "name": "大田区",
+        "value": 542051,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "shinagawa",
+        "name": "品川区",
+        "value": 1266868,
+        "href": "/area/tokyo/shinagawa/"
+      },
+      {
+        "key": "near",
+        "slug": "meguro",
+        "name": "目黒区",
+        "value": 673009,
+        "href": "/area/tokyo/meguro/"
+      },
+      {
+        "key": "near",
+        "slug": "minato",
+        "name": "港区",
+        "value": 1256259,
+        "href": "/area/tokyo/minato/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -451,7 +491,9 @@
       }
     ],
     "sum_top5_passengers": 542051,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 214
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

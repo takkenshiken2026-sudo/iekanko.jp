@@ -98,19 +98,22 @@
       "slug": "katsushika",
       "name": "葛飾区",
       "condo_avg_price": 39230103,
-      "land_median_yen_sqm": 366000
+      "land_median_yen_sqm": 366000,
+      "station_sum_top5": null
     },
     {
       "slug": "koto",
       "name": "江東区",
       "condo_avg_price": 79209212,
-      "land_median_yen_sqm": 585000
+      "land_median_yen_sqm": 585000,
+      "station_sum_top5": null
     },
     {
       "slug": "sumida",
       "name": "墨田区",
       "condo_avg_price": 50550140,
-      "land_median_yen_sqm": 537000
+      "land_median_yen_sqm": 537000,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -185,6 +188,15 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]

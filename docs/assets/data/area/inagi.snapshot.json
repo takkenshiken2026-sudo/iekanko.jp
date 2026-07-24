@@ -74,19 +74,22 @@
       "slug": "fuchu",
       "name": "府中市",
       "condo_avg_price": 41578571,
-      "land_median_yen_sqm": 310000
+      "land_median_yen_sqm": 310000,
+      "station_sum_top5": 243746
     },
     {
       "slug": "chofu",
       "name": "調布市",
       "condo_avg_price": 43284541,
-      "land_median_yen_sqm": 405500
+      "land_median_yen_sqm": 405500,
+      "station_sum_top5": 282704
     },
     {
       "slug": "tama",
       "name": "多摩市",
       "condo_avg_price": 31046540,
-      "land_median_yen_sqm": 174500
+      "land_median_yen_sqm": 174500,
+      "station_sum_top5": 252345
     }
   ],
   "compare": {
@@ -161,6 +164,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "inagi",
+        "name": "稲城市",
+        "value": 78287,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "fuchu",
+        "name": "府中市",
+        "value": 243746,
+        "href": "/area/tokyo/fuchu/"
+      },
+      {
+        "key": "near",
+        "slug": "chofu",
+        "name": "調布市",
+        "value": 282704,
+        "href": "/area/tokyo/chofu/"
+      },
+      {
+        "key": "near",
+        "slug": "tama",
+        "name": "多摩市",
+        "value": 252345,
+        "href": "/area/tokyo/tama/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -331,7 +371,9 @@
       }
     ],
     "sum_top5_passengers": 78287,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 31
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

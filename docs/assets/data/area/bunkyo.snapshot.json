@@ -86,19 +86,22 @@
       "slug": "chiyoda",
       "name": "千代田区",
       "condo_avg_price": 122090140,
-      "land_median_yen_sqm": 3485000
+      "land_median_yen_sqm": 3485000,
+      "station_sum_top5": 565677
     },
     {
       "slug": "taito",
       "name": "台東区",
       "condo_avg_price": 57359806,
-      "land_median_yen_sqm": 937000
+      "land_median_yen_sqm": 937000,
+      "station_sum_top5": null
     },
     {
       "slug": "arakawa",
       "name": "荒川区",
       "condo_avg_price": 51944773,
-      "land_median_yen_sqm": 612000
+      "land_median_yen_sqm": 612000,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -173,6 +176,29 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "bunkyo",
+        "name": "文京区",
+        "value": 221982,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "chiyoda",
+        "name": "千代田区",
+        "value": 565677,
+        "href": "/area/tokyo/chiyoda/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -343,7 +369,9 @@
       }
     ],
     "sum_top5_passengers": 221982,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 88
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

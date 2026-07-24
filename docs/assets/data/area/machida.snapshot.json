@@ -74,19 +74,22 @@
       "slug": "tama",
       "name": "多摩市",
       "condo_avg_price": 31046540,
-      "land_median_yen_sqm": 174500
+      "land_median_yen_sqm": 174500,
+      "station_sum_top5": 252345
     },
     {
       "slug": "inagi",
       "name": "稲城市",
       "condo_avg_price": 33666981,
-      "land_median_yen_sqm": 263000
+      "land_median_yen_sqm": 263000,
+      "station_sum_top5": 78287
     },
     {
       "slug": "hino",
       "name": "日野市",
       "condo_avg_price": 29573913,
-      "land_median_yen_sqm": 221000
+      "land_median_yen_sqm": 221000,
+      "station_sum_top5": 174926
     }
   ],
   "compare": {
@@ -161,6 +164,43 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "machida",
+        "name": "町田市",
+        "value": 434047,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "tama",
+        "name": "多摩市",
+        "value": 252345,
+        "href": "/area/tokyo/tama/"
+      },
+      {
+        "key": "near",
+        "slug": "inagi",
+        "name": "稲城市",
+        "value": 78287,
+        "href": "/area/tokyo/inagi/"
+      },
+      {
+        "key": "near",
+        "slug": "hino",
+        "name": "日野市",
+        "value": 174926,
+        "href": "/area/tokyo/hino/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -427,7 +467,9 @@
       }
     ],
     "sum_top5_passengers": 434047,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 172
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

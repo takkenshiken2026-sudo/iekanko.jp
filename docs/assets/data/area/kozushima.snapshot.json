@@ -51,19 +51,22 @@
       "slug": "kunitachi",
       "name": "国立市",
       "condo_avg_price": 45183809,
-      "land_median_yen_sqm": 362500
+      "land_median_yen_sqm": 362500,
+      "station_sum_top5": 129088
     },
     {
       "slug": "koto",
       "name": "江東区",
       "condo_avg_price": 79209212,
-      "land_median_yen_sqm": 585000
+      "land_median_yen_sqm": 585000,
+      "station_sum_top5": null
     },
     {
       "slug": "kiyose",
       "name": "清瀬市",
       "condo_avg_price": 29025000,
-      "land_median_yen_sqm": 197000
+      "land_median_yen_sqm": 197000,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -124,6 +127,22 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "near",
+        "slug": "kunitachi",
+        "name": "国立市",
+        "value": 129088,
+        "href": "/area/tokyo/kunitachi/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]

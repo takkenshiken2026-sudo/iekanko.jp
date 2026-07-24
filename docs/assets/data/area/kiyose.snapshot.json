@@ -98,19 +98,22 @@
       "slug": "higashikurume",
       "name": "東久留米市",
       "condo_avg_price": 20767647,
-      "land_median_yen_sqm": 207500
+      "land_median_yen_sqm": 207500,
+      "station_sum_top5": null
     },
     {
       "slug": "nishitokyo",
       "name": "西東京市",
       "condo_avg_price": 39725345,
-      "land_median_yen_sqm": 312000
+      "land_median_yen_sqm": 312000,
+      "station_sum_top5": 103269
     },
     {
       "slug": "higashimurayama",
       "name": "東村山市",
       "condo_avg_price": 24911250,
-      "land_median_yen_sqm": 192000
+      "land_median_yen_sqm": 192000,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -185,6 +188,22 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "near",
+        "slug": "nishitokyo",
+        "name": "西東京市",
+        "value": 103269,
+        "href": "/area/tokyo/nishitokyo/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]

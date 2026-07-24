@@ -98,19 +98,22 @@
       "slug": "chiyoda",
       "name": "千代田区",
       "condo_avg_price": 122090140,
-      "land_median_yen_sqm": 3485000
+      "land_median_yen_sqm": 3485000,
+      "station_sum_top5": 565677
     },
     {
       "slug": "shibuya",
       "name": "渋谷区",
       "condo_avg_price": 117978483,
-      "land_median_yen_sqm": 1590000
+      "land_median_yen_sqm": 1590000,
+      "station_sum_top5": 1774953
     },
     {
       "slug": "chuo",
       "name": "中央区",
       "condo_avg_price": 112606259,
-      "land_median_yen_sqm": 1685000
+      "land_median_yen_sqm": 1685000,
+      "station_sum_top5": null
     }
   ],
   "compare": {
@@ -185,6 +188,36 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "minato",
+        "name": "港区",
+        "value": 1256259,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "chiyoda",
+        "name": "千代田区",
+        "value": 565677,
+        "href": "/area/tokyo/chiyoda/"
+      },
+      {
+        "key": "near",
+        "slug": "shibuya",
+        "name": "渋谷区",
+        "value": 1774953,
+        "href": "/area/tokyo/shibuya/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -451,7 +484,9 @@
       }
     ],
     "sum_top5_passengers": 1256259,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 497
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

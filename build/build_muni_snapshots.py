@@ -150,10 +150,27 @@ def housing_metrics(housing):
     land = (housing or {}).get("land") or {}
     condo = (housing or {}).get("condo") or {}
     latest = condo.get("latest") or {}
+    stations = (housing or {}).get("stations") or {}
+    top = stations.get("top") or []
+    top0 = top[0] if top else {}
     return {
         "condo_avg_price": latest.get("avg_price"),
         "land_median_yen_sqm": land.get("median_residential_yen_sqm"),
+        "station_sum_top5": stations.get("sum_top5_passengers") or None,
+        "station_top_passengers": top0.get("passengers"),
+        "station_top_name": top0.get("name"),
     }
+
+
+def median_int(vals):
+    vals = sorted(v for v in vals if v)
+    if not vals:
+        return None
+    n = len(vals)
+    mid = n // 2
+    if n % 2:
+        return int(vals[mid])
+    return int(round((vals[mid - 1] + vals[mid]) / 2))
 
 
 def main():
@@ -198,6 +215,10 @@ def main():
             with open(base_path, encoding="utf-8") as f:
                 housing_by_slug[slug] = json.load(f)
 
+    tokyo_station = median_int(
+        housing_metrics(h)["station_sum_top5"] for h in housing_by_slug.values()
+    )
+
     os.makedirs(OUT_DIR, exist_ok=True)
     n_out = 0
     for slug, name in name_by_slug.items():
@@ -235,6 +256,7 @@ def main():
                 "name": name_by_slug.get(ns, ns),
                 "condo_avg_price": m["condo_avg_price"],
                 "land_median_yen_sqm": m["land_median_yen_sqm"],
+                "station_sum_top5": m["station_sum_top5"],
             })
 
         self_m = housing_metrics(housing)
@@ -259,6 +281,11 @@ def main():
                 rows.append({"key": "tokyo", "slug": None, "name": "都内中央値", "value": tokyo_val, "href": None})
             return rows
 
+        stations = dict(housing.get("stations") or {})
+        if self_m["station_sum_top5"] and tokyo_station:
+            stations["tokyo_median_sum_top5"] = tokyo_station
+            stations["vs_tokyo_pct"] = round(100 * self_m["station_sum_top5"] / tokyo_station)
+
         snap = {
             "slug": slug,
             "name": name,
@@ -273,8 +300,9 @@ def main():
             "compare": {
                 "condo": compare_series("condo_avg_price", self_m["condo_avg_price"], tokyo_condo),
                 "land": compare_series("land_median_yen_sqm", self_m["land_median_yen_sqm"], tokyo_land),
+                "stations": compare_series("station_sum_top5", self_m["station_sum_top5"], tokyo_station),
             },
-            "stations": housing.get("stations"),
+            "stations": stations,
             "source": housing.get("source"),
         }
         with open(os.path.join(OUT_DIR, f"{slug}.snapshot.json"), "w", encoding="utf-8") as f:
@@ -285,6 +313,8 @@ def main():
     s = json.load(open(os.path.join(OUT_DIR, "shibuya.snapshot.json")))
     print("shibuya neighbors", [n["name"] for n in s["neighbors"]])
     print("condo compare", [(r["name"], r["value"]) for r in s["compare"]["condo"]])
+    print("station compare", [(r["name"], r["value"]) for r in s["compare"]["stations"]])
+    print("tokyo station median", s["stations"].get("tokyo_median_sum_top5"))
 
 
 if __name__ == "__main__":

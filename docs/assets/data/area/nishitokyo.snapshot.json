@@ -98,19 +98,22 @@
       "slug": "higashikurume",
       "name": "東久留米市",
       "condo_avg_price": 20767647,
-      "land_median_yen_sqm": 207500
+      "land_median_yen_sqm": 207500,
+      "station_sum_top5": null
     },
     {
       "slug": "musashino",
       "name": "武蔵野市",
       "condo_avg_price": 61023015,
-      "land_median_yen_sqm": 620000
+      "land_median_yen_sqm": 620000,
+      "station_sum_top5": 373106
     },
     {
       "slug": "mitaka",
       "name": "三鷹市",
       "condo_avg_price": 54268609,
-      "land_median_yen_sqm": 452000
+      "land_median_yen_sqm": 452000,
+      "station_sum_top5": 193101
     }
   ],
   "compare": {
@@ -185,6 +188,36 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "nishitokyo",
+        "name": "西東京市",
+        "value": 103269,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "musashino",
+        "name": "武蔵野市",
+        "value": 373106,
+        "href": "/area/tokyo/musashino/"
+      },
+      {
+        "key": "near",
+        "slug": "mitaka",
+        "name": "三鷹市",
+        "value": 193101,
+        "href": "/area/tokyo/mitaka/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
@@ -291,7 +324,9 @@
       }
     ],
     "sum_top5_passengers": 103269,
-    "unit": "人/日（乗降）"
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 41
   },
   "source": {
     "land": "地価公示・都道府県地価調査（2025年）",

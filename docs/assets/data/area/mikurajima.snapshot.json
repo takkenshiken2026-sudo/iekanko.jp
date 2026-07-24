@@ -39,19 +39,22 @@
       "slug": "machida",
       "name": "町田市",
       "condo_avg_price": 33017845,
-      "land_median_yen_sqm": 153000
+      "land_median_yen_sqm": 153000,
+      "station_sum_top5": 434047
     },
     {
       "slug": "mizuho",
       "name": "瑞穂町",
       "condo_avg_price": 5066666,
-      "land_median_yen_sqm": 102400
+      "land_median_yen_sqm": 102400,
+      "station_sum_top5": null
     },
     {
       "slug": "bunkyo",
       "name": "文京区",
       "condo_avg_price": 75928144,
-      "land_median_yen_sqm": 1220000
+      "land_median_yen_sqm": 1220000,
+      "station_sum_top5": 221982
     }
   ],
   "compare": {
@@ -112,6 +115,29 @@
         "slug": null,
         "name": "都内中央値",
         "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "near",
+        "slug": "machida",
+        "name": "町田市",
+        "value": 434047,
+        "href": "/area/tokyo/machida/"
+      },
+      {
+        "key": "near",
+        "slug": "bunkyo",
+        "name": "文京区",
+        "value": 221982,
+        "href": "/area/tokyo/bunkyo/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
         "href": null
       }
     ]
