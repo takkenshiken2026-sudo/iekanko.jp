@@ -185,8 +185,6 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
     # ── かかるお金 ──
     cost_parts = []
     if latest:
-        spark_vals = [y["avg_price"] for y in yearly]
-        spark = _sparkline(spark_vals, color="#2a78d6")
         cls = "成約" if latest.get("price_classification") == "02" else "取引"
         vs = condo.get("vs_tokyo_pct")
         vs_html = f'<span class="fig-vs">都内中央値の <strong>{vs}%</strong></span>' if vs else ""
@@ -201,7 +199,7 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
             f'<span class="fig-big">{esc(fmt_yen(latest["avg_price"]))}</span>'
             f'<span class="fig-sub">{esc(sub)}</span>'
             f"{vs_html}</div>"
-            f'<div class="fig-cost-side"><span class="fig-side-label">推移</span>{spark}'
+            f'<div class="fig-cost-side">'
             f'{_compare_meter(latest["avg_price"], tokyo_condo, "#2a78d6")}</div>'
             f"</div>"
         )
