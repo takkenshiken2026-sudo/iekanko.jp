@@ -75,29 +75,6 @@ def load_snapshot(slug: str) -> Optional[dict]:
         return json.load(f)
 
 
-def _sparkline(values, w=160, h=36, color="#2a78d6"):
-    vals = [v for v in values if v is not None and v > 0]
-    if len(vals) < 2:
-        return ""
-    mn, mx = min(vals), max(vals)
-    span = (mx - mn) or 1
-    n = len(vals)
-    pts = []
-    for i, v in enumerate(vals):
-        x = 2 + (w - 4) * i / (n - 1)
-        y = h - 4 - (h - 8) * (v - mn) / span
-        pts.append(f"{x:.1f},{y:.1f}")
-    last = pts[-1].split(",")
-    return (
-        f'<svg class="fig-spark" viewBox="0 0 {w} {h}" width="{w}" height="{h}" '
-        f'aria-hidden="true" preserveAspectRatio="none">'
-        f'<polyline fill="none" stroke="{color}" stroke-width="2" stroke-linecap="round" '
-        f'stroke-linejoin="round" points="{" ".join(pts)}"/>'
-        f'<circle cx="{last[0]}" cy="{last[1]}" r="3" fill="{color}"/>'
-        f"</svg>"
-    )
-
-
 def _compare_meter(value, ref, color="#2a78d6"):
     """この地域 vs 都内中央値。value/ref を1本のメーターで示す。"""
     if not value or not ref:
