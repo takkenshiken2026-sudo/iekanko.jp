@@ -1,0 +1,34 @@
+municipality_slug,municipality_name,title,program_type,target_description,amount_text,conditions,official_url_or_source,status,note
+ogasawara,小笠原村,ゴールドパス（ははじま丸往復無料パス）,サービス,70歳以上の村民登録者,一般分2枚/年 無料,入院通院・介護利用時は特別分,https://www.vill.ogasawara.tokyo.jp/wp-content/uploads/sites/2/2014/11/fukushi.pdf,candidate,村独自・2008PDF由来・現行要確認
+ogasawara,小笠原村,高齢者理髪サービス,サービス,要介護4・5の高齢者,無料理髪券6枚/年,,fukushi.pdf,candidate,村独自・2008PDF由来
+ogasawara,小笠原村,通所入浴サービス(母島),サービス,要介護3以上・自宅入浴困難な母島在宅高齢者,450円/30分,,fukushi.pdf,candidate,村独自・2008PDF由来
+ogasawara,小笠原村,ミニデイサービス(母島),サービス,おおむね65歳以上・外出困難等,無料(毎週水14-16時),,fukushi.pdf,candidate,村独自・2008PDF由来
+ogasawara,小笠原村,高齢者福祉用具購入費助成,助成金,65歳以上寝たきり等,20000円/年 上限,介護保険とは別,fukushi.pdf,candidate,村独自・2008PDF由来
+ogasawara,小笠原村,重度心身障害者手当(都),手当,常時複雑な介護を要する重度者,月60000円(2008時点),所得制限,fukushi.pdf,candidate,金額要現在確認
+ogasawara,小笠原村,特別障害者手当(国),手当,在宅重度20歳以上,月26860円(2008時点),所得制限,fukushi.pdf,candidate,金額要現在確認(現行約28840円)
+ogasawara,小笠原村,障害児福祉手当(国),手当,常時介護を要する20歳未満,月14610円(2008時点),所得制限,fukushi.pdf,candidate,金額要現在確認
+ogasawara,小笠原村,無料助成券(都営交通全区間無料パス),サービス,身体・知的・戦傷病・原爆・生活保護・児童扶養手当世帯,無料パス,シルバーパス所持者除く,fukushi.pdf,candidate,村独自運用
+ogasawara,小笠原村,母子栄養食品の支給,サービス,非課税/生活保護の妊産婦・乳児,粉ミルク支給,,kodomo.pdf,candidate,2024前PDF由来
+ogasawara,小笠原村,入院助産制度,助成金,非課税世帯の妊産婦,分娩費援助,,kodomo.pdf,candidate,都支庁
+ogasawara,小笠原村,未熟児養育医療（教育医療）,助成金,2000g以下等の乳児,入院医療費給付,指定医療機関,kodomo.pdf,candidate,
+ogasawara,小笠原村,歳末御見舞金制度,手当,村内の福祉対象者,歳末見舞金,,fukushi.pdf,candidate,社協・村独自
+ogasawara,小笠原村,児童保育ちびっこクラブ,サービス,3・4歳児,午前2時間預かり,,fukushi.pdf,candidate,社協・村独自
+hinohara,檜原村,手話通訳者等派遣事業,サービス,聴覚・言語障害者,意思疎通支援(外出交通費は利用者負担),,https://www.vill.hinohara.tokyo.jp/cmsfiles/contents/0000001/1124/syougai-r5.pdf,candidate,R5しおり由来
+hinohara,檜原村,身体障害者用自動車改造費助成,助成金,上肢/下肢/体幹1・2級で就労等,1台133900円,所得制限,syougai-r5.pdf,candidate,R5基準
+hinohara,檜原村,ヘルプカード配布事業,サービス,身体・知的・精神・難病等,カード＋ホルダー無料,,syougai-r5.pdf,candidate,村独自
+hinohara,檜原村,やすらぎの湯温泉宅配事業,サービス,身障1・2級/愛1・2度世帯・要介護3以上世帯等,無料宅配,,syougai-r5.pdf,candidate,村独自
+hinohara,檜原村,身体障害者(児)住宅設備改善費給付,助成金,6〜65歳未満・下肢/体幹等,基準額 居宅動作補助用具200000円/中規模改修641000円/屋内移動設備979000円+設備353000円,自己負担原則1割,syougai-r5.pdf,candidate,R5基準
+hinohara,檜原村,中等度難聴児発達支援事業,助成金,18歳未満・両耳概ね30dB以上・聴覚手帳非該当,基準額137000円と購入費の低い方の9/10,所得割46万円以上除外,syougai-r5.pdf,candidate,R5基準
+hinohara,檜原村,移動支援事業,サービス,手帳所持で移動支援必要と認定,自己負担原則1割,行動援護等利用者除く,syougai-r5.pdf,candidate,
+hinohara,檜原村,ごみ収集支援事業,サービス,ごみ出し困難な障害者等,,ひとり暮らし/障害者のみ世帯,syougai-r5.pdf,candidate,村独自
+hinohara,檜原村,買い物支援事業,サービス,身障1・2級等,協力店が自宅配送,,syougai-r5.pdf,candidate,村独自
+aogashima,青ヶ島村,被災者生活再建支援金,給付金,台風22・23号被災者,90万円,,広報あおがしま第428号(2026),candidate,災害臨時の可能性
+aogashima,青ヶ島村,住宅の応急修理(災害救助法),助成金,被災住宅,35万8千円,,第428号(2026),candidate,災害臨時
+aogashima,青ヶ島村,乳幼児等通園支援事業,サービス,乳幼児等,R8.3条例可決(新設),基準・金額未記載,第428号(2026),candidate,新設・詳細要確認
+aogashima,青ヶ島村,人間ドック費助成,助成金,村民,要現在確認,,第335号(2018),candidate,要綱改正告知のみ
+okutama,奥多摩町,救急医療情報キットの支給,サービス,65歳以上のみ世帯等,無料配布,,koureikeikaku.pdf,candidate,計画書由来
+okutama,奥多摩町,高齢者自立支援日常生活用具給付,給付,介護認定非該当の高齢者,日常生活用具給付,,koureikeikaku.pdf,candidate,住宅改修とは別
+okutama,奥多摩町,介護保険サービス利用者負担助成(町独自),助成金,在宅・非課税世帯高齢者,自己負担一部助成,,koureikeikaku.pdf,candidate,町独自
+okutama,奥多摩町,長寿ふれあい食堂(会食事業),サービス,高齢者,会食・多世代交流,,koureikeikaku.pdf,candidate,
+toshimamura,利島村,修学旅行補助金,助成金,小中学生,小296449円/中356980円(R4決算),,R4決算書,candidate,決算計上・恒常性要確認
+toshimamura,利島村,高齢者生活支援特別助成事業,助成金,高齢者,313233円(R4決算),,R4決算書,candidate,都包括補助由来

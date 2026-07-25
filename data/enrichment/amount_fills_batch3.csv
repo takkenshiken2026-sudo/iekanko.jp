@@ -1,0 +1,201 @@
+page,municipality,title,amount_text,status,chunk
+area/tokyo/koganei/seido/1904,koganei,産後ケア事業,宿泊型3000円／日／日帰り型3000円／日／訪問型1500円／回（非課税・生保世帯無料）,ok,P
+area/tokyo/katsushika/seido/2940,katsushika,葛飾区 生活福祉資金（福祉資金・教育支援資金・緊急小口資金）のご案内,src_url404・公式で緊急小口資金の限度額を確認できず,fetch_failed,P
+area/tokyo/katsushika/seido/654,katsushika,高額介護サービス費の支給,月額上限 生保等15000円／非課税(所得80万9千円以下)15000円／非課税(80万9千円超)24600円／課税(課税所得380万円未満)44400円／380万〜690万円未満93000円／690万円以上140100円,ok,P
+area/tokyo/katsushika/seido/435,katsushika,後期高齢者医療制度,窓口自己負担1割／2割／3割（所得区分による）,ok,P
+area/tokyo/katsushika/seido/527,katsushika,産後ケア事業,基本利用料無料（宿泊型は差額ベッド代最大10000円／日を補助）,ok,P
+area/tokyo/katsushika/seido/309,katsushika,国民健康保険 高額介護合算療養費,限度額はPDF添付のみで本文に記載なし,no_amount,P
+area/tokyo/katsushika/seido/458,katsushika,見守り配食サービス,1食あたり金額は事業者により異なり本文に記載なし,no_amount,P
+area/tokyo/ota/seido/64,ota,大田区産後ケア事業,基本利用料無料（宿泊型差額ベッド代最大10000円／日補助・グループケア型無料）,ok,P
+area/tokyo/ota/seido/638,ota,国民健康保険 高額医療・高額介護合算制度,70歳未満 区分別212万円／141万円／67万円／60万円／34万円・70〜74歳 212万円／141万円／67万円／56万円／31万円／19万円,ok,P
+area/tokyo/ota/seido/642,ota,介護保険 負担限度額認定の特例減額措置,第3段階②へ減額 食費1360円／日・居住費1370円／日（多床室の特養は880円／日）,ok,P
+area/tokyo/ota/seido/65,ota,産後家事・育児援助事業（ぴよぴよサポート）,500円／時間（初回2時間無料・非課税半額・生保無料）,ok,P
+area/tokyo/ota/seido/2926,ota,大田区 生活福祉資金（緊急小口資金等）貸付のご案内,応急小口資金 1世帯180000円以内（特別な場合450000円以内）,ok,P
+area/tokyo/ota/seido/1955,ota,大田区ファミリー・アテンダント事業「見守り訪問」,利用料金の記載なし,no_amount,P
+area/tokyo/bunkyo/seido/1894,bunkyo,産後ケア事業,宿泊型は施設により3210〜7200円／日等・デイサービス型3000円／日・訪問型は記載なし,ok,P
+area/tokyo/higashikurume/seido/1264,higashikurume,介護保険住宅改修費支給,支給限度額の記載なし,no_amount,P
+area/tokyo/higashikurume/seido/1914,higashikurume,産後ケア事業,宿泊型1泊2日4500円／2泊3日7000円（非課税2000円／3500円）・日帰り型2500円／日（非課税1500円）・訪問型1500円／回（非課税500円）・集団型500円／回（非課税無料）,ok,P
+area/tokyo/higashikurume/seido/1265,higashikurume,介護保険福祉用具購入費支給,支給限度額の記載なし,no_amount,P
+area/tokyo/tama/seido/1916,tama,産後ケア事業,訪問型500円／回・宿泊型1泊2日3500円（2泊目以降1日3000円加算）・通所型500円／回（非課税・生保0円）,ok,P
+area/tokyo/aogashima/seido/2178,aogashima,青ヶ島村出身高校生の奨学金支給,src_url403／404で開けず金額を確認できず,fetch_failed,P
+area/tokyo/aogashima/seido/878,aogashima,紙おむつ等支給,src_url403／404で開けず金額を確認できず,fetch_failed,P
+area/tokyo/musashimurayama/seido/1915,musashimurayama,産後ケア事業,短期入所型1泊2日6000円・2泊目以降3000円／泊・通所型2000円／回・居宅訪問型1000円／回（非課税・生保0円）,ok,P
+area/tokyo/musashimurayama/seido/1338,musashimurayama,介護保険福祉用具購入費支給,年間100000円を限度に購入費の9割／8割／7割を支給,ok,P
+area/tokyo/musashimurayama/seido/1889,musashimurayama,高齢者おむつ給付,利用者負担無料（給付上限額の記載なし）,no_amount,P
+area/tokyo/ome/seido/1899,ome,産後ケア事業,宿泊型 5回目まで3500円・6回目以降6000円（1泊2日）・日帰り型 5回目まで0円・6回目以降2500円・訪問型 5回目まで0円・6回目以降1000円,ok,P
+area/tokyo/okutama/seido/885,okutama,高齢者・障害者の紙おむつ給付,月50枚支給・金額の記載なし,no_amount,P
+area/tokyo/okutama/seido/2826,okutama,奥多摩町 高齢者通院送迎サービス（移送サービス）,無料,ok,P
+area/tokyo/okutama/seido/2479,okutama,奥多摩町配食サービス（介護保険市町村特別給付）,src_url404・要綱で自己負担額を確認できず,fetch_failed,P
+area/tokyo/okutama/seido/1923,okutama,産後ケア事業,7回まで利用者負担無料（型別金額の記載なし）,ok,P
+area/tokyo/minato/seido/523,minato,産前産後家事・育児支援サービス,家事支援ヘルパー750円／時間・産後ドゥーラ1000円／時間（非課税半額・生保無料）,ok,P
+area/tokyo/minato/seido/500,minato,ベビーシッター利用支援（一時預かり利用支援）事業,都事業 7〜22時2500円／時間・22〜翌7時3500円／時間・区マッチング型 7〜22時1000円／時間・22〜翌7時1500円／時間（助成上限）,ok,P
+area/tokyo/minato/seido/71,minato,産後母子ケア宿泊型ショートステイ事業,施設により異なる（例 済生会中央病院1泊2日7600円）,ok,P
+area/tokyo/akiruno/seido/1919,akiruno,産後ケア事業,宿泊型1泊目7000円・2泊目以降3000円／泊（最大7泊25000円）・通所型2000円／日・訪問型1000円／日,ok,P
+area/tokyo/kodaira/seido/1905,kodaira,産後ケア事業,宿泊型5000円／泊・日帰り型2000円／日・訪問型1500円／回（生保・非課税免除）,ok,P
+area/tokyo/kodaira/seido/1103,kodaira,介護保険住宅改修費の支給,支給限度額の記載なし,no_amount,P
+area/tokyo/shinagawa/seido/663,shinagawa,介護保険施設を利用する方の負担限度額認定,食費(1日)第1段階300円／第2段階390円／第3段階①650円／第3段階②1360円／第4段階1445円・居住費(ユニット型個室1日)第1・2段階880円／第3段階1370円／第4段階2066円,ok,P
+area/tokyo/shinagawa/seido/235,shinagawa,紙おむつなどの支給,支給額の記載なし,no_amount,P
+area/tokyo/shinagawa/seido/2484,shinagawa,品川区高齢者地域配食サービス,src_url(PDF)404・公式で自己負担額を確認できず,fetch_failed,P
+area/tokyo/shinjuku/seido/540,shinjuku,産前産後支援事業,産後ドゥーラ1500円／時間・ヘルパー1000円／時間（減額・免除あり）,ok,P
+area/tokyo/shinjuku/seido/475,shinjuku,ベビーシッター利用支援事業（一時預かり利用支援）,助成上限 7〜22時2500円／時間・22〜翌7時3500円／時間,ok,P
+area/tokyo/shinjuku/seido/517,shinjuku,産後ケア事業,訪問型1000円／回（宿泊型・日帰り型はPDFのみで本文記載なし）,ok,P
+area/tokyo/akishima/seido/1901,akishima,産後ケア事業,宿泊型3500円／回・デイケア型500円／回・訪問型無料（非課税・生保免除）,ok,P
+area/tokyo/akishima/seido/2502,akishima,昭島市高齢者食事サービス,400円／食,ok,P
+area/tokyo/arakawa/seido/690,arakawa,配食見守りサービス,自己負担ありだが金額は事業者・食事内容により本文に記載なし,no_amount,P
+area/tokyo/arakawa/seido/526,arakawa,産後ケア事業,利用者負担額の記載なし（区負担額のみ掲載）,no_amount,P
+area/tokyo/arakawa/seido/671,arakawa,介護保険負担限度額の認定,食費(1日)第1段階300円／第2段階390円／第3段階①650円／第3段階②1360円・居住費ユニット型個室880〜1370円／従来型個室550〜1370円／多床室0〜430円,ok,P
+area/tokyo/taito/seido/2928,taito,台東区 生活福祉資金（緊急小口資金）貸付のご案内,緊急小口資金の限度額の記載なし,no_amount,P
+area/tokyo/taito/seido/685,taito,寝たきり高齢者介護慰労,マッサージ券・食事券を給付（金額の記載なし）,no_amount,P
+area/tokyo/taito/seido/489,taito,リフレッシュ等を目的としたベビーシッター利用支援事業,助成上限 7〜22時2500円／時間・22〜翌7時3500円／時間,ok,P
+area/tokyo/taito/seido/558,taito,産前産後支援ヘルパー あったかハンド,300円／時間（減免制度あり）,ok,P
+area/tokyo/taito/seido/2646,taito,台東区 高齢者自立支援用具（福祉用具）給付,費用の約1割自己負担（給付上限額の記載なし）,ok,P
+area/tokyo/taito/seido/647,taito,社会福祉法人等による介護サービス利用者負担額軽減,4分の1軽減／老齢福祉年金受給者は2分の1軽減（生保の特養個室居住費は全額免除）,ok,P
+area/tokyo/taito/seido/224,taito,高齢者住宅改修給付,記載なし,no_amount,Q
+area/tokyo/shibuya/seido/2143,shibuya,渋谷区奨学資金の貸付,記載なし（新規貸付は令和6年4月に終了）,no_amount,Q
+area/tokyo/shibuya/seido/26,shibuya,介護保険と主な区独自の福祉サービス,記載なし,no_amount,Q
+area/tokyo/shibuya/seido/522,shibuya,産後ケア事業,"宿泊型1泊2日7,000円（以降1日3,500円加算）／訪問型1回1,000円／デイサービス型1回2,000円",ok,Q
+area/tokyo/shibuya/seido/57,shibuya,訪問入浴介護（上乗せ分）,"1回1,200円（生活保護受給者無料）",ok,Q
+area/tokyo/shibuya/seido/25,shibuya,介護保険サービスの利用手順,記載なし,no_amount,Q
+area/tokyo/shibuya/seido/344,shibuya,国民健康保険 高額医療・高額介護合算療養費,70歳未満区分別 年間限度額 ア212万円／イ141万円／ウ67万円／エ60万円／オ34万円,ok,Q
+area/tokyo/shibuya/seido/545,shibuya,産前産後家事サポーター派遣事業,"1時間1,100円（非課税世帯550円／生活保護世帯免除）",ok,Q
+area/tokyo/shibuya/seido/651,shibuya,社会福祉法人による介護利用者負担軽減,対象費用の25%軽減（老齢福祉年金受給者は50%軽減）,ok,Q
+area/tokyo/shibuya/seido/499,shibuya,ベビーシッター利用支援事業（一時預かり利用支援）,"日中(7-22時)上限2,500円/時間／夜間(22-7時)上限3,500円/時間",ok,Q
+area/tokyo/tachikawa/seido/2498,tachikawa,立川市高齢者等配食サービス事業,記載なし（配食事業者ごとに異なる）,no_amount,Q
+area/tokyo/tachikawa/seido/1896,tachikawa,産後ケア事業,"宿泊型1泊2日3,500円（延泊1日+2,000円）／日帰り型1回1,000円／訪問型1回500円",ok,Q
+area/tokyo/nakano/seido/555,nakano,多胎児家庭支援事業,"移動経費補助1世帯年1回24,000円／サポーター利用料 課税世帯800円/時間・非課税/生活保護世帯無料",ok,Q
+area/tokyo/nakano/seido/2485,nakano,中野区お弁当・見守りサービス（高齢者配食）,記載なし（配食事業者ごとに異なる）,no_amount,Q
+area/tokyo/nakano/seido/130,nakano,産前産後期間の国民健康保険料免除,記載なし（免除期間のみ:出産前月から4か月、多胎は3か月前から6か月）,no_amount,Q
+area/tokyo/nakano/seido/662,nakano,介護保険負担限度額認定申請,記載なし,no_amount,Q
+area/tokyo/nakano/seido/532,nakano,産前産後家事・育児支援事業,課税世帯800円/時間／非課税・生活保護世帯無料,ok,Q
+area/tokyo/nakano/seido/440,nakano,後期高齢者医療制度 療養費の支給,記載なし,no_amount,Q
+area/tokyo/nakano/seido/509,nakano,産後ケア事業,記載なし（利用回数のみ:単胎15回・多胎26回）,no_amount,Q
+area/tokyo/nakano/seido/214,nakano,後期高齢者医療制度 高額介護合算療養費,年間限度額 現役3:212万円／現役2:141万円／現役1:67万円／一般:56万円／区分2:31万円／区分1:19万円,ok,Q
+area/tokyo/nakano/seido/419,nakano,後期高齢者医療保険料の減免・納付相談,記載なし,no_amount,Q
+area/tokyo/kunitachi/seido/2929,kunitachi,国立市 生活福祉資金などの貸付制度（緊急小口資金）のご案内,記載なし（社協サイト参照）,no_amount,Q
+area/tokyo/kunitachi/seido/2491,kunitachi,国立市高齢者食事サービス,記載なし（配食事業者ごとに異なる）,no_amount,Q
+area/tokyo/kunitachi/seido/1909,kunitachi,産後ケア事業,ページ取得不可（404）。料金はPDF内のみで未確認,fetch_failed,Q
+area/tokyo/higashimurayama/seido/1907,higashimurayama,産後ケア事業,ページ取得不可（403）,fetch_failed,Q
+area/tokyo/higashimurayama/seido/2655,higashimurayama,東村山市 高齢者福祉用具購入費支給,支給対象限度額 同一年度内10万円,ok,Q
+area/tokyo/higashimurayama/seido/1196,higashimurayama,介護保険住宅改修費支給,支給限度額20万円,ok,Q
+area/tokyo/higashimurayama/seido/1197,higashimurayama,高額介護サービス費,ページ取得不可（403）,fetch_failed,Q
+area/tokyo/chiyoda/seido/2644,chiyoda,千代田区 高齢者寝具乾燥サービス,"乾燥消毒加工550円／丸洗い衛生加工1,100円／水洗いクリーニング1,210円（生活保護受給者無料）",ok,Q
+area/tokyo/chiyoda/seido/2482,chiyoda,千代田区高齢者食事支援サービス,お弁当実費350～680円/食（区補助1食350円）,ok,Q
+area/tokyo/chiyoda/seido/2149,chiyoda,千代田区教育資金の融資あっせん（進学支援・教育ローン利子補給）,融資額 子ども1人10万円～400万円／利率3.125%（令和8年度）,ok,Q
+area/tokyo/mitaka/seido/984,mitaka,高齢者等紙おむつ支給事業,記載なし,no_amount,Q
+area/tokyo/mitaka/seido/2877,mitaka,三鷹市 奨学金返還支援事業（奨学・進学支援）,ページ取得不可（404）,fetch_failed,Q
+area/tokyo/musashino/seido/1083,musashino,高齢者等日常生活用具給付,給付費用の1割負担（給付上限額の金額記載なし）,ok,Q
+area/tokyo/musashino/seido/1081,musashino,高齢者住宅改修費給付,改修費用の1割～3割負担（給付上限額の金額記載なし）,ok,Q
+area/tokyo/itabashi/seido/519,itabashi,産後ケア事業,"宿泊型1泊2日8,000円（1日追加4,000円）／通所型1回2,000円／訪問型1回600円",ok,Q
+area/tokyo/itabashi/seido/202,itabashi,高齢者紙おむつ等の支給,記載なし,no_amount,Q
+area/tokyo/itabashi/seido/679,itabashi,高齢者等配食サービス事業,記載なし（配食事業者ごとに異なる）,no_amount,Q
+area/tokyo/kita/seido/487,kita,ベビーシッター利用支援事業（一時預かり利用支援）,"日中(7-22時)上限2,500円/時間／夜間(22-7時)上限3,500円/時間",ok,Q
+area/tokyo/kita/seido/195,kita,要介護高齢者等紙おむつ支給,記載なし,no_amount,Q
+area/tokyo/kita/seido/2848,kita,北区 シニアふれあい食事会補助事業（高齢者食事サービス）,補助額 参加10人まで1食堂1万円/回（年24万円上限）／11-20人2万円（年48万円）／21-30人3万円（年72万円）／31人以上4万円（年96万円）,ok,Q
+area/tokyo/kita/seido/533,kita,産後ケア事業,"宿泊型3,300円/日（ふたご以上+1,100円/日）／日帰り型2,500円/日（ふたご以上+840円/日）／訪問型1,000円/回（ふたご以上+340円/回）",ok,Q
+area/tokyo/kita/seido/2938,kita,北区 応急小口資金・緊急小口資金貸付のご案内,15万円以内（旅行・就職就学・生活必需品）／30万円以内（災害・冠婚葬祭・転居・更新）／40万円以内（治療費）,ok,Q
+area/tokyo/kita/seido/2651,kita,北区 要介護高齢者等寝具乾燥サービス,記載なし,no_amount,Q
+area/tokyo/suginami/seido/541,suginami,産後ケア事業,"課税世帯:宿泊1泊2日7,000円(以降1日3,500円)・日帰り個別2,000円・少人数1,000円／非課税世帯:宿泊4,000円(以降2,000円)・日帰り個別1,000円・少人数500円／生活保護0円",ok,Q
+area/tokyo/suginami/seido/564,suginami,産前・産後支援ヘルパー,"1時間1,000円（非課税・生活保護世帯無料）",ok,Q
+area/tokyo/suginami/seido/52,suginami,産前産後期間に係る国民健康保険料の軽減,記載なし（軽減期間のみ:出産前月から4か月、多胎は3か月前から6か月）,no_amount,Q
+area/tokyo/suginami/seido/31,suginami,要介護認定,記載なし,no_amount,Q
+area/tokyo/suginami/seido/32,suginami,介護保険 要介護認定・要支援認定申請書,記載なし,no_amount,Q
+area/tokyo/suginami/seido/518,suginami,ベビーシッター利用支援事業（一時預かり利用支援）,"日中(7-22時)上限2,500円/時間／夜間(22-7時)上限3,500円/時間",ok,Q
+area/tokyo/koto/seido/649,koto,生計困難者等に対する介護保険利用者負担額軽減,非課税世帯:利用者負担の4分の1軽減（老齢福祉年金受給者2分の1）／生活保護受給者等:個室の居住費全額免除,ok,Q
+area/tokyo/koto/seido/521,koto,産後ケア事業,"宿泊型 1泊2日9,800円／2泊3日14,700円／3泊4日19,600円／4泊5日24,500円／5泊6日29,400円（多胎児1日2,400円加算）、日帰り型・訪問型は記載なし",ok,R
+area/tokyo/koto/seido/498,koto,ベビーシッター利用支援事業（一時預かり利用支援）,"補助上限 日中(7-22時)2,500円/時・夜間(22-7時)3,500円/時、年間上限144時間（多胎児・障害児・ひとり親288時間）",ok,R
+area/tokyo/koto/seido/648,koto,介護保険 負担限度額認定,"段階別（食費 第1段階300円～第3段階(2)1,420円/日、居住費 0円～1,470円/日）",ok,R
+area/tokyo/koto/seido/687,koto,高齢者食事サービス,各業者が定める金額（具体的金額記載なし）,no_amount,R
+area/tokyo/hinode/seido/2825,hinode,日の出町 高齢者外出支援バスの運行（福祉交通・移送サービス）,記載なし,no_amount,R
+area/tokyo/hinode/seido/1431,hinode,介護用品等給付,"月額限度額4,000円（超過分は実費負担）",ok,R
+area/tokyo/hinode/seido/1933,hinode,高齢者介護用品等給付事業,記載なし（詳細はPDF・要問合せ）,no_amount,R
+area/tokyo/hinode/seido/2637,hinode,日の出町 高齢者寝具乾燥・洗濯・消毒サービス,記載なし（詳細はPDF・要問合せ）,no_amount,R
+area/tokyo/oshima/seido/2538,oshima,大島町高齢者見守り事業・緊急連絡先登録,記載なし,no_amount,R
+area/tokyo/oshima/seido/1893,oshima,高齢者紙おむつ支給,記載なし（対象ページは制度一覧のみ、金額掲載なし）,no_amount,R
+area/tokyo/meguro/seido/501,meguro,ベビーシッター利用支援事業（一時預かり利用支援）,"補助上限 日中(7-22時)2,500円/時・夜間(22-7時)3,500円/時、年間上限144時間（多胎児・障害児・ひとり親288時間）",ok,R
+area/tokyo/meguro/seido/653,meguro,介護保険居宅サービス等利用者負担額軽減制度,利用者負担を約2分の1に軽減,ok,R
+area/tokyo/meguro/seido/327,meguro,国民健康保険 高額介護合算療養費,所得区分別（70歳未満212万～34万円、70歳以上212万～19万円）／年額,ok,R
+area/tokyo/meguro/seido/652,meguro,介護保険負担限度額認定,"段階別（食費300円～1,360円/日、居住費0円～1,370円/日）",ok,R
+area/tokyo/meguro/seido/524,meguro,産後ケア事業（宿泊型）,"施設ごとに異なる（減免適用後 1泊2日3,500円～7,500円）、非課税・生活保護世帯は全額免除",ok,R
+area/tokyo/edogawa/seido/520,edogawa,宿泊型産後ケア事業,"1泊2日7,000円／追加1日ごと+3,500円（多胎児分・非課税・生活保護世帯は免除）",ok,R
+area/tokyo/edogawa/seido/126,edogawa,産前産後期間の国民健康保険料免除,均等割・所得割保険料を免除（単胎は4か月分、多胎は6か月分）、具体的免除額は個別,ok,R
+area/tokyo/edogawa/seido/497,edogawa,ベビーシッター利用支援事業（一時預かり利用支援）,"最初の50時間は全額補助、超過分は日中2,500円/時・夜間3,500円/時、年間上限144時間（多胎児・障害児・ひとり親288時間）",ok,R
+area/tokyo/edogawa/seido/2168,edogawa,江戸川区奨学資金（貸与型）,記載なし（区独自の貸与月額の掲載なし、都育英資金等の案内のみ）,no_amount,R
+area/tokyo/edogawa/seido/668,edogawa,介護保険 利用料の減額,介護費・食費・居住費等の4分の1を軽減（老齢福祉年金受給者は2分の1、東日本大震災被災者は全額免除）,ok,R
+area/tokyo/adachi/seido/636,adachi,後期高齢者医療 医療費が高額になったとき,"所得区分別（現役並みIII 252,600円+超過分1%等、一般 外来18,000円、非課税 8,000円）※令和8年7月まで",ok,R
+area/tokyo/adachi/seido/552,adachi,産前・産後家事支援事業,平日日中 最初1時間500円・以降30分250円、平日夜間/土日祝 最初1時間800円・以降30分400円,ok,R
+area/tokyo/adachi/seido/658,adachi,生計困難者の介護保険利用者負担軽減,自己負担額の25%を軽減（老齢福祉年金受給者50%、生活保護は個室居住費全額）、区独自で介護費の最大45%助成,ok,R
+area/tokyo/adachi/seido/255,adachi,後期高齢者医療 葬祭費,7万円,ok,R
+area/tokyo/adachi/seido/506,adachi,ベビーシッター利用支援事業（一時預かり利用支援）,"補助上限 日中(7-22時)2,500円/時・夜間(22-7時)3,500円/時、年間上限144時間（多胎児288時間）",ok,R
+area/tokyo/adachi/seido/529,adachi,産後ケア事業,"デイサービス型500円、宿泊型1日2,500円（多胎2人目以降+1,000円）、日帰り型1日1,250円、訪問型1回1,000円",ok,R
+area/tokyo/mizuho/seido/1921,mizuho,産後ケア事業,"訪問型1日1,000円／日帰り型1日2,000円／宿泊型1泊3,500円（非課税・生活保護世帯等は減免・免除）",ok,R
+area/tokyo/machida/seido/1356,machida,町田市在宅高齢者紙おむつ支給事業,記載なし（利用上限額はカタログ掲載、金額の明記なし）,no_amount,R
+area/tokyo/machida/seido/1903,machida,産後ケア事業,記載なし（対象ページに料金掲載なし）,no_amount,R
+area/tokyo/fussa/seido/1287,fussa,介護保険負担限度額認定,記載なし（限度額一覧は画像掲載のみでテキスト抽出不可）,no_amount,R
+area/tokyo/fussa/seido/2525,fussa,福生市高齢者救急代理通報システム（民間型）,月額594円（基本利用料の2割相当）,ok,R
+area/tokyo/fussa/seido/1288,fussa,生計困難者等に対する介護保険サービス利用者負担額軽減制度,利用者負担額の4分の1を軽減（老齢福祉年金受給者は2分の1、生活保護受給者は全額）,ok,R
+area/tokyo/setagaya/seido/1934,setagaya,慶祝品,記載なし（88歳・100歳到達者に慶祝品、金額の明記なし）,no_amount,R
+area/tokyo/setagaya/seido/21,setagaya,要介護・要支援認定申請からサービスの利用まで,記載なし（手続き案内のみ）,no_amount,R
+area/tokyo/setagaya/seido/507,setagaya,ベビーシッター利用支援事業（一時預かり利用支援）,"補助上限 日中(7-22時)2,500円/時・夜間(22-7時)3,500円/時、年間上限144時間（多胎児・障害児・ひとり親288時間）",ok,R
+area/tokyo/setagaya/seido/530,setagaya,産後ケア事業,"宿泊型1泊2日9,000円（以降1日4,500円）、日帰り型1日3,000円、訪問型1回2,000円（多胎児加算あり）",ok,R
+area/tokyo/setagaya/seido/660,setagaya,介護保険 負担限度額認定証,"段階別（食費0円～1,360円/日、居住費380円～1,370円/日）",ok,R
+area/tokyo/setagaya/seido/2921,setagaya,世田谷区 生活福祉資金・緊急小口資金貸付のご案内,緊急小口資金 貸付限度額10万円（借入理由により低くなる場合あり）,ok,R
+area/tokyo/setagaya/seido/22,setagaya,要介護・要支援認定申請様式,記載なし（申請様式案内のみ）,no_amount,R
+area/tokyo/setagaya/seido/50,setagaya,産前産後期間の国民健康保険料免除,産前産後相当分の保険料を免除（単胎4か月間、多胎6か月間）、具体的免除額は個別,ok,R
+area/tokyo/fuchu/seido/2946,fuchu,府中市 ねたきり高齢者介護者慰労金,"月額5,000円（4月・8月・12月に分けて支給）",ok,R
+area/tokyo/fuchu/seido/931,fuchu,介護保険負担限度額認定証の交付,"段階別（第1～第4段階、食費0円～1,445円/日、居住費380円～2,066円/日）",ok,R
+area/tokyo/fuchu/seido/930,fuchu,府中市介護サービス利用料軽減制度,利用者負担額のうち4分の1を軽減,ok,R
+area/tokyo/fuchu/seido/2158,fuchu,奨学金（奨学資金貸付金）,ページ取得不可（404）,fetch_failed,R
+area/tokyo/sumida/seido/514,sumida,ベビーシッター利用支援事業（一時預かり利用支援）,"補助上限 日中(7-22時)2,500円/時・夜間(22-7時)3,500円/時、年間上限144時間（障害児・ひとり親・多胎児288時間）",ok,R
+area/tokyo/sumida/seido/686,sumida,高齢者配食みまもりサービス,事業者によって異なる（具体的金額記載なし）,no_amount,R
+area/tokyo/sumida/seido/3008,sumida,墨田区 高齢者等への住宅あっせん（すみだ住まい安心ネットワーク）,記載なし,no_amount,R
+area/tokyo/sumida/seido/621,sumida,高額医療・高額介護合算療養費の支給申請,記載なし（限度額はPDF掲載）,no_amount,R
+area/tokyo/sumida/seido/319,sumida,国民健康保険 高額医療・高額介護合算療養費,記載なし（別ページ・リンクのみ）,no_amount,R
+area/tokyo/sumida/seido/2934,sumida,墨田区 生活資金の貸し付け（生活福祉資金・緊急小口資金）のご案内,応急小口資金 上限20万円（無利子）、ひとり親家庭福祉応急小口資金 上限5万円,ok,R
+area/tokyo/hinohara/seido/2536,hinohara,檜原村高齢者みまもり事業（見守り）,記載なし,no_amount,R
+area/tokyo/hino/seido/2490,hino,日野市高齢者食事宅配（配食）サービス,,no_amount,S
+area/tokyo/hino/seido/1906,hino,産後ケア事業,"訪問型1,500円／通所型3,000円／宿泊型6,000円（1泊2日）",ok,S
+area/tokyo/toshimamura/seido/1461,toshimamura,高齢者肺炎球菌予防接種,,no_amount,S
+area/tokyo/toshimamura/seido/2184,toshimamura,利島村奨学金制度（離島高校生修学支援）,,no_amount,S
+area/tokyo/miyake/seido/2684,miyake,三宅村 高齢者住宅設備改修支援（段差解消・手すり）,個人負担：村が定める支給限度額の1割,ok,S
+area/tokyo/miyake/seido/2176,miyake,三宅村奨学資金貸付,,no_amount,S
+area/tokyo/miyake/seido/1458,miyake,介護保険福祉用具購入費及び住宅改修費受領委任払制度,,no_amount,S
+area/tokyo/higashiyamato/seido/1214,higashiyamato,介護保険福祉用具購入費支給,,no_amount,S
+area/tokyo/higashiyamato/seido/1215,higashiyamato,高額介護サービス費,,no_amount,S
+area/tokyo/higashiyamato/seido/1218,higashiyamato,高齢者寝具乾燥・水洗いサービス,無料,ok,S
+area/tokyo/higashiyamato/seido/1213,higashiyamato,介護保険住宅改修費支給,,no_amount,S
+area/tokyo/toshima/seido/692,toshima,高齢者等配食事業,,no_amount,S
+area/tokyo/toshima/seido/528,toshima,産後ケア事業,"宿泊型2,500円/日（1泊2日5,000円）／通所型1,500円/回／訪問型1,000円/回",ok,S
+area/tokyo/toshima/seido/2522,toshima,豊島区高齢者救急通報システム,,no_amount,S
+area/tokyo/toshima/seido/505,toshima,ベビーシッター利用支援事業（一時預かり利用支援）,"補助上限 昼間（7-22時）2,500円/時／夜間（22-7時）3,500円/時",ok,S
+area/tokyo/toshima/seido/656,toshima,介護保険負担限度額認定証,"第1段階 食費300円・居住費880～0円／第2段階 食費390～600円・居住費880～430円／第3段階 食費650～1,000円・居住費1,370円（日額）",ok,S
+area/tokyo/nishitokyo/seido/1316,nishitokyo,介護保険福祉用具購入費支給,,no_amount,S
+area/tokyo/nishitokyo/seido/2475,nishitokyo,高齢者見守り配食サービス,,no_amount,S
+area/tokyo/inagi/seido/1169,inagi,介護保険福祉用具購入費支給,,no_amount,S
+area/tokyo/inagi/seido/2852,inagi,稲城市 高齢者配食サービス（介護予防・日常生活支援総合事業）,,no_amount,S
+area/tokyo/inagi/seido/1168,inagi,介護保険住宅改修費支給,,no_amount,S
+area/tokyo/inagi/seido/1170,inagi,高齢者住宅「ジョイハウスたまがわ」,,no_amount,S
+area/tokyo/inagi/seido/1171,inagi,高齢者理美容割引券,"1,000円×5枚（1人年5枚まで、計5,000円）",ok,S
+area/tokyo/inagi/seido/1917,inagi,産後ケア事業,"宿泊型（1泊2日）5,000円（市立病院・継続）／7,000円（市立病院・その他）／8,000円（稲田助産院）、日帰り型2,500円（市立病院）",ok,S
+area/tokyo/inagi/seido/2531,inagi,稲城市緊急通報システム,,no_amount,S
+area/tokyo/inagi/seido/1172,inagi,寝具乾燥サービス,無料,ok,S
+area/tokyo/kiyose/seido/1913,kiyose,産後ケア事業,"宿泊型5,000円（1泊2日）／7,500円（2泊3日）／10,000円（3泊4日）、日帰り型2,000円/回、訪問型1,000円/回",ok,S
+area/tokyo/kiyose/seido/2527,kiyose,清瀬市高齢者救急通報システム（消防直接型・民間代理型）,,no_amount,S
+area/tokyo/kiyose/seido/1146,kiyose,高額医療・高額介護合算制度,70歳未満 年額212万円／141万円／67万円／60万円／34万円（所得区分別）、70歳以上 212万円／141万円／67万円／56万円／31万円／19万円,ok,S
+area/tokyo/mikurajima/seido/922,mikurajima,高齢者緊急通報システム,,no_amount,S
+area/tokyo/nerima/seido/682,nerima,練馬区見守り配食事業,,no_amount,S
+area/tokyo/nerima/seido/525,nerima,産後ケア事業,"宿泊型7,000円（初日1泊2日）＋3,500円/追加1日／通所型1,500円/日／訪問型500円/回",ok,S
+area/tokyo/nerima/seido/433,nerima,高齢者聞こえのコミュニケーション支援事業,"助成上限 住民税非課税者72,000円／課税者36,000円",ok,S
+area/tokyo/nerima/seido/43,nerima,産前産後期間にかかる国民健康保険料の減額,均等割・所得割を4か月分（多胎は6か月分）減額,ok,S
+area/tokyo/nerima/seido/37,nerima,サービス利用までの流れ（介護保険）,,no_amount,S
+area/tokyo/nerima/seido/38,nerima,要介護認定・要支援認定申請書,,no_amount,S
+area/tokyo/hachijo/seido/2957,hachijo,八丈町 親子留学型離島留学,定住支援金1世帯100万円＋18歳未満の帯同者1名につき100万円加算,ok,S
+area/tokyo/hachijo/seido/2638,hachijo,八丈町 高齢者福祉用具貸与,,no_amount,S
+area/tokyo/ogasawara/seido/1465,ogasawara,介護保険福祉用具購入費・住宅改修費支給申請,,no_amount,S
+area/tokyo/ogasawara/seido/893,ogasawara,介護予防・生活支援事業,食事サービス1食400円／ほがらかサービス30分毎400円／高齢者生活支援サービス30分毎200円（夜間・早朝250円）,ok,S
+area/tokyo/ogasawara/seido/876,ogasawara,ベビーシッター利用支援事業（一時預かり利用支援）,,no_amount,S
+area/tokyo/ogasawara/seido/3062,ogasawara,小笠原村 高齢者運賃割引（おがさわら丸 島外受診）,,no_amount,S
+area/tokyo/ogasawara/seido/2943,ogasawara,小笠原村 高齢者集合住宅（緊急通報システム・見守り）,,no_amount,S
+area/tokyo/komae/seido/2851,komae,狛江市 高齢者配食サービス（見守り・安否確認付き）,,no_amount,S
+area/tokyo/komae/seido/2172,komae,狛江市奨学資金,,fetch_failed,S
+area/tokyo/komae/seido/1393,komae,重度心身障害者（児）家族介護用品支給,,no_amount,S
+area/tokyo/kokubunji/seido/1908,kokubunji,産後ケア事業,"通所（デイサービス）型2,800円/日／短期入所（ショートステイ）型6,000円（1泊2日、2泊目以降4,000円/泊）／居宅訪問（アウトリーチ）型1,800円/回",ok,S
