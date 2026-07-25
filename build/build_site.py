@@ -89,6 +89,116 @@ EVENTS = {  # slug -> (表示名, 導入文)
  "elderly_care":("高齢・介護","高齢者・介護が必要な方が受けられる助成・サービスをまとめています。"),
 }
 
+# ── 解説ガイドの本文（オリジナルの編集コンテンツ）────────────────────────────────
+# (url slug, event slug, H1, 短い説明, リード文, [(見出し, 本文HTML), ...])
+GUIDES_EV = [
+ ("pregnancy-birth","pregnancy_birth",
+  "妊娠・出産でもらえるお金と手続きの基礎知識",
+  "妊婦健診の助成から出産育児一時金、自治体の祝い金まで",
+  "妊娠がわかってから出産までには、国と自治体の両方から受けられる支援があります。"
+  "全国共通のものと、住んでいる区市町村によって変わるものを整理しておきましょう。",
+  [("妊娠・出産でもらえるお金の主な種類",
+    "<ul class=\"plainlist\">"
+    "<li><strong>妊婦健診の費用助成</strong>：母子健康手帳の交付時に受診票（補助券）が渡され、健診費用の多くがカバーされます。助成の回数や上限は自治体で異なります。</li>"
+    "<li><strong>出産育児一時金</strong>：健康保険から支給される全国共通の給付で、出産費用にあてられます。多くは医療機関へ直接支払う仕組み（直接支払制度）が利用できます。</li>"
+    "<li><strong>出産・子育て応援の給付</strong>：妊娠時・出産時に支給される国の給付に、自治体が独自の上乗せや面談・クーポンを組み合わせている場合があります。</li>"
+    "<li><strong>自治体独自の出産祝い金・祝品</strong>：区市町村によっては、出産時に祝い金やギフト・地域通貨を支給しています。金額の差が大きい分野です。</li>"
+    "<li><strong>不妊治療・不育症治療の助成</strong>：保険適用と組み合わせて、自己負担分を助成する自治体があります。</li></ul>"),
+   ("自治体で差が出るポイント",
+    "<p>出産育児一時金のような国の給付は全国共通ですが、<strong>出産祝い金の有無や金額、妊婦健診・産後ケアの自己負担、不妊治療の上乗せ助成</strong>は自治体によって大きく変わります。"
+    "「隣の区にはある祝い金が自分の区にはない」ということも珍しくありません。引っ越し先を検討している場合は、この差を確認しておくと役立ちます。</p>"),
+   ("手続きの流れと注意点",
+    "<p>多くの支援は、妊娠届を出して母子健康手帳を受け取るところから始まります。健診の受診票もこのときに交付されるのが一般的です。"
+    "給付や助成には申請期限が設けられているものがあり、出産後の届け出とあわせて早めに確認しておくと安心です。"
+    "里帰り出産などで住んでいる自治体以外で健診を受ける場合は、費用の払い戻し手続きが必要になることもあります。</p>")]),
+
+ ("childcare","childcare",
+  "子育て世帯が受けられる給付・手当の基礎知識",
+  "児童手当・子ども医療費助成・保育料軽減などの全体像",
+  "子育て期は、国の手当と自治体独自の助成が最も重なり合う時期です。"
+  "代表的な支援の種類と、自治体で差が出やすいポイントを押さえておきましょう。",
+  [("子育て世帯の主な支援",
+    "<ul class=\"plainlist\">"
+    "<li><strong>児童手当</strong>：中学生・高校生年代までの子どもを養育する世帯に支給される全国共通の手当です。</li>"
+    "<li><strong>子ども医療費助成</strong>：子どもの通院・入院の自己負担を軽減する制度で、対象年齢・所得制限・自己負担額が自治体で大きく異なります。</li>"
+    "<li><strong>保育料の軽減・無償化</strong>：幼児教育・保育の無償化に加え、自治体が独自に保育料を軽減している場合があります。</li>"
+    "<li><strong>認可外・認証保育の補助</strong>：認可外や認証保育所を利用する世帯への月額補助で、上限額に自治体差があります。</li>"
+    "<li><strong>ひとり親家庭への支援</strong>：児童扶養手当やひとり親医療費助成など、対象者向けの制度があります。</li></ul>"),
+   ("自治体で差が出るポイント",
+    "<p>子育て支援で最も差が出るのは<strong>子ども医療費助成の対象年齢と自己負担</strong>、そして<strong>認可外保育の補助額</strong>です。"
+    "高校生年代まで医療費が実質無料の自治体もあれば、一部自己負担が残る自治体もあります。"
+    "世帯の状況によって効いてくる制度が変わるため、複数の制度を組み合わせて確認するのがおすすめです。</p>"),
+   ("確認しておきたいこと",
+    "<p>手当や助成には、所得制限や申請期限があるものがあります。とくに医療費助成は「医療証」の交付申請が必要な自治体が多く、"
+    "生まれてすぐや転入直後に手続きしておくと、あとから払い戻しの手間が省けます。"
+    "詳しい対象・金額は、各自治体の公式ページで最新の内容を確認してください。</p>")]),
+
+ ("moving","moving",
+  "引っ越しの手続きと受けられる助成の基礎知識",
+  "転入・転出の届け出と、住まいに関する自治体の支援",
+  "引っ越しは、必要な行政手続きと、自治体独自の住まい支援の両方を確認したいタイミングです。"
+  "やるべき手続きと、見落としがちな助成を整理しました。",
+  [("引っ越しにともなう主な手続き",
+    "<ul class=\"plainlist\">"
+    "<li><strong>転出届・転入届</strong>：旧住所で転出届、新住所で転入届を出します。転入は引っ越し後おおむね14日以内が目安です。</li>"
+    "<li><strong>マイナンバー・住民票の異動</strong>：カードの住所変更や各種登録の切り替えが必要です。</li>"
+    "<li><strong>国民健康保険・国民年金・介護保険の異動</strong>：加入者は住所変更にともなう手続きが必要になります。</li>"
+    "<li><strong>子育て・医療関連の再申請</strong>：子ども医療費助成などは自治体ごとの制度のため、転入先で改めて申請するのが一般的です。</li></ul>"),
+   ("引っ越しで受けられる助成",
+    "<p>自治体によっては、<strong>子育て世帯や若年夫婦の引っ越し・住み替えへの補助</strong>、<strong>家賃補助</strong>、"
+    "<strong>三世代の同居・近居支援</strong>、<strong>空き家の活用支援</strong>などを設けています。"
+    "これらは国の制度ではなく自治体独自のものが多く、条件（年齢・世帯・住む地域など）や金額の差が大きい分野です。"
+    "転入前に「引っ越し先の候補ではどんな支援があるか」を比べておくと、実質的な負担がかなり変わることがあります。</p>"),
+   ("注意点",
+    "<p>助成には申請期限や、転入前後の時期の条件がついていることがあります。"
+    "「転入してから◯か月以内」「対象は特定のエリア」といった条件を見落とすと受け取れないこともあるため、"
+    "気になる制度は早めに窓口・公式ページで条件を確認しておきましょう。</p>")]),
+
+ ("retirement-unemployment","retirement_unemployment",
+  "退職・失業したときの給付と保険料軽減の基礎知識",
+  "雇用保険・国保・年金の切り替えと、負担を軽くする制度",
+  "退職・失業のときは、収入が減る一方で保険料や税の負担が続きます。"
+  "受けられる給付と、負担を軽くするための制度を早めに確認しておきましょう。",
+  [("退職・失業時に確認したい主な制度",
+    "<ul class=\"plainlist\">"
+    "<li><strong>雇用保険の基本手当（失業給付）</strong>：離職して求職活動ができる状態など、一定の条件を満たす場合に受けられる全国共通の給付です。ハローワークで手続きします。</li>"
+    "<li><strong>国民健康保険への切り替え</strong>：会社の健康保険を抜けた場合、国民健康保険への加入（または任意継続）が必要です。</li>"
+    "<li><strong>国民健康保険料の軽減</strong>：会社都合など非自発的な離職の場合、保険料が軽減される仕組みがあります。</li>"
+    "<li><strong>国民年金の免除・納付猶予</strong>：所得が下がったときは、保険料の免除・猶予を申請できる場合があります。</li>"
+    "<li><strong>住居確保給付金など</strong>：一定の要件のもとで家賃相当額の支援を受けられる制度があります。</li></ul>"),
+   ("自治体で差が出るポイント",
+    "<p>雇用保険や年金の免除は全国共通の仕組みですが、<strong>国民健康保険料の料率や軽減の運用</strong>、"
+    "自治体独自の相談・生活支援は地域によって異なります。"
+    "同じ収入でも、住む自治体によって国保料の負担感が変わることがあります。</p>"),
+   ("手続きの順番と注意点",
+    "<p>退職後は、健康保険の切り替え・年金の手続き・失業給付の申請を、期限に注意しながら進める必要があります。"
+    "とくに国民健康保険や年金の免除は「申請しないと適用されない」ものが多く、放っておくと軽減を受けられません。"
+    "会社都合離職の保険料軽減など、自分が対象になる制度を早めに確認しておくことが大切です。</p>")]),
+
+ ("elderly-care","elderly_care",
+  "高齢・介護で受けられる助成とサービスの基礎知識",
+  "介護保険サービスと、自治体独自の高齢者向け助成",
+  "高齢期は、介護保険を中心とした全国共通のサービスに加えて、"
+  "自治体独自の助成やサービスが暮らしを支えます。代表的なものを整理しました。",
+  [("高齢・介護の主な支援",
+    "<ul class=\"plainlist\">"
+    "<li><strong>介護保険サービス</strong>：要介護・要支援の認定を受けると、訪問介護やデイサービスなどを自己負担の一部で利用できます。</li>"
+    "<li><strong>高額介護（介護予防）サービス費</strong>：自己負担が上限を超えた分が払い戻される仕組みです。</li>"
+    "<li><strong>紙おむつの支給・費用助成</strong>：在宅で介護を受ける方などに、紙おむつを現物支給または費用助成する自治体があります。</li>"
+    "<li><strong>補聴器の購入費助成</strong>：高齢者の補聴器購入費を助成する自治体が増えています。</li>"
+    "<li><strong>住宅改修・福祉用具</strong>：手すりの設置や段差解消など、住まいの改修費を支援する制度があります。</li>"
+    "<li><strong>配食・見守り・外出支援</strong>：日常生活を支える自治体独自のサービスがあります。</li></ul>"),
+   ("自治体で差が出るポイント",
+    "<p>介護保険サービスは全国共通の枠組みですが、<strong>紙おむつ支給・補聴器助成・住宅改修の上乗せ・配食や見守り</strong>といった"
+    "上乗せ／横出しのサービスは自治体ごとに大きく異なります。"
+    "「同じ介護度でも、住む街によって受けられる助けが違う」のはこの部分です。</p>"),
+   ("確認しておきたいこと",
+    "<p>介護保険サービスを使うには、まず要介護・要支援の認定申請が必要です。"
+    "自治体独自の助成は、対象要件（介護度・所得・年齢など）や申請窓口が制度ごとに分かれていることが多いため、"
+    "地域包括支援センターや自治体の窓口で、自分が使える制度をまとめて相談すると効率的です。"
+    "具体的な金額・対象は各自治体の公式ページで確認してください。</p>")]),
+]
+
 # ライフイベント別メタ（目的・年代の発見導線／カラー＝検証済みパレット slot1-5／アイコン）
 EV_META = {
  "pregnancy_birth":("これから出産する方","妊娠・出産期","#e87ba4",
@@ -684,6 +794,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <nav class="gnav" aria-label="メインナビゲーション">
 <a href="/find/">目的で探す</a>
 <a href="/hikaku/">制度を比較</a>
+<a href="/guide/">ガイド</a>
 <a href="/#area">自治体一覧</a>
 </nav></div></header>
 <main>
@@ -693,7 +804,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <footer class="site">
 <p class="totop"><a href="#top">{CHEV_U} ページの先頭へ</a></p>
 <nav class="fnav" aria-label="サイト情報">
-<a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>
+<a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>
 </nav>
 <p>本サイトは各自治体・公的機関の公表情報をもとに整理した比較・案内サービスです。
 最新かつ正確な内容は必ず各制度の公式ページでご確認ください。</p>
@@ -1293,6 +1404,101 @@ def build_static_pages():
          canonical="/privacy/", breadcrumb=[("トップ","/"),("プライバシーポリシー",None)], body=priv)
     sitemap_urls.append(("/privacy/","0.3"))
 
+# ── 解説ガイド（オリジナルの編集コンテンツ：制度の基礎知識と探し方）────────────────
+def build_guides():
+    """データの一覧とは別に、制度の全体像・探し方・比較の勘どころをまとめた
+    オリジナルの解説記事。ライフイベントごとの基礎知識から、当サイトの比較ページへ導線を張る。"""
+    def wrap(inner):
+        return ('<article class="doc">'+inner+
+                f'<p class="backtop"><a href="/">{CHEV_L} トップにもどる</a></p></article>')
+    note = ('<p class="note">※本ページは制度の全体像をつかむための一般的な解説です。'
+            '金額・対象・期限・申請方法は自治体や年度によって異なり、改定されることがあります。'
+            '実際の利用時は必ず各制度の公式ページと自治体の窓口で最新情報をご確認ください'
+            '（<a href="/disclaimer/">免責事項</a>）。</p>')
+
+    # ── ガイド一覧（ハブ）──
+    ev_cards = "".join(
+        f'<li><a href="/guide/{g[0]}/"><strong>{esc(g[2])}</strong>'
+        f'<span class="pdesc">{esc(g[3])}</span></a></li>' for g in GUIDES_EV)
+    hub = wrap(f"""
+<h1>くらしの制度ガイド</h1>
+<p class="lead">「どんなときに、どんな給付金・手当・助成が受けられるのか」を、ライフイベントごとに整理した解説記事です。
+制度の全体像をつかんでから、<a href="/find/">目的・年代から探す</a>や
+<a href="/hikaku/">制度カテゴリの自治体比較</a>で、お住まいの地域の実際の内容を確認できます。</p>
+<h2>はじめての方へ</h2>
+<p>公的な支援は「国の制度」と「自治体（東京都・区市町村）の制度」が重なり合っています。
+国の制度は全国共通ですが、上乗せ・独自の助成は自治体ごとに大きく異なり、
+同じライフイベントでも住む街によって受け取れる金額や対象が変わります。
+まずは自分のライフイベントに近いガイドから読み進めてみてください。</p>
+<h2>ライフイベント別ガイド</h2>
+<ul class="cmplist guidegrid">{ev_cards}
+<li><a href="/guide/how-to-find/"><strong>使える制度の探し方</strong>
+<span class="pdesc">自分が対象になる給付・手当を見つける手順</span></a></li></ul>
+{note}
+""")
+    page(path="/guide/index.html", title=f"くらしの制度ガイド｜給付・手当・助成の基礎知識｜{SITE_NAME}",
+         description="妊娠・出産、子育て、引っ越し、退職・失業、高齢・介護など、ライフイベントごとにもらえる給付金・手当・助成の基礎知識と探し方をまとめた解説ガイドです。",
+         canonical="/guide/", breadcrumb=[("トップ","/"),("くらしの制度ガイド",None)], body=hub)
+    sitemap_urls.append(("/guide/","0.7"))
+
+    # ── 探し方ガイド ──
+    htf = wrap(f"""
+<span class="badge">はじめに</span>
+<h1>自分が使える給付金・手当の探し方</h1>
+<p class="lead">公的な支援は「知っていれば受け取れたのに、知らずに申請しなかった」ということが起こりがちです。
+自分が対象になりうる制度を見つけるための、基本的な手順を整理しました。</p>
+<h2>1. いまの「ライフイベント」から考える</h2>
+<p>給付・手当の多くは、妊娠・出産、子育て、引っ越し、退職・失業、高齢・介護といった
+「暮らしの節目」に結びついています。まずは自分や家族がいまどの段階にいるかを起点にすると、
+関連する制度をまとめて把握できます。当サイトの<a href="/find/">目的・年代から探す</a>では、
+ライフイベントを選ぶだけで、その分野の制度を掲載している自治体を一覧できます。</p>
+<h2>2. 「国の制度」と「自治体の制度」を分けて考える</h2>
+<p>児童手当や高額療養費のように全国共通の国の制度と、各区市町村が独自に上乗せする助成は別ものです。
+国の制度は原則どこに住んでいても受けられますが、金額や対象が手厚くなるかどうかは自治体次第です。
+「自分の街ではどうか」を確認することが、受け取れる支援を取りこぼさないコツです。</p>
+<h2>3. 住んでいる自治体で「実際の金額・対象」を確認する</h2>
+<p>同じ名前の制度でも、支給額や対象条件は自治体でかなり違います。当サイトの
+<a href="/hikaku/">制度カテゴリ別の自治体比較</a>では、制度ごとに東京都62自治体の内容を横断で並べて確認でき、
+各制度ページには<strong>公式ページへの出典リンク</strong>と<strong>最終確認日</strong>を明記しています。
+気になる制度は、必ず出典先の公式ページで最新の条件を確認してください。</p>
+<h2>4. 申請期限と必要書類を早めにチェックする</h2>
+<p>給付・手当には申請期限があるものが多く、出生・転入・退職などの「事由が発生した日」から
+数週間〜数か月以内に手続きが必要なケースもあります。対象になりそうな制度を見つけたら、
+早めに申請時期・窓口・必要書類を確認しておくと安心です。</p>
+{note}
+""")
+    page(path="/guide/how-to-find/index.html", title=f"自分が使える給付金・手当の探し方｜くらしの制度ガイド｜{SITE_SHORT}",
+         description="自分や家族が対象になる給付金・手当・助成を見つけるための手順を解説。ライフイベントから考え、国と自治体の制度を分け、住んでいる自治体で実際の金額・対象・申請期限を確認する流れを紹介します。",
+         canonical="/guide/how-to-find/",
+         breadcrumb=[("トップ","/"),("くらしの制度ガイド","/guide/"),("使える制度の探し方",None)], body=htf)
+    sitemap_urls.append(("/guide/how-to-find/","0.6"))
+
+    # ── ライフイベント別ガイド ──
+    for slug, ev_slug, h1title, short, lead, sections in GUIDES_EV:
+        ev_name = EVENTS[ev_slug][0]
+        secs_html = "".join(f"<h2>{esc(h)}</h2>\n{p}\n" for h,p in sections)
+        rel = (f'<h2>{esc(ev_name)}の制度を自治体で比べる</h2>'
+               f'<p>当サイトでは、{esc(ev_name)}に関する制度を掲載している東京都の自治体を件数順・金額順で確認できます。'
+               f'お住まいの地域や引っ越し先の候補で、実際にどんな支援があるかを比べてみてください。</p>'
+               f'<div class="cmpbox"><strong>あわせて確認する</strong><ul>'
+               f'<li><a href="/ranking/{ev_slug}/">{esc(ev_name)}の制度がある自治体をみる {CHEV_R}</a></li>'
+               f'<li><a href="/find/">目的・年代から制度がある地域を探す {CHEV_R}</a></li>'
+               f'<li><a href="/hikaku/">制度カテゴリごとに自治体を比較する {CHEV_R}</a></li>'
+               f'</ul></div>')
+        body = wrap(f"""
+<span class="badge">{esc(ev_name)}</span>
+<h1>{esc(h1title)}</h1>
+<p class="lead">{esc(lead)}</p>
+{secs_html}{rel}
+{note}
+""")
+        page(path=f"/guide/{slug}/index.html",
+             title=f"{h1title}｜くらしの制度ガイド｜{SITE_SHORT}",
+             description=clip(f"{h1title}。{lead}", 118),
+             canonical=f"/guide/{slug}/",
+             breadcrumb=[("トップ","/"),("くらしの制度ガイド","/guide/"),(ev_name,None)], body=body)
+        sitemap_urls.append((f"/guide/{slug}/","0.6"))
+
 # ── トップ ──────────────────────────────────────────────────────────────────
 def build_home(muni_stats, score, cat_entries=None):
     _tj={"ward":"区","city":"市","town":"町","village":"村"}
@@ -1351,6 +1557,7 @@ def build_home(muni_stats, score, cat_entries=None):
 </div>
 {grid(all62)}
 <p class="mnone" id="mnone" hidden>該当する市区町村が見つかりません。条件を変えてお試しください。</p>
+<section class="homeguide"><h2>くらしの制度ガイド</h2><p>制度の全体像を知りたい方へ。ライフイベントごとに、もらえるお金の種類と探し方をやさしく解説しています。</p><ul class="cmplist guidegrid"><li><a href="/guide/pregnancy-birth/">妊娠・出産でもらえるお金</a></li><li><a href="/guide/childcare/">子育て世帯の給付・手当</a></li><li><a href="/guide/moving/">引っ越しの手続きと助成</a></li><li><a href="/guide/retirement-unemployment/">退職・失業時の給付と軽減</a></li><li><a href="/guide/elderly-care/">高齢・介護の助成とサービス</a></li><li><a href="/guide/how-to-find/">使える制度の探し方</a></li></ul><p><a href="/guide/">くらしの制度ガイドをすべて見る ›</a></p></section>
 <script>
 (function(){{
  var q=document.getElementById('msearch'),g=document.getElementById('mgrid'),
@@ -1416,6 +1623,7 @@ def main():
     for ev in EVENTS:
         build_ranking(ev, score, avg)
     build_static_pages()
+    build_guides()
     build_home(muni_stats, score, cat_entries)
     write_sitemap(); write_robots(); write_ads_txt(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
@@ -1562,6 +1770,11 @@ table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:var(--fs-sm)}
 ul.cmplist{list-style:none;padding:0;margin:.3rem 0}
 ul.cmplist li{padding:.5rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 ul.cmplist .cnt2{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
+.homeguide{margin:1.6rem 0}
+ul.guidegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem;margin:.6rem 0}
+ul.guidegrid li{display:block;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}
+ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
+ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--fg-2);margin-top:.2rem;font-weight:400}
 .fnav{margin:0 0 .7rem;line-height:2}
 .fnav a{color:var(--muted)}
 footer .copy{margin:.3rem 0 0}

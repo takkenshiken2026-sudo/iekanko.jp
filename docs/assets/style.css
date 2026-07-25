@@ -114,6 +114,11 @@ table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:var(--fs-sm)}
 ul.cmplist{list-style:none;padding:0;margin:.3rem 0}
 ul.cmplist li{padding:.5rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 ul.cmplist .cnt2{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
+.homeguide{margin:1.6rem 0}
+ul.guidegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem;margin:.6rem 0}
+ul.guidegrid li{display:block;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}
+ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
+ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--fg-2);margin-top:.2rem;font-weight:400}
 .fnav{margin:0 0 .7rem;line-height:2}
 .fnav a{color:var(--muted)}
 footer .copy{margin:.3rem 0 0}
