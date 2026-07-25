@@ -30,11 +30,21 @@ python3 build/build_site.py                    # SEIDO_DB 既定 = gov_life_supp
 `docs/` を commit → 公開元ブランチ（現状 `claude/seido-navi-db-publish-9t2kq4`）へマージで本番反映。
 
 ## 復元の忠実性（検証済み・2026-07-24）
-`rebuild_db_from_docs.py` → `build_site.py` の往復再生成で、
-**掲載（index）1,869ページは現行docsとバイト一致**。
-noindex（暫定データ）ページは、facts の表示順が build_site の正準順に整列する点と、
-比較(hikaku)リンクが `classify()` により再計算される点のみが差分（内容・金額・出典は保持）。
+`rebuild_db_from_docs.py` → `build_site.py`（**`PYTHONHASHSEED=0` 固定**）の往復再生成で：
+- **掲載（index）1,869ページは現行docsとバイト完全一致**。
+- **全3,058ページで facts（対象/金額/内容/出典）の内容喪失はゼロ**（機械検証済み）。
+- noindex（暫定データ）1,189ページの差分は次の2点のみ＝**制度データ自体は不変**：
+  1. facts の表示順が build_site の正準順（対象→金額→内容…）に整列
+  2. 比較(hikaku)カテゴリの自動リンクが `classify()` で再計算（隠し列
+     `benefit_description`/`target_description` を facts から近似するため一部ズレる）
 → 次回の再生成で docs は「DBの出力」に正規化され、以後は安定（fixpoint）。
+
+> **決定性**: build_site は set 反復順が `PYTHONHASHSEED` に依存するため、
+> 再生成時は `PYTHONHASHSEED=0 python3 build/build_site.py` を推奨（seed固定で完全再現）。
+>
+> **注意**: 元DB本体は入手できないため「元DBそのものとのバイナリ差分」は比較不可。
+> 検証しているのは「復元DB→再生成した**サイト**が現行docsと一致し、内容が失われないこと」。
+> 元DBにのみ在るサイト非表示の列（内部審査メモ・amount_min/max 等）は復元対象外。
 
 ## 補足
 - `build/build_site.py` 末尾に `if __name__ == "__main__": main()` を追加済み（実行部の補完）。
