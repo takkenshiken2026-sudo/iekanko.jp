@@ -26,8 +26,8 @@ SITE_NAME = "くらしの制度ナビ｜東京都の給付・手当・助成 ま
 SITE_SHORT = "くらしの制度ナビ"
 
 # ── 運営者情報（E-E-A-T用。★実名・連絡先を記入すると信頼性ページが完成します）──────
-OPERATOR_NAME  = os.environ.get("SEIDO_OPERATOR",  "【要記入：運営者名または屋号】")
-CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "【要記入：連絡先メールアドレス】")
+OPERATOR_NAME  = os.environ.get("SEIDO_OPERATOR",  "くらしの制度ナビ 運営事務局")
+CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "takken.shiken.2026@gmail.com")
 ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
 # Google Analytics 4 測定ID（全ページの <head> に gtag を出力）。空文字で無効化可。
 GA_MEASUREMENT_ID = os.environ.get("SEIDO_GA_ID", "G-9TB0TXT8X0").strip()
