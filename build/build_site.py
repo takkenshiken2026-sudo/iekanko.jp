@@ -26,11 +26,13 @@ SITE_NAME = "くらしの制度ナビ｜東京都の給付・手当・助成 ま
 SITE_SHORT = "くらしの制度ナビ"
 
 # ── 運営者情報（E-E-A-T用。★実名・連絡先を記入すると信頼性ページが完成します）──────
-OPERATOR_NAME  = os.environ.get("SEIDO_OPERATOR",  "【要記入：運営者名または屋号】")
-CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "【要記入：連絡先メールアドレス】")
+OPERATOR_NAME  = os.environ.get("SEIDO_OPERATOR",  "くらしの制度ナビ 運営事務局")
+CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "takken.shiken.2026@gmail.com")
 ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
 # Google Analytics 4 測定ID（全ページの <head> に gtag を出力）。空文字で無効化可。
 GA_MEASUREMENT_ID = os.environ.get("SEIDO_GA_ID", "G-9TB0TXT8X0").strip()
+# Google AdSense パブリッシャーID（全ページの <head> に adsbygoogle.js を出力／ads.txt も生成）。空文字で無効化可。
+ADSENSE_CLIENT = os.environ.get("SEIDO_ADSENSE", "ca-pub-7927260139193410").strip()
 # プライバシーポリシーのアクセス解析表記。未設定なら記載を省略。
 ANALYTICS_NOTE = os.environ.get(
     "SEIDO_ANALYTICS",
@@ -39,6 +41,12 @@ ANALYTICS_NOTE = os.environ.get(
 
 # ── 品質ゲート（YMYL: 未検証の薄いページをインデックスさせない）────────────
 GATE_MIN_CONFIDENCE = 82   # 制度の平均confidenceがこれ未満なら noindex
+
+# ── ライフイベント別ページ（自治体×イベントの一覧）のインデックス方針 ──────────
+# 制度名のリンク一覧が主体で本文が薄いため、AdSense審査中は noindex にして
+# 中身の濃い制度詳細ページで評価を受ける。審査通過後に環境変数
+# SEIDO_INDEX_LIFEEVENT=1 を設定して再ビルドすればインデックス対象に戻せる。
+INDEX_LIFEEVENT = os.environ.get("SEIDO_INDEX_LIFEEVENT", "0") == "1"
 
 # ── 62自治体のローマ字スラッグ（公式ドメインに整合。豊島区toshima/利島村toshimamuraを分離）─
 SLUGS = {
@@ -634,6 +642,14 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
             f"gtag('config','{ga_id}');\n"
             f'</script>\n'
         )
+    adsense_tag = ""
+    if ADSENSE_CLIENT:
+        ads_id = esc(ADSENSE_CLIENT)
+        adsense_tag = (
+            f'<!-- Google AdSense -->\n'
+            f'<meta name="google-adsense-account" content="{ads_id}">\n'
+            f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ads_id}" crossorigin="anonymous"></script>\n'
+        )
     doc = f"""<!doctype html>
 <html lang="ja">
 <head>
@@ -661,7 +677,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="/assets/style.css">
-{ga_tag}{ld}</head>
+{adsense_tag}{ga_tag}{ld}</head>
 <body id="top">
 <header class="site"><div class="hbar">
 <a class="brand" href="/"><img class="brand-mark" src="/assets/logo-mark.svg" width="28" height="28" alt="" decoding="async">{esc(SITE_SHORT)}</a>
@@ -1063,10 +1079,10 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
         {"@type":"ListItem","position":i+1,"name":p["title"],
          "url":f"{BASE_URL}/area/tokyo/{slug}/seido/{p['id']}/"} for i,p in enumerate(items)]}
     bc=[("トップ","/"),(mn,f"/area/tokyo/{slug}/"),(ev_name,None)]
-    robots = "index,follow" if items else "noindex,follow"
+    robots = "index,follow" if (items and INDEX_LIFEEVENT) else "noindex,follow"
     page(path=url+"index.html", title=title, description=desc, canonical=url,
          jsonld=[il], robots=robots, breadcrumb=bc, body=body)
-    if items: sitemap_urls.append((url,"0.6"))
+    if items and INDEX_LIFEEVENT: sitemap_urls.append((url,"0.6"))
 
 # ── 自治体ハブ ──────────────────────────────────────────────────────────────
 def build_muni(m, slug, score, avg):
@@ -1401,7 +1417,7 @@ def main():
         build_ranking(ev, score, avg)
     build_static_pages()
     build_home(muni_stats, score, cat_entries)
-    write_sitemap(); write_robots(); write_css()
+    write_sitemap(); write_robots(); write_ads_txt(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
     print(f"生成完了: 自治体{len(muni_stats)} / 制度ページ{total_prog}（index {indexed} / noindex {total_prog-indexed}）")
     print(f"比較ページ: {len(cat_counts)}カテゴリ（index {cmp_pub}）")
@@ -1419,6 +1435,13 @@ def write_sitemap():
 
 def write_robots():
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}/sitemap.xml\n")
+
+def write_ads_txt():
+    # AdSense の所有権証明。ca-pub-XXXX から pub-XXXX を取り出して DIRECT 行を出力。
+    if not ADSENSE_CLIENT:
+        return
+    pub = ADSENSE_CLIENT.replace("ca-", "", 1) if ADSENSE_CLIENT.startswith("ca-") else ADSENSE_CLIENT
+    write("ads.txt", f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n")
 
 def write_css():
     write("assets/style.css", CSS)
