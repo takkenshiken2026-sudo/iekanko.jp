@@ -1774,3 +1774,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--fw-bold)}
 .totop{margin:0 0 .6rem;text-align:right}
 .totop a{color:var(--muted);font-size:var(--fs-sm)}
 """
+
+
+if __name__ == "__main__":
+    main()
