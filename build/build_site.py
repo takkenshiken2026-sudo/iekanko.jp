@@ -641,6 +641,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
         ads_id = esc(ADSENSE_CLIENT)
         adsense_tag = (
             f'<!-- Google AdSense -->\n'
+            f'<meta name="google-adsense-account" content="{ads_id}">\n'
             f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ads_id}" crossorigin="anonymous"></script>\n'
         )
     doc = f"""<!doctype html>
