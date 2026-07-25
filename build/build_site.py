@@ -42,6 +42,12 @@ ANALYTICS_NOTE = os.environ.get(
 # ── 品質ゲート（YMYL: 未検証の薄いページをインデックスさせない）────────────
 GATE_MIN_CONFIDENCE = 82   # 制度の平均confidenceがこれ未満なら noindex
 
+# ── ライフイベント別ページ（自治体×イベントの一覧）のインデックス方針 ──────────
+# 制度名のリンク一覧が主体で本文が薄いため、AdSense審査中は noindex にして
+# 中身の濃い制度詳細ページで評価を受ける。審査通過後に環境変数
+# SEIDO_INDEX_LIFEEVENT=1 を設定して再ビルドすればインデックス対象に戻せる。
+INDEX_LIFEEVENT = os.environ.get("SEIDO_INDEX_LIFEEVENT", "0") == "1"
+
 # ── 62自治体のローマ字スラッグ（公式ドメインに整合。豊島区toshima/利島村toshimamuraを分離）─
 SLUGS = {
  "世田谷区":"setagaya","渋谷区":"shibuya","杉並区":"suginami","練馬区":"nerima","新宿区":"shinjuku",
@@ -1073,10 +1079,10 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
         {"@type":"ListItem","position":i+1,"name":p["title"],
          "url":f"{BASE_URL}/area/tokyo/{slug}/seido/{p['id']}/"} for i,p in enumerate(items)]}
     bc=[("トップ","/"),(mn,f"/area/tokyo/{slug}/"),(ev_name,None)]
-    robots = "index,follow" if items else "noindex,follow"
+    robots = "index,follow" if (items and INDEX_LIFEEVENT) else "noindex,follow"
     page(path=url+"index.html", title=title, description=desc, canonical=url,
          jsonld=[il], robots=robots, breadcrumb=bc, body=body)
-    if items: sitemap_urls.append((url,"0.6"))
+    if items and INDEX_LIFEEVENT: sitemap_urls.append((url,"0.6"))
 
 # ── 自治体ハブ ──────────────────────────────────────────────────────────────
 def build_muni(m, slug, score, avg):
