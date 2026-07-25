@@ -31,6 +31,8 @@ CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "【要記入：連絡先メ�
 ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
 # Google Analytics 4 測定ID（全ページの <head> に gtag を出力）。空文字で無効化可。
 GA_MEASUREMENT_ID = os.environ.get("SEIDO_GA_ID", "G-9TB0TXT8X0").strip()
+# Google AdSense パブリッシャーID（全ページの <head> に adsbygoogle.js を出力／ads.txt も生成）。空文字で無効化可。
+ADSENSE_CLIENT = os.environ.get("SEIDO_ADSENSE", "ca-pub-7927260139193410").strip()
 # プライバシーポリシーのアクセス解析表記。未設定なら記載を省略。
 ANALYTICS_NOTE = os.environ.get(
     "SEIDO_ANALYTICS",
@@ -634,6 +636,13 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
             f"gtag('config','{ga_id}');\n"
             f'</script>\n'
         )
+    adsense_tag = ""
+    if ADSENSE_CLIENT:
+        ads_id = esc(ADSENSE_CLIENT)
+        adsense_tag = (
+            f'<!-- Google AdSense -->\n'
+            f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ads_id}" crossorigin="anonymous"></script>\n'
+        )
     doc = f"""<!doctype html>
 <html lang="ja">
 <head>
@@ -661,7 +670,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="/assets/style.css">
-{ga_tag}{ld}</head>
+{adsense_tag}{ga_tag}{ld}</head>
 <body id="top">
 <header class="site"><div class="hbar">
 <a class="brand" href="/"><img class="brand-mark" src="/assets/logo-mark.svg" width="28" height="28" alt="" decoding="async">{esc(SITE_SHORT)}</a>
@@ -1401,7 +1410,7 @@ def main():
         build_ranking(ev, score, avg)
     build_static_pages()
     build_home(muni_stats, score, cat_entries)
-    write_sitemap(); write_robots(); write_css()
+    write_sitemap(); write_robots(); write_ads_txt(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
     print(f"生成完了: 自治体{len(muni_stats)} / 制度ページ{total_prog}（index {indexed} / noindex {total_prog-indexed}）")
     print(f"比較ページ: {len(cat_counts)}カテゴリ（index {cmp_pub}）")
@@ -1419,6 +1428,13 @@ def write_sitemap():
 
 def write_robots():
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}/sitemap.xml\n")
+
+def write_ads_txt():
+    # AdSense の所有権証明。ca-pub-XXXX から pub-XXXX を取り出して DIRECT 行を出力。
+    if not ADSENSE_CLIENT:
+        return
+    pub = ADSENSE_CLIENT.replace("ca-", "", 1) if ADSENSE_CLIENT.startswith("ca-") else ADSENSE_CLIENT
+    write("ads.txt", f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n")
 
 def write_css():
     write("assets/style.css", CSS)
