@@ -1,0 +1,3 @@
+municipality_slug,title,program_type,life_event,target,amount,benefit,application,condition,official_url,reliability,verified_date
+hinohara,産後ケア事業（通所型）,service,pregnancy_birth,村内在住で出産後7か月以内のケアが必要な母子,1日2500円（5日まで無料）。多胎は1人につき2500円追加。非課税世帯等は免除,まるやま助産院で母のケア・乳房ケア・沐浴・育児相談を行う通所型の産後ケア,出典の公式ページから村へ申請,出産後7か月以内でケアが必要な母子,https://www.vill.hinohara.tokyo.jp/0000001704.html,reviewed,2026-07-25
+mikurajima,産後ケア費用助成事業,subsidy,pregnancy_birth,御蔵島村在住の産後の母子,産後ケアにかかる費用を助成（助成額は要綱で要確認）,産後ケア費用の助成（費用助成方式）,総務課民生係 母子保健担当へ申請,産後の支援が必要な母子,https://www.vill.mikurasima.tokyo.jp/hojojosei.html,needs_review,2026-07-25
