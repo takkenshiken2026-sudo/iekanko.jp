@@ -1449,10 +1449,12 @@ def build_muni(m, slug, score, avg):
         color=EV_META[cat0][2] if cat0 in EV_META else "#7a8699"
         amt=amount_of(facts_of(p["id"]))
         yen=extract_any_yen(amt) if amt else 0
+        amt_disp=format_sum_yen(yen) if yen else "—"
         li_html.append(
           f'<li data-nm="{esc(p["title"])}" data-ev="{esc(" ".join(evs) if evs else "other")}" '
           f'data-amt="{yen or 0}" data-i="{i}">'
           f'<a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a>'
+          f'<span class="pamt{"" if yen else " na"}">{esc(amt_disp)}</span>'
           f'<span class="ptag" style="--pc:{color}">{esc(catname)}</span>'
           f'<span class="ptype">{esc(PT_JA.get(p["program_type"],"制度"))}</span></li>')
     chip_html=f'<button type="button" class="pchip2 on" data-ev="all" aria-pressed="true">すべて<b>{len(ordered)}</b></button>'
@@ -1507,17 +1509,19 @@ def build_muni(m, slug, score, avg):
         if _build_dir not in sys.path:
             sys.path.insert(0, _build_dir)
         from livability_html import figures_section_html
-        live_sec = figures_section_html(slug)
+        live_benefit = figures_section_html(slug, part="benefit")
+        live_place = figures_section_html(slug, part="place")
     except Exception:
-        live_sec = ""
+        live_benefit = live_place = ""
     lead_extra = f"全{len(progs)}件"
     if total_yen:
         lead_extra += f"・金額が分かるもの合計{format_sum_yen(total_yen)}（{total_amt_n}件）"
     body = f"""
 <h1>{esc(mn)}で受けられる給付・手当・助成 一覧</h1>
 <p class="lead">{esc(mn)}にお住まいの方が使える制度をまとめました（{esc(lead_extra)}・出典/最終確認日つき）。検索・カテゴリ絞り込み・並び替えで探せます。</p>
+{live_benefit}
 {plist_html}
-{live_sec}
+{live_place}
 {others_html}
 {PLIST_JS}
 """
@@ -2083,14 +2087,15 @@ CSS = """/* ── Design tokens ── */
   --pc-senior:#eb6834;
   --radius:12px;
   --radius-sm:8px;
-  --fs-xs:.72rem;
-  --fs-sm:.82rem;
-  --fs-md:.9rem;
+  /* タイプスケールは5段階に集約（xs / sm=md / base / h2 / h1）＋ヒーローのdisplay */
+  --fs-xs:.78rem;
+  --fs-sm:.875rem;
+  --fs-md:.875rem;
   --fs-lg:1rem;
   --fs-h3:1rem;
-  --fs-h2:1.12rem;
+  --fs-h2:1.15rem;
   --fs-h1:1.5rem;
-  --fs-display:clamp(1.65rem,4.5vw,2.2rem);
+  --fs-display:clamp(1.6rem,4.5vw,2.1rem);
   --content-width:1000px;
   --fw-normal:400;
   --fw-semi:600;
@@ -2186,6 +2191,8 @@ ul.plist{list-style:none;padding:0;margin:.5rem 0}
 ul.plist li{display:flex;align-items:baseline;gap:.55rem;padding:.6rem .2rem;border-bottom:1px solid var(--line)}
 ul.plist li[hidden]{display:none}
 ul.plist li a{font-weight:var(--fw-semi);flex:1 1 auto;min-width:0}
+.pamt{font-size:var(--fs-sm);color:var(--fg);font-weight:var(--fw-bold);font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}
+.pamt.na{color:var(--muted);font-weight:var(--fw-normal)}
 .ptag{font-size:var(--fs-xs);color:#fff;background:var(--pc,var(--accent));border-radius:999px;padding:.08rem .55rem;flex:none;white-space:nowrap}
 .ptype{font-size:var(--fs-xs);color:var(--muted);flex:none;white-space:nowrap}
 .plist-purpose{font-size:var(--fs-sm);color:var(--muted);margin:.7rem 0 0;line-height:2}
@@ -2375,9 +2382,8 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--fw-bold)}
 .fig-cost-side,.fig-cost-chart{min-width:0}
 .fig-side-label{display:block;font-size:var(--fs-xs);color:var(--muted);margin-bottom:.2rem}
 
-.fig-tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.1rem;align-items:start;
-  padding:.35rem 0 .55rem}
-.fig-card{min-width:0;padding:.55rem 0 .2rem;border-top:1px solid var(--line)}
+.fig-tri{display:flex;flex-wrap:wrap;gap:1rem 1.1rem;align-items:stretch;padding:.35rem 0 .55rem}
+.fig-card{flex:1 1 220px;min-width:0;padding:.55rem 0 .2rem;border-top:1px solid var(--line)}
 .fig-card .fig-big{font-size:clamp(1.2rem,2.4vw,1.5rem)}
 .fig-card .fig-cost-chart{margin-top:.55rem}
 .fig-card .fig-cmp li>a,.fig-card .fig-cmp li>div{grid-template-columns:3.6rem 1fr auto;gap:.28rem}

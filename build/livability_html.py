@@ -139,7 +139,7 @@ def _station_bars(top):
     return f'<ul class="fig-st-list">{"".join(rows)}</ul>'
 
 
-def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
+def figures_section_html(slug: str, data: Optional[dict] = None, part: str = "all") -> str:
     data = data or load_snapshot(slug)
     if not data:
         return ""
@@ -178,10 +178,6 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
     if benefit_rows:
         benefit_block = (
             '<div class="fig-panel" data-fig="benefit">'
-            '<header class="fig-head">'
-            "<h3>もらえるお金の目安</h3>"
-            "<p>自治体で差が出やすい手当・助成（金額が分かるもの）</p>"
-            "</header>"
             f'<div class="fig-brows">{"".join(benefit_rows)}</div>'
             f'<p class="fig-more"><a href="/hikaku/">制度ごとの自治体比較を見る</a></p>'
             "</div>"
@@ -273,11 +269,6 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
             )
         place_block = (
             '<div class="fig-panel" data-fig="place">'
-            '<header class="fig-head">'
-            "<h3>住まい・交通のかかる数字</h3>"
-            f"<p>中古マンション・住宅地価・駅利用者を、近隣エリアと都内中央値と並べて比較します。"
-            f"{esc(near_note)}</p>"
-            "</header>"
             f'<div class="fig-tri">{"".join(place_cards)}</div>'
             f'{"".join(extras)}'
             "</div>"
@@ -294,6 +285,32 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
         "条件・時点により実際の金額は異なります。"
     )
 
+    anim = ('<script>(function(){var r=document.currentScript.closest(".figures");if(!r)return;'
+            'if(window.matchMedia("(prefers-reduced-motion:reduce)").matches){r.classList.add("on");return;}'
+            'var io=new IntersectionObserver(function(es){es.forEach(function(e){'
+            'if(e.isIntersecting){r.classList.add("on");io.disconnect();}});},{threshold:.15});'
+            'io.observe(r);})();</script>')
+
+    if part == "benefit":
+        if not benefit_block:
+            return ""
+        return (
+            '<section class="figures" id="figures-benefit">'
+            '<div class="figures-intro"><h2>もらえるお金の目安</h2>'
+            f'<p>{esc(name)}で受けられる手当・助成のうち、自治体で差が出やすく金額が分かるものの目安です。</p></div>'
+            f'<div class="figures-grid">{benefit_block}</div>'
+            f'{anim}</section>'
+        )
+    if part == "place":
+        if not place_block:
+            return ""
+        return (
+            '<section class="figures" id="figures">'
+            '<div class="figures-intro"><h2>住まい・交通のかかる数字</h2>'
+            f'<p>{esc(name)}の中古マンション・住宅地価・駅利用者を、近隣エリアや都内中央値と並べて比較します。{esc(near_note)}</p></div>'
+            f'<div class="figures-grid">{place_block}</div>'
+            f'<p class="figures-note">{note}</p>{anim}</section>'
+        )
     return (
         '<section class="figures" id="figures">'
         '<div class="figures-intro">'
@@ -303,13 +320,7 @@ def figures_section_html(slug: str, data: Optional[dict] = None) -> str:
         f'<div class="figures-grid">'
         f"{benefit_block}{place_block}"
         "</div>"
-        f'<p class="figures-note">{note}</p>'
-        '<script>(function(){var r=document.querySelector(".figures");if(!r)return;'
-        'if(window.matchMedia("(prefers-reduced-motion:reduce)").matches){r.classList.add("on");return;}'
-        'var io=new IntersectionObserver(function(es){es.forEach(function(e){'
-        'if(e.isIntersecting){r.classList.add("on");io.disconnect();}});},{threshold:.15});'
-        "io.observe(r);})();</script>"
-        "</section>"
+        f'<p class="figures-note">{note}</p>{anim}</section>'
     )
 
 
