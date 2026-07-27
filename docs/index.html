@@ -59,13 +59,8 @@ gtag('config','G-9TB0TXT8X0');
 <span class="hsearch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></span>
 <input type="search" id="hsearch" name="q" placeholder="市区町村・制度名で検索（例：世田谷 / 家賃補助 / 産後ケア）" aria-label="市区町村名・制度名で検索" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hsac" aria-autocomplete="list">
 <button type="submit" class="hsearch-btn">検索</button>
-<ul class="hsac" id="hsac" role="listbox" aria-label="候補の市区町村" hidden></ul>
+<ul class="hsac" id="hsac" role="listbox" aria-label="候補の市区町村・制度" hidden></ul>
 </form>
-<div class="hero-stats" aria-label="サービスの特徴">
-<span class="hero-stat"><strong>62</strong>市区町村</span>
-<span class="hero-stat"><strong>5</strong>ライフイベント</span>
-<span class="hero-stat">公式出典<strong>付き</strong></span>
-</div>
 <div class="hero-cta">
 <a class="hero-btn primary" href="/find/">目的から探す</a>
 <a class="hero-btn" href="/hikaku/">制度を比較</a>
@@ -131,6 +126,10 @@ gtag('config','G-9TB0TXT8X0');
           href:a?a.getAttribute('href'):'#'};
  });
  var slug2nm={};munis.forEach(function(m){var s=(m.href.match(/\/area\/tokyo\/([^/]+)\//)||[])[1];if(s)slug2nm[s]=m.nm;});
+ var SUGGEST=[{t:'児童手当',u:'/hikaku/child_teate/'},{t:'家賃補助',u:'/hikaku/house_yachin/'},
+  {t:'子ども・乳幼児医療費助成',u:'/hikaku/child_iryo/'},{t:'産後ケア',u:'/hikaku/preg_sango_care/'},
+  {t:'出産・入学祝金',u:'/hikaku/child_iwai/'},{t:'高齢者の紙おむつ助成',u:'/hikaku/eld_omutsu/'},
+  {t:'補聴器の購入助成',u:'/hikaku/eld_hochoki/'},{t:'エアコン設置助成',u:'/hikaku/low_aircon/'}];
  var idx=null,loading=false,active=-1,rows=[];
  function nz(s){return (s||'').toLowerCase();}
  function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -161,9 +160,15 @@ gtag('config','G-9TB0TXT8X0');
   li.addEventListener('mouseenter',function(){setActive(i,false);});
   ac.appendChild(li);rows.push({el:li,href:href});
  }
+ function renderSuggest(){
+  ac.innerHTML='';active=-1;rows=[];
+  head('よく検索される制度');
+  SUGGEST.forEach(function(s){opt({pri:s.t,badge:'比較',href:s.u});});
+  ac.hidden=false;box.setAttribute('aria-expanded','true');
+ }
  function render(){
   var t=nz(box.value.trim());ac.innerHTML='';active=-1;rows=[];
-  if(!t){close();return;}
+  if(!t){renderSuggest();return;}
   var mm=[];
   munis.forEach(function(m){
    var nm=nz(m.nm),yo=nz(m.yo),ro=nz(m.ro),s=-1;
@@ -195,7 +200,7 @@ gtag('config','G-9TB0TXT8X0');
   }
   ac.hidden=false;box.setAttribute('aria-expanded','true');
  }
- box.addEventListener('focus',load);
+ box.addEventListener('focus',function(){load();if(box.value.trim())render();else renderSuggest();});
  box.addEventListener('input',function(){load();render();});
  box.addEventListener('keydown',function(e){
   if(ac.hidden||!rows.length)return;
@@ -206,6 +211,7 @@ gtag('config','G-9TB0TXT8X0');
  });
  form.addEventListener('submit',function(e){
   e.preventDefault();
+  if(!box.value.trim()){if(active>=0&&rows[active])go(rows[active].href);return;}
   if(rows.length){go(active>=0?rows[active].href:rows[0].href);return;}
   var t=box.value.trim(),ms=document.getElementById('msearch'),area=document.getElementById('area');
   if(ms){ms.value=t;ms.dispatchEvent(new Event('input'));}
