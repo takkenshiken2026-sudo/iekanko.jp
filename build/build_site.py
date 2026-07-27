@@ -2013,11 +2013,8 @@ ul.plainlist li{margin:.2rem 0}
 
 /* ── トップ：ヒーロー ── */
 .hero{margin:-1.1rem -1.1rem 1.6rem;padding:2.2rem 1.1rem 2rem;
-  background:linear-gradient(155deg,var(--badge) 0%,var(--soft) 48%,var(--bg) 100%);
-  border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;top:-40%;right:-15%;width:min(420px,70vw);height:min(420px,70vw);
-  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 12%,transparent) 0%,transparent 70%);
-  pointer-events:none}
+  background:radial-gradient(circle at 88% -20%,color-mix(in srgb,var(--accent) 12%,transparent) 0%,transparent 45%),linear-gradient(155deg,var(--badge) 0%,var(--soft) 48%,var(--bg) 100%);
+  border-bottom:1px solid var(--line);position:relative}
 .hero-eyebrow{margin:0 0 .55rem;font-size:var(--fs-sm);font-weight:var(--fw-bold);letter-spacing:.04em;
   color:var(--accent);position:relative}
 .hero h1{font-size:var(--fs-display);line-height:1.3;margin:0 0 .75rem;font-weight:var(--fw-black);
@@ -2050,7 +2047,7 @@ ul.plainlist li{margin:.2rem 0}
 .hsearch-btn:hover{background:color-mix(in srgb,var(--accent) 88%,#000);border-color:color-mix(in srgb,var(--accent) 88%,#000)}
 .hsac{position:absolute;z-index:20;top:calc(100% + .3rem);left:0;right:0;margin:0;padding:.25rem;list-style:none;
   background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,.12);
-  max-height:min(60vh,340px);overflow:auto}
+  max-height:min(72vh,440px);overflow:auto}
 .hsac-head{padding:.45rem .6rem .2rem;font-size:var(--fs-xs);font-weight:var(--fw-bold);color:var(--muted);letter-spacing:.02em}
 .hsac-head:not(:first-child){margin-top:.15rem;border-top:1px solid var(--line);padding-top:.5rem}
 .hsac-item{display:flex;align-items:center;gap:.45rem;padding:.5rem .6rem;border-radius:var(--radius-sm);cursor:pointer;font-size:var(--fs-md)}
