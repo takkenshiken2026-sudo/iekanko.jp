@@ -1524,6 +1524,12 @@ def build_home(muni_stats, score, cat_entries=None):
 <h1 id="hero-title">住む街で<span class="hero-em">もらえるお金</span>が、<br class="hero-br">ひと目でわかる</h1>
 <p class="hero-lead">給付金・手当・助成を自治体ごとに整理。出典と最終確認日つきで、
 引っ越し先選びや制度申請の参考に。</p>
+<form class="hsearch" role="search" aria-label="市区町村を検索">
+<span class="hsearch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></span>
+<input type="search" id="hsearch" name="q" placeholder="市区町村名で検索（例：世田谷 / せたがや / setagaya）" aria-label="市区町村名で検索" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hsac" aria-autocomplete="list">
+<button type="submit" class="hsearch-btn">検索</button>
+<ul class="hsac" id="hsac" role="listbox" aria-label="候補の市区町村" hidden></ul>
+</form>
 <div class="hero-stats" aria-label="サービスの特徴">
 <span class="hero-stat"><strong>62</strong>市区町村</span>
 <span class="hero-stat"><strong>5</strong>ライフイベント</span>
@@ -1582,6 +1588,70 @@ def build_home(muni_stats, score, cat_entries=None):
   chips.forEach(function(x){{x.classList.toggle('on',x===c);x.setAttribute('aria-pressed',x===c);}});
   apply();
  }});}});
+}})();
+(function(){{
+ var box=document.getElementById('hsearch');if(!box)return;
+ var form=box.closest('form'),ac=document.getElementById('hsac'),
+     grid=document.getElementById('mgrid');if(!form||!ac||!grid)return;
+ var items=[].slice.call(grid.querySelectorAll('li')).map(function(li){{
+  var a=li.querySelector('a'),mt=li.querySelector('.mt');
+  return {{nm:li.getAttribute('data-nm')||'',yo:li.getAttribute('data-yo')||'',
+          ro:li.getAttribute('data-ro')||'',mt:mt?mt.textContent:'',
+          href:a?a.getAttribute('href'):'#'}};
+ }});
+ var active=-1,shown=[];
+ function nz(s){{return (s||'').toLowerCase();}}
+ function score(it,t){{
+  var nm=nz(it.nm),yo=nz(it.yo),ro=nz(it.ro);
+  if(nm.indexOf(t)===0||yo.indexOf(t)===0||ro.indexOf(t)===0)return 0;
+  if(nm.indexOf(t)>=0||yo.indexOf(t)>=0||ro.indexOf(t)>=0)return 1;
+  return -1;
+ }}
+ function close(){{ac.hidden=true;ac.innerHTML='';active=-1;shown=[];
+  box.setAttribute('aria-expanded','false');box.removeAttribute('aria-activedescendant');}}
+ function setActive(i){{
+  active=i;
+  [].slice.call(ac.children).forEach(function(el,idx){{
+   var on=idx===i;el.classList.toggle('on',on);
+   if(on)el.setAttribute('aria-selected','true');else el.removeAttribute('aria-selected');
+  }});
+  box.setAttribute('aria-activedescendant',i>=0?'hsac-'+i:'');
+ }}
+ function go(it){{if(it&&it.href)location.href=it.href;}}
+ function render(){{
+  var t=nz(box.value.trim());ac.innerHTML='';active=-1;shown=[];
+  if(!t){{close();return;}}
+  var matches=[];
+  items.forEach(function(it){{var s=score(it,t);if(s>=0)matches.push({{it:it,s:s}});}});
+  matches.sort(function(a,b){{return a.s-b.s;}});
+  shown=matches.slice(0,8).map(function(m){{return m.it;}});
+  if(!shown.length){{close();return;}}
+  shown.forEach(function(it,i){{
+   var li=document.createElement('li');
+   li.className='hsac-item';li.setAttribute('role','option');li.id='hsac-'+i;
+   var mt=it.mt?'<em class="hsac-mt">'+it.mt+'</em>':'';
+   li.innerHTML=mt+'<span class="hsac-nm">'+it.nm+'</span>';
+   li.addEventListener('mousedown',function(e){{e.preventDefault();go(it);}});
+   li.addEventListener('mouseenter',function(){{setActive(i);}});
+   ac.appendChild(li);
+  }});
+  ac.hidden=false;box.setAttribute('aria-expanded','true');
+ }}
+ box.addEventListener('input',render);
+ box.addEventListener('keydown',function(e){{
+  if(ac.hidden||!shown.length)return;
+  if(e.key==='ArrowDown'){{e.preventDefault();setActive((active+1)%shown.length);}}
+  else if(e.key==='ArrowUp'){{e.preventDefault();setActive((active-1+shown.length)%shown.length);}}
+  else if(e.key==='Escape'){{close();}}
+ }});
+ form.addEventListener('submit',function(e){{
+  e.preventDefault();
+  if(shown.length){{go(active>=0?shown[active]:shown[0]);return;}}
+  var t=box.value.trim(),ms=document.getElementById('msearch'),area=document.getElementById('area');
+  if(ms){{ms.value=t;ms.dispatchEvent(new Event('input'));}}
+  if(area)area.scrollIntoView({{behavior:'smooth'}});
+ }});
+ document.addEventListener('click',function(e){{if(!form.contains(e.target))close();}});
 }})();
 </script>
 """
@@ -1830,6 +1900,23 @@ ul.plainlist li{margin:.2rem 0}
 .hero-btn.ghost{background:transparent}
 @media(min-width:640px){.hero-br{display:inline}}
 @media(max-width:520px){.hero{padding:1.7rem 1rem 1.6rem}.hero-cta .hero-btn{flex:1 1 calc(50% - .3rem);min-width:0}.hero-cta .hero-btn.ghost{flex-basis:100%}}
+.hsearch{position:relative;display:flex;align-items:stretch;gap:.4rem;margin:0 0 1.15rem;max-width:34em}
+.hsearch-ic{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--muted);display:inline-flex;pointer-events:none}
+.hsearch-ic svg{width:20px;height:20px}
+#hsearch{flex:1 1 auto;min-width:0;box-sizing:border-box;padding:.7rem .8rem .7rem 2.5rem;font-size:var(--fs-lg);
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);color:inherit}
+#hsearch:focus{outline:2px solid var(--accent);outline-offset:1px}
+.hsearch-btn{flex:0 0 auto;font:inherit;font-weight:var(--fw-bold);font-size:var(--fs-md);cursor:pointer;
+  padding:.5rem 1.1rem;border-radius:var(--radius);border:1px solid var(--accent);background:var(--accent);color:#fff;transition:background .15s,border-color .15s}
+.hsearch-btn:hover{background:color-mix(in srgb,var(--accent) 88%,#000);border-color:color-mix(in srgb,var(--accent) 88%,#000)}
+.hsac{position:absolute;z-index:20;top:calc(100% + .3rem);left:0;right:0;margin:0;padding:.25rem;list-style:none;
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,.12);
+  max-height:min(60vh,340px);overflow:auto}
+.hsac-item{display:flex;align-items:center;gap:.45rem;padding:.5rem .6rem;border-radius:var(--radius-sm);cursor:pointer;font-size:var(--fs-md)}
+.hsac-item.on{background:var(--soft)}
+.hsac-nm{font-weight:var(--fw-semi);color:var(--fg)}
+.hsac-mt{font-style:normal;font-size:var(--fs-xs);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 .28rem;line-height:1.5;flex:none}
+@media(max-width:520px){.hsearch{max-width:none}.hsearch-btn{padding:.5rem .8rem}}
 
 /* ── 目的・年代の発見 ── */
 .finder{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.9rem 1rem;margin:1.2rem 0}

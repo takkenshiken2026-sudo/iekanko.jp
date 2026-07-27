@@ -55,6 +55,12 @@ gtag('config','G-9TB0TXT8X0');
 <h1 id="hero-title">住む街で<span class="hero-em">もらえるお金</span>が、<br class="hero-br">ひと目でわかる</h1>
 <p class="hero-lead">給付金・手当・助成を自治体ごとに整理。出典と最終確認日つきで、
 引っ越し先選びや制度申請の参考に。</p>
+<form class="hsearch" role="search" aria-label="市区町村を検索">
+<span class="hsearch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></span>
+<input type="search" id="hsearch" name="q" placeholder="市区町村名で検索（例：世田谷 / せたがや / setagaya）" aria-label="市区町村名で検索" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hsac" aria-autocomplete="list">
+<button type="submit" class="hsearch-btn">検索</button>
+<ul class="hsac" id="hsac" role="listbox" aria-label="候補の市区町村" hidden></ul>
+</form>
 <div class="hero-stats" aria-label="サービスの特徴">
 <span class="hero-stat"><strong>62</strong>市区町村</span>
 <span class="hero-stat"><strong>5</strong>ライフイベント</span>
@@ -113,6 +119,70 @@ gtag('config','G-9TB0TXT8X0');
   chips.forEach(function(x){x.classList.toggle('on',x===c);x.setAttribute('aria-pressed',x===c);});
   apply();
  });});
+})();
+(function(){
+ var box=document.getElementById('hsearch');if(!box)return;
+ var form=box.closest('form'),ac=document.getElementById('hsac'),
+     grid=document.getElementById('mgrid');if(!form||!ac||!grid)return;
+ var items=[].slice.call(grid.querySelectorAll('li')).map(function(li){
+  var a=li.querySelector('a'),mt=li.querySelector('.mt');
+  return {nm:li.getAttribute('data-nm')||'',yo:li.getAttribute('data-yo')||'',
+          ro:li.getAttribute('data-ro')||'',mt:mt?mt.textContent:'',
+          href:a?a.getAttribute('href'):'#'};
+ });
+ var active=-1,shown=[];
+ function nz(s){return (s||'').toLowerCase();}
+ function score(it,t){
+  var nm=nz(it.nm),yo=nz(it.yo),ro=nz(it.ro);
+  if(nm.indexOf(t)===0||yo.indexOf(t)===0||ro.indexOf(t)===0)return 0;
+  if(nm.indexOf(t)>=0||yo.indexOf(t)>=0||ro.indexOf(t)>=0)return 1;
+  return -1;
+ }
+ function close(){ac.hidden=true;ac.innerHTML='';active=-1;shown=[];
+  box.setAttribute('aria-expanded','false');box.removeAttribute('aria-activedescendant');}
+ function setActive(i){
+  active=i;
+  [].slice.call(ac.children).forEach(function(el,idx){
+   var on=idx===i;el.classList.toggle('on',on);
+   if(on)el.setAttribute('aria-selected','true');else el.removeAttribute('aria-selected');
+  });
+  box.setAttribute('aria-activedescendant',i>=0?'hsac-'+i:'');
+ }
+ function go(it){if(it&&it.href)location.href=it.href;}
+ function render(){
+  var t=nz(box.value.trim());ac.innerHTML='';active=-1;shown=[];
+  if(!t){close();return;}
+  var matches=[];
+  items.forEach(function(it){var s=score(it,t);if(s>=0)matches.push({it:it,s:s});});
+  matches.sort(function(a,b){return a.s-b.s;});
+  shown=matches.slice(0,8).map(function(m){return m.it;});
+  if(!shown.length){close();return;}
+  shown.forEach(function(it,i){
+   var li=document.createElement('li');
+   li.className='hsac-item';li.setAttribute('role','option');li.id='hsac-'+i;
+   var mt=it.mt?'<em class="hsac-mt">'+it.mt+'</em>':'';
+   li.innerHTML=mt+'<span class="hsac-nm">'+it.nm+'</span>';
+   li.addEventListener('mousedown',function(e){e.preventDefault();go(it);});
+   li.addEventListener('mouseenter',function(){setActive(i);});
+   ac.appendChild(li);
+  });
+  ac.hidden=false;box.setAttribute('aria-expanded','true');
+ }
+ box.addEventListener('input',render);
+ box.addEventListener('keydown',function(e){
+  if(ac.hidden||!shown.length)return;
+  if(e.key==='ArrowDown'){e.preventDefault();setActive((active+1)%shown.length);}
+  else if(e.key==='ArrowUp'){e.preventDefault();setActive((active-1+shown.length)%shown.length);}
+  else if(e.key==='Escape'){close();}
+ });
+ form.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(shown.length){go(active>=0?shown[active]:shown[0]);return;}
+  var t=box.value.trim(),ms=document.getElementById('msearch'),area=document.getElementById('area');
+  if(ms){ms.value=t;ms.dispatchEvent(new Event('input'));}
+  if(area)area.scrollIntoView({behavior:'smooth'});
+ });
+ document.addEventListener('click',function(e){if(!form.contains(e.target))close();});
 })();
 </script>
 
