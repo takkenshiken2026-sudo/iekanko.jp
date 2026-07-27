@@ -1956,32 +1956,24 @@ def build_home(muni_stats, score, cat_entries=None):
     amt_sec = amount_rankings_html(cat_entries)
     body=f"""
 <section class="hero" aria-labelledby="hero-title">
-<p class="hero-eyebrow">東京都62自治体の制度比較</p>
-<h1 id="hero-title">住む街で<span class="hero-em">もらえるお金</span>が、<br class="hero-br">ひと目でわかる</h1>
-<p class="hero-lead">給付金・手当・助成を自治体ごとに整理。出典と最終確認日つきで、
-引っ越し先選びや制度申請の参考に。</p>
+<p class="hero-eyebrow">東京都62市区町村の給付・手当・助成</p>
+<h1 id="hero-title"><span class="hero-tokyo">東京都</span>で<span class="hero-em">もらえるお金</span>が、<br class="hero-br">住む街ごとにひと目でわかる</h1>
+<p class="hero-lead">給付金・手当・助成を東京都62市区町村ごとに整理しました。出典と最終確認日つきなので、引っ越し先選びや制度の申請にそのまま使えます。</p>
 <form class="hsearch" role="search" aria-label="市区町村を検索">
 <span class="hsearch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></span>
 <input type="search" id="hsearch" name="q" placeholder="市区町村・制度名で検索（例：世田谷 / 家賃補助 / 産後ケア）" aria-label="市区町村名・制度名で検索" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hsac" aria-autocomplete="list">
 <button type="submit" class="hsearch-btn">検索</button>
 <ul class="hsac" id="hsac" role="listbox" aria-label="候補の市区町村・制度" hidden></ul>
 </form>
-<div class="hero-cta">
-<a class="hero-btn primary" href="/find/">目的から探す</a>
-<a class="hero-btn" href="/hikaku/">制度を比較</a>
-<a class="hero-btn ghost" href="#area">自治体一覧</a>
-</div>
 </section>
-<section class="finder">
+<section class="hsec finder">
 <h2 class="fh">{ic("compass","hi")}目的・年代から制度がある地域を探す</h2>
 <div class="pchips">{pcards}</div>
 <p class="fmore"><a href="/find/">{CHEV_R} 目的・年代から探す</a></p>
 </section>
 {amt_sec}
-<div class="cmpbox"><strong>{ic("bars","hi")}制度ごとに自治体を比べる</strong>
-<p>児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62自治体で横断比較できます。</p>
-<p><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p></div>
-<h2 id="area">{ic("home","hi")}お住まいの市区町村から探す（東京都62市区町村）</h2>
+<section class="hsec" id="area">
+<h2 class="fh">{ic("home","hi")}お住まいの市区町村から探す（東京都62市区町村）</h2>
 <p class="lead2">23区・多摩地域の市・町村・島しょを区別なく、五十音順で一覧しています。どの市区町村も同じ粒度で制度をまとめています。</p>
 <div class="mfilter">
 <input type="search" id="msearch" placeholder="市区町村名で検索（例：世田谷 / せたがや / setagaya）" aria-label="市区町村名で検索" autocomplete="off">
@@ -1994,7 +1986,13 @@ def build_home(muni_stats, score, cat_entries=None):
 </div>
 {grid(all62)}
 <p class="mnone" id="mnone" hidden>該当する市区町村が見つかりません。条件を変えてお試しください。</p>
-<section class="homeguide"><h2>{ic("book","hi")}くらしの制度ガイド</h2><p>制度の全体像を知りたい方へ。ライフイベントごとに、もらえるお金の種類と探し方をやさしく解説しています。</p><ul class="cmplist guidegrid"><li><a href="/guide/pregnancy-birth/">妊娠・出産でもらえるお金</a></li><li><a href="/guide/childcare/">子育て世帯の給付・手当</a></li><li><a href="/guide/moving/">引っ越しの手続きと助成</a></li><li><a href="/guide/retirement-unemployment/">退職・失業時の給付と軽減</a></li><li><a href="/guide/elderly-care/">高齢・介護の助成とサービス</a></li><li><a href="/guide/how-to-find/">使える制度の探し方</a></li></ul><p><a href="/guide/">くらしの制度ガイドをすべて見る ›</a></p></section>
+</section>
+<section class="hsec">
+<h2 class="fh">{ic("bars","hi")}制度ごとに自治体を比べる</h2>
+<p class="lead2">児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62市区町村で横断比較できます。</p>
+<p class="fmore"><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p>
+</section>
+<section class="hsec homeguide"><h2 class="fh">{ic("book","hi")}くらしの制度ガイド</h2><p>制度の全体像を知りたい方へ。ライフイベントごとに、もらえるお金の種類と探し方をやさしく解説しています。</p><ul class="cmplist guidegrid"><li><a href="/guide/pregnancy-birth/">妊娠・出産でもらえるお金</a></li><li><a href="/guide/childcare/">子育て世帯の給付・手当</a></li><li><a href="/guide/moving/">引っ越しの手続きと助成</a></li><li><a href="/guide/retirement-unemployment/">退職・失業時の給付と軽減</a></li><li><a href="/guide/elderly-care/">高齢・介護の助成とサービス</a></li><li><a href="/guide/how-to-find/">使える制度の探し方</a></li></ul><p><a href="/guide/">くらしの制度ガイドをすべて見る ›</a></p></section>
 <script>
 (function(){{
  var q=document.getElementById('msearch'),g=document.getElementById('mgrid'),
@@ -2379,7 +2377,7 @@ table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:var(--fs-sm)}
 ul.cmplist{list-style:none;padding:0;margin:.3rem 0}
 ul.cmplist li{padding:.5rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 ul.cmplist .cnt2{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
-.homeguide{margin:1.6rem 0}
+.homeguide{margin:1.9rem 0}
 ul.guidegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem;margin:.6rem 0}
 ul.guidegrid li{display:block;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}
 ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
@@ -2435,9 +2433,10 @@ ul.plainlist li{margin:.2rem 0}
   color:var(--accent);position:relative}
 .hero h1{font-size:var(--fs-display);line-height:1.3;margin:0 0 .75rem;font-weight:var(--fw-black);
   letter-spacing:-.02em;position:relative}
-.hero-em{color:var(--accent)}
+.hero-tokyo{color:var(--accent)}
+.hero-em{color:var(--fg);background:linear-gradient(transparent 58%,color-mix(in srgb,var(--accent) 22%,transparent) 58%);padding:0 .06em;border-radius:2px}
 .hero-br{display:none}
-.hero-lead{margin:0 0 1.1rem;font-size:var(--fs-md);color:var(--fg-2);line-height:1.75;max-width:34em;position:relative}
+.hero-lead{margin:0 0 1.1rem;font-size:var(--fs-md);color:var(--fg-2);line-height:1.75;max-width:40em;position:relative}
 .hero-stats{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.15rem;position:relative}
 .hero-stat{display:inline-flex;align-items:baseline;gap:.2rem;background:var(--bg);border:1px solid var(--line);
   border-radius:999px;padding:.28rem .7rem;font-size:var(--fs-sm);color:var(--muted);font-weight:var(--fw-semi)}
@@ -2475,9 +2474,11 @@ ul.plainlist li{margin:.2rem 0}
 @media(max-width:520px){.hsearch{max-width:none}.hsearch-btn{padding:.5rem .8rem}}
 
 /* ── 目的・年代の発見 ── */
-.finder{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.9rem 1rem;margin:1.2rem 0}
+/* トップの各セクションを同一の余白・背景（白）・見出し様式に統一 */
+.hsec{margin:1.9rem 0}
+.hsec:first-of-type{margin-top:1.2rem}
+.finder{margin:1.9rem 0}
 .fh{font-size:var(--fs-h2);margin:.1rem 0 .7rem;border:0;padding:0;font-weight:var(--fw-bold)}
-.finder .fh{margin:.1rem 0 .7rem}
 .pchips{display:flex;flex-wrap:wrap;gap:.5rem}
 .pchip{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:.4rem .8rem .4rem .55rem;font-size:var(--fs-md);font-weight:var(--fw-semi);color:var(--fg)}
 .pchip .pic{display:inline-flex;color:#fff;background:var(--pc);border-radius:50%;padding:4px}
@@ -2498,7 +2499,7 @@ table.cmp.rank tr.top3 td.rk{color:var(--accent);font-weight:var(--fw-black)}
 table.cmp.rank tr.top3 td.mn a{font-weight:var(--fw-bold)}
 
 /* ── トップ：金額ランキング ── */
-.amtrank{margin:1.4rem 0 1.6rem}
+.amtrank{margin:1.9rem 0}
 .amtrank .fh{margin:.1rem 0 .35rem}
 .amtrank .lead2{margin:.15rem 0 .35rem}
 .archips{margin:.45rem 0 .1rem}
