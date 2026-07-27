@@ -35,7 +35,7 @@
 }
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7;font-weight:var(--fw-normal);font-size:var(--fs-lg)}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+a{color:var(--fg);text-decoration:none}a:hover{color:var(--accent);text-decoration:underline}
 header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);padding:.55rem 1.1rem;border-bottom:1px solid var(--line)}
 .hbar{max-width:var(--content-width);margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
 .brand{font-weight:var(--fw-black);font-size:var(--fs-h2);color:var(--fg);display:inline-flex;align-items:center;gap:.45rem;line-height:1.2}

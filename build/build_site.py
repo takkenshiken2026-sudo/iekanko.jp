@@ -1040,6 +1040,54 @@ def program_about(mn, title, ptype, fm):
                  f'最新情報は下記の公式ページや{esc(mn)}の窓口で必ずご確認ください。</p>')
     return html_out
 
+def build_faq(fm, title, mn, ptype, cats):
+    """facts(fm)を元に、表や説明文とは別の言い回し・別角度でFAQを組み立てる。
+    値そのものは実データだが、質問・前後の文はQ&A用に言い換え、丸写しの重複を避ける。
+    データが無い項目は作らない（憶測しない）。最大6問。"""
+    c=_fact_clean
+    tclean=c(title)
+    tgt=fm.get("対象者") or fm.get("対象の詳細")
+    amt=fm.get("支給額・助成額")
+    ben=fm.get("内容・給付") or fm.get("支援内容") or fm.get("サービス内容")
+    app=fm.get("申請方法")
+    doc=fm.get("必要書類")
+    ddl=fm.get("申請期限")
+    pay=fm.get("支給時期")
+    cond=fm.get("条件")
+    out=[]
+    if tgt:
+        out.append(("誰が対象になりますか？",
+            f"対象となるのは{c(tgt)}です。ご自身が当てはまるかどうかは、申請前に{mn}の窓口や公式ページで確認しておくと安心です。"))
+    if amt:
+        out.append(("どのくらいの金額を受け取れますか？",
+            f"受け取れる金額の目安は{c(amt)}です。所得や世帯の状況、年度によって変わることがあるため、確定額は申請時にご確認ください。"))
+    bc=c(ben)
+    if bc and bc!=tclean and bc not in title:
+        out.append(("どんな支援を受けられますか？",
+            f"この制度では、{bc}という支援が受けられます。"))
+    if app:
+        out.append(("どうやって申請すればよいですか？",
+            f"申請は{c(app)}という形で手続きします。必要書類や当日の流れは、公式ページの最新の案内もあわせてご確認ください。"))
+    if doc and len(out)<5:
+        out.append(("申請に必要なものは何ですか？",
+            f"手続きには{c(doc)}が必要です。ケースによって追加書類を求められることもあります。"))
+    if ddl:
+        out.append(("いつまでに申請すればよいですか？",
+            f"申請期限は{c(ddl)}です。期限を過ぎると対象外になることがあるため、早めの準備がおすすめです。"))
+    if pay and len(out)<6:
+        out.append(("いつ頃もらえますか？",
+            f"支給の時期の目安は{c(pay)}です。審査や書類確認により前後する場合があります。"))
+    if cond and len(out)<6:
+        out.append(("利用に条件はありますか？",
+            f"利用にあたっては、{c(cond)}などの条件があります。ほかにも要件が設けられている場合があるため、詳細は公式ページでご確認ください。"))
+    out=out[:6]
+    cl=[x for x in (cats or []) if x in CAT_BY_ID]
+    if cl and len(out)<6:
+        out.append(("同じような制度は他の自治体にもありますか？",
+            f"はい。東京都の他の自治体にも「{CAT_BY_ID[cl[0]][1]}」にあたる制度があり、金額や対象は自治体ごとに異なります。"
+            f"当サイトの比較ページで、各自治体の内容を見比べられます。"))
+    return out[:6]
+
 def build_program(m, slug, p, cats, progs=None):
     facts = facts_of(p["id"])
     idx = gate_index(p, facts)
@@ -1053,7 +1101,6 @@ def build_program(m, slug, p, cats, progs=None):
 
     # 本文（facts定義リスト）
     dl = []
-    faq = []
     fm = {}
     for order,lbl,val,ev,cf in facts:
         if not val: continue
@@ -1061,11 +1108,7 @@ def build_program(m, slug, p, cats, progs=None):
         src = f' <a class="src" href="{esc(ev)}" target="_blank" rel="nofollow noopener">出典</a>' if ev else ""
         dl.append(f'<div class="fact"><dt>{ic(FACT_ICONS.get(lbl,""),"fi")}{esc(lbl)}</dt>'
                   f'<dd>{esc(val)}{src}</dd></div>')
-        q = {"対象者":"誰が対象ですか？","支給額・助成額":"いくらもらえますか？","内容・給付":"どんな支援が受けられますか？",
-             "申請方法":"どうやって申請しますか？","申請期限":"申請期限はいつですか？","支給時期":"いつ支給されますか？",
-             "条件":"条件はありますか？"}.get(lbl)
-        if q and len(faq) < 6:
-            faq.append((q, clip(val,300)))
+    faq = build_faq(fm, title, mn, ptype, cats)
     official = p["official_url"] or (m["official_site_url"] or "")
     if "example.invalid" in official:  # 復元DBの「公式URL無し」ダミーは公式リンクを出さない
         official = ""
@@ -2056,7 +2099,7 @@ CSS = """/* ── Design tokens ── */
 }
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7;font-weight:var(--fw-normal);font-size:var(--fs-lg)}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+a{color:var(--fg);text-decoration:none}a:hover{color:var(--accent);text-decoration:underline}
 header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);padding:.55rem 1.1rem;border-bottom:1px solid var(--line)}
 .hbar{max-width:var(--content-width);margin:0 auto;display:flex;align-items:center;gap:.35rem 1rem;flex-wrap:wrap}
 .brand{font-weight:var(--fw-black);font-size:var(--fs-h2);color:var(--fg);display:inline-flex;align-items:center;gap:.45rem;line-height:1.2}
