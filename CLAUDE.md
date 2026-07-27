@@ -26,6 +26,19 @@ PYTHONHASHSEED=0 python3 build/build_site.py
 
 「DBが無い」＝異常ではない。**手順1で必ず復元できる**。詳細は `build/MAINTENANCE.md`。
 
+## 変更後は必ず `build/verify.sh` を通す（安全ゲート）
+docs の**HTML構造**を変えると `rebuild_db_from_docs.py` の正規表現パーサが壊れ、
+復元時に `program_facts` が激減する事故が起きうる（実際 11048→66 になった）。
+再生成のあと **1コマンド** でラウンドトリップの冪等性を検証する:
+
+```bash
+bash build/verify.sh   # 復元→再生成→再復元し件数を突き合わせ、PASS/FAIL を出す
+```
+
+- CSS・文言・レイアウトだけの変更でも、最終確認としてこれ1本を通せば十分。
+- 制度を意図的に増減したら期待値を上書き: `EXP_FACTS=... EXP_PROGRAMS=... bash build/verify.sh`
+- 効率運用: 複数の変更は**まとめて再生成→verify→1回デプロイ**に束ねる（デプロイ待ちは1回で済む）。
+
 ## データ構成（build_site.py が参照する6テーブル）
 `municipalities` / `programs` / `program_municipalities` /
 `program_facts`（対象者・支給額・内容給付・申請方法・条件などの dt/dd はここ。
