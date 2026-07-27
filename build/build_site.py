@@ -385,6 +385,26 @@ for _cid, _unit, _mode in EXTRA_CHART_CATS:
     _ev = CAT_BY_ID[_cid][2]
     CHART_SPEC.setdefault(_cid, (_unit, _mode, EV_META[_ev][2]))
 
+# 比較ページの「対応状況」可視化（金額が共通基準で揃うカテゴリ向け）。
+# 妊婦健診は公費負担額が東京都共通の受診票で統一され金額差が出ないため、金額棒グラフの代わりに
+# 「基本の健診に加えてどこまで助成があるか」の対応自治体数をカバレッジ・バーで可視化する。
+# feats の判定は各自治体の該当制度テキスト（タイトル/概要/内容/対象/金額）に対する正規表現。
+# note は誤解を避けるための注記（なぜ金額でなく対応状況で比べるか）。
+COVERAGE_SPEC = {
+ "preg_kenshin": {
+   "ev":"pregnancy_birth",
+   "note":("妊婦健診そのものの公費負担額は東京都共通の受診票（都基準単価）でほぼ統一されているため、"
+           "金額ではなく「基本の健診に加えてどこまで助成があるか」で比較しています。"
+           "各自治体の詳細・出典は下の一覧からご確認ください。"),
+   "feats":[
+     ("里帰り出産（都外受診）に対応", r"里帰り"),
+     ("産婦健診（産後の健診）",       r"(?<!妊)産婦健|産後.{0,3}健診"),
+     ("多胎妊婦への追加助成",         r"多胎"),
+     ("妊婦歯科健診",                 r"歯科"),
+   ],
+ },
+}
+
 def _yen_int(s):
     return int(str(s).replace(",", "").replace("，", ""))
 
@@ -748,6 +768,41 @@ def compare_chart_html(cid, entries):
             f'{svg}'
             f'<p class="c-cap">破線は掲載{len(allrows)}自治体の平均の目安。公式情報から抽出した金額の目安で、'
             f'対象・条件により異なります。金額の記載がある自治体のみ表示しています。</p>'
+            f'</figure>')
+
+def compare_coverage_html(cid, entries):
+    """金額が共通基準で揃うカテゴリ向けの『対応状況』可視化。金額棒グラフの代わりに、
+    自治体で対応が分かれる項目ごとに『対応している自治体数』をカバレッジ・バーで描く。
+    COVERAGE_SPEC 未登録・変化のない項目しか無い場合は空を返す。"""
+    spec=COVERAGE_SPEC.get(cid)
+    if not spec: return ""
+    color=EV_META[spec["ev"]][2]
+    # 自治体ごとに該当制度すべてのテキストを結合（entries は集約前の全該当制度）
+    by_m={}
+    for m, slug, p, amount, idx in entries:
+        blob=" ".join(str(x or "") for x in
+              (p["title"], p["summary"], p["benefit_description"], p["target_description"], amount))
+        by_m.setdefault(m["id"], []).append(blob)
+    total=len(by_m)
+    if total<4: return ""
+    texts=[" ".join(bl) for bl in by_m.values()]
+    bars=[]; any_var=False
+    for label, pat in spec["feats"]:
+        rx=re.compile(pat)
+        n=sum(1 for t in texts if rx.search(t))
+        if 0<n<total: any_var=True
+        bars.append((label, n, round(n/total*100)))
+    if not any_var: return ""            # 全項目が全自治体一致なら描かない（比較価値なし）
+    bars.sort(key=lambda b:-b[1])        # 対応が多い順
+    lis="".join(
+      f'<li><span class="cl">{esc(label)}</span>'
+      f'<span class="cbar"><span class="cfill" style="width:{pct}%"></span></span>'
+      f'<span class="cn">{n}<small>/{total}</small></span></li>'
+      for label,n,pct in bars)
+    return (f'<figure class="covchart" style="--pc:{color}">'
+            f'<figcaption>自治体で対応が分かれる項目（掲載{total}自治体中の対応数）</figcaption>'
+            f'<ul class="covbars">{lis}</ul>'
+            f'<p class="c-cap">{esc(spec["note"])}</p>'
             f'</figure>')
 
 def amount_rankings_html(cat_entries=None, top_n=5):
@@ -1210,6 +1265,7 @@ def build_compare(cid, entries, counts=None):
     label, ev = CAT_BY_ID[cid][1], CAT_BY_ID[cid][2]
     ev_name = EVENTS.get(ev,("",""))[0]
     url = f"/hikaku/{cid}/"
+    all_entries = entries          # 集約前の全該当制度（対応状況の判定に使う）
     # 同一自治体に複数該当制度がある場合は1行に集約（金額記載あり→index対象を優先）
     best={}
     for e in entries:
@@ -1255,7 +1311,7 @@ def build_compare(cid, entries, counts=None):
     body=f"""
 <span class="badge">{esc(ev_name)}</span>
 <h1>東京都の{esc(label)}を自治体で比較</h1>
-<p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>{compare_chart_html(cid, entries)}
+<p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>{compare_chart_html(cid, entries)}{compare_coverage_html(cid, all_entries)}
 <div class="tablewrap"><table class="cmp">
 <thead><tr><th>自治体</th><th>支給額・助成額</th><th>確認日</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table></div>
@@ -2332,6 +2388,17 @@ ul.plainlist li{margin:.2rem 0}
 .cmpchart .chart{max-width:640px}
 .cmpchart .chart .c-val{fill:var(--fg);font-weight:var(--fw-semi)}
 .cmpchart .c-cap{font-size:var(--fs-xs);color:var(--muted);margin:.5rem 0 0;line-height:1.6}
+.covchart{margin:1rem 0 1.2rem;padding:.85rem 1rem .7rem;border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));border-radius:var(--radius);background:var(--bg)}
+.covchart figcaption{font-weight:var(--fw-bold);font-size:var(--fs-md);margin:0 0 .6rem;color:var(--fg)}
+.covbars{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;max-width:640px}
+.covbars li{display:grid;grid-template-columns:minmax(9.5em,15em) 1fr auto;align-items:center;gap:.6rem}
+.covbars .cl{font-size:var(--fs-sm);color:var(--fg-2)}
+.covbars .cbar{height:.7rem;background:var(--track);border-radius:999px;overflow:hidden}
+.covbars .cfill{display:block;height:100%;background:var(--pc,var(--accent));border-radius:999px}
+.covbars .cn{font-size:var(--fs-sm);font-weight:var(--fw-semi);color:var(--fg);white-space:nowrap;font-variant-numeric:tabular-nums}
+.covbars .cn small{color:var(--muted);font-weight:var(--fw-normal)}
+.covchart .c-cap{font-size:var(--fs-xs);color:var(--muted);margin:.6rem 0 0;line-height:1.6}
+@media(max-width:560px){.covbars li{grid-template-columns:1fr auto;grid-template-areas:"l n" "b b";row-gap:.2rem}.covbars .cl{grid-area:l}.covbars .cn{grid-area:n}.covbars .cbar{grid-area:b}}
 .cap{font-size:var(--fs-xs);color:var(--muted);margin:.35rem 0 .2rem}
 .profile{margin:1.2rem 0 1.4rem}
 .profile .strong{margin:.2rem 0 .3rem}
