@@ -1632,8 +1632,7 @@ def build_home(muni_stats, score, cat_entries=None):
         return '<ul class="mgrid" id="mgrid">'+''.join(
           f'<li data-nm="{esc(m["municipality_name"])}" data-yo="{esc(YOMI.get(m["municipality_name"],""))}" '
           f'data-ro="{s}" data-g="{_grp.get(m["municipality_type"],"cho")}">'
-          f'<a href="/area/tokyo/{s}/"><em class="mt">{_tj.get(m["municipality_type"],"")}</em>'
-          f'{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
+          f'<a href="/area/tokyo/{s}/">{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
           for m,s,n in rows)+'</ul>'
     # 目的・年代の発見カード（トップの主要導線）
     pcards="".join(
@@ -1986,7 +1985,7 @@ table.cmp.rank td.yen{font-variant-numeric:tabular-nums;white-space:nowrap;color
 ul.mgrid{list-style:none;padding:0;margin:.4rem 0 1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem}
 ul.mgrid li{border:1px solid var(--line);border-radius:var(--radius);padding:.5rem .7rem;display:flex;justify-content:space-between;align-items:baseline}
 ul.mgrid li span{font-size:var(--fs-xs);color:var(--muted)}
-ul.mgrid li a{display:inline-flex;align-items:baseline;gap:.35rem}
+ul.mgrid li a{font-size:var(--fs-md)}
 em.mt{font-style:normal;font-size:var(--fs-xs);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 .28rem;line-height:1.5;flex:none}
 p.lead2{color:var(--muted);font-size:var(--fs-sm);margin:.1rem 0 .6rem}
 .mfilter{margin:.2rem 0 .7rem}

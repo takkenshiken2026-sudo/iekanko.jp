@@ -90,6 +90,8 @@ TITLE_RE = re.compile(r'<h1[^>]*>(.*?)</h1>', re.S)
 LEAD_RE  = re.compile(r'<p class="lead"[^>]*>(.*?)</p>', re.S)
 VERIFIED_RE = re.compile(r'最終確認日[:：]\s*(\d{4}-\d{2}-\d{2})')
 VERIFIED2_RE = re.compile(r'【(\d{4}-\d{2}-\d{2})時点】')
+# 制度の内容表の「公式ページ」行（現行の構造）。旧構造(<p class="official">…)より優先。
+OFFICIAL0_RE = re.compile(r'<dt>公式ページ</dt><dd><a[^>]*href="([^"]+)"')
 OFFICIAL_RE = re.compile(r'公式ページ[:：]\s*<a[^>]*href="([^"]+)"')
 OFFICIAL2_RE = re.compile(r'公式ページ[^h<]*?(https?://[^\s"<]+)')
 ROBOTS_RE = re.compile(r'<meta name="robots" content="([^"]+)"')
@@ -113,7 +115,7 @@ def parse_program_page(fp):
     d = VERIFIED_RE.search(t) or VERIFIED2_RE.search(t)
     verified = d.group(1) if d else None
     # official url
-    o = OFFICIAL_RE.search(t) or OFFICIAL2_RE.search(t)
+    o = OFFICIAL0_RE.search(t) or OFFICIAL_RE.search(t) or OFFICIAL2_RE.search(t)
     official = o.group(1) if o else ""
     # robots -> reliability
     rb = ROBOTS_RE.search(t)
