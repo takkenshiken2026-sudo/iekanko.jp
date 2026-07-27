@@ -67,6 +67,15 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .src{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap;margin-left:.3rem}
 @media(max-width:560px){.fact{grid-template-columns:1fr}.fact dt{border-bottom:1px solid var(--line)}}
 .official{font-size:var(--fs-md);margin:1rem 0}
+.hi{width:1.08em;height:1.08em;vertical-align:-.16em;margin-right:.42rem;color:var(--accent);flex:none}
+.fi{width:1em;height:1em;vertical-align:-.13em;margin-right:.36rem;color:var(--muted);flex:none}
+.fact dt .fi{color:color-mix(in srgb,var(--accent) 55%,var(--muted))}
+dl.faq{margin:.4rem 0 1rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.faq .qa{padding:.75rem .9rem;border-top:1px solid var(--line)}
+.faq .qa:first-child{border-top:0}
+.faq dt{font-weight:var(--fw-bold);margin:0 0 .3rem;color:var(--fg)}
+.faq dt::before{content:"Q. ";color:var(--accent);font-weight:var(--fw-black)}
+.faq dd{margin:0;color:var(--fg-2);font-size:var(--fs-md)}
 ul.proglist{list-style:none;padding:0;margin:.3rem 0}
 ul.proglist li{padding:.55rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:.6rem;align-items:baseline}
 ul.proglist .pt{font-size:var(--fs-xs);color:var(--muted)}

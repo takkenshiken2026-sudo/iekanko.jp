@@ -232,6 +232,44 @@ CHEV_R=_CHV % "M9 5l7 7-7 7"
 CHEV_L=_CHV % "M15 5l-7 7 7 7"
 CHEV_U=_CHV % "M5 15l7-7 7 7"
 
+# 汎用アイコン（stroke/currentColor）。見出し・factラベルの視認性向上に使用。
+_ICON_PATHS = {
+ "user":'<circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/>',
+ "yen":'<path d="M6 4l6 8 6-8"/><path d="M12 12v8"/><path d="M8 14h8"/><path d="M8 17.5h8"/>',
+ "gift":'<rect x="4.5" y="9.5" width="15" height="10.5" rx="1"/><path d="M3.5 9.5h17M12 9.5V20"/>',
+ "check":'<circle cx="12" cy="12" r="8.5"/><path d="M8 12.2l2.6 2.6L16 9.5"/>',
+ "file":'<path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4M9.5 13h5M9.5 16.5h5"/>',
+ "calendar":'<rect x="4.5" y="5.5" width="15" height="14.5" rx="2"/><path d="M4.5 9.5h15M9 3.5v4M15 3.5v4"/>',
+ "clock":'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/>',
+ "globe":'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.8 2.8 2.8 14.2 0 17M12 3.5c-2.8 2.8-2.8 14.2 0 17"/>',
+ "building":'<rect x="5.5" y="4" width="13" height="16.5" rx="1"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M10.5 20.5v-3.5h3v3.5"/>',
+ "external":'<path d="M14 4.5h5.5V10M19.5 4.5L11 13M18 14v5.5H5.5V6H11"/>',
+ "info":'<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6h.01"/>',
+ "clipboard":'<rect x="6" y="4.5" width="12" height="16" rx="1.5"/><path d="M9 4.5a3 3 0 0 1 6 0M9 11h6M9 14.5h6"/>',
+ "help":'<circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.2a2.5 2.5 0 1 1 3.6 2.4c-.9.5-1.2.9-1.2 1.9M12 16.6h.01"/>',
+ "link":'<path d="M9.5 14.5l5-5M8.5 11l-2 2a3.2 3.2 0 0 0 4.5 4.5l2-2M15.5 13l2-2A3.2 3.2 0 0 0 13 6.5l-2 2"/>',
+ "bars":'<path d="M5 20V11M12 20V4M19 20v-6"/>',
+ "home":'<path d="M4 11l8-7 8 7M6 10v9h12v-9"/>',
+ "book":'<path d="M5 4.5h9a2.5 2.5 0 0 1 2.5 2.5V20a2 2 0 0 0-2-2H5zM19 6.5V18"/>',
+ "compass":'<circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
+}
+def ic(name, cls="ic"):
+    p=_ICON_PATHS.get(name)
+    if not p: return ""
+    return (f'<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            f'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{p}</svg>')
+
+# factラベル -> アイコン名
+FACT_ICONS = {
+ "対象者":"user","対象の詳細":"user","対象範囲":"user","定員":"user",
+ "支給額・助成額":"yen","上限":"yen","返済":"yen",
+ "内容・給付":"gift","支援内容":"gift","サービス内容":"gift",
+ "条件":"check","申請方法":"file","必要書類":"file",
+ "申請期限":"calendar","日程":"calendar","期間":"calendar","開始":"calendar",
+ "支給時期":"clock","オンライン手続き":"globe","窓口":"building",
+ "目的":"info","公式ページ":"external",
+}
+
 # fact_type -> (表示ラベル, 表示順)。未定義は末尾に。
 FACT_LABELS = {
  "target":("対象者",10),"target_detail":("対象の詳細",11),"amount":("支給額・助成額",20),
@@ -715,7 +753,7 @@ def amount_rankings_html(cat_entries=None, top_n=5):
         return ""
     return (
         '<section class="amtrank">'
-        '<h2 class="fh">支給額・助成額が高い自治体</h2>'
+        f'<h2 class="fh">{ic("yen","hi")}支給額・助成額が高い自治体</h2>'
         '<p class="lead2">目的・年代を選ぶと、金額差が出やすい制度の上位自治体を確認できます。</p>'
         f'<div class="mchips archips" role="tablist" aria-label="金額ランキングの目的">{"".join(chips)}</div>'
         f'{"".join(panels)}'
@@ -960,7 +998,7 @@ def related_programs(m, slug, p, progs):
     if not sibs: return ""
     lis="".join(f'<li><a href="/area/tokyo/{slug}/seido/{q["id"]}/">{esc(q["title"])}</a>'
                 f'<span class="pt">{esc(PT_JA.get(q["program_type"],""))}</span></li>' for q in sibs)
-    return (f'<section class="related"><h2>{esc(m["municipality_name"])}の関連する制度</h2>'
+    return (f'<section class="related"><h2>{ic("link","hi")}{esc(m["municipality_name"])}の関連する制度</h2>'
             f'<ul class="proglist">{lis}</ul></section>')
 
 def _fact_clean(v):
@@ -1021,7 +1059,8 @@ def build_program(m, slug, p, cats, progs=None):
         if not val: continue
         fm.setdefault(lbl, val)
         src = f' <a class="src" href="{esc(ev)}" target="_blank" rel="nofollow noopener">出典</a>' if ev else ""
-        dl.append(f'<div class="fact"><dt>{esc(lbl)}</dt><dd>{esc(val)}{src}</dd></div>')
+        dl.append(f'<div class="fact"><dt>{ic(FACT_ICONS.get(lbl,""),"fi")}{esc(lbl)}</dt>'
+                  f'<dd>{esc(val)}{src}</dd></div>')
         q = {"対象者":"誰が対象ですか？","支給額・助成額":"いくらもらえますか？","内容・給付":"どんな支援が受けられますか？",
              "申請方法":"どうやって申請しますか？","申請期限":"申請期限はいつですか？","支給時期":"いつ支給されますか？",
              "条件":"条件はありますか？"}.get(lbl)
@@ -1029,10 +1068,14 @@ def build_program(m, slug, p, cats, progs=None):
             faq.append((q, clip(val,300)))
     official = p["official_url"] or (m["official_site_url"] or "")
     if official:
-        dl.append(f'<div class="fact"><dt>公式ページ</dt>'
+        dl.append(f'<div class="fact"><dt>{ic("external","fi")}公式ページ</dt>'
                   f'<dd><a class="offlink" href="{esc(official)}" target="_blank" rel="nofollow noopener">'
                   f'{esc(official)}</a></dd></div>')
     facts_html = f'<dl class="facts">{"".join(dl)}</dl>' if dl else "<p>詳細は出典の公式ページをご確認ください。</p>"
+    faq_html = ""
+    if faq:
+        qas = "".join(f'<div class="qa"><dt>{esc(q)}</dt><dd>{esc(a)}</dd></div>' for q,a in faq)
+        faq_html = f'<h2>{ic("help","hi")}よくある質問</h2><dl class="faq">{qas}</dl>'
 
     summary_html = f'<p class="lead">{esc(p["plain_summary"] or p["summary"] or "")}</p>' if (p["plain_summary"] or p["summary"]) else ""
     ev_notice = "" if idx else '<p class="notice">※この情報は自動収集した暫定データで、内容確認中です。必ず公式ページでご確認ください。</p>'
@@ -1044,13 +1087,14 @@ def build_program(m, slug, p, cats, progs=None):
 {summary_html}
 <p class="meta">最終確認日: <time>{esc(p['last_verified_at'] or '—')}</time> ／ 対象自治体: <a href="/area/tokyo/{slug}/">{esc(mn)}</a></p>
 {ev_notice}
-<h2>制度の内容</h2>
-{facts_html}
-<h2>この制度について</h2>
+<h2>{ic("info","hi")}この制度について</h2>
 {program_about(mn, title, ptype, fm)}
 <p>同じ制度を東京都の他の自治体と比べたい場合は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>もあわせてご覧ください。</p>
-{compare_links(cats)}
+<h2>{ic("clipboard","hi")}制度の内容</h2>
+{facts_html}
+{faq_html}
 {related_programs(m, slug, p, progs)}
+{compare_links(cats)}
 </article>"""
 
     # JSON-LD
@@ -1075,7 +1119,7 @@ def compare_links(cats):
     ls=[c for c in cats if c in CAT_BY_ID]
     if not ls: return ""
     a="".join(f'<li><a href="/hikaku/{cid}/">東京都で「{esc(CAT_BY_ID[cid][1])}」を自治体比較 {CHEV_R}</a></li>' for cid in ls)
-    return f'<div class="cmpbox"><strong>東京都の他自治体と比べる</strong><ul>{a}</ul></div>'
+    return f'<div class="cmpbox"><strong>{ic("bars","hi")}東京都の他自治体と比べる</strong><ul>{a}</ul></div>'
 
 # ── 比較ページ（被リンク磁石）────────────────────────────────────────────────
 def build_compare(cid, entries, counts=None):
@@ -1659,15 +1703,15 @@ def build_home(muni_stats, score, cat_entries=None):
 </div>
 </section>
 <section class="finder">
-<h2 class="fh">目的・年代から制度がある地域を探す</h2>
+<h2 class="fh">{ic("compass","hi")}目的・年代から制度がある地域を探す</h2>
 <div class="pchips">{pcards}</div>
 <p class="fmore"><a href="/find/">{CHEV_R} 目的・年代から探す</a></p>
 </section>
 {amt_sec}
-<div class="cmpbox"><strong>制度ごとに自治体を比べる</strong>
+<div class="cmpbox"><strong>{ic("bars","hi")}制度ごとに自治体を比べる</strong>
 <p>児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62自治体で横断比較できます。</p>
 <p><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p></div>
-<h2 id="area">お住まいの市区町村から探す（東京都62市区町村）</h2>
+<h2 id="area">{ic("home","hi")}お住まいの市区町村から探す（東京都62市区町村）</h2>
 <p class="lead2">23区・多摩地域の市・町村・島しょを区別なく、五十音順で一覧しています。どの市区町村も同じ粒度で制度をまとめています。</p>
 <div class="mfilter">
 <input type="search" id="msearch" placeholder="市区町村名で検索（例：世田谷 / せたがや / setagaya）" aria-label="市区町村名で検索" autocomplete="off">
@@ -1680,7 +1724,7 @@ def build_home(muni_stats, score, cat_entries=None):
 </div>
 {grid(all62)}
 <p class="mnone" id="mnone" hidden>該当する市区町村が見つかりません。条件を変えてお試しください。</p>
-<section class="homeguide"><h2>くらしの制度ガイド</h2><p>制度の全体像を知りたい方へ。ライフイベントごとに、もらえるお金の種類と探し方をやさしく解説しています。</p><ul class="cmplist guidegrid"><li><a href="/guide/pregnancy-birth/">妊娠・出産でもらえるお金</a></li><li><a href="/guide/childcare/">子育て世帯の給付・手当</a></li><li><a href="/guide/moving/">引っ越しの手続きと助成</a></li><li><a href="/guide/retirement-unemployment/">退職・失業時の給付と軽減</a></li><li><a href="/guide/elderly-care/">高齢・介護の助成とサービス</a></li><li><a href="/guide/how-to-find/">使える制度の探し方</a></li></ul><p><a href="/guide/">くらしの制度ガイドをすべて見る ›</a></p></section>
+<section class="homeguide"><h2>{ic("book","hi")}くらしの制度ガイド</h2><p>制度の全体像を知りたい方へ。ライフイベントごとに、もらえるお金の種類と探し方をやさしく解説しています。</p><ul class="cmplist guidegrid"><li><a href="/guide/pregnancy-birth/">妊娠・出産でもらえるお金</a></li><li><a href="/guide/childcare/">子育て世帯の給付・手当</a></li><li><a href="/guide/moving/">引っ越しの手続きと助成</a></li><li><a href="/guide/retirement-unemployment/">退職・失業時の給付と軽減</a></li><li><a href="/guide/elderly-care/">高齢・介護の助成とサービス</a></li><li><a href="/guide/how-to-find/">使える制度の探し方</a></li></ul><p><a href="/guide/">くらしの制度ガイドをすべて見る ›</a></p></section>
 <script>
 (function(){{
  var q=document.getElementById('msearch'),g=document.getElementById('mgrid'),
@@ -1969,6 +2013,15 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .src{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap;margin-left:.3rem}
 @media(max-width:560px){.fact{grid-template-columns:1fr}.fact dt{border-bottom:1px solid var(--line)}}
 .official{font-size:var(--fs-md);margin:1rem 0}
+.hi{width:1.08em;height:1.08em;vertical-align:-.16em;margin-right:.42rem;color:var(--accent);flex:none}
+.fi{width:1em;height:1em;vertical-align:-.13em;margin-right:.36rem;color:var(--muted);flex:none}
+.fact dt .fi{color:color-mix(in srgb,var(--accent) 55%,var(--muted))}
+dl.faq{margin:.4rem 0 1rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.faq .qa{padding:.75rem .9rem;border-top:1px solid var(--line)}
+.faq .qa:first-child{border-top:0}
+.faq dt{font-weight:var(--fw-bold);margin:0 0 .3rem;color:var(--fg)}
+.faq dt::before{content:"Q. ";color:var(--accent);font-weight:var(--fw-black)}
+.faq dd{margin:0;color:var(--fg-2);font-size:var(--fs-md)}
 ul.proglist{list-style:none;padding:0;margin:.3rem 0}
 ul.proglist li{padding:.55rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:.6rem;align-items:baseline}
 ul.proglist .pt{font-size:var(--fs-xs);color:var(--muted)}
