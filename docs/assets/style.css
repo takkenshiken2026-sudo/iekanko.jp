@@ -123,6 +123,9 @@ ul.plist{list-style:none;padding:0;margin:.5rem 0}
 ul.plist li{display:flex;align-items:baseline;gap:.55rem;padding:.6rem .2rem;border-bottom:1px solid var(--line)}
 ul.plist li[hidden]{display:none}
 ul.plist li a{font-weight:var(--fw-semi);flex:1 1 auto;min-width:0}
+.areamap{margin:.4rem 0 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:.5rem}
+.areamap img{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+.areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
 .pamt{font-size:var(--fs-sm);color:var(--fg);font-weight:var(--fw-bold);font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}
 .pamt.na{color:var(--muted);font-weight:var(--fw-normal)}
 .ptag{font-size:var(--fs-xs);color:#fff;background:var(--pc,var(--accent));border-radius:999px;padding:.08rem .55rem;flex:none;white-space:nowrap}

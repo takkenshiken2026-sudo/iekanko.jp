@@ -1518,6 +1518,7 @@ def build_muni(m, slug, score, avg):
         lead_extra += f"・金額が分かるもの合計{format_sum_yen(total_yen)}（{total_amt_n}件）"
     body = f"""
 <h1>{esc(mn)}で受けられる給付・手当・助成 一覧</h1>
+<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
 <p class="lead">{esc(mn)}にお住まいの方が使える制度をまとめました（{esc(lead_extra)}・出典/最終確認日つき）。検索・カテゴリ絞り込み・並び替えで探せます。</p>
 {live_benefit}
 {plist_html}
@@ -2191,6 +2192,9 @@ ul.plist{list-style:none;padding:0;margin:.5rem 0}
 ul.plist li{display:flex;align-items:baseline;gap:.55rem;padding:.6rem .2rem;border-bottom:1px solid var(--line)}
 ul.plist li[hidden]{display:none}
 ul.plist li a{font-weight:var(--fw-semi);flex:1 1 auto;min-width:0}
+.areamap{margin:.4rem 0 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:.5rem}
+.areamap img{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+.areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
 .pamt{font-size:var(--fs-sm);color:var(--fg);font-weight:var(--fw-bold);font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}
 .pamt.na{color:var(--muted);font-weight:var(--fw-normal)}
 .ptag{font-size:var(--fs-xs);color:#fff;background:var(--pc,var(--accent));border-radius:999px;padding:.08rem .55rem;flex:none;white-space:nowrap}
