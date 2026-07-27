@@ -63,6 +63,7 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .fact:first-child{border-top:0}
 .fact dt{background:var(--soft);font-weight:var(--fw-bold);font-size:var(--fs-sm);padding:.7rem .8rem;margin:0}
 .fact dd{margin:0;padding:.7rem .8rem}
+.fact dd .offlink{word-break:break-all}
 .src{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap;margin-left:.3rem}
 @media(max-width:560px){.fact{grid-template-columns:1fr}.fact dt{border-bottom:1px solid var(--line)}}
 .official{font-size:var(--fs-md);margin:1rem 0}

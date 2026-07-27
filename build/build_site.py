@@ -963,6 +963,45 @@ def related_programs(m, slug, p, progs):
     return (f'<section class="related"><h2>{esc(m["municipality_name"])}の関連する制度</h2>'
             f'<ul class="proglist">{lis}</ul></section>')
 
+def _fact_clean(v):
+    return re.sub(r"[。\.．\s]+$", "", (v or "").strip())
+
+def program_about(mn, title, ptype, fm):
+    """収集済みのfacts(fm: ラベル→値)だけから制度説明の本文を組み立てる。
+    データが無い項目は文章に含めない（＝存在しない情報は書かない）。"""
+    tgt = fm.get("対象者") or fm.get("対象の詳細")
+    ben = fm.get("内容・給付") or fm.get("支援内容") or fm.get("サービス内容")
+    amt = fm.get("支給額・助成額")
+    cond = fm.get("条件")
+    app = fm.get("申請方法")
+    doc = fm.get("必要書類")
+    ddl = fm.get("申請期限")
+    pay = fm.get("支給時期")
+    tclean = _fact_clean(title)
+    s = []
+    if tgt:
+        s.append(f"{esc(mn)}の{esc(title)}は、{esc(_fact_clean(tgt))}を対象とした{esc(ptype)}です。")
+    else:
+        s.append(f"{esc(mn)}の{esc(title)}は、{esc(mn)}が実施する{esc(ptype)}です。")
+    bc = _fact_clean(ben)
+    if bc and bc != tclean and bc not in title:  # タイトルと同義の重複は書かない
+        s.append(f"支援内容は、{esc(bc)}です。")
+    if amt:
+        s.append(f"支給額・助成額の目安は{esc(_fact_clean(amt))}です。")
+    if cond:
+        s.append(f"主な条件は、{esc(_fact_clean(cond))}です。")
+    proc = []
+    if app: proc.append(f"申請方法は{esc(_fact_clean(app))}")
+    if doc: proc.append(f"必要書類は{esc(_fact_clean(doc))}")
+    if ddl: proc.append(f"申請期限は{esc(_fact_clean(ddl))}")
+    if pay: proc.append(f"支給時期は{esc(_fact_clean(pay))}")
+    html_out = "<p>" + "".join(s) + "</p>"
+    if proc:
+        html_out += "<p>" + "、".join(proc) + "です。</p>"
+    html_out += (f'<p class="note">金額・対象・申請方法は制度改定で変わることがあります。'
+                 f'最新情報は下記の公式ページや{esc(mn)}の窓口で必ずご確認ください。</p>')
+    return html_out
+
 def build_program(m, slug, p, cats, progs=None):
     facts = facts_of(p["id"])
     idx = gate_index(p, facts)
@@ -977,8 +1016,10 @@ def build_program(m, slug, p, cats, progs=None):
     # 本文（facts定義リスト）
     dl = []
     faq = []
+    fm = {}
     for order,lbl,val,ev,cf in facts:
         if not val: continue
+        fm.setdefault(lbl, val)
         src = f' <a class="src" href="{esc(ev)}" target="_blank" rel="nofollow noopener">出典</a>' if ev else ""
         dl.append(f'<div class="fact"><dt>{esc(lbl)}</dt><dd>{esc(val)}{src}</dd></div>')
         q = {"対象者":"誰が対象ですか？","支給額・助成額":"いくらもらえますか？","内容・給付":"どんな支援が受けられますか？",
@@ -986,11 +1027,14 @@ def build_program(m, slug, p, cats, progs=None):
              "条件":"条件はありますか？"}.get(lbl)
         if q and len(faq) < 6:
             faq.append((q, clip(val,300)))
+    official = p["official_url"] or (m["official_site_url"] or "")
+    if official:
+        dl.append(f'<div class="fact"><dt>公式ページ</dt>'
+                  f'<dd><a class="offlink" href="{esc(official)}" target="_blank" rel="nofollow noopener">'
+                  f'{esc(official)}</a></dd></div>')
     facts_html = f'<dl class="facts">{"".join(dl)}</dl>' if dl else "<p>詳細は出典の公式ページをご確認ください。</p>"
 
     summary_html = f'<p class="lead">{esc(p["plain_summary"] or p["summary"] or "")}</p>' if (p["plain_summary"] or p["summary"]) else ""
-    official = p["official_url"] or (m["official_site_url"] or "")
-    src_block = f'<p class="official">{CHEV_R} 公式ページ: <a href="{esc(official)}" target="_blank" rel="nofollow noopener">{esc(official)}</a></p>' if official else ""
     ev_notice = "" if idx else '<p class="notice">※この情報は自動収集した暫定データで、内容確認中です。必ず公式ページでご確認ください。</p>'
 
     body = f"""
@@ -1002,10 +1046,9 @@ def build_program(m, slug, p, cats, progs=None):
 {ev_notice}
 <h2>制度の内容</h2>
 {facts_html}
-{src_block}
 <h2>この制度について</h2>
-<p>{esc(mn)}に住む方が対象の{esc(title)}（{esc(ptype)}）です。同じ制度を東京都の他の自治体と比べたい場合は、
-<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>もあわせてご覧ください。</p>
+{program_about(mn, title, ptype, fm)}
+<p>同じ制度を東京都の他の自治体と比べたい場合は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>もあわせてご覧ください。</p>
 {compare_links(cats)}
 {related_programs(m, slug, p, progs)}
 </article>"""
@@ -1923,6 +1966,7 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .fact:first-child{border-top:0}
 .fact dt{background:var(--soft);font-weight:var(--fw-bold);font-size:var(--fs-sm);padding:.7rem .8rem;margin:0}
 .fact dd{margin:0;padding:.7rem .8rem}
+.fact dd .offlink{word-break:break-all}
 .src{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap;margin-left:.3rem}
 @media(max-width:560px){.fact{grid-template-columns:1fr}.fact dt{border-bottom:1px solid var(--line)}}
 .official{font-size:var(--fs-md);margin:1rem 0}
