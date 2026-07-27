@@ -1247,28 +1247,26 @@ def build_program(m, slug, p, cats, progs=None):
                       f'{"公式サイトを出典に明記" if official else "自治体の公表情報をもとに作成"}</span>')
         trustbar = f'<div class="trustbar">{"".join(tchips)}</div>'
 
-    body = f"""
-<article class="program">
-<div class="area-head">
-<div class="area-head-main">
-<span class="badge">{esc(ptype)}</span>
-<h1>{esc(h1)}</h1>
-{summary_html}
-<p class="meta">最終確認日: <time>{esc(p['last_verified_at'] or '—')}</time> ／ 対象自治体: <a href="/area/tokyo/{slug}/">{esc(mn)}</a></p>
-</div>
-<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" loading="lazy" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
-</div>
-{trustbar}
-{ev_notice}
-<h2>{ic("info","hi")}この制度について</h2>
-{program_about(mn, title, ptype, fm)}
-<p>{esc(mn)}で使えるほかの給付・手当は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>でまとめて確認できます。同じ制度の他自治体との比較は、ページ下部の比較リンクからどうぞ。</p>
-<h2>{ic("clipboard","hi")}制度の内容</h2>
-{facts_html}
-{faq_html}
-{related_programs(m, slug, p, progs)}
-{compare_links(cats)}
-</article>"""
+    _header_zone = (
+        f'<div class="area-head"><div class="area-head-main">'
+        f'<span class="badge">{esc(ptype)}</span>'
+        f'<h1>{esc(h1)}</h1>{summary_html}'
+        f'<p class="meta">最終確認日: <time>{esc(p["last_verified_at"] or "—")}</time> ／ 対象自治体: <a href="/area/tokyo/{slug}/">{esc(mn)}</a></p>'
+        f'</div>'
+        f'<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" loading="lazy" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>'
+        f'</div>{trustbar}{ev_notice}')
+    _about_zone = (
+        f'<h2>{ic("info","hi")}この制度について</h2>{program_about(mn, title, ptype, fm)}'
+        f'<p>{esc(mn)}で使えるほかの給付・手当は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>でまとめて確認できます。同じ制度の他自治体との比較は、ページ下部の比較リンクからどうぞ。</p>')
+    _facts_zone = f'<h2>{ic("clipboard","hi")}制度の内容</h2>{facts_html}'
+    _tail_zone = related_programs(m, slug, p, progs) + compare_links(cats)
+    _zones = [_header_zone, _about_zone, _facts_zone]
+    if faq_html: _zones.append(faq_html)
+    if _tail_zone.strip(): _zones.append(_tail_zone)
+    _bands = "".join(
+        f'<section class="band {"band-white" if i%2==0 else "band-soft"}"><div class="bandin">{z}</div></section>'
+        for i,z in enumerate(_zones))
+    body = f'<article class="program">{_bands}</article>'
 
     # JSON-LD
     gov = {"@context":"https://schema.org","@type":"GovernmentService","name":title,
@@ -1443,7 +1441,8 @@ def build_ranking(ev, score, avg=None):
          jsonld=[il],breadcrumb=bc,body=body)
     sitemap_urls.append((url,"0.8"))
 
-def build_find_hub(score):
+def purpose_cards_html(score):
+    """目的・年代の発見カード（掲載数が多い例つきのリッチカード）。トップと /find/ で共用。"""
     def top1(ev):
         best=max(munis,key=lambda m:(score[m["id"]][ev]["prog"], score[m["id"]][ev].get("yen_sum",0), -m["id"]))
         return best["municipality_name"], score[best["id"]][ev]["prog"], score[best["id"]][ev].get("yen_sum",0)
@@ -1461,11 +1460,14 @@ def build_find_hub(score):
             f'<span class="pdesc">{esc(ev_name)}の制度がある自治体をみる</span>'
             f'<span class="ptop">{top_note}</span></span>'
             f'<span class="parrow" aria-hidden="true">{CHEV_R}</span></a>')
+    return f'<div class="pgrid">{"".join(cards)}</div>'
+
+def build_find_hub(score):
     body=f"""
 <h1>目的・年代から制度がある地域を探す</h1>
 <p class="lead">ライフステージや目的を選ぶと、その分野の制度を掲載している東京都の自治体を件数順に確認できます。
 「引っ越し先選び」や「いま住む街で使える制度の確認」にお使いください。金額が分かる制度の合計もあわせて表示します。</p>
-<div class="pgrid">{''.join(cards)}</div>
+{purpose_cards_html(score)}
 <p class="note">※掲載件数・金額合計は当サイトの収録状況に基づく目安です。詳細・最新情報は各自治体の公式ページでご確認ください。</p>
 <p><a href="/hikaku/">制度カテゴリごとの自治体比較を見る {CHEV_R}</a></p>"""
     page(path="/find/index.html",title="目的・年代から探す｜東京都の制度がある自治体",
@@ -1969,6 +1971,7 @@ def build_home(muni_stats, score, cat_entries=None):
     amt_sec = amount_rankings_html(cat_entries)
     body=f"""
 <section class="hero" aria-labelledby="hero-title">
+<div class="bandin">
 <p class="hero-eyebrow">東京都62市区町村の給付・手当・助成</p>
 <h1 id="hero-title"><span class="hero-tokyo">東京都</span>で<span class="hero-em">もらえるお金</span>が、<br class="hero-br">住む街ごとにひと目でわかる</h1>
 <p class="hero-lead">給付金・手当・助成を東京都62市区町村ごとに整理しました。出典と最終確認日つきなので、引っ越し先選びや制度の申請にそのまま使えます。</p>
@@ -1978,14 +1981,22 @@ def build_home(muni_stats, score, cat_entries=None):
 <button type="submit" class="hsearch-btn">検索</button>
 <ul class="hsac" id="hsac" role="listbox" aria-label="候補の市区町村・制度" hidden></ul>
 </form>
+</div>
 </section>
-<section class="hsec finder">
+<section class="band band-white">
+<div class="bandin">
 <h2 class="fh">{ic("compass","hi")}目的・年代から制度がある地域を探す</h2>
-<div class="pchips">{pcards}</div>
-<p class="fmore"><a href="/find/">{CHEV_R} 目的・年代から探す</a></p>
+{purpose_cards_html(score)}
+<p class="fmore"><a href="/find/">{CHEV_R} 目的・年代から探す をすべて見る</a></p>
+</div>
 </section>
+<section class="band band-soft">
+<div class="bandin">
 {amt_sec}
-<section class="hsec" id="area">
+</div>
+</section>
+<section class="band band-white" id="area">
+<div class="bandin">
 <h2 class="fh">{ic("home","hi")}お住まいの市区町村から探す（東京都62市区町村）</h2>
 <p class="lead2">23区・多摩地域の市・町村・島しょを区別なく、五十音順で一覧しています。どの市区町村も同じ粒度で制度をまとめています。</p>
 <div class="mfilter">
@@ -1999,13 +2010,17 @@ def build_home(muni_stats, score, cat_entries=None):
 </div>
 {grid(all62)}
 <p class="mnone" id="mnone" hidden>該当する市区町村が見つかりません。条件を変えてお試しください。</p>
+</div>
 </section>
-<section class="hsec">
+<section class="band band-soft">
+<div class="bandin">
 <h2 class="fh">{ic("bars","hi")}制度ごとに自治体を比べる</h2>
 <p class="lead2">児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62市区町村で横断比較できます。</p>
 <p class="fmore"><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p>
+</div>
 </section>
-<section class="hsec homeguide"><h2 class="fh">{ic("book","hi")}くらしの制度ガイド</h2><p>制度の全体像を知りたい方へ。ライフイベントごとに、もらえるお金の種類と探し方をやさしく解説しています。</p><ul class="cmplist guidegrid"><li><a href="/guide/pregnancy-birth/">妊娠・出産でもらえるお金</a></li><li><a href="/guide/childcare/">子育て世帯の給付・手当</a></li><li><a href="/guide/moving/">引っ越しの手続きと助成</a></li><li><a href="/guide/retirement-unemployment/">退職・失業時の給付と軽減</a></li><li><a href="/guide/elderly-care/">高齢・介護の助成とサービス</a></li><li><a href="/guide/how-to-find/">使える制度の探し方</a></li></ul><p><a href="/guide/">くらしの制度ガイドをすべて見る ›</a></p></section>
+<section class="band band-white">
+<div class="bandin homeguide"><h2 class="fh">{ic("book","hi")}くらしの制度ガイド</h2><p>制度の全体像を知りたい方へ。ライフイベントごとに、もらえるお金の種類と探し方をやさしく解説しています。</p><ul class="cmplist guidegrid"><li><a href="/guide/pregnancy-birth/">妊娠・出産でもらえるお金</a></li><li><a href="/guide/childcare/">子育て世帯の給付・手当</a></li><li><a href="/guide/moving/">引っ越しの手続きと助成</a></li><li><a href="/guide/retirement-unemployment/">退職・失業時の給付と軽減</a></li><li><a href="/guide/elderly-care/">高齢・介護の助成とサービス</a></li><li><a href="/guide/how-to-find/">使える制度の探し方</a></li></ul><p><a href="/guide/">くらしの制度ガイドをすべて見る ›</a></p></div></section>
 <script>
 (function(){{
  var q=document.getElementById('msearch'),g=document.getElementById('mgrid'),
@@ -2261,7 +2276,7 @@ CSS = """/* ── Design tokens ── */
   --fw-bold:700;
   --fw-black:800;
 }
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;overflow-x:clip}
 body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7;font-weight:var(--fw-normal);font-size:var(--fs-lg)}
 a{color:var(--fg);text-decoration:none}a:hover{color:var(--accent);text-decoration:underline}
 header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);padding:.55rem 1.1rem;border-bottom:1px solid var(--line)}
@@ -2446,9 +2461,18 @@ ul.plainlist li{margin:.2rem 0}
 .profile .strong b{color:var(--accent)}
 
 /* ── トップ：ヒーロー ── */
-.hero{margin:-1.1rem -1.1rem 1.6rem;padding:2.2rem 1.1rem 2rem;
+/* 全幅の背景帯（中身は中央寄せ）。トップ・詳細のセクション区切りに使用 */
+.band{width:100vw;margin-left:calc(50% - 50vw)}
+.bandin{max-width:var(--content-width);margin:0 auto;padding:2rem 1.1rem}
+.bandin>:first-child{margin-top:0}
+.bandin>:last-child{margin-bottom:0}
+.band-white{background:var(--bg)}
+.band-soft{background:var(--soft)}
+.band-tint{background:var(--badge)}
+.hero{width:100vw;margin-left:calc(50% - 50vw);margin-top:-1.1rem;position:relative;
   background:radial-gradient(circle at 88% -20%,color-mix(in srgb,var(--accent) 12%,transparent) 0%,transparent 45%),linear-gradient(155deg,var(--badge) 0%,var(--soft) 48%,var(--bg) 100%);
-  border-bottom:1px solid var(--line);position:relative}
+  border-bottom:1px solid var(--line)}
+.hero .bandin{padding-top:2.4rem;padding-bottom:2.2rem}
 .hero-eyebrow{margin:0 0 .55rem;font-size:var(--fs-sm);font-weight:var(--fw-bold);letter-spacing:.04em;
   color:var(--accent);position:relative}
 .hero h1{font-size:var(--fs-display);line-height:1.3;margin:0 0 .75rem;font-weight:var(--fw-black);
