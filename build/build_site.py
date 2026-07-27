@@ -28,7 +28,16 @@ SITE_SHORT = "くらしの制度ナビ"
 # ── 運営者情報（E-E-A-T用。★実名・連絡先を記入すると信頼性ページが完成します）──────
 OPERATOR_NAME  = os.environ.get("SEIDO_OPERATOR",  "くらしの制度ナビ 運営事務局")
 CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "takken.shiken.2026@gmail.com")
+# お問い合わせフォーム（Googleフォーム等）。設定するとフッター・各ページの窓口がフォーム優先になる。
+CONTACT_FORM_URL = os.environ.get("SEIDO_CONTACT_FORM", "https://forms.gle/H3ASWfUnQ44E2LTX6").strip()
 ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
+# フッター共通の「お問い合わせ」リンク（全ページ）。フォーム未設定時はメールにフォールバック。
+if CONTACT_FORM_URL:
+    FOOTER_CONTACT_HTML = f'・<a href="{CONTACT_FORM_URL}" target="_blank" rel="noopener">お問い合わせ</a>'
+elif "【" not in CONTACT_EMAIL:
+    FOOTER_CONTACT_HTML = f'・<a href="mailto:{CONTACT_EMAIL}">お問い合わせ</a>'
+else:
+    FOOTER_CONTACT_HTML = ""
 # Google Analytics 4 測定ID（全ページの <head> に gtag を出力）。空文字で無効化可。
 GA_MEASUREMENT_ID = os.environ.get("SEIDO_GA_ID", "G-9TB0TXT8X0").strip()
 # Google AdSense パブリッシャーID（全ページの <head> に adsbygoogle.js を出力／ads.txt も生成）。空文字で無効化可。
@@ -804,7 +813,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <footer class="site">
 <p class="totop"><a href="#top">{CHEV_U} ページの先頭へ</a></p>
 <nav class="fnav" aria-label="サイト情報">
-<a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>
+<a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>{FOOTER_CONTACT_HTML}
 </nav>
 <p>本サイトは各自治体・公的機関の公表情報をもとに整理した比較・案内サービスです。
 最新かつ正確な内容は必ず各制度の公式ページでご確認ください。</p>
@@ -1287,14 +1296,24 @@ def build_static_pages():
     # 運営者名・連絡先が未設定（【要記入】のまま）でも体裁が崩れないよう分岐
     has_op = "【" not in OPERATOR_NAME
     has_ct = "【" not in CONTACT_EMAIL
+    has_form = bool(CONTACT_FORM_URL)
     contact_link = f'<a href="mailto:{esc(CONTACT_EMAIL)}">{esc(CONTACT_EMAIL)}</a>' if has_ct else ""
-    report_html = (f'<p>内容に誤りや古い情報を見つけられた場合は、{contact_link} までご連絡ください。'
-                   '確認のうえ、可能な範囲で速やかに反映します。</p>' if has_ct else
-                   '<p>内容の誤り・更新のご指摘を受け付ける窓口は準備中です。準備が整い次第、こちらでご案内します。</p>')
-    inquiry_html = (f'<p>本ポリシーに関するお問い合わせは {contact_link} までお願いします。</p>' if has_ct else
-                    '<p>お問い合わせ窓口は準備中です。</p>')
+    form_link = (f'<a href="{esc(CONTACT_FORM_URL)}" target="_blank" rel="noopener">お問い合わせフォーム</a>'
+                 if has_form else "")
+    if has_form:
+        report_html = (f'<p>掲載内容に誤りや古い情報を見つけられた場合は、{form_link}よりお知らせください。'
+                       '確認のうえ、可能な範囲で速やかに反映します。</p>')
+        inquiry_html = f'<p>本サイト・本ポリシーに関するお問い合わせは、{form_link}よりお願いします。</p>'
+    elif has_ct:
+        report_html = (f'<p>内容に誤りや古い情報を見つけられた場合は、{contact_link} までご連絡ください。'
+                       '確認のうえ、可能な範囲で速やかに反映します。</p>')
+        inquiry_html = f'<p>本ポリシーに関するお問い合わせは {contact_link} までお願いします。</p>'
+    else:
+        report_html = '<p>内容の誤り・更新のご指摘を受け付ける窓口は準備中です。準備が整い次第、こちらでご案内します。</p>'
+        inquiry_html = '<p>お問い合わせ窓口は準備中です。</p>'
     op_row = f'<div class="fact"><dt>運営者</dt><dd>{esc(OPERATOR_NAME)}</dd></div>' if has_op else ''
     ct_row = f'<div class="fact"><dt>連絡先</dt><dd>{contact_link}</dd></div>' if has_ct else ''
+    form_row = f'<div class="fact"><dt>お問い合わせ</dt><dd>{form_link}</dd></div>' if has_form else ''
     op_note = ('' if has_op else
                '<p>本サイトは、各自治体・公的機関の公表情報をもとに個人で運営している情報サイトです。'
                '運営者の詳細情報は準備中です。</p>')
@@ -1309,6 +1328,7 @@ def build_static_pages():
 <div class="fact"><dt>サイト名</dt><dd>{esc(SITE_NAME)}</dd></div>
 {op_row}
 {ct_row}
+{form_row}
 <div class="fact"><dt>公開開始</dt><dd>{esc(ESTABLISHED)}年</dd></div>
 </dl>
 {op_note}
@@ -1326,6 +1346,8 @@ def build_static_pages():
 <p>本サイトは公的機関ではなく、公式の申請窓口でもありません。実際の金額・対象・期限・申請方法は
 制度改定などで変わることがあります。申請前に必ず各制度の公式ページでご確認ください
 （<a href="/disclaimer/">免責事項</a>）。</p>
+<h2>お問い合わせ</h2>
+{inquiry_html}
 """)
     page(path="/about/index.html", title=f"運営者情報｜{SITE_NAME}",
          description=f"{SITE_SHORT}の運営者情報・サイトの目的・情報の作り方について。東京都62自治体の給付・手当・助成を出典つきで比較する情報サービスです。",
@@ -1384,6 +1406,16 @@ def build_static_pages():
           f"収集した情報はGoogle社のプライバシーポリシーに基づき取り扱われます。"
           f'詳細は <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Googleのプライバシーポリシー</a> をご確認ください。</p>'
           ) if ANALYTICS_NOTE else ""
+    ads = ('<h2>広告の配信について</h2>'
+           '<p>本サイトは、第三者配信の広告サービス「Google AdSense」を利用しています。'
+           'Googleなどの第三者配信事業者は、Cookieを利用して、ユーザーが本サイトや他のサイトに'
+           '過去にアクセスした情報に基づいて広告を配信します。パーソナライズ広告は '
+           '<a href="https://myadcenter.google.com/" rel="noopener noreferrer" target="_blank">Google 広告設定</a> '
+           'で無効にできます。また、'
+           '<a href="https://www.aboutads.info/choices/" rel="noopener noreferrer" target="_blank">www.aboutads.info</a> '
+           'では第三者配信事業者のCookieを無効にできます。詳細は '
+           '<a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer" target="_blank">Googleの広告に関するポリシー</a> '
+           'をご確認ください。</p>') if ADSENSE_CLIENT else ""
     priv = wrap(f"""
 <h1>プライバシーポリシー</h1>
 <p class="lead">本サイト「{esc(SITE_SHORT)}」における個人情報・アクセス情報の取り扱い方針です。</p>
@@ -1391,8 +1423,9 @@ def build_static_pages():
 <p>本サイトは、閲覧のみで利用でき、氏名・住所などの個人情報の入力を求めることはありません。
 サーバーやアクセス解析により、アクセス日時・ブラウザ種別などの技術的な情報を取得する場合があります。</p>
 {ga}
+{ads}
 <h2>Cookieについて</h2>
-<p>アクセス状況の把握のためにCookieを利用する場合があります。ブラウザの設定でCookieを無効にすることもできます。</p>
+<p>アクセス状況の把握や広告配信のためにCookieを利用する場合があります。ブラウザの設定でCookieを無効にすることもできます。</p>
 <h2>外部リンク</h2>
 <p>本サイトは各自治体・公的機関などの外部サイトへのリンクを含みます。リンク先での個人情報の取り扱いについては、
 各サイトのポリシーをご確認ください。</p>
