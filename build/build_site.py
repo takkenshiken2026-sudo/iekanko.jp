@@ -1222,10 +1222,12 @@ def build_program(m, slug, p, cats, progs=None):
     official = p["official_url"] or (m["official_site_url"] or "")
     if "example.invalid" in official:  # 復元DBの「公式URL無し」ダミーは公式リンクを出さない
         official = ""
+    off_host = re.sub(r"^https?://", "", official).split("/")[0] if official else ""
     if official:
         dl.append(f'<div class="fact"><dt>{ic("external","fi")}公式ページ</dt>'
-                  f'<dd><a class="offlink" href="{esc(official)}" target="_blank" rel="nofollow noopener">'
-                  f'{esc(official)}</a></dd></div>')
+                  f'<dd><a class="offbtn" href="{esc(official)}" target="_blank" rel="nofollow noopener">'
+                  f'公式ページで詳細・申請方法を確認{CHEV_R}'
+                  f'<span class="offbtn-host">{esc(off_host)}</span></a></dd></div>')
     facts_html = f'<dl class="facts">{"".join(dl)}</dl>' if dl else "<p>詳細は出典の公式ページをご確認ください。</p>"
     faq_html = ""
     if faq:
@@ -1234,6 +1236,16 @@ def build_program(m, slug, p, cats, progs=None):
 
     summary_html = f'<p class="lead">{esc(p["plain_summary"] or p["summary"] or "")}</p>' if (p["plain_summary"] or p["summary"]) else ""
     ev_notice = "" if idx else '<p class="notice">※この情報は自動収集した暫定データで、内容確認中です。必ず公式ページでご確認ください。</p>'
+    # 信頼シグナル（掲載基準を満たしたindexページのみ。暫定ページは上の注意書きを表示）
+    trustbar = ""
+    if idx:
+        _lvm = re.match(r"(\d{4})-(\d{2})", p["last_verified_at"] or "")
+        tchips = []
+        if _lvm:
+            tchips.append(f'<span class="tchip">{ic("check","tci")}{_lvm.group(1)}年{int(_lvm.group(2))}月時点で確認済み</span>')
+        tchips.append(f'<span class="tchip">{ic("external" if official else "file","tci")}'
+                      f'{"公式サイトを出典に明記" if official else "自治体の公表情報をもとに作成"}</span>')
+        trustbar = f'<div class="trustbar">{"".join(tchips)}</div>'
 
     body = f"""
 <article class="program">
@@ -1246,10 +1258,11 @@ def build_program(m, slug, p, cats, progs=None):
 </div>
 <figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" loading="lazy" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
 </div>
+{trustbar}
 {ev_notice}
 <h2>{ic("info","hi")}この制度について</h2>
 {program_about(mn, title, ptype, fm)}
-<p>同じ制度を東京都の他の自治体と比べたい場合は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>もあわせてご覧ください。</p>
+<p>{esc(mn)}で使えるほかの給付・手当は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>でまとめて確認できます。同じ制度の他自治体との比較は、ページ下部の比較リンクからどうぞ。</p>
 <h2>{ic("clipboard","hi")}制度の内容</h2>
 {facts_html}
 {faq_html}
@@ -2273,6 +2286,13 @@ h3{font-size:var(--fs-h3);font-weight:var(--fw-bold)}
 .badge,.tag,.pt,.cnt{display:inline-block}
 .badge{background:var(--badge);color:var(--accent);font-size:var(--fs-xs);font-weight:var(--fw-bold);padding:.15rem .55rem;border-radius:999px}
 .notice{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-fg);padding:.6rem .8rem;border-radius:var(--radius-sm);font-size:var(--fs-sm)}
+.trustbar{display:flex;flex-wrap:wrap;gap:.45rem;margin:.1rem 0 1rem}
+.tchip{display:inline-flex;align-items:center;gap:.32rem;font-size:var(--fs-sm);font-weight:var(--fw-semi);color:var(--fg-2);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.26rem .7rem}
+.tci{width:1em;height:1em;color:var(--pc-house);flex:none}
+.offbtn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.15rem .5rem;font-weight:var(--fw-bold);color:var(--accent);background:var(--badge);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:var(--radius-sm);padding:.45rem .8rem;text-decoration:none;line-height:1.5}
+.offbtn:hover{background:color-mix(in srgb,var(--accent) 12%,var(--bg));text-decoration:none}
+.offbtn .ic{width:1.05em;height:1.05em;vertical-align:-.16em}
+.offbtn-host{font-size:var(--fs-xs);font-weight:var(--fw-normal);color:var(--muted);word-break:break-all}
 dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .fact{display:grid;grid-template-columns:8.5rem 1fr;border-top:1px solid var(--line)}
 .fact:first-child{border-top:0}
