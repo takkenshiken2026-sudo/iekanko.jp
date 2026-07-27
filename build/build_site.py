@@ -624,6 +624,15 @@ def format_sum_yen(yen):
         return f"{s}万円"
     return f"{yen:,}円"
 
+def amount_prefix(amt_text):
+    """金額テキストから「月額」「上限」などの区分だけを取り出す（一覧の目安表示用）。"""
+    t = amt_text or ""
+    if "月額" in t or "月々" in t:
+        return "月額"
+    if any(k in t for k in ("上限", "限度", "以内", "まで", "を超えない")):
+        return "上限"
+    return ""
+
 
 def amount_sum_of_programs(items):
     """プログラム一覧の支給額合計と、金額が取れた件数。"""
@@ -1150,10 +1159,15 @@ def build_program(m, slug, p, cats, progs=None):
 
     body = f"""
 <article class="program">
+<div class="area-head">
+<div class="area-head-main">
 <span class="badge">{esc(ptype)}</span>
 <h1>{esc(h1)}</h1>
 {summary_html}
 <p class="meta">最終確認日: <time>{esc(p['last_verified_at'] or '—')}</time> ／ 対象自治体: <a href="/area/tokyo/{slug}/">{esc(mn)}</a></p>
+</div>
+<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" loading="lazy" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
+</div>
 {ev_notice}
 <h2>{ic("info","hi")}この制度について</h2>
 {program_about(mn, title, ptype, fm)}
@@ -1375,7 +1389,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     rows = []
     for i,p in enumerate(items):
         amt=amount_of(facts_of(p["id"])); yen=extract_any_yen(amt) if amt else 0
-        amt_disp=format_sum_yen(yen) if yen else "—"
+        amt_disp=(amount_prefix(amt)+format_sum_yen(yen)) if yen else "—"
         rows.append(f'<tr data-nm="{esc(p["title"])}" data-ev="all" data-amt="{yen or 0}" data-i="{i}">'
                     f'<td class="c-name"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a></td>'
                     f'<td class="c-amt{"" if yen else " na"}">{esc(amt_disp)}</td>'
@@ -1408,11 +1422,15 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     else:
         body_meta_extra = ""
     body = f"""
+<div class="area-head">
+<div class="area-head-main">
 <span class="badge" style="--pc:{EV_META[ev_slug][2]}">{esc(ev_name)}</span>
 <h1>{esc(mn)}の{esc(ev_name)}で使える制度</h1>
-<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
 <p class="lead">{esc(ev_intro)}</p>
 <p class="meta">{esc(mn)}・{esc(ev_name)}関連の制度 {len(items)}件{body_meta_extra}</p>
+</div>
+<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
+</div>
 {listing}
 {relbox}
 <p><a href="/area/tokyo/{slug}/">{CHEV_L} {esc(mn)}の制度一覧にもどる</a></p>
@@ -1492,7 +1510,7 @@ def build_muni(m, slug, score, avg):
         color=EV_META[cat0][2] if cat0 in EV_META else "#7a8699"
         amt=amount_of(facts_of(p["id"]))
         yen=extract_any_yen(amt) if amt else 0
-        amt_disp=format_sum_yen(yen) if yen else "—"
+        amt_disp=(amount_prefix(amt)+format_sum_yen(yen)) if yen else "—"
         li_html.append(
           f'<tr data-nm="{esc(p["title"])}" data-ev="{esc(" ".join(evs) if evs else "other")}" '
           f'data-amt="{yen or 0}" data-i="{i}">'
@@ -1563,9 +1581,13 @@ def build_muni(m, slug, score, avg):
     if total_yen:
         lead_extra += f"・金額が分かるもの合計{format_sum_yen(total_yen)}（{total_amt_n}件）"
     body = f"""
+<div class="area-head">
+<div class="area-head-main">
 <h1>{esc(mn)}で受けられる給付・手当・助成 一覧</h1>
-<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
 <p class="lead">{esc(mn)}にお住まいの方が使える制度をまとめました（{esc(lead_extra)}・出典/最終確認日つき）。検索・カテゴリ絞り込み・並び替えで探せます。</p>
+</div>
+<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
+</div>
 {live_benefit}
 {plist_html}
 {live_place}
@@ -2234,9 +2256,16 @@ p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
 .pchip2.on b{opacity:.85}
 .psort{font-size:var(--fs-sm);color:var(--muted);display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
 .psort select{font:inherit;font-size:var(--fs-sm);padding:.32rem .5rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg);color:var(--fg);cursor:pointer}
+.area-head{display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap;margin:.2rem 0 .8rem}
+.area-head-main{flex:1 1 300px;min-width:0}
+.area-head-main>h1{margin-top:.2rem}
+.area-head-main>:last-child{margin-bottom:0}
 .areamap{margin:.4rem 0 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:.5rem}
+.area-head .areamap{flex:0 1 350px;margin:0}
 .areamap img{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+.area-head .areamap img{max-width:100%}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
+@media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap{flex-basis:100%}}
 table.ptable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.5rem 0}
 table.ptable thead th{text-align:left;font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-bold);border-bottom:2px solid var(--line);padding:.45rem .55rem;white-space:nowrap}
 table.ptable td{padding:.55rem .55rem;border-bottom:1px solid var(--line);vertical-align:baseline}

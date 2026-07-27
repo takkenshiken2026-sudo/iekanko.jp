@@ -119,9 +119,16 @@ p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
 .pchip2.on b{opacity:.85}
 .psort{font-size:var(--fs-sm);color:var(--muted);display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
 .psort select{font:inherit;font-size:var(--fs-sm);padding:.32rem .5rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg);color:var(--fg);cursor:pointer}
+.area-head{display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap;margin:.2rem 0 .8rem}
+.area-head-main{flex:1 1 300px;min-width:0}
+.area-head-main>h1{margin-top:.2rem}
+.area-head-main>:last-child{margin-bottom:0}
 .areamap{margin:.4rem 0 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:.5rem}
+.area-head .areamap{flex:0 1 350px;margin:0}
 .areamap img{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+.area-head .areamap img{max-width:100%}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
+@media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap{flex-basis:100%}}
 table.ptable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.5rem 0}
 table.ptable thead th{text-align:left;font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-bold);border-bottom:2px solid var(--line);padding:.45rem .55rem;white-space:nowrap}
 table.ptable td{padding:.55rem .55rem;border-bottom:1px solid var(--line);vertical-align:baseline}
