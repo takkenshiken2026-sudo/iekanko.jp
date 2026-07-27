@@ -1526,7 +1526,7 @@ def build_home(muni_stats, score, cat_entries=None):
 引っ越し先選びや制度申請の参考に。</p>
 <form class="hsearch" role="search" aria-label="市区町村を検索">
 <span class="hsearch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></span>
-<input type="search" id="hsearch" name="q" placeholder="市区町村名で検索（例：世田谷 / せたがや / setagaya）" aria-label="市区町村名で検索" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hsac" aria-autocomplete="list">
+<input type="search" id="hsearch" name="q" placeholder="市区町村・制度名で検索（例：世田谷 / 家賃補助 / 産後ケア）" aria-label="市区町村名・制度名で検索" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hsac" aria-autocomplete="list">
 <button type="submit" class="hsearch-btn">検索</button>
 <ul class="hsac" id="hsac" role="listbox" aria-label="候補の市区町村" hidden></ul>
 </form>
@@ -1593,60 +1593,89 @@ def build_home(muni_stats, score, cat_entries=None):
  var box=document.getElementById('hsearch');if(!box)return;
  var form=box.closest('form'),ac=document.getElementById('hsac'),
      grid=document.getElementById('mgrid');if(!form||!ac||!grid)return;
- var items=[].slice.call(grid.querySelectorAll('li')).map(function(li){{
+ var munis=[].slice.call(grid.querySelectorAll('li')).map(function(li){{
   var a=li.querySelector('a'),mt=li.querySelector('.mt');
   return {{nm:li.getAttribute('data-nm')||'',yo:li.getAttribute('data-yo')||'',
           ro:li.getAttribute('data-ro')||'',mt:mt?mt.textContent:'',
           href:a?a.getAttribute('href'):'#'}};
  }});
- var active=-1,shown=[];
+ var slug2nm={{}};munis.forEach(function(m){{var s=(m.href.match(/\/area\/tokyo\/([^/]+)\//)||[])[1];if(s)slug2nm[s]=m.nm;}});
+ var idx=null,loading=false,active=-1,rows=[];
  function nz(s){{return (s||'').toLowerCase();}}
- function score(it,t){{
-  var nm=nz(it.nm),yo=nz(it.yo),ro=nz(it.ro);
-  if(nm.indexOf(t)===0||yo.indexOf(t)===0||ro.indexOf(t)===0)return 0;
-  if(nm.indexOf(t)>=0||yo.indexOf(t)>=0||ro.indexOf(t)>=0)return 1;
-  return -1;
+ function esc(s){{return (s||'').replace(/[&<>"]/g,function(c){{return {{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c];}});}}
+ function load(){{
+  if(idx||loading)return;loading=true;
+  fetch('/assets/search-index.json').then(function(r){{return r.json();}}).then(function(d){{
+   idx=d;loading=false;if(document.activeElement===box&&box.value.trim())render();
+  }}).catch(function(){{loading=false;}});
  }}
- function close(){{ac.hidden=true;ac.innerHTML='';active=-1;shown=[];
+ function close(){{ac.hidden=true;ac.innerHTML='';active=-1;rows=[];
   box.setAttribute('aria-expanded','false');box.removeAttribute('aria-activedescendant');}}
- function setActive(i){{
+ function setActive(i,kbd){{
   active=i;
-  [].slice.call(ac.children).forEach(function(el,idx){{
-   var on=idx===i;el.classList.toggle('on',on);
-   if(on)el.setAttribute('aria-selected','true');else el.removeAttribute('aria-selected');
-  }});
-  box.setAttribute('aria-activedescendant',i>=0?'hsac-'+i:'');
+  rows.forEach(function(r,j){{var on=j===i;r.el.classList.toggle('on',on);
+   if(on){{r.el.setAttribute('aria-selected','true');if(kbd)r.el.scrollIntoView({{block:'nearest'}});}}
+   else r.el.removeAttribute('aria-selected');}});
+  box.setAttribute('aria-activedescendant',i>=0?rows[i].el.id:'');
  }}
- function go(it){{if(it&&it.href)location.href=it.href;}}
+ function go(href){{if(href)location.href=href;}}
+ function head(t){{var li=document.createElement('li');li.className='hsac-head';li.setAttribute('role','presentation');li.textContent=t;ac.appendChild(li);}}
+ function opt(o){{
+  var li=document.createElement('li');li.className='hsac-item';li.setAttribute('role','option');li.id='hsac-'+rows.length;
+  var b=o.badge?'<em class="hsac-mt">'+esc(o.badge)+'</em>':'';
+  var sec=o.sec?'<span class="hsac-sub">'+esc(o.sec)+'</span>':'';
+  li.innerHTML=b+'<span class="hsac-nm">'+esc(o.pri)+'</span>'+sec;
+  var href=o.href,i=rows.length;
+  li.addEventListener('mousedown',function(e){{e.preventDefault();go(href);}});
+  li.addEventListener('mouseenter',function(){{setActive(i,false);}});
+  ac.appendChild(li);rows.push({{el:li,href:href}});
+ }}
  function render(){{
-  var t=nz(box.value.trim());ac.innerHTML='';active=-1;shown=[];
+  var t=nz(box.value.trim());ac.innerHTML='';active=-1;rows=[];
   if(!t){{close();return;}}
-  var matches=[];
-  items.forEach(function(it){{var s=score(it,t);if(s>=0)matches.push({{it:it,s:s}});}});
-  matches.sort(function(a,b){{return a.s-b.s;}});
-  shown=matches.slice(0,8).map(function(m){{return m.it;}});
-  if(!shown.length){{close();return;}}
-  shown.forEach(function(it,i){{
-   var li=document.createElement('li');
-   li.className='hsac-item';li.setAttribute('role','option');li.id='hsac-'+i;
-   var mt=it.mt?'<em class="hsac-mt">'+it.mt+'</em>':'';
-   li.innerHTML=mt+'<span class="hsac-nm">'+it.nm+'</span>';
-   li.addEventListener('mousedown',function(e){{e.preventDefault();go(it);}});
-   li.addEventListener('mouseenter',function(){{setActive(i);}});
-   ac.appendChild(li);
+  var mm=[];
+  munis.forEach(function(m){{
+   var nm=nz(m.nm),yo=nz(m.yo),ro=nz(m.ro),s=-1;
+   if(nm.indexOf(t)===0||yo.indexOf(t)===0||ro.indexOf(t)===0)s=0;
+   else if(nm.indexOf(t)>=0||yo.indexOf(t)>=0||ro.indexOf(t)>=0)s=1;
+   if(s>=0)mm.push({{s:s,m:m}});
   }});
+  mm.sort(function(a,b){{return a.s-b.s;}});
+  var cc=[];
+  if(idx&&idx.c)idx.c.forEach(function(c){{
+   var lt=nz(c.t),s=-1;
+   if(lt.indexOf(t)===0)s=0;else if(lt.indexOf(t)>=0)s=1;else if(nz(c.k).indexOf(t)>=0)s=2;
+   if(s>=0)cc.push({{s:s,c:c}});
+  }});
+  cc.sort(function(a,b){{return a.s-b.s;}});
+  var pp=[];
+  if(idx&&idx.p)idx.p.forEach(function(p){{
+   var tt=nz(p.t),s=-1;
+   if(tt.indexOf(t)===0)s=0;else if(tt.indexOf(t)>=0)s=1;else if(nz(p.d).indexOf(t)>=0)s=3;
+   if(s>=0)pp.push({{s:s,p:p}});
+  }});
+  pp.sort(function(a,b){{return a.s-b.s;}});
+  if(mm.length){{head('市区町村');mm.slice(0,5).forEach(function(x){{opt({{pri:x.m.nm,badge:x.m.mt,href:x.m.href}});}});}}
+  if(cc.length){{head('制度を自治体で比較');cc.slice(0,4).forEach(function(x){{opt({{pri:x.c.t,sec:x.c.n+'自治体で比較',href:x.c.u}});}});}}
+  if(pp.length){{head('制度');pp.slice(0,8).forEach(function(x){{opt({{pri:x.p.t,badge:x.p.y,sec:slug2nm[x.p.s]||'',href:'/area/tokyo/'+x.p.s+'/seido/'+x.p.i+'/'}});}});}}
+  if(!rows.length){{
+   if(idx){{var li=document.createElement('li');li.className='hsac-none';li.textContent=loading?'読み込み中…':'該当する候補が見つかりません';ac.appendChild(li);ac.hidden=false;box.setAttribute('aria-expanded','true');return;}}
+   close();return;
+  }}
   ac.hidden=false;box.setAttribute('aria-expanded','true');
  }}
- box.addEventListener('input',render);
+ box.addEventListener('focus',load);
+ box.addEventListener('input',function(){{load();render();}});
  box.addEventListener('keydown',function(e){{
-  if(ac.hidden||!shown.length)return;
-  if(e.key==='ArrowDown'){{e.preventDefault();setActive((active+1)%shown.length);}}
-  else if(e.key==='ArrowUp'){{e.preventDefault();setActive((active-1+shown.length)%shown.length);}}
+  if(ac.hidden||!rows.length)return;
+  if(e.key==='ArrowDown'){{e.preventDefault();setActive((active+1)%rows.length,true);}}
+  else if(e.key==='ArrowUp'){{e.preventDefault();setActive((active-1+rows.length)%rows.length,true);}}
+  else if(e.key==='Enter'){{if(active>=0){{e.preventDefault();go(rows[active].href);}}}}
   else if(e.key==='Escape'){{close();}}
  }});
  form.addEventListener('submit',function(e){{
   e.preventDefault();
-  if(shown.length){{go(active>=0?shown[active]:shown[0]);return;}}
+  if(rows.length){{go(active>=0?rows[active].href:rows[0].href);return;}}
   var t=box.value.trim(),ms=document.getElementById('msearch'),area=document.getElementById('area');
   if(ms){{ms.value=t;ms.dispatchEvent(new Event('input'));}}
   if(area)area.scrollIntoView({{behavior:'smooth'}});
@@ -1665,6 +1694,7 @@ def main():
     score, avg = compute_scores()
     muni_stats=[]; total_prog=0; indexed=0
     cat_entries={}
+    search_progs=[]
     for m in munis:
         slug = muni_slug(m)
         if not slug:
@@ -1681,6 +1711,9 @@ def main():
             amount = amount_of(facts)
             for cid in cats:
                 cat_entries.setdefault(cid,[]).append((m, slug, p, amount, idx))
+            summ = re.sub(r"\s+"," ",(p["plain_summary"] or p["summary"] or "")).strip()
+            search_progs.append({"s":slug,"i":p["id"],"t":p["title"],
+                                 "y":PT_JA.get(p["program_type"],"制度"),"d":clip(summ,64)})
         muni_stats.append((m, slug, len(progs)))
     # 比較ページ（先に自治体数を数え、関連カテゴリの内部リンク判定に使う）
     pre_counts={cid: len({e[0]["id"] for e in cat_entries[cid]}) for cid in cat_entries}
@@ -1695,6 +1728,7 @@ def main():
     build_static_pages()
     build_guides()
     build_home(muni_stats, score, cat_entries)
+    write_search_index(search_progs, cat_counts)
     write_sitemap(); write_robots(); write_ads_txt(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
     print(f"生成完了: 自治体{len(muni_stats)} / 制度ページ{total_prog}（index {indexed} / noindex {total_prog-indexed}）")
@@ -1720,6 +1754,20 @@ def write_ads_txt():
         return
     pub = ADSENSE_CLIENT.replace("ca-", "", 1) if ADSENSE_CLIENT.startswith("ca-") else ADSENSE_CLIENT
     write("ads.txt", f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n")
+
+def write_search_index(search_progs, cat_counts):
+    """トップページの横断検索用インデックス（制度名・内容＋比較カテゴリ）。"""
+    cats=[]
+    for cid,label,ev,inc,exc in TAXONOMY:
+        if cat_counts.get(cid,0) < 1:
+            continue
+        # 正規表現メタ文字を含む収集キーワードは検索語として使わない
+        kws=[k for k in inc if not re.search(r"[.*+?{}()\[\]\\|]", k)]
+        cats.append({"u":f"/hikaku/{cid}/","t":label,
+                     "n":cat_counts.get(cid,0),"k":" ".join(kws)})
+    data={"c":cats,"p":search_progs}
+    write("assets/search-index.json",
+          json.dumps(data, ensure_ascii=False, separators=(",",":")))
 
 def write_css():
     write("assets/style.css", CSS)
@@ -1912,9 +1960,13 @@ ul.plainlist li{margin:.2rem 0}
 .hsac{position:absolute;z-index:20;top:calc(100% + .3rem);left:0;right:0;margin:0;padding:.25rem;list-style:none;
   background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,.12);
   max-height:min(60vh,340px);overflow:auto}
+.hsac-head{padding:.45rem .6rem .2rem;font-size:var(--fs-xs);font-weight:var(--fw-bold);color:var(--muted);letter-spacing:.02em}
+.hsac-head:not(:first-child){margin-top:.15rem;border-top:1px solid var(--line);padding-top:.5rem}
 .hsac-item{display:flex;align-items:center;gap:.45rem;padding:.5rem .6rem;border-radius:var(--radius-sm);cursor:pointer;font-size:var(--fs-md)}
 .hsac-item.on{background:var(--soft)}
-.hsac-nm{font-weight:var(--fw-semi);color:var(--fg)}
+.hsac-nm{flex:1 1 auto;min-width:0;font-weight:var(--fw-semi);color:var(--fg);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hsac-sub{flex:none;padding-left:.4rem;font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
+.hsac-none{padding:.6rem;font-size:var(--fs-sm);color:var(--muted)}
 .hsac-mt{font-style:normal;font-size:var(--fs-xs);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 .28rem;line-height:1.5;flex:none}
 @media(max-width:520px){.hsearch{max-width:none}.hsearch-btn{padding:.5rem .8rem}}
 
