@@ -83,7 +83,8 @@ def muni_type(name):
 def strip_tags(s): return html.unescape(re.sub(r"<[^>]+>", "", s)).strip()
 
 # ── パース ───────────────────────────────────────────────────────────
-FACT_RE = re.compile(r'<div class="fact"><dt>([^<]*)</dt><dd>(.*?)</dd></div>', re.S)
+# dt にはアイコンSVGが先頭に入ることがあるため読み飛ばしてラベルを取得する。
+FACT_RE = re.compile(r'<div class="fact"><dt>(?:<svg\b[^>]*>.*?</svg>)?\s*([^<]*?)\s*</dt><dd>(.*?)</dd></div>', re.S)
 SRC_RE  = re.compile(r'<a class="src"[^>]*href="([^"]+)"[^>]*>出典</a>')
 BADGE_RE = re.compile(r'<span class="badge[^"]*">([^<]+)</span>')
 TITLE_RE = re.compile(r'<h1[^>]*>(.*?)</h1>', re.S)
@@ -91,7 +92,7 @@ LEAD_RE  = re.compile(r'<p class="lead"[^>]*>(.*?)</p>', re.S)
 VERIFIED_RE = re.compile(r'最終確認日[:：]\s*(\d{4}-\d{2}-\d{2})')
 VERIFIED2_RE = re.compile(r'【(\d{4}-\d{2}-\d{2})時点】')
 # 制度の内容表の「公式ページ」行（現行の構造）。旧構造(<p class="official">…)より優先。
-OFFICIAL0_RE = re.compile(r'<dt>公式ページ</dt><dd><a[^>]*href="([^"]+)"')
+OFFICIAL0_RE = re.compile(r'<dt>(?:<svg\b[^>]*>.*?</svg>)?\s*公式ページ</dt><dd><a[^>]*href="([^"]+)"', re.S)
 OFFICIAL_RE = re.compile(r'公式ページ[:：]\s*<a[^>]*href="([^"]+)"')
 OFFICIAL2_RE = re.compile(r'公式ページ[^h<]*?(https?://[^\s"<]+)')
 ROBOTS_RE = re.compile(r'<meta name="robots" content="([^"]+)"')
@@ -143,7 +144,10 @@ def parse_program_page(fp):
     return {
         "id": pid, "slug": slug, "muni": mn, "title": title or "制度",
         "program_type": ptype, "summary": summary, "verified": verified,
-        "official_url": official or "https://www.example.invalid", "noindex": noindex,
+        # 公式URLが取れない制度は、制度ごとに一意なダミー(example.invalid/slug/pid)にする。
+        # official_url は NOT NULL かつ UNIQUE(title, official_url) のため、同名・公式URL無しの
+        # 別制度が衝突しないよう一意にする必要がある。build_site 側はこのダミーを「公式なし」として扱う。
+        "official_url": official or f"https://www.example.invalid/{slug}/{pid}", "noindex": noindex,
         "facts": facts,
         "target_description": " / ".join(tgt_vals[:3]),
         "benefit_description": " / ".join(ben_vals[:3]),

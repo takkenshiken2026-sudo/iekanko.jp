@@ -1067,6 +1067,8 @@ def build_program(m, slug, p, cats, progs=None):
         if q and len(faq) < 6:
             faq.append((q, clip(val,300)))
     official = p["official_url"] or (m["official_site_url"] or "")
+    if "example.invalid" in official:  # 復元DBの「公式URL無し」ダミーは公式リンクを出さない
+        official = ""
     if official:
         dl.append(f'<div class="fact"><dt>{ic("external","fi")}公式ページ</dt>'
                   f'<dd><a class="offlink" href="{esc(official)}" target="_blank" rel="nofollow noopener">'
@@ -1339,30 +1341,102 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     if items and INDEX_LIFEEVENT: sitemap_urls.append((url,"0.6"))
 
 # ── 自治体ハブ ──────────────────────────────────────────────────────────────
+PLIST_JS = """<script>
+(function(){
+ var q=document.getElementById('psearch'),list=document.getElementById('plist');
+ if(!q||!list)return;
+ var none=document.getElementById('pnone'),
+     chips=[].slice.call(document.querySelectorAll('.pchip2')),
+     sortsel=document.getElementById('psort'),
+     lis=[].slice.call(list.children),ev='all';
+ function nz(s){return (s||'').toLowerCase();}
+ function apply(){
+  var t=nz(q.value.trim()),shown=0;
+  lis.forEach(function(li){
+   var okE=(ev==='all'||(' '+li.getAttribute('data-ev')+' ').indexOf(' '+ev+' ')>=0);
+   var okT=(!t||nz(li.getAttribute('data-nm')).indexOf(t)>=0);
+   var vis=okE&&okT;li.hidden=!vis;if(vis)shown++;
+  });
+  if(none)none.hidden=shown>0;
+ }
+ function resort(){
+  var mode=sortsel?sortsel.value:'cat',arr=lis.slice();
+  if(mode==='name')arr.sort(function(a,b){return a.getAttribute('data-nm').localeCompare(b.getAttribute('data-nm'),'ja');});
+  else if(mode==='amt')arr.sort(function(a,b){return (+b.getAttribute('data-amt'))-(+a.getAttribute('data-amt'));});
+  else arr.sort(function(a,b){return (+a.getAttribute('data-i'))-(+b.getAttribute('data-i'));});
+  arr.forEach(function(li){list.appendChild(li);});
+ }
+ q.addEventListener('input',apply);
+ chips.forEach(function(c){c.addEventListener('click',function(){
+  ev=c.getAttribute('data-ev');
+  chips.forEach(function(x){var on=x===c;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on);});
+  apply();
+ });});
+ if(sortsel)sortsel.addEventListener('change',resort);
+})();
+</script>"""
+
 def build_muni(m, slug, score, avg):
     mn = m["municipality_name"]; url = f"/area/tokyo/{slug}/"
     progs = programs_of(m["id"])
-    # ライフイベント別セクション
-    sections=[]
+    # 全制度を1つの一覧に（検索・カテゴリ絞り込み・並び替え可能）
     counts={}
     yen_sums={}
+    prog_ev={p["id"]:[e["slug"] for e in events_of(p["id"])] for p in progs}
     for ev_slug,(ev_name,ev_intro) in EVENTS.items():
-        items=[p for p in progs if any(e["slug"]==ev_slug for e in events_of(p["id"]))]
+        items=[p for p in progs if ev_slug in prog_ev[p["id"]]]
         counts[ev_slug]=len(items)
-        yen_sum, _n_amt = amount_sum_of_programs(items)
-        yen_sums[ev_slug]=yen_sum
-        if not items: continue
-        lis="".join(f'<li><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a></li>' for p in items[:8])
-        color=EV_META[ev_slug][2]
-        more = f'<a class="more" href="/area/tokyo/{slug}/{ev_slug}/">{ev_name}の制度をすべて見る（{len(items)}件）{CHEV_R}</a>' if items else ""
-        sections.append(
-            f'<section class="ev" style="--pc:{color}">'
-            f'<h2><span class="evh"><span class="evi">{icon_svg(ev_slug)}</span>'
-            f'<a href="/area/tokyo/{slug}/{ev_slug}/">{esc(ev_name)}</a></span>'
-            f'{cnt_with_sum_html(len(items), yen_sum)}</h2>'
-            f'<ul class="proglist">{lis}</ul>{more}'
-            f'<p class="evlinks"><a href="/ranking/{ev_slug}/">{esc(ev_name)}の制度がある自治体をみる {CHEV_R}</a></p>'
-            f'</section>')
+        yen_sums[ev_slug]=amount_sum_of_programs(items)[0]
+    # カテゴリ順（EVENTS順→その他）に重複なく整列
+    ev_order=list(EVENTS.keys())
+    seen=set(); ordered=[]
+    for ev_slug in ev_order:
+        for p in progs:
+            if p["id"] not in seen and ev_slug in prog_ev[p["id"]]:
+                seen.add(p["id"]); ordered.append(p)
+    for p in progs:
+        if p["id"] not in seen:
+            seen.add(p["id"]); ordered.append(p)
+    other_count=sum(1 for p in ordered if not prog_ev[p["id"]])
+    li_html=[]
+    for i,p in enumerate(ordered):
+        evs=prog_ev[p["id"]]
+        cat0=evs[0] if evs else "other"
+        catname=EVENTS[cat0][0] if evs else "その他"
+        color=EV_META[cat0][2] if cat0 in EV_META else "#7a8699"
+        amt=amount_of(facts_of(p["id"]))
+        yen=extract_any_yen(amt) if amt else 0
+        li_html.append(
+          f'<li data-nm="{esc(p["title"])}" data-ev="{esc(" ".join(evs) if evs else "other")}" '
+          f'data-amt="{yen or 0}" data-i="{i}">'
+          f'<a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a>'
+          f'<span class="ptag" style="--pc:{color}">{esc(catname)}</span>'
+          f'<span class="ptype">{esc(PT_JA.get(p["program_type"],"制度"))}</span></li>')
+    chip_html=f'<button type="button" class="pchip2 on" data-ev="all" aria-pressed="true">すべて<b>{len(ordered)}</b></button>'
+    for ev_slug in ev_order:
+        if counts.get(ev_slug,0)>0:
+            chip_html+=(f'<button type="button" class="pchip2" data-ev="{ev_slug}" '
+                        f'style="--pc:{EV_META[ev_slug][2]}" aria-pressed="false">'
+                        f'{esc(EVENTS[ev_slug][0])}<b>{counts[ev_slug]}</b></button>')
+    if other_count>0:
+        chip_html+=f'<button type="button" class="pchip2" data-ev="other" aria-pressed="false">その他<b>{other_count}</b></button>'
+    purpose_links="".join(
+      f'<a href="/area/tokyo/{slug}/{ev_slug}/">{esc(EVENTS[ev_slug][0])}（{counts[ev_slug]}件）{CHEV_R}</a>'
+      for ev_slug in ev_order if counts.get(ev_slug,0)>0)
+    purpose_html=(f'<p class="plist-purpose">目的・年代別のまとめページ：{purpose_links}</p>'
+                  if purpose_links else "")
+    plist_html=(
+      f'<section class="plist-sec"><h2>{ic("list","hi")}{esc(mn)}の制度・手当の一覧（全{len(ordered)}件）</h2>'
+      f'<p class="lead2">キーワード検索・カテゴリ絞り込み・並び替えができます。制度名をタップすると、対象・金額・申請方法の詳細が見られます。</p>'
+      f'<div class="plist-ctrl">'
+      f'<input type="search" id="psearch" placeholder="制度名で検索（例：児童手当 / 家賃 / 医療費）" aria-label="制度名で検索" autocomplete="off">'
+      f'<div class="plist-row"><div class="pchips2" role="group" aria-label="カテゴリで絞り込み">{chip_html}</div>'
+      f'<label class="psort">並び替え <select id="psort" aria-label="並び替え">'
+      f'<option value="cat">カテゴリ順</option><option value="name">名称順</option>'
+      f'<option value="amt">金額が高い順</option></select></label></div></div>'
+      f'<ul class="plist" id="plist">{"".join(li_html)}</ul>'
+      f'<p class="pnone" id="pnone" hidden>該当する制度が見つかりません。条件を変えてお試しください。</p>'
+      f'{purpose_html}</section>')
     total_yen = sum(yen_sums.values())
     # 同一制度が複数ライフイベントに紐づく場合があるため、全体合計はプログラム単位で再計算
     total_yen, total_amt_n = amount_sum_of_programs(progs)
@@ -1398,10 +1472,11 @@ def build_muni(m, slug, score, avg):
         lead_extra += f"・金額が分かるもの合計{format_sum_yen(total_yen)}（{total_amt_n}件）"
     body = f"""
 <h1>{esc(mn)}で受けられる給付・手当・助成 一覧</h1>
-<p class="lead">{esc(mn)}にお住まいの方が使える制度を、ライフイベント別にまとめました（{esc(lead_extra)}・出典/最終確認日つき）。</p>
+<p class="lead">{esc(mn)}にお住まいの方が使える制度をまとめました（{esc(lead_extra)}・出典/最終確認日つき）。検索・カテゴリ絞り込み・並び替えで探せます。</p>
+{plist_html}
 {live_sec}
-{''.join(sections)}
 {others_html}
+{PLIST_JS}
 """
     bc=[("トップ","/"),(mn,None)]
     page(path=url+"index.html", title=title, description=desc, canonical=url, breadcrumb=bc, body=body)
@@ -2051,6 +2126,29 @@ p.lead2{color:var(--muted);font-size:var(--fs-sm);margin:.1rem 0 .6rem}
 .mchip.on b{opacity:.85}
 ul.mgrid li[hidden]{display:none}
 p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
+/* ── 自治体：制度の全一覧（検索・絞り込み・並び替え）── */
+.plist-sec{margin:1.4rem 0}
+.plist-ctrl{margin:.5rem 0 .5rem}
+#psearch{width:100%;box-sizing:border-box;padding:.6rem .8rem;font-size:var(--fs-lg);border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);color:inherit}
+#psearch:focus{outline:2px solid var(--accent);outline-offset:1px}
+.plist-row{display:flex;flex-wrap:wrap;gap:.5rem .8rem;align-items:center;justify-content:space-between;margin-top:.55rem}
+.pchips2{display:flex;flex-wrap:wrap;gap:.4rem}
+.pchip2{font:inherit;font-size:var(--fs-sm);font-weight:var(--fw-semi);cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:.28rem .7rem;display:inline-flex;align-items:center;gap:.3rem}
+.pchip2 b{font-weight:var(--fw-semi);font-size:var(--fs-xs);opacity:.7}
+.pchip2.on{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:#fff}
+.pchip2.on b{opacity:.85}
+.psort{font-size:var(--fs-sm);color:var(--muted);display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
+.psort select{font:inherit;font-size:var(--fs-sm);padding:.32rem .5rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg);color:var(--fg);cursor:pointer}
+ul.plist{list-style:none;padding:0;margin:.5rem 0}
+ul.plist li{display:flex;align-items:baseline;gap:.55rem;padding:.6rem .2rem;border-bottom:1px solid var(--line)}
+ul.plist li[hidden]{display:none}
+ul.plist li a{font-weight:var(--fw-semi);flex:1 1 auto;min-width:0}
+.ptag{font-size:var(--fs-xs);color:#fff;background:var(--pc,var(--accent));border-radius:999px;padding:.08rem .55rem;flex:none;white-space:nowrap}
+.ptype{font-size:var(--fs-xs);color:var(--muted);flex:none;white-space:nowrap}
+.plist-purpose{font-size:var(--fs-sm);color:var(--muted);margin:.7rem 0 0;line-height:2}
+.plist-purpose a{margin-right:.7rem;white-space:nowrap}
+p.pnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
+@media(max-width:520px){ul.plist li{flex-wrap:wrap;gap:.3rem .5rem}ul.plist li a{flex-basis:100%}}
 footer.site{border-top:1px solid var(--line);padding:1.2rem 1.1rem;color:var(--muted);font-size:var(--fs-sm);max-width:var(--content-width);margin:0 auto}
 footer.site a{color:var(--muted)}
 .cmpbox{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.9rem 1rem;margin:1.2rem 0}
