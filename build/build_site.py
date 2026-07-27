@@ -2259,8 +2259,8 @@ CSS = """/* ── Design tokens ── */
   --pc-house:#1baf7a;
   --pc-job:#eda100;
   --pc-senior:#eb6834;
-  --radius:12px;
-  --radius-sm:8px;
+  --radius:6px;
+  --radius-sm:4px;
   /* タイプスケールは5段階に集約（xs / sm=md / base / h2 / h1）＋ヒーローのdisplay */
   --fs-xs:.78rem;
   --fs-sm:.875rem;
