@@ -326,6 +326,13 @@ AMOUNT_RANK_BY_EVENT = [
  ]),
 ]
 
+# 比較ページのグラフ対象カテゴリ: cid -> (単位ラベル, 抽出モード, 色)
+CHART_SPEC = {}
+for _ev, _specs in AMOUNT_RANK_BY_EVENT:
+    _color = EV_META[_ev][2]
+    for _cid, _title, _unit, _mode in _specs:
+        CHART_SPEC.setdefault(_cid, (_unit, _mode, _color))
+
 def _yen_int(s):
     return int(str(s).replace(",", "").replace("，", ""))
 
@@ -632,6 +639,46 @@ def _amount_box_html(cid, title, unit, mode, color, rows):
         f'<p class="armore"><a href="/hikaku/{cid}/">{CHEV_R} 全市区町村の金額を比較</a></p>'
         f'</div>'
     )
+
+def svg_amount_bars(rows, mode, avg=None):
+    """rows: [(yen, name, href, amt), ...] 降順。JS不要のSVG横棒グラフ。"""
+    W=580; padL=120; padR=118; barH=15; rowH=29; top=8
+    plotW=W-padL-padR
+    maxval=max((r[0] for r in rows), default=1) or 1
+    H=top+rowH*len(rows)+6
+    p=[f'<svg viewBox="0 0 {W} {H}" class="chart" role="img" '
+       f'preserveAspectRatio="xMinYMin meet" aria-label="支給額・助成額の自治体比較（横棒グラフ）">']
+    for i,(yen,name,href,_amt) in enumerate(rows):
+        y=top+rowH*i; cy=y+barH/2
+        bw=plotW*(yen/maxval)
+        p.append(f'<text x="{padL-8}" y="{cy:.0f}" class="c-lbl" text-anchor="end" dominant-baseline="central">{esc(name)}</text>')
+        p.append(f'<rect x="{padL}" y="{y}" width="{plotW}" height="{barH}" rx="4" class="c-track"/>')
+        p.append(f'<rect x="{padL}" y="{y}" width="{max(bw,3):.1f}" height="{barH}" rx="4" class="c-bar"/>')
+        if avg:
+            ax=padL+plotW*(min(avg,maxval)/maxval)
+            p.append(f'<line x1="{ax:.1f}" y1="{y-2}" x2="{ax:.1f}" y2="{y+barH+2}" class="c-avg"/>')
+        p.append(f'<text x="{W-6}" y="{cy:.0f}" class="c-val" text-anchor="end" dominant-baseline="central">{esc(format_rank_yen(yen,mode))}</text>')
+    p.append('</svg>')
+    return ''.join(p)
+
+def compare_chart_html(cid, entries):
+    """比較ページ上部の金額グラフ。金額差が出るカテゴリのみ描画（無ければ空）。"""
+    spec=CHART_SPEC.get(cid)
+    if not spec: return ""
+    unit,mode,color=spec
+    allrows=amount_rank_rows(entries, mode, top_n=999)
+    if len(allrows)<5: return ""
+    vals=[r[0] for r in allrows]
+    if len(set(vals))<3: return ""
+    avg=sum(vals)/len(vals)
+    rows=allrows[:12]
+    svg=svg_amount_bars(rows, mode, avg)
+    return (f'<figure class="cmpchart" style="--pc:{color}">'
+            f'<figcaption>支給額・助成額の比較（上位{len(rows)}自治体／{esc(unit)}）</figcaption>'
+            f'{svg}'
+            f'<p class="c-cap">破線は掲載{len(allrows)}自治体の平均の目安。公式情報から抽出した金額の目安で、'
+            f'対象・条件により異なります。金額の記載がある自治体のみ表示しています。</p>'
+            f'</figure>')
 
 def amount_rankings_html(cat_entries=None, top_n=5):
     """目的カテゴリ切替つきの金額ランキングHTML。"""
@@ -1039,7 +1086,7 @@ def build_compare(cid, entries, counts=None):
     body=f"""
 <span class="badge">{esc(ev_name)}</span>
 <h1>東京都の{esc(label)}を自治体で比較</h1>
-<p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>
+<p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>{compare_chart_html(cid, entries)}
 <div class="tablewrap"><table class="cmp">
 <thead><tr><th>自治体</th><th>支給額・助成額</th><th>確認日</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table></div>
@@ -1954,6 +2001,11 @@ ul.plainlist li{margin:.2rem 0}
 .chart .c-avg{stroke:var(--muted);stroke-width:2;stroke-dasharray:2 2}
 .chart .c-lbl{fill:var(--fg);font-size:15px}
 .chart .c-val{fill:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.cmpchart{margin:1rem 0 1.2rem;padding:.85rem 1rem .7rem;border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));border-radius:var(--radius);background:var(--bg)}
+.cmpchart figcaption{font-weight:var(--fw-bold);font-size:var(--fs-md);margin:0 0 .5rem;color:var(--fg)}
+.cmpchart .chart{max-width:640px}
+.cmpchart .chart .c-val{fill:var(--fg);font-weight:var(--fw-semi)}
+.cmpchart .c-cap{font-size:var(--fs-xs);color:var(--muted);margin:.5rem 0 0;line-height:1.6}
 .cap{font-size:var(--fs-xs);color:var(--muted);margin:.35rem 0 .2rem}
 .profile{margin:1.2rem 0 1.4rem}
 .profile .strong{margin:.2rem 0 .3rem}

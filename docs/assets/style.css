@@ -141,6 +141,11 @@ ul.plainlist li{margin:.2rem 0}
 .chart .c-avg{stroke:var(--muted);stroke-width:2;stroke-dasharray:2 2}
 .chart .c-lbl{fill:var(--fg);font-size:15px}
 .chart .c-val{fill:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.cmpchart{margin:1rem 0 1.2rem;padding:.85rem 1rem .7rem;border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));border-radius:var(--radius);background:var(--bg)}
+.cmpchart figcaption{font-weight:var(--fw-bold);font-size:var(--fs-md);margin:0 0 .5rem;color:var(--fg)}
+.cmpchart .chart{max-width:640px}
+.cmpchart .chart .c-val{fill:var(--fg);font-weight:var(--fw-semi)}
+.cmpchart .c-cap{font-size:var(--fs-xs);color:var(--muted);margin:.5rem 0 0;line-height:1.6}
 .cap{font-size:var(--fs-xs);color:var(--muted);margin:.35rem 0 .2rem}
 .profile{margin:1.2rem 0 1.4rem}
 .profile .strong{margin:.2rem 0 .3rem}
