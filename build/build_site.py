@@ -365,11 +365,25 @@ AMOUNT_RANK_BY_EVENT = [
 ]
 
 # 比較ページのグラフ対象カテゴリ: cid -> (単位ラベル, 抽出モード, 色)
+# 比較ページのグラフのみ追加するカテゴリ（トップの金額ランキングには載せない）。
+# 金額差が出て比較に意味があるものを厳選。mode="generic" は妥当な範囲の最大円額を抽出。
+EXTRA_CHART_CATS = [
+ ("child_shugaku","支給額の目安","generic"),
+ ("child_shogakukin","支給・貸付上限の目安","generic"),
+ ("house_reform","助成上限の目安","generic"),
+ ("house_eco","助成上限の目安","generic"),
+ ("eld_iwai","支給額の目安","generic"),
+ ("eld_yougu","助成上限の目安","generic"),
+ ("dis_yougu","助成上限の目安","generic"),
+]
 CHART_SPEC = {}
 for _ev, _specs in AMOUNT_RANK_BY_EVENT:
     _color = EV_META[_ev][2]
     for _cid, _title, _unit, _mode in _specs:
         CHART_SPEC.setdefault(_cid, (_unit, _mode, _color))
+for _cid, _unit, _mode in EXTRA_CHART_CATS:
+    _ev = CAT_BY_ID[_cid][2]
+    CHART_SPEC.setdefault(_cid, (_unit, _mode, EV_META[_ev][2]))
 
 def _yen_int(s):
     return int(str(s).replace(",", "").replace("，", ""))
@@ -380,6 +394,15 @@ def extract_rank_yen(text, mode):
     t = t.replace("，", ",")
     if not t or "記載を確認中" in t:
         return None
+    if mode == "generic":
+        vals = []
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*万円", t):
+            vals.append(int(float(m.group(1)) * 10000))
+        for m in re.finditer(r"([0-9,]+)\s*円", t):
+            v = _yen_int(m.group(1))
+            if 1000 <= v <= 10000000:
+                vals.append(v)
+        return max(vals) if vals else None
     if mode == "monthly_cap":
         if re.search(r"(利用者負担|自己負担|1割負担)", t) and not re.search(r"(助成|上限|限度|支給)", t):
             return None
@@ -705,7 +728,7 @@ def compare_chart_html(cid, entries):
     if not spec: return ""
     unit,mode,color=spec
     allrows=amount_rank_rows(entries, mode, top_n=999)
-    if len(allrows)<5: return ""
+    if len(allrows)<4: return ""
     vals=[r[0] for r in allrows]
     if len(set(vals))<3: return ""
     avg=sum(vals)/len(vals)
@@ -1349,11 +1372,29 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     mn = m["municipality_name"]
     url = f"/area/tokyo/{slug}/{ev_slug}/"
     items = [p for p in progs if any(e["slug"]==ev_slug for e in events_of(p["id"]))]
-    lis = []
-    for p in items:
-        lis.append(f'<li><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a>'
-                   f'<span class="pt">{esc(PT_JA.get(p["program_type"],""))}</span></li>')
-    listing = f'<ul class="proglist">{"".join(lis)}</ul>' if lis else "<p>該当する制度は現在準備中です。</p>"
+    rows = []
+    for i,p in enumerate(items):
+        amt=amount_of(facts_of(p["id"])); yen=extract_any_yen(amt) if amt else 0
+        amt_disp=format_sum_yen(yen) if yen else "—"
+        rows.append(f'<tr data-nm="{esc(p["title"])}" data-ev="all" data-amt="{yen or 0}" data-i="{i}">'
+                    f'<td class="c-name"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a></td>'
+                    f'<td class="c-amt{"" if yen else " na"}">{esc(amt_disp)}</td>'
+                    f'<td class="c-type">{esc(PT_JA.get(p["program_type"],"制度"))}</td></tr>')
+    if rows:
+        listing=(
+            '<div class="plist-ctrl">'
+            '<input type="search" id="psearch" placeholder="制度名で検索" aria-label="制度名で検索" autocomplete="off">'
+            '<div class="plist-row"><span class="lead2" style="margin:0">タップで対象・金額・申請方法がわかります</span>'
+            '<label class="psort">並び替え <select id="psort" aria-label="並び替え">'
+            '<option value="cat">掲載順</option><option value="name">名称順</option>'
+            '<option value="amt">金額が高い順</option></select></label></div></div>'
+            '<div class="tablewrap"><table class="ptable">'
+            '<thead><tr><th class="c-name">制度・手当</th><th class="c-amt">金額の目安</th>'
+            '<th class="c-type">種別</th></tr></thead>'
+            f'<tbody id="plist">{"".join(rows)}</tbody></table></div>'
+            '<p class="pnone" id="pnone" hidden>該当する制度が見つかりません。</p>')
+    else:
+        listing = "<p>該当する制度は現在準備中です。</p>"
     other_lis="".join(f'<li><a href="/area/tokyo/{slug}/{s}/">{esc(mn)}の{esc(EVENTS[s][0])}の制度 {CHEV_R}</a></li>'
                       for s in EVENTS if s!=ev_slug)
     relbox=(f'<div class="cmpbox" style="--pc:{EV_META[ev_slug][2]}"><strong>関連して探す</strong><ul>'
@@ -1369,11 +1410,13 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     body = f"""
 <span class="badge" style="--pc:{EV_META[ev_slug][2]}">{esc(ev_name)}</span>
 <h1>{esc(mn)}の{esc(ev_name)}で使える制度</h1>
+<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
 <p class="lead">{esc(ev_intro)}</p>
 <p class="meta">{esc(mn)}・{esc(ev_name)}関連の制度 {len(items)}件{body_meta_extra}</p>
 {listing}
 {relbox}
-<p><a href="/area/tokyo/{slug}/">{CHEV_L} {esc(mn)}の制度一覧にもどる</a></p>"""
+<p><a href="/area/tokyo/{slug}/">{CHEV_L} {esc(mn)}の制度一覧にもどる</a></p>
+{PLIST_JS if rows else ""}"""
     il = {"@context":"https://schema.org","@type":"ItemList","itemListElement":[
         {"@type":"ListItem","position":i+1,"name":p["title"],
          "url":f"{BASE_URL}/area/tokyo/{slug}/seido/{p['id']}/"} for i,p in enumerate(items)]}
