@@ -2524,7 +2524,7 @@ ul.plainlist li{margin:.2rem 0}
 .bandin>:first-child{margin-top:0}
 .bandin>:last-child{margin-bottom:0}
 .band-white{background:var(--bg)}
-.band-soft{background:#e7ecf4}
+.band-soft{background:var(--soft)}
 .band-tint{background:var(--badge)}
 .hero{width:100vw;margin-left:calc(50% - 50vw);margin-top:-1.1rem;position:relative;
   background:radial-gradient(circle at 88% -20%,color-mix(in srgb,var(--accent) 12%,transparent) 0%,transparent 45%),linear-gradient(155deg,var(--badge) 0%,var(--soft) 48%,var(--bg) 100%);
