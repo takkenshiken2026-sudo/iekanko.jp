@@ -1761,8 +1761,9 @@ def build_ranking(ev, score, avg=None):
 <p class="cap">上位15自治体（掲載制度数順）の制度数と金額合計</p></div>
 <div class="rsort-panel" data-rsort="yen" hidden>{chart_yen}
 <p class="cap">上位15自治体（金額合計順）の金額合計と制度数</p></div>
+{affiliate_html("ranking", ev)}
 </div>
-{chart_js}{affiliate_html("ranking", ev)}
+{chart_js}
 <div class="tablewrap"><table class="cmp rank" id="ranktbl">
 <thead><tr>
 <th class="rk">順位</th>
@@ -2872,6 +2873,7 @@ ul.plainlist li{margin:.2rem 0}
 .chartcard .rsort,.chartcard .rsort-panel{width:100%;max-width:640px}
 .chartcard .rsort{margin:0 0 .55rem}
 .chartcard .mchip.on{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:#fff}
+.chartcard .prbox{align-self:stretch;max-width:640px;width:100%;margin:.75rem 0 .55rem;box-sizing:border-box}
 .chart{width:100%;max-width:640px;height:auto;display:block;margin:0 auto;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
 .chart .c-track{fill:var(--track)}
 .chart .c-bar{fill:var(--pc)}
