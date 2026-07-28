@@ -128,7 +128,7 @@ p.lead2{color:var(--muted);font-size:var(--fs-sm);margin:.1rem 0 .6rem}
 .mchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
 .mchip.on b{opacity:.85}
 ul.mgrid li[hidden]{display:none}
-p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
+p.mnone{color:var(--muted);font-size:var(--fs-sm);padding:.6rem 0}
 /* ── 自治体：制度の全一覧（検索・絞り込み・並び替え）── */
 .plist-sec{margin:1.4rem 0}
 .plist-ctrl{margin:.5rem 0 .5rem}
@@ -168,7 +168,7 @@ table.ptable td.c-type{color:var(--muted);font-size:var(--fs-sm)}
 .ptag{display:inline-block;font-size:var(--fs-xs);color:#fff;background:var(--pc,var(--accent));border-radius:999px;padding:.1rem .6rem;white-space:nowrap}
 .plist-purpose{font-size:var(--fs-sm);color:var(--muted);margin:.7rem 0 0;line-height:2}
 .plist-purpose a{margin-right:.7rem;white-space:nowrap}
-p.pnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
+p.pnone{color:var(--muted);font-size:var(--fs-sm);padding:.6rem 0}
 @media(max-width:560px){table.ptable td.c-name{min-width:8.5rem}}
 footer.site{border-top:1px solid var(--line);padding:1.2rem 1.1rem;color:var(--muted);font-size:var(--fs-sm);max-width:var(--content-width);margin:0 auto}
 footer.site a{color:var(--muted)}
@@ -178,7 +178,7 @@ footer.site a{color:var(--muted)}
 .cmpbox p{margin:.3rem 0;color:var(--muted);font-size:var(--fs-sm)}
 .cmpbox p a{font-size:var(--fs-sm)}
 .tablewrap{overflow-x:auto;margin:.6rem 0}
-table.cmp{border-collapse:collapse;width:100%;font-size:var(--fs-md)}
+table.cmp{border-collapse:collapse;width:100%;font-size:var(--fs-lg)}
 table.cmp th,table.cmp td{border:1px solid var(--line);padding:.5rem .6rem;text-align:left;vertical-align:top}
 table.cmp thead th{background:var(--soft);position:sticky;top:0}
 table.cmp td.mn{white-space:nowrap;font-size:var(--mn-fs);font-weight:var(--mn-fw)}
@@ -365,7 +365,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 .figures{margin:1.5rem 0 1.8rem}
 .figures-intro{margin:0 0 1rem}
 .figures-intro h2{margin:0 0 .3rem;font-size:var(--fs-h2);border:0;padding:0}
-.figures-intro p{margin:0;color:var(--muted);font-size:var(--fs-md);line-height:1.55;max-width:36em}
+.figures-intro p{margin:0;color:var(--muted);font-size:var(--fs-sm);line-height:1.55;max-width:36em}
 .figures-grid{display:flex;flex-direction:column;gap:1.1rem}
 .fig-panel{padding:0;border-top:1px solid var(--line)}
 .fig-head{margin:.85rem 0 .65rem}
