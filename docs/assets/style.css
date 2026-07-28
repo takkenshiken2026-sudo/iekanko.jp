@@ -78,12 +78,17 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .hi{width:1.08em;height:1.08em;vertical-align:-.16em;margin-right:.42rem;color:var(--accent);flex:none}
 .fi{width:1em;height:1em;vertical-align:-.13em;margin-right:.36rem;color:var(--muted);flex:none}
 .fact dt .fi{color:color-mix(in srgb,var(--accent) 55%,var(--muted))}
-dl.faq{margin:.4rem 0 1rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.faq .qa{padding:.75rem .9rem;border-top:1px solid var(--line)}
-.faq .qa:first-child{border-top:0}
-.faq dt{font-weight:var(--fw-bold);margin:0 0 .3rem;color:var(--fg)}
-.faq dt::before{content:"Q. ";color:var(--accent);font-weight:var(--fw-black)}
-.faq dd{margin:0;color:var(--fg-2);font-size:var(--fs-md)}
+/* FAQ 表形式（質問｜回答） */
+table.faqtable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.4rem 0 1rem}
+table.faqtable th,table.faqtable td{border:1px solid var(--line);padding:.6rem .75rem;text-align:left;vertical-align:top}
+table.faqtable thead th{background:var(--soft);font-size:var(--fs-sm);white-space:nowrap;color:var(--fg)}
+table.faqtable tbody th{width:34%;font-weight:var(--fw-bold);color:var(--fg);background:var(--bg)}
+table.faqtable tbody th::before{content:"Q. ";color:var(--accent);font-weight:var(--fw-black)}
+table.faqtable tbody td{color:var(--fg-2);line-height:1.7}
+@media(max-width:560px){table.faqtable thead{display:none}table.faqtable tbody th,table.faqtable tbody td{display:block;width:auto}table.faqtable tbody th{border-bottom:0;background:var(--soft)}table.faqtable tbody td{border-top:0}}
+/* 行全体クリック可能な表 */
+tr[data-href]{cursor:pointer}
+table.cmp tbody tr[data-href]:hover,table.ptable tbody tr[data-href]:hover{background:var(--soft)}
 ul.proglist{list-style:none;padding:0;margin:.3rem 0}
 ul.proglist li{padding:.55rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:.6rem;align-items:baseline}
 ul.proglist .pt{font-size:var(--fs-xs);color:var(--muted)}
@@ -131,8 +136,8 @@ p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
 .area-head-main>h1{margin-top:.2rem}
 .area-head-main>:last-child{margin-bottom:0}
 .areamap{margin:.4rem 0 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:.5rem}
-.area-head .areamap{flex:0 1 350px;margin:0}
-.areamap img{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+.area-head .areamap{flex:0 1 470px;margin:0}
+.areamap img{display:block;width:100%;height:auto;max-width:640px;margin:0 auto}
 .area-head .areamap img{max-width:100%}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
 @media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap{flex-basis:100%}}

@@ -705,7 +705,7 @@ def _rank_rows_from_hikaku(cid, mode, top_n=5):
         html_t = f.read()
     rows = []
     for href, name, amt in re.findall(
-            r'<tr><td class="mn"><a href="([^"]+)">([^<]+)</a></td><td>(.*?)</td>',
+            r'<tr[^>]*><td class="mn"><a href="([^"]+)">([^<]+)</a></td><td>(.*?)</td>',
             html_t, re.S):
         amt_plain = re.sub(r"<[^>]+>", "", amt).strip()
         yen = extract_rank_yen(amt_plain, mode)
@@ -1014,6 +1014,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 最新かつ正確な内容は必ず各制度の公式ページでご確認ください。</p>
 <p class="copy">© {ESTABLISHED} {esc(SITE_SHORT)}（東京都62自治体・出典付き / 最終確認日を明記）</p>
 </footer>
+<script>document.addEventListener("click",function(e){{var tr=e.target.closest("tr[data-href]");if(!tr||e.target.closest("a,button,input,label,select"))return;var u=tr.getAttribute("data-href");if(u)location.href=u;}});</script>
 </body></html>"""
     write(path, doc)
 
@@ -1198,6 +1199,14 @@ def build_faq(fm, title, mn, ptype, cats):
             f"当サイトの比較ページで、各自治体の内容を見比べられます。"))
     return out[:6]
 
+def faq_table_html(faq):
+    """FAQを表形式（質問｜回答）で描画。制度詳細ページ・比較ページで共用。"""
+    if not faq: return ""
+    rows="".join(f'<tr><th scope="row">{esc(q)}</th><td>{esc(a)}</td></tr>' for q,a in faq)
+    return (f'<div class="tablewrap"><table class="faqtable">'
+            f'<thead><tr><th>質問</th><th>回答</th></tr></thead>'
+            f'<tbody>{rows}</tbody></table></div>')
+
 def build_program(m, slug, p, cats, progs=None):
     facts = facts_of(p["id"])
     idx = gate_index(p, facts)
@@ -1231,8 +1240,7 @@ def build_program(m, slug, p, cats, progs=None):
     facts_html = f'<dl class="facts">{"".join(dl)}</dl>' if dl else "<p>詳細は出典の公式ページをご確認ください。</p>"
     faq_html = ""
     if faq:
-        qas = "".join(f'<div class="qa"><dt>{esc(q)}</dt><dd>{esc(a)}</dd></div>' for q,a in faq)
-        faq_html = f'<h2>{ic("help","hi")}よくある質問</h2><dl class="faq">{qas}</dl>'
+        faq_html = f'<h2>{ic("help","hi")}よくある質問</h2>{faq_table_html(faq)}'
 
     summary_html = f'<p class="lead">{esc(p["plain_summary"] or p["summary"] or "")}</p>' if (p["plain_summary"] or p["summary"]) else ""
     ev_notice = "" if idx else '<p class="provnote">※このページは公表情報から自動収集した暫定データを含み、内容を確認中です。正確な最新情報は各制度の公式ページでご確認ください。</p>'
@@ -1315,7 +1323,7 @@ def build_compare(cid, entries, counts=None):
     for m, slug, p, amount, idx in entries:
         mn=m["municipality_name"]
         amt = esc(clip(amount,80)) if amount else '<span class="na">記載を確認中</span>'
-        rows.append(f'<tr><td class="mn"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(mn)}</a></td>'
+        rows.append(f'<tr data-href="/area/tokyo/{slug}/seido/{p["id"]}/"><td class="mn"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(mn)}</a></td>'
                     f'<td>{amt}</td><td class="dt">{esc(p["last_verified_at"] or "")}</td></tr>')
     have=len(entries)
     n_amt=sum(1 for e in entries if e[3])
@@ -1337,7 +1345,7 @@ def build_compare(cid, entries, counts=None):
           f"当サイトでは東京都{have}自治体で「{label}」に該当する制度を確認しています。各自治体の内容・金額・最終確認日はこのページの一覧で比較できます。"),
          (f"{label}の金額は自治体によって違いますか？",
           f"はい。同じ{label}でも自治体ごとに金額・対象・条件が異なります。金額は制度改定で変わるため、申請前に各自治体の公式ページ（出典リンク）で最新情報をご確認ください。")]
-    faq_html="".join(f'<div class="fact"><dt>{esc(q)}</dt><dd>{esc(a)}</dd></div>' for q,a in faq)
+    faq_html=faq_table_html(faq)
 
     title=f"【{ev_name}】{label} 東京都62自治体を比較｜金額・対象一覧"
     desc=clip(f"東京都の{label}を{have}自治体分まとめて比較。自治体ごとの金額・対象・最終確認日を一覧化。どの区市町村が手厚いかを出典付きで確認できます。",118)
@@ -1353,8 +1361,8 @@ def build_compare(cid, entries, counts=None):
 {miss_html}
 <p class="note">※金額は制度改定で変わります。申請前に必ず各自治体の公式ページ（各自治体ページ内の出典リンク）でご確認ください。</p>
 {rel_html}
-<h2>よくある質問</h2>
-<dl class="facts">{faq_html}</dl>
+<h2>{ic("help","hi")}よくある質問</h2>
+{faq_html}
 <p><a href="/hikaku/">{CHEV_L} 制度カテゴリ比較の一覧にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{label} 自治体比較",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":e[0]["municipality_name"],
@@ -1416,7 +1424,7 @@ def build_ranking(ev, score, avg=None):
         s=score[m["id"]][ev]; slug=muni_slug(m)
         cls=' class="top3"' if rank<=3 else ''
         yen_cell = f'計{esc(format_sum_yen(s["yen_sum"]))}' if s.get("yen_sum") else "—"
-        trs.append(f'<tr{cls}><td class="rk">{rank}</td>'
+        trs.append(f'<tr{cls} data-href="/area/tokyo/{slug}/{ev}/"><td class="rk">{rank}</td>'
                    f'<td class="mn"><a href="/area/tokyo/{slug}/{ev}/">{esc(m["municipality_name"])}</a></td>'
                    f'<td class="dt">{s["prog"]}制度</td>'
                    f'<td class="dt yen">{yen_cell}</td></tr>')
@@ -1485,7 +1493,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     for i,p in enumerate(items):
         amt=amount_of(facts_of(p["id"])); yen=extract_any_yen(amt) if amt else 0
         amt_disp=(amount_prefix(amt)+format_sum_yen(yen)) if yen else "—"
-        rows.append(f'<tr data-nm="{esc(p["title"])}" data-ev="all" data-amt="{yen or 0}" data-i="{i}">'
+        rows.append(f'<tr data-nm="{esc(p["title"])}" data-ev="all" data-amt="{yen or 0}" data-i="{i}" data-href="/area/tokyo/{slug}/seido/{p["id"]}/">'
                     f'<td class="c-name"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a></td>'
                     f'<td class="c-amt{"" if yen else " na"}">{esc(amt_disp)}</td>'
                     f'<td class="c-type">{esc(PT_JA.get(p["program_type"],"制度"))}</td></tr>')
@@ -1608,7 +1616,7 @@ def build_muni(m, slug, score, avg):
         amt_disp=(amount_prefix(amt)+format_sum_yen(yen)) if yen else "—"
         li_html.append(
           f'<tr data-nm="{esc(p["title"])}" data-ev="{esc(" ".join(evs) if evs else "other")}" '
-          f'data-amt="{yen or 0}" data-i="{i}">'
+          f'data-amt="{yen or 0}" data-i="{i}" data-href="/area/tokyo/{slug}/seido/{p["id"]}/">'
           f'<td class="c-name"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a></td>'
           f'<td class="c-amt{"" if yen else " na"}">{esc(amt_disp)}</td>'
           f'<td class="c-cat"><span class="ptag" style="--pc:{color}">{esc(catname)}</span></td>'
@@ -2339,12 +2347,17 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .hi{width:1.08em;height:1.08em;vertical-align:-.16em;margin-right:.42rem;color:var(--accent);flex:none}
 .fi{width:1em;height:1em;vertical-align:-.13em;margin-right:.36rem;color:var(--muted);flex:none}
 .fact dt .fi{color:color-mix(in srgb,var(--accent) 55%,var(--muted))}
-dl.faq{margin:.4rem 0 1rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.faq .qa{padding:.75rem .9rem;border-top:1px solid var(--line)}
-.faq .qa:first-child{border-top:0}
-.faq dt{font-weight:var(--fw-bold);margin:0 0 .3rem;color:var(--fg)}
-.faq dt::before{content:"Q. ";color:var(--accent);font-weight:var(--fw-black)}
-.faq dd{margin:0;color:var(--fg-2);font-size:var(--fs-md)}
+/* FAQ 表形式（質問｜回答） */
+table.faqtable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.4rem 0 1rem}
+table.faqtable th,table.faqtable td{border:1px solid var(--line);padding:.6rem .75rem;text-align:left;vertical-align:top}
+table.faqtable thead th{background:var(--soft);font-size:var(--fs-sm);white-space:nowrap;color:var(--fg)}
+table.faqtable tbody th{width:34%;font-weight:var(--fw-bold);color:var(--fg);background:var(--bg)}
+table.faqtable tbody th::before{content:"Q. ";color:var(--accent);font-weight:var(--fw-black)}
+table.faqtable tbody td{color:var(--fg-2);line-height:1.7}
+@media(max-width:560px){table.faqtable thead{display:none}table.faqtable tbody th,table.faqtable tbody td{display:block;width:auto}table.faqtable tbody th{border-bottom:0;background:var(--soft)}table.faqtable tbody td{border-top:0}}
+/* 行全体クリック可能な表 */
+tr[data-href]{cursor:pointer}
+table.cmp tbody tr[data-href]:hover,table.ptable tbody tr[data-href]:hover{background:var(--soft)}
 ul.proglist{list-style:none;padding:0;margin:.3rem 0}
 ul.proglist li{padding:.55rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:.6rem;align-items:baseline}
 ul.proglist .pt{font-size:var(--fs-xs);color:var(--muted)}
@@ -2392,8 +2405,8 @@ p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
 .area-head-main>h1{margin-top:.2rem}
 .area-head-main>:last-child{margin-bottom:0}
 .areamap{margin:.4rem 0 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:.5rem}
-.area-head .areamap{flex:0 1 350px;margin:0}
-.areamap img{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+.area-head .areamap{flex:0 1 470px;margin:0}
+.areamap img{display:block;width:100%;height:auto;max-width:640px;margin:0 auto}
 .area-head .areamap img{max-width:100%}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
 @media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap{flex-basis:100%}}
