@@ -1395,7 +1395,11 @@ def build_compare_index(cat_counts):
         items=groups.get(ev_slug,[])
         lis="".join(f'<li><a href="/hikaku/{cid}/">{esc(label)}</a>'
                     f'<span class="cnt2">{n}自治体</span></li>' for cid,label,n in items if n>=3)
-        if lis: secs.append(f'<section><h2>{esc(ev_name)}</h2><ul class="cmplist">{lis}</ul></section>')
+        if not lis: continue
+        color=EV_META[ev_slug][2]
+        h2=(f'<h2 class="cmpsec-h" style="--pc:{color}">'
+            f'<span class="pic">{icon_svg(ev_slug)}</span>{esc(ev_name)}</h2>')
+        secs.append(f'<section class="cmpsec">{h2}<ul class="cmplist">{lis}</ul></section>')
     body=f"""
 <h1>東京都の給付・手当・助成を「制度ごと」に自治体比較</h1>
 <p class="lead">同じ制度でも、金額や対象は自治体でこんなに違います。制度カテゴリを選ぶと、東京都62自治体の内容を横断比較できます。</p>
@@ -2469,6 +2473,10 @@ table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:var(--fs-sm)}
 ul.cmplist{list-style:none;padding:0;margin:.3rem 0}
 ul.cmplist li{padding:.5rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 ul.cmplist .cnt2{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
+.cmpsec{margin:1.4rem 0 1.1rem}
+.cmpsec-h{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 .45rem}
+.cmpsec-h .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius-sm);padding:5px}
+.cmpsec-h .pic .ev-ic{width:15px;height:15px}
 .homeguide{margin:1.9rem 0}
 ul.guidegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem;margin:.6rem 0}
 ul.guidegrid li{display:block;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}

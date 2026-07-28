@@ -183,6 +183,10 @@ table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:var(--fs-sm)}
 ul.cmplist{list-style:none;padding:0;margin:.3rem 0}
 ul.cmplist li{padding:.5rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 ul.cmplist .cnt2{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
+.cmpsec{margin:1.4rem 0 1.1rem}
+.cmpsec-h{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 .45rem}
+.cmpsec-h .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius-sm);padding:5px}
+.cmpsec-h .pic .ev-ic{width:15px;height:15px}
 .homeguide{margin:1.9rem 0}
 ul.guidegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem;margin:.6rem 0}
 ul.guidegrid li{display:block;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}
