@@ -2325,6 +2325,9 @@ CSS = """/* ── Design tokens ── */
   --fw-semi:600;
   --fw-bold:700;
   --fw-black:800;
+  /* 市区町村名の共通タイポ（一覧・ランキング・比較表などで揃える） */
+  --mn-fs:var(--fs-md);
+  --mn-fw:var(--fw-semi);
 }
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%;overflow-x:clip}
 body{margin:0;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:var(--fg);background:var(--bg);line-height:1.7;font-weight:var(--fw-normal);font-size:var(--fs-lg)}
@@ -2466,7 +2469,8 @@ footer.site a{color:var(--muted)}
 table.cmp{border-collapse:collapse;width:100%;font-size:var(--fs-md)}
 table.cmp th,table.cmp td{border:1px solid var(--line);padding:.5rem .6rem;text-align:left;vertical-align:top}
 table.cmp thead th{background:var(--soft);position:sticky;top:0}
-table.cmp td.mn{white-space:nowrap;font-weight:var(--fw-semi)}
+table.cmp td.mn{white-space:nowrap;font-size:var(--mn-fs);font-weight:var(--mn-fw)}
+table.cmp td.mn a{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg)}
 table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:var(--fs-sm)}
 .na{color:var(--muted);font-size:.85em}
 .miss{font-size:var(--fs-sm);color:var(--fg-2);background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem .8rem}
@@ -2621,7 +2625,7 @@ ul.plainlist li{margin:.2rem 0}
 .pcard .parrow{margin-left:auto;margin-top:.15rem;color:var(--pc);font-weight:var(--fw-bold);flex:0 0 auto}
 table.cmp.rank td.rk{width:2.4rem;text-align:center;color:var(--muted);font-variant-numeric:tabular-nums}
 table.cmp.rank tr.top3 td.rk{color:var(--accent);font-weight:var(--fw-black)}
-table.cmp.rank tr.top3 td.mn a{font-weight:var(--fw-bold)}
+table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 
 /* ── トップ：金額ランキング ── */
 .amtrank{margin:1.9rem 0}
@@ -2641,7 +2645,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--fw-bold)}
 .arlist li:first-child{border-top:0}
 .arrk{color:var(--muted);font-variant-numeric:tabular-nums;font-weight:var(--fw-bold)}
 .arlist li:nth-child(-n+3) .arrk{color:var(--pc,var(--accent))}
-.armn{color:var(--fg);font-weight:var(--fw-semi)}
+.armn{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg)}
 .aramt{color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:var(--fs-sm)}
 .armore a{color:var(--pc,var(--accent))}
 
@@ -2772,7 +2776,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--fw-bold)}
 .others{margin:1.8rem 0 .4rem}
 .others h2{font-size:var(--fs-h2)}
 .ostrip{display:flex;flex-wrap:wrap;gap:.4rem}
-.ostrip a{border:1px solid var(--line);border-radius:999px;padding:.28rem .7rem;font-size:var(--fs-sm);color:var(--fg);background:var(--bg)}
+.ostrip a{border:1px solid var(--line);border-radius:999px;padding:.28rem .7rem;font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg);background:var(--bg)}
 .ostrip a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
 .totop{margin:0 0 .6rem;text-align:right}
 .totop a{color:var(--muted);font-size:var(--fs-sm)}
