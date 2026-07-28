@@ -48,8 +48,9 @@ ANALYTICS_NOTE = os.environ.get(
     "Google Analytics 4（測定ID: %s）" % GA_MEASUREMENT_ID if GA_MEASUREMENT_ID else "",
 )
 # アフィリエイト配置表（URL未設定の行は出力しない）。page_kind×match_key で該当ページに差し込む。
+# CTR 1%以上を狙うため、画像付きは高意図ページに限定し、1ページあたり最大1枠。
 AFFILIATE_CSV = os.path.join(ROOT, "data", "enrichment", "affiliate_placements.csv")
-AFFILIATE_MAX_PER_PAGE = 2
+AFFILIATE_MAX_PER_PAGE = 1
 
 def load_affiliate_placements(path=AFFILIATE_CSV):
     rows = []
@@ -64,6 +65,9 @@ def load_affiliate_placements(path=AFFILIATE_CSV):
                 pri = int((r.get("priority") or "99").strip() or "99")
             except ValueError:
                 pri = 99
+            def _dim(key, default=""):
+                v = (r.get(key) or "").strip()
+                return v or default
             rows.append({
                 "priority": pri,
                 "page_kind": (r.get("page_kind") or "").strip(),
@@ -72,11 +76,56 @@ def load_affiliate_placements(path=AFFILIATE_CSV):
                 "cta_label": (r.get("cta_label") or "詳細を見る").strip(),
                 "lead_text": (r.get("lead_text") or "").strip(),
                 "affiliate_url": url,
+                "image_url": _dim("image_url"),
+                "image_w": _dim("image_w"),
+                "image_h": _dim("image_h"),
+                "image_alt": _dim("image_alt") or (r.get("product_category") or "").strip(),
+                "pixel_url": _dim("pixel_url"),
             })
     rows.sort(key=lambda x: (x["priority"], x["page_kind"], x["match_key"]))
     return rows
 
 AFFILIATE_PLACEMENTS = load_affiliate_placements()
+
+def _affiliate_block(r):
+    """1件分の PR 枠HTML。画像URLがあればバナー型、なければテキスト型。"""
+    lead = f'<p class="prlead">{esc(r["lead_text"])}</p>' if r["lead_text"] else ""
+    href = esc(r["affiliate_url"])
+    if r.get("image_url"):
+        wh = ""
+        if r.get("image_w"): wh += f' width="{esc(r["image_w"])}"'
+        if r.get("image_h"): wh += f' height="{esc(r["image_h"])}"'
+        media = (
+            f'<p class="prmedia"><a href="{href}" target="_blank" rel="sponsored noopener noreferrer">'
+            f'<img src="{esc(r["image_url"])}"{wh} alt="{esc(r.get("image_alt") or r["product_category"])}" '
+            f'loading="lazy" decoding="async"></a></p>'
+        )
+        pixel = ""
+        if r.get("pixel_url"):
+            pixel = (
+                f'<img class="prpixel" src="{esc(r["pixel_url"])}" width="1" height="1" alt="" '
+                f'loading="lazy" decoding="async">'
+            )
+        cta = (
+            f'<p class="prcta"><a href="{href}" target="_blank" rel="sponsored noopener noreferrer">'
+            f'{esc(r["cta_label"])}</a></p>'
+        )
+        return (
+            f'<aside class="prbox prbox-banner" aria-label="広告">'
+            f'<span class="badge">PR</span>'
+            f'<strong class="prtitle">{esc(r["product_category"])}</strong>'
+            f'{lead}{media}{cta}{pixel}'
+            f'</aside>'
+        )
+    return (
+        f'<aside class="prbox" aria-label="広告">'
+        f'<span class="badge">PR</span>'
+        f'<strong class="prtitle">{esc(r["product_category"])}</strong>'
+        f'{lead}'
+        f'<p class="prcta"><a href="{href}" target="_blank" '
+        f'rel="sponsored noopener noreferrer">{esc(r["cta_label"])}</a></p>'
+        f'</aside>'
+    )
 
 def affiliate_html(page_kind, match_key, limit=AFFILIATE_MAX_PER_PAGE):
     """該当ページ用の PR 枠。URL設定済みの行だけを最大 limit 件返す。"""
@@ -84,19 +133,7 @@ def affiliate_html(page_kind, match_key, limit=AFFILIATE_MAX_PER_PAGE):
             if r["page_kind"] == page_kind and r["match_key"] == match_key][:limit]
     if not hits:
         return ""
-    blocks = []
-    for r in hits:
-        lead = f'<p class="prlead">{esc(r["lead_text"])}</p>' if r["lead_text"] else ""
-        blocks.append(
-            f'<aside class="prbox" aria-label="広告">'
-            f'<span class="badge">PR</span>'
-            f'<strong class="prtitle">{esc(r["product_category"])}</strong>'
-            f'{lead}'
-            f'<p class="prcta"><a href="{esc(r["affiliate_url"])}" target="_blank" '
-            f'rel="sponsored noopener noreferrer">{esc(r["cta_label"])}</a></p>'
-            f'</aside>'
-        )
-    return "\n" + "".join(blocks)
+    return "\n" + "".join(_affiliate_block(r) for r in hits)
 
 def affiliate_html_for_cats(cats, limit=AFFILIATE_MAX_PER_PAGE):
     """制度詳細向け：カテゴリIDに紐づく PR 枠を優先度順で最大 limit 件。"""
@@ -112,20 +149,7 @@ def affiliate_html_for_cats(cats, limit=AFFILIATE_MAX_PER_PAGE):
             break
     if not out:
         return ""
-    # affiliate_html と同じ見た目で組み立て
-    blocks = []
-    for r in out:
-        lead = f'<p class="prlead">{esc(r["lead_text"])}</p>' if r["lead_text"] else ""
-        blocks.append(
-            f'<aside class="prbox" aria-label="広告">'
-            f'<span class="badge">PR</span>'
-            f'<strong class="prtitle">{esc(r["product_category"])}</strong>'
-            f'{lead}'
-            f'<p class="prcta"><a href="{esc(r["affiliate_url"])}" target="_blank" '
-            f'rel="sponsored noopener noreferrer">{esc(r["cta_label"])}</a></p>'
-            f'</aside>'
-        )
-    return "".join(blocks)
+    return "".join(_affiliate_block(r) for r in out)
 
 # ── 品質ゲート（YMYL: 未検証の薄いページをインデックスさせない）────────────
 GATE_MIN_CONFIDENCE = 82   # 制度の平均confidenceがこれ未満なら noindex
@@ -2821,12 +2845,16 @@ ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
 ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem;font-weight:400}
 .fnav{margin:0 0 .7rem;line-height:2}
 .fnav a{color:var(--muted)}
-.prbox{margin:1.1rem 0;padding:.85rem 1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft)}
+.prbox{position:relative;margin:1.1rem 0;padding:.85rem 1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft)}
 .prbox .badge{margin-right:.45rem}
 .prbox .prtitle{display:inline;font-size:var(--fs-h2);font-weight:var(--fw-bold);color:var(--fg)}
 .prbox .prlead{margin:.45rem 0 .55rem;color:var(--muted);font-size:var(--fs-sm)}
+.prbox .prmedia{margin:.55rem 0}
+.prbox .prmedia a{display:inline-block;line-height:0}
+.prbox .prmedia img{display:block;max-width:min(100%,300px);height:auto;border:0;border-radius:var(--radius-sm)}
 .prbox .prcta{margin:0}
 .prbox .prcta a{font-weight:700}
+.prbox .prpixel{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 footer .copy{margin:.3rem 0 0}
 .doc h2{font-size:var(--fs-h2)}
 .doc .lead{margin-bottom:1rem}

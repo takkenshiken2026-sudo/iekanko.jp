@@ -220,12 +220,16 @@ ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
 ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem;font-weight:400}
 .fnav{margin:0 0 .7rem;line-height:2}
 .fnav a{color:var(--muted)}
-.prbox{margin:1.1rem 0;padding:.85rem 1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft)}
+.prbox{position:relative;margin:1.1rem 0;padding:.85rem 1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft)}
 .prbox .badge{margin-right:.45rem}
 .prbox .prtitle{display:inline;font-size:var(--fs-h2);font-weight:var(--fw-bold);color:var(--fg)}
 .prbox .prlead{margin:.45rem 0 .55rem;color:var(--muted);font-size:var(--fs-sm)}
+.prbox .prmedia{margin:.55rem 0}
+.prbox .prmedia a{display:inline-block;line-height:0}
+.prbox .prmedia img{display:block;max-width:min(100%,300px);height:auto;border:0;border-radius:var(--radius-sm)}
 .prbox .prcta{margin:0}
 .prbox .prcta a{font-weight:700}
+.prbox .prpixel{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 footer .copy{margin:.3rem 0 0}
 .doc h2{font-size:var(--fs-h2)}
 .doc .lead{margin-bottom:1rem}
