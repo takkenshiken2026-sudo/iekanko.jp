@@ -150,7 +150,9 @@ p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
 @media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap{flex-basis:100%}}
 table.ptable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.5rem 0}
-table.ptable thead th{text-align:left;font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-bold);border-bottom:2px solid var(--line);padding:.45rem .55rem;white-space:nowrap}
+table.ptable thead th{text-align:left;font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-bold);background:var(--soft);border-bottom:1px solid var(--line);padding:.55rem .55rem;white-space:nowrap}
+table.ptable thead th.c-amt{text-align:right}
+table.ptable thead th.c-cat{text-align:center}
 table.ptable td{padding:.55rem .55rem;border-bottom:1px solid var(--line);vertical-align:baseline}
 table.ptable tr[hidden]{display:none}
 table.ptable td.c-name a{font-weight:var(--fw-semi)}
@@ -158,6 +160,7 @@ table.ptable .c-amt{text-align:right;white-space:nowrap;font-variant-numeric:tab
 table.ptable td.c-amt{font-weight:var(--fw-bold);color:var(--fg)}
 table.ptable td.c-amt.na{color:var(--muted);font-weight:var(--fw-normal)}
 table.ptable .c-cat,table.ptable .c-type{white-space:nowrap;width:1%}
+table.ptable td.c-cat{text-align:center}
 table.ptable td.c-type{color:var(--muted);font-size:var(--fs-sm)}
 .ptag{display:inline-block;font-size:var(--fs-xs);color:#fff;background:var(--pc,var(--accent));border-radius:999px;padding:.1rem .6rem;white-space:nowrap}
 .plist-purpose{font-size:var(--fs-sm);color:var(--muted);margin:.7rem 0 0;line-height:2}

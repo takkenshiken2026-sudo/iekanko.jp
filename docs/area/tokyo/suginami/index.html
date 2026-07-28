@@ -63,15 +63,16 @@ gtag('config','G-9TB0TXT8X0');
 <section class="others"><h2><svg class="hi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="4" width="13" height="16.5" rx="1"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M10.5 20.5v-3.5h3v3.5"/></svg>ほかの市区町村を見る</h2><div class="ostrip"><a href="/area/tokyo/kokubunji/"><em class="mt">市</em>国分寺市</a><a href="/area/tokyo/kodaira/"><em class="mt">市</em>小平市</a><a href="/area/tokyo/komae/"><em class="mt">市</em>狛江市</a><a href="/area/tokyo/shinagawa/"><em class="mt">区</em>品川区</a><a href="/area/tokyo/shibuya/"><em class="mt">区</em>渋谷区</a><a href="/area/tokyo/shinjuku/"><em class="mt">区</em>新宿区</a><a href="/area/tokyo/sumida/"><em class="mt">区</em>墨田区</a><a href="/area/tokyo/setagaya/"><em class="mt">区</em>世田谷区</a><a href="/area/tokyo/taito/"><em class="mt">区</em>台東区</a><a href="/area/tokyo/tachikawa/"><em class="mt">市</em>立川市</a><a href="/area/tokyo/tama/"><em class="mt">市</em>多摩市</a><a href="/area/tokyo/chuo/"><em class="mt">区</em>中央区</a></div><p class="more"><a href="/#area"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg> 東京都62市区町村の一覧から探す</a></p></section>
 <script>
 (function(){
- var q=document.getElementById('psearch'),list=document.getElementById('plist');
- if(!q||!list)return;
- var none=document.getElementById('pnone'),
+ var list=document.getElementById('plist');
+ if(!list)return;
+ var q=document.getElementById('psearch'),
+     none=document.getElementById('pnone'),
      chips=[].slice.call(document.querySelectorAll('.pchip2')),
      sortsel=document.getElementById('psort'),
      lis=[].slice.call(list.children),ev='all';
  function nz(s){return (s||'').toLowerCase();}
  function apply(){
-  var t=nz(q.value.trim()),shown=0;
+  var t=q?nz(q.value.trim()):'',shown=0;
   lis.forEach(function(li){
    var okE=(ev==='all'||(' '+li.getAttribute('data-ev')+' ').indexOf(' '+ev+' ')>=0);
    var okT=(!t||nz(li.getAttribute('data-nm')).indexOf(t)>=0);
@@ -93,7 +94,7 @@ gtag('config','G-9TB0TXT8X0');
   ths.forEach(function(th){th.setAttribute('aria-sort',th.getAttribute('data-sort')===key?(d==='asc'?'ascending':'descending'):'none');});
   if(sortsel)sortsel.value=(key==='name'||key==='amt')?key:'cat';
  }
- q.addEventListener('input',apply);
+ if(q)q.addEventListener('input',apply);
  chips.forEach(function(c){c.addEventListener('click',function(){
   ev=c.getAttribute('data-ev');
   chips.forEach(function(x){var on=x===c;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on);});
