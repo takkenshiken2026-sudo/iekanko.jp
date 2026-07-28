@@ -2679,6 +2679,9 @@ table.cmp.rank th.mn,table.cmp.rank td.mn{white-space:nowrap}
 ul.cmplist{list-style:none;padding:0;margin:.3rem 0}
 ul.cmplist li{padding:.5rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 ul.cmplist .cnt2{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
+.cmpsec .cmplist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1.2rem}
+.cmpsec .cmplist li{min-width:0}
+@media(max-width:680px){.cmpsec .cmplist{grid-template-columns:1fr;column-gap:0}}
 .cmpsec{margin:1.4rem 0 1.1rem}
 .cmpsec-h{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 .45rem}
 .cmpsec-h .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius-sm);padding:5px}
