@@ -2278,7 +2278,7 @@ CSS = """/* ── Design tokens ── */
   --fs-h2:1.15rem;
   --fs-h1:1.5rem;
   --fs-display:clamp(1.85rem,4.2vw,2.4rem);
-  --content-width:1000px;
+  --content-width:1080px;
   --fw-normal:400;
   --fw-semi:600;
   --fw-bold:700;
@@ -2480,7 +2480,7 @@ ul.plainlist li{margin:.2rem 0}
 .hero{width:100vw;margin-left:calc(50% - 50vw);margin-top:-1.1rem;position:relative;
   background:radial-gradient(circle at 88% -20%,color-mix(in srgb,var(--accent) 12%,transparent) 0%,transparent 45%),linear-gradient(155deg,var(--badge) 0%,var(--soft) 48%,var(--bg) 100%);
   border-bottom:1px solid var(--line)}
-.hero .bandin{padding-top:2.4rem;padding-bottom:2.2rem}
+.hero .bandin{padding-top:4.4rem;padding-bottom:4rem}
 .hero-eyebrow{margin:0 0 .55rem;font-size:var(--fs-sm);font-weight:var(--fw-bold);letter-spacing:.04em;
   color:var(--accent);position:relative}
 .hero h1{font-size:var(--fs-display);line-height:1.3;margin:0 0 .75rem;font-weight:var(--fw-black);
