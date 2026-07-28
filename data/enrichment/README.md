@@ -3,8 +3,9 @@
 > **アフィリエイト配置表**: `affiliate_placements.csv`
 > - `page_kind` × `match_key` で比較／ランキング／ガイド／制度詳細へ PR 枠を差し込む
 > - `affiliate_url` が空の行は出力されない（A8 の正しい遷移先URLを入れた行だけ表示）
-> - 画像バナーは `image_url` / `pixel_url` を入れる（CTR 1%以上狙い。高意図ページ・1ページ1枠）
-> - `rel="sponsored noopener noreferrer"` を付与。トップや全ページ共通フッターには置かない
+> - 画像バナーは `image_url` / `pixel_url` を入れる（CTR 1%以上狙い）
+> - 比較・ランキングは**グラフ直後の縦配置**、ガイドは本文直後、制度詳細は公式ボタン下
+> - 高意図ページ・1ページ1枠。`rel="sponsored noopener noreferrer"`。トップや全ページ共通フッターには置かない
 > - 反映は `PYTHONHASHSEED=0 python3 build/build_site.py`
 
 > **網羅の底上げ（新規制度の追加・2026-07-25）**: `build/add_programs.py` で新規制度を

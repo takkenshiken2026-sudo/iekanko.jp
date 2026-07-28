@@ -1637,13 +1637,13 @@ def build_compare(cid, entries, counts=None):
 </div>
 {photo_figure(*photo_for_cats([cid], ev), "evphoto")}
 </div>
-{compare_chart_html(cid, entries)}{compare_coverage_html(cid, all_entries)}
+{compare_chart_html(cid, entries)}{compare_coverage_html(cid, all_entries)}{affiliate_html("hikaku", cid)}
 <div class="tablewrap"><table class="cmp">
 <thead><tr><th>自治体</th><th>支給額・助成額</th><th>確認日</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table></div>
 {miss_html}
 <p class="note">※金額は制度改定で変わります。申請前に必ず各自治体の公式ページ（各自治体ページ内の出典リンク）でご確認ください。</p>
-{affiliate_html("hikaku", cid)}{rel_html}
+{rel_html}
 <h2>{ic("help","hi")}よくある質問</h2>
 {faq_html}
 <p><a href="/hikaku/">{CHEV_L} 制度カテゴリ比較の一覧にもどる</a></p>"""
@@ -1762,7 +1762,7 @@ def build_ranking(ev, score, avg=None):
 <div class="rsort-panel" data-rsort="yen" hidden>{chart_yen}
 <p class="cap">上位15自治体（金額合計順）の金額合計と制度数</p></div>
 </div>
-{chart_js}
+{chart_js}{affiliate_html("ranking", ev)}
 <div class="tablewrap"><table class="cmp rank" id="ranktbl">
 <thead><tr>
 <th class="rk">順位</th>
@@ -1773,7 +1773,7 @@ def build_ranking(ev, score, avg=None):
 <tbody>{''.join(trs)}</tbody></table></div>
 {RANK_TABLE_JS}
 <p class="notice">掲載件数・金額合計は当サイトの収録状況に基づく目安です。月額と一時金を単純合算しているため、実際の手厚さや受給可否を示すものではありません。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
-{affiliate_html("ranking", ev)}{rel_rankings(ev)}
+{rel_rankings(ev)}
 <p><a href="/find/">{CHEV_L} 目的・年代から探す にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{ev_name}の制度がある東京都の自治体",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":m["municipality_name"],
