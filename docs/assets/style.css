@@ -214,12 +214,13 @@ ul.plainlist li{margin:.2rem 0}
 
 /* ── SVGグラフ ── */
 .chartcard{border:1px solid var(--line);border-radius:var(--radius);padding:.7rem .8rem .4rem;margin:.6rem 0;--pc:var(--accent)}
-.chart{width:100%;max-width:560px;height:auto;display:block}
+.chartcard .rsort{margin:0 0 .55rem}
+.chart{width:100%;max-width:640px;height:auto;display:block;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
 .chart .c-track{fill:var(--track)}
 .chart .c-bar{fill:var(--pc)}
 .chart .c-avg{stroke:var(--muted);stroke-width:2;stroke-dasharray:2 2}
-.chart .c-lbl{fill:var(--fg);font-size:15px}
-.chart .c-val{fill:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.chart .c-lbl{fill:var(--fg);font-size:var(--mn-fs);font-weight:var(--mn-fw);font-family:inherit}
+.chart .c-val{fill:var(--muted);font-size:var(--fs-sm);font-weight:var(--fw-semi);font-variant-numeric:tabular-nums;font-family:inherit}
 .cmpchart{margin:1rem 0 1.2rem;padding:.85rem 1rem .7rem;border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));border-radius:var(--radius);background:var(--bg)}
 .cmpchart figcaption{font-weight:var(--fw-bold);font-size:var(--fs-md);margin:0 0 .5rem;color:var(--fg)}
 .cmpchart .chart{max-width:640px}

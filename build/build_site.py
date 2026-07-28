@@ -755,7 +755,7 @@ def _amount_box_html(cid, title, unit, mode, color, rows):
 
 def svg_amount_bars(rows, mode, avg=None):
     """rows: [(yen, name, href, amt), ...] 降順。JS不要のSVG横棒グラフ。"""
-    W=580; padL=120; padR=118; barH=15; rowH=29; top=8
+    W=640; padL=112; padR=148; barH=15; rowH=29; top=8
     plotW=W-padL-padR
     maxval=max((r[0] for r in rows), default=1) or 1
     H=top+rowH*len(rows)+6
@@ -770,7 +770,7 @@ def svg_amount_bars(rows, mode, avg=None):
         if avg:
             ax=padL+plotW*(min(avg,maxval)/maxval)
             p.append(f'<line x1="{ax:.1f}" y1="{y-2}" x2="{ax:.1f}" y2="{y+barH+2}" class="c-avg"/>')
-        p.append(f'<text x="{W-6}" y="{cy:.0f}" class="c-val" text-anchor="end" dominant-baseline="central">{esc(format_rank_yen(yen,mode))}</text>')
+        p.append(f'<text x="{W-8}" y="{cy:.0f}" class="c-val" text-anchor="end" dominant-baseline="central">{esc(format_rank_yen(yen,mode))}</text>')
     p.append('</svg>')
     return ''.join(p)
 
@@ -905,12 +905,16 @@ def clip(s, n):
 
 # ── SVG横棒グラフ（量表現＝単一色相。JS不要・直接ラベルで識別）──────────────────
 def svg_bars(rows, maxval=100, unit="%"):
-    """rows: [(label, value, avg_or_None, note_or_'')]"""
-    W=560; padL=118; padR=92; barH=16; rowH=31; top=10
+    """rows: [(label, value, avg_or_None, note_or_'')]
+    または [(label, value, avg_or_None, note_or_'', display_or_None)]
+    display があれば右端の数値ラベルに使い、無ければ value+unit(+note) を組み立てる。"""
+    W=640; padL=112; padR=148; barH=16; rowH=31; top=10
     plotW=W-padL-padR
     H=top+rowH*len(rows)+6
     p=[f'<svg viewBox="0 0 {W} {H}" class="chart" role="img" preserveAspectRatio="xMinYMin meet">']
-    for i,(label,val,avg,note) in enumerate(rows):
+    for i,row in enumerate(rows):
+        label,val,avg,note = row[0],row[1],row[2],row[3]
+        disp = row[4] if len(row) >= 5 else None
         y=top+rowH*i; cy=y+barH/2
         bw=plotW*(min(val,maxval)/maxval if maxval else 0)
         p.append(f'<text x="{padL-8}" y="{cy:.0f}" class="c-lbl" text-anchor="end" dominant-baseline="central">{esc(label)}</text>')
@@ -919,8 +923,11 @@ def svg_bars(rows, maxval=100, unit="%"):
         if avg is not None:
             ax=padL+plotW*(min(avg,maxval)/maxval if maxval else 0)
             p.append(f'<line x1="{ax:.1f}" y1="{y-3}" x2="{ax:.1f}" y2="{y+barH+3}" class="c-avg"><title>都平均 {avg:.0f}{unit}</title></line>')
-        vlab=f'{val:.0f}{unit}'+(f' · {esc(note)}' if note else '')
-        p.append(f'<text x="{padL+bw+6:.1f}" y="{cy:.0f}" class="c-val" dominant-baseline="central">{vlab}</text>')
+        if disp is not None:
+            vlab=esc(disp)
+        else:
+            vlab=f'{val:.0f}{unit}'+(f' · {esc(note)}' if note else '')
+        p.append(f'<text x="{W-8}" y="{cy:.0f}" class="c-val" text-anchor="end" dominant-baseline="central">{vlab}</text>')
     p.append('</svg>')
     return ''.join(p)
 
@@ -1478,12 +1485,27 @@ def build_ranking(ev, score, avg=None):
     ranked=sorted(munis, key=lambda m:(-score[m["id"]][ev]["prog"], -yen_of(m), m["id"]))
     top=ranked[:15]
     max_prog=max((score[m["id"]][ev]["prog"] for m in top), default=1) or 1
-    rows=[]
+    rows_prog=[]
     for m in top:
         s=score[m["id"]][ev]
-        note=f'計{format_sum_yen(s["yen_sum"])}' if s.get("yen_sum") else ""
-        rows.append((m["municipality_name"], s["prog"], None, note))
-    chart=svg_bars(rows, max_prog, "制度")
+        yen_txt=f'計{format_sum_yen(s["yen_sum"])}' if s.get("yen_sum") else "金額—"
+        rows_prog.append((m["municipality_name"], s["prog"], None, "",
+                          f'{s["prog"]}制度 · {yen_txt}'))
+    chart_prog=svg_bars(rows_prog, max_prog, "制度")
+
+    ranked_yen=sorted(munis, key=lambda m:(-yen_of(m), -score[m["id"]][ev]["prog"], m["id"]))
+    top_yen=[m for m in ranked_yen if yen_of(m) > 0][:15]
+    if not top_yen:
+        top_yen=ranked_yen[:15]
+    max_yen=max((yen_of(m) for m in top_yen), default=1) or 1
+    rows_yen=[]
+    for m in top_yen:
+        s=score[m["id"]][ev]
+        yen=yen_of(m)
+        rows_yen.append((m["municipality_name"], yen, None, "",
+                         f'計{format_sum_yen(yen)} · {s["prog"]}制度'))
+    chart_yen=svg_bars(rows_yen, max_yen, "")
+
     trs=[]
     for rank,m in enumerate(ranked,1):
         s=score[m["id"]][ev]; slug=muni_slug(m)
@@ -1495,12 +1517,28 @@ def build_ranking(ev, score, avg=None):
                    f'<td class="dt yen">{yen_cell}</td></tr>')
     title=f"{ev_name}の制度がある東京都の自治体｜掲載数・金額でみる"
     desc=clip(f"{persona}向けに、{ev_name}関連の制度掲載数が多い東京都の自治体から順に確認できます。金額が分かる制度の合計もあわせて表示します。",118)
+    chart_js=('''<script>(function(){var root=document.currentScript&&document.currentScript.previousElementSibling;'''
+              '''if(!root||!root.classList.contains("chartcard"))root=document.querySelector(".chartcard");'''
+              '''if(!root)return;var chips=[].slice.call(root.querySelectorAll("[data-rsort].mchip"));'''
+              '''var panels=[].slice.call(root.querySelectorAll(".rsort-panel"));'''
+              '''chips.forEach(function(c){c.addEventListener("click",function(){var k=c.getAttribute("data-rsort");'''
+              '''chips.forEach(function(x){var on=x===c;x.classList.toggle("on",on);x.setAttribute("aria-pressed",on?"true":"false");});'''
+              '''panels.forEach(function(p){p.hidden=p.getAttribute("data-rsort")!==k;});});});})();</script>''')
     body=f"""
 <span class="badge" style="--pc:{color}">{esc(age)}</span>
 <h1>{esc(ev_name)}の制度がある東京都の自治体</h1>
 <p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}関連の制度を掲載している件数が多い自治体から順に並べています。金額が分かる制度の合計（上限・月額などの目安）も併記します。</p>
-<div class="chartcard" style="--pc:{color}">{chart}
-<p class="cap">上位15自治体の掲載制度数と金額合計</p></div>
+<div class="chartcard" style="--pc:{color}">
+<div class="mchips rsort" role="tablist" aria-label="グラフの並び替え">
+<button type="button" class="mchip on" data-rsort="prog" aria-pressed="true">制度順</button>
+<button type="button" class="mchip" data-rsort="yen" aria-pressed="false">金額順</button>
+</div>
+<div class="rsort-panel" data-rsort="prog">{chart_prog}
+<p class="cap">上位15自治体（掲載制度数順）の制度数と金額合計</p></div>
+<div class="rsort-panel" data-rsort="yen" hidden>{chart_yen}
+<p class="cap">上位15自治体（金額合計順）の金額合計と制度数</p></div>
+</div>
+{chart_js}
 <div class="tablewrap"><table class="cmp rank">
 <thead><tr><th>順位</th><th>自治体</th><th>制度数</th><th>金額合計（目安）</th></tr></thead>
 <tbody>{''.join(trs)}</tbody></table></div>
@@ -2518,12 +2556,13 @@ ul.plainlist li{margin:.2rem 0}
 
 /* ── SVGグラフ ── */
 .chartcard{border:1px solid var(--line);border-radius:var(--radius);padding:.7rem .8rem .4rem;margin:.6rem 0;--pc:var(--accent)}
-.chart{width:100%;max-width:560px;height:auto;display:block}
+.chartcard .rsort{margin:0 0 .55rem}
+.chart{width:100%;max-width:640px;height:auto;display:block;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
 .chart .c-track{fill:var(--track)}
 .chart .c-bar{fill:var(--pc)}
 .chart .c-avg{stroke:var(--muted);stroke-width:2;stroke-dasharray:2 2}
-.chart .c-lbl{fill:var(--fg);font-size:15px}
-.chart .c-val{fill:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.chart .c-lbl{fill:var(--fg);font-size:var(--mn-fs);font-weight:var(--mn-fw);font-family:inherit}
+.chart .c-val{fill:var(--muted);font-size:var(--fs-sm);font-weight:var(--fw-semi);font-variant-numeric:tabular-nums;font-family:inherit}
 .cmpchart{margin:1rem 0 1.2rem;padding:.85rem 1rem .7rem;border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));border-radius:var(--radius);background:var(--bg)}
 .cmpchart figcaption{font-weight:var(--fw-bold);font-size:var(--fs-md);margin:0 0 .5rem;color:var(--fg)}
 .cmpchart .chart{max-width:640px}
