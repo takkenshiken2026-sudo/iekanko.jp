@@ -227,6 +227,85 @@ def icon_svg(ev):
     return ('<svg class="ev-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
             'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths+'</svg>')
 
+# ── カテゴリ／ライフイベント別の雰囲気写真（docs/assets/photos/cropped/）──
+PHOTO_BASE = "/assets/photos/cropped"
+EV_PHOTO = {
+ "pregnancy_birth": ("preg-boshi-techo.jpg", "母子健康手帳"),
+ "childcare": ("child-park.jpg", "公園で遊ぶ子どものいる風景"),
+ "moving": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
+ "retirement_unemployment": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
+ "elderly_care": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+}
+# 比較カテゴリごとの上書き（無い場合はライフイベント写真へフォールバック）
+CAT_PHOTO = {
+ "preg_kenshin": ("preg-boshi-techo.jpg", "母子健康手帳"),
+ "preg_gift": ("child-baby-gear.jpg", "ベビー用品が並ぶ店内"),
+ "preg_shussanhi": ("preg-boshi-techo.jpg", "母子健康手帳"),
+ "preg_sango_care": ("child-infant.jpg", "室内に座る乳児"),
+ "preg_funin": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "preg_tamondo": ("child-infant.jpg", "室内に座る乳児"),
+ "child_teate": ("child-infant.jpg", "室内に座る乳児"),
+ "child_fuyou": ("child-park.jpg", "公園で遊ぶ子どものいる風景"),
+ "child_iryo": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "child_hitorioya": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "child_shugaku": ("child-study-desk.jpg", "学習デスク"),
+ "child_hoiku_gen": ("child-park.jpg", "公園で遊ぶ子どものいる風景"),
+ "child_ninkagai": ("child-baby-gear.jpg", "ベビー用品が並ぶ店内"),
+ "child_iwai": ("child-baby-gear.jpg", "ベビー用品が並ぶ店内"),
+ "child_shogakukin": ("child-study-desk.jpg", "学習デスク"),
+ "child_omutsu_baby": ("child-infant.jpg", "室内に座る乳児"),
+ "child_ikusei": ("child-park.jpg", "公園で遊ぶ子どものいる風景"),
+ "house_juukyo": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
+ "house_yachin": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
+ "house_sansedai": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
+ "house_reform": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
+ "house_taishin": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
+ "house_eco": ("house-solar.jpg", "住宅の太陽光パネル"),
+ "job_kokuho": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "job_nenkin": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
+ "job_shurou": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
+ "job_kashitsuke": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
+ "job_konkyu": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
+ "job_shobyo": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "med_kogaku": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "med_sosai": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
+ "eld_omutsu": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "eld_kaigo_gen": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "eld_hochoki": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "eld_jutaku": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
+ "eld_vaccine": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "eld_kinkyu": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "eld_haishoku": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "eld_iwai": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "eld_yougu": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "dis_iryo": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "dis_yougu": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "dis_teate": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "low_aircon": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "low_taxi": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+}
+
+def photo_for_cats(cats, ev=None):
+    """制度カテゴリ or ライフイベントから写真ファイル名と alt を返す。"""
+    for cid in cats or []:
+        if cid in CAT_PHOTO:
+            return CAT_PHOTO[cid]
+    if ev and ev in EV_PHOTO:
+        return EV_PHOTO[ev]
+    for cid in cats or []:
+        if cid in CAT_BY_ID:
+            e = CAT_BY_ID[cid][2]
+            if e in EV_PHOTO:
+                return EV_PHOTO[e]
+    return EV_PHOTO.get(ev) or ("procedure-mynumber.jpg", "行政手続きの申請書類")
+
+def photo_figure(fn, alt, css="progphoto", eager=False):
+    load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
+    return (f'<figure class="{css}">'
+            f'<img src="{PHOTO_BASE}/{fn}" alt="{esc(alt)}" '
+            f'width="960" height="640" {load} decoding="async">'
+            f'</figure>')
+
 # モノクロのシェブロン・アイコン（三角記号{CHEV_R}{CHEV_L}▲の代替。currentColorで文字色に追従）
 _CHV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="%s"/></svg>'
 CHEV_R=_CHV % "M9 5l7 7-7 7"
@@ -1319,13 +1398,14 @@ def build_program(m, slug, p, cats, progs=None):
                       f'{"公式サイトを出典に明記" if official else "自治体の公表情報をもとに作成"}</span>')
         trustbar = f'<div class="trustbar">{"".join(tchips)}</div>'
 
+    _photo_fn, _photo_alt = photo_for_cats(cats)
     _header_zone = (
         f'<div class="area-head"><div class="area-head-main">'
         f'<span class="badge">{esc(ptype)}</span>'
         f'<h1>{esc(h1)}</h1>{summary_html}'
         f'<p class="meta">最終確認日: <time>{esc(p["last_verified_at"] or "—")}</time> ／ 対象自治体: <a href="/area/tokyo/{slug}/">{esc(mn)}</a></p>'
         f'</div>'
-        f'<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" loading="lazy" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>'
+        f'{photo_figure(_photo_fn, _photo_alt, "progphoto")}'
         f'</div>{trustbar}')
     _about_zone = (
         f'<h2>{ic("info","hi")}この制度について</h2>{program_about(mn, title, ptype, fm)}'
@@ -1423,7 +1503,9 @@ def build_compare(cid, entries, counts=None):
     body=f"""
 <span class="badge">{esc(ev_name)}</span>
 <h1>東京都の{esc(label)}を自治体で比較</h1>
-<p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>{compare_chart_html(cid, entries)}{compare_coverage_html(cid, all_entries)}
+<p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>
+{photo_figure(*photo_for_cats([cid], ev), "evphoto")}
+{compare_chart_html(cid, entries)}{compare_coverage_html(cid, all_entries)}
 <div class="tablewrap"><table class="cmp">
 <thead><tr><th>自治体</th><th>支給額・助成額</th><th>確認日</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table></div>
@@ -1533,6 +1615,7 @@ def build_ranking(ev, score, avg=None):
 <span class="badge" style="--pc:{color}">{esc(persona)}</span>
 <h1>{esc(ev_name)}の制度がある東京都の自治体</h1>
 <p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}関連の制度を掲載している件数が多い自治体から順に並べています。金額が分かる制度の合計（上限・月額などの目安）も併記します。表の「制度数」「金額合計」見出しをクリックすると並び替えできます。</p>
+{photo_figure(*EV_PHOTO[ev], "evphoto")}
 <div class="chartcard" style="--pc:{color}">
 <div class="mchips rsort" role="tablist" aria-label="グラフの並び替え">
 <button type="button" class="mchip on" data-rsort="prog" aria-pressed="true">制度順</button>
@@ -1576,7 +1659,9 @@ def purpose_cards_html(score):
         if ty:
             top_note += f"・計{esc(format_sum_yen(ty))}"
         top_note += "）"
+        fn, alt = EV_PHOTO[ev]
         cards.append(f'<a class="pcard" href="/ranking/{ev}/" style="--pc:{color}">'
+            f'<span class="pimg"><img src="{PHOTO_BASE}/{fn}" alt="" width="320" height="200" loading="lazy" decoding="async"></span>'
             f'<span class="ptxt">'
             f'<span class="ptitle"><span class="pic">{icon_svg(ev)}</span><strong>{esc(persona)}</strong></span>'
             f'<span class="pdesc">{esc(ev_name)}の制度がある自治体をみる</span>'
@@ -2541,7 +2626,11 @@ p.mnone{color:var(--muted);font-size:var(--fs-sm);padding:.6rem 0}
 .areamap img{display:block;width:100%;height:auto;max-width:640px;margin:0 auto}
 .area-head .areamap img{max-width:100%}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
-@media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap{flex-basis:100%}}
+.progphoto,.evphoto{margin:.4rem 0 1rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--soft)}
+.area-head .progphoto{flex:0 1 420px;margin:0;align-self:flex-start}
+.progphoto img,.evphoto img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.evphoto{max-width:720px}
+@media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap,.area-head .progphoto{flex-basis:100%}}
 table.ptable{width:100%;border-collapse:collapse;font-size:var(--fs-lg);margin:.5rem 0}
 table.ptable thead th{text-align:left;font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-bold);background:var(--soft);border-bottom:1px solid var(--line);padding:.55rem .55rem;white-space:nowrap}
 table.ptable thead th.c-amt{text-align:right}
@@ -2714,16 +2803,18 @@ ul.plainlist li{margin:.2rem 0}
 .pchip .pic .ev-ic{width:16px;height:16px}
 .pchip:hover{border-color:var(--pc);text-decoration:none}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.7rem;margin:.6rem 0 1rem}
-.pcard{display:flex;align-items:flex-start;gap:.55rem;border:1px solid var(--line);border-left:4px solid var(--pc);border-radius:var(--radius);padding:.8rem .9rem;color:var(--fg);background:var(--bg)}
+.pcard{display:flex;flex-wrap:wrap;align-items:flex-start;gap:.55rem;border:1px solid var(--line);border-left:4px solid var(--pc);border-radius:var(--radius);padding:0;overflow:hidden;color:var(--fg);background:var(--bg)}
 .pcard:hover{background:color-mix(in srgb,var(--pc) 7%,#fff);text-decoration:none}
-.pcard .ptxt{display:flex;flex-direction:column;min-width:0;flex:1 1 auto}
+.pcard .pimg{flex:1 1 100%;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--soft)}
+.pcard .pimg img{display:block;width:100%;height:100%;object-fit:cover}
+.pcard .ptxt{display:flex;flex-direction:column;min-width:0;flex:1 1 auto;padding:.7rem .2rem .75rem .85rem}
 .pcard .ptitle{display:inline-flex;align-items:center;gap:.45rem;min-width:0}
 .pcard .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius-sm);padding:5px}
 .pcard .pic .ev-ic{width:15px;height:15px}
 .pcard .ptxt strong{font-size:var(--fs-lg);font-weight:var(--fw-bold);line-height:1.35}
 .pcard .pdesc{font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem}
 .pcard .ptop{font-size:var(--fs-xs);color:var(--pc);font-weight:var(--fw-bold);margin-top:.25rem}
-.pcard .parrow{margin-left:auto;margin-top:.15rem;color:var(--pc);font-weight:var(--fw-bold);flex:0 0 auto}
+.pcard .parrow{margin-left:auto;margin-top:.15rem;margin-right:.75rem;align-self:center;color:var(--pc);font-weight:var(--fw-bold);flex:0 0 auto}
 table.cmp.rank tr.top3 td.rk{color:var(--accent);font-weight:var(--fw-black)}
 table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 
