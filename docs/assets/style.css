@@ -179,10 +179,12 @@ footer.site a{color:var(--muted)}
 .tablewrap{overflow-x:auto;margin:.6rem 0}
 table.cmp{border-collapse:collapse;width:100%;font-size:var(--fs-md)}
 table.cmp th,table.cmp td{border:1px solid var(--line);padding:.5rem .6rem;text-align:left;vertical-align:top}
-table.cmp thead th{background:var(--soft);position:sticky;top:0}
+table.cmp thead th{background:var(--soft);position:sticky;top:0;white-space:nowrap}
 table.cmp td.mn{white-space:nowrap;font-size:var(--mn-fs);font-weight:var(--mn-fw)}
 table.cmp td.mn a{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg)}
 table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:var(--fs-sm)}
+table.cmp.rank th.rk,table.cmp.rank td.rk{width:3.2rem;min-width:3.2rem;text-align:center;white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums}
+table.cmp.rank th.mn,table.cmp.rank td.mn{white-space:nowrap}
 .na{color:var(--muted);font-size:.85em}
 .miss{font-size:var(--fs-sm);color:var(--fg-2);background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem .8rem}
 .note{font-size:var(--fs-sm);color:var(--muted)}
@@ -334,7 +336,6 @@ ul.plainlist li{margin:.2rem 0}
 .pcard .pdesc{font-size:var(--fs-sm);color:var(--fg-2);margin-top:.2rem}
 .pcard .ptop{font-size:var(--fs-xs);color:var(--pc);font-weight:var(--fw-bold);margin-top:.25rem}
 .pcard .parrow{margin-left:auto;margin-top:.15rem;color:var(--pc);font-weight:var(--fw-bold);flex:0 0 auto}
-table.cmp.rank td.rk{width:2.4rem;text-align:center;color:var(--muted);font-variant-numeric:tabular-nums}
 table.cmp.rank tr.top3 td.rk{color:var(--accent);font-weight:var(--fw-black)}
 table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 
