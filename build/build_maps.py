@@ -9,7 +9,7 @@ import json, math, os, re, ast, sys, urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT  = os.path.join(ROOT, "docs", "assets", "maps")
 GEO_URL = "https://raw.githubusercontent.com/dataofjapan/land/master/tokyo.geojson"
-CACHE = os.environ.get("TOKYO_GEOJSON", "/tmp/claude-0/-home-user-iekanko-jp/f8d4a443-cc9d-5d70-8bc1-543550627f3f/scratchpad/tokyo.geojson")
+CACHE = os.environ.get("TOKYO_GEOJSON", "/tmp/tokyo.geojson")
 
 ISLANDS = {"大島町","利島村","新島村","神津島村","三宅村","御蔵島村","八丈町","青ヶ島村","小笠原村"}
 ACCENT="#1558d6"; LAND="#dfe4ec"; LINE="#ffffff"; SEA="#eef2f7"
