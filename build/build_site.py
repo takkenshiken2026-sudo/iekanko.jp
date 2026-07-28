@@ -1010,8 +1010,6 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <nav class="fnav" aria-label="サイト情報">
 <a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>{FOOTER_CONTACT_HTML}
 </nav>
-<p>本サイトは各自治体・公的機関の公表情報をもとに整理した比較・案内サービスです。
-最新かつ正確な内容は必ず各制度の公式ページでご確認ください。</p>
 <p class="copy">© {ESTABLISHED} {esc(SITE_SHORT)}（東京都62自治体・出典付き / 最終確認日を明記）</p>
 </footer>
 <script>document.addEventListener("click",function(e){{var tr=e.target.closest("tr[data-href]");if(!tr||e.target.closest("a,button,input,label,select"))return;var u=tr.getAttribute("data-href");if(u)location.href=u;}});</script>
@@ -1841,6 +1839,8 @@ def build_static_pages():
     disc = wrap(f"""
 <h1>免責事項</h1>
 <p class="lead">本サイト「{esc(SITE_SHORT)}」をご利用の前に、以下をご確認ください。</p>
+<p>本サイトは各自治体・公的機関の公表情報をもとに整理した比較・案内サービスです。
+最新かつ正確な内容は必ず各制度の公式ページでご確認ください。</p>
 <h2>情報の正確性について</h2>
 <p>本サイトは、各自治体・公的機関が公表する情報をもとに整理していますが、内容の正確性・完全性・最新性を
 保証するものではありません。制度の金額・対象・期限・申請方法などは、制度改定や自治体の判断により変更される
