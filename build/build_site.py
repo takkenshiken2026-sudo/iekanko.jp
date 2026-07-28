@@ -770,6 +770,29 @@ def amount_sum_of_programs(items):
     return total, n_amt
 
 
+def benefit_totals_by_event(progs, slug):
+    """自治体ページ「もらえるお金の目安」用：目的・年代カテゴリごとの合計。"""
+    prog_ev = {p["id"]: [e["slug"] for e in events_of(p["id"])] for p in progs}
+    totals = []
+    for ev_slug, (ev_name, _) in EVENTS.items():
+        items = [p for p in progs if ev_slug in prog_ev[p["id"]]]
+        if not items:
+            continue
+        yen_sum, n_amt = amount_sum_of_programs(items)
+        if not n_amt:
+            continue
+        totals.append({
+            "ev": ev_slug,
+            "label": ev_name,
+            "color": EV_META[ev_slug][2],
+            "n_prog": len(items),
+            "yen_sum": yen_sum,
+            "n_amt": n_amt,
+            "href": f"/area/tokyo/{slug}/{ev_slug}/",
+        })
+    return totals
+
+
 def cnt_with_sum_html(n_prog, yen_sum):
     """制度数バッジ + 金額合計バッジ。"""
     html_s = f'<span class="cnt">{n_prog}</span>'
@@ -1908,7 +1931,8 @@ def build_muni(m, slug, score, avg):
         if _build_dir not in sys.path:
             sys.path.insert(0, _build_dir)
         from livability_html import figures_section_html
-        live_benefit = figures_section_html(slug, part="benefit")
+        live_benefit = figures_section_html(slug, part="benefit",
+                                            benefit_totals=benefit_totals_by_event(progs, slug))
         live_place = figures_section_html(slug, part="place")
     except Exception:
         live_benefit = live_place = ""
@@ -2886,6 +2910,9 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 .fig-brows{display:flex;flex-direction:column;gap:0}
 .fig-brow{display:grid;grid-template-columns:4.2rem minmax(0,1fr) auto auto auto;gap:.45rem .55rem;align-items:baseline;
   padding:.55rem 0;border-bottom:1px solid var(--line);color:var(--fg);text-decoration:none}
+.fig-brow.fig-cat-total{grid-template-columns:5.5rem minmax(0,1fr) auto}
+.fig-brow.fig-cat-total .fig-bval{font-size:clamp(1.25rem,2.5vw,1.65rem);color:var(--pc-ev,var(--fg))}
+.fig-brow.fig-cat-total .fig-blabel{font-size:var(--fs-sm);color:var(--muted);font-weight:var(--fw-normal)}
 .fig-brow:hover{background:color-mix(in srgb,var(--accent) 5%,transparent);text-decoration:none}
 .fig-btag{font-size:var(--fs-xs);font-weight:var(--fw-bold);color:#fff;background:#6b7c8f;border-radius:4px;padding:.12rem .35rem;text-align:center}
 .fig-blabel{font-size:var(--fs-md);font-weight:var(--fw-semi)}
@@ -2968,6 +2995,7 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 
 @media(max-width:720px){
   .fig-brow{grid-template-columns:3.6rem minmax(0,1fr) auto;gap:.3rem .4rem}
+  .fig-brow.fig-cat-total{grid-template-columns:4.8rem minmax(0,1fr) auto}
   .fig-bunit{display:none}
   .fig-rank{grid-column:2;text-align:left;margin-top:-.15rem}
   .fig-bval{grid-column:3;grid-row:1/3;align-self:center}

@@ -150,7 +150,8 @@ def _station_bars(top):
     return f'<ul class="fig-st-list">{"".join(rows)}</ul>'
 
 
-def figures_section_html(slug: str, data: Optional[dict] = None, part: str = "all") -> str:
+def figures_section_html(slug: str, data: Optional[dict] = None, part: str = "all",
+                         benefit_totals: Optional[list] = None) -> str:
     data = data or load_snapshot(slug)
     if not data:
         return ""
@@ -172,19 +173,31 @@ def figures_section_html(slug: str, data: Optional[dict] = None, part: str = "al
         "elderly_care": "g-senior",
     }
     benefit_rows = []
-    for b in benefits:
-        rank_txt = ""
-        if b.get("rank") and b.get("n_ranked"):
-            rank_txt = f'<span class="fig-rank">都内{b["rank"]}/{b["n_ranked"]}</span>'
-        tc = tag_class.get(b.get("group"), "")
-        benefit_rows.append(
-            f'<a class="fig-brow" href="{esc(b["href"])}">'
-            f'<span class="fig-btag {tc}">{esc(b["group_label"])}</span>'
-            f'<span class="fig-blabel">{esc(b["label"])}</span>'
-            f'<span class="fig-bunit">{esc(b["unit"])}</span>'
-            f'<span class="fig-bval">{esc(fmt_yen(b["yen"]))}</span>'
-            f"{rank_txt}</a>"
-        )
+    if benefit_totals:
+        for t in benefit_totals:
+            tc = tag_class.get(t.get("ev"), "")
+            pc = t.get("color") or ""
+            style = f' style="--pc-ev:{esc(pc)}"' if pc else ""
+            benefit_rows.append(
+                f'<a class="fig-brow fig-cat-total" href="{esc(t["href"])}"{style}>'
+                f'<span class="fig-btag {tc}">{esc(t["label"])}</span>'
+                f'<span class="fig-blabel">{t["n_amt"]}件 / {t["n_prog"]}制度</span>'
+                f'<span class="fig-bval">{esc(fmt_yen(t["yen_sum"]))}</span></a>'
+            )
+    else:
+        for b in benefits:
+            rank_txt = ""
+            if b.get("rank") and b.get("n_ranked"):
+                rank_txt = f'<span class="fig-rank">都内{b["rank"]}/{b["n_ranked"]}</span>'
+            tc = tag_class.get(b.get("group"), "")
+            benefit_rows.append(
+                f'<a class="fig-brow" href="{esc(b["href"])}">'
+                f'<span class="fig-btag {tc}">{esc(b["group_label"])}</span>'
+                f'<span class="fig-blabel">{esc(b["label"])}</span>'
+                f'<span class="fig-bunit">{esc(b["unit"])}</span>'
+                f'<span class="fig-bval">{esc(fmt_yen(b["yen"]))}</span>'
+                f"{rank_txt}</a>"
+            )
     benefit_block = ""
     if benefit_rows:
         benefit_block = (
@@ -308,7 +321,7 @@ def figures_section_html(slug: str, data: Optional[dict] = None, part: str = "al
         return (
             '<section class="figures" id="figures-benefit">'
             f'<div class="figures-intro"><h2>{_hi("yen")}もらえるお金の目安</h2>'
-            f'<p>{esc(name)}で受けられる手当・助成のうち、自治体で差が出やすく金額が分かるものの目安です。</p></div>'
+            f'<p>{esc(name)}で受けられる手当・助成を、目的・年代カテゴリごとの合計目安で示しています（金額が分かる制度の上限・月額などを合算）。</p></div>'
             f'<div class="figures-grid">{benefit_block}</div>'
             f'{anim}</section>'
         )
