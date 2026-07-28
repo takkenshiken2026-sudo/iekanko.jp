@@ -1099,24 +1099,70 @@ def amount_of(facts):
         if lbl in ("支給額・助成額",) and val: return val
     return None
 
+def program_cat_of(p):
+    """制度の代表カテゴリ（ライフイベント）と表示色を返す。
+    returns: (ev_attr, catname, color)  ev_attr は data-ev 用の空白区切りslug。"""
+    evs = [e["slug"] for e in events_of(p["id"])]
+    if not evs:
+        return "other", "その他", "#7a8699"
+    cat0 = next((e for e in EVENTS if e in evs), evs[0])
+    catname = EVENTS[cat0][0] if cat0 in EVENTS else "その他"
+    color = EV_META[cat0][2] if cat0 in EV_META else "#7a8699"
+    return " ".join(evs), catname, color
+
+def program_row_html(p, slug, i, href=None):
+    """制度一覧テーブル1行（ハブ／ライフイベント／関連で共通）。"""
+    href = href or f'/area/tokyo/{slug}/seido/{p["id"]}/'
+    amt = amount_of(facts_of(p["id"]))
+    yen = extract_any_yen(amt) if amt else 0
+    amt_disp = (amount_prefix(amt) + format_sum_yen(yen)) if yen else "—"
+    ev_attr, catname, color = program_cat_of(p)
+    return (
+        f'<tr data-nm="{esc(p["title"])}" data-ev="{esc(ev_attr)}" '
+        f'data-amt="{yen or 0}" data-i="{i}" data-href="{href}">'
+        f'<td class="c-name"><a href="{href}">{esc(p["title"])}</a></td>'
+        f'<td class="c-amt{"" if yen else " na"}">{esc(amt_disp)}</td>'
+        f'<td class="c-cat"><span class="ptag" style="--pc:{color}">{esc(catname)}</span></td>'
+        f'<td class="c-type">{esc(PT_JA.get(p["program_type"],"制度"))}</td></tr>')
+
+def program_table_html(rows_html, *, tbody_id="plist", sortable=True):
+    """手当・助成の一覧テーブル（制度・金額・カテゴリ・種別＋任意で見出しソート）。"""
+    if sortable:
+        head = (
+            f'<thead><tr>'
+            f'<th class="c-name sortable" data-sort="name"><button type="button">制度・手当 <span class="sarr"></span></button></th>'
+            f'<th class="c-amt sortable" data-sort="amt"><button type="button">金額の目安 <span class="sarr"></span></button></th>'
+            f'<th class="c-cat">カテゴリ</th><th class="c-type">種別</th></tr></thead>')
+    else:
+        head = (
+            f'<thead><tr><th class="c-name">制度・手当</th><th class="c-amt">金額の目安</th>'
+            f'<th class="c-cat">カテゴリ</th><th class="c-type">種別</th></tr></thead>')
+    return (f'<div class="tablewrap"><table class="ptable">{head}'
+            f'<tbody id="{tbody_id}">{rows_html}</tbody></table></div>')
+
+def order_programs_by_category(progs):
+    """カテゴリ（EVENTS順）→その他の順に重複なく並べる。"""
+    prog_ev = {p["id"]: [e["slug"] for e in events_of(p["id"])] for p in progs}
+    seen = set(); ordered = []
+    for ev_slug in EVENTS:
+        for p in progs:
+            if p["id"] not in seen and ev_slug in prog_ev[p["id"]]:
+                seen.add(p["id"]); ordered.append(p)
+    for p in progs:
+        if p["id"] not in seen:
+            seen.add(p["id"]); ordered.append(p)
+    return ordered, prog_ev
+
 def related_programs(m, slug, p, progs):
     pe = {e["slug"] for e in events_of(p["id"])}
     if not pe or not progs: return ""
-    sibs=[q for q in progs if q["id"]!=p["id"] and (pe & {e["slug"] for e in events_of(q["id"])})]
-    sibs=sibs[:6]
+    sibs = [q for q in progs if q["id"] != p["id"] and (pe & {e["slug"] for e in events_of(q["id"])})]
     if not sibs: return ""
-    rows=[]
-    for q in sibs:
-        amt=amount_of(facts_of(q["id"])); yen=extract_any_yen(amt) if amt else 0
-        amt_disp=(amount_prefix(amt)+format_sum_yen(yen)) if yen else "—"
-        href=f'/area/tokyo/{slug}/seido/{q["id"]}/'
-        rows.append(f'<tr data-href="{href}"><td class="c-name"><a href="{href}">{esc(q["title"])}</a></td>'
-                    f'<td class="c-amt{"" if yen else " na"}">{esc(amt_disp)}</td>'
-                    f'<td class="c-type">{esc(PT_JA.get(q["program_type"],"制度"))}</td></tr>')
+    ordered, _ = order_programs_by_category(sibs)
+    ordered = ordered[:6]
+    rows = "".join(program_row_html(q, slug, i) for i, q in enumerate(ordered))
     return (f'<section class="related"><h2>{ic("link","hi")}{esc(m["municipality_name"])}の関連する制度</h2>'
-            f'<div class="tablewrap"><table class="ptable">'
-            f'<thead><tr><th class="c-name">制度・手当</th><th class="c-amt">金額の目安</th>'
-            f'<th class="c-type">種別</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div></section>')
+            f'{program_table_html(rows, tbody_id="plist")}{PLIST_JS}</section>')
 
 def _fact_clean(v):
     return re.sub(r"[。\.．\s]+$", "", (v or "").strip())
@@ -1508,26 +1554,17 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     mn = m["municipality_name"]
     url = f"/area/tokyo/{slug}/{ev_slug}/"
     items = [p for p in progs if any(e["slug"]==ev_slug for e in events_of(p["id"]))]
-    rows = []
-    for i,p in enumerate(items):
-        amt=amount_of(facts_of(p["id"])); yen=extract_any_yen(amt) if amt else 0
-        amt_disp=(amount_prefix(amt)+format_sum_yen(yen)) if yen else "—"
-        rows.append(f'<tr data-nm="{esc(p["title"])}" data-ev="all" data-amt="{yen or 0}" data-i="{i}" data-href="/area/tokyo/{slug}/seido/{p["id"]}/">'
-                    f'<td class="c-name"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a></td>'
-                    f'<td class="c-amt{"" if yen else " na"}">{esc(amt_disp)}</td>'
-                    f'<td class="c-type">{esc(PT_JA.get(p["program_type"],"制度"))}</td></tr>')
-    if rows:
+    ordered, _ = order_programs_by_category(items)
+    rows = "".join(program_row_html(p, slug, i) for i, p in enumerate(ordered))
+    if ordered:
         listing=(
             '<div class="plist-ctrl">'
             '<input type="search" id="psearch" placeholder="制度名で検索" aria-label="制度名で検索" autocomplete="off">'
             '<div class="plist-row"><span class="lead2" style="margin:0">タップで対象・金額・申請方法がわかります</span>'
             '<label class="psort">並び替え <select id="psort" aria-label="並び替え">'
-            '<option value="cat">掲載順</option><option value="name">名称順</option>'
+            '<option value="cat">カテゴリ順</option><option value="name">名称順</option>'
             '<option value="amt">金額が高い順</option></select></label></div></div>'
-            '<div class="tablewrap"><table class="ptable">'
-            '<thead><tr><th class="c-name">制度・手当</th><th class="c-amt">金額の目安</th>'
-            '<th class="c-type">種別</th></tr></thead>'
-            f'<tbody id="plist">{"".join(rows)}</tbody></table></div>'
+            f'{program_table_html(rows)}'
             '<p class="pnone" id="pnone" hidden>該当する制度が見つかりません。</p>')
     else:
         listing = "<p>該当する制度は現在準備中です。</p>"
@@ -1556,10 +1593,10 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
 {listing}
 {relbox}
 <p><a href="/area/tokyo/{slug}/">{CHEV_L} {esc(mn)}の制度一覧にもどる</a></p>
-{PLIST_JS if rows else ""}"""
+{PLIST_JS if ordered else ""}"""
     il = {"@context":"https://schema.org","@type":"ItemList","itemListElement":[
         {"@type":"ListItem","position":i+1,"name":p["title"],
-         "url":f"{BASE_URL}/area/tokyo/{slug}/seido/{p['id']}/"} for i,p in enumerate(items)]}
+         "url":f"{BASE_URL}/area/tokyo/{slug}/seido/{p['id']}/"} for i,p in enumerate(ordered)]}
     bc=[("トップ","/"),(mn,f"/area/tokyo/{slug}/"),(ev_name,None)]
     robots = "index,follow" if (items and INDEX_LIFEEVENT) else "noindex,follow"
     page(path=url+"index.html", title=title, description=desc, canonical=url,
@@ -1569,15 +1606,16 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
 # ── 自治体ハブ ──────────────────────────────────────────────────────────────
 PLIST_JS = """<script>
 (function(){
- var q=document.getElementById('psearch'),list=document.getElementById('plist');
- if(!q||!list)return;
- var none=document.getElementById('pnone'),
+ var list=document.getElementById('plist');
+ if(!list)return;
+ var q=document.getElementById('psearch'),
+     none=document.getElementById('pnone'),
      chips=[].slice.call(document.querySelectorAll('.pchip2')),
      sortsel=document.getElementById('psort'),
      lis=[].slice.call(list.children),ev='all';
  function nz(s){return (s||'').toLowerCase();}
  function apply(){
-  var t=nz(q.value.trim()),shown=0;
+  var t=q?nz(q.value.trim()):'',shown=0;
   lis.forEach(function(li){
    var okE=(ev==='all'||(' '+li.getAttribute('data-ev')+' ').indexOf(' '+ev+' ')>=0);
    var okT=(!t||nz(li.getAttribute('data-nm')).indexOf(t)>=0);
@@ -1599,7 +1637,7 @@ PLIST_JS = """<script>
   ths.forEach(function(th){th.setAttribute('aria-sort',th.getAttribute('data-sort')===key?(d==='asc'?'ascending':'descending'):'none');});
   if(sortsel)sortsel.value=(key==='name'||key==='amt')?key:'cat';
  }
- q.addEventListener('input',apply);
+ if(q)q.addEventListener('input',apply);
  chips.forEach(function(c){c.addEventListener('click',function(){
   ev=c.getAttribute('data-ev');
   chips.forEach(function(x){var on=x===c;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on);});
@@ -1622,32 +1660,10 @@ def build_muni(m, slug, score, avg):
         counts[ev_slug]=len(items)
         yen_sums[ev_slug]=amount_sum_of_programs(items)[0]
     # カテゴリ順（EVENTS順→その他）に重複なく整列
+    ordered, prog_ev = order_programs_by_category(progs)
     ev_order=list(EVENTS.keys())
-    seen=set(); ordered=[]
-    for ev_slug in ev_order:
-        for p in progs:
-            if p["id"] not in seen and ev_slug in prog_ev[p["id"]]:
-                seen.add(p["id"]); ordered.append(p)
-    for p in progs:
-        if p["id"] not in seen:
-            seen.add(p["id"]); ordered.append(p)
     other_count=sum(1 for p in ordered if not prog_ev[p["id"]])
-    li_html=[]
-    for i,p in enumerate(ordered):
-        evs=prog_ev[p["id"]]
-        cat0=evs[0] if evs else "other"
-        catname=EVENTS[cat0][0] if evs else "その他"
-        color=EV_META[cat0][2] if cat0 in EV_META else "#7a8699"
-        amt=amount_of(facts_of(p["id"]))
-        yen=extract_any_yen(amt) if amt else 0
-        amt_disp=(amount_prefix(amt)+format_sum_yen(yen)) if yen else "—"
-        li_html.append(
-          f'<tr data-nm="{esc(p["title"])}" data-ev="{esc(" ".join(evs) if evs else "other")}" '
-          f'data-amt="{yen or 0}" data-i="{i}" data-href="/area/tokyo/{slug}/seido/{p["id"]}/">'
-          f'<td class="c-name"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(p["title"])}</a></td>'
-          f'<td class="c-amt{"" if yen else " na"}">{esc(amt_disp)}</td>'
-          f'<td class="c-cat"><span class="ptag" style="--pc:{color}">{esc(catname)}</span></td>'
-          f'<td class="c-type">{esc(PT_JA.get(p["program_type"],"制度"))}</td></tr>')
+    li_html=[program_row_html(p, slug, i) for i,p in enumerate(ordered)]
     chip_html=f'<button type="button" class="pchip2 on" data-ev="all" aria-pressed="true">すべて<b>{len(ordered)}</b></button>'
     for ev_slug in ev_order:
         if counts.get(ev_slug,0)>0:
@@ -1670,11 +1686,7 @@ def build_muni(m, slug, score, avg):
       f'<label class="psort">並び替え <select id="psort" aria-label="並び替え">'
       f'<option value="cat">カテゴリ順</option><option value="name">名称順</option>'
       f'<option value="amt">金額が高い順</option></select></label></div></div>'
-      f'<div class="tablewrap"><table class="ptable">'
-      f'<thead><tr><th class="c-name sortable" data-sort="name"><button type="button">制度・手当 <span class="sarr"></span></button></th>'
-      f'<th class="c-amt sortable" data-sort="amt"><button type="button">金額の目安 <span class="sarr"></span></button></th>'
-      f'<th class="c-cat">カテゴリ</th><th class="c-type">種別</th></tr></thead>'
-      f'<tbody id="plist">{"".join(li_html)}</tbody></table></div>'
+      f'{program_table_html("".join(li_html))}'
       f'<p class="pnone" id="pnone" hidden>該当する制度が見つかりません。条件を変えてお試しください。</p>'
       f'{purpose_html}</section>')
     total_yen = sum(yen_sums.values())
@@ -2444,7 +2456,9 @@ p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
 @media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap{flex-basis:100%}}
 table.ptable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.5rem 0}
-table.ptable thead th{text-align:left;font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-bold);border-bottom:2px solid var(--line);padding:.45rem .55rem;white-space:nowrap}
+table.ptable thead th{text-align:left;font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-bold);background:var(--soft);border-bottom:1px solid var(--line);padding:.55rem .55rem;white-space:nowrap}
+table.ptable thead th.c-amt{text-align:right}
+table.ptable thead th.c-cat{text-align:center}
 table.ptable td{padding:.55rem .55rem;border-bottom:1px solid var(--line);vertical-align:baseline}
 table.ptable tr[hidden]{display:none}
 table.ptable td.c-name a{font-weight:var(--fw-semi)}
@@ -2452,6 +2466,7 @@ table.ptable .c-amt{text-align:right;white-space:nowrap;font-variant-numeric:tab
 table.ptable td.c-amt{font-weight:var(--fw-bold);color:var(--fg)}
 table.ptable td.c-amt.na{color:var(--muted);font-weight:var(--fw-normal)}
 table.ptable .c-cat,table.ptable .c-type{white-space:nowrap;width:1%}
+table.ptable td.c-cat{text-align:center}
 table.ptable td.c-type{color:var(--muted);font-size:var(--fs-sm)}
 .ptag{display:inline-block;font-size:var(--fs-xs);color:#fff;background:var(--pc,var(--accent));border-radius:999px;padding:.1rem .6rem;white-space:nowrap}
 .plist-purpose{font-size:var(--fs-sm);color:var(--muted);margin:.7rem 0 0;line-height:2}
