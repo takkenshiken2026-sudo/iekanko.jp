@@ -209,6 +209,7 @@ GUIDES_EV = [
 ]
 
 # ライフイベント別メタ（目的・年代の発見導線／カラー＝検証済みパレット slot1-5／アイコン）
+# 第2要素は旧・年代ラベル（見出しと重複するためカードでは非表示。互換のためタプル位置は維持）
 EV_META = {
  "pregnancy_birth":("これから出産する方","妊娠・出産期","#e87ba4",
    '<path d="M12 21C7 17 4 14 4 10.5 4 8 6 6 8.5 6c1.6 0 2.9 1 3.5 2C12.6 7 13.9 6 15.5 6 18 6 20 8 20 10.5 20 14 17 17 12 21Z"/>'),
@@ -1469,7 +1470,7 @@ def rel_rankings(cur):
     return f'<div class="cmpbox"><strong>ほかの目的でも探す</strong><ul>{ls}</ul></div>'
 
 def build_ranking(ev, score, avg=None):
-    persona,age,color,_ = EV_META[ev]
+    persona,_age,color,_ = EV_META[ev]
     ev_name = EVENTS[ev][0]
     url=f"/ranking/{ev}/"
     # yen_sum をスコアに載せる（無い場合は0）
@@ -1496,7 +1497,7 @@ def build_ranking(ev, score, avg=None):
     title=f"{ev_name}の制度がある東京都の自治体｜掲載数・金額でみる"
     desc=clip(f"{persona}向けに、{ev_name}関連の制度掲載数が多い東京都の自治体から順に確認できます。金額が分かる制度の合計もあわせて表示します。",118)
     body=f"""
-<span class="badge" style="--pc:{color}">{esc(age)}</span>
+<span class="badge" style="--pc:{color}">{esc(persona)}</span>
 <h1>{esc(ev_name)}の制度がある東京都の自治体</h1>
 <p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}関連の制度を掲載している件数が多い自治体から順に並べています。金額が分かる制度の合計（上限・月額などの目安）も併記します。</p>
 <div class="chartcard" style="--pc:{color}">{chart}
@@ -1521,7 +1522,7 @@ def purpose_cards_html(score):
         best=max(munis,key=lambda m:(score[m["id"]][ev]["prog"], score[m["id"]][ev].get("yen_sum",0), -m["id"]))
         return best["municipality_name"], score[best["id"]][ev]["prog"], score[best["id"]][ev].get("yen_sum",0)
     cards=[]
-    for ev,(persona,age,color,_) in EV_META.items():
+    for ev,(persona,_age,color,_) in EV_META.items():
         ev_name=EVENTS[ev][0]; tn,tp,ty=top1(ev)
         top_note=f"掲載数が多い例：{esc(tn)}（{tp}制度"
         if ty:
@@ -1530,7 +1531,6 @@ def purpose_cards_html(score):
         cards.append(f'<a class="pcard" href="/ranking/{ev}/" style="--pc:{color}">'
             f'<span class="ptxt">'
             f'<span class="ptitle"><span class="pic">{icon_svg(ev)}</span><strong>{esc(persona)}</strong></span>'
-            f'<span class="page">{esc(age)}</span>'
             f'<span class="pdesc">{esc(ev_name)}の制度がある自治体をみる</span>'
             f'<span class="ptop">{top_note}</span></span>'
             f'<span class="parrow" aria-hidden="true">{CHEV_R}</span></a>')
@@ -2634,7 +2634,6 @@ ul.plainlist li{margin:.2rem 0}
 .pcard .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius-sm);padding:5px}
 .pcard .pic .ev-ic{width:15px;height:15px}
 .pcard .ptxt strong{font-size:var(--fs-lg);font-weight:var(--fw-bold);line-height:1.35}
-.pcard .page{font-size:var(--fs-xs);color:var(--muted);margin-top:.2rem}
 .pcard .pdesc{font-size:var(--fs-sm);color:var(--fg-2);margin-top:.2rem}
 .pcard .ptop{font-size:var(--fs-xs);color:var(--pc);font-weight:var(--fw-bold);margin-top:.25rem}
 .pcard .parrow{margin-left:auto;margin-top:.15rem;color:var(--pc);font-weight:var(--fw-bold);flex:0 0 auto}
