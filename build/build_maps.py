@@ -122,31 +122,19 @@ def main():
         open(os.path.join(OUT,f"{slug}.svg"),"w",encoding="utf-8").write(svg)
     print(f"wrote {len(SL)} maps to {OUT}  (viewBox 760x{Hs})")
 
-    # ── 対話マップ（トップのヒーロー用。全自治体クリック可能＋ホバーで名称表示）──
-    ISLE_ORDER=["大島町","利島村","新島村","神津島村","三宅村","御蔵島村","八丈町","青ヶ島村","小笠原村"]
-    isle_h=48; ivH=round(Hs+isle_h,1)
+    # ── 対話マップ（トップのヒーロー用。本土53自治体をクリック可能＋ホバーで名称表示。
+    #    島しょ部は点で表すと分かりにくいため、HTML側で名称チップとして掲載する）──
     istyle=(f"<style>.mr{{fill:{LAND};stroke:{LINE};stroke-width:1;stroke-linejoin:round;"
-            f"cursor:pointer;transition:fill .12s}}a:hover .mr,a:focus .mr{{fill:{ACCENT}}}"
-            f".mk{{fill:#8aa0bf;cursor:pointer;transition:fill .12s}}a:hover .mk,a:focus .mk{{fill:{ACCENT}}}"
-            f".isl{{fill:#5b6577;font:600 12px 'Noto Sans JP',sans-serif}}"
-            f".idv{{stroke:#d7dde7;stroke-width:1}}</style>")
-    ip=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {int(W)} {ivH}" '
-        f'role="img" aria-label="東京都の市区町村マップ。クリックで各自治体のページへ移動できます。" '
+            f"cursor:pointer;transition:fill .12s}}a:hover .mr,a:focus .mr{{fill:{ACCENT}}}</style>")
+    ip=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {int(W)} {Hs}" '
+        f'role="img" aria-label="東京都本土の市区町村マップ。クリックで各自治体のページへ移動できます。" '
         f'preserveAspectRatio="xMidYMid meet" class="tokyomap">',
-        f'<rect x="0" y="0" width="{int(W)}" height="{ivH}" fill="{SEA}"/>', istyle, '<g>']
+        f'<rect x="0" y="0" width="{int(W)}" height="{Hs}" fill="{SEA}"/>', istyle, '<g>']
     for name in mainland:
         slug=SL[name]
         ip.append(f'<a href="/area/tokyo/{slug}/" aria-label="{name}">'
                   f'<path class="mr" d="{dpaths[name]}"><title>{name}</title></path></a>')
-    ip.append('</g>')
-    ip.append(f'<line class="idv" x1="0" y1="{Hs}" x2="{int(W)}" y2="{Hs}"/>')
-    ip.append(f'<text class="isl" x="14" y="{Hs+28:.0f}">島しょ部</text>')
-    n=len(ISLE_ORDER); x0=120.0; x1=W-26; gap=(x1-x0)/(n-1)
-    for i,name in enumerate(ISLE_ORDER):
-        slug=SL[name]; cx=x0+i*gap; cy=Hs+23
-        ip.append(f'<a href="/area/tokyo/{slug}/" aria-label="{name}">'
-                  f'<circle class="mk" cx="{cx:.0f}" cy="{cy:.0f}" r="7"><title>{name}</title></circle></a>')
-    ip.append('</svg>')
+    ip.append('</g></svg>')
     open(os.path.join(OUT,"tokyo-interactive.svg"),"w",encoding="utf-8").write("".join(ip))
     print("wrote interactive map: tokyo-interactive.svg")
 
