@@ -220,8 +220,6 @@ ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
 ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem;font-weight:400}
 .fnav{margin:0 0 .7rem;line-height:2}
 .fnav a{color:var(--muted)}
-.affiliate-note{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin:.2rem 0 .7rem}
-.affiliate-note a{color:var(--fg);font-weight:600}
 footer .copy{margin:.3rem 0 0}
 .doc h2{font-size:var(--fs-h2)}
 .doc .lead{margin-bottom:1rem}
