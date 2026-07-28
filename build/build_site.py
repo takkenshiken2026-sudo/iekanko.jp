@@ -14,7 +14,7 @@ DB(gov_life_support.sqlite3) から SEO最適化済みの静的HTMLを生成す�
 各ページ: <title>/meta description/canonical/OGP/robots(品質ゲート)/JSON-LD
 (BreadcrumbList, GovernmentService, FAQPage) / 出典リンク / 最終更新日 を出力。
 """
-import sqlite3, os, html, json, re, sys
+import sqlite3, os, html, json, re, sys, csv
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB   = os.environ.get("SEIDO_DB", os.path.join(ROOT, "gov_life_support.sqlite3"))
@@ -47,6 +47,85 @@ ANALYTICS_NOTE = os.environ.get(
     "SEIDO_ANALYTICS",
     "Google Analytics 4（測定ID: %s）" % GA_MEASUREMENT_ID if GA_MEASUREMENT_ID else "",
 )
+# アフィリエイト配置表（URL未設定の行は出力しない）。page_kind×match_key で該当ページに差し込む。
+AFFILIATE_CSV = os.path.join(ROOT, "data", "enrichment", "affiliate_placements.csv")
+AFFILIATE_MAX_PER_PAGE = 2
+
+def load_affiliate_placements(path=AFFILIATE_CSV):
+    rows = []
+    if not os.path.exists(path):
+        return rows
+    with open(path, encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f):
+            url = (r.get("affiliate_url") or "").strip()
+            if not url:
+                continue
+            try:
+                pri = int((r.get("priority") or "99").strip() or "99")
+            except ValueError:
+                pri = 99
+            rows.append({
+                "priority": pri,
+                "page_kind": (r.get("page_kind") or "").strip(),
+                "match_key": (r.get("match_key") or "").strip(),
+                "product_category": (r.get("product_category") or "").strip(),
+                "cta_label": (r.get("cta_label") or "詳細を見る").strip(),
+                "lead_text": (r.get("lead_text") or "").strip(),
+                "affiliate_url": url,
+            })
+    rows.sort(key=lambda x: (x["priority"], x["page_kind"], x["match_key"]))
+    return rows
+
+AFFILIATE_PLACEMENTS = load_affiliate_placements()
+
+def affiliate_html(page_kind, match_key, limit=AFFILIATE_MAX_PER_PAGE):
+    """該当ページ用の PR 枠。URL設定済みの行だけを最大 limit 件返す。"""
+    hits = [r for r in AFFILIATE_PLACEMENTS
+            if r["page_kind"] == page_kind and r["match_key"] == match_key][:limit]
+    if not hits:
+        return ""
+    blocks = []
+    for r in hits:
+        lead = f'<p class="prlead">{esc(r["lead_text"])}</p>' if r["lead_text"] else ""
+        blocks.append(
+            f'<aside class="prbox" aria-label="広告">'
+            f'<span class="badge">PR</span>'
+            f'<strong class="prtitle">{esc(r["product_category"])}</strong>'
+            f'{lead}'
+            f'<p class="prcta"><a href="{esc(r["affiliate_url"])}" target="_blank" '
+            f'rel="sponsored noopener noreferrer">{esc(r["cta_label"])}</a></p>'
+            f'</aside>'
+        )
+    return "\n" + "".join(blocks)
+
+def affiliate_html_for_cats(cats, limit=AFFILIATE_MAX_PER_PAGE):
+    """制度詳細向け：カテゴリIDに紐づく PR 枠を優先度順で最大 limit 件。"""
+    out, seen = [], set()
+    for r in AFFILIATE_PLACEMENTS:
+        if r["page_kind"] != "program_cat" or r["match_key"] not in cats:
+            continue
+        if r["affiliate_url"] in seen:
+            continue
+        seen.add(r["affiliate_url"])
+        out.append(r)
+        if len(out) >= limit:
+            break
+    if not out:
+        return ""
+    # affiliate_html と同じ見た目で組み立て
+    blocks = []
+    for r in out:
+        lead = f'<p class="prlead">{esc(r["lead_text"])}</p>' if r["lead_text"] else ""
+        blocks.append(
+            f'<aside class="prbox" aria-label="広告">'
+            f'<span class="badge">PR</span>'
+            f'<strong class="prtitle">{esc(r["product_category"])}</strong>'
+            f'{lead}'
+            f'<p class="prcta"><a href="{esc(r["affiliate_url"])}" target="_blank" '
+            f'rel="sponsored noopener noreferrer">{esc(r["cta_label"])}</a></p>'
+            f'</aside>'
+        )
+    return "".join(blocks)
 
 # ── 品質ゲート（YMYL: 未検証の薄いページをインデックスさせない）────────────
 GATE_MIN_CONFIDENCE = 82   # 制度の平均confidenceがこれ未満なら noindex
@@ -1442,6 +1521,8 @@ def build_program(m, slug, p, cats, progs=None):
     _zones = [_header_zone, _about_zone, _facts_zone]
     if faq_html: _zones.append(faq_html)
     if official_html: _zones.append(official_html)
+    _aff = affiliate_html_for_cats(cats)
+    if _aff: _zones.append(_aff)
     if _tail_zone.strip(): _zones.append(_tail_zone)
     if ev_notice: _zones[-1] += ev_notice   # 暫定データの注記は控えめに、ページ下部へ
     _bands = "".join(
@@ -1538,7 +1619,7 @@ def build_compare(cid, entries, counts=None):
 <tbody>{''.join(rows)}</tbody></table></div>
 {miss_html}
 <p class="note">※金額は制度改定で変わります。申請前に必ず各自治体の公式ページ（各自治体ページ内の出典リンク）でご確認ください。</p>
-{rel_html}
+{affiliate_html("hikaku", cid)}{rel_html}
 <h2>{ic("help","hi")}よくある質問</h2>
 {faq_html}
 <p><a href="/hikaku/">{CHEV_L} 制度カテゴリ比較の一覧にもどる</a></p>"""
@@ -1668,7 +1749,7 @@ def build_ranking(ev, score, avg=None):
 <tbody>{''.join(trs)}</tbody></table></div>
 {RANK_TABLE_JS}
 <p class="notice">掲載件数・金額合計は当サイトの収録状況に基づく目安です。月額と一時金を単純合算しているため、実際の手厚さや受給可否を示すものではありません。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
-{rel_rankings(ev)}
+{affiliate_html("ranking", ev)}{rel_rankings(ev)}
 <p><a href="/find/">{CHEV_L} 目的・年代から探す にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{ev_name}の制度がある東京都の自治体",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":m["municipality_name"],
@@ -2094,7 +2175,10 @@ def build_static_pages():
           ) if ANALYTICS_NOTE else ""
     ads = ('<h2>広告の配信について</h2>'
            '<p>本サイトは、第三者配信の広告サービス「Google AdSense」を利用しています。'
-           'Googleなどの第三者配信事業者は、Cookieを利用して、ユーザーが本サイトや他のサイトに'
+           + ('また、アフィリエイト広告（広告リンク）を利用する場合があります。'
+              'アフィリエイトリンクの遷移先や計測方法は、各事業者の規約・プライバシーポリシーに基づいて取り扱われます。'
+              if AFFILIATE_PLACEMENTS else '')
+           + 'Googleなどの第三者配信事業者は、Cookieを利用して、ユーザーが本サイトや他のサイトに'
            '過去にアクセスした情報に基づいて広告を配信します。パーソナライズ広告は '
            '<a href="https://myadcenter.google.com/" rel="noopener noreferrer" target="_blank">Google 広告設定</a> '
            'で無効にできます。また、'
@@ -2208,7 +2292,7 @@ def build_guides():
 <span class="badge">{esc(ev_name)}</span>
 <h1>{esc(h1title)}</h1>
 <p class="lead">{esc(lead)}</p>
-{secs_html}{rel}
+{secs_html}{affiliate_html("guide", slug)}{rel}
 {note}
 """)
         page(path=f"/guide/{slug}/index.html",
@@ -2737,6 +2821,12 @@ ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
 ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem;font-weight:400}
 .fnav{margin:0 0 .7rem;line-height:2}
 .fnav a{color:var(--muted)}
+.prbox{margin:1.1rem 0;padding:.85rem 1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft)}
+.prbox .badge{margin-right:.45rem}
+.prbox .prtitle{display:inline;font-size:var(--fs-h2);font-weight:var(--fw-bold);color:var(--fg)}
+.prbox .prlead{margin:.45rem 0 .55rem;color:var(--muted);font-size:var(--fs-sm)}
+.prbox .prcta{margin:0}
+.prbox .prcta a{font-weight:700}
 footer .copy{margin:.3rem 0 0}
 .doc h2{font-size:var(--fs-h2)}
 .doc .lead{margin-bottom:1rem}

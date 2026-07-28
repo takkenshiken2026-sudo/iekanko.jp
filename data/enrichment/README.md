@@ -1,5 +1,11 @@
 # 網羅性向上のための調査データ（2026-07-24）
 
+> **アフィリエイト配置表**: `affiliate_placements.csv`
+> - `page_kind` × `match_key` で比較／ランキング／ガイド／制度詳細へ PR 枠を差し込む
+> - `affiliate_url` が空の行は出力されない（A8 の正しい遷移先URLを入れた行だけ表示）
+> - 1ページ最大2枠。公式情報の下に出し、トップや全ページ共通フッターには置かない
+> - 反映は `PYTHONHASHSEED=0 python3 build/build_site.py`
+
 > **網羅の底上げ（新規制度の追加・2026-07-25）**: `build/add_programs.py` で新規制度を
 > 原本DBへ投入 →（`PYTHONHASHSEED=0`）`build/build_site.py` で再生成 → 本番反映。
 > 制度ページ **3,058 → 3,089（+31・index 1,869 → 1,895）**。
