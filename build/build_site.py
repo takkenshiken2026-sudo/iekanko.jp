@@ -1636,8 +1636,7 @@ def build_compare(cid, entries, counts=None):
     if have>=3: sitemap_urls.append((url,"0.9", max(dates) if dates else None))
     return have
 
-def build_compare_index(cat_counts):
-    url="/hikaku/"
+def compare_index_sections(cat_counts):
     groups={}
     for cid,label,ev,_,_ in TAXONOMY:
         groups.setdefault(ev,[]).append((cid,label,cat_counts.get(cid,0)))
@@ -1651,10 +1650,14 @@ def build_compare_index(cat_counts):
         h2=(f'<h2 class="cmpsec-h" style="--pc:{color}">'
             f'<span class="pic">{icon_svg(ev_slug)}</span>{esc(ev_name)}</h2>')
         secs.append(f'<section class="cmpsec">{h2}<ul class="cmplist">{lis}</ul></section>')
+    return "".join(secs)
+
+def build_compare_index(cat_counts):
+    url="/hikaku/"
     body=f"""
 <h1>東京都の給付・手当・助成を「制度ごと」に自治体比較</h1>
 <p class="lead">同じ制度でも、金額や対象は自治体でこんなに違います。制度カテゴリを選ぶと、東京都62自治体の内容を横断比較できます。</p>
-{''.join(secs)}"""
+{compare_index_sections(cat_counts)}"""
     page(path=url+"index.html",title="東京都 給付・手当・助成の自治体比較一覧｜制度カテゴリ別",
          description="児童手当・産後ケア・高齢者紙おむつ・家賃補助など、東京都62自治体の制度を制度カテゴリごとに横断比較。金額・対象の違いが一目でわかります。",
          canonical=url,breadcrumb=[("トップ","/"),("制度を比較する",None)],body=body)
@@ -2303,7 +2306,7 @@ def build_guides():
         sitemap_urls.append((f"/guide/{slug}/","0.6"))
 
 # ── トップ ──────────────────────────────────────────────────────────────────
-def build_home(muni_stats, score, cat_entries=None):
+def build_home(muni_stats, score, cat_entries=None, cat_counts=None):
     _tj={"special_ward":"区","city":"市","town":"町","village":"村"}
     _grp={"special_ward":"ku","city":"shi","town":"cho","village":"cho"}
     # 62市区町村を対等に：五十音順の単一グリッド（区/市/町村の階層を廃し、種別は小バッジで表示）
@@ -2320,6 +2323,7 @@ def build_home(muni_stats, score, cat_entries=None):
       f'<span class="pic">{icon_svg(ev)}</span><span>{esc(EV_META[ev][0])}</span></a>'
       for ev in EV_META)
     amt_sec = amount_rankings_html(cat_entries)
+    cmp_sec = compare_index_sections(cat_counts or {})
     try:
         _hero_svg = open(os.path.join(ROOT, "docs", "assets", "maps", "tokyo-interactive.svg"), encoding="utf-8").read()
     except OSError:
@@ -2383,7 +2387,7 @@ def build_home(muni_stats, score, cat_entries=None):
 <div class="bandin">
 <h2 class="fh">{ic("bars","hi")}制度ごとに自治体を比べる</h2>
 <p class="lead2">児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62市区町村で横断比較できます。</p>
-<p class="fmore"><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p>
+{cmp_sec}
 </div>
 </section>
 <script>
@@ -2554,7 +2558,7 @@ def main():
         build_ranking(ev, score, avg)
     build_static_pages()
     build_guides()
-    build_home(muni_stats, score, cat_entries)
+    build_home(muni_stats, score, cat_entries, cat_counts)
     write_search_index(search_progs, cat_counts)
     write_sitemap(); write_robots(); write_ads_txt(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
