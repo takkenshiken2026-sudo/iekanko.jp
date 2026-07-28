@@ -223,30 +223,31 @@ ul.plainlist li{margin:.2rem 0}
 .parrow{display:inline-flex}.parrow .chev{width:1.05em;height:1.05em}
 
 /* ── SVGグラフ ── */
-.chartcard{border:1px solid var(--line);border-radius:var(--radius);padding:.7rem .8rem .4rem;margin:.6rem 0;--pc:var(--accent)}
+.chartcard{border:1px solid var(--line);border-radius:var(--radius);padding:.7rem .8rem .4rem;margin:.6rem 0;--pc:var(--accent);display:flex;flex-direction:column;align-items:center}
+.chartcard .rsort,.chartcard .rsort-panel{width:100%;max-width:640px}
 .chartcard .rsort{margin:0 0 .55rem}
 .chartcard .mchip.on{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:#fff}
-.chart{width:100%;max-width:640px;height:auto;display:block;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
+.chart{width:100%;max-width:640px;height:auto;display:block;margin:0 auto;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
 .chart .c-track{fill:var(--track)}
 .chart .c-bar{fill:var(--pc)}
 .chart .c-avg{stroke:var(--muted);stroke-width:2;stroke-dasharray:2 2}
 .chart .c-lbl{fill:var(--fg);font-size:var(--mn-fs);font-weight:var(--mn-fw);font-family:inherit}
 .chart .c-val{fill:var(--muted);font-size:var(--fs-sm);font-weight:var(--fw-semi);font-variant-numeric:tabular-nums;font-family:inherit}
-.cmpchart{margin:1rem 0 1.2rem;padding:.85rem 1rem .7rem;border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));border-radius:var(--radius);background:var(--bg)}
-.cmpchart figcaption{font-weight:var(--fw-bold);font-size:var(--fs-md);margin:0 0 .5rem;color:var(--fg)}
-.cmpchart .chart{max-width:640px}
+.cmpchart{margin:1rem 0 1.2rem;padding:.85rem 1rem .7rem;border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));border-radius:var(--radius);background:var(--bg);display:flex;flex-direction:column;align-items:center}
+.cmpchart figcaption{font-weight:var(--fw-bold);font-size:var(--fs-md);margin:0 0 .5rem;color:var(--fg);align-self:stretch;max-width:640px;width:100%}
+.cmpchart .chart{max-width:640px;margin:0 auto}
 .cmpchart .chart .c-val{fill:var(--fg);font-weight:var(--fw-semi)}
-.cmpchart .c-cap{font-size:var(--fs-xs);color:var(--muted);margin:.5rem 0 0;line-height:1.6}
-.covchart{margin:1rem 0 1.2rem;padding:.85rem 1rem .7rem;border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));border-radius:var(--radius);background:var(--bg)}
-.covchart figcaption{font-weight:var(--fw-bold);font-size:var(--fs-md);margin:0 0 .6rem;color:var(--fg)}
-.covbars{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;max-width:640px}
+.cmpchart .c-cap{font-size:var(--fs-xs);color:var(--muted);margin:.5rem 0 0;line-height:1.6;align-self:stretch;max-width:640px;width:100%}
+.covchart{margin:1rem 0 1.2rem;padding:.85rem 1rem .7rem;border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));border-radius:var(--radius);background:var(--bg);display:flex;flex-direction:column;align-items:center}
+.covchart figcaption{font-weight:var(--fw-bold);font-size:var(--fs-md);margin:0 0 .6rem;color:var(--fg);align-self:stretch;max-width:640px;width:100%}
+.covbars{list-style:none;margin:0 auto;padding:0;display:grid;gap:.5rem;max-width:640px;width:100%}
 .covbars li{display:grid;grid-template-columns:minmax(9.5em,15em) 1fr auto;align-items:center;gap:.6rem}
 .covbars .cl{font-size:var(--fs-sm);color:var(--muted)}
 .covbars .cbar{height:.7rem;background:var(--track);border-radius:999px;overflow:hidden}
 .covbars .cfill{display:block;height:100%;background:var(--pc,var(--accent));border-radius:999px}
 .covbars .cn{font-size:var(--fs-sm);font-weight:var(--fw-semi);color:var(--fg);white-space:nowrap;font-variant-numeric:tabular-nums}
 .covbars .cn small{color:var(--muted);font-weight:var(--fw-normal)}
-.covchart .c-cap{font-size:var(--fs-xs);color:var(--muted);margin:.6rem 0 0;line-height:1.6}
+.covchart .c-cap{font-size:var(--fs-xs);color:var(--muted);margin:.6rem 0 0;line-height:1.6;align-self:stretch;max-width:640px;width:100%}
 @media(max-width:560px){.covbars li{grid-template-columns:1fr auto;grid-template-areas:"l n" "b b";row-gap:.2rem}.covbars .cl{grid-area:l}.covbars .cn{grid-area:n}.covbars .cbar{grid-area:b}}
 .cap{font-size:var(--fs-xs);color:var(--muted);margin:.35rem 0 .2rem}
 .profile{margin:1.2rem 0 1.4rem}
