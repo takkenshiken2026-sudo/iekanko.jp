@@ -2861,7 +2861,7 @@ ul.plainlist li{margin:.2rem 0}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.7rem;margin:.6rem 0 1rem}
 .pcard{display:flex;flex-wrap:wrap;align-items:flex-start;gap:.55rem;border:1px solid var(--line);border-left:4px solid var(--pc);border-radius:var(--radius);padding:0;overflow:hidden;color:var(--fg);background:var(--bg)}
 .pcard:hover{background:color-mix(in srgb,var(--pc) 7%,#fff);text-decoration:none}
-.pcard .pimg{flex:1 1 100%;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--soft)}
+.pcard .pimg{flex:1 1 100%;display:block;aspect-ratio:16/9.4;overflow:hidden;background:var(--soft)}
 .pcard .pimg img{display:block;width:100%;height:100%;object-fit:cover}
 .pcard .ptxt{display:flex;flex-direction:column;min-width:0;flex:1 1 auto;padding:.7rem .2rem .75rem .85rem}
 .pcard .ptitle{display:inline-flex;align-items:center;gap:.45rem;min-width:0}
