@@ -117,9 +117,7 @@ ul.mgrid li a{font-size:var(--fs-md)}
 em.mt{font-style:normal;font-size:var(--fs-xs);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 .28rem;line-height:1.5;flex:none}
 p.lead2{color:var(--muted);font-size:var(--fs-sm);margin:.1rem 0 .6rem}
 .mfilter{margin:.2rem 0 .7rem}
-#msearch{width:100%;box-sizing:border-box;padding:.6rem .8rem;font-size:var(--fs-lg);border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);color:inherit}
-#msearch:focus{outline:2px solid var(--accent);outline-offset:1px}
-.mchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.mchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.15rem}
 .mchip{font:inherit;font-size:var(--fs-sm);font-weight:var(--fw-semi);cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:.28rem .7rem;display:inline-flex;align-items:center;gap:.3rem}
 .mchip b{font-weight:var(--fw-semi);font-size:var(--fs-xs);opacity:.7}
 .mchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
