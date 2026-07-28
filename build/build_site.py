@@ -1691,6 +1691,19 @@ def build_find_hub(score):
     sitemap_urls.append(("/find/","0.9"))
 
 # ── 自治体 × ライフイベント ─────────────────────────────────────────────────
+def area_stats_meta_html(mn, ev_name, n_prog, yen_sum=None, n_amt=0, color=None):
+    """自治体×ライフイベントページの件数・金額サマリー（数字を大きく表示）。"""
+    pc = f' style="--pc:{color}"' if color else ''
+    nums = f'<span class="astat"><strong>{n_prog}</strong><small>件</small></span>'
+    if yen_sum:
+        nums += (f'<span class="astat astat-yen">'
+                 f'<span class="astat-lbl">金額が分かるもの合計</span>'
+                 f'<span class="astat-row"><strong>{esc(format_sum_yen(yen_sum))}</strong>'
+                 f'<small>（{n_amt}件）</small></span></span>')
+    return (f'<p class="meta area-meta"{pc}>'
+            f'<span class="area-meta-lbl">{esc(mn)}・{esc(ev_name)}関連の制度</span>'
+            f'<span class="area-meta-nums">{nums}</span></p>')
+
 def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     mn = m["municipality_name"]
     url = f"/area/tokyo/{slug}/{ev_slug}/"
@@ -1717,17 +1730,14 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     title = f"{mn}で{ev_name}のときに使える制度・手当・助成【一覧】"
     desc = clip(f"{mn}で{ev_name}のときに受けられる給付金・手当・助成制度を一覧でまとめました。{ev_intro}", 118)
     yen_sum, n_amt = amount_sum_of_programs(items)
-    if yen_sum:
-        body_meta_extra = f'・金額が分かるもの合計 {esc(format_sum_yen(yen_sum))}（{n_amt}件）'
-    else:
-        body_meta_extra = ""
+    stats_meta = area_stats_meta_html(mn, ev_name, len(items), yen_sum or None, n_amt, EV_META[ev_slug][2])
     body = f"""
 <div class="area-head">
 <div class="area-head-main">
 <span class="badge" style="--pc:{EV_META[ev_slug][2]}">{esc(ev_name)}</span>
 <h1>{esc(mn)}の{esc(ev_name)}で使える制度</h1>
 <p class="lead">{esc(ev_intro)}</p>
-<p class="meta">{esc(mn)}・{esc(ev_name)}関連の制度 {len(items)}件{body_meta_extra}</p>
+{stats_meta}
 </div>
 <figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
 </div>
@@ -2543,6 +2553,16 @@ h2{font-size:var(--fs-h2);margin:1.8rem 0 .6rem;padding-bottom:.3rem;border-bott
 h3{font-size:var(--fs-h3);font-weight:var(--fw-bold)}
 .lead{color:var(--fg);margin:.4rem 0 1rem;font-size:var(--fs-lg)}
 .meta{font-size:var(--fs-sm);color:var(--muted);margin:.2rem 0 1rem}
+.area-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.5rem;margin:.45rem 0 1.15rem}
+.area-meta-lbl{font-size:var(--fs-sm);color:var(--muted);font-weight:var(--fw-semi)}
+.area-meta-nums{display:flex;flex-wrap:wrap;align-items:baseline;gap:.55rem 1.5rem}
+.astat{display:inline-flex;align-items:baseline;gap:.22rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.astat strong{font-size:clamp(1.4rem,3.2vw,1.85rem);font-weight:var(--fw-black);color:var(--fg);letter-spacing:-.02em}
+.astat small{font-size:var(--fs-sm);color:var(--muted);font-weight:var(--fw-semi)}
+.astat-yen{flex-direction:column;align-items:flex-start;gap:.1rem}
+.astat-yen .astat-lbl{font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-normal);line-height:1.2}
+.astat-yen .astat-row{display:inline-flex;align-items:baseline;gap:.28rem}
+.astat-yen strong{color:var(--pc,var(--accent));font-size:clamp(1.5rem,3.5vw,2rem)}
 .badge,.tag,.pt,.cnt{display:inline-block}
 .badge{background:var(--badge);color:var(--accent);font-size:var(--fs-xs);font-weight:var(--fw-bold);padding:.15rem .55rem;border-radius:999px}
 .notice{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-fg);padding:.6rem .8rem;border-radius:var(--radius-sm);font-size:var(--fs-sm)}
