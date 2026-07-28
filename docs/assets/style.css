@@ -215,6 +215,7 @@ ul.plainlist li{margin:.2rem 0}
 /* ── SVGグラフ ── */
 .chartcard{border:1px solid var(--line);border-radius:var(--radius);padding:.7rem .8rem .4rem;margin:.6rem 0;--pc:var(--accent)}
 .chartcard .rsort{margin:0 0 .55rem}
+.chartcard .mchip.on{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:#fff}
 .chart{width:100%;max-width:640px;height:auto;display:block;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
 .chart .c-track{fill:var(--track)}
 .chart .c-bar{fill:var(--pc)}
