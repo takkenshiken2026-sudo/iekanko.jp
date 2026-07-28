@@ -2425,12 +2425,12 @@ p.mnone{color:var(--muted);font-size:var(--fs-md);padding:.6rem 0}
 .pchip2.on b{opacity:.85}
 .psort{font-size:var(--fs-sm);color:var(--muted);display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
 .psort select{font:inherit;font-size:var(--fs-sm);padding:.32rem .5rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg);color:var(--fg);cursor:pointer}
-.area-head{display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap;margin:.2rem 0 .8rem}
+.area-head{display:flex;gap:1.3rem;align-items:flex-start;flex-wrap:wrap;margin:.2rem 0 .8rem}
 .area-head-main{flex:1 1 300px;min-width:0}
 .area-head-main>h1{margin-top:.2rem}
 .area-head-main>:last-child{margin-bottom:0}
 .areamap{margin:.4rem 0 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:.5rem}
-.area-head .areamap{flex:0 1 470px;margin:0}
+.area-head .areamap{flex:0 1 470px;margin:0;align-self:flex-start}
 .areamap img{display:block;width:100%;height:auto;max-width:640px;margin:0 auto}
 .area-head .areamap img{max-width:100%}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
