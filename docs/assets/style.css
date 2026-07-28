@@ -66,7 +66,9 @@ h3{font-size:var(--fs-h3);font-weight:var(--fw-bold)}
 .offbtn:hover{text-decoration:underline}
 .offbtn .ic{width:1.05em;height:1.05em;vertical-align:-.16em}
 .offbtn-host{font-size:var(--fs-xs);font-weight:var(--fw-normal);color:var(--muted);word-break:break-all}
+.offlead{color:var(--fg-2);margin:.2rem 0 .85rem;font-size:var(--fs-md)}
 .offnote{font-size:var(--fs-sm);color:var(--muted);margin:.6rem 0 0;line-height:1.65}
+.official{font-size:var(--fs-md);margin:.2rem 0 .4rem}
 dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .fact{display:grid;grid-template-columns:8.5rem 1fr;border-top:1px solid var(--line)}
 .fact:first-child{border-top:0}
@@ -75,7 +77,6 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .fact dd .offlink{word-break:break-all}
 .src{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap;margin-left:.3rem}
 @media(max-width:560px){.fact{grid-template-columns:1fr}.fact dt{border-bottom:1px solid var(--line)}}
-.official{font-size:var(--fs-md);margin:1rem 0}
 .hi{width:1.08em;height:1.08em;vertical-align:-.16em;margin-right:.42rem;color:var(--accent);flex:none}
 .fi{width:1em;height:1em;vertical-align:-.13em;margin-right:.36rem;color:var(--muted);flex:none}
 .fact dt .fi{color:color-mix(in srgb,var(--accent) 55%,var(--muted))}
