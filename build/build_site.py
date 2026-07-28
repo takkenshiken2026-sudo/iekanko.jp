@@ -1480,8 +1480,8 @@ def purpose_cards_html(score):
             top_note += f"・計{esc(format_sum_yen(ty))}"
         top_note += "）"
         cards.append(f'<a class="pcard" href="/ranking/{ev}/" style="--pc:{color}">'
-            f'<span class="pic">{icon_svg(ev)}</span>'
-            f'<span class="ptxt"><strong>{esc(persona)}</strong>'
+            f'<span class="ptxt">'
+            f'<span class="ptitle"><span class="pic">{icon_svg(ev)}</span><strong>{esc(persona)}</strong></span>'
             f'<span class="page">{esc(age)}</span>'
             f'<span class="pdesc">{esc(ev_name)}の制度がある自治体をみる</span>'
             f'<span class="ptop">{top_note}</span></span>'
@@ -2600,15 +2600,17 @@ ul.plainlist li{margin:.2rem 0}
 .pchip .pic .ev-ic{width:16px;height:16px}
 .pchip:hover{border-color:var(--pc);text-decoration:none}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.7rem;margin:.6rem 0 1rem}
-.pcard{display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);border-left:4px solid var(--pc);border-radius:var(--radius);padding:.8rem .9rem;color:var(--fg);background:var(--bg)}
+.pcard{display:flex;align-items:flex-start;gap:.55rem;border:1px solid var(--line);border-left:4px solid var(--pc);border-radius:var(--radius);padding:.8rem .9rem;color:var(--fg);background:var(--bg)}
 .pcard:hover{background:color-mix(in srgb,var(--pc) 7%,#fff);text-decoration:none}
-.pcard .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius);padding:9px}
-.pcard .ptxt{display:flex;flex-direction:column;min-width:0}
-.pcard .ptxt strong{font-size:var(--fs-lg);font-weight:var(--fw-bold)}
-.pcard .page{font-size:var(--fs-xs);color:var(--muted)}
-.pcard .pdesc{font-size:var(--fs-sm);color:var(--fg-2);margin-top:.15rem}
-.pcard .ptop{font-size:var(--fs-xs);color:var(--pc);font-weight:var(--fw-bold);margin-top:.2rem}
-.pcard .parrow{margin-left:auto;color:var(--pc);font-weight:var(--fw-bold)}
+.pcard .ptxt{display:flex;flex-direction:column;min-width:0;flex:1 1 auto}
+.pcard .ptitle{display:inline-flex;align-items:center;gap:.45rem;min-width:0}
+.pcard .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius-sm);padding:5px}
+.pcard .pic .ev-ic{width:15px;height:15px}
+.pcard .ptxt strong{font-size:var(--fs-lg);font-weight:var(--fw-bold);line-height:1.35}
+.pcard .page{font-size:var(--fs-xs);color:var(--muted);margin-top:.2rem}
+.pcard .pdesc{font-size:var(--fs-sm);color:var(--fg-2);margin-top:.2rem}
+.pcard .ptop{font-size:var(--fs-xs);color:var(--pc);font-weight:var(--fw-bold);margin-top:.25rem}
+.pcard .parrow{margin-left:auto;margin-top:.15rem;color:var(--pc);font-weight:var(--fw-bold);flex:0 0 auto}
 table.cmp.rank td.rk{width:2.4rem;text-align:center;color:var(--muted);font-variant-numeric:tabular-nums}
 table.cmp.rank tr.top3 td.rk{color:var(--accent);font-weight:var(--fw-black)}
 table.cmp.rank tr.top3 td.mn a{font-weight:var(--fw-bold)}
