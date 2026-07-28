@@ -2024,8 +2024,6 @@ def build_home(muni_stats, score, cat_entries=None):
         _hero_svg = open(os.path.join(ROOT, "docs", "assets", "maps", "tokyo-interactive.svg"), encoding="utf-8").read()
     except OSError:
         _hero_svg = ""
-    _ISLANDS=["大島町","利島村","新島村","神津島村","三宅村","御蔵島村","八丈町","青ヶ島村","小笠原村"]
-    _isle_chips="".join(f'<a href="/area/tokyo/{SLUGS[n]}/">{esc(n)}</a>' for n in _ISLANDS if n in SLUGS)
     _map_js=('<script>(function(){var w=document.querySelector(".tokyomap-wrap");if(!w)return;'
              'var t=w.querySelector(".mtip"),s=w.querySelector("svg");if(!s)return;'
              's.addEventListener("pointermove",function(e){var a=e.target.closest("a");'
@@ -2035,7 +2033,6 @@ def build_home(muni_stats, score, cat_entries=None):
              's.addEventListener("pointerleave",function(){t.hidden=true;});})();</script>')
     hero_map_html = (f'<div class="hero-map"><figure>'
         f'<div class="tokyomap-wrap">{_hero_svg}<span class="mtip" hidden></span></div>'
-        f'<p class="isle-row"><span class="isle-lbl">島しょ部</span>{_isle_chips}</p>'
         f'</figure></div>{_map_js}') if _hero_svg else ""
     body=f"""
 <section class="hero" aria-labelledby="hero-title">
@@ -2573,10 +2570,6 @@ ul.plainlist li{margin:.2rem 0}
 .hero-map .tokyomap{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 .tokyomap-wrap{position:relative;line-height:0}
 .mtip{position:absolute;transform:translate(-50%,-140%);background:var(--fg);color:#fff;font-size:var(--fs-sm);font-weight:var(--fw-bold);padding:.18rem .5rem;border-radius:var(--radius-sm);white-space:nowrap;pointer-events:none;z-index:3;line-height:1.35}
-.isle-row{display:flex;flex-wrap:wrap;gap:.1rem .65rem;align-items:baseline;margin:.55rem 0 0;line-height:1.55}
-.isle-lbl{font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-semi);margin-right:.05rem}
-.isle-row a{font-size:var(--fs-xs);color:var(--muted);background:none;border:0;border-radius:0;padding:0}
-.isle-row a:hover{color:var(--accent);text-decoration:underline;border-color:transparent}
 @media(max-width:820px){.hero-grid{flex-direction:column;align-items:stretch;gap:1.4rem}.hero-main,.hero-map{flex:0 0 auto}.hero-map{max-width:520px;margin:0 auto;width:100%}}
 .provnote{margin:1.3rem 0 0;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--track);padding:.55rem .75rem;border-radius:var(--radius-sm);line-height:1.65}
 .hero-stats{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.15rem;position:relative}
