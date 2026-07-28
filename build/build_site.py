@@ -1235,7 +1235,7 @@ def build_program(m, slug, p, cats, progs=None):
         faq_html = f'<h2>{ic("help","hi")}よくある質問</h2><dl class="faq">{qas}</dl>'
 
     summary_html = f'<p class="lead">{esc(p["plain_summary"] or p["summary"] or "")}</p>' if (p["plain_summary"] or p["summary"]) else ""
-    ev_notice = "" if idx else '<p class="notice">※この情報は自動収集した暫定データで、内容確認中です。必ず公式ページでご確認ください。</p>'
+    ev_notice = "" if idx else '<p class="provnote">※このページは公表情報から自動収集した暫定データを含み、内容を確認中です。正確な最新情報は各制度の公式ページでご確認ください。</p>'
     # 信頼シグナル（掲載基準を満たしたindexページのみ。暫定ページは上の注意書きを表示）
     trustbar = ""
     if idx:
@@ -1254,7 +1254,7 @@ def build_program(m, slug, p, cats, progs=None):
         f'<p class="meta">最終確認日: <time>{esc(p["last_verified_at"] or "—")}</time> ／ 対象自治体: <a href="/area/tokyo/{slug}/">{esc(mn)}</a></p>'
         f'</div>'
         f'<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" loading="lazy" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>'
-        f'</div>{trustbar}{ev_notice}')
+        f'</div>{trustbar}')
     _about_zone = (
         f'<h2>{ic("info","hi")}この制度について</h2>{program_about(mn, title, ptype, fm)}'
         f'<p>{esc(mn)}で使えるほかの給付・手当は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>でまとめて確認できます。同じ制度の他自治体との比較は、ページ下部の比較リンクからどうぞ。</p>')
@@ -1263,6 +1263,7 @@ def build_program(m, slug, p, cats, progs=None):
     _zones = [_header_zone, _about_zone, _facts_zone]
     if faq_html: _zones.append(faq_html)
     if _tail_zone.strip(): _zones.append(_tail_zone)
+    if ev_notice: _zones[-1] += ev_notice   # 暫定データの注記は控えめに、ページ下部へ
     _bands = "".join(
         f'<section class="band {"band-white" if i%2==0 else "band-soft"}"><div class="bandin">{z}</div></section>'
         for i,z in enumerate(_zones))
@@ -1645,7 +1646,7 @@ def build_muni(m, slug, score, avg):
     total_yen, total_amt_n = amount_sum_of_programs(progs)
     mid=m["id"]
     # ほかの市区町村（種別を問わず五十音順の近隣）を対等に回遊
-    _tj={"ward":"区","city":"市","town":"町","village":"村"}
+    _tj={"special_ward":"区","city":"市","town":"町","village":"村"}
     _ordered=[x for x in sorted(munis, key=lambda z: YOMI.get(z["municipality_name"], z["municipality_name"])) if muni_slug(x)]
     _n=len(_ordered)
     _idx=next((i for i,x in enumerate(_ordered) if x["id"]==mid), None)
@@ -1953,8 +1954,8 @@ def build_guides():
 
 # ── トップ ──────────────────────────────────────────────────────────────────
 def build_home(muni_stats, score, cat_entries=None):
-    _tj={"ward":"区","city":"市","town":"町","village":"村"}
-    _grp={"ward":"ku","city":"shi","town":"cho","village":"cho"}
+    _tj={"special_ward":"区","city":"市","town":"町","village":"村"}
+    _grp={"special_ward":"ku","city":"shi","town":"cho","village":"cho"}
     # 62市区町村を対等に：五十音順の単一グリッド（区/市/町村の階層を廃し、種別は小バッジで表示）
     all62=sorted(muni_stats, key=lambda x: (YOMI.get(x[0]["municipality_name"], x[0]["municipality_name"]), x[1]))
     def grid(rows):
@@ -1969,9 +1970,16 @@ def build_home(muni_stats, score, cat_entries=None):
       f'<span class="pic">{icon_svg(ev)}</span><span>{esc(EV_META[ev][0])}</span></a>'
       for ev in EV_META)
     amt_sec = amount_rankings_html(cat_entries)
+    try:
+        _hero_svg = open(os.path.join(ROOT, "docs", "assets", "maps", "tokyo-interactive.svg"), encoding="utf-8").read()
+    except OSError:
+        _hero_svg = ""
+    hero_map_html = (f'<div class="hero-map"><figure><figcaption>地図から市区町村を選ぶ'
+                     f'<span>（クリックで各自治体へ・ホバーで名称表示）</span></figcaption>{_hero_svg}</figure></div>') if _hero_svg else ""
     body=f"""
 <section class="hero" aria-labelledby="hero-title">
-<div class="bandin">
+<div class="bandin hero-grid">
+<div class="hero-main">
 <p class="hero-eyebrow">東京都62市区町村の給付・手当・助成</p>
 <h1 id="hero-title"><span class="hero-tokyo">東京都</span>で<span class="hero-em">もらえるお金</span>が、<br class="hero-br">住む街ごとにひと目でわかる</h1>
 <p class="hero-lead">給付金・手当・助成を東京都62市区町村ごとに整理しました。出典と最終確認日つきなので、引っ越し先選びや制度の申請にそのまま使えます。</p>
@@ -1981,6 +1989,8 @@ def build_home(muni_stats, score, cat_entries=None):
 <button type="submit" class="hsearch-btn">検索</button>
 <ul class="hsac" id="hsac" role="listbox" aria-label="候補の市区町村・制度" hidden></ul>
 </form>
+</div>
+{hero_map_html}
 </div>
 </section>
 <section class="band band-white">
@@ -2019,8 +2029,6 @@ def build_home(muni_stats, score, cat_entries=None):
 <p class="fmore"><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p>
 </div>
 </section>
-<section class="band band-white">
-<div class="bandin homeguide"><h2 class="fh">{ic("book","hi")}くらしの制度ガイド</h2><p>制度の全体像を知りたい方へ。ライフイベントごとに、もらえるお金の種類と探し方をやさしく解説しています。</p><ul class="cmplist guidegrid"><li><a href="/guide/pregnancy-birth/">妊娠・出産でもらえるお金</a></li><li><a href="/guide/childcare/">子育て世帯の給付・手当</a></li><li><a href="/guide/moving/">引っ越しの手続きと助成</a></li><li><a href="/guide/retirement-unemployment/">退職・失業時の給付と軽減</a></li><li><a href="/guide/elderly-care/">高齢・介護の助成とサービス</a></li><li><a href="/guide/how-to-find/">使える制度の探し方</a></li></ul><p><a href="/guide/">くらしの制度ガイドをすべて見る ›</a></p></div></section>
 <script>
 (function(){{
  var q=document.getElementById('msearch'),g=document.getElementById('mgrid'),
@@ -2269,7 +2277,7 @@ CSS = """/* ── Design tokens ── */
   --fs-h3:1rem;
   --fs-h2:1.15rem;
   --fs-h1:1.5rem;
-  --fs-display:clamp(1.6rem,4.5vw,2.1rem);
+  --fs-display:clamp(1.85rem,4.2vw,2.4rem);
   --content-width:1000px;
   --fw-normal:400;
   --fw-semi:600;
@@ -2467,7 +2475,7 @@ ul.plainlist li{margin:.2rem 0}
 .bandin>:first-child{margin-top:0}
 .bandin>:last-child{margin-bottom:0}
 .band-white{background:var(--bg)}
-.band-soft{background:var(--soft)}
+.band-soft{background:#e7ecf4}
 .band-tint{background:var(--badge)}
 .hero{width:100vw;margin-left:calc(50% - 50vw);margin-top:-1.1rem;position:relative;
   background:radial-gradient(circle at 88% -20%,color-mix(in srgb,var(--accent) 12%,transparent) 0%,transparent 45%),linear-gradient(155deg,var(--badge) 0%,var(--soft) 48%,var(--bg) 100%);
@@ -2480,7 +2488,16 @@ ul.plainlist li{margin:.2rem 0}
 .hero-tokyo{color:var(--accent)}
 .hero-em{color:var(--fg);background:linear-gradient(transparent 58%,color-mix(in srgb,var(--accent) 22%,transparent) 58%);padding:0 .06em;border-radius:2px}
 .hero-br{display:none}
-.hero-lead{margin:0 0 1.1rem;font-size:var(--fs-md);color:var(--fg-2);line-height:1.75;max-width:40em;position:relative}
+.hero-lead{margin:0 0 1.2rem;font-size:var(--fs-lg);color:var(--fg-2);line-height:1.75;max-width:40em;position:relative}
+.hero-grid{display:flex;gap:2rem;align-items:center}
+.hero-main{flex:1 1 460px;min-width:0}
+.hero-map{flex:0 1 400px;min-width:0}
+.hero-map figure{margin:0}
+.hero-map figcaption{font-size:var(--fs-xs);color:var(--muted);margin:0 0 .4rem;font-weight:var(--fw-semi)}
+.hero-map figcaption span{font-weight:var(--fw-normal)}
+.hero-map .tokyomap{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+@media(max-width:820px){.hero-grid{flex-direction:column;align-items:stretch;gap:1.4rem}.hero-main,.hero-map{flex:0 0 auto}.hero-map{max-width:520px;margin:0 auto;width:100%}}
+.provnote{margin:1.3rem 0 0;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--track);padding:.55rem .75rem;border-radius:var(--radius-sm);line-height:1.65}
 .hero-stats{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.15rem;position:relative}
 .hero-stat{display:inline-flex;align-items:baseline;gap:.2rem;background:var(--bg);border:1px solid var(--line);
   border-radius:999px;padding:.28rem .7rem;font-size:var(--fs-sm);color:var(--muted);font-weight:var(--fw-semi)}
