@@ -1511,11 +1511,15 @@ def build_ranking(ev, score, avg=None):
     for rank,m in enumerate(ranked,1):
         s=score[m["id"]][ev]; slug=muni_slug(m)
         cls=' class="top3"' if rank<=3 else ''
-        yen_cell = f'計{esc(format_sum_yen(s["yen_sum"]))}' if s.get("yen_sum") else "—"
-        trs.append(f'<tr{cls} data-href="/area/tokyo/{slug}/{ev}/"><td class="rk">{rank}</td>'
-                   f'<td class="mn"><a href="/area/tokyo/{slug}/{ev}/">{esc(m["municipality_name"])}</a></td>'
-                   f'<td class="dt">{s["prog"]}制度</td>'
-                   f'<td class="dt yen">{yen_cell}</td></tr>')
+        yen=yen_of(m)
+        yen_cell = f'計{esc(format_sum_yen(yen))}' if yen else "—"
+        trs.append(
+            f'<tr{cls} data-href="/area/tokyo/{slug}/{ev}/" data-prog="{s["prog"]}" '
+            f'data-yen="{yen}" data-i="{rank}">'
+            f'<td class="rk">{rank}</td>'
+            f'<td class="mn"><a href="/area/tokyo/{slug}/{ev}/">{esc(m["municipality_name"])}</a></td>'
+            f'<td class="dt">{s["prog"]}制度</td>'
+            f'<td class="dt yen">{yen_cell}</td></tr>')
     title=f"{ev_name}の制度がある東京都の自治体｜掲載数・金額でみる"
     desc=clip(f"{persona}向けに、{ev_name}関連の制度掲載数が多い東京都の自治体から順に確認できます。金額が分かる制度の合計もあわせて表示します。",118)
     chart_js=('''<script>(function(){var root=document.currentScript&&document.currentScript.previousElementSibling;'''
@@ -1528,7 +1532,7 @@ def build_ranking(ev, score, avg=None):
     body=f"""
 <span class="badge" style="--pc:{color}">{esc(persona)}</span>
 <h1>{esc(ev_name)}の制度がある東京都の自治体</h1>
-<p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}関連の制度を掲載している件数が多い自治体から順に並べています。金額が分かる制度の合計（上限・月額などの目安）も併記します。</p>
+<p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}関連の制度を掲載している件数が多い自治体から順に並べています。金額が分かる制度の合計（上限・月額などの目安）も併記します。表の「制度数」「金額合計」見出しをクリックすると並び替えできます。</p>
 <div class="chartcard" style="--pc:{color}">
 <div class="mchips rsort" role="tablist" aria-label="グラフの並び替え">
 <button type="button" class="mchip on" data-rsort="prog" aria-pressed="true">制度順</button>
@@ -1540,9 +1544,15 @@ def build_ranking(ev, score, avg=None):
 <p class="cap">上位15自治体（金額合計順）の金額合計と制度数</p></div>
 </div>
 {chart_js}
-<div class="tablewrap"><table class="cmp rank">
-<thead><tr><th>順位</th><th>自治体</th><th>制度数</th><th>金額合計（目安）</th></tr></thead>
+<div class="tablewrap"><table class="cmp rank" id="ranktbl">
+<thead><tr>
+<th class="rk">順位</th>
+<th class="mn">自治体</th>
+<th class="sortable" data-sort="prog" aria-sort="descending"><button type="button">制度数 <span class="sarr"></span></button></th>
+<th class="sortable" data-sort="yen" aria-sort="none"><button type="button">金額合計（目安） <span class="sarr"></span></button></th>
+</tr></thead>
 <tbody>{''.join(trs)}</tbody></table></div>
+{RANK_TABLE_JS}
 <p class="notice">掲載件数・金額合計は当サイトの収録状況に基づく目安です。月額と一時金を単純合算しているため、実際の手厚さや受給可否を示すものではありません。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
 {rel_rankings(ev)}
 <p><a href="/find/">{CHEV_L} 目的・年代から探す にもどる</a></p>"""
@@ -1640,6 +1650,47 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     page(path=url+"index.html", title=title, description=desc, canonical=url,
          jsonld=[il], robots=robots, breadcrumb=bc, body=body)
     if items and INDEX_LIFEEVENT: sitemap_urls.append((url,"0.6"))
+
+# ── 目的別ランキング表の並び替え（制度数／金額）──────────────────────────────
+RANK_TABLE_JS = """<script>
+(function(){
+ var tbl=document.getElementById('ranktbl');
+ if(!tbl)return;
+ var body=tbl.tBodies[0];
+ if(!body)return;
+ var ths=[].slice.call(tbl.querySelectorAll('th[data-sort]'));
+ var dir={prog:'desc'};
+ function renumber(){
+  [].slice.call(body.rows).forEach(function(tr,i){
+   var rk=tr.querySelector('.rk');
+   if(rk)rk.textContent=String(i+1);
+   tr.classList.toggle('top3', i<3);
+  });
+ }
+ function applySort(key){
+  var natural='desc';
+  var d=dir[key]?(dir[key]==='asc'?'desc':'asc'):natural;
+  dir={}; dir[key]=d;
+  var rows=[].slice.call(body.rows);
+  rows.sort(function(a,b){
+   var av=+(a.getAttribute('data-'+key)||0), bv=+(b.getAttribute('data-'+key)||0);
+   if(av!==bv) return av-bv;
+   var ai=+(a.getAttribute('data-i')||0), bi=+(b.getAttribute('data-i')||0);
+   return ai-bi;
+  });
+  if(d==='desc') rows.reverse();
+  rows.forEach(function(tr){body.appendChild(tr);});
+  renumber();
+  ths.forEach(function(th){
+   th.setAttribute('aria-sort', th.getAttribute('data-sort')===key
+     ?(d==='asc'?'ascending':'descending'):'none');
+  });
+ }
+ ths.forEach(function(th){
+  th.addEventListener('click',function(){applySort(th.getAttribute('data-sort'));});
+ });
+})();
+</script>"""
 
 # ── 自治体ハブ ──────────────────────────────────────────────────────────────
 PLIST_JS = """<script>
@@ -2519,10 +2570,12 @@ footer.site a{color:var(--muted)}
 .tablewrap{overflow-x:auto;margin:.6rem 0}
 table.cmp{border-collapse:collapse;width:100%;font-size:var(--fs-lg)}
 table.cmp th,table.cmp td{border:1px solid var(--line);padding:.5rem .6rem;text-align:left;vertical-align:top}
-table.cmp thead th{background:var(--soft);position:sticky;top:0}
+table.cmp thead th{background:var(--soft);position:sticky;top:0;white-space:nowrap}
 table.cmp td.mn{white-space:nowrap;font-size:var(--mn-fs);font-weight:var(--mn-fw)}
 table.cmp td.mn a{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg)}
 table.cmp td.dt{white-space:nowrap;color:var(--muted);font-size:var(--fs-sm)}
+table.cmp.rank th.rk,table.cmp.rank td.rk{width:3.2rem;min-width:3.2rem;text-align:center;white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums}
+table.cmp.rank th.mn,table.cmp.rank td.mn{white-space:nowrap}
 .na{color:var(--muted);font-size:.85em}
 .miss{font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem .8rem}
 .note{font-size:var(--fs-sm);color:var(--muted)}
@@ -2671,7 +2724,6 @@ ul.plainlist li{margin:.2rem 0}
 .pcard .pdesc{font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem}
 .pcard .ptop{font-size:var(--fs-xs);color:var(--pc);font-weight:var(--fw-bold);margin-top:.25rem}
 .pcard .parrow{margin-left:auto;margin-top:.15rem;color:var(--pc);font-weight:var(--fw-bold);flex:0 0 auto}
-table.cmp.rank td.rk{width:2.4rem;text-align:center;color:var(--muted);font-variant-numeric:tabular-nums}
 table.cmp.rank tr.top3 td.rk{color:var(--accent);font-weight:var(--fw-black)}
 table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 
