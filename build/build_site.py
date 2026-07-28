@@ -2055,12 +2055,11 @@ def build_home(muni_stats, score, cat_entries=None):
 <h2 class="fh">{ic("home","hi")}お住まいの市区町村から探す（東京都62市区町村）</h2>
 <p class="lead2">23区・多摩地域の市・町村・島しょを区別なく、五十音順で一覧しています。どの市区町村も同じ粒度で制度をまとめています。</p>
 <div class="mfilter">
-<input type="search" id="msearch" placeholder="市区町村名で検索（例：世田谷 / せたがや / setagaya）" aria-label="市区町村名で検索" autocomplete="off">
 <div class="mchips" role="group" aria-label="種別で絞り込み">
-<button type="button" class="mchip on" data-f="all">すべて<b>62</b></button>
-<button type="button" class="mchip" data-f="ku">区<b>23</b></button>
-<button type="button" class="mchip" data-f="shi">市<b>26</b></button>
-<button type="button" class="mchip" data-f="cho">町村・島しょ<b>13</b></button>
+<button type="button" class="mchip on" data-f="all" aria-pressed="true">すべて<b>62</b></button>
+<button type="button" class="mchip" data-f="ku" aria-pressed="false">区<b>23</b></button>
+<button type="button" class="mchip" data-f="shi" aria-pressed="false">市<b>26</b></button>
+<button type="button" class="mchip" data-f="cho" aria-pressed="false">町村・島しょ<b>13</b></button>
 </div>
 </div>
 {grid(all62)}
@@ -2076,26 +2075,21 @@ def build_home(muni_stats, score, cat_entries=None):
 </section>
 <script>
 (function(){{
- var q=document.getElementById('msearch'),g=document.getElementById('mgrid'),
+ var g=document.getElementById('mgrid'),
      none=document.getElementById('mnone'),
      chips=[].slice.call(document.querySelectorAll('.mchip')),
      lis=[].slice.call(g.querySelectorAll('li')),f='all';
- function nz(s){{return (s||'').toLowerCase();}}
  function apply(){{
-  var t=nz(q.value.trim()),shown=0;
+  var shown=0;
   lis.forEach(function(li){{
-   var okF=(f==='all'||li.getAttribute('data-g')===f);
-   var okT=(!t||nz(li.getAttribute('data-nm')).indexOf(t)>=0
-            ||nz(li.getAttribute('data-yo')).indexOf(t)>=0
-            ||nz(li.getAttribute('data-ro')).indexOf(t)>=0);
-   var vis=okF&&okT;li.hidden=!vis;if(vis)shown++;
+   var vis=(f==='all'||li.getAttribute('data-g')===f);
+   li.hidden=!vis;if(vis)shown++;
   }});
   none.hidden=shown>0;
  }}
- q.addEventListener('input',apply);
  chips.forEach(function(c){{c.addEventListener('click',function(){{
   f=c.getAttribute('data-f');
-  chips.forEach(function(x){{x.classList.toggle('on',x===c);x.setAttribute('aria-pressed',x===c);}});
+  chips.forEach(function(x){{var on=x===c;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on);}});
   apply();
  }});}});
 }})();
@@ -2197,8 +2191,7 @@ def build_home(muni_stats, score, cat_entries=None):
   e.preventDefault();
   if(!box.value.trim()){{if(active>=0&&rows[active])go(rows[active].href);return;}}
   if(rows.length){{go(active>=0?rows[active].href:rows[0].href);return;}}
-  var t=box.value.trim(),ms=document.getElementById('msearch'),area=document.getElementById('area');
-  if(ms){{ms.value=t;ms.dispatchEvent(new Event('input'));}}
+  var area=document.getElementById('area');
   if(area)area.scrollIntoView({{behavior:'smooth'}});
  }});
  document.addEventListener('click',function(e){{if(!form.contains(e.target))close();}});
@@ -2413,9 +2406,7 @@ ul.mgrid li a{font-size:var(--fs-md);font-weight:var(--fw-semi);color:var(--fg)}
 em.mt{font-style:normal;font-size:var(--fs-xs);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 .28rem;line-height:1.5;flex:none}
 p.lead2{color:var(--muted);font-size:var(--fs-sm);margin:.1rem 0 .6rem}
 .mfilter{margin:.2rem 0 .7rem}
-#msearch{width:100%;box-sizing:border-box;padding:.6rem .8rem;font-size:var(--fs-lg);border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);color:inherit}
-#msearch:focus{outline:2px solid var(--accent);outline-offset:1px}
-.mchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.mchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.15rem}
 .mchip{font:inherit;font-size:var(--fs-sm);font-weight:var(--fw-semi);cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:.28rem .7rem;display:inline-flex;align-items:center;gap:.3rem}
 .mchip b{font-weight:var(--fw-semi);font-size:var(--fs-xs);opacity:.7}
 .mchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
