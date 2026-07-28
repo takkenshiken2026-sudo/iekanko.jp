@@ -2748,7 +2748,7 @@ ul.plainlist li{margin:.2rem 0}
 .hero{width:100vw;margin-left:calc(50% - 50vw);margin-top:-1.1rem;position:relative;
   background:radial-gradient(circle at 88% -20%,color-mix(in srgb,var(--accent) 12%,transparent) 0%,transparent 45%),linear-gradient(155deg,var(--badge) 0%,var(--soft) 48%,var(--bg) 100%);
   border-bottom:1px solid var(--line)}
-.hero .bandin{padding-top:4.4rem;padding-bottom:4rem}
+.hero .bandin{padding-top:3.6rem;padding-bottom:3.2rem}
 .hero-eyebrow{margin:0 0 .55rem;font-size:var(--fs-sm);font-weight:var(--fw-bold);letter-spacing:.04em;
   color:var(--accent);position:relative}
 .hero h1{font-size:var(--fs-display);line-height:1.3;margin:0 0 .75rem;font-weight:var(--fw-black);
@@ -2759,12 +2759,12 @@ ul.plainlist li{margin:.2rem 0}
 .hero-lead{margin:0 0 1.2rem;font-size:var(--fs-lg);color:var(--fg);line-height:1.75;max-width:40em;position:relative}
 .hero-grid{display:flex;gap:2rem;align-items:center}
 .hero-main{flex:1 1 460px;min-width:0}
-.hero-map{flex:0 1 400px;min-width:0}
+.hero-map{flex:0 1 480px;min-width:0}
 .hero-map figure{margin:0}
 .hero-map .tokyomap{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 .tokyomap-wrap{position:relative;line-height:0}
 .mtip{position:absolute;transform:translate(-50%,-140%);background:var(--fg);color:#fff;font-size:var(--fs-sm);font-weight:var(--fw-bold);padding:.18rem .5rem;border-radius:var(--radius-sm);white-space:nowrap;pointer-events:none;z-index:3;line-height:1.35}
-@media(max-width:820px){.hero-grid{flex-direction:column;align-items:stretch;gap:1.4rem}.hero-main,.hero-map{flex:0 0 auto}.hero-map{max-width:520px;margin:0 auto;width:100%}}
+@media(max-width:820px){.hero-grid{flex-direction:column;align-items:stretch;gap:1.4rem}.hero-main,.hero-map{flex:0 0 auto}.hero-map{max-width:624px;margin:0 auto;width:100%}}
 .provnote{margin:1.3rem 0 0;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--track);padding:.55rem .75rem;border-radius:var(--radius-sm);line-height:1.65}
 .hero-stats{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.15rem;position:relative}
 .hero-stat{display:inline-flex;align-items:baseline;gap:.2rem;background:var(--bg);border:1px solid var(--line);
