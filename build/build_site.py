@@ -1238,15 +1238,21 @@ def build_program(m, slug, p, cats, progs=None):
     if "example.invalid" in official:  # 復元DBの「公式URL無し」ダミーは公式リンクを出さない
         official = ""
     off_host = re.sub(r"^https?://", "", official).split("/")[0] if official else ""
-    if official:
-        dl.append(f'<div class="fact"><dt>{ic("external","fi")}公式ページ</dt>'
-                  f'<dd><a class="offbtn" href="{esc(official)}" target="_blank" rel="nofollow noopener">'
-                  f'公式ページで詳細・申請方法を確認{CHEV_R}'
-                  f'<span class="offbtn-host">{esc(off_host)}</span></a></dd></div>')
     facts_html = f'<dl class="facts">{"".join(dl)}</dl>' if dl else "<p>詳細は出典の公式ページをご確認ください。</p>"
     faq_html = ""
     if faq:
         faq_html = f'<h2>{ic("help","hi")}よくある質問</h2>{faq_table_html(faq)}'
+    # 公式ページは FAQ の直下に独立セクション（制度の内容表からは外す）
+    official_html = ""
+    if official:
+        official_html = (
+            f'<h2>{ic("external","hi")}公式ページ</h2>'
+            f'<p class="offlead">最新の対象・金額・申請方法は、{esc(mn)}の公式ページでご確認ください。</p>'
+            f'<p class="official"><a class="offbtn" href="{esc(official)}" target="_blank" rel="nofollow noopener">'
+            f'公式ページで詳細・申請方法を確認{CHEV_R}'
+            f'<span class="offbtn-host">{esc(off_host)}</span></a></p>'
+            f'<p class="offnote">※金額・対象・申請方法は制度改定で変わることがあります。'
+            f'最新情報は公式ページや{esc(mn)}の窓口で必ずご確認ください。</p>')
 
     summary_html = f'<p class="lead">{esc(p["plain_summary"] or p["summary"] or "")}</p>' if (p["plain_summary"] or p["summary"]) else ""
     ev_notice = "" if idx else '<p class="provnote">※このページは公表情報から自動収集した暫定データを含み、内容を確認中です。正確な最新情報は各制度の公式ページでご確認ください。</p>'
@@ -1272,12 +1278,15 @@ def build_program(m, slug, p, cats, progs=None):
     _about_zone = (
         f'<h2>{ic("info","hi")}この制度について</h2>{program_about(mn, title, ptype, fm)}'
         f'<p>{esc(mn)}で使えるほかの給付・手当は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>でまとめて確認できます。同じ制度の他自治体との比較は、ページ下部の比較リンクからどうぞ。</p>')
-    _facts_zone = (f'<h2>{ic("clipboard","hi")}制度の内容</h2>{facts_html}'
-                   f'<p class="offnote">※金額・対象・申請方法は制度改定で変わることがあります。'
-                   f'最新情報は上記の公式ページや{esc(mn)}の窓口で必ずご確認ください。</p>')
+    _facts_zone = f'<h2>{ic("clipboard","hi")}制度の内容</h2>{facts_html}'
+    if not official_html:
+        _facts_zone += (
+            f'<p class="offnote">※金額・対象・申請方法は制度改定で変わることがあります。'
+            f'最新情報は公式ページや{esc(mn)}の窓口で必ずご確認ください。</p>')
     _tail_zone = related_programs(m, slug, p, progs) + compare_links(cats)
     _zones = [_header_zone, _about_zone, _facts_zone]
     if faq_html: _zones.append(faq_html)
+    if official_html: _zones.append(official_html)
     if _tail_zone.strip(): _zones.append(_tail_zone)
     if ev_notice: _zones[-1] += ev_notice   # 暫定データの注記は控えめに、ページ下部へ
     _bands = "".join(
@@ -2352,7 +2361,9 @@ h3{font-size:var(--fs-h3);font-weight:var(--fw-bold)}
 .offbtn:hover{text-decoration:underline}
 .offbtn .ic{width:1.05em;height:1.05em;vertical-align:-.16em}
 .offbtn-host{font-size:var(--fs-xs);font-weight:var(--fw-normal);color:var(--muted);word-break:break-all}
+.offlead{color:var(--fg-2);margin:.2rem 0 .85rem;font-size:var(--fs-md)}
 .offnote{font-size:var(--fs-sm);color:var(--muted);margin:.6rem 0 0;line-height:1.65}
+.official{font-size:var(--fs-md);margin:.2rem 0 .4rem}
 dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .fact{display:grid;grid-template-columns:8.5rem 1fr;border-top:1px solid var(--line)}
 .fact:first-child{border-top:0}
@@ -2361,7 +2372,6 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .fact dd .offlink{word-break:break-all}
 .src{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap;margin-left:.3rem}
 @media(max-width:560px){.fact{grid-template-columns:1fr}.fact dt{border-bottom:1px solid var(--line)}}
-.official{font-size:var(--fs-md);margin:1rem 0}
 .hi{width:1.08em;height:1.08em;vertical-align:-.16em;margin-right:.42rem;color:var(--accent);flex:none}
 .fi{width:1em;height:1em;vertical-align:-.13em;margin-right:.36rem;color:var(--muted);flex:none}
 .fact dt .fi{color:color-mix(in srgb,var(--accent) 55%,var(--muted))}
