@@ -31,6 +31,7 @@ CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "takken.shiken.2026@gmail.com
 # お問い合わせフォーム（Googleフォーム等）。設定するとフッター・各ページの窓口がフォーム優先になる。
 CONTACT_FORM_URL = os.environ.get("SEIDO_CONTACT_FORM", "https://forms.gle/H3ASWfUnQ44E2LTX6").strip()
 ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
+A8_AFFILIATE_URL = "https://px.a8.net/svt/ejp?a8mat=4B5R02+7OUXF6+56IG+BW0YB&a8ejpredirect=https%3A%2F%2Fiekanko.jp%2F"
 # フッター共通の「お問い合わせ」リンク（全ページ）。フォーム未設定時はメールにフォールバック。
 if CONTACT_FORM_URL:
     FOOTER_CONTACT_HTML = f'・<a href="{CONTACT_FORM_URL}" target="_blank" rel="noopener">お問い合わせ</a>'
@@ -38,6 +39,11 @@ elif "【" not in CONTACT_EMAIL:
     FOOTER_CONTACT_HTML = f'・<a href="mailto:{CONTACT_EMAIL}">お問い合わせ</a>'
 else:
     FOOTER_CONTACT_HTML = ""
+FOOTER_AFFILIATE_HTML = (
+    f'<p class="affiliate-note"><span class="badge">PR</span> '
+    f'<a href="{A8_AFFILIATE_URL}" target="_blank" rel="sponsored noopener noreferrer">'
+    '住まい探し・暮らしのサービスを見る</a></p>'
+)
 # Google Analytics 4 測定ID（全ページの <head> に gtag を出力）。空文字で無効化可。
 GA_MEASUREMENT_ID = os.environ.get("SEIDO_GA_ID", "G-9TB0TXT8X0").strip()
 # Google AdSense パブリッシャーID（全ページの <head> に adsbygoogle.js を出力／ads.txt も生成）。空文字で無効化可。
@@ -1120,6 +1126,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <nav class="fnav" aria-label="サイト情報">
 <a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>{FOOTER_CONTACT_HTML}
 </nav>
+{FOOTER_AFFILIATE_HTML}
 <p class="copy">© {ESTABLISHED} {esc(SITE_SHORT)}（東京都62自治体・出典付き / 最終確認日を明記）</p>
 </footer>
 <script>document.addEventListener("click",function(e){{var tr=e.target.closest("tr[data-href]");if(!tr||e.target.closest("a,button,input,label,select"))return;var u=tr.getAttribute("data-href");if(u)location.href=u;}});</script>
@@ -2093,7 +2100,8 @@ def build_static_pages():
           f'詳細は <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Googleのプライバシーポリシー</a> をご確認ください。</p>'
           ) if ANALYTICS_NOTE else ""
     ads = ('<h2>広告の配信について</h2>'
-           '<p>本サイトは、第三者配信の広告サービス「Google AdSense」を利用しています。'
+           '<p>本サイトは、第三者配信の広告サービス「Google AdSense」のほか、'
+           'アフィリエイト広告（広告リンク）を利用する場合があります。'
            'Googleなどの第三者配信事業者は、Cookieを利用して、ユーザーが本サイトや他のサイトに'
            '過去にアクセスした情報に基づいて広告を配信します。パーソナライズ広告は '
            '<a href="https://myadcenter.google.com/" rel="noopener noreferrer" target="_blank">Google 広告設定</a> '
@@ -2101,7 +2109,8 @@ def build_static_pages():
            '<a href="https://www.aboutads.info/choices/" rel="noopener noreferrer" target="_blank">www.aboutads.info</a> '
            'では第三者配信事業者のCookieを無効にできます。詳細は '
            '<a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer" target="_blank">Googleの広告に関するポリシー</a> '
-           'をご確認ください。</p>') if ADSENSE_CLIENT else ""
+           'をご確認ください。アフィリエイトリンクの遷移先や計測方法は、各事業者の規約・'
+           'プライバシーポリシーに基づいて取り扱われます。</p>') if ADSENSE_CLIENT else ""
     priv = wrap(f"""
 <h1>プライバシーポリシー</h1>
 <p class="lead">本サイト「{esc(SITE_SHORT)}」における個人情報・アクセス情報の取り扱い方針です。</p>
@@ -2737,6 +2746,8 @@ ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
 ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem;font-weight:400}
 .fnav{margin:0 0 .7rem;line-height:2}
 .fnav a{color:var(--muted)}
+.affiliate-note{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin:.2rem 0 .7rem}
+.affiliate-note a{color:var(--fg);font-weight:600}
 footer .copy{margin:.3rem 0 0}
 .doc h2{font-size:var(--fs-h2)}
 .doc .lead{margin-bottom:1rem}
