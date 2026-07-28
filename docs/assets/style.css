@@ -327,7 +327,6 @@ ul.plainlist li{margin:.2rem 0}
 .pcard .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius-sm);padding:5px}
 .pcard .pic .ev-ic{width:15px;height:15px}
 .pcard .ptxt strong{font-size:var(--fs-lg);font-weight:var(--fw-bold);line-height:1.35}
-.pcard .page{font-size:var(--fs-xs);color:var(--muted);margin-top:.2rem}
 .pcard .pdesc{font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem}
 .pcard .ptop{font-size:var(--fs-xs);color:var(--pc);font-weight:var(--fw-bold);margin-top:.25rem}
 .pcard .parrow{margin-left:auto;margin-top:.15rem;color:var(--pc);font-weight:var(--fw-bold);flex:0 0 auto}
