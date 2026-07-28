@@ -1760,9 +1760,7 @@ def build_ranking(ev, score, avg=None):
 <div class="rsort-panel" data-rsort="prog">{chart_prog}
 <p class="cap">上位15自治体（掲載制度数順）の制度数と金額合計</p></div>
 <div class="rsort-panel" data-rsort="yen" hidden>{chart_yen}
-<p class="cap">上位15自治体（金額合計順）の金額合計と制度数</p></div>
-{affiliate_html("ranking", ev)}
-</div>
+<p class="cap">上位15自治体（金額合計順）の金額合計と制度数</p></div>{affiliate_html("ranking", ev)}</div>
 {chart_js}
 <div class="tablewrap"><table class="cmp rank" id="ranktbl">
 <thead><tr>
