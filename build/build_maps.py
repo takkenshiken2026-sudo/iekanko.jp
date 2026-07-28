@@ -125,10 +125,6 @@ def main():
     # ── 対話マップ（トップのヒーロー用。本土53＋島しょ部9を同一SVGに内包）──
     # 島しょ部は地理的に遠いため、地図下のインセットパネルに拡大配置する。
     ILAND="#9eafc6"; ISEA="#ffffff"; ILINE="#ffffff"
-    SHORT_ISLE={
-     "大島町":"大島","利島村":"利島","新島村":"新島","神津島村":"神津島",
-     "三宅村":"三宅","御蔵島村":"御蔵島","八丈町":"八丈","青ヶ島村":"青ヶ島","小笠原村":"小笠原",
-    }
     ISLE_ORDER=["大島町","利島村","新島村","神津島村","三宅村","御蔵島村","八丈町","青ヶ島村","小笠原村"]
 
     def isle_path(name, bx,by,bw,bh, pad=3, eps=0.45):
@@ -180,18 +176,15 @@ def main():
 
     INSET_TOP=round(H+7.2,1); INSET_H=100.0; H_I=INSET_TOP+INSET_H+8
     izu=ISLE_ORDER[:-1]; oga=ISLE_ORDER[-1]
-    gap_oga=18; oga_w=88; mx=20; title_w=52
-    left=mx+title_w; right=W-mx-oga_w-gap_oga
+    gap_oga=18; oga_w=88; mx=20
+    left=mx; right=W-mx-oga_w-gap_oga
     cell_w=(right-left)/len(izu)
-    shape_top=INSET_TOP+8; shape_h=INSET_H-30; label_y=INSET_TOP+INSET_H-9
+    shape_top=INSET_TOP+10; shape_h=INSET_H-20
 
     istyle=(f"<style>.mr{{fill:{ILAND};stroke:{ILINE};stroke-width:1.15;stroke-linejoin:round;"
             f"cursor:pointer;transition:fill .12s}}a:hover .mr,a:focus .mr{{fill:{ACCENT}}}"
             f".isle-bg{{fill:#f5f7fb;stroke:#d7dde8;stroke-width:1}}"
-            f".isle-ttl{{fill:#5b6577;font:700 12px 'Noto Sans JP',sans-serif}}"
-            f".isle-name{{fill:#33404f;font:600 10px 'Noto Sans JP',sans-serif;text-anchor:middle;pointer-events:none}}"
-            f".isle-div{{stroke:#c5cedes;stroke-width:1;stroke-dasharray:3 3}}"
-            f"a:hover .isle-name,a:focus .isle-name{{fill:{ACCENT}}}</style>")
+            f".isle-div{{stroke:#c5cedes;stroke-width:1;stroke-dasharray:3 3}}</style>")
     ip=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {int(W)} {H_I}" '
         f'role="img" aria-label="東京都の市区町村マップ（本土と島しょ部）。クリックで各自治体のページへ移動できます。" '
         f'preserveAspectRatio="xMidYMid meet" class="tokyomap">',
@@ -204,20 +197,17 @@ def main():
     # 島しょ部インセット（本土の下。伊豆諸島＋区切り＋小笠原）
     ip.append('<g class="isle-panel" aria-label="島しょ部">')
     ip.append(f'<rect class="isle-bg" x="12" y="{INSET_TOP}" width="736" height="{INSET_H}" rx="8"/>')
-    ip.append(f'<text class="isle-ttl" x="{mx+4}" y="{INSET_TOP+INSET_H/2+5}">島しょ部</text>')
     div_x=right+gap_oga/2
     ip.append(f'<line class="isle-div" x1="{div_x:.1f}" y1="{INSET_TOP+14}" x2="{div_x:.1f}" y2="{INSET_TOP+INSET_H-14}"/>')
     for i,name in enumerate(izu):
         bx=left+i*cell_w
         shape=isle_shape(name, bx+2, shape_top, cell_w-4, shape_h)
-        slug=SL[name]; short=SHORT_ISLE[name]; lx=bx+cell_w/2
-        ip.append(f'<a href="/area/tokyo/{slug}/" aria-label="{name}">{shape}<title>{name}</title>'
-                  f'<text class="isle-name" x="{lx:.1f}" y="{label_y}">{short}</text></a>')
+        slug=SL[name]
+        ip.append(f'<a href="/area/tokyo/{slug}/" aria-label="{name}">{shape}<title>{name}</title></a>')
     bx=W-mx-oga_w
     shape=isle_shape(oga, bx+2, shape_top, oga_w-4, shape_h)
-    slug=SL[oga]; short=SHORT_ISLE[oga]; lx=bx+oga_w/2
-    ip.append(f'<a href="/area/tokyo/{slug}/" aria-label="{oga}">{shape}<title>{oga}</title>'
-              f'<text class="isle-name" x="{lx:.1f}" y="{label_y}">{short}</text></a>')
+    slug=SL[oga]
+    ip.append(f'<a href="/area/tokyo/{slug}/" aria-label="{oga}">{shape}<title>{oga}</title></a>')
     ip.append('</g></svg>')
     open(os.path.join(OUT,"tokyo-interactive.svg"),"w",encoding="utf-8").write("".join(ip))
     print("wrote interactive map: tokyo-interactive.svg (with island inset)")
