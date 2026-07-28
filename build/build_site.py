@@ -135,6 +135,19 @@ def affiliate_html(page_kind, match_key, limit=AFFILIATE_MAX_PER_PAGE):
         return ""
     return "\n" + "".join(_affiliate_block(r) for r in hits)
 
+def chart_with_affiliate(chart_html, aff_html):
+    """グラフと PR を横並び（狭い画面では縦積み）。どちらか欠ける場合はそのまま返す。"""
+    chart_html = chart_html or ""
+    aff_html = (aff_html or "").lstrip("\n")
+    if chart_html and aff_html:
+        return (
+            f'<div class="chart-pr-row">'
+            f'<div class="chart-pr-main">{chart_html}</div>'
+            f'{aff_html}'
+            f'</div>'
+        )
+    return chart_html + (("\n" + aff_html) if aff_html else "")
+
 def affiliate_html_for_cats(cats, limit=AFFILIATE_MAX_PER_PAGE):
     """制度詳細向け：カテゴリIDに紐づく PR 枠を優先度順で最大 limit 件。"""
     out, seen = [], set()
@@ -1637,7 +1650,7 @@ def build_compare(cid, entries, counts=None):
 </div>
 {photo_figure(*photo_for_cats([cid], ev), "evphoto")}
 </div>
-{compare_chart_html(cid, entries)}{compare_coverage_html(cid, all_entries)}{affiliate_html("hikaku", cid)}
+{chart_with_affiliate(compare_chart_html(cid, entries) + compare_coverage_html(cid, all_entries), affiliate_html("hikaku", cid))}
 <div class="tablewrap"><table class="cmp">
 <thead><tr><th>自治体</th><th>支給額・助成額</th><th>確認日</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table></div>
@@ -1743,6 +1756,19 @@ def build_ranking(ev, score, avg=None):
               '''chips.forEach(function(c){c.addEventListener("click",function(){var k=c.getAttribute("data-rsort");'''
               '''chips.forEach(function(x){var on=x===c;x.classList.toggle("on",on);x.setAttribute("aria-pressed",on?"true":"false");});'''
               '''panels.forEach(function(p){p.hidden=p.getAttribute("data-rsort")!==k;});});});})();</script>''')
+    chartcard_html=(
+        f'<div class="chartcard" style="--pc:{color}">'
+        f'<div class="mchips rsort" role="tablist" aria-label="グラフの並び替え">'
+        f'<button type="button" class="mchip on" data-rsort="prog" aria-pressed="true">制度順</button>'
+        f'<button type="button" class="mchip" data-rsort="yen" aria-pressed="false">金額順</button>'
+        f'</div>'
+        f'<div class="rsort-panel" data-rsort="prog">{chart_prog}'
+        f'<p class="cap">上位15自治体（掲載制度数順）の制度数と金額合計</p></div>'
+        f'<div class="rsort-panel" data-rsort="yen" hidden>{chart_yen}'
+        f'<p class="cap">上位15自治体（金額合計順）の金額合計と制度数</p></div>'
+        f'</div>'
+    )
+    chart_block = chart_with_affiliate(chartcard_html, affiliate_html("ranking", ev))
     body=f"""
 <div class="area-head">
 <div class="area-head-main">
@@ -1752,15 +1778,7 @@ def build_ranking(ev, score, avg=None):
 </div>
 {photo_figure(*EV_PHOTO[ev], "evphoto")}
 </div>
-<div class="chartcard" style="--pc:{color}">
-<div class="mchips rsort" role="tablist" aria-label="グラフの並び替え">
-<button type="button" class="mchip on" data-rsort="prog" aria-pressed="true">制度順</button>
-<button type="button" class="mchip" data-rsort="yen" aria-pressed="false">金額順</button>
-</div>
-<div class="rsort-panel" data-rsort="prog">{chart_prog}
-<p class="cap">上位15自治体（掲載制度数順）の制度数と金額合計</p></div>
-<div class="rsort-panel" data-rsort="yen" hidden>{chart_yen}
-<p class="cap">上位15自治体（金額合計順）の金額合計と制度数</p></div>{affiliate_html("ranking", ev)}</div>
+{chart_block}
 {chart_js}
 <div class="tablewrap"><table class="cmp rank" id="ranktbl">
 <thead><tr>
@@ -2854,6 +2872,16 @@ ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);marg
 .prbox .prcta{margin:0}
 .prbox .prcta a{font-weight:700}
 .prbox .prpixel{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.chart-pr-row{display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap;margin:1rem 0 1.2rem}
+.chart-pr-main{flex:1 1 420px;min-width:0}
+.chart-pr-row .cmpchart,.chart-pr-row .chartcard{margin:0}
+.chart-pr-row .prbox{flex:0 0 300px;margin:0;max-width:100%;box-sizing:border-box}
+.chart-pr-row .prmedia{margin:.45rem 0}
+.chart-pr-row .prmedia img{margin:0 auto}
+@media(max-width:860px){
+.chart-pr-row{flex-direction:column}
+.chart-pr-row .prbox{flex:0 0 auto;width:100%;max-width:640px}
+}
 footer .copy{margin:.3rem 0 0}
 .doc h2{font-size:var(--fs-h2)}
 .doc .lead{margin-bottom:1rem}
@@ -2871,7 +2899,6 @@ ul.plainlist li{margin:.2rem 0}
 .chartcard .rsort,.chartcard .rsort-panel{width:100%;max-width:640px}
 .chartcard .rsort{margin:0 0 .55rem}
 .chartcard .mchip.on{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:#fff}
-.chartcard .prbox{align-self:stretch;max-width:640px;width:100%;margin:.75rem 0 .55rem;box-sizing:border-box}
 .chart{width:100%;max-width:640px;height:auto;display:block;margin:0 auto;font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
 .chart .c-track{fill:var(--track)}
 .chart .c-bar{fill:var(--pc)}
