@@ -19,6 +19,17 @@ JSON_DIR = os.path.join(ROOT, "docs", "assets", "data", "area")
 def esc(s):
     return html.escape(str(s or ""), quote=True)
 
+# 見出し用アイコン（build_site.py の .hi と同一様式のインラインSVG）
+_HI_ICONS = {
+    "yen": '<path d="M6 4l6 8 6-8"/><path d="M12 12v8"/><path d="M8 14h8"/><path d="M8 17.5h8"/>',
+    "home": '<path d="M4 11l8-7 8 7M6 10v9h12v-9"/>',
+    "bars": '<path d="M5 20V11M12 20V4M19 20v-6"/>',
+}
+def _hi(name):
+    return ('<svg class="hi" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" '
+            f'aria-hidden="true">{_HI_ICONS[name]}</svg>')
+
 
 def fmt_yen(v: Optional[int], kind="absolute") -> str:
     if not v:
@@ -296,7 +307,7 @@ def figures_section_html(slug: str, data: Optional[dict] = None, part: str = "al
             return ""
         return (
             '<section class="figures" id="figures-benefit">'
-            '<div class="figures-intro"><h2>もらえるお金の目安</h2>'
+            f'<div class="figures-intro"><h2>{_hi("yen")}もらえるお金の目安</h2>'
             f'<p>{esc(name)}で受けられる手当・助成のうち、自治体で差が出やすく金額が分かるものの目安です。</p></div>'
             f'<div class="figures-grid">{benefit_block}</div>'
             f'{anim}</section>'
@@ -306,7 +317,7 @@ def figures_section_html(slug: str, data: Optional[dict] = None, part: str = "al
             return ""
         return (
             '<section class="figures" id="figures">'
-            '<div class="figures-intro"><h2>住まい・交通のかかる数字</h2>'
+            f'<div class="figures-intro"><h2>{_hi("home")}住まい・交通のかかる数字</h2>'
             f'<p>{esc(name)}の中古マンション・住宅地価・駅利用者を、近隣エリアや都内中央値と並べて比較します。{esc(near_note)}</p></div>'
             f'<div class="figures-grid">{place_block}</div>'
             f'<p class="figures-note">{note}</p>{anim}</section>'
@@ -314,7 +325,7 @@ def figures_section_html(slug: str, data: Optional[dict] = None, part: str = "al
     return (
         '<section class="figures" id="figures">'
         '<div class="figures-intro">'
-        '<h2>数字でみるこの地域</h2>'
+        f'<h2>{_hi("bars")}数字でみるこの地域</h2>'
         f"<p>{esc(name)}で受けられる手当の目安と、住まい・交通にかかる数字を一覧にしました。</p>"
         "</div>"
         f'<div class="figures-grid">'

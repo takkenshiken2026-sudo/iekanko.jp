@@ -1107,10 +1107,18 @@ def related_programs(m, slug, p, progs):
     sibs=[q for q in progs if q["id"]!=p["id"] and (pe & {e["slug"] for e in events_of(q["id"])})]
     sibs=sibs[:6]
     if not sibs: return ""
-    lis="".join(f'<li><a href="/area/tokyo/{slug}/seido/{q["id"]}/">{esc(q["title"])}</a>'
-                f'<span class="pt">{esc(PT_JA.get(q["program_type"],""))}</span></li>' for q in sibs)
+    rows=[]
+    for q in sibs:
+        amt=amount_of(facts_of(q["id"])); yen=extract_any_yen(amt) if amt else 0
+        amt_disp=(amount_prefix(amt)+format_sum_yen(yen)) if yen else "—"
+        href=f'/area/tokyo/{slug}/seido/{q["id"]}/'
+        rows.append(f'<tr data-href="{href}"><td class="c-name"><a href="{href}">{esc(q["title"])}</a></td>'
+                    f'<td class="c-amt{"" if yen else " na"}">{esc(amt_disp)}</td>'
+                    f'<td class="c-type">{esc(PT_JA.get(q["program_type"],"制度"))}</td></tr>')
     return (f'<section class="related"><h2>{ic("link","hi")}{esc(m["municipality_name"])}の関連する制度</h2>'
-            f'<ul class="proglist">{lis}</ul></section>')
+            f'<div class="tablewrap"><table class="ptable">'
+            f'<thead><tr><th class="c-name">制度・手当</th><th class="c-amt">金額の目安</th>'
+            f'<th class="c-type">種別</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div></section>')
 
 def _fact_clean(v):
     return re.sub(r"[。\.．\s]+$", "", (v or "").strip())
@@ -1147,8 +1155,6 @@ def program_about(mn, title, ptype, fm):
     html_out = "<p>" + "".join(s) + "</p>"
     if proc:
         html_out += "<p>" + "、".join(proc) + "です。</p>"
-    html_out += (f'<p class="note">金額・対象・申請方法は制度改定で変わることがあります。'
-                 f'最新情報は下記の公式ページや{esc(mn)}の窓口で必ずご確認ください。</p>')
     return html_out
 
 def build_faq(fm, title, mn, ptype, cats):
@@ -1266,7 +1272,9 @@ def build_program(m, slug, p, cats, progs=None):
     _about_zone = (
         f'<h2>{ic("info","hi")}この制度について</h2>{program_about(mn, title, ptype, fm)}'
         f'<p>{esc(mn)}で使えるほかの給付・手当は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>でまとめて確認できます。同じ制度の他自治体との比較は、ページ下部の比較リンクからどうぞ。</p>')
-    _facts_zone = f'<h2>{ic("clipboard","hi")}制度の内容</h2>{facts_html}'
+    _facts_zone = (f'<h2>{ic("clipboard","hi")}制度の内容</h2>{facts_html}'
+                   f'<p class="offnote">※金額・対象・申請方法は制度改定で変わることがあります。'
+                   f'最新情報は上記の公式ページや{esc(mn)}の窓口で必ずご確認ください。</p>')
     _tail_zone = related_programs(m, slug, p, progs) + compare_links(cats)
     _zones = [_header_zone, _about_zone, _facts_zone]
     if faq_html: _zones.append(faq_html)
@@ -1566,12 +1574,19 @@ PLIST_JS = """<script>
   });
   if(none)none.hidden=shown>0;
  }
- function resort(){
-  var mode=sortsel?sortsel.value:'cat',arr=lis.slice();
-  if(mode==='name')arr.sort(function(a,b){return a.getAttribute('data-nm').localeCompare(b.getAttribute('data-nm'),'ja');});
-  else if(mode==='amt')arr.sort(function(a,b){return (+b.getAttribute('data-amt'))-(+a.getAttribute('data-amt'));});
+ var dir={},tbl=list.closest('table'),
+     ths=tbl?[].slice.call(tbl.querySelectorAll('th[data-sort]')):[];
+ function applySort(key){
+  var natural=(key==='amt')?'desc':'asc';
+  var d=dir[key]?(dir[key]==='asc'?'desc':'asc'):natural;dir[key]=d;
+  var arr=lis.slice();
+  if(key==='name')arr.sort(function(a,b){return a.getAttribute('data-nm').localeCompare(b.getAttribute('data-nm'),'ja');});
+  else if(key==='amt')arr.sort(function(a,b){return (+a.getAttribute('data-amt'))-(+b.getAttribute('data-amt'));});
   else arr.sort(function(a,b){return (+a.getAttribute('data-i'))-(+b.getAttribute('data-i'));});
+  if(d==='desc')arr.reverse();
   arr.forEach(function(li){list.appendChild(li);});
+  ths.forEach(function(th){th.setAttribute('aria-sort',th.getAttribute('data-sort')===key?(d==='asc'?'ascending':'descending'):'none');});
+  if(sortsel)sortsel.value=(key==='name'||key==='amt')?key:'cat';
  }
  q.addEventListener('input',apply);
  chips.forEach(function(c){c.addEventListener('click',function(){
@@ -1579,7 +1594,8 @@ PLIST_JS = """<script>
   chips.forEach(function(x){var on=x===c;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on);});
   apply();
  });});
- if(sortsel)sortsel.addEventListener('change',resort);
+ ths.forEach(function(th){th.addEventListener('click',function(){applySort(th.getAttribute('data-sort'));});});
+ if(sortsel)sortsel.addEventListener('change',function(){dir[sortsel.value]=null;applySort(sortsel.value);});
 })();
 </script>"""
 
@@ -1644,7 +1660,8 @@ def build_muni(m, slug, score, avg):
       f'<option value="cat">カテゴリ順</option><option value="name">名称順</option>'
       f'<option value="amt">金額が高い順</option></select></label></div></div>'
       f'<div class="tablewrap"><table class="ptable">'
-      f'<thead><tr><th class="c-name">制度・手当</th><th class="c-amt">金額の目安</th>'
+      f'<thead><tr><th class="c-name sortable" data-sort="name"><button type="button">制度・手当 <span class="sarr"></span></button></th>'
+      f'<th class="c-amt sortable" data-sort="amt"><button type="button">金額の目安 <span class="sarr"></span></button></th>'
       f'<th class="c-cat">カテゴリ</th><th class="c-type">種別</th></tr></thead>'
       f'<tbody id="plist">{"".join(li_html)}</tbody></table></div>'
       f'<p class="pnone" id="pnone" hidden>該当する制度が見つかりません。条件を変えてお試しください。</p>'
@@ -1666,7 +1683,7 @@ def build_muni(m, slug, score, avg):
             else: lo=max(0,_n-13)
         near=[_ordered[i] for i in range(lo,hi) if i!=_idx]
         chips="".join(f'<a href="/area/tokyo/{muni_slug(x)}/"><em class="mt">{_tj.get(x["municipality_type"],"")}</em>{esc(x["municipality_name"])}</a>' for x in near)
-        others_html=(f'<section class="others"><h2>ほかの市区町村を見る</h2>'
+        others_html=(f'<section class="others"><h2>{ic("building","hi")}ほかの市区町村を見る</h2>'
                      f'<div class="ostrip">{chips}</div>'
                      f'<p class="more"><a href="/#area">{CHEV_R} 東京都62市区町村の一覧から探す</a></p></section>')
     title = f"{mn}で受けられる給付・手当・助成 一覧｜対象・金額まとめ"
@@ -2331,10 +2348,11 @@ h3{font-size:var(--fs-h3);font-weight:var(--fw-bold)}
 .trustbar{display:flex;flex-wrap:wrap;gap:.45rem;margin:.1rem 0 1rem}
 .tchip{display:inline-flex;align-items:center;gap:.32rem;font-size:var(--fs-sm);font-weight:var(--fw-semi);color:var(--fg-2);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.26rem .7rem}
 .tci{width:1em;height:1em;color:var(--pc-house);flex:none}
-.offbtn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.15rem .5rem;font-weight:var(--fw-bold);color:var(--accent);background:var(--badge);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:var(--radius-sm);padding:.45rem .8rem;text-decoration:none;line-height:1.5}
-.offbtn:hover{background:color-mix(in srgb,var(--accent) 12%,var(--bg));text-decoration:none}
+.offbtn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.1rem .45rem;font-weight:var(--fw-semi);color:var(--accent);text-decoration:none;line-height:1.5}
+.offbtn:hover{text-decoration:underline}
 .offbtn .ic{width:1.05em;height:1.05em;vertical-align:-.16em}
 .offbtn-host{font-size:var(--fs-xs);font-weight:var(--fw-normal);color:var(--muted);word-break:break-all}
+.offnote{font-size:var(--fs-sm);color:var(--muted);margin:.6rem 0 0;line-height:1.65}
 dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .fact{display:grid;grid-template-columns:8.5rem 1fr;border-top:1px solid var(--line)}
 .fact:first-child{border-top:0}
@@ -2347,10 +2365,10 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .hi{width:1.08em;height:1.08em;vertical-align:-.16em;margin-right:.42rem;color:var(--accent);flex:none}
 .fi{width:1em;height:1em;vertical-align:-.13em;margin-right:.36rem;color:var(--muted);flex:none}
 .fact dt .fi{color:color-mix(in srgb,var(--accent) 55%,var(--muted))}
-/* FAQ 表形式（質問｜回答） */
-table.faqtable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.4rem 0 1rem}
-table.faqtable th,table.faqtable td{border:1px solid var(--line);padding:.6rem .75rem;text-align:left;vertical-align:top}
-table.faqtable thead th{background:var(--soft);font-size:var(--fs-sm);white-space:nowrap;color:var(--fg)}
+/* FAQ 表形式（質問｜回答）。淡色帯の上でも埋もれないよう白背景＋濃いめの罫線 */
+table.faqtable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.4rem 0 1rem;background:var(--bg)}
+table.faqtable th,table.faqtable td{border:1px solid var(--line);padding:.6rem .75rem;text-align:left;vertical-align:top;background:var(--bg)}
+table.faqtable thead th{background:var(--badge);font-size:var(--fs-sm);white-space:nowrap;color:var(--fg)}
 table.faqtable tbody th{width:34%;font-weight:var(--fw-bold);color:var(--fg);background:var(--bg)}
 table.faqtable tbody th::before{content:"Q. ";color:var(--accent);font-weight:var(--fw-black)}
 table.faqtable tbody td{color:var(--fg-2);line-height:1.7}
@@ -2358,6 +2376,13 @@ table.faqtable tbody td{color:var(--fg-2);line-height:1.7}
 /* 行全体クリック可能な表 */
 tr[data-href]{cursor:pointer}
 table.cmp tbody tr[data-href]:hover,table.ptable tbody tr[data-href]:hover{background:var(--soft)}
+/* クリックで並び替えできる見出し */
+th.sortable{cursor:pointer;white-space:nowrap}
+th.sortable button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;display:inline-flex;align-items:center;gap:.25rem}
+th.sortable:hover button{color:var(--accent)}
+th.sortable .sarr::after{content:"↕";opacity:.45;font-size:.9em}
+th.sortable[aria-sort="ascending"] .sarr::after{content:"▲";opacity:1;color:var(--accent)}
+th.sortable[aria-sort="descending"] .sarr::after{content:"▼";opacity:1;color:var(--accent)}
 ul.proglist{list-style:none;padding:0;margin:.3rem 0}
 ul.proglist li{padding:.55rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:.6rem;align-items:baseline}
 ul.proglist .pt{font-size:var(--fs-xs);color:var(--muted)}

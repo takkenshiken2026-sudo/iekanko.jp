@@ -62,10 +62,11 @@ h3{font-size:var(--fs-h3);font-weight:var(--fw-bold)}
 .trustbar{display:flex;flex-wrap:wrap;gap:.45rem;margin:.1rem 0 1rem}
 .tchip{display:inline-flex;align-items:center;gap:.32rem;font-size:var(--fs-sm);font-weight:var(--fw-semi);color:var(--fg-2);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.26rem .7rem}
 .tci{width:1em;height:1em;color:var(--pc-house);flex:none}
-.offbtn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.15rem .5rem;font-weight:var(--fw-bold);color:var(--accent);background:var(--badge);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:var(--radius-sm);padding:.45rem .8rem;text-decoration:none;line-height:1.5}
-.offbtn:hover{background:color-mix(in srgb,var(--accent) 12%,var(--bg));text-decoration:none}
+.offbtn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.1rem .45rem;font-weight:var(--fw-semi);color:var(--accent);text-decoration:none;line-height:1.5}
+.offbtn:hover{text-decoration:underline}
 .offbtn .ic{width:1.05em;height:1.05em;vertical-align:-.16em}
 .offbtn-host{font-size:var(--fs-xs);font-weight:var(--fw-normal);color:var(--muted);word-break:break-all}
+.offnote{font-size:var(--fs-sm);color:var(--muted);margin:.6rem 0 0;line-height:1.65}
 dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .fact{display:grid;grid-template-columns:8.5rem 1fr;border-top:1px solid var(--line)}
 .fact:first-child{border-top:0}
@@ -78,10 +79,10 @@ dl.facts{margin:.4rem 0;border:1px solid var(--line);border-radius:var(--radius)
 .hi{width:1.08em;height:1.08em;vertical-align:-.16em;margin-right:.42rem;color:var(--accent);flex:none}
 .fi{width:1em;height:1em;vertical-align:-.13em;margin-right:.36rem;color:var(--muted);flex:none}
 .fact dt .fi{color:color-mix(in srgb,var(--accent) 55%,var(--muted))}
-/* FAQ 表形式（質問｜回答） */
-table.faqtable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.4rem 0 1rem}
-table.faqtable th,table.faqtable td{border:1px solid var(--line);padding:.6rem .75rem;text-align:left;vertical-align:top}
-table.faqtable thead th{background:var(--soft);font-size:var(--fs-sm);white-space:nowrap;color:var(--fg)}
+/* FAQ 表形式（質問｜回答）。淡色帯の上でも埋もれないよう白背景＋濃いめの罫線 */
+table.faqtable{width:100%;border-collapse:collapse;font-size:var(--fs-md);margin:.4rem 0 1rem;background:var(--bg)}
+table.faqtable th,table.faqtable td{border:1px solid var(--line);padding:.6rem .75rem;text-align:left;vertical-align:top;background:var(--bg)}
+table.faqtable thead th{background:var(--badge);font-size:var(--fs-sm);white-space:nowrap;color:var(--fg)}
 table.faqtable tbody th{width:34%;font-weight:var(--fw-bold);color:var(--fg);background:var(--bg)}
 table.faqtable tbody th::before{content:"Q. ";color:var(--accent);font-weight:var(--fw-black)}
 table.faqtable tbody td{color:var(--fg-2);line-height:1.7}
@@ -89,6 +90,13 @@ table.faqtable tbody td{color:var(--fg-2);line-height:1.7}
 /* 行全体クリック可能な表 */
 tr[data-href]{cursor:pointer}
 table.cmp tbody tr[data-href]:hover,table.ptable tbody tr[data-href]:hover{background:var(--soft)}
+/* クリックで並び替えできる見出し */
+th.sortable{cursor:pointer;white-space:nowrap}
+th.sortable button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;display:inline-flex;align-items:center;gap:.25rem}
+th.sortable:hover button{color:var(--accent)}
+th.sortable .sarr::after{content:"↕";opacity:.45;font-size:.9em}
+th.sortable[aria-sort="ascending"] .sarr::after{content:"▲";opacity:1;color:var(--accent)}
+th.sortable[aria-sort="descending"] .sarr::after{content:"▼";opacity:1;color:var(--accent)}
 ul.proglist{list-style:none;padding:0;margin:.3rem 0}
 ul.proglist li{padding:.55rem .2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:.6rem;align-items:baseline}
 ul.proglist .pt{font-size:var(--fs-xs);color:var(--muted)}
