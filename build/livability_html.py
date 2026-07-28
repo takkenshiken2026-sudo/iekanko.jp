@@ -51,6 +51,30 @@ def fmt_yen(v: Optional[int], kind="absolute") -> str:
     return f"{v:,}円"
 
 
+def fmt_yen_parts(v: Optional[int]):
+    """金額を数値部分と単位に分ける（カテゴリ合計行の数字強調用）。"""
+    if not v:
+        return "—", ""
+    if v >= 100000000:
+        s = f"{v/100000000:.2f}".rstrip("0").rstrip(".")
+        return s, "億円"
+    if v >= 10000:
+        man = v / 10000
+        if man >= 100:
+            return f"{man:,.0f}", "万円"
+        s = f"{man:.1f}".rstrip("0").rstrip(".")
+        return s, "万円"
+    return f"{v:,}", "円"
+
+
+def fmt_yen_emphasis_html(v: Optional[int]) -> str:
+    num, unit = fmt_yen_parts(v)
+    if not unit:
+        return esc(num)
+    return (f'<span class="fig-bnum">{esc(num)}</span>'
+            f'<span class="fig-bunit">{esc(unit)}</span>')
+
+
 def fmt_pax(v: Optional[int]) -> str:
     if not v:
         return "—"
@@ -182,7 +206,7 @@ def figures_section_html(slug: str, data: Optional[dict] = None, part: str = "al
                 f'<a class="fig-brow fig-cat-total" href="{esc(t["href"])}"{style}>'
                 f'<span class="fig-btag {tc}">{esc(t["label"])}</span>'
                 f'<span class="fig-blabel">{t["n_amt"]}件 / {t["n_prog"]}制度</span>'
-                f'<span class="fig-bval">{esc(fmt_yen(t["yen_sum"]))}</span></a>'
+                f'<span class="fig-bval">{fmt_yen_emphasis_html(t["yen_sum"])}</span></a>'
             )
     else:
         for b in benefits:
