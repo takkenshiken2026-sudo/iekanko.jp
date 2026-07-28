@@ -1501,10 +1501,14 @@ def build_compare(cid, entries, counts=None):
     amt_note=(f"うち{n_amt}自治体は具体的な支給額・助成額を掲載しています。金額の記載がある自治体を上に表示しています。"
               if n_amt else "")
     body=f"""
+<div class="area-head">
+<div class="area-head-main">
 <span class="badge">{esc(ev_name)}</span>
 <h1>東京都の{esc(label)}を自治体で比較</h1>
 <p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>
+</div>
 {photo_figure(*photo_for_cats([cid], ev), "evphoto")}
+</div>
 {compare_chart_html(cid, entries)}{compare_coverage_html(cid, all_entries)}
 <div class="tablewrap"><table class="cmp">
 <thead><tr><th>自治体</th><th>支給額・助成額</th><th>確認日</th></tr></thead>
@@ -1612,10 +1616,14 @@ def build_ranking(ev, score, avg=None):
               '''chips.forEach(function(x){var on=x===c;x.classList.toggle("on",on);x.setAttribute("aria-pressed",on?"true":"false");});'''
               '''panels.forEach(function(p){p.hidden=p.getAttribute("data-rsort")!==k;});});});})();</script>''')
     body=f"""
+<div class="area-head">
+<div class="area-head-main">
 <span class="badge" style="--pc:{color}">{esc(persona)}</span>
 <h1>{esc(ev_name)}の制度がある東京都の自治体</h1>
 <p class="lead">「{esc(persona)}」向けに、{esc(ev_name)}関連の制度を掲載している件数が多い自治体から順に並べています。金額が分かる制度の合計（上限・月額などの目安）も併記します。表の「制度数」「金額合計」見出しをクリックすると並び替えできます。</p>
+</div>
 {photo_figure(*EV_PHOTO[ev], "evphoto")}
+</div>
 <div class="chartcard" style="--pc:{color}">
 <div class="mchips rsort" role="tablist" aria-label="グラフの並び替え">
 <button type="button" class="mchip on" data-rsort="prog" aria-pressed="true">制度順</button>
@@ -2627,10 +2635,10 @@ p.mnone{color:var(--muted);font-size:var(--fs-sm);padding:.6rem 0}
 .area-head .areamap img{max-width:100%}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
 .progphoto,.evphoto{margin:.4rem 0 1rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--soft)}
-.area-head .progphoto{flex:0 1 420px;margin:0;align-self:flex-start}
+.area-head .progphoto,.area-head .evphoto{flex:0 1 420px;margin:0;align-self:flex-start;max-width:100%}
 .progphoto img,.evphoto img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
 .evphoto{max-width:720px}
-@media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap,.area-head .progphoto{flex-basis:100%}}
+@media(max-width:680px){.area-head{gap:.5rem}.area-head .areamap,.area-head .progphoto,.area-head .evphoto{flex-basis:100%}}
 table.ptable{width:100%;border-collapse:collapse;font-size:var(--fs-lg);margin:.5rem 0}
 table.ptable thead th{text-align:left;font-size:var(--fs-xs);color:var(--muted);font-weight:var(--fw-bold);background:var(--soft);border-bottom:1px solid var(--line);padding:.55rem .55rem;white-space:nowrap}
 table.ptable thead th.c-amt{text-align:right}
