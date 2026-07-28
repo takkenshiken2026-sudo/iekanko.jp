@@ -231,10 +231,10 @@ def icon_svg(ev):
 PHOTO_BASE = "/assets/photos/cropped"
 EV_PHOTO = {
  "pregnancy_birth": ("preg-boshi-techo.jpg", "母子健康手帳"),
- "childcare": ("child-park.jpg", "公園で遊ぶ子どものいる風景"),
+ "childcare": ("child-hoiku.jpg", "保育士と幼児が遊ぶ様子"),
  "moving": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
- "retirement_unemployment": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
- "elderly_care": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "retirement_unemployment": ("procedure-cityhall.jpg", "市区町村窓口の受付"),
+ "elderly_care": ("eld-care-equipment.jpg", "介護・福祉用具一式"),
 }
 # 比較カテゴリごとの上書き（無い場合はライフイベント写真へフォールバック）
 CAT_PHOTO = {
@@ -249,8 +249,8 @@ CAT_PHOTO = {
  "child_iryo": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
  "child_hitorioya": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
  "child_shugaku": ("child-study-desk.jpg", "学習デスク"),
- "child_hoiku_gen": ("child-park.jpg", "公園で遊ぶ子どものいる風景"),
- "child_ninkagai": ("child-baby-gear.jpg", "ベビー用品が並ぶ店内"),
+ "child_hoiku_gen": ("child-hoiku.jpg", "保育士と幼児が遊ぶ様子"),
+ "child_ninkagai": ("child-hoiku.jpg", "保育士と幼児が遊ぶ様子"),
  "child_iwai": ("child-baby-gear.jpg", "ベビー用品が並ぶ店内"),
  "child_shogakukin": ("child-study-desk.jpg", "学習デスク"),
  "child_omutsu_baby": ("child-infant.jpg", "室内に座る乳児"),
@@ -261,28 +261,28 @@ CAT_PHOTO = {
  "house_reform": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
  "house_taishin": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
  "house_eco": ("house-solar.jpg", "住宅の太陽光パネル"),
- "job_kokuho": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
- "job_nenkin": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
- "job_shurou": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
+ "job_kokuho": ("procedure-cityhall.jpg", "市区町村窓口の受付"),
+ "job_nenkin": ("procedure-cityhall.jpg", "市区町村窓口の受付"),
+ "job_shurou": ("procedure-cityhall.jpg", "市区町村窓口の受付"),
  "job_kashitsuke": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
- "job_konkyu": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
+ "job_konkyu": ("procedure-cityhall.jpg", "市区町村窓口の受付"),
  "job_shobyo": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
  "med_kogaku": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
- "med_sosai": ("procedure-mynumber.jpg", "行政手続きの申請書類"),
- "eld_omutsu": ("eld-aircon.jpg", "室内に設置されたエアコン"),
- "eld_kaigo_gen": ("eld-aircon.jpg", "室内に設置されたエアコン"),
- "eld_hochoki": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
- "eld_jutaku": ("moving-boxes.jpg", "引っ越し用の段ボール箱"),
+ "med_sosai": ("med-sosai.jpg", "葬儀場の祭壇"),
+ "eld_omutsu": ("eld-omutsu.jpg", "高齢者向け紙おむつなどの介護用品"),
+ "eld_kaigo_gen": ("eld-care-equipment.jpg", "介護・福祉用具一式"),
+ "eld_hochoki": ("eld-hochoki.jpg", "補聴器と充電ケース"),
+ "eld_jutaku": ("eld-care-equipment.jpg", "介護・福祉用具一式"),
  "eld_vaccine": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
- "eld_kinkyu": ("eld-aircon.jpg", "室内に設置されたエアコン"),
- "eld_haishoku": ("eld-aircon.jpg", "室内に設置されたエアコン"),
- "eld_iwai": ("eld-aircon.jpg", "室内に設置されたエアコン"),
- "eld_yougu": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "eld_kinkyu": ("eld-care-equipment.jpg", "介護・福祉用具一式"),
+ "eld_haishoku": ("eld-haishoku.jpg", "配食弁当"),
+ "eld_iwai": ("eld-care-equipment.jpg", "介護・福祉用具一式"),
+ "eld_yougu": ("eld-yougu.jpg", "車いすなどの福祉用具"),
  "dis_iryo": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
- "dis_yougu": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
- "dis_teate": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
+ "dis_yougu": ("eld-yougu.jpg", "車いすなどの福祉用具"),
+ "dis_teate": ("procedure-cityhall.jpg", "市区町村窓口の受付"),
  "low_aircon": ("eld-aircon.jpg", "室内に設置されたエアコン"),
- "low_taxi": ("eld-aircon.jpg", "室内に設置されたエアコン"),
+ "low_taxi": ("low-taxi.jpg", "タクシー乗り場の車両"),
 }
 
 def photo_for_cats(cats, ev=None):
@@ -297,7 +297,7 @@ def photo_for_cats(cats, ev=None):
             e = CAT_BY_ID[cid][2]
             if e in EV_PHOTO:
                 return EV_PHOTO[e]
-    return EV_PHOTO.get(ev) or ("procedure-mynumber.jpg", "行政手続きの申請書類")
+    return EV_PHOTO.get(ev) or ("procedure-cityhall.jpg", "市区町村窓口の受付")
 
 def photo_figure(fn, alt, css="progphoto", eager=False):
     load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
