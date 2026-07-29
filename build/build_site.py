@@ -31,6 +31,9 @@ CONTACT_EMAIL  = os.environ.get("SEIDO_CONTACT",   "takken.shiken.2026@gmail.com
 # お問い合わせフォーム（Googleフォーム等）。設定するとフッター・各ページの窓口がフォーム優先になる。
 CONTACT_FORM_URL = os.environ.get("SEIDO_CONTACT_FORM", "https://forms.gle/H3ASWfUnQ44E2LTX6").strip()
 ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
+# ガイド記事（/guide/）の最終見直し日。Article 構造化データの datePublished/dateModified に使う。
+# ★本文を実際に編集したときだけ手で更新する。ビルドで自動更新しない＝日付の水増しを避けるため。
+GUIDE_UPDATED  = os.environ.get("SEIDO_GUIDE_UPDATED", "2026-07-29")
 # フッター共通の「お問い合わせ」リンク（全ページ）。フォーム未設定時はメールにフォールバック。
 if CONTACT_FORM_URL:
     FOOTER_CONTACT_HTML = f'・<a href="{CONTACT_FORM_URL}" target="_blank" rel="noopener">お問い合わせ</a>'
@@ -1152,7 +1155,7 @@ def svg_bars(rows, maxval=100, unit="%"):
 
 # ── ページ骨格 ──────────────────────────────────────────────────────────────
 def page(*, path, title, description, canonical, jsonld=None, robots="index,follow",
-         breadcrumb=None, body=""):
+         breadcrumb=None, body="", og_type="website", article_meta=None):
     ld = ""
     blocks = list(jsonld or [])
     if breadcrumb:
@@ -1169,6 +1172,13 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
             parts.append(f'<a href="{u}">{esc(n)}</a>' if u else f'<span>{esc(n)}</span>')
         crumbs = '<nav class="crumbs" aria-label="パンくず">'+ " › ".join(parts) +'</nav>'
     canon = BASE_URL + canonical
+    article_tags = ""
+    if article_meta:
+        _pub, _mod = article_meta
+        _at = []
+        if _pub: _at.append(f'<meta property="article:published_time" content="{esc(_pub)}">')
+        if _mod: _at.append(f'<meta property="article:modified_time" content="{esc(_mod)}">')
+        if _at: article_tags = "\n" + "\n".join(_at)
     ga_tag = ""
     if GA_MEASUREMENT_ID:
         ga_id = esc(GA_MEASUREMENT_ID)
@@ -1199,12 +1209,12 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <meta name="description" content="{esc(description)}">
 <meta name="robots" content="{robots},max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="{esc(canon)}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{esc(og_type)}">
 <meta property="og:site_name" content="{esc(SITE_NAME)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{esc(canon)}">
-<meta property="og:locale" content="ja_JP">
+<meta property="og:locale" content="ja_JP">{article_tags}
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="{esc(BASE_URL)}/assets/og.png">
 <meta name="twitter:image" content="{esc(BASE_URL)}/assets/og.png">
@@ -1573,6 +1583,7 @@ def build_program(m, slug, p, cats, progs=None):
       "areaServed":{"@type":"AdministrativeArea","name":mn},
       "provider":{"@type":"GovernmentOrganization","name":mn,
                   **({"url":m["official_site_url"]} if m["official_site_url"] else {})}}
+    if p["last_verified_at"]: gov["dateModified"] = p["last_verified_at"]
     if official: gov["url"] = official
     blocks=[gov]
     if faq:
@@ -2249,6 +2260,16 @@ def build_static_pages():
     sitemap_urls.append(("/privacy/","0.3"))
 
 # ── 解説ガイド（オリジナルの編集コンテンツ：制度の基礎知識と探し方）────────────────
+def guide_article_ld(headline, canonical):
+    """ガイド記事用の Article 構造化データ。日付は GUIDE_UPDATED（本物の見直し日）を使う。"""
+    return {"@context":"https://schema.org","@type":"Article",
+      "headline":headline,"inLanguage":"ja",
+      "datePublished":GUIDE_UPDATED,"dateModified":GUIDE_UPDATED,
+      "mainEntityOfPage":{"@type":"WebPage","@id":BASE_URL+canonical},
+      "author":{"@type":"Organization","name":SITE_SHORT,"url":BASE_URL+"/"},
+      "publisher":{"@type":"Organization","@id":BASE_URL+"/#org","name":SITE_SHORT,
+                   "logo":{"@type":"ImageObject","url":BASE_URL+"/assets/logo-mark.svg"}}}
+
 def build_guides():
     """データの一覧とは別に、制度の全体像・探し方・比較の勘どころをまとめた
     オリジナルの解説記事。ライフイベントごとの基礎知識から、当サイトの比較ページへ導線を張る。"""
@@ -2314,6 +2335,8 @@ def build_guides():
     page(path="/guide/how-to-find/index.html", title=f"自分が使える給付金・手当の探し方｜くらしの制度ガイド｜{SITE_SHORT}",
          description="自分や家族が対象になる給付金・手当・助成を見つけるための手順を解説。ライフイベントから考え、国と自治体の制度を分け、住んでいる自治体で実際の金額・対象・申請期限を確認する流れを紹介します。",
          canonical="/guide/how-to-find/",
+         og_type="article", article_meta=(GUIDE_UPDATED, GUIDE_UPDATED),
+         jsonld=[guide_article_ld("自分が使える給付金・手当の探し方", "/guide/how-to-find/")],
          breadcrumb=[("トップ","/"),("くらしの制度ガイド","/guide/"),("使える制度の探し方",None)], body=htf)
     sitemap_urls.append(("/guide/how-to-find/","0.6"))
 
@@ -2340,6 +2363,8 @@ def build_guides():
              title=f"{h1title}｜くらしの制度ガイド｜{SITE_SHORT}",
              description=clip(f"{h1title}。{lead}", 118),
              canonical=f"/guide/{slug}/",
+             og_type="article", article_meta=(GUIDE_UPDATED, GUIDE_UPDATED),
+             jsonld=[guide_article_ld(h1title, f"/guide/{slug}/")],
              breadcrumb=[("トップ","/"),("くらしの制度ガイド","/guide/"),(ev_name,None)], body=body)
         sitemap_urls.append((f"/guide/{slug}/","0.6"))
 
