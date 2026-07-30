@@ -1,0 +1,6 @@
+program_id,fact_type,value,evidence_url
+1880,application,65歳以上は担当地域の地域包括支援センター、40～64歳は各地域福祉課高齢者地域支援担当が申請先。要介護1・2該当者は区所定様式「紙おむつ使用証明書」を医師に記入してもらい提出する。おむつ代助成の申請時は本人名義の口座がわかるもの（通帳等）と印鑑、請求時はおむつ代が記載された領収書が必要。,https://www.city.ota.tokyo.jp/seikatsu/fukushi/kourei/kyufu/kamiomutu.html
+1880,condition,失禁のため紙おむつを必要とする方が対象で、要介護3～5の認定者、要介護1・2認定で医師が必要と認めた方、または65歳以上で入院中の相当状態の方が該当する。区内に住民登録しており現に居住していることが要件。,https://www.city.ota.tokyo.jp/seikatsu/fukushi/kourei/kyufu/kamiomutu.html
+1942,condition,年度内に満100歳の誕生日を迎える方と、8月15日現在で大田区内の男女最高齢の方が対象。大田区内在住であることが要件。,https://www.city.ota.tokyo.jp/seikatsu/fukushi/kourei/iwaihin/choujyu.html
+2386,condition,"低所得世帯減額は、保険料段階が第3段階以下で、生活保護等を受けておらず区市町村民税課税者に扶養されていない方が対象。1ヵ月の収入が単身91,000円以下・2人世帯138,000円以下、世帯の預貯金等が1人世帯200万円以下（1人増ごとに100万円加算）などの要件があり、介護保険料の未納がないこと等も条件。ほかに災害等の特別な理由による減免、東日本大震災による減免がある。",https://www.city.ota.tokyo.jp/seikatsu/fukushi/kaigo/kaigohoken.html
+2891,condition,国保加入者が出産したとき、または妊娠85日以上で死産・流産したとき（医師の証明が必要）に支給される。ただし、ほかの健康保険などから支給される方（加入期間が1年以上あり退職後半年以内に出産した場合）には、国保からは支給されない。,https://www.city.ota.tokyo.jp/seikatsu/kokunen/kokuho/ukerareru/ikuji.html

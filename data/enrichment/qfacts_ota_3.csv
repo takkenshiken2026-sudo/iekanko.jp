@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+641,application,申請は郵送または区役所本庁舎窓口（国保年金課 後期高齢者医療給付担当、電話03-5744-1254）で行う。必要書類は後期高齢者医療資格確認書、マイナンバー確認書類、申請者の本人確認書類等で、代理申請の場合は代理人の本人確認書類と委任状も必要。,https://www.city.ota.tokyo.jp/seikatsu/kokunen/kouki_k_iryou/kyufu/13gengakushou.html
+642,condition,世帯構成員が2名以上で、介護保険施設等に入所し利用者負担第4段階の食費・居住費を負担していること、世帯の年間収入から施設利用者負担の年間見込額を除いた額が80万9千円以下、世帯の現金・預貯金等が450万円以下、利用可能な資産を有していない、介護保険料を滞納していない、の6要件をすべて満たす方が対象。,https://www.city.ota.tokyo.jp/seikatsu/fukushi/kaigo/keigen/tokurei_gengaku.html
+700,application,申請先は障害福祉課または各地域福祉課で、申請には身体障害者手帳または愛の手帳が必要。,https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/seikatsushien/seikatsuken/seikatsuken/fukushi.html
+710,application,申請先は障害福祉課障害者支援担当（電話03-5744-1251）または各地域福祉課。必要書類は障がいの程度がわかるもの（手帳等）、本人名義の銀行口座がわかるもの、印鑑、マイナンバーを確認できるもので、所得がマイナンバーで確認できない場合は所得証明書の提出が必要。,https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/teate_nenkin/ootaku.html
+731,condition,申請日時点で大田区内に住民登録があり、その住所に居住する世帯主又はそれに準ずる方が対象で、申請は1世帯1回限り。令和7年度に世帯構成員が本補助金の交付を受けた場合は対象外。,https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/bouhan/bouhankikitouhojo.html
+737,condition,申請日時点で大田区に住民登録があり、木造住宅密集地域に住む世帯の世帯主またはそれに準ずる方が対象。対象は木造住宅密集地域内の住宅で、共同住宅の共用部分や店舗・事務所への設置は除く。,https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/jyosei/kannsinn-hojo.html
+1487,application,定期接種は郵送された予診票を持参して対象協力医療機関で予約し、本人確認書類を持参のうえ接種して自己負担額を医療機関窓口で支払う（予診票がない場合は感染症対策課へ電子申請または窓口申請で交付申請）。任意接種は医療機関備え付けの予診票兼申請書を用い、氏名・生年月日・住所が確認できるもの（健康保険証、運転免許証など）を持参して区内協力医療機関で接種を受ける。,https://www.city.ota.tokyo.jp/seikatsu/hoken/yobou_sessyu/seijin/taijouhoushin_josei20230701.html
+1487,condition,定期接種は令和9年3月31日時点で65・70・75・80・85・90・95・100歳の方、または60歳以上65歳未満でHIVによる免疫機能障害の身体障害者手帳1級を持ち過去に区の助成を使用していない方が対象。任意接種は接種日現在、大田区に住民登録のある50歳以上の方（定期接種対象者を除く）が対象。,https://www.city.ota.tokyo.jp/seikatsu/hoken/yobou_sessyu/seijin/taijouhoushin_josei20230701.html
+1501,application,申請書を区（建築調整課、電話03-5744-1308）に提出後、書類審査・現場調査を経て助成金交付決定を受けてからタンク設置工事を行う（決定前に購入・設置した場合は対象外）。個人が小型タンクを申請する場合はLoGoフォームによるオンライン申請も可能。,https://www.city.ota.tokyo.jp/seikatsu/sumaimachinami/sumai/j_josei/usuichoryuusou.html
+1501,condition,大田区内に雨水タンクを設置・使用する方が対象。ただし既に助成を受けた方、法令・条例でタンク設置を義務付けられている方、国や公共団体、住民税滞納者は除く。対象設備は大型（500リットル以上）および小型（500リットル未満）の雨水貯留槽。,https://www.city.ota.tokyo.jp/seikatsu/sumaimachinami/sumai/j_josei/usuichoryuusou.html
+1504,condition,区内在住のおおむね65歳以上の方が対象。,https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/bouhan/jidoutuuwarokuonki.html
+1732,application,申請は窓口申請が原則で郵送申請は不可。申請先は子育ち支援課子育ち支援担当（児童育成、電話03-5744-1274）。必要書類は保険情報が確認できる書類、申請者及び対象児童の戸籍謄本、支給事由に該当することがわかる公的証明書、児童扶養手当証書（受給者のみ）、個人番号カード等および本人確認書類。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/teate/hitorioya.html
+1755,application,申請は窓口申請（障害福祉課または各地域福祉課、大田区役所1階11番窓口、電話03-5744-1251）または郵送申請が可能。必要書類は身体障害者手帳・愛の手帳・精神障害者保健福祉手帳のいずれか、加入している健康保険の被保険者資格情報が分かるもの（資格確認書、マイナポータル画面、資格情報のお知らせ等）、マイナンバー確認書類。,https://www.city.ota.tokyo.jp/seikatsu/fukushi/shougai/iryo/iryou/shinshin.html

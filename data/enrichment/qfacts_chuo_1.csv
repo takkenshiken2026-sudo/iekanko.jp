@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+66,application,中央区保健所または各保健センターの窓口に必要書類を提出するか、郵送で申請します。申請先は中央区保健所健康推進課給付係。主な必要書類は、交付申請書、外見の変化を証明する書類、購入(レンタル)金額の明細が分かる書類(領収書等の原本)、本人確認書類、振込先口座が確認できる書類。,https://www.city.chuo.lg.jp/a0031/kenkouiryou/kenkou/kenkouzoushin/wigjyosei.html
+66,condition,申請時に中央区に住民登録のある方が対象で、本事業において過去に中央区の助成を2回以上受けていない方が対象。所得制限や年齢制限の記載はなし。,https://www.city.chuo.lg.jp/a0031/kenkouiryou/kenkou/kenkouzoushin/wigjyosei.html
+76,condition,児童と保護者が月の初日に中央区に住民登録があり、東京都認証保育所と月極契約(月120時間以上)を締結して申請月の初日から在籍していることが必要。保護者全員が保育を必要とする状況にあり、保育料を滞納しておらず、認可保育所等に同時在籍していないことが条件。,https://www.city.chuo.lg.jp/a0021/kosodate/kosodate/hoikuen/hoiku/ninshouhoiku/ninsyouhoikusyotouhoikuryou.html
+77,application,保健所または保健センターの窓口で申請します。申請先は中央区保健所健康推進課健康係および各保健センター健康係。主な必要書類は、未使用の受診票、領収書・明細書原本、母子健康手帳、振込口座がわかるもの、本人確認書類。,https://www.city.chuo.lg.jp/a0031/kosodate/shussan/kodomonokenkou/shinseijichokakuhiyoujyosei.html
+77,condition,対象となる健診等の受診日に中央区に住民登録がある方で、里帰り出産等により都内自治体で交付した受診票が使用できない国内の医療機関または助産所で対象の健診等を自費で受診した方が対象。,https://www.city.chuo.lg.jp/a0031/kosodate/shussan/kodomonokenkou/shinseijichokakuhiyoujyosei.html
+78,application,申請先は中央区保健所健康推進課給付係および各保健センター健康係。主な必要書類は、医療費助成申請書、区の指定した診断書、住民票、世帯調書、所得税額証明書等、医療保険の加入状況が確認できる書類、遅延証明書(申請日が退院日以降の場合)。,https://www.city.chuo.lg.jp/a0031/kosodate/shussan/josei/nyuinzyosei.html
+78,condition,"妊娠高血圧症候群等により入院医療を必要とする妊産婦で、前年分の総所得税額が30,000円以下の世帯に属する者、または入院見込期間が26日以上の者が対象。",https://www.city.chuo.lg.jp/a0031/kosodate/shussan/josei/nyuinzyosei.html
+79,application,申請先は中央区保健所健康推進課給付係および各保健センター健康係。主な必要書類は、難病等の医療費等助成制度の医療受給者証又は医療券、本人名義の預金通帳、区外転入者は前住地の住民税課税証明書、マイナンバー制度に伴う本人確認書類。,https://www.city.chuo.lg.jp/a0031/kenkouiryou/iryou/nanbyouiryou/nanbyo.html
+79,condition,難病等の医療費等助成制度の認定を受けている方のうち、区で指定する疾病を抱えている方が対象。難病患者本人または扶養義務者の所得が、扶養人数に応じた基準額以上の場合は受給できない。,https://www.city.chuo.lg.jp/a0031/kenkouiryou/iryou/nanbyouiryou/nanbyo.html
+80,condition,中央区内に住所を有する方で、65歳以上の方、身体障害者手帳・愛の手帳・精神障害者保健福祉手帳のいずれかをお持ちの方、妊婦の方、対象乳幼児(2歳到達月の末日までの子)の保護者のいずれかに該当する方が対象。,https://www.city.chuo.lg.jp/a0028/kenkouiryou/koureikaigo/koureisha-shien/teate/20230410edobusmushou.html
+81,condition,区内に住所を有する産婦の子で、生後50日に達するまでの子が対象(平成31年4月1日以降に生まれた子が対象)。,https://www.city.chuo.lg.jp/a0031/kosodate/shussan/kodomonokenkou/kenshin/sinseijichokaku.html
+104,condition,接種時に中央区に住民登録があり、里帰りなどの理由で東京23区の定期予防接種実施医療機関以外の国内医療機関で定期予防接種を受ける必要がある方またはその保護者が対象。23区外で接種する場合は定期予防接種実施依頼書の発行手続きが必要。,https://www.city.chuo.lg.jp/a0031/kenkouiryou/iryou/yobousesshu/kugaisessyu.html
+109,application,申請先は中央区保健所健康推進課給付係および各保健センター健康係。主な必要書類は、育成医療支給認定申請書、育成医療意見書、住民税(非)課税証明書等、健康保険証の写し。,https://www.city.chuo.lg.jp/a0031/kosodate/kosodate/teatejosei/iryouhijosei/ikuseiiryo.html
+110,condition,長期療養等の特別の事情により定期予防接種を受けられなかった方が対象で、その事情がなくなってから2年以内(高齢者用肺炎球菌及び帯状疱疹は1年以内)に接種する必要がある。対象ワクチンごとに年齢上限があり(BCGは4歳未満、小児用肺炎球菌は6歳未満、Hibは10歳未満、五種混合は15歳未満)。,https://www.city.chuo.lg.jp/a0031/kenkouiryou/iryou/yobousesshu/tyoukiryou.html

@@ -1,0 +1,12 @@
+program_id,fact_type,value,evidence_url
+633,condition,国民健康保険加入者で、1か月間にかかった医療費（保険適用分の一部負担金）が自己負担限度額を超えた場合に支給される。受診時に職場の健康保険に加入している方は、加入する健康保険組合等への問い合わせとなる。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminkenkohoken/hoken_kyufu/kogaku_shikyu.html
+670,condition,施設サービス利用時の減額は所得の低い方（利用者負担第1～3段階-2）が対象。生計困難者への軽減は世帯全員が特別区民税非課税かつ年間収入150万円以下・預貯金等350万円以下等が要件。訪問介護等利用者負担金助成は、障害福祉サービスのホームヘルプサービス利用者が65歳到達により介護保険の対象となった方が対象。,https://www.city.nerima.tokyo.jp/hokenfukushi/kaigohoken/futan_keigen/hutankeigen.html
+698,condition,親の離婚・死亡・重度障害・遺棄・DV保護命令等により父または母と生計を同じくしていない、18歳になった後最初の3月31日まで（中度以上の障害のある児童は20歳の誕生日の前日まで）の児童と、その児童を養育し所得が一定額未満の保護者が対象。申請者本人および扶養義務者の所得が所得制限限度額を超えないことが要件。,https://www.city.nerima.tokyo.jp/hokenfukushi/iryo/iryojosei/hitorioya.html
+699,application,必要書類を用意のうえ、管轄の総合福祉事務所福祉事務係の窓口に持参して申請する。持参するものは身体障害者手帳等と、代理申請の場合は代理者の身分証明書の写しで、代理人による申請も可能。,https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/nichijo/jidosha/fukushi_taxi.html
+716,application,利用予定日の2週間前から前日までに、練馬区が契約しているタクシー事業者に直接電話で予約する。問い合わせ窓口は、身体障害者手帳・愛の手帳所持者は管轄の総合福祉事務所（福祉事務係）、精神障害者保健福祉手帳所持者は保健予防課（精神保健係）。,https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/nichijo/jidosha/lift_taxi.html
+726,application,申請者本人が受付窓口（子育て支援課、石神井・光が丘・大泉の各総合福祉事務所、月曜日～金曜日の午前8時30分～午後5時15分）で申請する（代理での申請はできない）。必要書類は預金口座番号、個人番号と身元確認書類、障害を理由とする場合は診断書など。,https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/fuyoteate.html
+726,condition,"父または母と生計を同じくしていない児童（18歳になった最初の3月31日まで）が育成されるひとり親家庭等が対象。所得制限があり（扶養0人の場合、全部支給は所得770,000円以下、一部支給は2,160,000円以下）、児童福祉施設等に入所した場合や父母が事実上の婚姻状態にあるときは受給できない。",https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/fuyoteate.html
+741,condition,「児童扶養手当」または「特別児童扶養手当」を受給している方、および生活保護法による生活扶助・教育扶助・住宅扶助・医療扶助または介護扶助を受給している方が対象。,https://www.city.nerima.tokyo.jp/hokenfukushi/shogai/genmen/suido.html
+1496,application,購入費助成協力店で購入時に申請書兼助成券を記入し、氏名・住所が確認できる身分証明書（マイナンバーカード、運転免許証など）を提示する。申請は購入時に協力店で直接行い、郵送やオンライン申請はない。,https://www.city.nerima.tokyo.jp/kurashi/sumai/index/helmet.html
+1496,condition,区内在住の方が対象で年齢制限はなく、助成を適用しての購入は一人1個まで。所定の認証マーク（SGマーク、JCFマーク、CEマーク、GSマーク、CPSCマーク）が付いた新品ヘルメットが対象。,https://www.city.nerima.tokyo.jp/kurashi/sumai/index/helmet.html
+1515,condition,敷地の所有権または借地権を有する個人（法人所有家屋は対象外）が対象。敷地面積が500平方メートル未満の家屋で、過去に同一家屋でこの助成制度を用いて施設を設置していないこと、税の滞納がないこと、練馬区の開発事業によらない家屋であることが要件。,https://www.city.nerima.tokyo.jp/kurashi/sumai/chisui/josei.html

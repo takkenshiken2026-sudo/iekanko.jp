@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+61,condition,0歳から18歳到達後最初の3月31日までの児童が対象で、児童の住所が大田区内にあり、健康保険に加入していることが要件。申請者は原則、児童と同居している生計中心者の保護者。所得制限はなく、生活保護受給中・児童福祉施設への措置入所・里親委託の場合は助成対象外。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/teate/kodomonyuui.html
+62,condition,高校生年代まで（18歳到達後最初の年度末まで）の児童を養育し、国内に住民登録のある保護者が対象で、生計中心者（所得が高い方）が申請する。所得上限限度額による所得制限は令和6年10月1日より撤廃されている。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/teate/jidouteate/jitekaisei.html
+64,condition,利用日現在、大田区に住民登録している方が対象。産後の利用可能期間はケアの種類により異なり、訪問型・外来型は産後1年未満、日帰り型・宿泊型・グループケア型は産後5か月未満（いずれも修正月齢適用）。所得制限はなく、生活保護受給者は利用者負担金が免除される。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/shussan/sango-care.html
+95,application,郵送または電子申請（LoGoフォーム）で申請する。郵送先は大田区ベビーシッター利用支援事業事務局（パーソルビジネスプロセスデザイン株式会社）。主な必要書類は補助金交付申請書、ベビーシッター利用内訳表、身分証明書の写し、住民登録証明書、ベビーシッター事業者発行の領収書。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/babysitter_itiziazukari.html
+95,condition,未就学児（0〜6歳）の保護者、または障がい児は12歳までの保護者が対象で、利用日時点で児童と同居し大田区内に住民登録があることが要件。所得制限はない。利用上限は年度144時間まで（多胎児・障がい児・ひとり親家庭は288時間まで）。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/babysitter_itiziazukari.html
+96,application,電子申請サービス（LoGoフォーム）によるオンライン申請で、毎月1日午前9時から翌月分を受け付ける。申請先は大田区子育ち支援課。必要書類は施設ごとの利用申請書や体調確認表（検温表）等で、日本赤十字社医療センター利用時は食材チェック表・アレルギーチェック表が必要。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/nyuyouji_ss.html
+96,condition,"保護者が仕事や病気などの理由で育児ができないとき、またはレスパイト（休息、息抜き）をしたい場合に利用できる。対象は生後5日から2歳未満（体重2,500グラム以上に限る）で、大田区内在住であることが必要。",https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/nyuyouji_ss.html
+98,condition,大田区にお住まいで妊娠中から産後1年以内の人が対象。母子健康手帳交付後から産後1年に達する前日まで利用可能で、流産・死産の場合は分娩予定日から1年未満の期間で利用できる。年齢・所得の制限はない（住民税非課税世帯・生活保護世帯は利用料金が免除）。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/sango_enjo-nk.html
+99,condition,生後5ヵ月から就学前年齢までのお子様が対象で、区内在住のお子様に限る。所得制限はない。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/kodomo_katei_shien_c/itijihoikusitu.html
+100,application,子ども家庭支援センター キッズなルーム六郷の窓口・電話・FAX、または電子申請（毎月1日9時〜10時のみ）で予約・利用申請する。事前登録時は連絡票・アンケート・お子様の乳児医療証、利用当日は利用申請書・お預かり表が必要。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/kodomo_katei_shien_c/itijihoikusitu_rokugou.html
+100,condition,生後5ヵ月から就学前年齢までのお子様が対象で、区内在住のお子様に限る。所得制限はない。,https://www.city.ota.tokyo.jp/seikatsu/kodomo/shien/kodomo_katei_shien_c/itijihoikusitu_rokugou.html
+321,application,大田区役所本庁舎4階の国保年金課国保給付係窓口、または郵送で申請する。主な必要書類は国民健康保険葬祭費支給申請・請求書、葬儀代金領収書の写し、申請者の振込先口座確認書類、本人確認資料で、代理申請の場合は委任状が必要。申請書受理後、約1か月後に申請者の口座へ振り込まれる。,https://www.city.ota.tokyo.jp/seikatsu/kokunen/kokuho/ukerareru/sousai.html
+322,condition,"病気やケガで医療機関にかかり、ひと月の医療費の一部負担金（自己負担額）が所得区分に応じた自己負担限度額を超えたときに支給される。医療機関ごと、入院と外来、医科と歯科は別々に計算され、70歳未満は一部負担金が21,000円以上のものが合算対象。限度額は所得区分（70歳未満はア〜オ、70〜74歳は現役並み・一般・低所得者）により決まる。",https://www.city.ota.tokyo.jp/seikatsu/kokunen/kokuho/ukerareru/kougaku.html
+323,application,申請先は国保年金課国保給付係。主な必要書類は療養費支給申請書、領収書（原本）、印鑑、世帯主の口座番号がわかるもの、本人確認書類で、ケースに応じて診療報酬明細書や医師の証明書等が追加で必要。,https://www.city.ota.tokyo.jp/seikatsu/kokunen/kokuho/ukerareru/reiwa-ryouyouhi.html
+323,condition,医療費の全額を支払った場合に、保険で認められた部分をあとから支給する制度。対象は、緊急やむを得ない理由で全額自己負担したとき、海外渡航中の急病受診、コルセット等の治療用装具購入、医師が必要と認めたマッサージ・はり・きゅう、接骨院・整骨院受診、輸血の生血代、移植時の臓器搬送費など。,https://www.city.ota.tokyo.jp/seikatsu/kokunen/kokuho/ukerareru/reiwa-ryouyouhi.html

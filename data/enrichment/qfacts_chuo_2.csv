@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+111,condition,対象は、産前歯科健康診査は妊娠中の区民、産後歯科健康診査は出産後1年未満の区民。年齢制限や所得制限の記載はない。,https://www.city.chuo.lg.jp/a0031/kosodate/shussan/kenshin/sanzensango.html
+332,application,申請先は保険年金課給付係（本庁舎4階）。直接支払制度を利用し出産費用が支給額に満たない場合は差額を、制度を利用しない場合は出産費用全額を、必要書類（領収・明細書、医療機関との合意書、世帯主の口座情報、出産者のマイナンバー、本人確認書類等）をそろえて申請する。受取代理制度は出産予定日1か月前から出産前までに世帯主が国民健康保険へ申請する。,https://www.city.chuo.lg.jp/a0024/kurashi/hokennenkin/kokuho/kokuhonitsuite/kyuufu/syussannikujiitijikin.html
+333,condition,窓口で支払った保険適用医療費の一部負担金が1か月で自己負担限度額を超えたときに、超えた分が申請により後から支給される。食事代や差額ベッド代等は対象外。診療月の翌月1日から2年を過ぎると時効により申請できなくなる。,https://www.city.chuo.lg.jp/a0024/kurashi/hokennenkin/kokuho/kokuhonitsuite/kyuufu/kogakuryoyohi.html
+334,condition,やむを得ない理由でマイナ保険証または資格確認書を持たずに診療を受けたときに、審査で保険適用と認められた金額から一部負担金を引いた額が支給される。医師の指示による転院の移送費も、審査で認められた金額が支給される。,https://www.city.chuo.lg.jp/a0024/kurashi/hokennenkin/kokuho/kokuhonitsuite/kyuufu/kyuhu.html
+335,condition,国民健康保険に加入していた方が亡くなったときに、葬儀を行った喪主に対して支給される。,https://www.city.chuo.lg.jp/a0024/kurashi/hokennenkin/kokuho/kokuhonitsuite/kyuufu/kyuhu.html
+336,condition,後期高齢者医療制度の被保険者が亡くなったときに、葬儀を行った喪主に対して支給される。,https://www.city.chuo.lg.jp/a0024/kurashi/hokennenkin/koukikoureisha/kyuufu/kokisousaihi.html
+337,application,申請先は福祉保健部保険年金課給付係（本庁舎4階）。高額療養費支給見込額の9割以内を貸し付ける制度で、同課で手続きを行う。,https://www.city.chuo.lg.jp/a0024/kurashi/hokennenkin/kokuho/kokuhonitsuite/kyuufu/kogakuryoyosikin.html
+337,condition,国民健康保険に加入し、高額な医療費の支払いに困っており、高額療養費を区から受ける見込みのある方が対象。返済は、医療費を支払ってから約3か月後に区から支給される高額療養費をもって行う。,https://www.city.chuo.lg.jp/a0024/kurashi/hokennenkin/kokuho/kokuhonitsuite/kyuufu/kogakuryoyosikin.html
+439,application,区役所4階の高齢者福祉課の窓口または郵送で申請する。申請書等をそろえて提出し、申請前に購入した補聴器は助成対象外で、助成決定通知書が届いてから購入する必要がある。,https://www.city.chuo.lg.jp/a0028/kenkouiryou/koureikaigo/zaitakuiryou/zaitakushienservice/sonota/hotyoki.html
+462,condition,対象は区内在住の妊婦。受診票は妊娠確定後の健康診査に利用でき、妊娠しているかどうかを調べる検査には利用できない。受診票は妊娠の届出の際に母子健康手帳と一緒に交付される。,https://www.city.chuo.lg.jp/a0031/kosodate/shussan/kenshin/ninpukenshin.html
+485,application,必要書類をそろえ、保健所または保健センターの窓口で申請する。必要書類は、未使用の受診票、領収書・明細書原本、母子健康手帳、振込口座がわかるもの、本人確認書類。,https://www.city.chuo.lg.jp/a0031/kosodate/shussan/josei/ninpukennshin.html
+508,application,必要書類（養育医療給付申請書、養育医療意見書、世帯調書、区市町村民税課税（非課税）証明書、お子様の健康保険の加入関係がわかる書類等）をそろえて、中央区保健所健康推進課給付係または各保健センター健康係に申請する。,https://www.city.chuo.lg.jp/a0031/kosodate/kosodate/teatejosei/iryouhijosei/yoikuiryo.html
+531,application,窓口（中央区保健所・各保健センター）、電子申請（利用申請フォーム）、郵送のいずれかで、利用希望日の14日前までに申請する。必要書類は、産後ケア事業利用申請書、母子健康手帳、本人確認書類、該当者は市町村民税非課税証明書または生活保護受給者証。,https://www.city.chuo.lg.jp/a0031/kosodate/shussan/shussanshien/user_fkensu_time_20170323.html

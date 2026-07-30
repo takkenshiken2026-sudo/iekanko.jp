@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+554,application,利用希望日の10日前まで（土日祝・年末年始を除く）に、子ども家庭支援センター「きらら中央」（明石町12-1 4階）の窓口または郵送で利用登録を申請します（勝どき・日本橋分室でも書類受付）。必要書類は利用登録申請書（世帯員全員の署名）、母子健康手帳（郵送時はコピー）、所得が分かる書類（課税証明書または源泉徴収票等）です。,https://www.city.chuo.lg.jp/a0025/kosodate/shussan/shussanshien/ikujisien.html
+576,application,区役所区民生活課住民記録係、または日本橋・月島・晴海特別出張所区民係の窓口で届出します。主な必要書類は転出証明書、窓口に来る方の本人確認書類（マイナンバーカード・運転免許証等）、お持ちの方はマイナンバーカードです。,https://www.city.chuo.lg.jp/a0012/kurashi/touroku/juuminidou/tennyuu/mynocd-nashi/tennyu.html
+588,condition,中央区から他の区市町村へ引っ越すときが対象です。届出できるのは本人、世帯主または同じ世帯の方、法定代理人で、引っ越し予定日の14日前から引っ越し後14日以内に中央区の窓口で手続きが必要です。,https://www.city.chuo.lg.jp/a0012/kurashi/touroku/juuminidou/tenshutsu/tenshutu.html
+673,application,区役所4階高齢者福祉課、各特別出張所、おとしより相談センターの窓口、または郵送で申請します。必要書類はおとしより介護応援手当申請書です。,https://www.city.chuo.lg.jp/a0028/kenkouiryou/koureikaigo/zaitakuiryou/zaitakushienservice/nintei/kaigooenteate.html
+673,condition,次の要件をすべて満たす方が対象です。（1）65歳以上、（2）区内に6か月以上居住、（3）要介護3以上、（4）3か月以上寝たきりまたは認知症の状態、（5）在宅で介護を受けていること。,https://www.city.chuo.lg.jp/a0028/kenkouiryou/koureikaigo/zaitakuiryou/zaitakushienservice/nintei/kaigooenteate.html
+683,application,区役所4階高齢者福祉課、各特別出張所、おとしより相談センターの窓口で申請します。窓口に来られない場合は郵送受付も可能で、必要書類は申請書のほか、介護者の住民票が区外にある場合は介護者の本人確認書類のコピーです。,https://www.city.chuo.lg.jp/a0028/kenkouiryou/koureikaigo/zaitakuiryou/zaitakushienservice/nintei/irouzigyo.html
+683,condition,区内に6か月以上居住している要介護2以上の寝たきりや認知症の高齢者を、日常的に在宅で介護している介護者（家族等）が対象です。,https://www.city.chuo.lg.jp/a0028/kenkouiryou/koureikaigo/zaitakuiryou/zaitakushienservice/nintei/irouzigyo.html
+707,application,相談・申請は京橋ふくしの総合相談窓口（本庁舎地下1階、中央区自立相談支援機関）で受け付けます。必要書類チェックリストを確認のうえ、住居確保給付金支給申請書（様式1-1）、申請時確認書、入居住宅に関する状況通知書、ハローワーク求職申込み関連書類等を用意します。,https://www.city.chuo.lg.jp/a0022/kurashi/sumai/kyojuushien/jyuutakuteate.html
+718,application,区役所6階子ども子育て支援課で申請します（日本橋・月島・晴海特別出張所では受付不可）。必要書類は申請者の本人確認書類、個人番号確認書類、申請者の口座番号がわかるもの、戸籍謄本（マイナンバー情報連携利用者は省略可）等です。,https://www.city.chuo.lg.jp/a0020/kosodate/kosodate/hitorioya/teate/jidoufuyou.html
+718,condition,ひとり親家庭または配偶者が重度の障害の場合で、18歳到達後最初の3月31日まで（障害児は20歳未満）の児童を養育する父・母・養育者が対象です。離婚・非婚・死亡・遺棄等の要件があり、扶養親族数に応じた限度額を超える場合は支給対象外となる所得制限があります。,https://www.city.chuo.lg.jp/a0020/kosodate/kosodate/hitorioya/teate/jidoufuyou.html
+719,condition,中央区にお住まいで生活にお困りの方が対象で、現に生活保護を受給している方は除きます。ご家族など周りの方からの相談も受け付けており、住居確保給付金等の特定事業は法に基づく収入・資産要件を満たす方が対象です。,https://www.city.chuo.lg.jp/a0022/kenkouiryou/fukushiippan/seikatsushien/seikatukonkyu.html
+1730,application,区役所6階子ども子育て支援課での窓口申請が原則です（申請事項変更届・医療証再交付申請書・受給資格消滅届はオンライン申請可）。必要書類は申請者の本人確認書類、個人番号が分かるもの、申請者及び児童の戸籍謄本（発行後1か月以内）、加入健康保険がわかるもの等です。,https://www.city.chuo.lg.jp/a0020/kosodate/kosodate/hitorioya/teate/iryohizyosei.html
+1753,application,障害者福祉課（本庁舎4階）に必要書類を持参して申請します（郵送手続きは要問い合わせ）。必要書類は身体障害者手帳・愛の手帳または精神障害者保健福祉手帳、健康保険証等で、転入時は住民税課税（非課税）証明書が必要です。,https://www.city.chuo.lg.jp/a0023/kenkouiryou/shougaishafukushi/teate/iryou/zyosei.html
+1833,application,中央区保険年金課年金係または中央年金事務所国民年金課へ、窓口・郵送・マイナポータルからの電子申請のいずれかで申請書および添付書類を提出します。特例申請の場合は雇用保険受給資格者証の写しなどが必要です。,https://www.city.chuo.lg.jp/a0024/kurashi/hokennenkin/nenkin/kokuminnenkin/mennjyo.html

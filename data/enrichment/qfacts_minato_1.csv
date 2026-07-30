@@ -1,0 +1,17 @@
+program_id,fact_type,value,evidence_url
+68,condition,対象者は港区に住民登録のある妊産婦の方。所得制限等の記載はなし。,https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/ninshin/ninpukennshin.html
+69,application,申請先はみなと保健所健康推進課地域保健係または各総合支所区民課保健福祉係。医療費助成申請書、担当医師の診断書、医療機関作成の療養証明書、世帯調書、保険情報がわかるもの、領収書などを提出する。,https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/ninshin/koketsuatsu.html
+69,condition,"港区に住民登録があり、前年分の総所得税額が30,000円以下の世帯、または入院見込み期間が26日以上の妊婦が対象。生活保護受給世帯および中国残留邦人等支援給付受給世帯は対象外。",https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/ninshin/koketsuatsu.html
+70,application,みなと保健所健康推進課地域保健係へ郵送または持参するか、各総合支所区民課保健福祉係へ持参して申請する。養育医療給付申請書、養育医療意見書、世帯調書、同意書に加え、保険情報・個人番号・本人確認の書類が必要。,https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/shussan/yoikuiryo.html
+70,condition,"出生体重2,000グラム以下、または生活力が特に薄弱で一定の症状を示す生後1歳未満の未熟児で、指定医療機関の医師が入院を必要と認めた乳児が対象。申請は医師の診断日から3か月以内。",https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/shussan/yoikuiryo.html
+71,condition,港区に住民登録のあるお母さんと赤ちゃんが対象。対象月齢は施設によって異なる。病気やケガで定期的な処方や治療が必要な場合、感染症の疑いがある場合などは利用できないことがある。,https://www.city.minato.tokyo.jp/chiikihoken/kodomo/boshi-shortstay.html
+74,condition,港区在住で小学校・中学校・義務教育学校・中等教育学校前期課程に在学する児童・生徒の保護者が対象。生活保護受給者、児童扶養手当受給者、または前年の所得額が基準所得額に該当する方が対象。港区以外にお住まいの方は対象にならない。,https://www.city.minato.tokyo.jp/gakkouuneishien/kodomo/gakko/shugakuenjo/shugakuenjohi.html
+101,application,郵送または持参で申請する。郵送はみなと保健所健康推進課宛、持参はみなと保健所または各地区総合支所区民課保健福祉係へ。港区妊婦健康診査等費用助成金支給申請書、未使用の受診票、領収書のコピー、母子健康手帳のコピーを提出する。,https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/ninshin/kenko_shinsa.html
+101,condition,受診票交付日以降かつ港区に住民登録がある間に受診したものが対象。海外での受診は対象外。実費が上限額に達しない場合は実費が助成額となる。,https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/ninshin/kenko_shinsa.html
+102,condition,区民で、妊娠20週以降の妊婦の方が対象。出産予定月によって参加できる日が決まっており、妊娠36週6日までの参加を推奨している。,https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/shussan/shussan/hahaoya.html
+105,application,みなと保健所健康推進課地域保健係の窓口提出、郵送、電子申請の3つの方法で申請する。港区産後母子デイサービス及び乳房ケア事業利用登録申請書を提出し、非課税世帯は世帯全員分の非課税証明書の提出が必要。,https://www.city.minato.tokyo.jp/chiikihoken/kodomo/boshi-nyuboucare.html
+105,condition,港区に住民登録のあるお母さんと赤ちゃんが対象。対象月齢は施設によって異なる。医療行為が必要な場合や感染症の疑いがある場合などは利用できないことがある。,https://www.city.minato.tokyo.jp/chiikihoken/kodomo/boshi-nyuboucare.html
+106,condition,区民で、妊婦とそのパートナーが対象（妊婦のみ、パートナーのみの参加も可能）。出産予定月によって参加できる日が決まっており、妊婦は36週6日までの参加を推奨している。,https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/shussan/shussan/ryoshin.html
+107,condition,区民で、母子健康手帳をお持ちの人が対象。,https://www.city.minato.tokyo.jp/chiikihoken/kenko/ninshin/shussan/shussan/n-homon.html
+108,application,みなと保健所または各総合支所区民課にて申請する。所管はみなと保健所健康推進課地域保健係。医師意見書、所得税額等証明書、健康保険証が必要。,https://www.city.minato.tokyo.jp/chiikihoken/kodomo/kodomo/nyuyoji/ryoikukyufu.html
+108,condition,18歳未満の結核にかかっている児童のうち、その治療のため入院が必要な場合が対象。,https://www.city.minato.tokyo.jp/chiikihoken/kodomo/kodomo/nyuyoji/ryoikukyufu.html
