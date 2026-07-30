@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+119,application,総合窓口課で死亡届を提出する際に区民葬儀の利用を伝えるか、郵送の場合は必要事項を記入のうえ区役所2階コミュニティ総務課宛てに提出する。申請先は区役所2階コミュニティ総務課。必要書類は特別区区民葬儀助成金交付申請書、葬儀社発行の領収書、火葬場発行の明細書・領収書、申請者の本人確認書類、振込口座が分かるもの。,https://www.city.chiyoda.lg.jp/koho/kurashi/koseki/sogi.html
+119,condition,亡くなった方の住民登録が死亡日に千代田区内にあり、区民葬儀メニューのうち祭壇または霊柩車を1つ以上利用し、対象の民間火葬場で最も低廉な火葬料金を支払い、火葬費用を負担した方（火葬場発行の領収書の宛名の方）が対象。所得制限・年齢制限の記載はない。,https://www.city.chiyoda.lg.jp/koho/kurashi/koseki/sogi.html
+127,application,出生・転入日の翌日から3か月以内に、子育て推進課手当・医療係または各出張所へ、お子様の健康保険情報が分かるもの（資格確認書の写し等）を持参して申請する。郵送でも受け付けており、申請書は窓口配布またはホームページの添付ファイルを利用する。申請先は子育て推進課手当・医療係（区役所本庁舎2階）。,https://www.city.chiyoda.lg.jp/koho/kosodate/teate/kodomoiryo.html
+175,condition,出産日以前から区内に住所を有し、申請日時点で引き続き1年以上区内に住所があり、国内の健康保険に加入して出産育児一時金を受給し、出生日から出生児の住民登録が対象者の住所にあることが要件。対象は令和7年4月1日以降の出産で、生活保護受給者は対象外。所得制限の記載はない。,https://www.city.chiyoda.lg.jp/koho/kosodate/teate/shussanhiyojosei.html
+176,condition,12歳に達する日後の最初の4月1日から18歳に達する日以後の最初の3月31日までの間にある中学生・高校生世代の児童が対象で、児童手当を受給していることが前提。区民税を滞納している場合や区に対する返還金を支払っていない場合は支給されない場合がある。所得制限の記載はない。,https://www.city.chiyoda.lg.jp/koho/kosodate/teate/chukosei-oenteate.html
+198,application,保健福祉部在宅支援課在宅支援係へ高齢者紙おむつ等申請書（現物支給）またはおむつ申請書（現金助成）等で申請し、ポータルサイトからのオンライン申請も可能。必要書類はおむつ指定証明書等の申請書様式。,https://www.city.chiyoda.lg.jp/koho/kenko/koresha/dokuji-kaigo/kami.html
+198,condition,"千代田区に住所を有し、要介護1以上で常時紙おむつの着用を必要とする方、または65歳以上で医療保険により入院中かつ同様の心身状態にある方が対象。所得制限の記載はない（生活保護世帯は10,600円以内無料）。",https://www.city.chiyoda.lg.jp/koho/kenko/koresha/dokuji-kaigo/kami.html
+215,application,ポータルサイトからのオンライン申請が可能で、申請先は保健福祉部在宅支援課在宅支援係（かがやきプラザ）。必要書類は申請書（医師意見欄含む）、認定補聴器技能者が在籍する店舗発行の見積書、世帯全員の住民税が分かる資料（条件により不要な場合あり）。受診・検査から請求まで所定の流れで手続きする。,https://www.city.chiyoda.lg.jp/koho/kenko/koresha/sasaeai/hochoki-konyuhi.html
+216,condition,介護予防住宅改修等給付は、千代田区に住所を有し要介護認定を受けていない（または非該当の）65歳以上で、区の調査により介護予防・自立支援上改修が必要と認めた方が対象。自立支援設備改修等給付は要支援または要介護認定を受けている65歳以上の区民が対象。所得制限の記載はない（生活保護受給の場合は利用者負担額免除）。,https://www.city.chiyoda.lg.jp/koho/kenko/koresha/dokuji-kaigo/sebi.html
+217,application,葬祭を行った後、必要書類を区役所2階国民健康保険係の窓口に持参するか同係宛てに郵送する。申請先は保健福祉部保険年金課国民健康保険係。必要書類は国民健康保険葬祭費支給申請書、請求書、葬祭に関する領収書または会葬礼状。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kyuhu/sosaihishikyu.html
+217,condition,千代田区国保に加入している方が亡くなったとき、葬祭を行った方（喪主）が対象で7万円を支給する。亡くなった方の千代田区国保の保険料に未納があると利用できない。申請期限は葬祭を行った日の翌日から2年間。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kyuhu/sosaihishikyu.html
+218,condition,"後期高齢者医療制度の被保険者の葬祭を行った方（喪主）が対象で、葬祭費70,000円が支給される。",https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/koresha/hokenjigyo.html
+219,condition,後期高齢者医療制度の保健事業として、被保険者のうち前年度までに保険料の未納がない方が対象。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/koresha/hokenjigyo.html
+220,application,提出は区役所の窓口または郵送で受け付ける（来庁時は必ず事前予約）。申請先は環境まちづくり部環境政策課エネルギー対策係。必要書類は共通書類のほか対象物件別・各段階（申請時、変更時、工事完了時、請求時、実績報告時）ごとに定められ、申請の流れは5段階。,https://www.city.chiyoda.lg.jp/koho/machizukuri/kankyo/hojo/sho-ene.html

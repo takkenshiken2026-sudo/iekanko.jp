@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+120,condition,発達障害者または発達障害に起因した社会生活上の困難を主訴とする区内在住の本人または家族が対象。ページ上、所得制限に関する記載はありません。,https://www.city.toshima.lg.jp/445/kenko/shogai/shienjigyo/shienjigyo/032351.html
+131,condition,対象児童は高校生年代まで（18歳に達した後、最初の3月31日までの児童）で、区内に住所があり対象児童を養育している保護者（児童の生計を維持する程度の高いかた）が受給者。所得制限はありません（令和6年10月分の児童手当より撤廃）。,https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/017993.html
+155,condition,高校生相当年齢まで（18歳に達した日以降の最初の3月31日まで）の児童が対象で、保護者の所得制限はありません。保険診療であることが要件です。,https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/015729.html
+179,application,子育て支援課児童給付グループ（区役所本庁舎4階）の窓口で申請します。支給は原則として申請月の翌月分からとなります（出生や災害などやむを得ない事情がある場合は特例あり）。,https://www.city.toshima.lg.jp/261/kosodate/kosodate/hitorioya/005893.html
+180,application,原則として申請者本人が子育て支援課児童給付グループ（区役所本庁舎4階）の窓口で申請します。必要書類は戸籍謄本（1か月以内）、振込先普通預金口座の確認書類、本人確認書類、個人番号（障害事由の場合は身体障害者手帳または診断書、年金証書等）などです。,https://www.city.toshima.lg.jp/261/kosodate/kosodate/hitorioya/005889.html
+180,condition,父母の離婚・死亡・重度障害・生死不明・遺棄・DV保護命令・拘禁等の状態にある、18歳到達後最初の3月31日まで（中程度以上の障害がある場合は20歳未満）の児童を養育する父・母・養育者が対象です。所得制限があり、所得が一定額以上の場合は支給されません。,https://www.city.toshima.lg.jp/261/kosodate/kosodate/hitorioya/005889.html
+181,application,原則、子育て支援課児童給付グループ（区役所本庁舎4階）の窓口で申請します。必要書類は所定の診断書、申請者および児童の戸籍謄本、振込先の普通預金口座の確認できるもの、マイナンバー確認書類、本人確認書類です。,https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/001704.html
+181,condition,区内に住所があり、一定程度の障害のある20歳未満の児童を監護する父母または父母以外で児童を監護するかたが対象です。申請者・配偶者または扶養義務者が所得制限を超えている場合、障害を事由とする公的年金を受けられる場合、児童福祉施設に入所している場合は支給対象外です。,https://www.city.toshima.lg.jp/261/kosodate/kosodate/teate-jose/001704.html
+210,application,高齢者総合相談センターへ提出するか、インターネットからも申請できます。必要書類は耳鼻咽喉科医師が作成した証明書（区様式）と高齢者補聴器購入費助成申請書の2点です。,https://www.city.toshima.lg.jp/379/koureisyazigyo/1805080937.html
+249,application,郵送受付が可能で、申請先は国民健康保険課給付グループです。必要書類は葬儀の領収書（喪主氏名の表示がない場合は請求書も必要）又は葬儀を行ったことを証明する書類、亡くなったかたの資格確認書、葬儀を行なったかたの印鑑、振込先の口座番号、本人確認書類です。,https://www.city.toshima.lg.jp/112/tetsuzuki/nenkin/kenkohoken/kyufu/012709.html
+250,condition,後期高齢者医療制度に加入している方が死亡した場合に、葬祭執行者（葬儀を行った方）に対して支給されます。,https://www.city.toshima.lg.jp/114/tetsuzuki/nenkin/koresha/kyufu/009462.html
+251,application,「高齢者紙おむつ等支給申請書」を高齢者相談センターに提出するか、インターネットからの電子申請サービスを利用します。申請後、区が要介護度や所得段階等を審査して決定通知を送付し、同封のカタログから希望商品を注文する流れです。,https://www.city.toshima.lg.jp/379/kenko/koresha/ippansesaku/1502171019.html
+252,application,申請書をお住まいの地域の高齢者総合相談センターに提出するか、インターネットからも申請できます。所管課は高齢者福祉課高齢者事業グループで、必要書類は本人の振込口座が確認できる書類（通帳コピー等）です。,https://www.city.toshima.lg.jp/379/kenko/koresha/ippansesaku/1502171035.html
+252,condition,豊島区に住所を有し、要介護認定が要介護1以上、介護保険料所得段階が1〜8段階で、常時紙おむつ等が必要で医療機関に入院しているかたが対象です。生活保護受給者は除きます。,https://www.city.toshima.lg.jp/379/kenko/koresha/ippansesaku/1502171035.html
+253,condition,区内に住所を有する65歳以上の高齢者が基本対象です。予防的助成は自立のかた（要介護認定で非該当となったかた）、設備改修助成は要支援・要介護認定者などと要件が異なり、利用者負担分は所得に基づき工事費用の1割・2割または3割です。,https://www.city.toshima.lg.jp/379/kenko/koresha/hitorigurashi/000024.html

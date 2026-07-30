@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+581,condition,退職した方が対象で、被扶養配偶者がいる場合はあわせて届出が必要です。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/nenkin.html
+615,application,国民健康保険特例対象被保険者等該当届に、雇用保険受給資格者証または受給資格通知（両面写し）と顔写真付き身分証明書を添えて、区役所2階保険年金課国民健康保険係の窓口または郵送で申請します。代理人申請の場合は委任状が必要です。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kesan.html
+615,condition,離職日時点で65歳未満で、雇用保険受給資格者証等の離職理由コードが特定受給資格者（11・12・21・22・31・32）または特定理由離職者（23・33・34）に該当する方が対象です。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kesan.html
+617,application,限度額適用認定申請書を区役所2階国民健康保険係の窓口に直接持参するか、国民健康保険係宛てに郵送して申請します。窓口で直接申請した場合のみ即日発行が可能です。同一世帯以外の方が申請する場合は委任状が必要です。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kyuhu/kogaku-iryohi.html
+618,application,支給対象となる世帯には2月下旬以降に「申請のお知らせ」および必要書類が送付されます。区役所2階国民健康保険係（保健福祉部保険年金課）の窓口に直接持参するか、郵送で申請します。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kyuhu/kogaku-jikofutan.html
+696,application,区役所2階子育て推進課手当・医療係で申請します。マイナンバーカード、対象児童全員が記載された戸籍謄本、健康保険の加入状況が確認できる書類などを持参します（児童扶養手当受給者は一部省略可）。,https://www.city.chiyoda.lg.jp/koho/kosodate/kosodate/hitorioya/teate/hitorioya-i.html
+697,condition,千代田区内在住で、身体障害者手帳（下肢・体幹・内部障害1～3級、上肢・視覚障害1・2級）、愛の手帳（療育手帳）1・2度、または脳性麻痺・進行性筋萎縮症などに該当する方が対象です。施設入所者や自動車燃料費助成・駐車場助成の受給者は対象外です。,https://www.city.chiyoda.lg.jp/koho/kenko/shogaisha/techo/josei/fukushitaxi.html
+697,application,申請先は保健福祉部障害者福祉課給付・指導担当（電話03-5211-4128）です。,https://www.city.chiyoda.lg.jp/koho/kenko/shogaisha/techo/josei/fukushitaxi.html
+752,application,申請書と必要書類を千代田清掃事務所、各出張所、区役所2階総合窓口課へ直接提出するか、千代田清掃事務所あてに郵送で提出します。必要書類は領収書（写し可）、生ごみ処理機であるとわかる保証書の写し等、千代田区民であることを証する書類です。,https://www.city.chiyoda.lg.jp/koho/kurashi/gomi/3r/namagomi/index.html
+1484,application,任意接種の場合は予診票発行申請が必要で、インターネット（ポータルサイト）または電話（03-6256-9005）で申請します。所管課は千代田保健所健康推進課感染症対策係で、届いた予診票に必要事項を記入して医療機関に提出します。,https://www.city.chiyoda.lg.jp/koho/kenko/kenko/yobosesshu/taijohoshin-josei.html
+1484,condition,定期接種は年度内に65歳になる方等が対象で、任意接種は満50歳以上の方が対象です。既に助成を受けた方や過去にワクチンを接種済みの方は対象外です。,https://www.city.chiyoda.lg.jp/koho/kenko/kenko/yobosesshu/taijohoshin-josei.html
+1618,condition,千代田区民が対象で、妊娠届を提出して母子健康手帳の交付を受けることが要件です。母子健康手帳の交付前に受診した妊婦健康診査費用は助成を受けられません。,https://www.city.chiyoda.lg.jp/koho/kosodate/kosodate/ninshin/kenkoshinsa.html
+1756,application,身体障害者手帳・愛の手帳・精神障害者保健福祉手帳のいずれか、医療保険加入情報が確認できるもの、本人または世帯主等の所得課税証明書を持参し、保健福祉部障害者福祉課総合相談担当で申請して受給者証の交付を受けます。,https://www.city.chiyoda.lg.jp/koho/kenko/shogaisha/techo/iryohi/joseiseido.html
+1835,application,国民年金係（区役所2階）で申請します。基礎年金番号通知書（年金手帳）が必要で、退職に伴う特例免除の場合は離職票1・2または雇用保険受給資格者証が必要です。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/nenkin.html
+1943,condition,区内に住所を有する方が対象で、年度中に77歳・80歳・88歳・90歳・95歳・99歳・100歳以上などの節目の年齢を迎える方が対象です。,https://www.city.chiyoda.lg.jp/koho/kenko/koresha/kero/choju.html

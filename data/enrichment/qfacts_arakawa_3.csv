@@ -1,0 +1,18 @@
+program_id,fact_type,value,evidence_url
+572,application,申請書類を窓口または郵送で提出する。申請・郵送先は子ども家庭部子ども・若者課子育て事業係（〒116-8501 荒川区荒川二丁目2番3号 本庁舎2階）。必要書類は「荒川区ツインズサポート事業利用料助成金交付申請書（請求書）」と支払を証明できる領収書等（コピー可）。,https://www.city.arakawa.tokyo.jp/a035/kosodate/teate/twinssupport_takushi_r7.html
+572,condition,区内在住で、4月1日現在0歳児から5歳児までの多胎児を養育する家庭が対象。複数の子が同じ学年に在籍していても、多胎児でない場合は対象にならない。,https://www.city.arakawa.tokyo.jp/a035/kosodate/teate/twinssupport_takushi_r7.html
+605,application,戸籍住民課住民記録係または各区民事務所の窓口で届出する。郵送も可能で、有効なマイナンバーカードを持つ方はマイナポータルからオンラインでも手続きできる。本人確認書類、印鑑登録証（登録している方のみ）が必要。,https://www.city.arakawa.tokyo.jp/a010/todokede/koseki/tenshutsukugai.html
+605,condition,引っ越す本人または荒川区の住所で同一世帯の方が届出できる。転出する日が決まってから（おおよそ14日前）転出するまで、または転出した後14日以内に届出する。,https://www.city.arakawa.tokyo.jp/a010/todokede/koseki/tenshutsukugai.html
+622,condition,雇用保険の特定受給資格者（倒産・解雇などによる離職）または特定理由離職者（雇い止めなどによる離職）として失業給付を受ける方で、離職時点で65歳未満であることが対象。減免対象は離職の翌日から翌年度末までの期間。,https://www.city.arakawa.tokyo.jp/a031/kenkouhoken/kokuho/shitsugyou.html
+623,application,申請フォームから、スマートフォンまたはタブレットのカメラで撮影した画像（JPG・GIF・PNG・webp）を添付してオンライン申請する。申請先は福祉部国保年金課国保資格係。「雇用保険受給資格者証」または「雇用保険受給資格通知」の両面画像と、顔写真付き本人確認書類の画像が必要。,https://www.city.arakawa.tokyo.jp/a031/kenkouhoken/hijihastukeigen2025.html
+623,condition,荒川区の国民健康保険加入者で、離職日現在の年齢が65歳未満、かつ離職理由が11・12・21・22・23・31・32・33・34のいずれかに該当する非自発的失業者が対象。,https://www.city.arakawa.tokyo.jp/a031/kenkouhoken/hijihastukeigen2025.html
+671,condition,"本人の属する世帯全員が住民税非課税であり、別世帯の配偶者も住民税非課税であることが要件。加えて、本人・配偶者の預貯金等が段階に応じた上限額以下であること（例：第2段階は合計所得と年金収入の合計80万9千円以下で単身650万円・夫婦1,650万円以下）が対象。",https://www.city.arakawa.tokyo.jp/a029/kaigo/kaigoservice/futangendo.html
+727,application,申請先は福祉部障害者福祉課（本庁舎1階、相談支援係）。必要書類は申請書、印鑑、身体障害者手帳または愛の手帳で、所得の証明書が必要な場合がある。,https://www.city.arakawa.tokyo.jp/a030/shougaisha/shien/taxishinsei.html
+727,condition,区内に住所を有し、身体障害者手帳の下肢・体幹機能障がい1～3級、視覚障がい1～2級、上肢機能障がい1級、内部障がい1～3級、または愛の手帳1度・2度のいずれかに該当する方が対象。4月1日基準日における前々年所得が心身障害者福祉手当の所得基準を超える方は対象外。,https://www.city.arakawa.tokyo.jp/a030/shougaisha/shien/taxishinsei.html
+748,application,購入・設置後の事後申請で、生活安全課窓口または郵送（消印有効）で提出する。申請先は生活安全課生活安全係（〒116-0002 荒川区荒川二丁目25番3号 区役所分庁舎2階）。必要書類（個人宅向け）は申請書兼請求書、領収書、本人確認書類の写し、写真。,https://www.city.arakawa.tokyo.jp/a014/bouhan/hanzaitaisaku/akisu.html
+748,condition,申請者が世帯主（世帯主が申請できない場合はこれに準ずる者）で、荒川区に住民登録がありその住宅に居住していることが対象要件。設置場所は申請者の住宅で、当年度に本補助金を利用していない世帯であること、世帯につき年度内1回の申請であることが条件。,https://www.city.arakawa.tokyo.jp/a014/bouhan/hanzaitaisaku/akisu.html
+751,condition,区内に住所を有する世帯で、現に居住する家屋等への器具設置が対象。特例世帯として、世帯全員が住民税非課税の世帯、世帯全員が満65歳以上の世帯、身体障害者手帳等の保持者がいる世帯、木造住宅密集地域の木造住宅に居住する世帯などが該当する。,https://www.city.arakawa.tokyo.jp/a013/bousai/sonae/okunaianzen.html
+1507,application,東京23区内の協力医療機関で、荒川区が発行する接種予診票を持参し、各ワクチンの定める自己負担額で接種を受ける。予診票は令和8年5月下旬以降順次発送され、送付前に接種を希望する場合は電子申請フォーム（24時間受付）または電話で保健所健康推進課予防接種係（03-3802-3574）に申し込む。,https://www.city.arakawa.tokyo.jp/a033/yobousessyu/teikitaijouhoushin8.html
+1507,condition,荒川区に住民登録があり、令和9年3月31日時点で65歳の方、および65歳以上の5歳刻みの年齢（70・75・80・85・90・95・100歳）の方が対象。,https://www.city.arakawa.tokyo.jp/a033/yobousessyu/teikitaijouhoushin8.html
+1627,condition,妊娠の届出後に都内の協力医療機関等で受診した妊婦健康診査が助成対象で、妊娠届出時に母子健康手帳の交付を受けていることが前提。都内他区市町村からの転入者は転入前の受診票が使用可能で、都外からの転入者は受診票の交換が必要。,https://www.city.arakawa.tokyo.jp/a033/ninshinshussan/nimpukenshin/kenkoshinsa.html
+1765,application,福祉部障害者福祉課障害サービス係（〒116-8501 荒川区荒川二丁目2番3号 本庁舎1階）の窓口で申請する。受給者証取得申請には身体障害者手帳・愛の手帳または精神障害者保健福祉手帳、健康保険証等、印鑑が必要（転入者は前年の所得証明書も必要）。,https://www.city.arakawa.tokyo.jp/a030/shougaisha/iryouhijosei/shogaiji.html

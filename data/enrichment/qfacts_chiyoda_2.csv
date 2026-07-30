@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+315,application,直接支払制度は医療機関へ直接申し込む。受取代理制度または区へ請求する場合は、区役所2階国民健康保険係の窓口に直接持参するか国民健康保険係宛て郵送する（申請先：保健福祉部保険年金課国民健康保険係）。主な必要書類は出産育児一時金支給申請書、出産費用の領収書・請求書、出生証明書など。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kyuhu/syussanichijikin.html
+316,application,国民健康保険高額療養費支給申請（請求）書を、区役所2階国民健康保険係の窓口に直接持参するか国民健康保険係宛て郵送して申請する。世帯主以外の口座への入金を希望する場合は委任状が必要。申請期限は診療を受けた翌月から2年間。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kyuhu/iryohi.html
+316,condition,医療機関の窓口で支払った保険適用分の医療費が1か月で自己負担限度額の上限を超えた場合に支給される。自己負担限度額は年齢（70歳未満、70〜74歳など）や所得により異なる。千代田区国保の保険料に未納があると利用できない。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kyuhu/iryohi.html
+317,application,2月下旬以降に区から「申請のお知らせ」および必要書類が送付され、その必要書類を区役所2階国民健康保険係の窓口に直接持参するか国民健康保険係宛て郵送して申請する。申請先は保健福祉部保険年金課国民健康保険係。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kyuhu/kogaku-jikofutan.html
+368,condition,届出人は本人（15歳未満は法定代理人）、同一世帯員または法定代理人、任意代理人（別世帯の場合は転入者からの委任状が必要）。届出期間は新しい住所に引っ越してから14日以内。国外からの転入は本籍地から取得した戸籍証明書・戸籍附票などの書類が必要。,https://www.city.chiyoda.lg.jp/koho/kurashi/koseki/jumintoroku/tennyu.html
+381,condition,分割納付や徴収猶予によっても保険料を支払えず、世帯に収入や資産がない、または収入が低く生活費を支出すると保険料を納付できない方が対象。災害や倒産などの事情で一時的に生活が困難になった場合、状況に応じて減額または免除となる場合がある。ほかに産前産後期間の免除や非自発的失業者の軽減などがある。,https://www.city.chiyoda.lg.jp/koho/kurashi/hoken/kenkohoken/kesan.html
+421,application,予診票の申込は、ポータルサイト、メール（件名「風しん抗体検査および予防接種予診票希望」）、予診票専用ダイヤル（03-6256-9005）のいずれかで行う。受診当日は千代田区発行の予診票、マイナンバーカードまたは資格確認書などを持参する。申請先は千代田保健所健康推進課感染症対策係。,https://www.city.chiyoda.lg.jp/koho/kenko/kenko/yobosesshu/fusin.html
+442,application,予診票の申込は、ポータルサイト、メール（件名「麻しん抗体検査および予防接種予診票希望」）、予診票専用ダイヤル（03-6256-9005）のいずれかで行う。受診当日は千代田区発行の予診票、マイナンバーカードまたは資格確認書などを持参する。申請先は千代田保健所健康推進課感染症対策係（予防接種担当）。,https://www.city.chiyoda.lg.jp/koho/kenko/kenko/yobosesshu/mashin.html
+465,application,原則としてポータルサイトからオンライン申請を行い、オンライン申請が難しい場合は請求書を郵送する。必要書類は特定子ども・子育て支援提供証明書兼領収証などの領収証（オンライン時はアップロード、郵送時は請求書・施設等利用費請求明細書も添付）。申請先は教育委員会事務局子ども部子ども支援課保育運営支援係。,https://www.city.chiyoda.lg.jp/koho/kosodate/hoiku/ninkagai-hoikuryo.html
+488,application,申請は郵送またはオンライン（ポータルサイト）で行う。郵送は補助金交付申請書兼口座振替依頼書、ベビーシッター利用内訳表、補助事業要件証明書、利用明細書、領収書などを委託事業者（株式会社パソナライフケア／千代田区ベビーシッター担当）宛てに提出する。オンラインは本人確認書類等を添付して申請する。,https://www.city.chiyoda.lg.jp/koho/kosodate/kosodate/ichijiteki/babysitter.html
+511,application,千代田区ポータルサイトからオンライン申請を行い、オンライン申請が難しい場合は郵送対応となる。必要書類は園が発行する特定子ども・子育て支援提供証明書兼領収証または在籍証明書などで、預かり保育の給付は利用施設発行の証明書兼領収証が必要。申請先は教育委員会事務局子ども部子ども支援課保育運営支援係。,https://www.city.chiyoda.lg.jp/koho/kosodate/yochien/shiritsu-kokuritsu.html
+534,application,申請はオンラインのみで、「mila-e申請フォーム」から妊娠28週以降に必要事項を入力して事前申請する。必要書類は本人確認書類、および必要な方のみ世帯全員の住民税非課税証明書または生活保護受給証明書。申請先は千代田保健所保健サービス課母子保健係。,https://www.city.chiyoda.lg.jp/koho/kosodate/kosodate/ninshin/sango.html
+557,application,利用希望日の1か月前から5営業日前までに児童・家庭支援センターへ申し込む。初回は電話相談後、家庭訪問を経て、育児支援訪問事業利用申請書などをメールか郵送で提出する。申請先は教育委員会事務局子ども部児童・家庭支援センター子ども相談窓口。,https://www.city.chiyoda.lg.jp/koho/kosodate/kosodate/ninshin/homon.html
