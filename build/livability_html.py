@@ -183,7 +183,8 @@ def stats_band_html(muni_name):
     src_pop = (meta.get("population") or ("", "", "東京都 住民基本台帳"))[2]
     src_hoi = (meta.get("taikijido") or ("", "", "こども家庭庁/東京都"))[2]
     src = (f'<p class="livsrc">出典: {esc(src_pop)}／{esc(src_hoi)}'
-           f'（基準時点 {esc(yr)}）。制度の実施状況とあわせて、暮らしの実態の目安としてご参照ください。</p>')
+           f'（基準時点 {esc(yr)}）。制度の実施状況とあわせて、暮らしの実態の目安としてご参照ください。'
+           f' <a href="/kurashi-data/">東京都62自治体のランキングで比べる →</a></p>')
 
     return (f'<section class="band band-soft"><div class="bandin">'
             f'<h2>{_hi("bars")}暮らしデータ（{esc(muni_name)}）</h2>'

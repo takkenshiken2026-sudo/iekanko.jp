@@ -1244,6 +1244,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <nav class="gnav" aria-label="メインナビゲーション">
 <a href="/find/">目的で探す</a>
 <a href="/hikaku/">制度を比較</a>
+<a href="/kurashi-data/">暮らしデータ</a>
 <a href="/guide/">ガイド</a>
 <a href="/#area">自治体一覧</a>
 </nav></div></header>
@@ -1254,7 +1255,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <footer class="site">
 <p class="totop"><a href="#top">{CHEV_U} ページの先頭へ</a></p>
 <nav class="fnav" aria-label="サイト情報">
-<a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>{FOOTER_CONTACT_HTML}
+<a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/kurashi-data/">暮らしデータ</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>{FOOTER_CONTACT_HTML}
 </nav>
 <p class="copy">© {ESTABLISHED} {esc(SITE_SHORT)}（東京都62自治体・出典付き / 最終確認日を明記）</p>
 </footer>
@@ -2607,6 +2608,130 @@ def build_home(muni_stats, score, cat_entries=None):
          canonical="/", jsonld=[site_graph()], breadcrumb=None, body=body)
     sitemap_urls.append(("/","1.0"))
 
+# ── 暮らしデータ（実態統計）ランキング ───────────────────────────────────────
+# 制度データとは別の公開オープンデータ（data/livability_stats.db）を、
+# 指標ごとに東京都62自治体で横断ランキング表示する。出典・基準時点つき。
+KURASHI_INDS = [
+    # key, label, unit, fmt('count'/'rate'), 見出し文, 補足
+    ("taikijido", "保育所の待機児童数", "人", "count",
+     "認可保育所等の利用を申し込んでも入れなかった児童数（多い順）。少ないほど入りやすさの目安になります。",
+     "数が少ない自治体ほど保育所に入りやすい傾向があります。見出しをクリックすると少ない順に並び替えできます。"),
+    ("hoiku_riyou_rate", "保育サービス利用率", "%", "rate",
+     "就学前人口に対する保育サービス利用者の割合（高い順）。保育の受け皿の広さの目安です。",
+     "利用率が高いほど、共働き世帯などの保育ニーズを受け止められている目安になります。"),
+    ("population", "人口", "人", "count",
+     "住民基本台帳による人口（多い順）。まちの規模感の目安です。",
+     "人口規模は制度の窓口体制や施設数の背景として参考になります。"),
+    ("setai", "世帯数", "世帯", "count",
+     "住民基本台帳による世帯数（多い順）。",
+     "世帯数はまちの規模やコミュニティの大きさの目安になります。"),
+]
+
+
+def _kd_fmt(v, kind, unit):
+    if kind == "rate":
+        return f"{v:.1f}{unit}"
+    return f"{int(round(v)):,}{unit}"
+
+
+def build_kurashi_data():
+    """暮らしデータ（実態統計）のハブと指標別ランキングページを生成。
+    data/livability_stats.db が無い／空なら何もしない。"""
+    from livability_html import _load_stats
+    s = _load_stats()
+    data, avg, meta = s.get("data", {}), s.get("avg", {}), s.get("meta", {})
+    if not data:
+        return 0
+    name2muni = {m["municipality_name"]: m for m in munis}
+
+    built = []
+    for key, label, unit, kind, headline, note in KURASHI_INDS:
+        rows = [(nm, d[key]) for nm, d in data.items()
+                if d.get(key) is not None and nm in name2muni]
+        if len(rows) < 5:
+            continue
+        rows.sort(key=lambda r: (-r[1], r[0]))
+        uni, yr, src = meta.get(key, (unit, "", ""))
+        # 上位15のグラフ
+        maxv = max(v for _, v in rows) or 1
+        chart_rows = [(nm, v, avg.get(key), "", _kd_fmt(v, kind, unit)) for nm, v in rows[:15]]
+        chart = svg_bars(chart_rows, maxv, unit)
+        # 全自治体テーブル（並び替え可）
+        trs = []
+        for rank, (nm, v) in enumerate(rows, 1):
+            m = name2muni[nm]; slug = muni_slug(m)
+            cls = ' class="top3"' if rank <= 3 else ''
+            trs.append(
+                f'<tr{cls} data-href="/area/tokyo/{slug}/" data-val="{v}" data-i="{rank}">'
+                f'<td class="rk">{rank}</td>'
+                f'<td class="mn"><a href="/area/tokyo/{slug}/">{esc(nm)}</a></td>'
+                f'<td class="dt">{esc(_kd_fmt(v, kind, unit))}</td></tr>')
+        url = f"/kurashi-data/{key}/"
+        title = f"東京都の{label}ランキング｜62自治体を比較【{esc(yr)}時点】"
+        desc = clip(f"東京都62自治体の{label}を、公開オープンデータ（{src}）をもとに一覧・ランキングで比較できます。{headline}", 118)
+        others = "".join(
+            f'<li><a href="/kurashi-data/{k2}/">{esc(l2)}のランキング {CHEV_R}</a></li>'
+            for k2, l2, *_ in KURASHI_INDS if k2 != key)
+        body = f"""
+<div class="area-head"><div class="area-head-main">
+<span class="badge" style="--pc:#2a9d6a">暮らしデータ</span>
+<h1>東京都の{esc(label)}ランキング</h1>
+<p class="lead">{esc(headline)} 出典は{esc(src)}（基準時点 {esc(yr)}）。制度の実施状況とあわせて、暮らしの実態の目安としてご参照ください。</p>
+</div></div>
+<figure class="cmpchart" style="--pc:#2a9d6a"><div class="chart-wrap">{chart}</div>
+<figcaption>{esc(label)}の上位15自治体（都平均を基準線で表示）</figcaption></figure>
+<div class="tablewrap"><table class="cmp rank" id="ranktbl">
+<thead><tr>
+<th class="rk">順位</th>
+<th class="mn">自治体</th>
+<th class="sortable" data-sort="val" aria-sort="descending"><button type="button">{esc(label)} <span class="sarr"></span></button></th>
+</tr></thead>
+<tbody>{''.join(trs)}</tbody></table></div>
+{RANK_TABLE_JS}
+<p class="notice">{esc(note)}数値は公開オープンデータに基づく目安で、集計時点や定義により実際と異なる場合があります。最新の状況は各自治体の公式情報でご確認ください。</p>
+<div class="cmpbox" style="--pc:#2a9d6a"><strong>ほかの暮らしデータ</strong><ul>{others}</ul>
+<p class="armore"><a href="/kurashi-data/">{CHEV_L} 暮らしデータの一覧にもどる</a></p></div>"""
+        il = {"@context": "https://schema.org", "@type": "ItemList",
+              "name": f"東京都の{label}ランキング",
+              "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": nm,
+                                   "url": f"{BASE_URL}/area/tokyo/{muni_slug(name2muni[nm])}/"}
+                                  for i, (nm, _v) in enumerate(rows[:20])]}
+        bc = [("トップ", "/"), ("暮らしデータ", "/kurashi-data/"), (f"{label}ランキング", None)]
+        page(path=url + "index.html", title=title, description=desc, canonical=url,
+             jsonld=[il], breadcrumb=bc, body=body)
+        sitemap_urls.append((url, "0.7"))
+        built.append((key, label, unit, kind, headline, rows))
+
+    if not built:
+        return 0
+    # ハブページ
+    cards = []
+    for key, label, unit, kind, headline, rows in built:
+        top_nm, top_v = rows[0]
+        cards.append(
+            f'<a class="kdcard" href="/kurashi-data/{key}/" style="--pc:#2a9d6a">'
+            f'<b>{esc(label)}</b>'
+            f'<span class="kddesc">{esc(headline)}</span>'
+            f'<span class="kdex">最多は {esc(top_nm)}（{esc(_kd_fmt(top_v, kind, unit))}）</span></a>')
+    yrs = sorted({meta.get(k, ("", "", ""))[1] for k, *_ in built if meta.get(k)})
+    body = f"""
+<h1>暮らしデータ（東京都62自治体の実態統計）</h1>
+<p class="lead">給付・手当・助成の「制度」だけでなく、待機児童数・保育サービス利用率・人口など、
+暮らしの実態を表す公開オープンデータを東京都62自治体で横断ランキングにしました。
+引っ越し先選びや、いま住むまちの位置づけの確認にお使いください。</p>
+<div class="kdcards">{''.join(cards)}</div>
+<p class="note">出典は各指標ページに明記しています（基準時点 {esc('・'.join(y for y in yrs if y))}）。
+数値は公開オープンデータに基づく目安で、制度の実施状況とは別の参考情報です。</p>
+<p><a href="/hikaku/">制度カテゴリごとの自治体比較を見る {CHEV_R}</a></p>"""
+    page(path="/kurashi-data/index.html",
+         title="暮らしデータ｜東京都62自治体の待機児童・保育・人口を比較",
+         description="待機児童数・保育サービス利用率・人口など、東京都62自治体の暮らしの実態を公開オープンデータで横断ランキング。制度の比較とあわせて地域選びの参考に。",
+         canonical="/kurashi-data/",
+         breadcrumb=[("トップ", "/"), ("暮らしデータ", None)], body=body)
+    sitemap_urls.append(("/kurashi-data/", "0.7"))
+    return len(built)
+
+
 # ── 実行 ────────────────────────────────────────────────────────────────────
 def main():
     score, avg = compute_scores()
@@ -2645,12 +2770,14 @@ def main():
         build_ranking(ev, score, avg)
     build_static_pages()
     build_guides()
+    kd_n = build_kurashi_data()
     build_home(muni_stats, score, cat_entries)
     write_search_index(search_progs, cat_counts)
     write_sitemap(); write_robots(); write_ads_txt(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
     print(f"生成完了: 自治体{len(muni_stats)} / 制度ページ{total_prog}（index {indexed} / noindex {total_prog-indexed}）")
     print(f"比較ページ: {len(cat_counts)}カテゴリ（index {cmp_pub}）")
+    print(f"暮らしデータ: {kd_n}指標ランキング")
     print(f"sitemap URL数: {len(sitemap_urls)}  出力先: {OUT}")
     print(f"BASE_URL={BASE_URL}  （本番前に SEIDO_BASE_URL を設定してください）")
 
@@ -3179,6 +3306,13 @@ dl.facts.livgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px
 .livmeter .fig-meter-track i{transform:none}
 .livmeter-cap{display:block;font-size:var(--fs-xs);color:var(--muted);margin-bottom:.22rem}
 .livsrc{font-size:var(--fs-xs);color:var(--muted);margin-top:.55rem;line-height:1.5}
+/* 暮らしデータ ランキング（ハブのカード） */
+.kdcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:.7rem;margin:1rem 0 1.2rem}
+.kdcard{display:block;border:1px solid var(--line);border-left:4px solid var(--pc);border-radius:var(--radius);padding:.85rem 1rem;color:var(--fg);background:var(--bg)}
+.kdcard:hover{background:color-mix(in srgb,var(--pc) 7%,#fff);text-decoration:none}
+.kdcard b{display:block;font-size:var(--fs-lg);font-weight:var(--fw-bold);margin-bottom:.25rem}
+.kdcard .kddesc{display:block;font-size:var(--fs-sm);color:var(--muted);line-height:1.55}
+.kdcard .kdex{display:block;font-size:var(--fs-xs);color:var(--fg);margin-top:.4rem;font-weight:var(--fw-semi)}
 .figures.on .fig-meter-track i{transform:scaleX(1);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .figures.on .fig-st-bar i:nth-child(1){transition-delay:.05s}
 .figures.on .fig-st-list li:nth-child(2) .fig-st-bar i{transition-delay:.1s}
