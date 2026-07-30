@@ -1,0 +1,96 @@
+program_id,fact_type,value,evidence_url
+1953,target,品川区在住の0歳児とその養育者,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/kodomo-ninnshinn-service/20231002181840.html
+1953,benefit,満1歳になる月まで月1回程度・最大12回訪問。見守り支援員が玄関先で赤ちゃんと養育者の状況を確認し育児相談を行い、おむつ等の育児用品を配付,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/kodomo-ninnshinn-service/20231002181840.html
+1953,application,妊娠届出後に案内書類を郵送、登録用二次元コードで申請（郵送対応も可）。出生届提出後に訪問日と育児用品を選択,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/kodomo-ninnshinn-service/20231002181840.html
+1953,condition,見守りが目的のため育児用品のみの申請・配達は不可。自宅での訪問に限る,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/kodomo-ninnshinn-service/20231002181840.html
+2001,target,品川区内の木造住宅。高齢者・障害者・要介護者等世帯がお住まいの木造住宅は助成を拡充,https://www.city.shinagawa.tokyo.jp/PC/bosai/bosai2/jishin/hpg000012434.html
+2001,benefit,耐震診断・補強設計・耐震改修工事・除却（解体）・品川シェルター設置を支援,https://www.city.shinagawa.tokyo.jp/PC/bosai/bosai2/jishin/hpg000012434.html
+2001,condition,補強設計・改修工事は費用の2分の1（同時申請は3分の2）を助成。高齢者・障害者等世帯は10分の10に拡充,https://www.city.shinagawa.tokyo.jp/PC/bosai/bosai2/jishin/hpg000012434.html
+2001,application,品川区の担当窓口、または品川区電子申請サービス（推奨）から申請,https://www.city.shinagawa.tokyo.jp/PC/bosai/bosai2/jishin/hpg000012434.html
+2001,deadline,令和8年12月4日（金）まで（一部制度は通年受付）,https://www.city.shinagawa.tokyo.jp/PC/bosai/bosai2/jishin/hpg000012434.html
+2012,target,区民・中小企業者等・管理組合等・法人・個人事業主（対象機器により異なる）,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kankyo/kankyo-kankyo-zyosei/20250310125732.html
+2012,amount,太陽光発電は1kWあたり5万円（上限20〜50万円）／蓄電池は1kWhあたり3万円（上限30万円）／省エネ家電（エアコン・冷蔵庫）上限1万円／電気自動車等 上限10万円 ほか機器により異なる,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kankyo/kankyo-kankyo-zyosei/20250310125732.html
+2012,benefit,太陽光発電・蓄電池・LED照明・エネファーム・エコキュート・省エネ家電・宅配ボックス・ZEB/ZEH・電気自動車等の導入費を助成,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kankyo/kankyo-kankyo-zyosei/20250310125732.html
+2012,condition,機器の設置・導入完了後に申請可（基準日は令和8年4月1日〜令和9年3月15日）。先着順で予定件数到達により受付終了,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kankyo/kankyo-kankyo-zyosei/20250310125732.html
+2012,application,品川区電子申請（オンラインシステム）から申請,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kankyo/kankyo-kankyo-zyosei/20250310125732.html
+2012,deadline,令和8年5月25日〜令和9年3月15日,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kankyo/kankyo-kankyo-zyosei/20250310125732.html
+2072,target,1歳の誕生日に品川区に住民票のある子を養育している家庭,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-kateisoudan/20231114155458.html
+2072,amount,バースデーサポートギフト（1ポイント1円相当）を付与。第1子60000ポイント／第2子70000ポイント／第3子以上80000ポイント（令和6年4月1日〜令和7年3月31日生まれが対象）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-kateisoudan/20231114155458.html
+2072,benefit,子育てアンケート回答後、ギフト交換サイトでポイントを使って商品を申し込む,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-kateisoudan/20231114155458.html
+2072,condition,アンケートへの回答がギフト付与の条件,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-kateisoudan/20231114155458.html
+2072,application,区から郵送のアンケートを区内13か所の児童センターに提出、またはシリアルコードでインターネット回答,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-kateisoudan/20231114155458.html
+2072,deadline,アンケート回答は送付から3か月、ギフト申込は初回ログインから6か月,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-kateisoudan/20231114155458.html
+2121,target,65歳以上の単身世帯、または構成員全員が65歳以上の世帯で、品川区内に2年以上居住し、賃貸人の親族でなく、登録不動産事業者の従業員でない方（過去利用者は前回契約日から1年経過が必要）,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kenchiku/kankyo-kenchiku-koureisya/hpg000001410.html
+2121,amount,礼金等の転居時にかかる一時経費を助成（令和7年度から転居費の助成メニューを追加）。助成上限額は公式ページでご確認ください,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kenchiku/kankyo-kenchiku-koureisya/hpg000001410.html
+2121,benefit,高齢者に区の登録住宅をあっ旋し、礼金等の転居時一時経費を助成,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kenchiku/kankyo-kenchiku-koureisya/hpg000001410.html
+2121,condition,世帯主の前年所得が基準額以内であること。生活保護受給者は対象外,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kenchiku/kankyo-kenchiku-koureisya/hpg000001410.html
+2121,application,高齢者地域支援課 高齢者住宅担当（電話03-5742-6735）へ申請,https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-kenchiku/kankyo-kenchiku-koureisya/hpg000001410.html
+2153,target,高校（中等教育学校後期課程含む）・高等専門学校・専修学校（高等課程）に在学し、経済的理由により修学が困難な方。申請者・保護者が品川区に住民登録,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/20250409170523.html
+2153,benefit,無利子貸付。高校等を卒業し1年間の据置期間経過後、15年以内で毎年規定額を返還。返還免除制度あり,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/20250409170523.html
+2153,condition,所得制限あり。給付型奨学金との併用が前提,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/20250409170523.html
+2153,application,子育て応援課窓口（区役所本庁舎7階）でのみ配布・受付。申請書類・住民票・印鑑登録証明書・課税/非課税証明書が必要,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/20250409170523.html
+2153,deadline,令和8年6月1日〜6月30日（期間厳守・募集25人程度の選考）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/20250409170523.html
+2188,target,令和6年4月1日以降の治療で、治療開始日から申請日まで継続して婚姻（事実婚含む）、夫婦いずれかが継続して品川区に住民登録、他の都道府県・区市町村で助成を受けていない方,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20240622152920.html
+2188,benefit,保険適用分の自己負担額を助成（高額療養費・付加給付を除く）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20240622152920.html
+2188,condition,生殖補助医療は妻の年齢40歳未満で1子ごと通算6回、40歳以上43歳未満で1子ごと3回まで,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20240622152920.html
+2188,application,郵送または窓口。申請書・受診等証明書（医療機関で証明）等を品川区健康課へ提出,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20240622152920.html
+2188,deadline,当該治療が終了した日から起算して1年以内,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20240622152920.html
+2360,target,品川区在住で公立小中・義務教育学校の児童生徒の保護者。生活保護受給世帯、前年所得が基準以下の世帯（2人世帯 約259〜314万円、3人世帯 約295〜417万円等）、失業・倒産・疾病で所得が大幅に減少した世帯,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/hpg000000893.html
+2360,benefit,学用品費・給食費・新入学学用品費・夏季施設参加費・体育実技用具費・通学費・標準服費・校外教授費・移動教室費・修学旅行費・卒業アルバム費・医療費,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/hpg000000893.html
+2360,condition,世帯人数別の所得上限あり（住民登録による世帯構成で判定）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/hpg000000893.html
+2360,application,学校を通じて配布される申請書で電子申請、または学務課へ提出（学校では受付不可）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/hpg000000893.html
+2360,deadline,年度当初は令和8年4月30日（木）まで、年度途中は毎月末日消印有効（翌年2月1日まで）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-gakkou/kodomo-gakkou-soudan/hpg000000893.html
+2390,target,品川区の介護保険第1号被保険者（65歳以上）で保険料段階が第3・4段階の方。ほか災害等による減免あり,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/20211220145317.html
+2390,benefit,承認された場合、当該年度の申請月以降の保険料を第2段階と同じ額まで減額,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/20211220145317.html
+2390,condition,前年の収入合計が1人世帯120万円以下（1人増ごとに+60万円）、かつ300万円以上の預貯金や居住用以外の土地・家屋等の資産を持っていないこと,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/20211220145317.html
+2390,application,高齢者福祉課 介護保険料係へ申請（減額申請書・生活状況調査票・保険証写し・年金受給額通知書等の写し・預貯金通帳の写し）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/20211220145317.html
+2390,deadline,月末の7日前までに申請（年度ごと）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/20211220145317.html
+2441,target,令和7年4月1日以降に妊娠届出をし、助産師・保健師等の面談を受けた妊婦および出産した産婦（流産・死産・出産後の嬰児死亡も対象）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20230120091157.html
+2441,benefit,経済的負担軽減を目的とした現金給付。伴走型相談支援と一体で実施,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20230120091157.html
+2441,condition,妊産婦本人名義の銀行口座が必須（申請者・口座名義人は妊産婦のみ）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20230120091157.html
+2441,application,妊婦相談（初回面談）またはすくすく赤ちゃん訪問で配布される二次元コードから電子申請,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20230120091157.html
+2441,deadline,妊娠時は胎児心拍確認から2年間、出産後は出産予定日の8週間前から2年間,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/20230120091157.html
+2542,target,88歳（米寿）・90歳（卒寿）・99歳（白寿）・100歳・101歳以上で品川区に住民登録のある方,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-koureisya/kenkou-koureisya-chozyu/index.html
+2542,benefit,長寿を祝ってお祝い品（区内共通商品券）を贈呈,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-koureisya/kenkou-koureisya-chozyu/index.html
+2542,condition,品川区に住民登録されていること,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-koureisya/kenkou-koureisya-chozyu/index.html
+2542,deadline,毎年9月にお祝い品を贈呈,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-koureisya/kenkou-koureisya-chozyu/index.html
+2582,target,第1種＝身体障害者手帳1〜2級・愛の手帳1〜3度・脳性まひ・進行性筋萎縮症（20歳以上65歳未満）／第2種＝難病患者・身体障害者手帳3級・愛の手帳4度・精神障害者保健福祉手帳1級・年金1級受給者等（65歳未満）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-teate/hpg000024970.html
+2582,amount,第1種手当 月額15500円／第2種手当 月額8500円,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-teate/hpg000024970.html
+2582,benefit,心身障害により日常生活に支障がある方への経済的支援として手当を支給,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-teate/hpg000024970.html
+2582,condition,所得限度額以内であること。施設入所者は対象外。児童育成手当対象者は除外,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-teate/hpg000024970.html
+2582,application,障害者支援課 障害給付事務係へ申請,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-teate/hpg000024970.html
+2615,target,離職等、またはやむを得ない休業等により経済的に困窮し、住居を失った・失うおそれのある方。離職から2年以内（疾病等の場合は4年）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-seikatsukomaru/hpg000011207.html
+2615,benefit,家賃補助（住宅貸主口座へ月額振込）と転居費用補助（運搬費・初期費用・原状回復費等）。支給期間は原則3か月（一定要件で延長可）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-seikatsukomaru/hpg000011207.html
+2615,condition,生計維持者であること。金融資産は単身552000円・2人834000円・3人以上1000000円以下。月4回以上の支援員面接・月2回以上のハローワーク相談,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-seikatsukomaru/hpg000011207.html
+2615,application,暮らし・しごと応援センターへ電話予約後に来所申請（03-5742-9117、平日9〜12時・13〜17時）。本人確認書類・離職票・給与明細・預貯金通帳など11点,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-seikatsukomaru/hpg000011207.html
+2669,target,65歳以上で、介護保険の要介護認定で「非該当」だった方、または要支援・要介護認定を受けていない方,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/20211224090503.html
+2669,benefit,手すりの取付け・段差の解消・床または通路面の材料の変更・引き戸等への扉の取替え・洋式便器等への便器の取替え,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/20211224090503.html
+2669,condition,対象工事の合計20万円が上限。自己負担割合等に応じ9割から7割を給付（超過分は全額自己負担）。本人の自宅が対象で工事前の事前申請が必須,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/20211224090503.html
+2669,application,高齢者福祉課 介護給付係へ窓口持参または郵送、オンライン申請（ぴったりサービス）も可,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/20211224090503.html
+2761,target,区内在住者等（内職相談は区内在住の方が対象）,https://www.city.shinagawa.tokyo.jp/PC/sangyo/sangyo-syugyoshien/sangyo-syugyoshien-syugyocenter/index.html
+2761,benefit,求人検索（全国のハローワーク求人）・職業相談・職業紹介・内職相談（縫製・アクセサリー・機械部品組立等）。利用は無料,https://www.city.shinagawa.tokyo.jp/PC/sangyo/sangyo-syugyoshien/sangyo-syugyoshien-syugyocenter/index.html
+2761,condition,内職相談は区内在住の方が対象。内職の新規登録は午後4時30分までに受付,https://www.city.shinagawa.tokyo.jp/PC/sangyo/sangyo-syugyoshien/sangyo-syugyoshien-syugyocenter/index.html
+2761,application,窓口利用（予約不要）,https://www.city.shinagawa.tokyo.jp/PC/sangyo/sangyo-syugyoshien/sangyo-syugyoshien-syugyocenter/index.html
+2761,office,品川区西品川1-28-3 品川区立中小企業センター1階（月〜金9時〜17時、祝日・年末年始を除く、電話03-5498-6353）,https://www.city.shinagawa.tokyo.jp/PC/sangyo/sangyo-syugyoshien/sangyo-syugyoshien-syugyocenter/index.html
+2784,target,主に身体障害者手帳1・2級または愛の手帳1・2度の方（対象は用具により異なる）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-nichizyouenzyo/hpg000033428.html
+2784,benefit,介護・訓練支援用具、自立生活支援用具、在宅療養支援用具、情報・意思疎通支援用具、排泄管理支援用具、住宅改修費（小規模改修）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-nichizyouenzyo/hpg000033428.html
+2784,condition,令和6年4月1日より18歳未満の児童は所得制限を撤廃。成人は所得に応じた負担上限額あり,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-nichizyouenzyo/hpg000033428.html
+2784,application,障害者支援課 障害認定事務係（03-5742-6710）へ申請書・見積書等を提出後、日常生活用具給付券を交付,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-nichizyouenzyo/hpg000033428.html
+2803,target,下肢・体幹機能障害1〜3級、視覚障害1・2級、内部障害1級、愛の手帳1・2度の方,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000033560.html
+2803,amount,1か月あたり3500円分（500円券6枚+100円券5枚、または500円券7枚を選択）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000033560.html
+2803,benefit,福祉タクシーまたは自動車燃料費を選択して使用可（共通券は両方対応、タクシー専用券はタクシーのみ）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000033560.html
+2803,application,障害者支援課窓口に身体障害者手帳または愛の手帳を持参して引換券を受け取り、品川区社会福祉協議会に提出,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000033560.html
+2803,deadline,翌年度分は毎年3月下旬に郵送。新規申請者は手続きした月から交付,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000033560.html
+2869,target,父母が離婚した児童、父/母が死亡または生死不明の児童、1年以上遺棄されている児童、婚姻によらないで生まれた児童等を養育・監護する方（18歳到達後最初の3月31日まで、障害児は20歳未満）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hitorioya/hpg000001248.html
+2869,benefit,ひとり親家庭等の生活安定と自立促進、児童福祉の増進が目的。申請月の翌月分から支給開始,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hitorioya/hpg000001248.html
+2869,condition,所得制限あり（扶養親族0人で全部支給690000円・一部支給2080000円以下、扶養数に応じ加算）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hitorioya/hpg000001248.html
+2869,application,区役所本庁舎7階の子育て応援課窓口へ。本人確認書類・金融機関情報を持参（戸籍謄本原本の提出で早期認定可）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hitorioya/hpg000001248.html
+2869,deadline,現況届は毎年8月1日〜31日に提出必須（未提出の場合は11月分以降支給停止）,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hitorioya/hpg000001248.html
+2935,target,身体障害者手帳・愛の手帳（療育手帳）・精神障害者保健福祉手帳の交付者世帯、または障害者総合支援法の障害福祉サービス受給者証所持世帯で、他の資金の借入が困難な方,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000000550.html
+2935,benefit,技能習得費・生業費・転居費・就職支度金・住宅改修費・福祉用具購入費・障害者自動車購入費・介護等費の8種類の資金を貸付,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000000550.html
+2935,application,品川区社会福祉協議会へ相談（大井1-14-1 大井1丁目共同ビル2階、電話03-5718-7171）。事前に連絡のうえ相談,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000000550.html
+3000,target,区内介護サービス事業所に従事する介護職員・介護支援専門員（指定管理者制度による施設も対象）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/unnei/20240725162531.html
+3000,benefit,職員定着を支援するため居住支援手当を支給する事業所への補助。要介護高齢者へのサービス提供体制の安定化が目的,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/unnei/20240725162531.html
+3000,condition,就業規則または給与規程で「介護職員・介護支援専門員居住支援手当」を法人として規定していること,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/unnei/20240725162531.html
+3000,application,品川区電子申請サービスで受付（交付申請書・職員一覧・就業規則等）。郵送・窓口は原則受付なし,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/unnei/20240725162531.html
+3000,deadline,令和8年11月30日（月）,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/unnei/20240725162531.html
