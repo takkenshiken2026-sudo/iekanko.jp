@@ -1345,6 +1345,19 @@ def amount_of(facts):
         if lbl in ("支給額・助成額",) and val: return val
     return None
 
+def amount_or_benefit_of(facts):
+    """比較表『支給額・助成額』列用の金額取得。
+    独立した amount(支給額)fact が無い制度でも、内容・給付／支援内容／
+    サービス内容の記述に金額表現（例『上限10万円』）があればそれを代用する。
+    これが無いと、詳細ページに金額があるのに比較表だけ『記載を確認中』になる。
+    金額表現が全く無い場合のみ None（=記載を確認中）を返す。"""
+    a = amount_of(facts)
+    if a: return a
+    for order,lbl,val,ev,cf in facts:
+        if lbl in ("内容・給付","支援内容","サービス内容") and val and extract_any_yen(val):
+            return val
+    return None
+
 def program_cat_of(p):
     """制度の代表カテゴリ（ライフイベント）と表示色を返す。
     returns: (ev_attr, catname, color)  ev_attr は data-ev 用の空白区切りslug。"""
@@ -2611,7 +2624,7 @@ def main():
             facts = facts_of(p["id"])
             idx = build_program(m, slug, p, cats, progs)
             if idx: indexed+=1
-            amount = amount_of(facts)
+            amount = amount_or_benefit_of(facts)
             for cid in cats:
                 cat_entries.setdefault(cid,[]).append((m, slug, p, amount, idx))
             summ = re.sub(r"\s+"," ",(p["plain_summary"] or p["summary"] or "")).strip()
