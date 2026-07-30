@@ -164,6 +164,12 @@ def stats_band_html(muni_name):
     if d.get("hoiku_riyou_rate") is not None:
         note = "都平均 {:.1f}%".format(avg.get("hoiku_riyou_rate", 0))
         tiles.append(("保育サービス利用率", f'{d["hoiku_riyou_rate"]:.1f}<span class="lu">%</span>', note))
+    if d.get("nenshou_rate") is not None:
+        note = "都平均 {:.1f}%".format(avg.get("nenshou_rate", 0))
+        tiles.append(("年少人口率（15歳未満）", f'{d["nenshou_rate"]:.1f}<span class="lu">%</span>', note))
+    if d.get("koreika_rate") is not None:
+        note = "都平均 {:.1f}%".format(avg.get("koreika_rate", 0))
+        tiles.append(("高齢化率（65歳以上）", f'{d["koreika_rate"]:.1f}<span class="lu">%</span>', note))
 
     fact_parts = []
     for lbl, val, note in tiles:

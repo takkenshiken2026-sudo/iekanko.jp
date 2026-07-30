@@ -126,6 +126,46 @@ def ingest_population(gov, stats):
     return len({r[1] for r in rows}), len(rows)
 
 
+def ingest_age_structure(gov, stats):
+    """東京都『住民基本台帳による東京都の世帯と人口 令和7年1月』第3-1表
+    区市町村・年齢3区分別人口（人口総数）CSV。地域階層=4 の行が各自治体。
+    年少(0-14)/生産年齢(15-64)/老年(65-) の総数から高齢化率・年少人口率を算出。"""
+    import csv as _csv
+    url = "https://www.toukei.metro.tokyo.lg.jp/juukiy/2025/jy25qv0301.csv"
+    page = "https://www.toukei.metro.tokyo.lg.jp/juukiy/2025/jy25000001.htm"
+    src = "東京都 住民基本台帳による東京都の世帯と人口 令和7年1月 第3-1表"
+    year = "2025-01-01"
+    with tempfile.NamedTemporaryFile(suffix=".csv", delete=False) as tf:
+        path = tf.name
+    curl(url, path)
+    n2c = name2code(gov)
+    rows = []
+    with open(path, encoding="utf-8-sig") as f:  # BOM付きUTF-8
+        for r in _csv.reader(f):
+            if len(r) < 10 or r[0].strip() != "4":  # 地域階層=4 が区市町村
+                continue
+            name = r[2].strip()
+            if name not in n2c:
+                continue
+            def num(x):
+                try:
+                    return int(str(x).replace(",", "").strip())
+                except ValueError:
+                    return None
+            young, work, old = num(r[3]), num(r[6]), num(r[9])
+            if None in (young, work, old):
+                continue
+            total = young + work + old
+            if total <= 0:
+                continue
+            code = n2c[name]
+            rows.append((code, name, "koreika_rate", round(100 * old / total, 1), "%", year, src, page, FETCHED))
+            rows.append((code, name, "nenshou_rate", round(100 * young / total, 1), "%", year, src, page, FETCHED))
+    os.unlink(path)
+    upsert(stats, rows)
+    return len({r[1] for r in rows}), len(rows)
+
+
 def main():
     # 決定的に再生成（既存statsDBを作り直す）
     if os.path.exists(STATSDB):
@@ -136,8 +176,10 @@ def main():
     st.executescript(SCHEMA)
     m1, c1 = ingest_taikijido(gov, st)
     m2, c2 = ingest_population(gov, st)
-    munis, cells = max(m1, m2), c1 + c2
+    m3, c3 = ingest_age_structure(gov, st)
+    munis, cells = max(m1, m2, m3), c1 + c2 + c3
     print(f"人口/世帯: {m2}自治体 / {c2}セル")
+    print(f"年齢構成(高齢化率/年少人口率): {m3}自治体 / {c3}セル")
     sdb.commit()
     tot = st.execute("SELECT COUNT(*) FROM municipality_stats").fetchone()[0]
     inds = st.execute("SELECT indicator,COUNT(*) FROM municipality_stats GROUP BY indicator").fetchall()

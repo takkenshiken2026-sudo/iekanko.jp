@@ -17,8 +17,10 @@ cd "$(dirname "$0")/.."
 
 EXP_MUNI=${EXP_MUNI:-62}
 EXP_EVENTS=${EXP_EVENTS:-5}
-EXP_PROGRAMS=${EXP_PROGRAMS:-3089}
-EXP_FACTS=${EXP_FACTS:-11048}
+# 既定値は現行baseline（路線A: 標準制度の欠落埋め 2026-07-30 反映後）。
+# 制度を増減したら都度この既定値も更新するか、環境変数で上書きすること。
+EXP_PROGRAMS=${EXP_PROGRAMS:-3130}
+EXP_FACTS=${EXP_FACTS:-12404}
 
 counts() {  # DB の主要件数を "muni events programs facts" として出力
   python3 - "$1" <<'PY'

@@ -46,6 +46,33 @@ python3 build/build_site.py                    # SEIDO_DB 既定 = gov_life_supp
 > 検証しているのは「復元DB→再生成した**サイト**が現行docsと一致し、内容が失われないこと」。
 > 元DBにのみ在るサイト非表示の列（内部審査メモ・amount_min/max 等）は復元対象外。
 
+## 暮らしデータ（実態統計）の年次リフレッシュ
+制度データ（`gov_life_support.sqlite3`）とは独立した実態統計を、別DB
+`data/livability_stats.db`（リポジトリ同梱・`reinfolib_tokyo.db` と同じ「別DB→build時結合」方式）に
+持たせている。指標は long 形式（1指標1行）で、現状は次の5種：
+`population`(人口) / `setai`(世帯数) / `taikijido`(待機児童数) /
+`hoiku_riyou_rate`(保育サービス利用率) / `shugakumae_jinko`(就学前人口)。
+
+- 取り込み: `build/ingest_livability_stats.py`（キー不要の公開CSV/Excel を curl で取得）。
+  - 待機児童・保育: こども家庭庁「保育所等関連状況取りまとめ」表4（東京都掲載分の `d/tosei` 番号）。
+  - 人口・世帯: 東京都「住民基本台帳による世帯と人口」第5表 `jyXXqv0500.csv`（階層=0 が自治体合計）。
+- 表示:
+  - 自治体ハブの「暮らしデータ」帯 = `build/livability_html.py` の `stats_band_html()`。
+  - 横断ランキング = `build/build_site.py` の `build_kurashi_data()`（ハブ `/kurashi-data/` と
+    指標別 `/kurashi-data/<key>/`）。指標を増やすには `KURASHI_INDS` に1行足すだけ。
+
+**年に一度の更新手順**：
+```bash
+# 1) 出典が新年度版に更新されていたら、先に ingest_livability_stats.py 内の
+#    URL / year を新しい版へ差し替える（URLを替えないと前年と同じ数値になる）。
+# 2) 再取得→統計DB再構築→サイト再生成→検証 を一括実行:
+bash build/refresh_stats.sh
+# 3) git diff で docs の統計更新分を確認 → commit → 公開元ブランチへマージで本番反映。
+```
+統計DBの行数・指標内訳は `ingest_livability_stats.py` 実行時に標準出力へ表示される
+（現状 5指標 × 62自治体 = 310行）。`verify.sh` は制度データの件数のみを見るため、
+統計の増減では FAIL しない（ランキングページは DB 復元の対象外）。
+
 ## 補足
 - `build/build_site.py` 末尾に `if __name__ == "__main__": main()` を追加済み（実行部の補完）。
 - 相場・駅データ（相場グラフ等）は別DB `data/reinfolib_tokyo.db`（リポジトリ同梱）から生成。
