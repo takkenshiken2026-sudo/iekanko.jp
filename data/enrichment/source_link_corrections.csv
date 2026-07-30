@@ -20,3 +20,6 @@ area/tokyo/katsushika/seido/2550,葛飾区,長寿誕生日祝金の贈呈,replac
 area/tokyo/katsushika/seido/2632,葛飾区,高齢者寝具乾燥消毒サービス,replace_url_needs_verification,https://www.city.katsushika.lg.jp/kurashi/1000052/1002141/1002162.html,,実ページ404。高齢者支援課配下の現行ページ要特定。noindex据え置き
 area/tokyo/katsushika/seido/2940,葛飾区,生活福祉資金,replace_url_needs_verification,https://www.city.katsushika.lg.jp/kurashi/1000055/1002320/1002328.html,,実ページ404。社協の現行ページ要特定。noindex据え置き
 area/tokyo/katsushika/seido/2976,葛飾区,帯状疱疹予防接種費用助成（区単独助成）,mark_discontinued,https://www.city.katsushika.lg.jp/kenkou/1000050/1001800/1030111.html,,公式に「令和8年3月31日で事業終了」（定期接種開始に伴う）。廃止表記推奨。noindex据え置き
+area/tokyo/minato/seido/2010,港区,創エネルギー・省エネルギー機器等設置費助成,replace_url_needs_verification,https://www.city.minato.tokyo.jp/chikyukankyou/soueneshouene.html,,実ページ404。地球温暖化対策助成の現行ページ要特定。noindex据え置き
+area/tokyo/minato/seido/2436,港区,出産・子育て応援給付金,replace_url_needs_verification,https://www.city.minato.tokyo.jp/chiikihoken/kodomo/syusankosodate.html,,実ページ404。妊婦のための支援給付の現行ページ要特定。noindex据え置き
+area/tokyo/minato/seido/2991,港区,子育て世帯等住宅取得支援事業補助金,drilldown_needed,https://www.city.minato.tokyo.jp/jutakushien/jyutakusyutokushienjigyouhojyokin.html,https://www.city.minato.tokyo.jp/jutakushien/zyutakuhozyo.html,出典が概要ページで詳細なし。子ページ(zyutakuhozyo.html)への掘り下げ要。noindex据え置き
