@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+307,application,区役所1階の国保年金課保険給付係（所管課：福祉部国保年金課保険給付係）の窓口で申請します。申請書のほか、診療（調剤）報酬明細書、領収書（原本）、本人確認書類、世帯主の預金通帳などが必要です。申請期間は受診日の翌日から2年間です。,https://www.city.arakawa.tokyo.jp/a031/kenkouhoken/kokuho/ryouyouhi.html
+307,condition,やむをえない理由でマイナ保険証等を医療機関に提出できなかったとき、骨折・ねんざなどで柔道整復師の施術を受けたとき、海外旅行中などで国外で診療を受けたときなど、療養費の支給対象となる場合に受給できます。,https://www.city.arakawa.tokyo.jp/a031/kenkouhoken/kokuho/ryouyouhi.html
+308,application,支給対象（見込み）世帯には区から申請書が送付される予定です。申請・問い合わせ先は福祉部国保年金課保険給付係（本庁舎1階）です。,https://www.city.arakawa.tokyo.jp/a031/kenkouhoken/kokuho/ryoyohi.html
+363,application,葬祭費は窓口または郵送で申請でき、申請先は福祉部国保年金課後期高齢者医療係（本庁舎1階）です。必要書類は葬儀費用の領収書（コピー）または会葬はがき（原本）、葬儀を行った方の口座情報が分かるもの、亡くなった方の後期高齢者医療被保険者証または資格確認書です。高額療養費・高額介護合算療養費は対象者に申請書が郵送されます。,https://www.city.arakawa.tokyo.jp/a031/kenkouhoken/koukikoureisha/kouki2.html
+363,condition,葬祭費は後期高齢者医療制度の被保険者が亡くなった場合に葬儀を行った方が対象で、申請期限は葬儀を行った日の翌日から2年間です。,https://www.city.arakawa.tokyo.jp/a031/kenkouhoken/koukikoureisha/kouki2.html
+377,condition,他の区市町村または外国から荒川区に引っ越してきたときに届出が必要です。届出期間は荒川区に引っ越して来た日から14日以内で、届出人は引っ越した方（法定代理人や委任状を持つ任意代理人による届出も可能）です。,https://www.city.arakawa.tokyo.jp/a010/todokede/koseki/tennyu.html
+393,application,福祉部国保年金課国民年金係の窓口で手続きするほか、マイナポータルから電子申請もできます。学生納付特例の場合は、基礎年金番号が確認できる書類（年金手帳や基礎年金番号通知書など）、学生証（または在学証明書など）、本人確認書類が必要です。,https://www.city.arakawa.tokyo.jp/a031/kokuminnenkin/todokede/konnannatoki.html
+393,condition,申請免除は本人・配偶者・世帯主の前年所得が基準額以下であること、納付猶予は50歳未満で本人と配偶者の前年所得が基準額以下であること、学生納付特例は指定された対象校の学生で本人の前年所得が免除基準額以下であることが条件です。,https://www.city.arakawa.tokyo.jp/a031/kokuminnenkin/todokede/konnannatoki.html
+434,application,区内協力医療機関では設置された検査受診票・接種予診票を使用し費用負担なく受診できます。区外医療機関では料金を全額窓口で支払い、接種後に荒川区へ助成金を申請する償還払い方式で、必要書類は領収書（原本）、費用助成金交付申請書兼請求書、印鑑、振込先確認書類などです。申請先は健康部健康推進課予防接種係（郵送先：荒川区保健所健康推進課予防接種担当）で、申請期限は検査（接種）後1年以内です。,https://www.city.arakawa.tokyo.jp/a033/kenkouiryou/kansenshou/0913huusinzyosei.html
+472,application,助成金の申請は電子申請で行います。申請時には本人確認書類（マイナンバーカード・運転免許証など）と本人名義の通帳やキャッシュカードが必要です。問い合わせ先は福祉部高齢者福祉課高齢者福祉係です。,https://www.city.arakawa.tokyo.jp/a028/koureisya-sabisu/sumahojosei.html
+503,condition,児童と同居し荒川区に住所を有する保護者（保育認定は問わない）で、突発的な事情や社会参加により一時的保育が必要な方などが対象です。対象児童は未就学児（0歳から満6歳に達する年度の末日まで）で、令和7年度分の個人住民税及び国民健康保険料を滞納していないこと、東京都認定事業者の利用が条件です。,https://www.city.arakawa.tokyo.jp/a037/kosodate/bsitijiazukari.html
+526,application,おおむね妊娠7か月（妊娠25週）以降に申請します。方法は電子申請（Logoフォーム）、窓口申請（子ども・若者課子育て事業係・区役所2階、母子手帳を持参）、郵送申請（申請書と母子手帳の写しを子ども・若者課へ）の3通りです。所管課は子ども家庭部子ども・若者課子育て事業係です。,https://www.city.arakawa.tokyo.jp/a035/ninshinshussan/ninsampushien/sangokea_reiwa7.html
+549,application,窓口または郵送（様式をダウンロードし必要事項を記入）のほか、Logoフォームからの電子申請ができます。申請先は子ども家庭部子ども・若者課子育て事業係（本庁舎2階）で、必要書類は荒川区産前産後支援ヘルパー事業利用申請書です。,https://www.city.arakawa.tokyo.jp/a035/kosodate/kosodateshien/twins_helper_r7.html
+549,condition,荒川区在住で、母子健康手帳を取得した多胎児を出産予定の女性、または生後3年の前日までの多胎児を含む家庭が対象です。利用可能期間はヘルパー利用券が届いた日から対象となる多胎児が生後3年の前日までです。,https://www.city.arakawa.tokyo.jp/a035/kosodate/kosodateshien/twins_helper_r7.html

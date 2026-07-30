@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+122,condition,住民票上の世帯主で生計の中心者であり、足立区に3か月以上居住し、確実に返済できる収入がある方が対象。連帯保証人は住民税所得割が課税され、原則として23区内に1年以上継続して居住していることが必要。,https://www.city.adachi.tokyo.jp/fukushi/kurashi/sekatsu-mondai/kashitsuke-okyu.html
+137,condition,足立区に住所を有し、18歳到達後最初の3月31日までの日本国内に住所を有する子どもを養育する父母等のうち生計中心者が対象。令和6年10月分より所得制限は撤廃された。,https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/teate-jidoteate.html
+149,application,住所地を管轄する足立福祉事務所の各福祉課の母子・父子自立支援員に事前相談したうえで、窓口で申請する。必要書類は「生活費収支内訳」等で、就学支度資金・修学資金の場合は貸付調書や希望先の学費がわかる資料も必要。,https://www.city.adachi.tokyo.jp/fukushi/kurashi/sekatsu-mondai/kashitsuke-boshi.html
+150,condition,所得の少ない世帯、障がい者や介護を要する高齢者のいる世帯が対象。,https://www.city.adachi.tokyo.jp/fukushi/kurashi/sekatsu-mondai/kashitsuke-sekatsu.html
+192,application,申請者本人が来庁して窓口で申請する。申請先は福祉部親子支援課ひとり親手当・医療係。主な必要書類は申請者名義の普通預金通帳、申請者および児童の戸籍謄本（発行から1か月以内）、本人確認書類。,https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/hitorioya-ikuse.html
+193,application,申請者本人が来庁して窓口で申請する。申請先は福祉部親子支援課ひとり親手当・医療係。主な必要書類は申請者名義の普通預金通帳、申請者および児童の戸籍謄本、本人確認書類（年金を受給している場合は受給額のわかるもの）。,https://www.city.adachi.tokyo.jp/oyako/k-kyoiku/kosodate/hitorioya-fuyo.html
+212,application,地域包括支援センター、高齢福祉課在宅支援係、足立福祉事務所各課の総合相談窓口で申請でき、郵送申請も可能。申請書に耳鼻咽喉科専門医による中等度難聴であることの証明とオージオグラム（聴力図）を添付する。,https://www.city.adachi.tokyo.jp/k-fukushi/kaigohokengai.html
+254,application,国民健康保険課給付担当に必要書類を持参して申請する。葬儀の領収書（コピー不可）、喪主名義の預金通帳、保険証が必要。,https://www.city.adachi.tokyo.jp/kokuho/kurashi/hoken/2701kokuhonokyuufu.html
+254,condition,足立区の国民健康保険加入者が死亡したときに葬祭を行った方が対象。申請期間は葬儀の翌日から2年以内で、交通事故や公害疾病による場合は対象外。,https://www.city.adachi.tokyo.jp/kokuho/kurashi/hoken/2701kokuhonokyuufu.html
+255,condition,後期高齢者医療制度の加入者が亡くなった場合に葬儀を行った方（喪主）が対象。交通事故などの第三者行為や公害病が死因で、他の法令から葬祭費相当の給付を受ける場合は対象外となることがある。,https://www.city.adachi.tokyo.jp/koreiryo/kurashi/hoken/koresha-sousaihi.html
+256,condition,要介護・要支援認定を受けた方が対象。住宅改修費は工事着工前の申請が必須で、福祉用具購入費は在宅で生活し都道府県の指定を受けた特定福祉用具販売事業者から購入した場合が対象。,https://www.city.adachi.tokyo.jp/kaigo/kurashi/hoken/kaigo-kaishu.html
+312,application,対象世帯には診療月の約3か月後に申請書が送付され、内容を記入して返送することで給付される。2回目以降は自動振込となり申請書は不要。,https://www.city.adachi.tokyo.jp/kokuho/kurashi/hoken/2701kokuhonokyuufu.html
+313,application,直接支払制度、受取代理制度、事後申請の3つの方法がある。事後申請の場合は国民健康保険課給付担当へ、出産時の領収書や直接支払制度不合意書などを添えて申請する。,https://www.city.adachi.tokyo.jp/kokuho/kurashi/hoken/2701kokuhonokyuufu.html

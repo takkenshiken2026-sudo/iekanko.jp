@@ -1,0 +1,5 @@
+program_id,fact_type,value,evidence_url
+1881,application,地域包括支援センター、高齢福祉課在宅支援係、足立福祉事務所各課の総合相談窓口のいずれかで申請する。郵送による申請も可能。,https://www.city.adachi.tokyo.jp/k-fukushi/kaigohokengai.html
+1881,condition,65歳以上で足立区に住民登録があり、介護保険の要介護認定が2・3・4・5の方で、常時失禁状態のため紙おむつを必要とする方が対象。生活保護受給者、中国帰国者支援給付受給者、介護保険施設入所者は対象外。,https://www.city.adachi.tokyo.jp/k-fukushi/kaigohokengai.html
+2672,condition,予防給付は介護保険で「非該当（自立）」と判定された虚弱高齢者で住宅の改修が必要な方、設備改修給付は介護保険で「要支援」「要介護」と認定された方が対象。,https://www.city.adachi.tokyo.jp/senior/torikumi/sumai.html
+2881,condition,本人や家族がかかえる悩みや困りごとを世代・内容を問わず受け止める、どなたでも相談できる福祉窓口。,https://www.city.adachi.tokyo.jp/seikatsu-shien/gaiyou.html

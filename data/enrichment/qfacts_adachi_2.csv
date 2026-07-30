@@ -1,0 +1,13 @@
+program_id,fact_type,value,evidence_url
+365,condition,マイナ保険証または資格確認書を提示して医療機関を受診し、月ごとの医療費の自己負担額が所得区分に応じた自己負担限度額を超えた場合に対象となります。後期高齢者医療制度への加入が前提で、超えた分が高額療養費として払い戻されます。,https://www.city.adachi.tokyo.jp/koreiryo/kurashi/hoken/koresha-kogaku.html
+376,application,足立区への転入届は必ず窓口での届出が必要で、郵送での届出はできません。届出先は区内16か所の区民事務所または区役所南館1階戸籍住民課で、他市区町村からの転出証明書、マイナンバーカード、本人確認書類（外国人は在留カード等）が必要です。,https://www.city.adachi.tokyo.jp/koseki/kurashi/todokede/h-tennyu.html
+396,application,国民年金保険料の免除申請は、電子申請（マイナポータル）・郵送・窓口の3つの方法で行えます。窓口は区役所（高齢医療・年金課）または足立年金事務所で、郵送は高齢医療・年金課へ申し込むと申請書類が自宅へ郵送されます。,https://www.city.adachi.tokyo.jp/koreiryo/kurashi/hoken/nenkin-tetsuduki.html
+417,condition,電子証明書が有効なマイナンバーカードを持ち、日本国内の住所へ引越しする方が利用できます。マイナンバーカード対応のスマートフォン等の機器が必要で、同一世帯員は利用可能ですが同一世帯員以外の代理人は利用できません。,https://www.city.adachi.tokyo.jp/koseki/kurashi/todokede/hikkoshi-oss.html
+437,application,申請はオンライン電子申請・窓口・電話申請の3つの方法から選べ、窓口はその場で交付、オンライン・電話は郵送に1〜10日程度かかります。申請先は保健予防課予防接種係または各保健センターで、生活保護等受給者は受給証明書を予診票に添付します。,https://www.city.adachi.tokyo.jp/hoken/hushinnini.html
+437,condition,検査日現在、足立区に住民登録のある19歳以上の男女が対象です。予防接種費用助成は、抗体検査の結果、抗体価が基準値以下（HI法で16倍以下、またはEIA法で8倍未満等）である方が対象となります。,https://www.city.adachi.tokyo.jp/hoken/hushinnini.html
+460,application,申請はオンライン申請・郵送・窓口持参の3つの方法で提出できます。郵送・窓口の宛先は足立区役所幼稚園・地域保育課（本庁舎中央館3階）で、申請書、請求書兼口座振替依頼書、利用契約書の写し、保育料の領収書などが必要です。,https://www.city.adachi.tokyo.jp/kodomo-nyuuen/ninnkagai_teikiriyou.html
+483,application,申請書は入園・在園する幼稚園を通じて配付され、記入後は幼稚園へ提出します。区外の幼稚園に通う場合は幼稚園・地域保育課（電話03-3880-6147）へ連絡が必要です。,https://www.city.adachi.tokyo.jp/kodomo-nyuuen/yochienhogoshahojokin2024.html
+506,application,申請はオンライン申請（交付申請・請求フォーム）・郵送・窓口の3つの方法で行えます。郵送・窓口の宛先は足立区役所幼稚園・地域保育課認証・認可外保育係（本庁舎中央館3階）で、交付申請書、交付請求書、利用内訳表、本人確認書類、ベビーシッター要件証明書、領収書、利用明細書などが必要です。,https://www.city.adachi.tokyo.jp/kodomo-nyuuen/babysitter_itiziazukari.html
+529,application,申請はオンライン申請（足立区産後ケア オンライン利用申請）または窓口申請の2つの方法で行えます。窓口は保健予防課保健予防係（区役所本庁舎南館2階）で受け付け、妊娠8か月（28週）以降から利用希望日の2週間前までに申請します。,https://www.city.adachi.tokyo.jp/hoken/fukushi-kenko/kenko/sangokea.html
+552,application,利用希望者は委託事業者に連絡し、事業者による自宅訪問での説明・母子健康手帳の確認を受けたうえで、利用開始日の7日前までに産前・産後家事支援事業利用申込書を提出します。申請先は各委託事業者（平日午前9時〜午後5時受付）です。,https://www.city.adachi.tokyo.jp/kodomokate/k-kyoiku/kosodate/homehelp-jigyou.html
+552,condition,区内在住で、出産予定日の6週間前から出産後3か月までの妊産婦がいる家庭が対象です。足立区に住民票があることが条件で、出産に伴う入院期間中は支援対象外となります。,https://www.city.adachi.tokyo.jp/kodomokate/k-kyoiku/kosodate/homehelp-jigyou.html
