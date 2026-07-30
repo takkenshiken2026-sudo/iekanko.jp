@@ -34,6 +34,13 @@ ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
 # ガイド記事（/guide/）の最終見直し日。Article 構造化データの datePublished/dateModified に使う。
 # ★本文を実際に編集したときだけ手で更新する。ビルドで自動更新しない＝日付の水増しを避けるため。
 GUIDE_UPDATED  = os.environ.get("SEIDO_GUIDE_UPDATED", "2026-07-29")
+
+def og_image_for(slug):
+    """自治体別OG画像 /assets/og/<slug>.png が生成済みならそれを、無ければ共通og.pngを返す。
+    画像は build/build_og_images.py で事前生成する（未生成でもリンク切れにならない）。"""
+    if slug and os.path.exists(os.path.join(OUT, "assets", "og", f"{slug}.png")):
+        return f"/assets/og/{slug}.png"
+    return "/assets/og.png"
 # フッター共通の「お問い合わせ」リンク（全ページ）。フォーム未設定時はメールにフォールバック。
 if CONTACT_FORM_URL:
     FOOTER_CONTACT_HTML = f'・<a href="{CONTACT_FORM_URL}" target="_blank" rel="noopener">お問い合わせ</a>'
@@ -1155,7 +1162,8 @@ def svg_bars(rows, maxval=100, unit="%"):
 
 # ── ページ骨格 ──────────────────────────────────────────────────────────────
 def page(*, path, title, description, canonical, jsonld=None, robots="index,follow",
-         breadcrumb=None, body="", og_type="website", article_meta=None):
+         breadcrumb=None, body="", og_type="website", article_meta=None,
+         og_image="/assets/og.png"):
     ld = ""
     blocks = list(jsonld or [])
     if breadcrumb:
@@ -1216,8 +1224,8 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <meta property="og:url" content="{esc(canon)}">
 <meta property="og:locale" content="ja_JP">{article_tags}
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="{esc(BASE_URL)}/assets/og.png">
-<meta name="twitter:image" content="{esc(BASE_URL)}/assets/og.png">
+<meta property="og:image" content="{esc(BASE_URL)}{esc(og_image)}">
+<meta name="twitter:image" content="{esc(BASE_URL)}{esc(og_image)}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">
@@ -1225,7 +1233,9 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <meta name="theme-color" content="#1558d6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/style.css">
 {adsense_tag}{ga_tag}{ld}</head>
 <body id="top">
@@ -1592,7 +1602,7 @@ def build_program(m, slug, p, cats, progs=None):
             "acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]})
     bc = [("トップ","/"),(f"{mn}",f"/area/tokyo/{slug}/"),(title,None)]
     page(path=url+"index.html", title=page_title, description=desc, canonical=url,
-         jsonld=blocks, robots=robots, breadcrumb=bc, body=body)
+         jsonld=blocks, robots=robots, breadcrumb=bc, body=body, og_image=og_image_for(slug))
     if idx: sitemap_urls.append((url, "0.8", p["last_verified_at"]))
     return idx
 
@@ -1907,7 +1917,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     bc=[("トップ","/"),(mn,f"/area/tokyo/{slug}/"),(ev_name,None)]
     robots = "index,follow" if (items and INDEX_LIFEEVENT) else "noindex,follow"
     page(path=url+"index.html", title=title, description=desc, canonical=url,
-         jsonld=[il], robots=robots, breadcrumb=bc, body=body)
+         jsonld=[il], robots=robots, breadcrumb=bc, body=body, og_image=og_image_for(slug))
     if items and INDEX_LIFEEVENT: sitemap_urls.append((url,"0.6"))
 
 # ── 目的別ランキング表の並び替え（制度数／金額）──────────────────────────────
@@ -2087,7 +2097,7 @@ def build_muni(m, slug, score, avg):
 {PLIST_JS}
 """
     bc=[("トップ","/"),(mn,None)]
-    page(path=url+"index.html", title=title, description=desc, canonical=url, breadcrumb=bc, body=body)
+    page(path=url+"index.html", title=title, description=desc, canonical=url, breadcrumb=bc, body=body, og_image=og_image_for(slug))
     sitemap_urls.append((url,"0.7"))
     return progs, counts
 
