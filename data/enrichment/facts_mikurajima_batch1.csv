@@ -1,0 +1,19 @@
+program_id,fact_type,value,evidence_url
+2177,target,本村に5年以上住所を有する者の子弟で、大学・高等専門学校・高等学校に在学し、心身健全かつ経済的事由により修学困難な者。貸付当初は大学第1年次または高専・高校の第1学年であること。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000110.html
+2177,amount,月額 大学(同程度の専門学校等含む)3万円、高等専門学校・高等学校2万円。国公私立の区別なし。無利子。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000110.html
+2177,condition,連帯保証人として、村内に住所を有し独立の生計を営んでいる世帯主が必要。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000110.html
+2177,application,貸付申請書を村長に提出。村長が別に定める基準に従い、毎年度予算の範囲内で貸付者を決定する。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000110.html
+2177,repayment,貸付期間終了の日の属する月の翌月から6月を経過した後、10年以内に全額を年賦・半年賦または月賦で返還する。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000110.html
+2255,target,被保険者が死亡したとき、その者の葬祭を行う者。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000189.html
+2255,amount,葬祭費として3万円を支給(御蔵島村国民健康保険条例第8条)。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000189.html
+2255,condition,同一の死亡について、健康保険法など他の法律により同等の給付を受けられる場合は支給されない。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000189.html
+2941,target,被保険者が出産したとき、当該被保険者の属する世帯の世帯主。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000189.html
+2941,amount,出産育児一時金として50万円を支給(御蔵島村国民健康保険条例第7条)。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000189.html
+2941,condition,同一の出産について、健康保険法など他の法律により給付を受けられる場合は支給されない。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000189.html
+2307,target,総所得金額等が一定基準以下の低所得世帯(軽減)、または災害その他特別の事情により生活が著しく困難となった者もしくはこれに準ずる者(減免)。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000087.html
+2307,benefit,"低所得世帯の均等割・平等割を軽減。総所得33万円以下の世帯は均等割を1人4,980円、平等割を世帯区分により4,800円/2,400円/1,200円減額。33万円+被保険者数×29万5千円以下の世帯は均等割を1人3,320円、平等割を3,200円/1,600円/800円減額。",https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000087.html
+2307,application,減免は、納期限前7日までに申請書に減免を受けようとする事由を証明する書類を添付して提出する。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000087.html
+2797,target,身体障害者(児)・知的障害者(児)・精神障害者であって、別表に定める当該用具を必要とする者。ただし介護保険対象者は介護保険が優先。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000165.html
+2797,benefit,介護・訓練支援用具、自立生活支援用具、在宅療養等支援用具、情報・意思疎通支援用具、排泄管理支援用具、居宅生活動作補助用具の6種を給付または貸与する。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000165.html
+2797,condition,自己負担は別表に基づく応能負担。生活保護世帯の無料から最高所得層の全額負担まで所得階層別に設定。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000165.html
+2797,application,様式第1号に必要事項を記入のうえ御蔵島村長に申請。課税台帳確認同意書と見積書を添付する。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000165.html
