@@ -81,8 +81,10 @@ def ingest_taikijido(gov, stats):
         name = name.strip()
         if not re.search(r"(区|市|町|村)$", name) or name not in n2c:
             continue
-        wait, rate = row[5], row[4]
+        pre, wait, rate = row[2], row[5], row[4]
         code = n2c[name]
+        if pre is not None:
+            rows.append((code, name, "shugakumae_jinko", float(pre), "人", year, src, url, FETCHED))
         if wait is not None:
             rows.append((code, name, "taikijido", float(wait), "人", year, src, url, FETCHED))
         if rate is not None:

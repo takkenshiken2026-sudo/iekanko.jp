@@ -2086,12 +2086,13 @@ def build_muni(m, slug, score, avg):
         _build_dir = os.path.dirname(os.path.abspath(__file__))
         if _build_dir not in sys.path:
             sys.path.insert(0, _build_dir)
-        from livability_html import figures_section_html
+        from livability_html import figures_section_html, stats_band_html
         live_benefit = figures_section_html(slug, part="benefit",
                                             benefit_totals=benefit_totals_by_event(progs, slug))
         live_place = figures_section_html(slug, part="place")
+        live_stats = stats_band_html(mn)
     except Exception:
-        live_benefit = live_place = ""
+        live_benefit = live_place = live_stats = ""
     lead_extra = f"全{len(progs)}件"
     if total_yen:
         lead_extra += f"・金額が分かるもの合計{format_sum_yen(total_yen)}（{total_amt_n}件）"
@@ -2103,6 +2104,7 @@ def build_muni(m, slug, score, avg):
 </div>
 <figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
 </div>
+{live_stats}
 {live_benefit}
 {plist_html}
 {live_place}
@@ -3166,6 +3168,17 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 .fig-meter-track i{display:block;height:100%;border-radius:999px;background:var(--c,var(--pc-child));
   transform:scaleX(0);transform-origin:left}
 .fig-meter-track i.ref{background:#b7c0ca}
+/* 暮らしデータ帯（実態統計） */
+dl.facts.livgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:.5rem;border:0;overflow:visible}
+.livgrid .fact{border:1px solid var(--line);border-radius:var(--radius);padding:.55rem .7rem;display:block}
+.livgrid dt{font-size:var(--fs-xs);color:var(--muted);margin:0 0 .15rem;border:0}
+.livnum{font-weight:800;font-size:1.28rem;line-height:1.1;color:var(--fg)}
+.livnum .lu{font-size:.7em;font-weight:700;color:var(--muted);margin-left:.12em}
+.livnote{display:block;font-size:var(--fs-xs);font-weight:400;color:var(--muted);margin-top:.18rem}
+.livmeter{margin-top:.6rem;max-width:460px}
+.livmeter .fig-meter-track i{transform:none}
+.livmeter-cap{display:block;font-size:var(--fs-xs);color:var(--muted);margin-bottom:.22rem}
+.livsrc{font-size:var(--fs-xs);color:var(--muted);margin-top:.55rem;line-height:1.5}
 .figures.on .fig-meter-track i{transform:scaleX(1);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .figures.on .fig-st-bar i:nth-child(1){transition-delay:.05s}
 .figures.on .fig-st-list li:nth-child(2) .fig-st-bar i{transition-delay:.1s}

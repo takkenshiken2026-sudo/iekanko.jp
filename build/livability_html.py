@@ -110,6 +110,86 @@ def load_snapshot(slug: str) -> Optional[dict]:
         return json.load(f)
 
 
+def _stats_db_path():
+    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "data", "livability_stats.db")
+
+
+_STATS_CACHE = {}
+
+
+def _load_stats():
+    """{muni_name: {indicator: value}} と 都平均 をキャッシュして返す。"""
+    if _STATS_CACHE:
+        return _STATS_CACHE
+    import sqlite3
+    p = _stats_db_path()
+    data, meta = {}, {}
+    if os.path.exists(p):
+        c = sqlite3.connect(p).cursor()
+        for nm, ind, val, unit, yr, src in c.execute(
+                "SELECT municipality_name,indicator,value,unit,year,source_name FROM municipality_stats"):
+            data.setdefault(nm, {})[ind] = val
+            meta[ind] = (unit, yr, src)
+    avg = {}
+    inds = {i for d in data.values() for i in d}
+    for i in inds:
+        vals = [d[i] for d in data.values() if d.get(i) is not None]
+        if vals:
+            avg[i] = sum(vals) / len(vals)
+    _STATS_CACHE["data"], _STATS_CACHE["avg"], _STATS_CACHE["meta"] = data, avg, meta
+    return _STATS_CACHE
+
+
+def stats_band_html(muni_name):
+    """自治体ハブページ用「暮らしデータ」帯。制度データとは別の実態統計(人口・保育等)を、
+    都平均との比較つきで表示。data/livability_stats.db が無ければ空文字。"""
+    s = _load_stats()
+    d = s["data"].get(muni_name)
+    if not d:
+        return ""
+    avg, meta = s["avg"], s["meta"]
+
+    def comma(v):
+        return f"{int(round(v)):,}" if v is not None else "—"
+
+    tiles = []
+    if d.get("population") is not None:
+        tiles.append(("人口", f'{comma(d["population"])}<span class="lu">人</span>', ""))
+    if d.get("setai") is not None:
+        tiles.append(("世帯数", f'{comma(d["setai"])}<span class="lu">世帯</span>', ""))
+    if d.get("taikijido") is not None:
+        note = "都平均 {:.1f}人".format(avg.get("taikijido", 0))
+        tiles.append(("保育所 待機児童数", f'{comma(d["taikijido"])}<span class="lu">人</span>', note))
+    if d.get("hoiku_riyou_rate") is not None:
+        note = "都平均 {:.1f}%".format(avg.get("hoiku_riyou_rate", 0))
+        tiles.append(("保育サービス利用率", f'{d["hoiku_riyou_rate"]:.1f}<span class="lu">%</span>', note))
+
+    fact_parts = []
+    for lbl, val, note in tiles:
+        note_html = f'<span class="livnote">{esc(note)}</span>' if note else ""
+        fact_parts.append(
+            f'<div class="fact"><dt>{esc(lbl)}</dt>'
+            f'<dd class="livnum">{val}{note_html}</dd></div>')
+    facts = "".join(fact_parts)
+
+    # 比較メーター（保育サービス利用率：この地域 vs 都平均）
+    meter = ""
+    if d.get("hoiku_riyou_rate") is not None and avg.get("hoiku_riyou_rate"):
+        meter = ('<div class="livmeter"><span class="livmeter-cap">保育サービス利用率（都平均との比較）</span>'
+                 + _compare_meter(d["hoiku_riyou_rate"], avg["hoiku_riyou_rate"], color="#2a9d6a") + "</div>")
+
+    yr = (meta.get("taikijido") or meta.get("population") or ("", "", ""))[1]
+    src_pop = (meta.get("population") or ("", "", "東京都 住民基本台帳"))[2]
+    src_hoi = (meta.get("taikijido") or ("", "", "こども家庭庁/東京都"))[2]
+    src = (f'<p class="livsrc">出典: {esc(src_pop)}／{esc(src_hoi)}'
+           f'（基準時点 {esc(yr)}）。制度の実施状況とあわせて、暮らしの実態の目安としてご参照ください。</p>')
+
+    return (f'<section class="band band-soft"><div class="bandin">'
+            f'<h2>{_hi("bars")}暮らしデータ（{esc(muni_name)}）</h2>'
+            f'<dl class="facts livgrid">{facts}</dl>{meter}{src}</div></section>')
+
+
 def _compare_meter(value, ref, color="#2a78d6"):
     """この地域 vs 都内中央値。value/ref を1本のメーターで示す。"""
     if not value or not ref:
