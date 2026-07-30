@@ -1,0 +1,17 @@
+program_id,fact_type,value,evidence_url
+345,application,区役所6階の国民健康保険課給付係窓口、郵送(〒150-8010 渋谷区役所国民健康保険課給付係)、またはLINEで申請できます。必要書類は死亡した人の国民健康保険証、葬祭費用の領収書のコピー(故人と申請者のフルネーム記載)、葬祭を行った人の預金口座がわかるもの、葬祭費支給申請書です。,https://www.city.shibuya.tokyo.jp/kurashi/kokuho/hokenkyufu/qfu07.html
+345,condition,74歳以下の渋谷区国民健康保険の加入者が死亡したとき、その葬祭を行った人が対象です。葬祭を行った日の翌日から2年以内に申請が必要で、他の保険で支給される場合は対象外です。,https://www.city.shibuya.tokyo.jp/kurashi/kokuho/hokenkyufu/qfu07.html
+346,condition,災害や失業など特別の事情のため、一時的に医療費(一部負担金)の支払いが困難になったときに対象となります。収入状況や生計維持状況などを調査のうえ、一定期間の徴収猶予または減免が決定され、事前相談が必要です。,https://www.city.shibuya.tokyo.jp/kurashi/kokuho/hokenkyufu/qfu01.html
+431,application,高齢者福祉課サービス事業係(本庁舎5階、郵送先〒150-8010)の窓口または郵送で申請します。必要書類は医師が記入した「申請書兼医師意見書」、領収書(原本)、補聴器購入明細書、請求書兼口座振替依頼書です。,https://www.city.shibuya.tokyo.jp/kenko/koreisha-seikatsu/koreisha-zaitaku/hocyouki-jyosei.html
+431,condition,渋谷区に住民登録があり在住の65歳以上で、住民税非課税または住民税課税でも合計所得金額135万円以下の人が対象です。耳鼻咽喉科専門医から本事業の基準を満たす証明を受け、聴覚障害による身体障害者手帳の対象とならず、5年以内に同助成を受けていないことが要件です。,https://www.city.shibuya.tokyo.jp/kenko/koreisha-seikatsu/koreisha-zaitaku/hocyouki-jyosei.html
+456,application,指定店舗からの電子申請のみで、区役所窓口や郵送では申請できません。本人確認書類(マイナンバーカード・運転免許証など)と振込先口座情報がわかるものが必要で、所管は高齢者福祉課サービス事業係(03-3463-1873)です。,https://www.city.shibuya.tokyo.jp/kenko/koreisha-seikatsu/koreisha-digital-divide/smartphone-jyosei.html
+456,condition,令和9年3月31日時点で65歳以上(昭和37年4月1日以前生まれ)で、渋谷区に住民登録があり在住の人が対象です。初めてスマートフォンを購入する人(指定店舗での購入)で、スマホ教室受講や東京アプリ・LINE公式アカウント・ハチペイのインストールが要件です。,https://www.city.shibuya.tokyo.jp/kenko/koreisha-seikatsu/koreisha-digital-divide/smartphone-jyosei.html
+479,application,保育課保育管理係(03-3463-2483)へ、オンライン申請または郵送・窓口で申請します。認証保育所利用の場合は施設等利用費支給・保育利用料軽減申請書、認可外保育施設・企業主導型保育事業の場合は同申請書と在籍・利用状況証明書が必要です。,https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hoiku-josei/hoikuryo_keigen.html
+499,condition,渋谷区に住所を有する保護者で、日常生活上の突発的な事情や社会参加などにより一時的にベビーシッターによる保育を必要とする人、またはベビーシッターを活用した共同保育を必要とする人が対象です。対象児童は0歳から6歳の未就学児童および0歳から12歳の障がい児童です。,https://www.city.shibuya.tokyo.jp/kodomo/hoiku/hoiku-service/bebishitta-ichiji.html
+522,application,中央保健相談所母子保健係(〒150-0042 宇田川町5番6号 渋谷区子育てネウボラ4階)へ、渋谷区LINE公式アカウントからのLINE申請、郵送、または窓口で利用申請します。申請は妊娠28週から利用希望日の14日前まで受け付けます。,https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-sodan/sango_care.html
+545,application,渋谷区公式LINEの申請メニューから派遣登録を申請します(所管:子ども家庭支援センター 03-3463-3748)。妊娠中の人は出産予定日が確認できる母子健康手帳のページ、非課税世帯や生活保護受給世帯は非課税証明書・生活保護受給証明書などの添付が必要な場合があります。,https://www.city.shibuya.tokyo.jp/kodomo/hoiku/hoiku-service/kajisapota.html
+568,application,お住まいの管轄の保健相談所(中央03-3463-2439/恵比寿03-3443-6251/幡ヶ谷03-3374-7591)に電話で連絡し、地区担当保健師との訪問日程を調整します。保健師の訪問時に申請書を記入して提出し、おおむね2週間後に商品券が自宅へ郵送されます。,https://www.city.shibuya.tokyo.jp/kodomo/ninshin/ninshin-teate/taxi_idohojo.html
+586,application,暮らしの手続きのフロア(庁舎3階)住民戸籍課、出張所、または区民サービスセンターの窓口・郵送で届出でき、マイナンバーカード所持者はマイナポータルでオンライン届出も可能です。手続きする人の本人確認書類(マイナンバーカード・運転免許証・パスポートなど)が必要で、渋谷区の健康保険証・介護保険被保険者証は返却します。,https://www.city.shibuya.tokyo.jp/kurashi/jumin/ido/t_tenshutu.html
+586,condition,渋谷区から他の区市町村へ引っ越すときに必要な届出で、本人・世帯主・渋谷区で同一世帯の人が届出できます。届出は引越し予定日の14日前から可能で、新住所での転入届は引越し先の区市町村で14日以内に行う必要があります。,https://www.city.shibuya.tokyo.jp/kurashi/jumin/ido/t_tenshutu.html
+587,application,住民戸籍課住民登録係(庁舎3階)、出張所、または区民サービスセンターの窓口で届出します(郵送は受付不可)。手続きする人の本人確認書類(マイナンバーカード・運転免許証・パスポートなど)や国民健康保険証などが必要で、引越した日から14日以内に届出します。,https://www.city.shibuya.tokyo.jp/kurashi/jumin/ido/t_tenkyo.html
+650,condition,"住民税世帯非課税の人などが対象で、生活保護受給者や老齢福祉年金受給者、合計所得金額と年金収入の合計額に応じて第1段階から第3段階に区分されます。各段階で預貯金等の資産要件(例:第1段階は単身1,000万円以下)があり、住民税課税世帯は原則対象外(第4段階)です。",https://www.city.shibuya.tokyo.jp/kenko/kaigo/josei-sodan/home_keigen.html

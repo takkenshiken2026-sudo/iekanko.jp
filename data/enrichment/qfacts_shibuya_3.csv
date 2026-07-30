@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+651,condition,要介護1～5の認定を受けており、住民税非課税世帯で、年間収入が1人世帯150万円以下（1人増えるごとに50万円加算）、預貯金等が1人世帯350万円以下（1人増えるごとに100万円加算）、活用できる資産がなく、扶養能力のある親族の支援を受けておらず、介護保険料を滞納していない人が対象。,https://www.city.shibuya.tokyo.jp/kenko/kaigo/josei-sodan/home_keigen.html
+688,application,スマート申請（オンライン）、地域包括支援センターまたは高齢者福祉課サービス事業係の窓口、郵送（〒150-8010 渋谷区高齢者福祉課サービス事業係）のいずれかで申請する。渋谷区高齢者等配食事業利用資格認定申請書を提出し、申請から2週間程度で認定番号が記載された通知書が届く。,https://www.city.shibuya.tokyo.jp/kenko/koreisha-seikatsu/koreisha-zaitaku/haisyoku_sa-bisu.html
+703,condition,区内在住で自動車燃料費の助成を受けておらず、身体障害者手帳1・2級、身体障害者手帳3級のうち下肢・体幹機能障がいまたは常時酸素吸入装置携帯が必要な呼吸器機能障がい、愛の手帳1・2度、精神障害者保健福祉手帳1級のいずれかに該当する人が対象。,https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/waribiki/waribiki.html
+705,application,障がい者福祉課給付係（電話03-3463-1924）の窓口で申請する。必要書類は身体障害者手帳・愛の手帳・難病医療費助成の医療券・精神障害者保健福祉手帳1級のいずれか、本人名義の銀行口座がわかるもの、マイナンバーカードまたは通知カード（転入者は前住所地発行の住民税課税（非課税）証明書）。,https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/teate-nenkin/teate.html
+705,condition,区内在住で、身体障害者手帳1～3級、愛の手帳1～4度、脳性麻痺、進行性筋萎縮症、難病医療費助成受給者、精神障害者保健福祉手帳1級のいずれかに該当する人が対象。所得が基準額を超える場合、20歳未満、65歳以上で初めて対象に該当した場合、施設入所者は不支給。,https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/teate-nenkin/teate.html
+715,application,渋谷区役所本庁舎2階の障がい者福祉課給付係の窓口で申請する。必要書類は身体障害者手帳・愛の手帳または精神障害者保健福祉手帳、マイナ保険証、住民税（非）課税証明書、本人以外が手続きする場合は委任状。,https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/iryo/iryo.html
+715,condition,区内在住で健康保険加入者であり、身体障害者手帳1・2級（内部障がいの3級を含む）、愛の手帳1・2度、精神障害者保健福祉手帳1級のいずれかに該当する人が対象。所得が基準額を超える場合、65歳以上の新規申請、生活保護受給中、公費医療費負担施設入所者、後期高齢者医療保険加入で住民税課税者などは対象外。,https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/iryo/iryo.html
+739,condition,火災などの災害を受けた人、生活保護受給者、特別児童扶養手当受給者、児童扶養手当受給者、老齢福祉年金受給者のいずれかに該当する場合、粗大ごみ処理手数料が減額または免除になる場合がある。ただし老齢基礎年金受給者は減免対象ではない。,https://www.city.shibuya.tokyo.jp/kurashi/gomi/kateigomi/gomi_sodai.html
+1497,application,原則として渋谷区公式LINEから申請する（区民であることを確認できる身分証明書＝マイナンバーカード・運転免許証・在留カードが必要）。交通政策課で内容を確認後、公式LINEアカウントより承認通知が送られる。窓口申請の場合は渋谷区役所11階交通政策課で申請書に記入する。,https://www.city.shibuya.tokyo.jp/kurashi/kotsu/chiiki-jitensha/jitensyayouherumettokounyuhojo.html
+1506,condition,接種日時点で区に住民票のある50歳以上で、過去に渋谷区の助成を受けていない人が対象。区内の契約医療機関での接種が必要で、助成は生涯1度のみ。不活化ワクチン（シングリックス）を自費等で接種完了している人は対象外（自費で1回接種済みの場合は2回目のみ助成対象）。,https://www.city.shibuya.tokyo.jp/kenko/iryo-kenko/yobo-sesshu/taijohoshin.html
+1612,condition,妊娠届出時に母子健康手帳とともに受診票が交付され、これを使用して妊婦健診を受ける。里帰り等で東京都外の医療機関を受診した妊婦も出産後に里帰り等妊婦健康診査費用助成金を申請できるが、都内へ転出した場合は渋谷区発行の受診票は使用できない。,https://www.city.shibuya.tokyo.jp/kodomo/ninshin/nimpu-kenshin/ninpu_kenshin.html
+1737,application,区役所本庁舎4階子ども政策課子育て給付係の窓口で申請する（出張所および区民サービスセンターでは申請できない）。医療証の再交付申請のみ郵送・オンライン申請が可能。必要な書類は支給要件や状況により異なる。,https://www.city.shibuya.tokyo.jp/kodomo/kodomo-teate-josei/hitorioya/hitorioya_teate.html
+1748,application,渋谷区役所本庁舎2階の障がい者福祉課給付係の窓口で申請する。必要書類は身体障害者手帳・愛の手帳または精神障害者保健福祉手帳、マイナ保険証、住民税（非）課税証明書、本人以外が手続きする場合は委任状。,https://www.city.shibuya.tokyo.jp/kenko/shogai-seikatsu/iryo/iryo.html

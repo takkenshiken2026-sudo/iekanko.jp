@@ -1,0 +1,17 @@
+program_id,fact_type,value,evidence_url
+15,condition,健康保険に加入している練馬区内在住の高校生年代まで（18歳になった後の最初の3月31日まで）の子どもが対象。所得制限はなく、健康保険加入が要件。,https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/josei.html
+16,application,練馬・早宮・光が丘・石神井・大泉・関の各区民事務所の窓口で受付（郵送やインターネットではお手続きできません）。主な必要書類は来所者の本人確認書類、前住所地の転出証明書、該当者はマイナンバーカード。,https://www.city.nerima.tokyo.jp/kurashi/koseki/kiroku/tennyu.html
+16,condition,練馬区外（国内）から転入した方が対象で、届出は住み始めてから14日以内（住み始める前の届出はできません）。本人、同一世帯の方、法定代理人などが届出できる。,https://www.city.nerima.tokyo.jp/kurashi/koseki/kiroku/tennyu.html
+33,application,国保年金課こくほ資格係（区役所本庁舎3階）ほか各区民事務所の窓口で受付。郵送も可で、練馬区役所こくほ資格係宛に異動届・本人確認書類・マイナンバー確認書類等を送付する。オンライン申請の記載はなし。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminkenkohoken/hoken_kanyu/tetsuzuki.html
+33,condition,練馬区に住民登録がある方（外国籍を含む）で、職場の健康保険加入者・後期高齢者医療制度加入者・生活保護受給者を除くすべての方が対象。加入手続きは自動的にはされず、事由発生後14日以内の届出が必要。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminkenkohoken/hoken_kanyu/tetsuzuki.html
+34,application,国保年金課こくほ資格係（区役所本庁舎3階）・石神井庁舎の窓口、または郵送で受付。主な必要書類は雇用保険受給資格者証（または雇用保険受給資格通知）の原本、資格確認書、減額届出書。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminkenkohoken/hoken_hokenryo/kokuho_hijihatu.html
+34,condition,倒産・解雇等（離職理由コード11・12・21・22・31・32）や雇止め等（23・33・34）で離職した、離職日時点で65歳未満の国民健康保険加入者が対象。雇用保険受給資格者証または雇用保険受給資格通知の交付を受けていることが必要。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminkenkohoken/hoken_hokenryo/kokuho_hijihatu.html
+35,application,国民年金係または練馬年金事務所の窓口、もしくは郵送で申請する。主な必要書類は本人確認書類、個人番号確認書類、年金手帳または基礎年金番号通知書と、国民年金保険料免除・納付猶予申請書。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminnenkin/nenkin_tetsuzuki/nenkin_hokenryo/menjo.html
+35,condition,経済的理由で納付が困難な方が対象で、本人・配偶者・世帯主の前年所得がいずれも免除基準に該当することが条件（全額免除は(扶養親族等の数＋1)×35万円＋32万円以下）。学生や障害年金受給者は別の特例制度が適用される。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminnenkin/nenkin_tetsuzuki/nenkin_hokenryo/menjo.html
+36,application,区民部国保年金課国民年金係（区役所本庁舎3階）・区民事務所の窓口、または国民年金係宛の郵送で申請する。主な必要書類は本人確認できるもの、個人番号を確認できるもの、年金手帳または基礎年金番号通知書、退職年月日が証明できるもの。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminnenkin/nenkin_tetsuzuki/nenkin_kanyuchu/taishoku.html
+36,condition,退職して厚生年金の加入者でなくなったときは国民年金への加入手続きが必要で、配偶者を扶養している場合も届出が必要。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminnenkin/nenkin_tetsuzuki/nenkin_kanyuchu/taishoku.html
+37,condition,介護保険のサービスを利用するには要介護（要支援）の認定を受けるなど一定の手続きが必要で、認定は「要支援1・2」「要介護1～5」および「非該当（自立）」に分けられる。40～64歳（第2号被保険者）の方は本人が加入している医療保険の被保険者証が必要。,https://www.city.nerima.tokyo.jp/hokenfukushi/kaigohoken/gaiyo/riyoutejun.html
+40,application,区民部国保年金課こくほ給付係（電話03-5984-4553）または石神井庁舎で申請し、申請方法は直接支払制度・受取代理制度・制度を利用しない場合の3通り。主な必要書類は申請者の本人確認書類、世帯主名義の口座番号、母子健康手帳（出生届出済証明を受けたもの）、出産費用の領収・明細書。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminkenkohoken/hoken_kyufu/shussan_shikyu.html
+40,condition,国民健康保険に加入している方が出産したときが対象で、妊娠85日以上で死産・流産した場合も含む。申請期間は出産した日の翌日から2年間。,https://www.city.nerima.tokyo.jp/kurashi/nenkinhoken/kokuminkenkohoken/hoken_kyufu/shussan_shikyu.html
+41,condition,練馬区内に住所を有し第3子以降の子を出生した保護者（児童と同居養育している父または母）が対象。保護者および児童が出生日の1年以上前から練馬区内に住民登録があり、受給後1年以上該当児童とともに区内に居住する意思があることが要件。,https://www.city.nerima.tokyo.jp/kosodatekyoiku/shussan/iwaikin.html
+42,condition,高校生年代まで（18歳に達する日以後の最初の3月31日まで）の児童を養育し練馬区に住民登録がある父または母等が対象で、主たる生計の維持者（恒常的に所得が高い方）が受給者となる。受給には申請（認定請求）が必要。,https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/teateiryo/jidouteate20120401.html
