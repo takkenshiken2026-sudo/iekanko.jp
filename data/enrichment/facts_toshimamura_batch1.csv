@@ -1,0 +1,8 @@
+program_id,fact_type,value,evidence_url
+2251,target,国民健康保険に加入している方が死亡したとき、葬祭を行った方に支給されます。,https://www.toshimamura.org/life/pension/insurance.html
+2251,amount,1件につき5万円。,https://www.toshimamura.org/life/pension/insurance.html
+2341,target,病院の窓口で支払った医療費が高額（法で定められた自己負担限度額を超える額）になった場合が対象です。,https://www.toshimamura.org/life/pension/insurance.html
+2341,benefit,世帯の所得状況や年齢構成に応じた自己負担限度額を超えた額が高額療養費として支給されます。,https://www.toshimamura.org/life/pension/insurance.html
+2341,application,申請により超過分が払い戻されます。,https://www.toshimamura.org/life/pension/insurance.html
+2427,target,生活保護受給者や世帯全員が区市町村民税非課税の方など、保険料段階の第1～3段階に該当する方が対象です。,https://www.toshimamura.org/life/pension/health-care.html
+2427,benefit,対象者の介護保険料が軽減されます（例：第1段階は基準額に対する割合が0.455から0.285に軽減）。,https://www.toshimamura.org/life/pension/health-care.html
