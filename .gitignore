@@ -14,3 +14,4 @@ research_progress_*.md
 __MACOSX/
 *.pyc
 __pycache__/
+scratchpad_lists/
