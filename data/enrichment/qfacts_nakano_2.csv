@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+296,application,該当世帯には「高額療養費支給のお知らせ」と「支給申請書」が郵送され、郵送で申請する。申請先は区役所2階7番(国保給付係)。,https://www.city.tokyo-nakano.lg.jp/kurashi/hoken/kyufu/kogakuryoyohi70-74.html
+297,application,対象期間を通して中野区国民健康保険に加入していた世帯には、年1度3月中旬頃に案内と申請書が郵送され、郵送により申請する。担当は区民部保険医療課。,https://www.city.tokyo-nakano.lg.jp/kurashi/hoken/kyufu/kogakukaigo.html
+297,condition,対象期間(8月1日～翌年7月31日)に医療と介護の両方に自己負担があり、その合計額が限度額(所得区分により異なる)を超えた場合に支給される。対象期間を通して中野区国民健康保険に加入していた世帯が対象で、医療・介護のいずれかの自己負担が0円の場合や支給額が500円未満の場合は対象外。,https://www.city.tokyo-nakano.lg.jp/kurashi/hoken/kyufu/kogakukaigo.html
+298,application,国民健康保険の加入者が、必要書類を添えて申請することにより払い戻しを受けられる。担当は区民部保険医療課で、申請理由ごとに必要書類が異なる。,https://www.city.tokyo-nakano.lg.jp/kurashi/hoken/kyufu/ryoyohishikyu.html
+298,condition,国民健康保険の加入者で、医療費の全額(10割)を支払い、国保の支給基準に照らした審査で認められたものに限り払い戻しを受けられる。,https://www.city.tokyo-nakano.lg.jp/kurashi/hoken/kyufu/ryoyohishikyu.html
+366,condition,他の区市町村から中野区へ引越しした方が対象で、新しい住所に住み始めてから14日以内に届け出が必要。届出人は本人または世帯主または中野区で同一世帯の方。,https://www.city.tokyo-nakano.lg.jp/kurashi/koseki/jyuminhyo/tennyu-kugaikara.html
+379,application,電子申請(マイナポータル)、窓口、郵送のいずれかで申請できる。申請先は区役所2階10番窓口の国民年金係または中野年金事務所で、本人確認書類等が必要(郵送は事前連絡で書類が送付される)。,https://www.city.tokyo-nakano.lg.jp/kurashi/nenkin/nenkinhokenryonokoto/menzyo.html
+379,condition,免除は本人・配偶者・世帯主の前年所得が一定額以下の場合や失業等が対象、納付猶予は20歳以上50歳未満で本人・配偶者の前年所得が一定額以下の場合が対象。申請前に確定申告または住民税の申告が必要で、学生納付特例対象者・任意加入者は申請できない。,https://www.city.tokyo-nakano.lg.jp/kurashi/nenkin/nenkinhokenryonokoto/menzyo.html
+419,condition,災害等により重大な損害を受けたときや、事業の休廃止などの特別な事情により、預貯金など利用できるすべての資産等を活用したにもかかわらず保険料の納付が困難である場合に、申請により減免となる可能性がある。,https://www.city.tokyo-nakano.lg.jp/kurashi/koukikourei/genmen.html
+440,condition,後期高齢者医療制度の被保険者が医療費の全額を支払った場合に、申請により広域連合で認められた部分について費用の一部の払い戻しを受けられる。緊急時の無保険受診、医師が必要と認めた補装具、柔道整復・はり灸マッサージの施術、海外での急病治療など7つの事例が対象。,https://www.city.tokyo-nakano.lg.jp/kurashi/koukikourei/ryoyohishikyu.html
+486,application,必要書類を中野区受託業者(株式会社セゾンパーソナルプラス)へ郵送で提出する。必要書類は補助金交付申請書兼請求書、利用内訳表、受取口座確認書類、ベビーシッター要件証明書、領収書、利用明細書など。,https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/ichijihoiku/azukari/Test_program_babysitter_.html
+532,application,妊娠届出以降に、担当のすこやか福祉センター窓口で申請書を記入し利用チケットを受け取るか、担当センターの電子申請を行い区の確認後に郵送でチケットを受け取る(1～2週間程度)。申請は家族でも可能。,https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/nenreibetsu/syussan/sangoshien/sangokaji.html
+555,application,各すこやか福祉センター窓口で申請書を記入して利用チケットを受け取るか、電子申請してすこやか福祉センターから郵送で利用チケットを受け取る。,https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/nenreibetsu/syussan/sangoshien/tataijikazoku.html
+589,condition,中野区から他の区市町村へ引越しをする方が対象で、引越し予定日の14日前から届出できる。届出人は本人または世帯主または中野区で同一世帯の方(それ以外は委任状と代理人の本人確認書類が必要)。,https://www.city.tokyo-nakano.lg.jp/kurashi/koseki/jyuminhyo/tensyutsu-kugaihe.html

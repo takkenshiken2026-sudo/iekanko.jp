@@ -1,0 +1,17 @@
+program_id,fact_type,value,evidence_url
+600,application,届出先は戸籍住民課住民記録係（区役所本庁舎1階7番窓口）または各特別出張所の窓口。必要書類は届出人の本人確認書類（運転免許証・旅券等）、健康保険の資格確認書（加入者のみ）、マイナンバーカード（お持ちの方は同一世帯全員分）、外国人住民は世帯主との続柄を証する文書（原本）。,https://www.city.shinjuku.lg.jp/todokede/koseki03_000005_f.html
+665,application,申請先は福祉部介護保険課給付係。必要書類は負担限度額認定申請書、同意書、本人（及び配偶者）の資産等を確認するためのすべての預貯金等の通帳のコピー（見開き1ページ目と残高が確認できるページ）。,https://www.city.shinjuku.lg.jp/fukushi/kaigo05_000101.html
+677,application,申請窓口は高齢者支援課（区役所本庁舎2階5・6番窓口）、各高齢者総合相談センター、特別出張所。申請書により申請する。,https://www.city.shinjuku.lg.jp/fukushi/file05_02_00003.html
+677,condition,対象は65歳以上で一人暮らしの方、または65歳以上のみの世帯の方（日中に該当する世帯を含む）。,https://www.city.shinjuku.lg.jp/fukushi/file05_02_00003.html
+743,application,郵送又は電子申請により、新宿区防犯対策用品購入補助センター（新宿区新宿5-18-14 新宿北西ビル5階）へ申請する。必要書類は申請書、本人確認書類の写し、領収書の写し、パンフレット等の写し、設置後の写真、振込口座確認書類の写し。,https://www.city.shinjuku.lg.jp/anzen/kikikanri01_000001_00218.html
+743,condition,新宿区に住民登録があり、区内の住宅に防犯対策用品を設置した方が対象。住民税を滞納している方は除き、申請は1世帯1回限り。,https://www.city.shinjuku.lg.jp/anzen/kikikanri01_000001_00218.html
+750,application,窓口持参・郵送・オンライン（電子申請）で、総務部危機管理課（新宿区役所本庁舎4階）へ申請する。必要書類は申請書、見積書、住宅を所有している証明書（固定資産税納税通知書の写しまたは不動産登記簿謄本）等。,https://www.city.shinjuku.lg.jp/anzen/kikikanri01_002171_00001.html
+750,condition,区内に住宅を有し、感震ブレーカー等の設置を希望する方が対象。賃貸住宅の賃借人、法人名義の所有者、マンション管理組合は対象外。,https://www.city.shinjuku.lg.jp/anzen/kikikanri01_002171_00001.html
+754,application,交付申請書及び添付書類を環境清掃部環境対策課脱炭素事業係（区役所本庁舎7階12番窓口）へ持参または郵送で申請する（手続代行者による提出も可）。共通の必要書類は交付申請書、施工完了証明書、見積書及び内訳書の写し、施工完了後の写真、振込口座の通帳等の写し。,https://www.city.shinjuku.lg.jp/seikatsu/shoenergy.html
+1485,application,電子申請、電話・ファクス、または窓口（保健予防課、新宿区役所第二分庁舎分館1階）で予診票を申請する。ファクス・電子申請では氏名、生年月日、住所、電話番号、接種を希望する旨の記載が必要（予診票の届けまで2週間程度かかる場合がある）。,https://www.city.shinjuku.lg.jp/fukushi/yobo01_001178_00004.html
+1485,condition,定期接種の対象は年度内に65歳を迎える方、60～64歳でHIVによる免疫機能障害がある方等（経過措置で70・75・80・85・90・95・100歳になる方を含む）。任意接種は新宿区に住民登録があり接種日現在50歳以上の方（定期接種対象者・助成済みの方を除く）。,https://www.city.shinjuku.lg.jp/fukushi/yobo01_001178_00004.html
+1614,condition,区内に住民登録のある妊婦が対象。母子健康手帳の交付が前提で、届出前の自費診査は助成対象外。,https://www.city.shinjuku.lg.jp/fukushi/file02_01_00002.html
+1751,application,障害者福祉課への窓口申請と郵送申請に対応。窓口申請時の必要書類は身体障害者手帳または愛の手帳、本人の預金通帳、健康保険証（都外の病院利用の郵送申請は支給申請書、領収書原本等が必要）。,https://www.city.shinjuku.lg.jp/fukushi/file06_02_00009.html
+1831,application,医療保険年金課年金係（区役所本庁舎4階）への窓口・郵送のほか、令和4年5月よりマイナポータルからの電子申請が可能。郵送の場合は基礎年金番号通知書や年金手帳、本人確認書類の写しを同封する。,https://www.city.shinjuku.lg.jp/hoken/file03_03_00001.html
+1938,condition,令和8年9月1日現在、区内在住で、喜寿（77歳、昭和24年4月1日～昭和25年3月31日生まれ）、米寿（88歳、昭和13年4月1日～昭和14年3月31日生まれ）、長寿（95歳、大正15年4月1日～昭和2年3月31日生まれ）に該当する方が対象。,https://www.city.shinjuku.lg.jp/fukushi/file05_01_00010.html
+2065,condition,新宿区で住民登録をしていること、及び出生した子どもも出生時から新宿区に住民登録をしていることが対象条件。対象となる方には区からお知らせがある。,https://www.city.shinjuku.lg.jp/kodomo/file02_01_00003.html

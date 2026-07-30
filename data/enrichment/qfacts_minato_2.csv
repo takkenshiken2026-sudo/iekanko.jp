@@ -1,0 +1,17 @@
+program_id,fact_type,value,evidence_url
+358,condition,"国民健康保険に加入している方で、1か月の医療費の自己負担額が所得区分に応じた自己負担限度額を超えた場合が対象。所得区分は69歳までが5区分（ア～オ）、70～74歳が6区分に分けられ、賦課基準額または課税所得により決定される。70歳未満は医療機関ごと・外来入院ごと等に1か月21,000円以上の自己負担が合算対象となり、住民税が未申告の場合は所得区分アとみなされ支給されないことがある。",https://www.city.minato.tokyo.jp/kyufu/kurashi/hoken/kenkohoken/k-kyufu/k-ryoyohi.html
+360,application,各総合支所区民課窓口サービス係（芝地区総合支所は相談担当）または台場分室の窓口で申請する。郵送を希望する場合は国保年金課給付係に連絡する。必要書類は、亡くなった方の保険資格が確認できるもの、葬儀の領収書（原本）、葬儀を行った人名義の振込口座番号がわかるもの、葬儀を行った人の本人確認書類。,https://www.city.minato.tokyo.jp/kyufu/kurashi/hoken/kenkohoken/k-kyufu/sosaihi.html
+361,application,国保年金課給付係あてに郵送するか、各総合支所区民課窓口サービス係・台場分室の窓口で申請する。区から郵送された申請書、世帯主名義の振込口座番号がわかるもの、資格情報確認書類、本人確認書類、マイナンバー確認書類が必要。,https://www.city.minato.tokyo.jp/kyufu/kurashi/hoken/kenkohoken/k-kyufu/kogakukaigo.html
+362,application,各総合支所区民課窓口サービス係（芝地区総合支所は相談担当）および台場分室が申請窓口で、治療を始める前に申請する必要がある。必要書類は資格確認書類、申請書、収入申告書、給料証明書、医療費見込点数、納付書、預貯金通帳、本人確認書類、マイナンバー確認書類など。,https://www.city.minato.tokyo.jp/kyufu/kurashi/hoken/kenkohoken/k-kyufu/jikofutan.html
+362,condition,震災等の災害、事業の休廃止・失業等による収入減少、事業損害のいずれかにより生活が困難になった方が対象。過去3か月間の収入と預貯金が一定基準以下であり、生活困難が一時的で減免終了後に生活立て直しの見込みがあることが要件。,https://www.city.minato.tokyo.jp/kyufu/kurashi/hoken/kenkohoken/k-kyufu/jikofutan.html
+445,application,各総合支所区民課保健福祉係または各地区高齢者相談センターが窓口。区が指定する医療機関（補聴器相談医在籍）を受診し、申請書下段の「医師による確認書」に医師の記入を受けたうえで申請する。購入前の申請が必要で、購入後の申請は助成対象外となる。,https://www.city.minato.tokyo.jp/zaitakushien/koureisya/hoctyouki/hotyoukijyosei.html
+470,application,郵送は港区役所保育課保育支援係へ、持参は本庁舎7階保育課または各地区総合支所区民課の窓口で受け付ける。「認可外保育施設保育料補助金交付申請書兼請求書」と「特定子ども・子育て支援の提供に係る提供兼納入証明書」を、利用月に応じた3か月ごとの提出期間内に提出する。,https://www.city.minato.tokyo.jp/hoikusien/r2_ninnkagai.html
+470,condition,児童が港区に住民登録し居住し、保護者が保育料を支払っており、月初から月末まで同一園に月ぎめ契約で在籍していることが必要。あわせて港区から保育の必要性の認定（0～2歳児は教育・保育給付認定、3～5歳児は施設等利用給付認定）を受けていることが条件。,https://www.city.minato.tokyo.jp/hoikusien/r2_ninnkagai.html
+500,application,港区の委託事業者である株式会社パソナライフケアへ、オンライン申請または書類送付（郵送）で申請する。区様式の補助金申請書と、事業者が発行する領収書・利用明細書・要件証明書等の書類が必要で、提出した書類は返却されない。,https://www.city.minato.tokyo.jp/kodomokatei/babysitter.html
+523,application,区のページからオンラインで申請し、申請から2週間程度でメールが返信され、電子クーポン（登録番号）を取得する。妊娠中の方は母子健康手帳の表紙と保護者欄を記入のうえ申請時に添付する必要がある。クーポン取得後、事業者へ直接連絡して訪問日を決める。,https://www.city.minato.tokyo.jp/kosodatesien/kenko/ninshin/shussan/mama-support.html
+546,condition,出産した子の父または母で、保護者が出産日前から港区に住所があり申請日において1年以上継続して居住していること、産まれた子が出生日から港区に住所があり保護者と同居していること、母が日本の公的健康保険に加入していることが要件。出産費用が出産育児一時金や付加金などの合計額の範囲内の場合は支給されない。,https://www.city.minato.tokyo.jp/kodomokyufu/kenko/ninshin/shussan/jose.html
+569,condition,未就学児が2人以上いる世帯が対象。タクシー利用券の発送時点で港区に住民登録がない方は対象とならない。,https://www.city.minato.tokyo.jp/kodomoshien/kodomotakusi.html
+604,application,各総合支所区民課窓口サービス係または台場分室の窓口で届け出る（窓口のみ）。国内からの転入は転出証明書またはマイナンバーカードと本人確認書類、国外からの転入はパスポート、戸籍全部事項証明書、在留カード等が必要。,https://www.city.minato.tokyo.jp/shibamadosa/kurashi/todokede/hikkoshi/tennyu.html
+604,condition,港区外（国内・国外）から港区へ引越したときに必要な届出で、本人、世帯主または同一世帯の人が、港区に住み始めた日から14日以内に届け出る。,https://www.city.minato.tokyo.jp/shibamadosa/kurashi/todokede/hikkoshi/tennyu.html
+610,application,マイナポータル（マイナンバーカードとスマホ）、窓口、郵送の3つの方法があり、窓口・郵送先は各総合支所区民課窓口サービス係および台場分室。窓口では本人確認書類、印鑑登録証（登録者のみ）、国民健康保険資格確認書（加入者のみ）、マイナンバーカード等が必要。,https://www.city.minato.tokyo.jp/shibamadosa/kurashi/todokede/hikkoshi/tenshutsu.html
+610,condition,港区から他の市区町村や国外へ引越しする方が対象で、本人、世帯主または同一世帯の人が届け出る。原則として新しい住所に住み始める日までに届け出る（マイナポータル利用時は住み始める30日前から住み始めてから10日以内）。,https://www.city.minato.tokyo.jp/shibamadosa/kurashi/todokede/hikkoshi/tenshutsu.html

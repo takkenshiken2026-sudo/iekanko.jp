@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+590,application,窓口で届出。区役所2階4番窓口（戸籍住民課住民記録係）または区内5か所の地域事務所へ。届出時は官公署発行の写真付き本人確認書類（マイナンバーカード・運転免許証・パスポート・在留カード等）が必要で、該当者は資格確認書・介護保険証等も持参する。,https://www.city.tokyo-nakano.lg.jp/kurashi/koseki/jyuminhyo/tenkyo-kunai.html
+590,condition,中野区内で引越しをした方が対象で、新しい住所に住み始めてから14日以内に届け出る。届出できるのは本人・世帯主・同一世帯の方、または委任状を持つ代理人。,https://www.city.tokyo-nakano.lg.jp/kurashi/koseki/jyuminhyo/tenkyo-kunai.html
+644,condition,中野区国民健康保険の被保険者で70歳未満の方が対象。ただし保険料の滞納がある世帯には認定証を交付できない場合があり、世帯に住民税未申告者がいる場合も交付できない。,https://www.city.tokyo-nakano.lg.jp/kurashi/hoken/tetsuduki/gendogaku-70.html
+662,application,各地域包括支援センターまたは区役所3階4番窓口（高齢者総合窓口）で窓口申請するか、中野区役所介護保険課介護給付係へ郵送で申請する。負担限度額認定申請書とチェックシートに、預貯金通帳・有価証券等の資料の写しを添えて提出する。,https://www.city.tokyo-nakano.lg.jp/kurashi/denshishinsei/kenko-fukushi/kaigohoken/futangendogaku.html
+674,condition,65歳以上で要介護1～5の認定を受け、世帯全員の前年合計所得金額が350万円未満で常時おむつを必要とする方が対象（または3歳以上で身体障害者手帳1～2級・精神障害者保健福祉手帳1～2級・愛の手帳1～2度等の方）。介護保険施設・障害者支援施設等の入所者は除く。,https://www.city.tokyo-nakano.lg.jp/kenko_hukushi/kourei/hokenhukushi/omutsu.html
+720,application,中野区役所3階子ども総合窓口で申請する。児童扶養手当受給者は児童扶養手当証書と加入保険情報が、未受給者は申請者と児童の戸籍謄本および加入保険情報が分かるものが必要。,https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/hitorioya/teate_jyosei/iryojyosei.html
+720,condition,区内に住所があり、出生から18歳到達後最初の3月31日までの児童を養育するひとり親家庭等（父母離婚・父母の死亡・重度障害等）が対象。所得制限があり、健康保険加入・生活保護非受給・事実婚状態でないこと等が条件。,https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/hitorioya/teate_jyosei/iryojyosei.html
+730,application,オンライン（LoGoフォーム）または区役所8階窓口（総務部防災危機管理課、平日8時30分～17時）で申請する。申請書（様式1・2）、本人確認書類、購入・設置の支払が分かる領収書等、製品仕様が分かる資料、設置後の写真等が必要。,https://www.city.tokyo-nakano.lg.jp/kurashi/bohan/hanzaihigai/20260403.html
+734,application,事業協力店（自転車販売店）に配置された購入申込書に記入して店頭で申し込む。申込時に住所を確認できるもの（運転免許証・健康保険証・マイナンバーカード等）が必要。,https://www.city.tokyo-nakano.lg.jp/kurashi/bohan/koutsu/herumetto.html
+1488,application,中野区契約医療機関に予約し、用意されている予診票を記入して接種すると、支払い時に助成金が差し引かれる。事後請求の場合は費用助成申請書・領収書・接種記録・本人確認書類の写しを中野区保健所保健予防課予防接種担当へ提出する（接種日の翌年度9月末日まで）。,https://www.city.tokyo-nakano.lg.jp/kenko_hukushi/kenshin_yobousessyu/yobosessyu/otona-yobosessyu/taijohoshin.html
+1488,condition,接種日に中野区に住んでいる50～64歳で、過去に一度も中野区帯状疱疹任意予防接種費用助成制度を利用したことがない方が対象。,https://www.city.tokyo-nakano.lg.jp/kenko_hukushi/kenshin_yobousessyu/yobosessyu/otona-yobosessyu/taijohoshin.html
+1624,condition,中野区に住民票があり、医師による妊娠確定後に妊娠届を提出して母子健康手帳の交付を受けた方が対象。,https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/kenshin/ninpukenkoshinsa_jyushin.html
+1762,application,申請・相談の窓口は、区内4か所のすこやか福祉センター（中部・北部・南部・鷺宮）および区役所3階の障害者等の保健福祉相談窓口。,https://www.city.tokyo-nakano.lg.jp/dept/404500/d001955.html
+2190,condition,東京都特定不妊治療費（先進医療）助成事業による助成の承認決定を受けてから1年以内で、申請時に夫婦いずれかが中野区に住民票があり、他の区市町村から同一の治療について医療費助成を受けていない方が対象（年齢・所得制限の記載なし）。,https://www.city.tokyo-nakano.lg.jp/kosodate/kosodatesite_ohirune/mokuteki/teate/funinchiryo/funinchiryohijyosei.html

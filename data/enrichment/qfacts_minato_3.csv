@@ -1,0 +1,12 @@
+program_id,fact_type,value,evidence_url
+611,condition,港区内で引越ししたときに必要な届出で、対象（届出できる人）は本人、世帯主または同じ世帯の人。届出期間は新しい住所に住み始めた日から14日以内で、引越し前の事前届出はできない。代理人による届出には委任状と委任人の本人確認書類のコピーが必要。,https://www.city.minato.tokyo.jp/shibamadosa/kurashi/todokede/hikkoshi/tenkyo.html
+681,application,申請は電子申請、郵送（港区役所高齢者支援課在宅支援係）、または各地区総合支所区民課保健福祉係・各地区高齢者相談センターへの来所で行う。申込みをした人を確認できるもの（マイナンバーカード等）と高齢者配食サービス利用申請書が必要。,https://www.city.minato.tokyo.jp/zaitakushien/kenko/fukushi/koresha/sekatsu/haishoku.html
+681,condition,対象は65歳以上のひとり暮らしの人、高齢者のみの世帯の人、高齢者と障害者のみの世帯の人で、食事の調理が困難な人。家族の仕事等の理由で日中長い間ひとりになる人についても相談できる。,https://www.city.minato.tokyo.jp/zaitakushien/kenko/fukushi/koresha/sekatsu/haishoku.html
+736,condition,対象は区内在住で自転車損害賠償保険等に加入している方。対象となるのは安全規格の認証を受けた自転車用ヘルメット。申請は原則1人につき1回限り（13歳未満の子どもは成長に合わせ年度毎に1回申請可）。,https://www.city.minato.tokyo.jp/koutsutaisaku/event/herumextuto.html
+1729,application,申請書等をお近くの総合支所区民課保健福祉係の窓口に提出、または郵送で港区子ども家庭支援部子ども若者支援課子ども給付係あてに送付する。必要書類はひとり親家庭等医療助成費支給申請書、領収書（原本または写し）、受給者の口座がわかるもの等（申請内容により異なる）。,https://www.city.minato.tokyo.jp/kateisoudan/kodomo/kodomo/hitorioya/iryo.html
+1752,application,申請は各総合支所区民課窓口サービス係（芝地区総合支所は相談担当）で行う（所管は国保年金課給付係）。必要書類は身体障害者手帳・愛の手帳または精神障害者保健福祉手帳、医療保険の資格の確認ができる書類、本人のマイナンバーがわかる書類及び身元確認書類。,https://www.city.minato.tokyo.jp/kenko/fukushi/shogaisha/iryo/iryohi.html
+1791,application,定期接種は対象者に予診票が送付され（再発行は電子申請または予防接種予診票コールセンターで申請）、区内の実施医療機関で接種する。任意接種費用一部助成は、みなと保健所への電話または電子申請で任意接種予診票の発行依頼をし、港区実施医療機関で接種する。,https://www.city.minato.tokyo.jp/hokenyobou/yobousessyu/taijyouhoushin.html
+1832,application,申請は各総合支所区民課窓口サービス係・国保年金課国民年金係（区役所3階）・港年金事務所の窓口、郵送、またはマイナポータルでの電子申請で行う。必要書類はマイナンバーカード・運転免許証等の本人確認書類、年金手帳や基礎年金番号通知書等、失業特例の場合は失業した事実が確認できる書類の写し。,https://www.city.minato.tokyo.jp/kokuminnenkin/kurashi/hoken/nenkin/menjo/shinseimenjo.html
+1878,application,申請は電子申請、郵送（申請書をダウンロードし住まいの地区の総合支所区民課保健福祉係へ送付）、または各総合支所区民課保健福祉係・各高齢者相談センターへの来所で行う。申請した人を確認できるもの（運転免許証、マイナンバーカード等）が必要。,https://www.city.minato.tokyo.jp/zaitakushien/kenko/fukushi/koresha/sekatsu/kamiomutsu.html
+1878,condition,対象はねたきりまたは失禁状態にあり、介護保険法の要介護認定で要支援1以上の認定を受けている人。特別養護老人ホーム等の介護保険施設サービス利用者は対象外で、医療機関入院者にはおむつ代を助成する。,https://www.city.minato.tokyo.jp/zaitakushien/kenko/fukushi/koresha/sekatsu/kamiomutsu.html
+2383,condition,介護保険料の所得段階が第2段階または第3段階で収入が少なく生活が困窮している人は、申請により保険料が軽減される場合がある。また災害や病気・失業などで収入が減って生活が著しく困難になり一時的に保険料が納められなくなったときは、収入基準等に基づき保険料が減額または免除になる場合がある。,https://www.city.minato.tokyo.jp/kaigohoken/kenko/fukushi/kaigo/hokenryo.html
