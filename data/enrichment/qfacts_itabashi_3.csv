@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+580,application,国内転入の届出は本庁舎1階と区内6か所の区民事務所で受け付けており、管轄区域はなくどの区民事務所でも受付可能。届出できるのは本人または同一世帯員（代理人は委任状が必要）。持ち物は前住所地で発行された転出証明書、本人確認資料、全員分のマイナンバーカード（お持ちの方）など。,https://www.city.itabashi.tokyo.jp/tetsuduki/koseki/juminhyo/1001611.html
+580,condition,届出できるのは本人または同一世帯員の方で、代理人の場合は委任状が必要。届出期間は新住所に住み始めた日から14日以内（住み始める前の手続きはできない）。,https://www.city.itabashi.tokyo.jp/tetsuduki/koseki/juminhyo/1001611.html
+595,condition,離職日時点で65歳未満で、雇用保険受給資格者証または雇用保険受給資格通知に記載の離職理由コードが11・12・21～34（解雇、特定雇止め、契約期間満了、正当な理由のある自己都合退職など）に該当する方が対象。雇用保険特例受給資格者証・高年齢受給資格者証をお持ちの方は対象にならない。,https://www.city.itabashi.tokyo.jp/kenko/kokuho/kokuho/hokenryo/1003138.html
+667,application,郵送または受付窓口（介護保険課給付係、板橋区福祉事務所志村福祉課・赤塚福祉課）で申請でき、LoGoフォームでも申請可能。必要書類は介護保険負担限度額認定申請書、本人と配偶者名義の預貯金口座残高の写しなど（窓口の場合は介護保険被保険者証とマイナンバーを確認できるものも必要）。,https://www.city.itabashi.tokyo.jp/kenko/kaigo/futan/1003671.html
+679,application,所管は高齢政策課高齢者相談・給付係（電話03-3579-2464）。直接、電話にて配食事業者に申し込み、サービス内容・料金・支払い方法の説明を受け、内容を承諾した上で契約する。,https://www.city.itabashi.tokyo.jp/kenko/kourei/josei/1003553.html
+679,condition,板橋区内に在住の65歳以上の高齢者の方が対象。,https://www.city.itabashi.tokyo.jp/kenko/kourei/josei/1003553.html
+713,application,所管は福祉部障がいサービス課障がい相談係（板橋二丁目66番1号、電話03-3579-2362）。新規申請には心身障害者福祉手当認定申請書、身体障害者手帳・愛の手帳・精神障害者保健福祉手帳・戦傷病者手帳等、本人名義の口座情報が分かるもの、個人番号のわかるものや身元確認ができるものが必要。,https://www.city.itabashi.tokyo.jp/kenko/shogai/teate/1003209.html
+733,condition,申請日時点で板橋区内に住民登録があり、その住所に居住している世帯主またはこれに準ずる方が対象。戸建て・共同住宅（賃貸を含む）ともに申請可能で、申請は1世帯につき1回のみ。申請者を含めた世帯全員が当該年度の同補助事業の交付を受けていないことが要件。,https://www.city.itabashi.tokyo.jp/bousai/bouhan/torikumi/1057420.html
+1499,condition,板橋区内に居住しているか事務所を有する方で、板橋区内に雨水貯留槽を設置する方が対象。区民税などを滞納していない方であること。対象は雨水貯留のための既製品で直接建物の雨どいから接続する耐久性のあるものに限られ、申請は購入前に行う必要がある。,https://www.city.itabashi.tokyo.jp/bousai/kankyo/todokede/1005923.html
+1628,condition,おやこ健康手帳（母子健康手帳）交付後の妊婦健康診査受診日現在に、板橋区に住民登録がある方が対象。都内で発行した受診票は都内の契約医療機関等でのみ使用でき、都外へ転出した場合は転出日以降使用できない。,https://www.city.itabashi.tokyo.jp/kosodate/ninshin/ninshin/1004063.html
+1735,application,子どもの手当医療係・赤塚支所住民サービス係で医療証の交付申請をする（窓口申請が基本、来庁が難しい方は電話03-3579-2374に相談）。申請者と児童の健康保険資格を確認できる書類、同意書（扶養義務者がいる方のみ）、該当者は戸籍謄本または児童扶養手当証書が必要。,https://www.city.itabashi.tokyo.jp/kosodate/teate/iryohi/1053935/1053938.html
+1766,application,所管は福祉部障がいサービス課障がい相談係（板橋二丁目66番1号）で、書類を持参し窓口で申請する（郵送でも可の場合あり）。必要書類は身体障害者手帳・愛の手帳・精神障害者保健福祉手帳、加入している健康保険の被保険者資格情報が分かるもの、課税（非課税）証明書もしくは交付状況連絡票、マイナンバーのわかるもの。,https://www.city.itabashi.tokyo.jp/kenko/shogai/josei/1003219.html
+1799,application,65歳以上の対象者には予診票が発送され、予診票がない場合は「帯状疱疹ワクチン定期予防接種予診票申請」で発行申請できる。接種は板橋区内の協力医療機関または23区内の各区と契約した医療機関で受け、医療機関によっては予約制のため事前に問い合わせが必要。,https://www.city.itabashi.tokyo.jp/kenko/kenshin/yobou/1039663.html

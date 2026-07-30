@@ -1,0 +1,17 @@
+program_id,fact_type,value,evidence_url
+347,application,申請先は国保医療年金課高齢者医療係（本庁舎4階4番窓口）で、窓口・郵送・オンライン（品川区電子申請サービス）で申請できます。主な必要書類は後期高齢者医療葬祭費支給申請書、会葬御礼ハガキまたは葬儀社の請求書か領収書等、被保険者番号が分かるもの、振込希望先の口座情報です。,https://www.city.shinagawa.tokyo.jp/PC/procedure/procedure-koukikoureisyairyo/hpg000010754.html
+347,condition,東京都後期高齢者医療に加入している被保険者が亡くなったとき、その葬儀を行った方（喪主）が対象です。他の健康保険等から葬祭費に相当する給付を受ける場合は対象外で、申請できる期間は葬儀を行った翌日から2年間です。,https://www.city.shinagawa.tokyo.jp/PC/procedure/procedure-koukikoureisyairyo/hpg000010754.html
+348,application,申請先は国保医療年金課高齢者医療係（本庁舎4階4番窓口）で、窓口または郵送で申請できます。主な必要書類は送付されている高額療養費支給申請書（初回のみ）、金融機関の口座情報などです。,https://www.city.shinagawa.tokyo.jp/PC/procedure/procedure-koukikoureisyairyo/hpg000016309.html
+348,condition,後期高齢者医療制度に加入している方で、医療機関や薬局の窓口で支払った額が同月内で自己負担限度額を超えた場合が対象です。所得区分により自己負担限度額が異なります。,https://www.city.shinagawa.tokyo.jp/PC/procedure/procedure-koukikoureisyairyo/hpg000016309.html
+382,condition,本人・世帯主・配偶者のそれぞれの前年所得が一定額以下、もしくは退職（失業）した場合が対象です。学生の方には学生納付特例制度、50歳未満の方には納付猶予制度があります。,https://www.city.shinagawa.tokyo.jp/PC/procedure/procedure-nenkin/hpg000001496.html
+423,application,QRコードからサービス利用を申し込むオンライン申込で、所管は子育て応援課家庭支援担当です。,https://www.city.shinagawa.tokyo.jp/PC/kodomo/2025_online-my-jyosanshi.html
+423,condition,品川区在住の妊婦さんとそのパートナーが対象で、先着300人の定員があります。利用期間は妊娠から産後3カ月までです。,https://www.city.shinagawa.tokyo.jp/PC/kodomo/2025_online-my-jyosanshi.html
+450,condition,認可外保育施設に在籍している児童およびその保護者が毎月1日時点で品川区の住民基本台帳に記録され、保護者と施設が120時間以上の保育を行う月極め契約を締結し在籍していることが要件です。助成額は住民税課税世帯と保育の必要性を有する住民税非課税世帯で区分されます。,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hoyou/kodomo-hoyou-hoikuen/hpg000033493.html
+473,application,電子申請または電話で訪問調査を申し込みます。所管は生活福祉課エアコン助成担当（電話03-5742-3848）で、生活保護受給世帯の場合は担当ケースワーカーへの連絡となります。,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-seikatsukomaru/20230428084925.html
+490,application,申請先は保育入園調整課利用助成係で、品川区私立幼稚園等施設等利用給付請求書および園児保護者負担軽減補助金交付申請書が全員必須です。転入者・海外居住歴のある方・障害者手帳所有者・ひとり親世帯・年度途中入園者など該当者は追加書類が必要です。,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hoyou/kodomo-hoyou-youchien/siritsuyouchien/20190708120433.html
+513,application,申請先は保育入園調整課（利用助成係または入園相談担当）です。主な必要書類は子育てのための施設等利用給付認定・変更申請書または保育認定申請書、保育を必要とする要件を証明する書類（保護者全員分必須）、および施設等利用給付請求書兼補助金交付申請書です。,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-hoyou/kodomo-hoyou-youchien/siritsuyouchien/20210202160510.html
+536,application,妊娠期面談（1回目）または出産準備個別相談にて申請できるほか、品川区電子申請サービスから申請できます。申請先は品川・大井・荏原の各保健センターです。,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/kodomo-ninnshinn-umaretara/20240328204508.html
+559,application,提出先は子育て応援課家庭支援担当（〒140-8715 品川区広町2-1-36）で、郵送により提出します。主な必要書類は産後家事育児支援訪問費助成金交付申請書（様式1）、事業者による支援サービス等利用証明書、領収書の写し、出産前の申請時は親子手帳の写しです。,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-kateisoudan/hpg000027978.html
+577,application,品川区役所戸籍住民課戸籍住民担当（住民異動）または各地域センターの窓口で届け出ます。主な必要書類は転出証明書、本人確認書類、マイナンバーカード（お持ちの方のみ）などで、新しい住所地に住み始めてから14日以内に届け出る必要があります。,https://www.city.shinagawa.tokyo.jp/PC/procedure/procedure-zyuumin_inkan/procedure-zyuumin_inkan-zyuumin/procedure-zyuumin_inkan-zyuumin-todoke/tennyu20241020.html
+582,application,受付窓口は国保医療年金課国民年金係（本庁舎4階5番窓口）で、地域センターでは受付していません。失業に伴う免除の場合は雇用保険被保険者離職票や雇用保険受給資格者証（コピー可）が必要です。,https://www.city.shinagawa.tokyo.jp/PC/procedure/procedure-nenkin/hpg000001496.html
+582,condition,本人・世帯主・配偶者のそれぞれの前年所得が一定額以下、もしくは退職（失業）した場合が対象です。学生の方には学生納付特例制度、50歳未満の方には納付猶予制度があります。,https://www.city.shinagawa.tokyo.jp/PC/procedure/procedure-nenkin/hpg000001496.html

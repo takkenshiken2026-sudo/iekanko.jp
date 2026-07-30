@@ -1,0 +1,10 @@
+program_id,fact_type,value,evidence_url
+631,application,オンライン、郵送、窓口で申請できます。申請先は国保年金課給付係です。必要書類は国民健康保険限度額適用認定申請書と対象者の本人確認書類で、オンラインの場合は本人確認書類の画像データが必要です。,https://www.city.meguro.tokyo.jp/kokuho/kurashi/kokuho/gendogaku.html
+652,condition,住民税非課税世帯（世帯員全員が非課税）であり、預貯金などの額が一定額以下であることが要件です。住民票を別にしている配偶者がいる場合はそのかたも住民税非課税であることが必要です。第1段階は老齢福祉年金受給者または生活保護受給者が対象で、第2～3段階は合計所得金額と課税年金収入額により区分されます。,https://www.city.meguro.tokyo.jp/kaigohoken/kenkoufukushi/koureisha/genmen.html
+653,condition,生活保護受給者を除く居宅サービス利用者で、住民税非課税世帯かつ本人の合計所得金額が0円または各種控除後の合計所得金額が10万円以内であることが要件です。本人が税法上の被扶養者の場合は扶養者が住民税非課税であること、同住所地に居住する兄弟姉妹・直系血族が住民税非課税であることも必要です。,https://www.city.meguro.tokyo.jp/kaigohoken/kenkoufukushi/koureisha/genmen.html
+689,application,各地域包括支援センターへ申請書を提出して申請します（週一食事サービスは高齢福祉課または各包括支援センター）。必要書類は高齢者配食サービス事業利用申請書または週一食事サービス申請書です。,https://www.city.meguro.tokyo.jp/koureifukushi/kenkoufukushi/koureisha/shokuji.html
+747,application,オンライン（24時間受付）、窓口（危機管理課、平日午前8時30分～午後5時）、郵送で申請できます。申請先は目黒区危機管理部危機管理課です。必要書類は申請書、領収書、購入機器の名称と型番が確認できる資料、設置完了写真、本人確認書類、口座情報の確認書類、確認書などです。,https://www.city.meguro.tokyo.jp/seikatsuanzen/bousaianzen/bouhan/tatemonobouhankinkyu.html
+747,condition,申請日時点で目黒区内に住民登録をしている方が対象です。令和7年度に目黒区防犯機器等購入緊急補助金（都内他区市町村の同種補助金を含む）の交付を受けていないこと、令和9年1月29日までに購入・設置が完了していることが要件です。,https://www.city.meguro.tokyo.jp/seikatsuanzen/bousaianzen/bouhan/tatemonobouhankinkyu.html
+1508,application,対象者には3月下旬に予診票が郵送され、東京23区内の契約医療機関で接種します。予診票を紛失した場合や転入者は「帯状疱疹予防接種予診票申請フォーム」から申し込みます。,https://www.city.meguro.tokyo.jp/hokenyobou/kenkoufukushi/yobousesshu/teiki-taizyouhousin.html
+1508,condition,目黒区に住所を有し、令和8年度に65歳になるかた（経過措置として70・75・80・85・90・95・100歳になるかた）が対象です。60～64歳でヒト免疫不全ウイルスによる免疫機能障害があり身体障害者手帳1級相当のかたも対象です。過去に帯状疱疹予防接種を受けたことがないかたに限ります（生涯一度限り）。,https://www.city.meguro.tokyo.jp/hokenyobou/kenkoufukushi/yobousesshu/teiki-taizyouhousin.html
+1761,application,新規申請は障害者支援課支援サービス係へお問い合わせのうえ申請します。受給中のかたの保険変更等は、窓口（変更後の保険証を提示）、郵送（変更後の保険証の写しを送付）、オンラインフォームで申請できます。都外等での診療時は領収証（原本）と支給申請書を郵送して申請します。,https://www.city.meguro.tokyo.jp/shougaishien/kenkoufukushi/shougaisha/marusho.html

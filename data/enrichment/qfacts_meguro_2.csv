@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+326,application,直接支払制度・受取代理制度を利用しない場合や海外出産の場合は、出産後に区へ申請します(海外出産は窓口受付)。申請先は国保年金課給付係。主な必要書類は出産育児一時金支給申請書、来庁者の本人確認書類、出産したかたの資格確認書、出産の証明のある母子健康手帳、出産費用の領収・明細書などです。,https://www.city.meguro.tokyo.jp/kokuho/kurashi/kokuho/shussan_itijikin.html
+327,condition,世帯で1年間(毎年8月から翌年7月まで)の医療保険と介護保険の自己負担額を合算し、所得区分ごとに定められた自己負担限度額(70歳未満は住民税非課税世帯34万円から212万円、70歳以上は19万円から212万円)を超えた金額が、申請により支給されます。,https://www.city.meguro.tokyo.jp/kokuho/kurashi/kokuho/kokuho_kyufu_kougakukaigogassan.html
+328,condition,旅先での急病など緊急やむをえない理由で保険証を使えず医療費を全額支払い区が認めたとき、医師の同意を得たはり・きゅう・マッサージや柔道整復師の施術、輸血(生血)、コルセット等の治療用装具の費用などが対象です。申請は療養を受けた日の翌日から2年以内です。,https://www.city.meguro.tokyo.jp/kokuho/kurashi/kokuho/kokuho_kyufu_ryoyouhi.html
+402,condition,目黒区から目黒区外(国外を含む)へ住所を変更するときに行う届出で、引っ越す本人または現在同じ世帯の人が届け出ます。,https://www.city.meguro.tokyo.jp/kurashi/hikkoshi/tenshutsu/index.html
+432,application,区役所戸籍住民課住民記録係または各地区サービス事務所の窓口で届け出ます(マイナポータルを利用したオンライン申請も可)。届出期間は新住所に住み始めてから14日以内です。持ち物は窓口手続き者の本人確認書類、引越し者全員のマイナンバーカード等と暗証番号などです。,https://www.city.meguro.tokyo.jp/koseki/kurashi/hikkoshi/tenkyo_mado.html
+448,condition,目黒区外から目黒区へ引っ越したときに行う届出で、引っ越した本人または同じ世帯になる人が届け出ます。,https://www.city.meguro.tokyo.jp/kurashi/hikkoshi/tennyuu/index.html
+471,application,郵送、窓口、またはマイナポータルの「ぴったりサービス」によるオンラインで申請します。申請先は子ども若者部保育課保育施設利用係。主な必要書類は認可外保育施設保育料助成金交付申請書(兼口座振替依頼書)と、就労証明書など保育の必要性を証明する書類です。,https://www.city.meguro.tokyo.jp/hoiku/kosodatekyouiku/kosodate/ninkagaihoikusisetujosei.html
+501,application,オンライン申請フォーム、または委託事業者(株式会社ケー・デー・シー)への郵送で助成金を請求します。主な必要書類はベビーシッター要件証明書、事業者の領収書・利用明細書、振込口座のわかる通帳等の写しなどで、郵送の場合は区様式の交付申請書兼口座振替依頼書と利用内容内訳表も必要です。,https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/babysitter_itiziazukari2025.html
+524,application,「産後ケア事業(宿泊型)利用登録申請フォーム」からオンラインで利用登録申請します(申請が困難な場合は要相談)。申請先は地域保健課保健相談係。住民税非課税世帯は世帯全員分の住民税非課税証明書、生活保護受給世帯は生活保護受給証明書が必要です(区に住民登録があれば省略可)。,https://www.city.meguro.tokyo.jp/chiikihoken/kosodatekyouiku/ninshin/syukuhaku81.html
+547,application,オンライン申請フォーム(単胎児用・多胎児用)から必要事項を入力し支援サービス等利用証明書を添付するか、交付申請書兼請求書に記入して郵送します。申請先は子ども若者課児童手当・医療証係。提出期限は最後の利用日から30日以内です。,https://www.city.meguro.tokyo.jp/kosodateshien/kosodatekyouiku/kosodate/kajiikujisupport.html
+570,application,電話予約制で、区からの連絡・通知を受けた後に地域保健課保健相談係へ電話で面接日を予約します(来所が難しい場合は訪問やオンラインでの面接も可)。面接には母子健康手帳を持参し、無い場合は本人確認書類の提示が必要です。,https://www.city.meguro.tokyo.jp/chiikihoken/kosodatekyouiku/ninshin/sakura.html
+570,condition,面接日現在、目黒区に住民登録がある3歳未満の多胎児を養育中の世帯が対象です。0歳から2歳までの各年齢で1回利用できます。,https://www.city.meguro.tokyo.jp/chiikihoken/kosodatekyouiku/ninshin/sakura.html
+593,condition,離職時年齢が65歳未満で、雇用保険の特定受給資格者・特定理由離職者(離職理由コードが11・12・21・22・23・31・32・33・34のいずれか)に該当する非自発的失業者が対象です。前年の給与所得を100分の30として算定し、所得割額を軽減します。,https://www.city.meguro.tokyo.jp/kokuho/kurashi/kokuho/hokenryo_keigen.html

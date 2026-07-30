@@ -1,0 +1,19 @@
+program_id,fact_type,value,evidence_url
+279,application,支給申請は国保年金課国保給付係（南館2階）の窓口で受け付けます。必要書類は状況により異なり、資格確認ができずに治療を受けた場合は領収書（原本）・診療報酬明細書（レセプト）（原本）・資格確認書等が必要です。請求期限は医療費等を支払った日の翌日から2年間です。,https://www.city.itabashi.tokyo.jp/kenko/kokuho/kokuho/kyufu/1003143.html
+279,condition,診療費等を支払ったとき、旅行先での急病・外出中のけが・資格確認ができずに治療を受けた場合など、区が認めたものに限り支給対象となります。,https://www.city.itabashi.tokyo.jp/kenko/kokuho/kokuho/kyufu/1003143.html
+353,application,申請先は健康生きがい部後期高齢医療制度課です。葬祭を行った日の翌日から2年以内に申請する必要があります。,https://www.city.itabashi.tokyo.jp/faq/kenkou/kourei/iryou/1036428.html
+353,condition,"亡くなった方の葬祭を行った方が対象で、支給額は70,000円です。",https://www.city.itabashi.tokyo.jp/faq/kenkou/kourei/iryou/1036428.html
+354,application,該当すると東京都後期高齢者医療広域連合から支給申請書が郵送されます。後期高齢医療制度課（区役所本庁舎北館2階13番窓口）への持参、または返信用封筒による郵送で申請でき、支給申請書・被保険者証（資格確認書）・マイナンバーがわかるもの・振込先がわかる預金通帳等が必要です。,https://www.city.itabashi.tokyo.jp/kenko/kourei/kouki/shikyu/1003542.html
+354,condition,医療機関等へ支払った医療費が、月の1日から末日までの1か月の間に一定の負担限度額を超えた場合に該当する後期高齢者医療被保険者が対象です。入院時の差額ベッド代など保険診療外の費用は対象となりません。,https://www.city.itabashi.tokyo.jp/kenko/kourei/kouki/shikyu/1003542.html
+388,application,国保年金課国民年金係（南館2階25番窓口）または板橋年金事務所の窓口のほか、電子申請でも手続きできます。本人確認書類（マイナンバーカード・運転免許証等）と基礎年金番号がわかる書類（基礎年金番号通知書または年金手帳等）が必要で、別世帯の方が手続きする場合は委任状が必要です。,https://www.city.itabashi.tokyo.jp/kenko/kokuho/nenkin/hokenryo/1016757.html
+388,condition,前年の所得が一定額以下、または災害・失業・就学中などで保険料の納付が困難な方が対象です。全額・一部免除は本人・配偶者・世帯主全員の前年所得がそれぞれ基準以下、納付猶予は50歳未満で本人・配偶者の前年所得がそれぞれ基準以下であることが要件です。,https://www.city.itabashi.tokyo.jp/kenko/kokuho/nenkin/hokenryo/1016757.html
+398,condition,検査日時点で板橋区に住民登録があり、過去に風しんの予防接種歴・罹患歴がなく、妊娠を予定または希望する19歳以上の女性、妊婦のパートナー（予定者を含む）、妊婦の同居人（19歳以上）のいずれかに該当する方が対象です。予防接種は上記に加え、抗体検査で低抗体の結果を持つ方が対象です。,https://www.city.itabashi.tokyo.jp/kenko/kenshin/yobou/1002620.html
+429,application,郵送、または板橋区役所南館3階21番窓口（健康推進課）への持参により申請します。申請書兼請求書、治療をしている（いた）ことが分かる書類のコピー、費用を支払ったことが分かる領収書の原本が必要です。,https://www.city.itabashi.tokyo.jp/kenko/soudan/1046938/1046941.html
+429,condition,申請日時点で板橋区に住民登録があり、がんや良性腫瘍の治療を行っている又は過去に行っていた方で、治療に伴う脱毛や乳房などの切除により助成対象物品を購入又はレンタルした方が対象です。過去にこの事業等で助成金の交付を2回以上受けていないことが要件です。,https://www.city.itabashi.tokyo.jp/kenko/soudan/1046938/1046941.html
+454,application,障がいサービス課障がい児支援係（本庁舎北館2階[12]窓口）に申請書を提出します。必要書類は申請書（区様式）・意見書（区様式）・見積書（補聴器業者の任意様式）です。,https://www.city.itabashi.tokyo.jp/kenko/shogai/shien/chokaku/1003288.html
+477,application,原則として電子申請で受け付け、申請書での申請も可能です。在籍している施設または区役所（保育サービス課民間保育第二係）に提出し、申請書兼口座振替依頼書と、必要な方は住民税の課税又は非課税が分かる書類を添付します。,https://www.city.itabashi.tokyo.jp/kosodate/teate/shisetsu/1056859.html
+496,application,郵送またはオンライン（LoGoフォームの新規交付申請フォーム）で申請します。提出先は委託事業者（株式会社バックスグループ・板橋区ベビーシッター担当）で、補助金交付申請書兼請求書・利用内訳表・要件証明書・領収書等が必要です。,https://www.city.itabashi.tokyo.jp/kosodate/azukeru/1048822.html
+519,application,Web申請フォーム、窓口（板橋区役所南館3階21番 健康推進課）、または郵送のいずれかで利用登録を申請します。所管課は健康生きがい部健康推進課母子保健係で、産後ケア事業利用登録申請書が必要です。,https://www.city.itabashi.tokyo.jp/kosodate/ninshin/ninshin/1051233.html
+542,application,オンライン申請フォーム（ページ内のリンクまたはQRコード）から申請します。委託事業者は株式会社パソナライフケアで、非課税世帯としての減免を希望し特定時期に転入した方は、世帯全員が非課税であることが確認できる書類を子ども家庭総合支援センターに別途提出します。,https://www.city.itabashi.tokyo.jp/kosodate/ninshin/ninshin/1004071.html
+542,condition,板橋区に住民登録があり、妊娠中の保護者（母子健康手帳取得後）がいる世帯、及び3歳の誕生日前日までの児童がいる世帯が対象です。,https://www.city.itabashi.tokyo.jp/kosodate/ninshin/ninshin/1004071.html
+565,condition,区民で3歳未満の多胎児を同一世帯で養育する保護者が対象です。申請書が区に到達した時点で多胎児が0歳・1歳・2歳であることが必要で、各年齢につき1回申請できます。,https://www.city.itabashi.tokyo.jp/kosodate/ninshin/shusan/1026953.html

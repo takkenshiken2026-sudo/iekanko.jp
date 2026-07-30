@@ -1,0 +1,13 @@
+program_id,fact_type,value,evidence_url
+646,condition,"対象者は世帯全員が住民税非課税であることが必須で、負担段階に応じて資産要件も設けられている。第1段階は老齢福祉年金受給者または生活保護受給者で預貯金等の資産が単身1,000万円以下、第2〜3段階は公的年金等収入と合計所得金額の合計が一定額以下の方で段階ごとに異なる資産制限がある。",https://www.city.taito.lg.jp/kenkohukusi/korei/kaigohokenseido/shikumi/futannokeigen.html
+685,condition,要介護4以上の高齢者を在宅で日常的に介護している家族等が対象。,https://www.city.taito.lg.jp/kenkohukusi/korei/kazokukaigo/index.html
+722,application,申請は窓口のほか郵送でも受け付けており、申請先は子育て支援課給付担当（電話03-5246-1232）。主な必要書類は申請者および児童の戸籍謄本（発行後1か月以内）、申請者名義の預金通帳、個人番号カードまたは通知カード等の本人確認書類。,https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/teate_josei/teate/jidofuyoteate.html
+746,application,申請は郵送または電子申請のみで受け付け、区役所窓口での受付は行わない。申請先は台東区生活安全推進課で、主な必要書類は交付申請書兼請求書、誓約書兼同意書、本人確認書類の写し、領収書の写し、設置後の写真、機器のカタログ等の写し、口座情報確認書類の写し。,https://www.city.taito.lg.jp/bosai/bohantaisaku/anzentaisaku/bouhanjyosei/bouhannkinkyu.html
+746,condition,台東区に住民登録があり、その住所に居住している方が対象で、補助は1世帯1回に限る。個人宅（戸建て・集合住宅）において侵入盗被害防止に有用な防犯機器が対象で、共有部分への設置や店舗部分は対象外、前年度に同補助を受けた方は対象外。,https://www.city.taito.lg.jp/bosai/bohantaisaku/anzentaisaku/bouhanjyosei/bouhannkinkyu.html
+756,application,工事の前にオンラインの事前申込フォーム（住宅向け・事業所向けで別）から申し込み、受理された旨の連絡を受けた後に工事を行う必要がある。交付申請は所定の必要書類（見積書等）を添えて令和9年2月15日までに提出し、所管は環境課普及啓発担当（電話03-5246-1281）。,https://www.city.taito.lg.jp/kenchiku/kankyo/jyoseiseido/datsutanso.html
+756,condition,区内の建物に新たに購入した未使用の対象機器を導入する個人、および中小企業基本法第2条第1項に定める中小企業者または医療法人等の事業者が対象。建物は自己所有または所有者の承諾が必要で、工事前に事前申込を行い受理されていることが条件。,https://www.city.taito.lg.jp/kenchiku/kankyo/jyoseiseido/datsutanso.html
+1620,condition,母子健康手帳交付後の妊婦を対象に、初回の妊婦健康診査および2回目以降の健診費用を助成する。受診票は都内の委託医療機関で使用でき、都外へ転出した場合は他県の医療機関では使用できない。,https://www.city.taito.lg.jp/kosodatekyouiku/kosodate/mokutei/kenkou_iryou/kenkoushinsa/ninshinchu/ninpukenkoshinsa.html
+1758,application,申請先は障害福祉課給付担当（電話03-5246-1201）で、精神障害者の場合は保健予防課精神保健担当（電話03-3847-9405）。郵送での申請も可能で、その際は領収書の原本を添付する必要があり、主な必要書類は身体障害者手帳等の障害者手帳、マイナ保険証、転入者はマイナンバーカード等の個人番号確認書類と身分証明書。,https://www.city.taito.lg.jp/kenkohukusi/shogai/iryoujosei/shaji/iryouhijosei.html
+1795,application,定期接種の対象者は申請により窓口または郵便で予診票の発行を受け、郵便を希望する場合は電話もしくは電子申請で申し込む。接種は区内および23区内の協力医療機関で実施し、あらかじめ記入した予診票、自己負担額、本人確認書類等を持参する。,https://www.city.taito.lg.jp/kenkohukusi/kenkokikikanrieisei/kansensho/kansenshoyobo/taijo_teiki.html
+2270,condition,前年の総所得金額等が一定の基準以下の世帯は均等割額が7割・5割・2割軽減される。このほか、被用者保険の被保険者が後期高齢者医療制度へ移行したことで資格喪失した65歳以上75歳未満の被扶養者の減免や、倒産・解雇等による特定受給資格者・特定理由離職者（離職時65歳未満）の非自発的失業者軽減がある。,https://www.city.taito.lg.jp/kurashi/zeikin/kokuminkenkohoken/hokenryou/20130605110058881.html
+2760,condition,台東区在住で満15歳以上の一般就労を希望している障害者とその家族が対象。あわせて、障害のある方を雇用しようとしている、または既に雇用している企業も支援の対象となる。,https://www.city.taito.lg.jp/kenkohukusi/shogai/syougaisyanosigoto/syuurousiensitu.html

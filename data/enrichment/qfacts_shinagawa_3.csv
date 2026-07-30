@@ -1,0 +1,9 @@
+program_id,fact_type,value,evidence_url
+598,application,転居届は窓口での届出。届出先は品川区役所戸籍住民課戸籍住民担当、または各地域センター（荏原第一・品川第一・大崎第一・大井第一・荏原第四・八潮）。本人確認書類とマイナンバーカード（お持ちの方）を持参し、新しい住所に住み始めてから14日以内に届け出る。,https://www.city.shinagawa.tokyo.jp/PC/procedure/procedure-zyuumin_inkan/procedure-zyuumin_inkan-zyuumin/procedure-zyuumin_inkan-zyuumin-todoke/20240922tenkyo.html
+663,condition,"本人および世帯全員（世帯が異なる配偶者を含む）が住民税非課税であることが必須。加えて利用者負担段階に応じた年金収入額・合計所得金額の要件（例：第2段階は合計80万9千円以下）と、本人・配偶者の預貯金等の資産が各段階の上限額（おおむね650万～1,000万円の範囲）以下であることが条件。",https://www.city.shinagawa.tokyo.jp/PC/kenkou/kaigo1/kaigo-riyousya-futan-gen/hpg000027201.html
+675,condition,品川区内に在住し、ひとり親医療証をもつ世帯、または18歳未満の子を3人以上養育している住民税非課税世帯が対象。生活保護世帯は対象外。,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-kateisoudan/20230111151740.html
+1622,condition,受診日に品川区に住民登録がある方が対象で、東京都以外の医療機関で妊婦健康診査等を受けた場合、または都内であっても契約医療機関以外で妊婦超音波検査等を受けた場合が該当する。所得制限はなし。,https://www.city.shinagawa.tokyo.jp/PC/kodomo/kodomo-ninnshinn/kodomo-ninnshinn-service/hpg000003975.html
+1760,application,現金給付（償還払い）は障害者支援課（総合庁舎3階）の窓口で手続きする。医療助成費支給申請書、領収書の原本、健康保険組合からの給付がある場合はその支給決定通知書が必要。問い合わせは障害者支援課障害給付事務係。,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-iryo/hpg000000532.html
+1796,application,まず品川区電子申請サービスまたは電話（保健予防課予防接種担当）で予診票を申し込む。予診票受取後に区の契約医療機関へ直接予約し、予診票を持参して接種する。接種時に助成額を差し引いた額を医療機関に支払う（区発行の予診票を使わない場合や契約外医療機関では助成対象外、償還払いなし）。,https://www.city.shinagawa.tokyo.jp/PC/kenkou/yobousessyu/20230228094752.html
+2803,condition,品川区に住所があり、下肢・体幹機能障害1～3級、視覚障害1・2級、内部障害1級、または愛の手帳1・2度に該当する方が対象。身体障害者手帳または愛の手帳の所持が必要で、所得制限はなし。,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000033560.html
+2935,condition,身体障害者手帳・愛の手帳（療育手帳）・精神障害者保健福祉手帳の交付を受けた方の属する世帯、または障害者総合支援法による障害福祉サービスの受給者証を所持する世帯で、他の資金の借り入れが困難な方が対象。,https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-syogai/kenkou-syogai-seikatsuken/hpg000000550.html
