@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+1367,application,障がい福祉課(市庁舎1階114窓口)での窓口申請。必要書類は所定の診断書、振込先口座の分かるもの(障がい者本人名義)、個人番号確認書類・身分証明書で、転入者は住民税課税・非課税証明書も必要。受給者は毎年8月に現況届の提出が必要。,https://www.city.machida.tokyo.jp/iryo/syougai_hukushi/teatenenkin/20211116-tokubetu.html
+1368,application,障がい福祉課(市庁舎1階114窓口)での窓口申請。必要書類は所定の診断書、振込先口座の分かるもの(障がい児本人名義)、個人番号カード等、窓口申請者の身分証明書で、転入者は障がい児本人・配偶者・扶養義務者の住民税課税・非課税証明書も必要。,https://www.city.machida.tokyo.jp/iryo/syougai_hukushi/teatenenkin/20211116-shougaiji.html
+1369,condition,町田市に住み20歳未満の子を扶養するひとり親(父または母)で、児童扶養手当を受給しているか同等の所得水準にあること等の要件をすべて満たす方が対象。1年以上の修業期間で国家資格等の取得を目指し、養成機関で6か月以上修業していることが要件で、所得が児童扶養手当の所得限度額を超えて1年以上経過していないこと。,https://kosodate-machida.tokyo.jp/soshiki/4/5/7/1185.html
+1370,application,受講開始前に講座の指定申請が必要(受講開始後の申請は不可)。指定申請には戸籍謄本・抄本、母子・父子自立支援プログラムの策定等を受けたことがわかるもの、教育訓練講座の内容がわかるもの、個人番号カード等、本人確認書類が必要。受講修了後30日以内に給付金の申請をする。,https://kosodate-machida.tokyo.jp/soshiki/4/5/7/1184.html
+1372,condition,児童のいるひとり親家庭で、保育園や学童クラブ等を利用してもなお保育に欠ける状況が生じるときが対象。ひとり親家庭となってから2年以内で日常生活に支障がある場合、技能習得のための通学、就職活動や自立支援プログラムに基づく活動、疾病・出産・看護・冠婚葬祭・残業・出張等社会通念上必要と認められる事由で一時的に生活援助や子育て支援が必要な場合が該当。,https://kosodate-machida.tokyo.jp/soshiki/4/5/7/1173.html
+1372,application,子ども生活部子ども家庭支援センター(電話042-724-4419)が窓口。申請に必要な書類は課税証明書(町田市に税情報がない方のみ)と児童扶養手当証書。,https://kosodate-machida.tokyo.jp/soshiki/4/5/7/1173.html
+1637,condition,妊娠届を提出した妊婦に、14回分の妊婦健康診査受診票、4回分の妊婦超音波検査受診票、1回分の妊婦子宮頸がん検診受診票等を交付。助成対象となるのは母子健康手帳発行後の受診分のみ。多胎児の妊婦が14回を超えて妊婦健康診査を受けた場合は5回を限度に費用を助成。,https://kosodate-machida.tokyo.jp/soshiki/3/1/8/1140.html
+1740,application,町田市役所2階の子ども総務課で申請。郵送申請も可能(郵送先:〒194-8520 町田市森野2-2-22 町田市役所 子ども生活部子ども総務課)。申請書類は申請書式一覧(児童手当・各種医療証・医療助成費の支給等)からダウンロードできる。,https://kosodate-machida.tokyo.jp/soshiki/4/1/6/3/469.html
+1809,application,市への事前申し込みは不要。指定医療機関に接種予約をし、予約日に予防接種を受け、医療機関が設定した金額から助成額を差し引いた額を窓口で支払う。指定医療機関以外や市外での接種は助成対象外。,https://www.city.machida.tokyo.jp/iryo/iryo/yobousessyu/taijouhoushin.html
+1845,application,郵送で手続きが可能で、申請書等を印刷のうえ保険年金課国民年金係に送付する。マイナポータルを利用した電子申請(国民年金)も可能。申請に基づき日本年金機構で審査し承認を受ける仕組みで、申請時点から2年1か月前までさかのぼって申請できる。,https://www.city.machida.tokyo.jp/kurashi/hoken/nenkin/nenkin_menjoseido/1001menzyosinnsei.html
+1903,condition,産後1年未満の母子で、町田市に住民登録がある方が対象。宿泊型・日帰り型・訪問型の3種類があり、母子の心身のケアや授乳ケア、育児指導等を受けられる。非課税世帯等は利用料の減免(全額免除を含む)がある。,https://kosodate-machida.tokyo.jp/soshiki/3/1/8/4182.html
+1903,application,LINEまたは市庁舎7階704窓口で申請でき、妊娠28週から申請が可能。非課税世帯は非課税証明や生活保護受給の証明により利用料が減免される。,https://kosodate-machida.tokyo.jp/soshiki/3/1/8/4182.html
+2228,condition,町田市国民健康保険加入者が亡くなった場合に、葬祭(火葬のみの場合も含む)を行った方(喪主)が対象で、5万円が支給される。葬祭を行った日の翌日から2年で時効により申請できなくなる。,https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/sousai.html
+2983,condition,身体障害者手帳、愛の手帳、精神障害者保健福祉手帳のいずれかを所持する方が対象で、運賃の10パーセントが割引となる(一部利用できない場合がある)。乗車時に手帳に貼付された写真を提示する。,https://www.city.machida.tokyo.jp/iryo/syougai_hukushi/nitijoseikatsushien/kakusyuwaribiki/taxi.html

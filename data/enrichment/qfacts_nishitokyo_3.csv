@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+1310,application,障害福祉課（市役所田無庁舎）に申請する。主な必要書類は自立支援医療費（更生医療）支給認定申請書、更生医療意見書（概略書・見積り明細書等）、身体障害者手帳、医療保険情報の確認書類、世帯の所得を確認する書類、マイナンバー及び本人確認書類。事前の申請および判定が必要。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/iryo/kosei_iryo.html
+1311,application,健康福祉部障害福祉課（田無庁舎1階）が窓口。まず相談を行い、申請に必要な書類は補装具の種目等により異なるため相談時に案内される。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/dailylife/hosoguhi.html
+1312,application,障害福祉課（市役所田無庁舎1階）が窓口。申請に必要な書類は用具の品目等により異なり相談時に案内される。難病患者の場合は医師の診断書又は意見書の提出が必要。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/dailylife/nichizyoyogu.html
+1313,application,障害福祉課（市役所田無庁舎）に申請する。主な必要書類は身体障害者手帳または愛の手帳、本人（20歳未満の場合は扶養義務者）の区市町村民税課税（非課税）証明書。西東京市で課税状況が確認できる場合は本人同意による公簿確認で証明書の提出は不要。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/syakai_sanka/taxi.html
+1314,application,障害福祉課が窓口。主な必要書類は身体障害者手帳又は愛の手帳、本人（20歳未満の場合は扶養義務者）の区市町村民税課税（非課税）証明書、自動車検査証（本人又は同居家族所有の自家用車）、運転免許証、振込口座が確認できるもの。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/syakai_sanka/zikayosya.html
+1315,condition,対象となる改修は手すりの設置、段差解消のためのスロープの設置、滑り防止のための床材の変更、引き戸への扉の取替え、洋式便器等への便器の取替え及びこれに伴う工事。老朽化によるリフォームは対象外。事前に申請書類を市に提出し審査・承認を受ける必要があり、事前申請をせずに工事した場合は支給対象とならない。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/kaigo/shiminmuke_jyouhou/_kaigo_service/meyasu/sonohoka/702094_20210730200939884.html
+1316,application,提出先は高齢者支援課（田無第二庁舎）。必要書類は介護保険居宅介護・介護予防福祉用具購入費支給申請書等で、償還払い・受領委任払い・生活保護受給者用で様式が異なる。事前に指定を受けた事業所から特定福祉用具を購入した場合に限り支給される。,https://www.city.nishitokyo.lg.jp/kurasi/sinseisyo/itiran/kaigohoken/jigyousyo_muke/hukusi.html
+1657,condition,対象は受診日当日に市内に住民票がある妊婦。母子健康手帳の交付時に助成対象の受診票が交付される。,https://www.city.nishitokyo.lg.jp/kosodate/bosi/ninsin/ninpukensin.html
+1821,application,接種は指定医療機関で受ける。対象者には接種券が送付済みで申請不要の場合があるが、申請が必要な方は窓口（保谷庁舎4階健康課・田無庁舎2階保険年金課）、はがき（健康課帯状疱疹定期予防接種担当宛）、電子申請のいずれかで申し込む。接種時は接種券、身分証明書、接種費用が必要。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/seizinhoken/yobousessyu_o/taijouhoushin.html
+1862,application,保険年金課国民年金係（田無庁舎）または市民課総合窓口係（防災・保谷保健福祉総合センター）に申請する。主な必要書類は基礎年金番号がわかるもの（年金手帳・基礎年金番号通知書等）またはマイナンバーカードで、失業を理由とする場合は雇用保険被保険者離職票や受給資格者証等の公的機関の証明。,https://www.city.nishitokyo.lg.jp/kurasi/nenkin/menjo.html
+1892,application,高齢者支援課窓口（田無第二庁舎1階、防災・保谷保健福祉総合センター1階）で申請を受け付ける。主な必要書類は西東京市高齢者支援課サービス申請書と、認知症及びねたきり高齢者等紙おむつ給付事業同意書兼申告書。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/koreisyasien/kaigo_dailylife/kamiomutu2022.html
+1892,condition,対象は40歳以上で居宅又は病院において常時失禁状態又はこれに準ずる状態にあり、ねたきり（又はそれに準ずる状態）もしくは認知症により重度の介護が必要な方。生活保護等を受給しておらず、同一月内に西東京市高齢者等紙おむつ助成金交付サービスの助成を受けていないことが条件。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/koreisyasien/kaigo_dailylife/kamiomutu2022.html
+1920,application,妊娠28週以降に申請可能。窓口（保谷庁舎4階、田無第二庁舎2階）または電子申請（令和8年4月1日開始）で申し込む。所管課は子ども家庭課母子保健係。必要書類は母子健康手帳、本人確認書類（運転免許証・マイナンバーカード等）、申請書等。,https://www.city.nishitokyo.lg.jp/kosodate/bosi/ninsin/nishitokyosangokea.html
+1920,condition,対象は利用日に西東京市に住民票があり、産後4か月になる前日までの産婦とその赤ちゃん。発熱など感染症の疑いのある方や、治療が必要な病気やケガのある方は利用できない。,https://www.city.nishitokyo.lg.jp/kosodate/bosi/ninsin/nishitokyosangokea.html

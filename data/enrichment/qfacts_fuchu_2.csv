@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+935,application,申請は障害者福祉課援護係で受け付けています。判定基準が手帳の基準と異なるため、診断書の提出は不要です。,https://www.city.fuchu.tokyo.jp/kenko/shogai/teate/tokyo.html
+935,condition,重度の知的障害で著しい精神症状を有する方、重度の知的障害と重度の身体障害を重複して有する方、または重度の肢体不自由で四肢機能障害（座っていることが困難）の方のいずれかが対象です。本人（20歳未満は扶養義務者）の所得が一定額を超える場合は対象外で、65歳以上の新規申請は原則対象外、施設入所者や3か月以上入院している方も対象になりません。,https://www.city.fuchu.tokyo.jp/kenko/shogai/teate/tokyo.html
+1518,application,受付場所は市役所地域安全対策課または各文化センターで、平日午前8時30分から午後5時に受け付けています。本人情報が確認できる書類（マイナンバーカード、運転免許証、健康保険証など）を持参し、代理による申請も可能です。,https://www.city.fuchu.tokyo.jp/bosaibohan/bohan/jidoutuuwarokuonki.html
+1518,condition,市内に居住するすべての世帯が対象で、1世帯につき1台を貸与します。先着400台で、無くなり次第終了です。,https://www.city.fuchu.tokyo.jp/bosaibohan/bohan/jidoutuuwarokuonki.html
+1645,condition,妊娠届出書を提出し母子健康手帳の交付を受ける際に、妊婦健康診査の受診票が交付されます。受診票は都内の協力医療機関および都内の協力助産所で使用できます。,https://www.city.fuchu.tokyo.jp/kosodate/shussan/boshinokenko/kakushukenshin/ninpukenshin.html
+1806,application,定期接種の対象者には3月下旬に予防接種券を住民登録の住所へ郵送し、接種券を持参して市内協力医療機関で接種を受けます。60歳以上65歳未満で免疫機能障害のある方は事前の申込みが必要で、申請書に本人確認書類と対象証明書類を添付して郵送または窓口（保健センター3階成人保健係）に提出します。所管課は福祉保健部健康推進課です。,https://www.city.fuchu.tokyo.jp/kenko/kenko/kenshinsesshu/taijouhousin.html
+1842,application,手続きは電子申請が可能で、詳細は日本年金機構ホームページで案内されています。一般免除・納付猶予申請書や学生納付特例申請書などの様式が用意されており、問い合わせは市民部保険年金課が担当します。,https://www.city.fuchu.tokyo.jp/kurashi/hoken/kokuminnenkin/kokuminnenkinhokenryou.html
+1883,application,申請・変更届の提出および領収書の提出は郵送でも受け付けており、各地域包括支援センターでは申請代行を行っています。必要書類は申込書（口座振替依頼書兼代理人選任届を含む）、利用者の振込先口座番号、介護保険被保険者証です。所管課は福祉保健部介護保険課介護サービス係です。,https://www.city.fuchu.tokyo.jp/kenko/korenokata/koreisha/itijouseikatuyouhinomutunojosei.html
+1883,condition,介護保険で「要介護3」以上に認定され、おむつを必要とする方が対象です。生活保護を受給している方や、障害者のおむつ助成を受けている方は対象になりません。,https://www.city.fuchu.tokyo.jp/kenko/korenokata/koreisha/itijouseikatuyouhinomutunojosei.html
+1900,application,妊娠届提出後から登録申請ができ、子ども家庭支援課母子保健係の窓口に母子健康手帳を持参して申し込むか、郵送で申請します。申請後、利用可能な方には市から承認決定通知書が郵送され、その後直接施設に予約します。,https://www.city.fuchu.tokyo.jp/kosodate/shussan/boshinokenko/jigyo/sangokea.html
+1900,condition,府中市民で、1歳未満のお子さんとそのお母さんが対象です。医療行為が必要な場合は利用できません。,https://www.city.fuchu.tokyo.jp/kosodate/shussan/boshinokenko/jigyo/sangokea.html
+2205,condition,東京都特定不妊治療費（先進医療）助成の承認決定を受けていること、治療を受けた方またはその配偶者等（事実婚含む）が都助成制度への申請日から引き続き市内に住所を有していること、他の区市町村から同様の助成金を受けていないことが条件です。保険診療と併せて行った先進医療にかかる費用が対象です。,https://www.city.fuchu.tokyo.jp/kosodate/shussan/boshinokenko/tokuteifuninchiryo.html
+2897,condition,出産日に府中市の国民健康保険に加入しており、ほかの保険制度からこれに相当する給付を受けない方が対象です。妊娠12週（85日）以降の流産・死産も給付対象に含まれ、申請は出産日の翌日から2年を過ぎるとできません。,https://www.city.fuchu.tokyo.jp/kurashi/hoken/kokuminkenko/kyufu/shussan.html

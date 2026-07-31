@@ -1,0 +1,11 @@
+program_id,fact_type,value,evidence_url
+1298,condition,児童扶養手当を受給しているか同等の所得水準にあるひとり親で、修業年限が6か月以上の養成機関で対象資格の取得が見込まれる方が対象です。過去にこの給付金を受給していないこと、20歳未満の児童を養育していることが要件です。,https://www.city.nishitokyo.lg.jp/kosodate/hitorioyakatei/koutouginoukunren.html
+1299,condition,母子・父子自立支援プログラムの策定等を受けて自立を図るための活動を行っているひとり親家庭の母または父が対象です。過去にこの給付金を受給したことがないことが要件です。,https://www.city.nishitokyo.lg.jp/kosodate/hitorioyakatei/kyouikukunrenkyuuhukin.html
+1300,condition,義務教育修了前の児童を養育するひとり親家庭で、ひとり親になって2年以内、保護者の職業訓練校通学・就職活動中、一時的な児童の見守りが必要な場合などに該当する世帯が対象です。利用者負担額は生活保護世帯から一般世帯まで所得区分により異なります。,https://www.city.nishitokyo.lg.jp/kosodate/hitorioyakatei/homehelper.html
+1301,application,申請にあたっては事前に母子・父子自立支援員との面接（予約制）が必要です。申請先は子ども若者応援課で、郵送または窓口で提出できます。,https://www.city.nishitokyo.lg.jp/kosodate/hitorioyakatei/sikinkasituke.html
+1303,application,申請窓口は子ども家庭課 事業庶務係（防災・保谷保健福祉総合センター4階）です。手続きにはマイナンバーの記載が必要です。,https://www.city.nishitokyo.lg.jp/kosodate/teate_zyosei/ikuseiiryou.html
+1304,application,障害福祉課の窓口（田無庁舎または保谷庁舎）または電子申請で申請します。主な必要書類は身体障害者手帳または愛の手帳、区市町村民税課税（非課税）証明書、振込口座確認書類です。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/teate_nenkin/sinsyoteate.html
+1308,application,障害福祉課手当助成係で、窓口または郵送により申請します（保険変更の場合はオンラインフォームも利用可）。主な必要書類は身体障害者手帳・愛の手帳・精神障害者保健福祉手帳のいずれか、健康保険証の写し、区市町村民税課税（非課税）証明書です。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/iryo/sinsho_iryo.html
+1308,condition,身体障害者手帳1〜2級（内部障害は1〜3級）、愛の手帳1〜2度、精神障害者保健福祉手帳1級の方が対象です。本人（20歳未満は原則世帯主）の所得が扶養親族数に応じた基準額を超える場合は対象外で、65歳以上での手帳取得者や生活保護受給者などは除外されます。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/iryo/sinsho_iryo.html
+1309,application,障害福祉課（田無庁舎）の窓口で必要書類を直接提出し、窓口での提出が困難な場合は郵送でも申請できます。新規申請の主な必要書類は自立支援医療費（精神通院）支給認定申請書、申請日から3か月以内の診断書、健康保険証の写し等、所得確認書類、マイナンバーおよび本人確認書類です。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/iryo/jiritsuseishintsuin.html
+1309,condition,精神疾患のため継続的な通院を必要とする方が対象です。利用者本人の収入や世帯の所得・疾患等に応じて月額自己負担上限額が設定されます。,https://www.city.nishitokyo.lg.jp/kenko_hukusi/syogaisyasien/iryo/jiritsuseishintsuin.html
