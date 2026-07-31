@@ -1,0 +1,13 @@
+program_id,fact_type,value,evidence_url
+795,application,村民課住民係へ申請する。必要書類は保護者及び子ども（乳幼児・児童・高校生等）が加入している健康保険資格確認書等。ひとり親家庭等の場合は健康保険資格確認書等とあわせて医療機関等の窓口に提示する。,https://www.vill.ogasawara.tokyo.jp/sonmin/iryouhijosei/
+795,condition,対象は乳幼児・小学生・中学生・高校生等（15歳4月1日から18歳3月31日まで）およびひとり親家庭等で、保護者（恒常的に所得の高い人）と子どもがともに小笠原村に住み、健康保険に加入していること。ひとり親家庭等については前年の父・母または養育者の所得が東京都で定める基準以下であることが条件。,https://www.vill.ogasawara.tokyo.jp/sonmin/iryouhijosei/
+875,condition,妊娠22週第0日又は申請日を基準に、それ以前に継続して1年以上小笠原村に住所を有し、かつ本拠を有する妊婦・産婦又はその配偶者が対象。申請日は妊娠22週0日から出産後1年以内。,https://www.vill.ogasawara.tokyo.jp/sonmin/syussan/
+876,condition,日常生活上の突発的な事情等により一時的にベビーシッターによる保育を必要とする保護者が対象。,https://www.vill.ogasawara.tokyo.jp/sonmin/kosodate/
+892,condition,小笠原村の区域内に住所を有する20歳以上で、条例別表に定める程度の心身の障害を有する者が対象。障害となった年齢が65歳以上の者等は対象外で、前年の所得が扶養親族等の有無・数に応じ規則で定める額を超えるときは支給されない。,https://www.vill.ogasawara.tokyo.jp/reiki_int/reiki_honbun/g164RG00000163.html
+893,condition,在宅で生活する高齢者等又は同居する家族等が心身の障害若しくは疾病等により、自立した生活又は介護が困難な者で、村長が必要と認めた者が対象。,https://www.vill.ogasawara.tokyo.jp/reiki_int/reiki_honbun/g164RG00000248.html
+894,condition,小笠原村の区域内に住所を有するひとり親家庭の父又は母及び児童、または養育者及びその養育する児童が対象。児童は18歳に達した日の属する年度の末日まで（20歳未満で規則で定める障害の状態にある者を含む）で、前々年の所得が規則で定める額以上のとき、また生活保護受給者や施設入所者等は対象外。,https://www.vill.ogasawara.tokyo.jp/reiki_int/reiki_honbun/g164RG00000155.html
+1466,application,相談や申請の受付は、各区市が設置するお住まいの地域の自立相談支援機関が行い、町村については西多摩福祉事務所及び各支庁が行う。,https://www.fukushi.metro.tokyo.lg.jp/seikatsu/seikatsukonnkyuu/jiritsu
+1467,application,申請先はお住まいの区市町村の社会福祉協議会。,https://www.fukushi.metro.tokyo.lg.jp/seikatsu/seikatsu_kyoju_shuro/sumai
+1541,condition,生活保護法による生活扶助を受けている者、または住民税非課税世帯で世帯に満65歳以上の高齢者がいる場合、身体障害者手帳・愛の手帳を所持している者、精神障害者保健福祉手帳の交付を受けている者が対象。,https://www.vill.ogasawara.tokyo.jp/reiki_int/reiki_honbun/g164RG00000333.html
+1542,condition,65歳以上の高齢者で、要支援認定を受けた者、または介護予防・生活支援サービス事業対象者で、日常生活上軽度な援助が必要な者が対象。,https://www.vill.ogasawara.tokyo.jp/reiki_int/reiki_honbun/g164RG00000252.html
+1543,condition,65歳以上の1人暮らしの高齢者、又はおおむね65歳以上の高齢者のみの世帯構成者が対象。,https://www.vill.ogasawara.tokyo.jp/reiki_int/reiki_honbun/g164RG00000252.html

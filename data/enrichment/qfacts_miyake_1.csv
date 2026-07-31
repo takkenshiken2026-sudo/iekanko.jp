@@ -1,0 +1,17 @@
+program_id,fact_type,value,evidence_url
+791,application,申請先は福祉健康課福祉係（三宅村役場臨時庁舎）で、認定請求書を提出する。必要書類は健康保険証の写し（認定請求者分）、認定請求者名義の金融機関口座がわかるもの、申請者および配偶者の個人番号がわかるもの。,https://www.vill.miyake.tokyo.jp/kakuka/sonminseikatsu/teate_josei.html
+791,condition,対象者は、高等学校修了前（18歳到達後の最初の3月31日まで）の児童を養育している村内在住の方。,https://www.vill.miyake.tokyo.jp/kakuka/sonminseikatsu/teate_josei.html
+867,condition,対象は三宅村内の児童。令和3年度より、事業の対象を三宅村内の高等学校に所属がある高校生まで拡大している。,https://www.vill.miyake.tokyo.jp/kurashi/hoken_nenkin_fukushi/fukushi/jidou_boshi.html
+868,application,申請先の所管課は東京都三宅支庁総務課。,https://www.vill.miyake.tokyo.jp/kurashi/hoken_nenkin_fukushi/fukushi/jidou_boshi.html
+915,application,福祉健康課の窓口で書類を用意しており、窓口で申請する。必要書類はマル障受給者証交付申請書、保険証の写し、手帳の写し、本人の所得が分かるもの（課税証明書など）。,https://www.vill.miyake.tokyo.jp/kurashi/hoken_nenkin_fukushi/fukushi/syougaisya/shintai_chiteki_kyoutsuu.html
+916,application,福祉健康課の窓口で書類を用意しており、窓口で申請する。必要書類は心身障害者福祉手当認定申請書、住民票記載事項証明書、本人の所得が分かるもの、手帳の写し。,https://www.vill.miyake.tokyo.jp/kurashi/hoken_nenkin_fukushi/fukushi/syougaisya/shintai_chiteki_kyoutsuu.html
+917,application,福祉健康課の窓口で書類を用意しており、窓口で申請する。必要書類は日常生活用具給付申請書、手帳の写し、業者の見積書。,https://www.vill.miyake.tokyo.jp/kurashi/hoken_nenkin_fukushi/fukushi/syougaisya/shintai_chiteki_kyoutsuu.html
+917,condition,対象は在宅の重度心身障害の方。原則として自己負担は1割。,https://www.vill.miyake.tokyo.jp/kurashi/hoken_nenkin_fukushi/fukushi/syougaisya/shintai_chiteki_kyoutsuu.html
+1457,condition,被保険者は、第1号被保険者が65歳以上の人、第2号被保険者が40〜64歳の医療保険加入者。要介護認定を受けることが必要で、40〜65歳未満の方は特定疾病（国の定めた16の病気）が原因で介護が必要となった場合に限る。,https://www.vill.miyake.tokyo.jp/kurashi/hoken_nenkin_fukushi/kaigohoken/seido.html
+1458,condition,三宅村の介護保険被保険者で要介護または要支援の認定を受けており、一時的な費用の負担ができず、受領委任払制度によらなければ福祉用具の購入又は住宅改修を行うことが困難と村長が認めたものが対象。介護保険料を滞納している者や、事業所の同意を得ていない者などは対象外。,https://www.vill.miyake.tokyo.jp/gyousei/reiki/reiki_honbun/g160RG00000633.html
+1459,application,申請先の所管課は三宅村役場臨時庁舎 企画財政課 企画情報係。様式第1号の交付申請書などを提出する。,https://www.vill.miyake.tokyo.jp/kakuka/kikakuzaisei/news/2019-0116-1618-10.html
+1459,condition,貸し手及び借り手が所有者等の3親等以内の親族でない者が対象。対象となる空き家は1年以上住んでいない、または使われていない家で、定住するために村内施工業者が実施する賃借・購入・賃貸等の改修に要する費用が対象となる。,https://www.vill.miyake.tokyo.jp/kakuka/kikakuzaisei/news/2019-0116-1618-10.html
+1460,application,相談・申請は自立相談支援機関で行い、各区市が設置するお住まいの地域の自立相談支援機関、町村については西多摩福祉事務所及び各支庁が行っている。,https://www.fukushi.metro.tokyo.lg.jp/seikatsu/seikatsukonnkyuu/jiritsu
+1537,application,ごみ出し困難者対策事業利用申込書（様式第1号）により村長に申し込む。本人のほか、当該世帯の構成員以外の親族、日々の介護に携わる者、民生委員等、構成員から委任を受けた者も申し込むことができる。,https://www.vill.miyake.tokyo.jp/gyousei/reiki/reiki_honbun/g160RG00000617.html
+1537,condition,高齢者又は障害者のみで構成されている世帯、高齢者又は障害者のいる世帯で他の構成員が家庭ごみを排出することが困難な者である世帯などのうち、家庭ごみをごみステーションに排出することが困難で、かつ他者からの協力が得られない世帯が対象。,https://www.vill.miyake.tokyo.jp/gyousei/reiki/reiki_honbun/g160RG00000617.html
+1538,condition,三宅村の住民基本台帳に登録され現に居住する65歳以上の高齢者及び第2号被保険者で、要介護認定者又はそれに準ずる者、紙おむつ等の使用が必要な者、申請する年度の住民税が非課税である者が対象。生活保護受給者、入院中の者、特別養護老人ホーム等の入所者は対象外。,https://www.vill.miyake.tokyo.jp/gyousei/reiki/reiki_honbun/g160RG00000606.html
