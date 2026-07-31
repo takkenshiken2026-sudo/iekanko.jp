@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+757,application,オンラインフォーム又はQRコードから申請する（オンライン申請が難しい場合は登録補聴器販売店による代理申請が可能）。申請先は福祉部高齢者福祉課（相談担当）。必要書類は耳鼻咽喉科で受けた聴力検査結果と、市で登録する補聴器販売店で受領した見積書。,https://www.city.hachioji.tokyo.jp/kurashi/welfare/004/004/001/p035080.html
+796,application,八王子市の専用Webサイトから電子申請で申し込む。申請先はこども家庭総合センター。妊婦面談で取得したログインID・パスワードにより二次元コードから申請する流れで、流産・死産等の場合は母子健康手帳が必要。,https://kosodate.city.hachioji.tokyo.jp/soshiki/oyokohokenfukushicenter/3399.html
+797,application,市役所・各事務所の窓口、郵送、又はマイナポータルからのオンライン申請が可能（マイナンバーカードが必要）。申請先は子ども家庭部子育て支援課。必要書類は交付申請書（児童手当と同じもの）と、申請者及び配偶者の個人番号カード（通知カード）並びに来庁者の本人確認書類。,https://kosodate.city.hachioji.tokyo.jp/soshiki/kosodateshienka/kosodateshienka_shomu_kyufu_jidoteatenyukotanto_hitorioyatanto/256.html
+798,application,本庁舎子育て支援課や各事務所の窓口、郵送、又はマイナポータルからのオンライン申請が可能（マイナンバーカードが必要）。申請先は子ども家庭部子育て支援課。必要書類は交付申請書（児童手当と同じもの）と、申請者及び配偶者の個人番号カード（通知カード）並びに来庁者の本人確認書類。,https://kosodate.city.hachioji.tokyo.jp/soshiki/kosodateshienka/kosodateshienka_shomu_kyufu_jidoteatenyukotanto_hitorioyatanto/2449.html
+799,application,申請書を持参又は郵送で提出する。申請先は、市立小・中・義務教育学校在籍者は各学校事務室、国・都・私立や市外校在籍者は教育指導課。賃貸住宅居住者は最新の賃貸契約書の写し、令和8年1月1日現在に市外住民登録があった者は令和8年度の課税（非課税）証明書の写しが必要。,https://www.city.hachioji.tokyo.jp/kurashi/kyoiku/003/002/002/p004698.html
+1339,condition,市内に居住する65歳以上の在宅高齢者で、介護保険の要介護認定で要介護1以上の認定を受けた方が対象。所得要件として世帯全員が非課税であること（令和8年7月利用分からは令和8年度の課税状況で確認）。,https://www.city.hachioji.tokyo.jp/kurashi/welfare/004/004/001/p003862.html
+1340,application,指定店舗でのスマートフォン教室中に補助金を電子申請する（郵送や市役所窓口での申請はできない）。申請先は高齢者福祉課（介護予防・認知症施策担当）。必要書類は顔写真付きの本人確認書類（マイナンバーカード、運転免許証等）と本人名義の通帳又はキャッシュカード。,https://www.city.hachioji.tokyo.jp/kurashi/welfare/004/004/001/p037189.html
+1340,condition,令和9年3月31日時点で満65歳以上で、初めてスマートフォンを購入し通信契約した方が対象。申請日時点で八王子市に住民票があることが要件で、指定店舗での購入等の条件がある。,https://www.city.hachioji.tokyo.jp/kurashi/welfare/004/004/001/p037189.html
+1341,application,窓口で申請する。申請先は高齢者福祉課（本庁舎1階20番窓口）又は八王子駅南口総合事務所（9番窓口高齢者担当）。必要書類は申請書、口座振替依頼書、医療機関・入院者名・入院月と期間が確認できる書類（領収書等）、おむつ代の領収書（原本）、印鑑、振込先が分かるもの、本人確認書類。,https://www.city.hachioji.tokyo.jp/kurashi/welfare/004/004/001/p003864.html
+1342,condition,被保険者本人の属する世帯の全員が市民税非課税で、預貯金等の合計が基準額以下、生活保護等を受けておらず、介護保険負担限度額認定証の交付を受けていること等が対象要件。所得により第1〜第3段階に区分され、短期利用者は対象外。,https://www.city.hachioji.tokyo.jp/kurashi/welfare/004/004/001/p023623.html
+1343,application,窓口で申請する。申請先は福祉部高齢者福祉課（介護認定担当）。必要書類は福祉用具購入費支給申請書、要介護認定者本人あての領収書、購入した福祉用具がわかる書類（用具の値段・サイズが明記されたカタログや説明書など）。,https://www.city.hachioji.tokyo.jp/life/003/001/007/002/p003819.html
+1344,application,電子申請サービス又は書類により申請する。申請先は福祉部高齢者福祉課（事業者支援担当 施設班）。必要書類は補助金交付申請書（第1号様式）、補助金支払金口座振替依頼書（第3号様式）、研修名・宛名等がわかる領収書の写し、資格証明書の写し、本人確認書類の写し。,https://www.city.hachioji.tokyo.jp/kurashi/welfare/004/006/p023731.html
+1344,condition,初任者研修・実務者研修・介護福祉士のいずれかの資格を取得していること、及び市内の介護保険サービス事業所に介護職員として3か月継続勤務し申請時点でも継続勤務していることが対象要件。,https://www.city.hachioji.tokyo.jp/kurashi/welfare/004/006/p023731.html
+1345,application,申請先は福祉部障害者福祉課（福祉・自立支援医療担当）。申請には身体障害者手帳又は愛の手帳が必要。,https://www.city.hachioji.tokyo.jp/kurashi/welfare/005/007/001/p004204.html

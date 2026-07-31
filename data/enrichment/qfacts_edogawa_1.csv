@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+126,condition,江戸川区の国民健康保険に加入している出産した方または出産予定の方が対象で、令和5年11月1日以降の出産が対象。ここでの出産とは妊娠85日（4カ月）以上の出産（死産・流産・早産・人工妊娠中絶を含む）を指す。,https://www.city.edogawa.tokyo.jp/e053/kurashi/iryohoken/kokuho/sanzensango.html
+139,condition,18歳到達後最初の年度末まで（高校生年代まで）の日本国内に住む児童を養育し、江戸川区内に住民票のある生計中心者の父母等が対象。児童の住民票が国内にない場合は対象外で、公務員は勤務先での支給となり区への申請はできない。,https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/kodomoteate.html
+140,application,電子申請（マイナポータル）、窓口持参、郵送のいずれかで申請する。申請先は児童家庭課手当助成係（乳児養育手当担当、電話03-5662-0082）で、主な必要書類は申請者の本人確認書類、申請者名義の口座がわかるもの（通帳またはキャッシュカード）等。,https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/youiku.html
+140,condition,0歳児を養育し、乳児・保護者とも江戸川区に住んでいる方が対象。生活保護を受けていない方、乳児院などに乳児を預けていない方が条件で、支給はお子様が満1歳になる誕生日の前日まで。,https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/youiku.html
+144,condition,"老齢年金生活者支援給付金は65歳以上で老齢基礎年金を受給し世帯全員が住民税非課税で、前年の公的年金等収入とその他所得の合計が一定額以下であることが条件。障害・遺族年金生活者支援給付金は前年所得が「4,794,000円＋扶養親族数×38万円」以下であることが条件。",https://www.city.edogawa.tokyo.jp/e053/kurashi/nenkin/nenkinseikatsusyashienkyuhukin.html
+186,application,申請者本人が江戸川区役所児童家庭課（本庁舎東棟2階4番窓口）で申請するほか、電子申請（ぴったりサービス）や郵送でも申請できる。主な必要書類は申請者名義の口座がわかるもの、申請者および児童の戸籍謄本（発行から1カ月以内）、マイナンバー確認書類・身元確認書類。,https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/shisaku/teate/ikusei.html
+187,application,申請者本人が江戸川区役所児童家庭課援護係（本庁舎東棟2階4番窓口）で申請するほか、電子申請（ぴったりサービス）や郵送でも届出できる。主な必要書類は申請者名義の口座情報がわかるもの、申請者および児童の戸籍謄本（発行から1カ月以内）、マイナンバー関係書類（年金受給者は受給額がわかるもの）。,https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/shisaku/teate/fuyo.html
+188,application,申請者本人が江戸川区役所児童家庭課援護係（本庁舎東棟2階4番窓口、電話03-5662-1259）で申請するほか、郵送や電子申請（ぴったりサービス）にも一部対応する。主な必要書類は申請者と児童の健康保険情報がわかるもの、申請者および児童の戸籍謄本（発行から1カ月以内）、マイナンバー確認書類・身元確認書類。,https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/shisaku/iryohijose.html
+189,application,区ホームページの申請フォームまたは郵送で必要書類を添えて申請する。申請先は土木部保全課事業調整係（電話03-5662-1930）。,https://www.city.edogawa.tokyo.jp/e065/kurashi/sumai/shisui.html
+189,condition,江戸川区内の建築物に止水板を設置する費用および関連する内外壁の止水工事・土間コンクリート打設工事が対象。区が承認通知書を渡す前に設置に着手（契約）した場合は対象外となる。,https://www.city.edogawa.tokyo.jp/e065/kurashi/sumai/shisui.html
+270,application,紙の申請書またはオンライン（ブロック塀助成承認申請フォーム）で申請する。申請先は土木部保全課事業調整係（電話03-5662-1930）で、ブロック塀等撤去費助成対象承認申請書等の提出が必要。,https://www.city.edogawa.tokyo.jp/e065/kurashi/sumai/block_tekkyo.html
+287,application,葬儀を行い葬祭費用を支払った方が、区民課保険年金係（区役所1階7番窓口）または小松川・葛西・小岩・東部・鹿骨の各事務所保険年金係で申請する。主な必要書類は申請者の本人確認書類、葬儀の領収書等、申請者（葬儀を行った方）の振込先口座情報が確認できるもの。,https://www.city.edogawa.tokyo.jp/e053/kurashi/iryohoken/kokuho/kyuhu/sinsei/kyuhu09.html
+287,condition,"国民健康保険の被保険者が亡くなったとき、葬儀を行った方に葬祭費として70,000円が支給される。他の健康保険から葬祭費に相当する給付を受ける場合は支給されず、葬儀を行った日の翌日から2年を過ぎると請求できない。",https://www.city.edogawa.tokyo.jp/e053/kurashi/iryohoken/kokuho/kyuhu/sinsei/kyuhu09.html
+288,application,支給対象となる世帯には診療月の3～4カ月後に区から「高額療養費該当のお知らせ（高額療養費支給申請書）」が郵送されるので、必要事項を記入のうえ提出する。問い合わせは国民健康保険給付係（電話03-5662-8053）。診療月の翌月1日から2年を過ぎると時効となる。,https://www.city.edogawa.tokyo.jp/e053/kurashi/iryohoken/kokuho/kyuhu/kogaku/kyuuhu11.html
+289,application,区役所区民課・各事務所の保険年金係窓口で手続きする。直接支払制度を利用する場合は区への手続きは不要、受取代理制度は出産予定日の2カ月以内に世帯主が申請、いずれも利用しない場合は出産後に世帯主が申請する。主な必要書類はマイナンバー確認書類、本人確認書類、母子健康手帳、世帯主の口座番号確認書類等。,https://www.city.edogawa.tokyo.jp/e053/kurashi/iryohoken/kokuho/kyuhu/sinsei/childbirth.html

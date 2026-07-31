@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+645,application,高額医療・高額介護合算療養費の支給申請は、基準日（対象年度の7月31日時点）に加入している医療保険（国民健康保険の場合は江戸川区）に申請します。問い合わせは国民健康保険給付係（03-5662-8053）。,https://www.city.edogawa.tokyo.jp/e053/kurashi/iryohoken/kokuho/kyuhu/kogaku/kyuuhu16.html
+668,condition,負担限度額認定は、世帯全員が住民税非課税で、別世帯の配偶者も非課税、預貯金等が基準額以下であることが要件です。生計困難者等に対する負担額軽減事業は、世帯全員が住民税非課税で、年間収入が単身世帯150万円（世帯員が1人増えるごとに50万円加算）以下、預貯金等が単身350万円（同100万円加算）以下等が要件です。,https://www.kaigo.city.edogawa.tokyo.jp/service/payment/02/
+680,condition,一般食は、65歳以上の江戸川区内在住で、ひとり暮らしまたは65歳以上のみの世帯・日中独居となる方で、週3食以上の利用を希望する方が対象です（3要件すべてを満たす必要があります）。特別食はこれに加え、身体的理由により一般食の摂取が困難な方が対象です。,https://www.city.edogawa.tokyo.jp/e040/kenko/fukushikaigo/jukunen/kaigo/haishokuservice.html
+735,condition,区内在住の方が対象で、法人は対象外です。申請時に区内在住を確認できる本人確認書類の提示が必要で、SG・JCF・CEマーク等の指定安全基準を満たす新品の自転車用ヘルメットの購入が対象、補助は1人につき1回限りです。,https://www.city.edogawa.tokyo.jp/e058/kurashi/kotsu/anzentaisaku/helmetjyosei.html
+740,application,粗大ごみ受付センターに電話して手続きし、申請書は小松川清掃分室（江戸川区平井1丁目8番8号）へ提出します。必要書類は、現在有効な児童扶養手当証書の写しまたは児童扶養手当受給証明書等です。,https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/shisaku/teate/sodai.html
+740,condition,児童扶養手当受給世帯の方が対象です。,https://www.city.edogawa.tokyo.jp/e049/kosodate/kosodate/teateshien/shisaku/teate/sodai.html
+1489,application,定期接種は予診票を医療機関に持参して接種し、任意接種は区内指定医療機関に設置の予診票に必要事項を記入して本人確認書類を提示すれば区への申し込みは不要です。定期接種の予診票の交付・再交付は電子申請または電話申請が可能で、所管は保健予防課庶務係（03-5661-5209）です。,https://www.city.edogawa.tokyo.jp/e054/kenko/iryo/yobosesshu/taijohoshin.html
+1489,condition,定期接種の対象は、令和8年4月1日から令和9年3月31日の間に満65・70・75・80・85・90・95・100歳になる方等です。任意接種の対象は、江戸川区に住民登録があり満50歳以上65歳未満で定期接種対象者以外の方です。,https://www.city.edogawa.tokyo.jp/e054/kenko/iryo/yobosesshu/taijohoshin.html
+1631,condition,受診日において江戸川区内に住民登録があり、里帰り出産などで妊婦健康診査を都内契約医療機関以外の医療機関または助産所（日本国内に限る）で受診した方が対象です。保健指導票の交付を受けた方は対象外です。,https://www.city.edogawa.tokyo.jp/e052/kosodate/ninshin/ninpukenshin.html
+1769,application,障害者福祉課自立援助係（区役所南棟2階）または各事務所の保険年金係の窓口で申請できるほか、郵送による手続きも受け付けています。必要書類は、各種障害者手帳のいずれか、健康保険の加入状況が確認できる書類、マイナンバー確認書類、来所者の身元確認書類等です。,https://www.city.edogawa.tokyo.jp/e041/kenko/fukushikaigo/shogaisha/iryo/marusho.html
+1882,application,介護保険課相談係（区役所南棟2階）、健康サポートセンター、熟年相談室の窓口またはインターネット申請フォームで申請します。必要書類は、介護保険被保険者証、申請書、及び新規申請で対象要件の一部に該当する場合は医師の意見書等です。,https://www.city.edogawa.tokyo.jp/e040/kenko/fukushikaigo/jukunen/kaigo/kamiomutsu.html
+1882,condition,40歳以上で介護保険の要介護4または5の在宅の方、要支援1・2や要介護1～3で医師が必要性を認めた方、65歳以上で医師が必要性を認めた方のいずれかが対象です。江戸川区内に住民登録があり実際に生活していることが必要で、介護保険施設入所中や生活保護受給中の方は対象外です。,https://www.city.edogawa.tokyo.jp/e040/kenko/fukushikaigo/jukunen/kaigo/kamiomutsu.html
+2396,condition,災害などで保険料を納めることが難しい場合は、保険料の減免や猶予が受けられる場合があります。,https://www.kaigo.city.edogawa.tokyo.jp/what/insurance-fee/
+2768,condition,経済的な困窮により、このままでは生活が立ちいかなくなるおそれのある方が対象です。,https://www.city.edogawa.tokyo.jp/e043/kenko/fukushikaigo/sekatsuhogo/konkyu_sodan/index.html
