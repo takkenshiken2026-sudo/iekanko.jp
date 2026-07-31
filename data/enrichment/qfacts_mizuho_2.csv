@@ -1,0 +1,10 @@
+program_id,fact_type,value,evidence_url
+1430,application,申請先(提出先)は高齢者福祉課介護支援係。事前確認申請(介護保険住宅改修事前確認申請書・理由書・住宅平面図・見積様式・改修前写真等)を提出し、工事完了後に住宅改修費支給申請書・領収書の原本と写し・工事費内訳書・改修前後の写真等を提出する。,https://www.town.mizuho.tokyo.jp/kenkofukushi/003/p006167.html
+1524,application,所管課は福祉部健康課健康係。定期接種は対象者へ接種券が郵送され申込不要。任意接種は電話・窓口・インターネットで申し込み後日接種券が送付され、償還払いの場合は申請書兼請求書・領収書・接種ワクチンの記録・振込先確認書類・本人確認書類を提出する。,https://www.town.mizuho.tokyo.jp/kenkofukushi/002/003/p009333.html
+1524,condition,接種日時点で瑞穂町に住民登録がある方が対象。定期接種は令和8年度に65・70・75・80・85・90・95・100歳になる方、任意接種は50歳以上が対象。所得制限の記載はない。,https://www.town.mizuho.tokyo.jp/kenkofukushi/002/003/p009333.html
+1658,condition,受診日現在、瑞穂町に住民票のある(あった)方が対象。妊娠判定以外の妊婦健康診査で、受診票が使えない医療機関で受け、母子健康手帳等で受診が確認できるもの等が対象。所得制限の記載はない。,https://www.town.mizuho.tokyo.jp/kosodate/002/p001212.html
+1743,application,申請先(問合せ先)は子育て応援課。手続に必要なものは、加入医療保険の状況が確認できる書類、申請者および配偶者のマイナンバーカード、戸籍。毎年7月末頃に現況届が送付され提出が必要。,https://www.town.mizuho.tokyo.jp/kosodate/003/002/p005116.html
+1778,application,申請先(所管課)は福祉部福祉課障がい者支援係。窓口で申請し、主な必要書類は申請書、身体障害者手帳・愛の手帳または精神障害者保健福祉手帳、健康保険被保険者証、同意書等。,https://www.town.mizuho.tokyo.jp/kenkofukushi/004/004/p001315.html
+1921,application,ゆりかごステーション(保健センター内)の窓口で申請するか、電子申請(LoGoフォーム)で申し込む。所管課は福祉部子ども家庭センター課母子保健係。,https://www.town.mizuho.tokyo.jp/kosodate/002/p006119.html
+1921,condition,瑞穂町に住民登録がある産婦等で、産後ケア事業の利用を希望する方が対象。住民税非課税世帯や生活保護受給世帯は利用者負担額が減免される。所得制限の記載はない。,https://www.town.mizuho.tokyo.jp/kosodate/002/p006119.html
+2422,condition,震災・風水害・火災その他これらに類する災害により大きな損害を受けた方、または生計を主とする者が死亡や心身の重大な障がい等の特別な事情により収入が著しく減少した方が減免の対象。他にも減免対象となる場合がある。,https://www.town.mizuho.tokyo.jp/kenkofukushi/003/p009984.html

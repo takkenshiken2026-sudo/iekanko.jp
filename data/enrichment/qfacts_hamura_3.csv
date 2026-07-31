@@ -1,0 +1,5 @@
+program_id,fact_type,value,evidence_url
+1918,application,窓口または郵送で申請する。申請先は羽村市こども家庭センター母子保健・相談係（保健センター内）で、申請書を提出する。,https://www.city.hamura.tokyo.jp/prsite/0000013487.html
+1918,condition,対象は羽村市内在住の産後1年未満の赤ちゃんとその母（養育者）。医療行為が必要な方は利用できない。市民税非課税世帯・生活保護世帯は利用料が免除される。,https://www.city.hamura.tokyo.jp/prsite/0000013487.html
+2565,condition,羽村市の住民基本台帳に登録されている方で、当該年度中に満88歳（祝金2万円）または満100歳（祝金5万円）となる方が対象。,https://www.city.hamura.tokyo.jp/0000015055.html
+2658,condition,65歳以上のひとり暮らし高齢者および65歳以上の高齢者のみの世帯で、心身機能の低下や居住環境等から防火等の配慮が必要な方が対象。本人が市民税非課税または生活保護受給の場合は無料。,https://www.city.hamura.tokyo.jp/0000001086.html

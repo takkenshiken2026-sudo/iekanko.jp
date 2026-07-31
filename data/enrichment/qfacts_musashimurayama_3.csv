@@ -1,0 +1,8 @@
+program_id,fact_type,value,evidence_url
+1776,application,障害福祉課の窓口で申請します。必要書類は、障害の程度がわかる書類（身体障害者手帳・愛の手帳など）、加入医療保険の資格確認書等、受給者本人の前年の（非）課税証明書です（1月1日現在の住民は課税証明書は不要）。申請先は健康福祉部障害福祉課手当助成係です。,https://www.city.musashimurayama.lg.jp/kurashi/shougai/josei/1018383/index.html
+1817,application,市内指定実施医療機関に電話で予約して接種します。接種時にマイナ保険証等と接種費用（医療機関で直接支払い）を持参します。対象者（1）のかたには4月初旬に予診票を含む一括個別通知が送付されます。,https://www.city.musashimurayama.lg.jp/kurashi/kenkou/kyukyu/1016167/1018484.html
+1857,application,市役所保険年金課、緑が丘出張所（申請免除のみ）、または立川年金事務所の窓口で申請します。必要書類は、年金手帳又は基礎年金番号通知書、顔写真付きの身分証明書（運転免許証等）、マイナンバーが確認できる書類又はマイナンバーカードなどです（代理人申請の場合は委任状等が別途必要）。,https://www.city.musashimurayama.lg.jp/kurashi/hoken/nenkin/1000159.html
+1889,application,オンライン申請（在宅高齢者等おむつ給付申請のLoGoフォーム）または申請書による書面申請で行います。申請先は市民総合センター内の高齢福祉課です。,https://www.city.musashimurayama.lg.jp/koureisha/ikiiki/1019797/1019124.html
+1889,condition,おおむね65歳以上で在宅、かつ市町村民税が非課税のかたが対象です。要介護4又は5の認定を受け、常時おむつを着用する必要があり、本事業と同様のおむつ給付を受けていないことが条件です。,https://www.city.musashimurayama.lg.jp/koureisha/ikiiki/1019797/1019124.html
+1915,application,子ども家庭部子ども子育て支援課母子保健係で申請・相談します。原則として面接が必要ですが、事情により来所が困難な場合は相談することができます。,https://www.city.musashimurayama.lg.jp/kosodate/todoke/1016360/1014847.html
+1915,condition,武蔵村山市に住所がある、生後1年未満の子およびその母が対象です。家族等から十分な家事や育児の援助が受けられないかた、出産後に心身の不調や育児不安のあるかたなどが利用できます（感染性疾患があるなど医療的介入が必要な場合は利用不可）。,https://www.city.musashimurayama.lg.jp/kosodate/todoke/1016360/1014847.html
