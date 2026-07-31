@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+1244,condition,"18歳到達後最初の3月31日までの児童を養育し、離婚・父母の死亡・生死不明・遺棄・1年以上の拘禁・重度障害・婚外子・配偶者からの暴力による保護命令などの事由のいずれかに該当する方が対象。扶養親族等の人数に応じた所得制限があり（扶養0人で3,661,000円未満）。",https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000452.html
+1244,application,申請先は子ども家庭部児童青少年課助成支援係。主な必要書類は、申請者名義の口座のわかるもの、申請者及び児童の戸籍謄本、個人番号確認書類、障害がある場合は身体障害者手帳等。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000452.html
+1245,application,申請先は子ども家庭部児童青少年課助成支援係。主な必要書類は、申請者名義の口座のわかるもの、申請者及び児童の戸籍謄本、個人番号確認書類、障害を有する場合は身体障害者手帳等。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000452.html
+1246,condition,市内に住所があり、18歳到達の年度末（中程度以上の障害がある場合は20歳未満）までの児童を監護し生計を同じくする方で、父母の離婚・死亡・重度障害・生死不明・1年以上の拘禁・1年以上の遺棄・未婚の母・保護命令のいずれかに該当することが要件。前年（1〜10月分は前々年）の所得が所得限度額未満であることが必要。児童または請求者が公的年金を受給、児童が児童福祉施設に入所、事実婚が認められる場合は対象外。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000453.html
+1246,application,申請先は子ども家庭部児童青少年課助成支援係（電話042-470-7736）。主な必要書類は、申請者名義の口座のわかるもの、申請者及び児童の戸籍謄本、障害がある場合は身体障害者手帳・愛の手帳または診断書。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000453.html
+1247,application,申請先は子ども家庭部児童青少年課助成支援係。必要書類は受給理由により異なるため、事前に問い合わせが必要。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000454.html
+1248,condition,18歳未満の子（または20歳未満で児童扶養手当等の障害の要件で認定を受けた子）と同居するひとり親家庭等で、市内に所在する自ら居住する民間賃貸住宅を賃借し賃借料を支払っている方が対象。所得制限限度額未満であること、住宅にかかる他の公的扶助を受けていないことが要件（公営住宅・社宅・官舎・UR住宅・親族所有住宅は除く）。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000455.html
+1248,application,申請先は子ども家庭部児童青少年課助成支援係。主な必要書類は、借家賃貸借契約書の写し、申請者名義の口座のわかるもの。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000455.html
+1249,condition,18歳到達後最初の3月31日まで（一定以上の障害を有する場合は20歳未満）の児童を養育し、両親の離婚・死亡・生死不明・1年以上の遺棄・1年以上の拘禁・婚外子・重度障害・保護命令のいずれかに該当する方が対象。所得制限があり（令和7年1月から引き上げ）、健康保険に加入していない場合や、マル乳・マル障・生活保護の受給者は対象外。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000458.html
+1250,application,事前に予約のうえ、窓口で相談する。申請先は子ども家庭部児童青少年課助成支援係（電話042-470-7736）。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000460.html
+1251,condition,東久留米市内に住所を有する児童のいるひとり親家庭、または配偶者と別居かつ離婚調停中などの離婚前家庭で、ひとり親家庭となって2年以内で生活環境が激変した、職業能力開発センター等に通学、就職活動等自立促進に必要、疾病・出産・看護等の事由、就業上の理由で帰宅が遅いなどのいずれかに該当する方が対象。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000461.html
+1252,condition,20歳未満の子を扶養している母子家庭の母または父子家庭の父で、母子・父子自立支援プログラム策定を受けている方、当該教育訓練講座の受講が適職に就くために必要と認められる方、原則として過去に当該事業に基づく訓練給付金を受給していない方、のすべての要件を満たすことが必要。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000463.html
+1253,condition,20歳未満の子を扶養している母子家庭の母または父子家庭の父で、児童扶養手当の支給を受けているか同様の所得水準の方が対象。修業年限6月以上の養成機関で修業し対象資格の取得が見込まれること、就業または育児と修業の両立が困難と認められること、原則として過去に同給付金の支給を受けていないことが要件。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000462.html
+1254,condition,原則として市内に住所を有する児童扶養手当受給者が対象（生活保護受給者は対象外）。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1006798.html
+1255,condition,身体障害者手帳1級から4級（20歳未満は3・4級）、愛の手帳1度から4度（20歳未満は4度）、国の難病医療費助成の受給者、脳性マヒ・進行性筋萎縮症の方で、施設に入所していない方が対象。本人（20歳未満は扶養義務者）の所得制限があり、65歳以上の新規申請は行えない（転入者を除く）。,https://www.city.higashikurume.lg.jp/kurashi/fukushi/shogai/1000434.html

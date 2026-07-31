@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+785,application,申請先は子育て定住推進課子育て推進係（子ども家庭支援センター）。主な必要書類は、対象児童の個人番号確認書類（個人番号カード・通知カードなど）と、対象児童の加入医療保険が確認できる書類（資格情報のお知らせ・資格確認書など）。,https://www.town.okutama.tokyo.jp/1/kosodadeteijusuishinka/kosodate_kyoiku/3321.html
+785,condition,小学校入学前で町内に住所がある児童が対象で、医療保険に加入していることが要件。心身障害者医療費助成の医療証所持者、生活保護受給者、施設入所者、里親に委託されている児童は対象外。,https://www.town.okutama.tokyo.jp/1/kosodadeteijusuishinka/kosodate_kyoiku/3321.html
+857,condition,対象は町内の学校に通っている児童生徒の保護者（保育園入園から高校入学までの児童生徒が対象）。学校給食費助成は他の制度などにより給食費の援助を受けていない方が対象で、所得制限の記載はない。,https://www.town.okutama.tokyo.jp/1/kyoikuka/kyoiku/3/840.html
+858,application,事業ごとに手続きが異なり、乳児おむつ購入費助成は出生時に申請、高校生等通学費助成事業は要申請。学童保育会育成料無償化・小中学校児童生徒応援補助金・学校給食費無償化は申請不要で、小中学校入学祝金・中学生制服等支援・高校生等応援支援金は該当者に通知される。,https://www.town.okutama.tokyo.jp/1/kosodadeteijusuishinka/kosodate_kyoiku/1/3850.html
+858,condition,各事業とも、対象年度の4月1日に住民登録があり町在住であることが要件。所得制限の記載はない。,https://www.town.okutama.tokyo.jp/1/kosodadeteijusuishinka/kosodate_kyoiku/1/3850.html
+885,application,福祉保健課の窓口へ申請する。,https://www.town.okutama.tokyo.jp/1/fukushihokenka/koreishafukushi_kaigo/1/603.html
+886,application,改修工事の前に町福祉保健課へ申請する。主な必要書類は、申請書、住宅改修が必要な理由書、家屋所有者の承諾書、工事見積書・図面・改修前の写真。,https://www.town.okutama.tokyo.jp/1/fukushihokenka/koreishafukushi_kaigo/1/603.html
+886,condition,おおむね65歳以上で、介護保険法により非該当（自立）と認定された方が対象。住宅設備改修給付については要支援1・2または要介護1～5の方も対象。,https://www.town.okutama.tokyo.jp/1/fukushihokenka/koreishafukushi_kaigo/1/603.html
+887,condition,都内在住で、身体障害者手帳1・2級（内部障害は3級を含む）、愛の手帳1・2度、または精神障害者保健福祉手帳1級を所持する方が対象。65歳以上になって初めて重度の障がい者になった方等は対象外で、所得制限がある。,https://www.town.okutama.tokyo.jp/1/fukushihokenka/shogaishafukushi/608.html
+1438,application,主な必要書類は、請求者および対象児童の戸籍謄本、請求者名義の口座がわかるもの（通帳など）、請求者の個人番号確認書類（個人番号カード・通知カードなど）、請求者の課税（非課税）証明書。,https://www.town.okutama.tokyo.jp/1/kosodadeteijusuishinka/kosodate_kyoiku/3317.html
+1439,application,主な必要書類は、障害の内容がわかるもの（身体障害者手帳または愛の手帳など）、請求者名義の口座がわかるもの（通帳など）、請求者及び配偶者の個人番号確認書類、請求者の課税（非課税）証明書。,https://www.town.okutama.tokyo.jp/1/kosodadeteijusuishinka/kosodate_kyoiku/3317.html
+1440,application,主な必要書類は、請求者および対象児童の戸籍謄本、請求者名義の口座がわかるもの（通帳など）、印鑑、請求者の課税（非課税）証明書、請求者及び配偶者の個人番号確認書類、請求者の身元確認書類（運転免許証など）。,https://www.town.okutama.tokyo.jp/1/kosodadeteijusuishinka/kosodate_kyoiku/3317.html
+1441,application,申請・問い合わせ先は保健福祉センター障がい者福祉担当。,https://www.town.okutama.tokyo.jp/1/fukushihokenka/shogaishafukushi/609.html
+1442,application,申請・問い合わせ先は保健福祉センター障がい者福祉担当。,https://www.town.okutama.tokyo.jp/1/fukushihokenka/shogaishafukushi/609.html

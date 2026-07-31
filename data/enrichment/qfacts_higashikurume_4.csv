@@ -1,0 +1,5 @@
+program_id,fact_type,value,evidence_url
+1856,application,申請は電子申請（マイナポータル）、窓口（市役所保険年金課または年金事務所）、郵送のいずれかで行います。主な必要書類は基礎年金番号がわかるもの（通知書・年金手帳等）またはマイナンバー確認書類と身元確認書類で、退職を理由とする場合は雇用保険被保険者離職票等が必要です。,https://www.city.higashikurume.lg.jp/kurashi/zei/nenkin/1028432/1028430.html
+1914,application,申請は「東久留米市産後ケア事業 利用申請書兼同意書フォーム」によるオンライン申請、子ども家庭部こども家庭センター母子支援係の窓口、または郵送で行います。必要書類は利用申請書兼同意書、母子健康手帳、本人確認書類などです。,https://www.city.higashikurume.lg.jp/kurashi/kenko/boshi/1017274.html
+1914,condition,対象は東久留米市にお母さん・赤ちゃんともに住民登録があり、利用日時点で産後6か月未満で、産後の体調不良や育児疲れ・育児不安などがある方です。お母さんと赤ちゃんともに医療行為・入院加療の必要がないことが要件です。,https://www.city.higashikurume.lg.jp/kurashi/kenko/boshi/1017274.html
+2494,condition,対象は概ね65歳以上で、在宅で生活している一人暮らし高齢者または高齢者のみ世帯の方です。定期的な安否確認を含めた週2食程度の弁当配達を希望する方が利用でき、利用には条件があります。,https://www.city.higashikurume.lg.jp/kurashi/zei/kaigo/1000336.html

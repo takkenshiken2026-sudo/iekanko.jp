@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+781,application,申請先の所管課は福祉保健部介護福祉課（東久留米市本町3-3-1、電話042-470-7750）。申請の方法や必要書類はページ本文に記載がないため同課へ確認。,https://www.city.higashikurume.lg.jp/kurashi/zei/kaigo/1000335.html
+781,condition,在宅で生活している65歳以上の方で、要介護4・5の認定を受け常時紙おむつを使用しており、受給者本人が住民税非課税である方が対象。,https://www.city.higashikurume.lg.jp/kurashi/zei/kaigo/1000335.html
+835,application,窓口・郵送・オンライン申請フォームで申請できる。申請先は子ども家庭部児童青少年課助成支援係。必要書類は申請書と、対象乳幼児の健康保険情報が確認できる書類（保険証やマイナ保険証画面等の写し）。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000456.html
+835,condition,東久留米市に住民登録があり、日本国内の健康保険に加入している乳幼児（6歳に達する日以降最初の3月31日まで）が対象。所得制限はない。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1000456.html
+836,application,申請先は教育部学務課学事係。必要書類は就学援助費受給申請書、振込先口座の通帳、課税・非課税証明書など添付書類の写し（生計を一にする全員分）。,https://www.city.higashikurume.lg.jp/shisei/kyoiku/shogakukin/1001834.html
+836,condition,公立小・中学校に通う児童生徒の保護者で、経済的な理由により教育費の支払いに困っている方が対象。生活保護の停止・廃止、市民税非課税、児童扶養手当支給、収入が認定基準未満などのいずれかに該当する必要がある。,https://www.city.higashikurume.lg.jp/shisei/kyoiku/shogakukin/1001834.html
+1235,application,窓口（福祉総務課相談支援係）・郵送・オンライン（LoGoフォーム）で申請できる。必要書類は助成金交付申請書、購入後はエアコン購入費の領収書・設置を確認できる書類・口座情報の写し。受付は令和8年10月末まで。,https://www.city.higashikurume.lg.jp/kurashi/fukushi/enjo/1028927.html
+1235,condition,東久留米市に住民登録があり、自宅に使用できるエアコンが1台もない世帯で、世帯員全員が住民税非課税もしくは均等割のみ課税、または児童扶養手当を受給中であることが対象要件。,https://www.city.higashikurume.lg.jp/kurashi/fukushi/enjo/1028927.html
+1236,condition,"離職・廃業の日から2年以内等で経済的に困窮し住居を失う（おそれのある）方で、離職等の日に世帯の生計を主として維持していた方が対象。ハローワークへの求職申込等の求職活動を行い、収入・資産要件（例：1人世帯は資産504,000円以内）を満たす必要がある。",https://www.city.higashikurume.lg.jp/kurashi/fukushi/enjo/1026079.html
+1237,application,申請先は福祉保健部福祉総務課相談支援係（電話042-470-7749）。必要書類は本人確認証（運転免許証・個人番号カード表面・パスポート等）の写しなどで、世帯の状況によって異なるため窓口へ問い合わせる。,https://www.city.higashikurume.lg.jp/kurashi/fukushi/enjo/1026083.html
+1238,condition,ほかからの借り入れが困難な低所得世帯や、身体障害者・高齢者世帯の方が対象。,https://www.city.higashikurume.lg.jp/kurashi/fukushi/enjo/1000444.html
+1239,condition,失業により生計の維持が困難となった世帯が対象。,https://www.city.higashikurume.lg.jp/kurashi/fukushi/enjo/1000444.html
+1240,condition,将来にわたり住み慣れたわが家での生活を希望する高齢者世帯が対象。,https://www.city.higashikurume.lg.jp/kurashi/fukushi/enjo/1000444.html
+1242,application,相談・申込の窓口は市役所2階の福祉総務課相談支援係（電話042-470-7749、平日午前9時～午後4時、正午～午後1時を除く）。可能な限り来庁前に電話予約をするよう案内されている。,https://www.city.higashikurume.lg.jp/kurashi/fukushi/enjo/1004453.html
+1243,application,申請は不要。所管課は子ども家庭部児童青少年課助成支援係（東久留米市本町3-3-1、電話042-470-7736）。,https://www.city.higashikurume.lg.jp/kurashi/kosodate/teate/1029333.html
