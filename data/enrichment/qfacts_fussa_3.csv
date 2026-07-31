@@ -1,0 +1,13 @@
+program_id,fact_type,value,evidence_url
+1287,condition,"世帯全員が住民税非課税（世帯を分離している配偶者を含めて非課税）であり、本人の預貯金等が1,000万円以下（配偶者がいる場合は本人と配偶者の合計2,000万円以下）であることが要件。対象は介護老人福祉施設・介護老人保健施設・介護医療院等への入所およびショートステイの利用者。",https://www.city.fussa.tokyo.jp/life/health/nursing/1009215.html
+1288,condition,生活保護受給者、または市民税非課税世帯で、年間収入が基準収入額（単身150万円、世帯員1名増ごとに50万円加算）以下、預貯金が基準貯蓄額（単身350万円、世帯員1名増ごとに100万円加算）以下、活用できる資産や負担能力のある扶養者がなく、介護保険料を滞納していない、の要件すべてに該当する方が対象。,https://www.city.fussa.tokyo.jp/life/health/nursing/1018916.html
+1517,condition,対象は当該年度に65歳になる方、および経過措置（令和7～11年度）として当該年度に70・75・80・85・90・95・100歳になる方。加えて、HIV感染により身体障害者手帳1級相当の60歳以上65歳未満の方も対象。,https://www.city.fussa.tokyo.jp/life/health/medical/1019819.html
+1647,condition,受診日時点で福生市内に住民登録があり、日本国内の医療機関等で妊婦健康診査を受診し費用を自己負担した方が対象。多胎妊婦健康診査費助成では、令和7年4月1日以降に15回目以降の妊婦健康診査を受診した方が対象となる。,https://www.city.fussa.tokyo.jp/life/child/1010112/1002512.html
+1852,application,申請はオンライン電子申請で行える。学生納付特例は市役所（市民部保険年金課保険年金係）へ来庁せずスマートフォンやパソコン等からオンライン申請でき、免除・納付猶予はマイナポータルを利用して日本年金機構へ電子申請できる。失業による特例免除では雇用保険被保険者離職票等、学生納付特例では学生証が必要。,https://www.city.fussa.tokyo.jp/life/procedure/pension/1001880.html
+1886,application,介護保険証を持参のうえ、福祉保健部介護福祉課高齢者支援係の窓口で申請する。,https://www.city.fussa.tokyo.jp/life/health/elderlypeople/1002419.html
+1886,condition,寝たきりまたはそれに準ずる状態（認知症も含む）が継続すると認められ、現におむつ等を必要とし、介護保険法に規定する要介護3以上の認定を受けている方が対象。,https://www.city.fussa.tokyo.jp/life/health/elderlypeople/1002419.html
+1910,application,電子申請、またはこども家庭部こども家庭センター課母子保健係（福生市保健センター2階）へ申請し、産後ケア事業利用承認通知書の交付を受ける。,https://www.city.fussa.tokyo.jp/life/child/1010112/1011091.html
+1910,condition,生後6か月の前日まで（居宅訪問型は1歳の誕生日の前日まで）の赤ちゃんと産婦で、利用日時点で福生市に住民登録があり、母子ともに感染症状や医療行為の必要がない方が対象。,https://www.city.fussa.tokyo.jp/life/child/1010112/1011091.html
+2525,condition,65歳以上で、一人暮らし等の高齢者であり、かつ慢性疾患があるなど常時注意を要する状態にある方の、いずれにも該当する方が対象。,https://www.city.fussa.tokyo.jp/life/health/elderlypeople/1009792.html
+2558,condition,当該年度の9月1日現在の年齢を基準とし、敬老金は100歳、敬老記念品は88歳・77歳になる方が対象。,https://www.city.fussa.tokyo.jp/life/health/elderlypeople/1002405.html
+3034,condition,福生市立小・中学校に通う全児童・生徒が対象で、給食費の保護者負担は生じない。,https://www.city.fussa.tokyo.jp/education/supply/1002754.html

@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+774,application,窓口申請。地域福祉課（市役所2階）へ「東大和市高齢者補聴器購入費助成金交付申請書」・医師の意見書・補聴器の見積書を提出する（1月1日時点で市外に住所があった方は住民税(非)課税証明書も必要）。,https://www.city.higashiyamato.lg.jp/kenkofukushi/koureisha/1002903/1012267.html
+774,condition,申請年度に65歳以上で市内に居住し住民票がある方が対象。住民税非課税で、耳鼻咽喉科医から補聴器が必要と認められ、聴覚障害による身体障害者手帳の対象とならず、過去5年間にこの助成を受けていないことが要件。,https://www.city.higashiyamato.lg.jp/kenkofukushi/koureisha/1002903/1012267.html
+831,application,窓口（市役所1階7番子育て支援課）または郵送で申請。子ども未来部子育て支援課手当・助成係へ、医療証交付申請書と印鑑（朱肉を使用するもの）を提出する。要件により他の書類が必要となる場合がある。,https://www.city.higashiyamato.lg.jp/kosodatekyoiku/kosodate/1003193/1003197.html
+832,application,オンライン申請（LoGoフォーム）または窓口申請（教育総務課窓口・市役所5階5番）で受付。必要書類は申請者の本人確認書類・振込先の預金通帳・委任状及び同意書など（非課税収入がある場合は収入証明、借家の場合は家賃額を証明する書類）。,https://www.city.higashiyamato.lg.jp/kosodatekyoiku/gakko/1003411/1003412.html
+1210,application,窓口（東大和市くらし・しごと応援センター「そえる」市役所本庁舎2階）での相談・申請、または郵送で受付。必要書類は申請書・確認書・本人確認書類・離職や休業等関係書類・収入関係書類・金融資産関係書類・入居住宅関係書類など。,https://www.city.higashiyamato.lg.jp/kenkofukushi/chiikifukushi/1003086/1003089.html
+1210,condition,"離職等の日から2年以内、または収入が離職と同程度に減少している方が対象。申請月の世帯収入合計が基準額＋家賃額以下（単身世帯の基準額92,000円）で、金融資産の合計が基準額の6か月分以下かつ100万円以下であることが要件。",https://www.city.higashiyamato.lg.jp/kenkofukushi/chiikifukushi/1003086/1003089.html
+1211,application,直接窓口または郵送で申請。申請先は市役所5階の低所得世帯向けエアコン設置購入費補助金コールセンター。住民税非課税世帯は交付申請書と世帯全員分の令和7年度非課税証明書の原本が必要。,https://www.city.higashiyamato.lg.jp/kenkofukushi/chiikifukushi/1012044.html
+1211,condition,市に住民登録があり世帯全員が令和7年度分の市町村民税均等割非課税の世帯、または申請日時点で生活保護を受給している世帯が対象。エアコンが無いか故障で使用できない状態で、過去に同補助を受けておらず、賃貸の場合は家主の承諾が必要。,https://www.city.higashiyamato.lg.jp/kenkofukushi/chiikifukushi/1012044.html
+1212,condition,所得の少ない世帯、障害者や介護を要する高齢者のいる世帯が対象（具体的な所得基準等の詳細は受付窓口の東大和市社会福祉協議会に要問合せ）。,https://www.city.higashiyamato.lg.jp/kenkofukushi/chiikifukushi/1003086/1003087.html
+1216,application,オンライン（電子申請）。スマートフォン教室の受講時に店頭で店舗スタッフのサポートのもと、専用の電子申請フォームから補助金を申請する。必要書類は本人確認書類（マイナンバーカード・運転免許証など）と本人名義の通帳やキャッシュカード（所管は地域福祉課高齢者支援係）。,https://www.city.higashiyamato.lg.jp/kenkofukushi/koureisha/1002903/1012052.html
+1217,condition,おおむね65歳以上で、ひとり暮らし・高齢者のみ世帯・日中独居の高齢者が対象。,https://www.city.higashiyamato.lg.jp/kenkofukushi/koureisha/1002903/1002908.html
+1220,application,窓口で申請（受付・相談は月曜から金曜の午前8時30分から午後5時、子ども未来部子育て支援課手当・助成係）。主な必要書類は認定請求書・養育費等申告書・公的年金調書、戸籍全部事項証明書等、申請者名義の口座が確認できるもの（通帳・キャッシュカード等）など。,https://www.city.higashiyamato.lg.jp/kosodatekyoiku/kosodate/1011291/1003202.html
+1221,application,窓口で申請（認定申請書は窓口にあり、子ども未来部子育て支援課手当・助成係へ提出）。必要書類は認定申請書・印鑑（朱肉使用のもの）・申請者及び児童の戸籍謄本（交付日から1か月以内）・申請者名義の通帳またはキャッシュカード（状況により所得証明書や住民票の原本）。,https://www.city.higashiyamato.lg.jp/kosodatekyoiku/kosodate/1011291/1003206.html
+1221,condition,18歳に達した日以後最初の3月31日までの間にある児童で所定の8項目のいずれかに該当する児童を養育する保護者が対象。所得制限があり、申請者の所得額が扶養親族数に応じた限度額以上の場合は支給されない。,https://www.city.higashiyamato.lg.jp/kosodatekyoiku/kosodate/1011291/1003206.html

@@ -1,0 +1,13 @@
+program_id,fact_type,value,evidence_url
+1234,application,申請先は健幸福祉部障害福祉課相談支援係。必要書類は種別により異なり、精神通院医療については市が案内するPDFファイルで確認する。,https://www.city.higashiyamato.lg.jp/kenkofukushi/shogaisha/1002997/1003024/1003027.html
+1234,condition,更生医療は18歳以上の身体障害者手帳所持者、育成医療は18歳未満で肢体不自由・視覚障害・心臓障害等があり手術等で障害の改善が見込まれる方、精神通院医療は精神疾患またはてんかんで継続的な通院治療を要する方が対象。いずれも所得制限がある。,https://www.city.higashiyamato.lg.jp/kenkofukushi/shogaisha/1002997/1003024/1003027.html
+1649,condition,東京都以外の医療機関や助産所等で妊婦健康診査を自己負担で受診し、東京都の受診票が使用できなかった妊婦が対象。出産後1年以内に申請する必要がある。,https://www.city.higashiyamato.lg.jp/kenkofukushi/kenkoiryo/1002888/1002891.html
+1814,application,市内実施医療機関へ予約のうえ接種する。市外の医療機関で接種を希望する場合は申請フォームまたは定期予防接種（B類）事前申請書で事前申請し、償還払いの場合は予防接種費用助成金交付申請書等を提出する。所管課は健幸福祉部健康推進課成人保健係。,https://www.city.higashiyamato.lg.jp/kenkofukushi/kenkoiryo/1002853/1002854/1010509.html
+1854,application,申請先は健幸福祉部保険年金課高齢者医療年金係。必要書類は申請者の状況により異なるため、詳細は日本年金機構のホームページを参照する。,https://www.city.higashiyamato.lg.jp/kurashi/nenkin/1001904/1001907.html
+1888,application,「在宅ねたきり高齢者等おむつ支給申請書」を市長（健幸福祉部地域福祉課高齢者支援係）に提出する。申請できるのは対象者本人・配偶者または同居している親族で、申請後に書類調査及び訪問調査を経て支給決定（却下）通知書により通知され、指定品目を1月ごとに配達して支給する。,https://www.city.higashiyamato.lg.jp/reiki/reiki_honbun/g144RG00000941.html
+1888,condition,65歳以上で東大和市内に住民登録があり在宅で常時失禁状態の方のうち、要介護3～5認定で寝たきり状態またはそれに準ずる方、医療機関で認知症と診断され日常生活動作に介護が必要な方、末期がん等で常時失禁状態が継続する方のいずれかが対象。,https://www.city.higashiyamato.lg.jp/kenkofukushi/koureisha/1002903/1002908.html
+1912,application,来所の場合は「産後ケア事業利用登録申請書」と母子健康手帳を提出し、オンラインでも申請できる（母子健康手帳表紙の写真をアップロード）。申請先は子ども未来部子ども家庭センター母子保健係（市立保健センター内）。,https://www.city.higashiyamato.lg.jp/kosodatekyoiku/kosodate/1003114/1003119.html
+1912,condition,東大和市民で産後1年未満の母と赤ちゃんのうち、体調不良や授乳・育児に不安があるなど産後ケアを必要とする方が対象（訪問型は産後5か月未満）。所得制限はなく、非課税世帯・生活保護世帯は利用料が免除される。,https://www.city.higashiyamato.lg.jp/kosodatekyoiku/kosodate/1003114/1003119.html
+2201,condition,東京都の不妊検査及び一般不妊治療費助成制度、不育症検査助成制度または特定不妊治療費助成制度の承認決定を受け、1回の治療に東京都の助成額を超える費用がかかった方が対象。東京都へ申請した日から市へ申請する日まで、引き続き東大和市に住所を有している必要がある。,https://www.city.higashiyamato.lg.jp/kenkofukushi/kenkoiryo/1002888/1002892.html
+2708,condition,補助対象施設を利用する0～5歳児クラスの児童（3～5歳児クラスは第2子以降のみ）が対象。保護者と児童が補助を受ける月の初日に東大和市内に居住し、保護者が就労（月48時間以上）・妊娠出産・疾病・障害・介護・就学・求職活動等の保育を必要とする理由に該当することが要件。,https://www.city.higashiyamato.lg.jp/kosodatekyoiku/hoiku/1003257/1003270.html
+3038,condition,令和7年度の対象は、接種当日において50歳以上で、過去に市の帯状疱疹ワクチン助成を受けたことがなく、令和7年度に定期予防接種の対象外の方。なお任意予防接種は令和8年3月31日で終了している。,https://www.city.higashiyamato.lg.jp/kenkofukushi/kenkoiryo/1002853/1002854/1007728.html

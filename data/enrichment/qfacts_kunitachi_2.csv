@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+971,application,申請は子育て支援課子育て支援係（市役所1階20番窓口）で行う窓口申請。審査にあたり確認事項が多いため申請者本人が来庁する。必要書類は申請者・児童・扶養義務者のマイナンバー、請求者名義の預金通帳等口座がわかるもの、本人確認書類（マイナンバーカード・運転免許証等）など。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/0244/0246/1464586801933.html
+972,application,子育て支援課子育て支援係の窓口で申請する。必要書類は申請者名義の金融機関口座がわかるもの、申請者・児童の個人番号カードまたは通知カード、本人確認書類（マイナンバーカード・運転免許証等）など。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/0244/0246/1464586802215.html
+972,condition,18歳に達する日以後最初の3月31日までの児童を養育し、父母の離婚・死亡・重度障害・遺棄等の指定事由に該当し、国立市に住所を有する方が対象。所得制限があり、扶養0人で360万4千円以上は対象外。児童が施設入所中の場合等は対象外。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/0244/0246/1464586802215.html
+973,application,子ども家庭部子育て支援課子育て支援係（くにたち子育てサポート窓口〈くにサポ〉）で申請する。必要書類は申請書、賃貸契約書（写し）、前年の所得額を証明する書類、児童扶養手当の証書（写し）。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/kunisapo/hitorioya/9237.html
+973,condition,国立市に住民登録があり市内に引き続き3年以上居住し、満18歳未満の児童のみと同居・扶養するひとり親家庭で、自ら民間アパートを借り住宅費を支払う方が対象。児童扶養手当が全部支給の方及び前年所得が同等の方が対象で、生活保護受給者は対象外。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/kunisapo/hitorioya/9237.html
+974,condition,市内在住で20歳未満の児童を扶養するひとり親家庭の父母が対象。児童扶養手当の支給を受けているか同等の所得水準であること、養成機関で6か月以上の課程を修業し資格取得が見込まれること、就業・育児と修業の両立が困難と認められること、過去に同給付金を受けていないことが要件。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/kunisapo/hitorioya/9234.html
+975,application,事前相談が必要で、電話等でくにたち子育てサポート窓口（くにサポ／子ども家庭部子育て支援課子育て支援係）に予約のうえ相談する。相談時に希望する講座の資料を持参する。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/kunisapo/hitorioya/9220.html
+975,condition,市内在住で20歳未満の児童を扶養するひとり親家庭の母・父が対象。母子・父子自立支援プログラム等の策定を受けていること、厚生労働大臣指定の教育訓練講座の受講が適職に必要と認められること、過去に同給付金を受けていないことが要件。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/kunisapo/hitorioya/9220.html
+976,application,子ども家庭部子育て支援課子育て支援係（くにたち子育てサポート窓口〈くにサポ〉／市役所1階20番窓口）で申請する。必要書類は戸籍謄本、世帯全員の住民票、補助対象経費の領収書・レシート、養育費の取決めを交わした文書（公正証書等）、民間保証会社と締結した養育費保証契約書。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/kunisapo/hitorioya/9262.html
+976,condition,国立市に居住するひとり親で、補助対象の経費を負担し、養育費の取決めについての債務名義を有し、養育費の取決めの対象となる子を現に扶養している方が対象。同一の債務名義・保証契約の取得について過去に同種の補助を受けていないことが要件。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept04/Div02/Sec01/gyomu/kunisapo/hitorioya/9262.html
+977,condition,身体障害者手帳1〜2級（心臓・じん臓・呼吸器・膀胱・直腸・小腸・免疫・肝機能障害は1〜3級）、愛の手帳1〜2度、精神障害者保健福祉手帳1級の方が対象。国民健康保険・社会保険等の医療保険に加入していることが必要で、本人の前年所得が基準額を超える場合や、65歳以上ではじめて障害者手帳を取得した場合等は対象外。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept03/Div02/Sec01/gyomu/0100/iryo/1461065910964.html
+979,condition,身体障害者手帳または愛の手帳（療育手帳）の交付を受けている方、または障害者総合支援法の対象となる難病等を患っている方で、所得が一定額以下の方が対象。障害の種別や程度（等級）などにより給付できる品目が異なる。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept03/Div02/Sec02/gyomu/0102/1461065903392.html
+980,condition,身体に障害のある方などの日常生活を容易にするための制度で、世帯の所得に応じた一部負担がある。介護保険に該当する年齢の方は介護保険が優先される。対象となる障害の種類・程度の詳細は住宅設備改善一覧表による。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept03/Div02/Sec02/gyomu/0102/12328.html
+981,application,申請窓口は健康福祉部しょうがいしゃ支援課手当・給付係。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept03/Div02/Sec01/gyomu/0100/1461065910418.html
+982,condition,身体障害者手帳の上肢1級・内部1級・下肢・体幹1級〜3級・視力1〜2級・視野2級、または愛の手帳1〜2度の方が対象。,https://www.city.kunitachi.tokyo.jp/soshiki/Dept03/Div02/Sec01/gyomu/0100/1461065904439.html

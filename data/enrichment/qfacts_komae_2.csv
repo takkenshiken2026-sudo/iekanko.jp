@@ -1,0 +1,5 @@
+program_id,fact_type,value,evidence_url
+1887,application,「狛江市在宅高齢者等おむつ支給事業申請書」に「選定申請書」を添えて申請する。申請先の所管課は高齢障がい課（福祉総合相談窓口）。,"https://www.city.komae.tokyo.jp/index.cfm/44,116383,340,2075,html"
+1887,condition,市内在住で在宅生活を送る方のうち、介護保険法に定める要介護認定で要介護3から要介護5までの方で、かつ常時おむつを使用している方が対象。施設入所者・入院者は対象外。,"https://www.city.komae.tokyo.jp/index.cfm/44,116383,340,2075,html"
+1911,application,事前申請が必要な事業で、所管は健康推進課（あいとぴあセンター）。,"https://www.city.komae.tokyo.jp/index.cfm/47,108024,581,3417,html"
+1911,condition,"市内在住の生後4カ月以内の乳児とその母親で、出産後に家族等からの支援が少なく育児への不安がある方が対象。費用は1回3,000円（非課税世帯および生活保護世帯は無料）。","https://www.city.komae.tokyo.jp/index.cfm/47,108024,581,3417,html"
