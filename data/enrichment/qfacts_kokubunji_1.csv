@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+770,condition,国分寺市内に住所を有する満65歳以上で、介護保険料の所得段階が第1～第7段階（前年の合計所得金額がおおむね210万円未満）のかた。耳鼻咽喉科の医師から補聴器の必要性を認められ医師の意見書等を提出でき、聴覚障害による補聴器の支給対象とならず、過去5年以内にこの助成金の交付を受けていないかたが対象。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/koureishien/1011655/1037384.html
+822,application,窓口のほか郵送でも申請できる。申請先は子ども家庭部子育て支援課手当助成係。主な必要書類は対象児童の医療保険情報が確認できる書類（資格情報のお知らせ・資格確認書・マイナポータルの資格情報画面のいずれか）と来庁者の本人確認書類。,https://www.city.kokubunji.tokyo.jp/kodomo-kyouiku/kosodate-shien/teate/1012498/1032921.html
+936,application,窓口申請で、高齢福祉課または各地域包括支援センターに申請する。主な必要書類は紙おむつなど購入のレシートまたは領収書（レシートなどがないときはケアマネジャーの確認書）。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/koureishien/zaitaku/1013891.html
+937,application,工事前に高齢福祉課計画係（電話042-312-8637、市役所2階）へ事前相談が必要。身体の具合と改修内容を確認のうえ審査を経て、必要と認められた内容について助成される。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/koureishien/zaitaku/1001815.html
+938,condition,国分寺市に住民登録があり在住する世帯で、自宅に使用できるエアコンが1台もない（または故障・2011年製造以前のものが1台のみ）こと、かつ世帯員全員が令和7年度住民税非課税・住民税均等割のみ課税世帯（または令和8年度に新たに該当する世帯）であることが要件（生活保護受給世帯を除く）。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/seikatsushien/1010847/1037312.html
+939,application,事業利用の相談・申請手続きは「自立生活サポートセンターこくぶんじ」（電話042-324-8401、月曜～金曜午前8時30分～午後5時）に電話で予約して行う。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/seikatsushien/1010847/1023225.html
+940,application,申請手続きは「自立生活サポートセンターこくぶんじ」（電話042-324-8401、月曜～金曜午前8時30分～午後5時）に電話で予約して行う。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/seikatsushien/1010847/1034156.html
+941,application,申請先は子ども家庭部子育て支援課手当助成係。主な必要書類は申請者と児童の医療保険情報が確認できる書類、来庁者の本人確認書類（令和7年1月2日以降に転入した場合は同意書も必要）。,https://www.city.kokubunji.tokyo.jp/kodomo-kyouiku/kosodate-shien/teate/1012494/1001486.html
+943,application,申請先は子ども家庭部子育て支援課手当助成係。主な必要書類は請求者名義の銀行口座番号が分かるもの、請求者と対象児童のマイナンバー及び本人確認書類（令和8年1月2日以降に転入した場合は同意書も必要）。,https://www.city.kokubunji.tokyo.jp/kodomo-kyouiku/kosodate-shien/teate/1012494/1001485.html
+943,condition,"18歳に達した年度末までの児童を養育する母子・父子家庭等で、離婚・死亡・遺棄など8つの状況のいずれかに該当するかたが対象。所得制限があり、扶養親族が0人の場合は所得額が3,661,000円未満であることが必要。",https://www.city.kokubunji.tokyo.jp/kodomo-kyouiku/kosodate-shien/teate/1012494/1001485.html
+944,condition,"身体障害者手帳1級・2級（内部障害は3級を含む）、愛の手帳1度・2度、または精神障害者保健福祉手帳1級のかたが対象。所得制限あり（扶養0人で3,661,000円以下など）。65歳以上で手帳交付を受けたかたは原則対象外。",https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/syougaishien/1011463/1001675.html
+945,application,窓口申請で、福祉部障害福祉課生活支援係に申請する。主な必要書類は身体障害者手帳または愛の手帳、障害者本人の銀行口座情報が分かるもの、障害者本人の区市町村税課税証明書または非課税証明書。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/syougaishien/1010912/1001663.html
+946,condition,"在宅の重度心身障害者（児）および難病患者等が対象。世帯の所得に応じて自己負担金（原則1割負担）があり、生活保護および低所得のかたは自己負担なし。障害者本人または配偶者の市民税所得割額が460,000円以上の場合は対象外で、入院中または施設入所中は原則対象外。",https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/syougaishien/1011466/yougu/1008550.html

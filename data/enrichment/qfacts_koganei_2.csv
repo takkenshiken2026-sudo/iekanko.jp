@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+1011,condition,対象は身体障害者手帳1〜6級・愛の手帳1〜4度・脳性麻痺および進行性筋萎縮症の方。所得制限があり、20歳以上は本人、20歳未満は保護者の所得が一定額を超える場合は対象外。施設入所者、65歳以上で手帳を取得した方、児童育成手当の障害手当受給者も対象外。,https://www.city.koganei.lg.jp/kenkofukuhsi/shogaishafukushi/teateshougai/sinsyou.html
+1012,condition,小金井市に居住し、身体障害者手帳(体幹・下肢障害2級以上、視覚障害2級以上、内部障害1級、または体幹・下肢障害3級)、愛の手帳2度以上、もしくは精神障害者保健福祉手帳2級以上で市長が必要と認めた方が対象。障害児入所施設や特別養護老人ホーム等への入所者、病院に3か月を超えて継続入院している方は対象外。,https://www.city.koganei.lg.jp/kenkofukuhsi/shogaishafukushi/teateshougai/koutuuteate.html
+1513,application,身分証明書など本人確認のできる書類を持参し、地域安全課窓口(市役所本庁舎1階)で直接申し込む。所管は地域安全課消防防犯係。,https://www.city.koganei.lg.jp/kurashi/472/bohan/bohanservice/jidoutuuwarokuonki.html
+1513,condition,市内在住のおおむね65歳以上の方が居住する世帯が対象。ただし警視庁が運用する自動通話録音機を設置している世帯は除く。,https://www.city.koganei.lg.jp/kurashi/472/bohan/bohanservice/jidoutuuwarokuonki.html
+1522,application,帯状疱疹実施医療機関一覧に記載のある医療機関で接種を受ける(予約確認が必要な医療機関は事前予約が必要)。接種時はマイナ保険証または資格確認書と案内の通知(封筒ごと)を持参し、予診票は実施医療機関にある。所管は健康課健康係。,https://www.city.koganei.lg.jp/kenkofukuhsi/kenkosodan/yobousesyujigyo/seijin/taijyouhousin_teiki.html
+1522,condition,接種日時点で小金井市に住民登録がある方で、令和8年度内に65歳を迎える方、令和8年度に70・75・80・85・90・95・100歳となる方(経過措置)、または接種日に60〜64歳でHIVによる免疫機能障害1級の方が対象。過去に定期接種を完了した方は対象外で、機会は一人1回のみ。,https://www.city.koganei.lg.jp/kenkofukuhsi/kenkosodan/yobousesyujigyo/seijin/taijyouhousin_teiki.html
+1639,condition,母子健康手帳の交付を受けた妊婦が対象で、交付時に妊婦健康診査受診票を渡す。都外からの転入者は前区市町村の受診票の残部と引き換えに小金井市の受診票を交付し、都内他区市町村からの転入者は前の受診票をそのまま使用できる。,https://www.city.koganei.lg.jp/kenkofukuhsi/kenkosodan/bosihokenjigyo/ninpukensin.html
+1846,application,保険料免除・納付猶予申請は、保険年金課国民年金係(市役所)の窓口で受け付けている(第1号被保険者が対象)。,https://www.city.koganei.lg.jp/shisei/kakuka/shiminbu/hokennenkinka/gyoumu/kokuminnenkinkakari.html
+1904,application,妊娠8か月(28週)以降に保健師等との面談を受けたうえで、小金井市産後ケア事業利用登録申請書により申請する(面談や訪問が済んだ方は郵送でも申請可)。申請先はこども家庭センター。生活保護等世帯は生活保護受給証明書、住民税非課税世帯は非課税証明書類が必要。,https://www.city.koganei.lg.jp/kenkofukuhsi/kenkosodan/bosihokenjigyo/sanngokea.html
+1904,condition,利用時に小金井市に住民登録があり、1歳未満の乳児とその母で、発熱等の感染症状がない方が対象。利用日数は合計7日まで(多胎児家庭は14日まで)。,https://www.city.koganei.lg.jp/kenkofukuhsi/kenkosodan/bosihokenjigyo/sanngokea.html
+1969,condition,平成12年5月31日以前に着工され、地階を除く階数が2階建て以下、延床面積の過半が居住用である市内の一戸建て木造住宅(店舗併用住宅を含む)が対象。所有者は個人で、市町村民税(特別区民税)の滞納がないことが必要。,https://www.city.koganei.lg.jp/shisei/seisakukeikaku/machitoshi/jutaku_shien/mokuzousindanjyosei.html
+2229,condition,国民健康保険・後期高齢者医療の被保険者が亡くなったとき、葬祭を行った人に葬祭費が支給される。,https://www.city.koganei.lg.jp/kurashi/427/hokenkyuuhu/D030501020201125.html
+2901,condition,小金井市国民健康保険の被保険者が出産したときに支給され、妊娠12週(85日)以降であれば死産・流産を問わず支給対象となる。,https://www.city.koganei.lg.jp/kurashi/427/hokenkyuuhu/D030501020201125.html

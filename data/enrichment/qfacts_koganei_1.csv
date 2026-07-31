@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+767,condition,満65歳以上の小金井市民で住民税非課税の方が対象。耳鼻咽喉科を標ぼうする医師の聴力検査により補聴器を必要と認められ、聴覚障がいによる補装具（補聴器）購入費支給の対象でない方が要件。,https://www.city.koganei.lg.jp/kenkofukuhsi/koreishafukushi/oshirase/D0503030202308141533.html
+816,condition,小金井市に住所がある小学校1年生から中学校3年生までの子どもを養育している方が対象。所得制限はなく、子どもが国内の医療保険に加入していることが要件で、生活保護やマル親など他の公費医療を受けている場合は対象外。,https://www.city.koganei.lg.jp/kosodatekyoiku/N84/iryohi/kodomo_iryohi/gimukyouiku.html
+817,application,直接持参・郵送・オンライン申請のいずれかで申請する。申請先は小金井市教育委員会学務課（市役所第二庁舎7階）。申請書のほか、令和8年1月2日以降に転入した方は課税証明書が必要。,https://www.city.koganei.lg.jp/kosodatekyoiku/gakkou-kyouiku/syuugakuenjoseido/R8syuugakuenjo.html
+999,application,高齢者おむつサービス申込書に記入し、介護福祉課高齢福祉係または各地域包括支援センターへ提出する。,https://www.city.koganei.lg.jp/kenkofukuhsi/koreishafukushi/kaigohokengai/omutuhaitatu.html
+999,condition,65歳以上で在宅の方（40歳以上65歳未満で介護保険の特定疾病により要介護状態の人を含む）のうち、要介護4または要介護5と認定され失禁状態にあり、市民税非課税世帯に属する方が対象。入院・施設入所中の方は利用できない。,https://www.city.koganei.lg.jp/kenkofukuhsi/koreishafukushi/kaigohokengai/omutuhaitatu.html
+1001,application,福祉総合相談窓口（自立相談サポートセンター）に相談のうえ申請する。,https://www.city.koganei.lg.jp/kenkofukuhsi/444/supportcenter.html
+1002,application,申請先は子育て支援課手当助成係。,https://www.city.koganei.lg.jp/kosodatekyoiku/N84/kakusyuteate/zidouhuyouteate/jidouhuyouteate.html
+1003,application,原則として申請者本人が窓口（子育て支援課手当助成係）で申請する。主な必要書類は戸籍謄本（申請者及び児童分）、申請者名義の振込先口座が確認できるもの、個人番号カード等。,https://www.city.koganei.lg.jp/kosodatekyoiku/N84/kakusyuteate/jidouikuseiteate.html
+1003,condition,18歳到達後最初の3月31日までの児童を養育し、父母の離婚・死亡や親の重度障害などの要件に該当する方が対象（育成手当）。20歳未満の心身障害児を対象とする障害手当もある。所得制限があり、扶養親族0人で366万1千円以上の所得がある場合は対象外。,https://www.city.koganei.lg.jp/kosodatekyoiku/N84/kakusyuteate/jidouikuseiteate.html
+1004,application,申請先は子育て支援課手当助成係。主な必要書類は加入医療保険のわかるもの（申請者及び児童のもの）、医療証交付申請書、個人番号カード等で、来庁が難しい場合は相談できる。,https://www.city.koganei.lg.jp/kosodatekyoiku/N84/iryohi/maruoya.html
+1006,application,申請先は子育て支援課子育て支援係。主な必要書類は補助金交付申請書兼請求書、調査同意書、申請者及び扶養児童の戸籍謄本（抄本）、世帯全員の住民票の写し、児童扶養手当証書の写しまたは所得証明書、補助対象経費の領収書、養育費の取り決めを交わした文書（債務名義化した文書）。,https://www.city.koganei.lg.jp/kosodatekyoiku/N84/youikuhikakuhosiennj.html
+1006,condition,小金井市に住むひとり親家庭で、対象児童を現に扶養し、養育費に関する債務名義を有する方が対象。公正証書等作成経費は経費を負担した者、養育費保証契約締結経費は児童扶養手当受給者または同等所得水準で1年以上の養育費保証契約を締結した者が要件。いずれも過去に同内容の補助金交付を受けていないこと。,https://www.city.koganei.lg.jp/kosodatekyoiku/N84/youikuhikakuhosiennj.html
+1007,condition,"身体障害者手帳1・2級（内部障害は3級を含む）、愛の手帳1・2度、精神障害者保健福祉手帳1級の方が対象。所得制限があり扶養親族0人で3,661,000円が基準額で、生活保護受給者や65歳以上で初めて対象に該当した方などは対象外。",https://www.city.koganei.lg.jp/kenkofukuhsi/shogaishafukushi/iryohijosei/marusyou2018.html
+1008,condition,精神疾患のため通院による継続的な治療を受ける方が対象。自己負担は原則1割で、利用者本人の収入や世帯の所得、疾患等に応じて自己負担上限額が設定される。,https://www.city.koganei.lg.jp/kenkofukuhsi/shogaishafukushi/iryohijosei/jiritsu.html
+1010,application,申請先は自立生活支援課相談支援係。主な必要書類は日常生活用具費給付申請書、障がいの状況がわかるもの（身体障害者手帳等）、課税状況がわかるもの、見積書、必要な場合は医師の意見書。用具の種目により必要書類が異なるため事前相談が必要。,https://www.city.koganei.lg.jp/kenkofukuhsi/shogaishafukushi/service/nitijouseikatuyougu.html
