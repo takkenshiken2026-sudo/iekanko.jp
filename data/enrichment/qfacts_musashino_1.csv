@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+802,application,オンライン電子申請（らくらく申請・らくらく提出）が利用でき、郵送での払い戻し申請も可能。申請先は子ども家庭部子ども子育て支援課手当医療係。,https://www.city.musashino.lg.jp/shussan_kodomo_kyoiku/kodomo_kosodate/teate_josei/kodomokatei/1006716.html
+802,condition,武蔵野市内に住民登録があり健康保険に加入している、0歳から18歳に達した日以降最初の3月31日までの子どもが対象。生活保護受給者、児童福祉施設入所児、里親委託児は対象外。,https://www.city.musashino.lg.jp/shussan_kodomo_kyoiku/kodomo_kosodate/teate_josei/kodomokatei/1006716.html
+803,application,オンライン申請と紙申請の2通りがある。申請先は武蔵野市教育委員会教育支援課（市役所南棟5階）。原則添付書類は不要だが、令和8年1月1日に武蔵野市民でなかった場合は前住所地で令和8年度課税証明書を取得し提出する必要がある。,https://www.city.musashino.lg.jp/shussan_kodomo_kyoiku/sho_chugakko/shugakuenjo/1007052.html
+1078,application,福祉公社の自立相談支援員との面談後、家計改善支援事業に申し込む流れ。所管は健康福祉部生活福祉課生活相談係。,https://www.city.musashino.lg.jp/kenko_fukushi/seikatsu_fukushi/1044335/1054308/index.html
+1079,application,窓口・郵送・オンライン電子申請（非課税世帯・均等割のみ世帯・児童扶養手当受給世帯が対象）で申請できる。申請先は生活福祉課（市役所東棟2階）。必要書類は交付申請書、振込先口座が確認できるもの（通帳やキャッシュカードの写し等）、購入金額・購入日等が確認できる領収書の写し。,https://www.city.musashino.lg.jp/kenko_fukushi/seikatsu_fukushi/1053643.html
+1079,condition,武蔵野市に住民登録があり市内に住む世帯で、自宅にエアコンが1台もない、または故障で使用できるエアコンが1台もない世帯が対象。加えて住民税非課税世帯、住民税均等割のみ課税世帯、生活保護受給世帯、児童扶養手当受給世帯、生活困窮世帯のいずれかに該当する必要があり、1世帯1回限り。,https://www.city.musashino.lg.jp/kenko_fukushi/seikatsu_fukushi/1053643.html
+1080,condition,令和3年4月1日から令和9年3月31日までの間に住居確保給付金を申請し、その受給期間中に賃貸借契約の更新を迎える方が対象。市内に居住し、生活保護を受給しておらず、暴力団員でなく、過去に当該給付を受けていないことが条件。,https://www.city.musashino.lg.jp/kenko_fukushi/seikatsu_fukushi/1044335/1044340/1033763.html
+1081,condition,60歳以上で要支援・要介護認定を受けている方、または60歳から64歳で特定疾病以外だが要支援相当以上と認められた方が対象。日常生活動作に困難があり注意を要する状態で、工事によって在宅生活の利便性の向上につながると認められることが条件。,https://www.city.musashino.lg.jp/kenko_fukushi/koureisha_fukushi/koreishafukushi_service/zaitakuservice/1006279.html
+1082,condition,市内に住所を有する在宅の高齢者（施設入所者を除く）で、失禁状態にあり常時おむつを着用する必要があり、介護保険の要介護度が3・4・5であり、市町村民税非課税世帯に属することが条件。介護している家族（一人暮らしの場合は本人）が対象。,https://www.city.musashino.lg.jp/kenko_fukushi/koureisha_fukushi/koreishafukushi_service/zaitakuservice/1006269.html
+1083,condition,身体に不自由があり日常生活上不便がある在宅の方、または60歳から64歳までの介護保険特定疾病以外で要支援相当以上と認められた方が対象。希望者には在宅介護・地域包括支援センターの地区担当職員による訪問調査がある。,https://www.city.musashino.lg.jp/kenko_fukushi/koureisha_fukushi/koreishafukushi_service/zaitakuservice/1006273.html
+1084,condition,要支援・要介護認定を受けており、原則として在宅で生活している方が対象。介護保険の給付対象となる住宅改修を行う予定であることが条件。,https://www.city.musashino.lg.jp/shinseisho/kurashi_tetsuzuki/kaigohoken/1003798.html
+1085,application,オンライン申請が可能で、窓口に来庁する必要はなく24時間手続きできる。申請先は子ども家庭部子ども子育て支援課手当医療係。必要書類は運転免許証やマイナンバーカード等の顔写真付きの身元確認書類（状況により他の添付書類や訪問による確認が必要な場合あり）。,https://www.city.musashino.lg.jp/shussan_kodomo_kyoiku/kodomo_kosodate/teate_josei/hitorioya/1041218/1041207/index.html
+1086,application,オンライン申請が可能で、窓口に来庁する必要はなく24時間申請できる。申請先は子ども家庭部子ども子育て支援課手当医療係。必要書類は運転免許証やマイナンバーカード等の顔写真付きの身元確認書類（状況により他の添付書類や訪問による確認が必要な場合あり）。,https://www.city.musashino.lg.jp/shussan_kodomo_kyoiku/kodomo_kosodate/teate_josei/hitorioya/1041218/1044080/index.html

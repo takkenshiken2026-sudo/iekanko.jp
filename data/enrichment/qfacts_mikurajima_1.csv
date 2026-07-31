@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+869,condition,御蔵島村の区域内に住所を有する高校生等（15歳に達する日の翌日以後の最初の4月1日から18歳に達する日以後の最初の3月31日までの間にある者）を養育している者で、社会保険各法による医療給付の対象者。対象者の前年所得が規則で定める額以上のときは、その翌年10月1日から1年間は対象外となる所得制限がある。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000325.html
+870,condition,村の区域内に住所を有するひとり親家庭等の父又は母及び児童、養育者及びその養育する児童で、社会保険各法により医療の給付が行われる者（児童は18歳に達した日の属する年度末まで、規則で定める障害がある場合は20歳未満）。ひとり親等の前々年所得が規則で定める額以上のときは対象外となる所得制限があり、扶養義務者等の所得も対象。生活保護受給者・施設入所者・里親委託者等は除く。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000135.html
+922,condition,村の区域内に住所を有するおおむね65歳以上の一人暮らし高齢者、又は高齢者夫婦等の世帯であって、身体上・慢性疾患があるなど日常生活を営む上で常時注意を要する状態にある者。このほか村長が特に必要と認める者も対象となる。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000144.html
+923,condition,御蔵島村の区域内に住所を有する65歳以上の高齢者。ただし、団体等の旅費規定により実費支給を受ける場合は助成を受けられない。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000150.html
+1468,application,入居資格のある者で村営住宅に入居しようとする者は、村長の定めるところにより入居の申込みをしなければならない。入居者の公募は御蔵島村公告掲示場に掲示して行う。具体的な窓口・提出書類は条例本文には定めがなく、規則によるものとされている。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000238.html
+1469,application,御蔵島村長に申請する。申請には課税台帳公簿確認同意書、日常生活用具見積書が必要とされている。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000165.html
+1469,condition,身体障害者（児）・知的障害者（児）・精神障害者であって、別表に定める当該用具を必要とする者。ただし介護保険対象者については介護保険におけるサービスを優先して利用することを原則とする。世帯の所得階層別に徴収基準額（自己負担）が定められている。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000165.html
+1470,application,児童扶養手当の手続きは、お住まいの区市町村（御蔵島村）の窓口で行う。詳しくは区市町村に問い合わせる。,https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/zidoufuyouteate
+1470,condition,18歳に達する日以降の最初の3月31日までにある児童（一定以上の障害の状態にある場合は20歳未満）を監護している母、又は監護しかつ生計を同じくする父などに支給される。請求者及び生計を同じくする扶養義務者等の前年所得が限度額以上のときは手当の全部又は一部が支給停止となる所得制限がある。児童又は請求者が日本国内に住所を有しないときは支給されない。,https://www.fukushi.metro.tokyo.lg.jp/kodomo/kosodate/teate/zidoufuyouteate
+1471,application,相談・申請の窓口は、各区市が設置する自立相談支援機関、町村（御蔵島村）については西多摩福祉事務所及び各支庁となる。,https://www.fukushi.metro.tokyo.lg.jp/seikatsu/seikatsukonnkyuu/jiritsu
+1483,application,総合支援資金の相談・申請の窓口は、お住まいの区市町村の社会福祉協議会となる。,https://www.fukushi.metro.tokyo.lg.jp/seikatsu/seikatsu_kyoju_shuro/sumai
+1555,application,村長に申請する。申請書に、対象医療機関で受診した妊婦健康診査費の領収書、母子健康手帳の写し、契約医療機関に係る未使用の妊婦健康診査受診票、その他村長が必要と認める書類を添えて提出する。申請は出産後1年以内に行う必要がある。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000140.html
+1555,condition,村内に住所を有する妊婦で、契約医療機関以外の医療機関において自己負担で妊婦健康診査を受診した者。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000140.html
+1556,application,助成金の支給を受けようとする者は、慢性疾患等通院交通費等助成申請書（様式第一号）に必要書類を添えて村長に提出する。必要書類は、慢性疾患患者等であることを証明するもの（手帳等）、通院治療を受けたことを証明するもの（領収証等）、交通費・宿泊費が証明できるもの（領収書等）、所得証明書とされている。,https://www.vill.mikurasima.tokyo.jp/data/reiki_int/reiki_honbun/g161RG00000164.html

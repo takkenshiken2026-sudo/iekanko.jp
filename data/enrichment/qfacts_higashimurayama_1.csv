@@ -1,0 +1,19 @@
+program_id,fact_type,value,evidence_url
+1191,condition,離職等により経済的に困窮し住居を喪失又は喪失するおそれがあること、公共職業安定所に求職の申込みをし就職を目指した求職活動を行うこと、世帯の月収合計が基準額と住宅扶助上限額の合算額以下であること、世帯の金融資産(預貯金等)合計が基準額の6倍(100万円を超えない範囲)以下であること等の要件があります。,https://www.city.higashimurayama.tokyo.jp/kenko/komatta/jyukyokakuhokyuhukin.html
+1192,application,申請先は東村山市健康福祉部自立相談課(エアコン新規設置等費用助成事業コールセンター)で、申請期間は令和8年5月1日から令和8年12月28日まで(予算上限到達時は期間中でも受付終了)。必要書類等の詳細はコールセンター又は自立相談課へお問い合わせください。,https://www.city.higashimurayama.tokyo.jp/kenko/oshirase/aircon_josei.html
+1192,condition,申請時点で東村山市に住民票があり現に居住しており、令和7年度又は令和8年度の住民税が非課税、均等割のみ課税、又は令和7年度・令和8年度に児童扶養手当を受給している世帯が対象です。,https://www.city.higashimurayama.tokyo.jp/kenko/oshirase/aircon_josei.html
+1193,application,毎年1月中の市が定める期間内に、前年に購入した紙おむつの領収書その他助成対象者であることを証する書類を添えて、要介護高齢者紙おむつ購入費助成金交付申請書(第1号様式)を提出します。提出先は東村山市役所健康増進課高齢者事業係です。,https://www.city.higashimurayama.tokyo.jp/kenko/korei/korei/kamiomutu.html
+1194,application,申請・相談窓口は東村山市健康福祉部健康増進課(市役所代表042-393-5111、内線3504～3507)です。,https://www.city.higashimurayama.tokyo.jp/kenko/korei/korei/7haisyoku.html
+1194,condition,東村山市に住所を有し、65歳以上の一人暮らしで自炊が困難な方、又は70歳以上の高齢者のみで構成する自炊が困難な世帯が対象です。,https://www.city.higashimurayama.tokyo.jp/kenko/korei/korei/7haisyoku.html
+1195,application,申請窓口は東村山市役所いきいきプラザ1階の健康福祉部健康増進課高齢者事業係です。市が指定する協力店舗で、スマホの購入から申請までを購入日当日中に実施します。,https://www.city.higashimurayama.tokyo.jp/kenko/korei/korei/sumahokatsuyo.html
+1195,condition,東村山市に住民票があり令和8年3月31日時点で満65歳以上の方で、原則として自身が使うために初めてスマホを購入し通信契約を行った方が対象です。加えて東京都公式アプリと東村山市ポータルの新規登録、東京都LINE公式アカウントの友だち登録をした方であることが必要です。,https://www.city.higashimurayama.tokyo.jp/kenko/korei/korei/sumahokatsuyo.html
+1196,condition,要介護認定又は要支援認定を受けた方が、厚生労働大臣が定めた種類の小規模な住宅改修を行う場合が対象です。住宅改修は事前申請が必要で、認定有効期間内に行われ、原則として被保険者証に記載された住所での改修に限られます。支給対象限度額は要介護度にかかわらず20万円です。,https://www.city.higashimurayama.tokyo.jp/kenko/korei/kaigohoken/service/jyutakukaishu.html
+1197,application,新規に給付が発生する方には、サービス利用月の2か月後以降に申請書が送付されるので、給付を希望する方は申請します。既に申請している方は再度申請する必要はありません。問い合わせ先は健康福祉部介護保険課です。,https://www.city.higashimurayama.tokyo.jp/kenko/korei/kaigohoken/service/hutankeigen/kougakukaigo.html
+1198,application,認定請求の手続きが必要です。主な必要書類は、請求者・配偶者・対象児童・同居親族のマイナンバー(個人番号カード等)と本人確認書類、請求者名義の銀行口座がわかるもの等です(支給要件により他の書類が必要な場合があります)。申請・問い合わせ先は子ども家庭部子ども政策課(いきいきプラザ2階)です。,https://www.city.higashimurayama.tokyo.jp/kosodate/hojo/hitorioya/huyouteate.html
+1199,application,認定請求の手続きが必要で、父又は母が重度の障害を有する場合は身体障害者手帳又は愛の手帳又は診断書が必要です。受給者は毎年6月に現況届の提出が必要です(令和8年度からオンライン提出可)。申請・問い合わせ先は子ども家庭部子ども政策課です。,https://www.city.higashimurayama.tokyo.jp/kosodate/hojo/hitorioya/ikuseiteate.html
+1199,condition,18歳に達する日以後の最初の3月31日までの間にある児童を養育するひとり親家庭等の方が対象です。保護者の所得制限があり、扶養人数が0人の場合は所得が366万1千円以上であると支給されません(扶養親族の状況に応じて限度額に加算があります)。,https://www.city.higashimurayama.tokyo.jp/kosodate/hojo/hitorioya/ikuseiteate.html
+1200,application,認定請求の手続きが必要で、障害手当の申請には対象児童の障害の状況を明らかにする身体障害者手帳又は愛の手帳又は診断書を提出します。受給者は毎年6月に現況届の提出が必要です(令和8年度からオンライン提出可)。申請・問い合わせ先は子ども家庭部子ども政策課です。,https://www.city.higashimurayama.tokyo.jp/kosodate/hojo/hitorioya/ikuseiteate.html
+1200,condition,障害をもった児童を養育している方が対象で、対象児童の障害の状況を明らかにする身体障害者手帳又は愛の手帳又は診断書が必要です。保護者の所得制限があり、扶養人数が0人の場合は所得が366万1千円以上であると支給されません。,https://www.city.higashimurayama.tokyo.jp/kosodate/hojo/hitorioya/ikuseiteate.html
+1201,application,申請・問い合わせ先は東村山市子ども家庭部子ども政策課(市役所代表042-393-5111、内線 手当・子どもの医療証:3604)です。,https://www.city.higashimurayama.tokyo.jp/kosodate/hojo/hitorioya/maruoya.html
+1201,condition,ひとり親家庭等で、児童が18歳に達した日の属する年度の末日(障害がある場合は20歳の誕生日の前日)までの児童を養育する母子・父子家庭等のうち、所得制限の範囲内の方が対象です。母又は父及び扶養義務者等が市民税非課税の場合は自己負担分全額を助成し、課税世帯は自己負担に上限があります。,https://www.city.higashimurayama.tokyo.jp/kosodate/hojo/hitorioya/maruoya.html
+1202,application,東村山市ひとり親家庭等家賃補助認定申請書(第1号様式)に支給要件に該当することを証する書類を添えて市長に申請します。受給者は毎年、現況届(第3号様式)に前年の所得の状況を証明する書類を添付して届け出ます。申請先は子ども家庭部子ども政策課です。,https://www.city.higashimurayama.tokyo.jp/kosodate/hojo/hitorioya/yatinhojo.html
