@@ -33,7 +33,7 @@ CONTACT_FORM_URL = os.environ.get("SEIDO_CONTACT_FORM", "https://forms.gle/H3ASW
 ESTABLISHED    = os.environ.get("SEIDO_ESTABLISHED", "2026")
 # ガイド記事（/guide/）の最終見直し日。Article 構造化データの datePublished/dateModified に使う。
 # ★本文を実際に編集したときだけ手で更新する。ビルドで自動更新しない＝日付の水増しを避けるため。
-GUIDE_UPDATED  = os.environ.get("SEIDO_GUIDE_UPDATED", "2026-07-29")
+GUIDE_UPDATED  = os.environ.get("SEIDO_GUIDE_UPDATED", "2026-07-31")
 
 def og_image_for(slug):
     """自治体別OG画像 /assets/og/<slug>.png が生成済みならそれを、無ければ共通og.pngを返す。
@@ -332,6 +332,32 @@ GUIDES_EV = [
     "自治体独自の助成は、対象要件（介護度・所得・年齢など）や申請窓口が制度ごとに分かれていることが多いため、"
     "地域包括支援センターや自治体の窓口で、自分が使える制度をまとめて相談すると効率的です。"
     "具体的な金額・対象は各自治体の公式ページで確認してください。</p>")]),
+]
+
+# ── テーマ別の深掘りガイド（1本ずつ手書き。本文は content/articles/<slug>.html を読み込む）──
+# ライフイベント別ガイド（GUIDES_EV）が「全体像」なのに対し、こちらは特定テーマを
+# 公式出典つきで掘り下げる編集記事。機械生成ではなく1本ずつ執筆する運用。
+# body_file: content/articles/ 配下のHTML断片（<article>ラッパは build 側で付与）。
+# faq: FAQ表とFAQPage構造化データの両方に使う（本文とは別の言い回しの一問一答）。
+TOPIC_GUIDES = [
+ {"slug":"kodomo-iryohi-hikaku",
+  "ev_slug":"childcare",
+  "body_file":"kodomo-iryohi-hikaku.html",
+  "h1":"東京の子ども医療費助成はどこまで無料？ 62自治体の対象年齢・所得制限・自己負担を比べてわかること",
+  "title":"東京の子ども医療費助成を自治体で比較｜対象年齢・所得制限・自己負担の違い",
+  "description":"東京都の子ども医療費助成（マル乳・マル子・マル青）を、対象年齢・所得制限・通院時の自己負担の3点で比較。文京区・世田谷区・国立市・多摩市の実例と公式出典つきで、自治体ごとの違いと確認方法を解説します。",
+  "faq":[
+    ("東京では子どもの医療費は何歳まで無料ですか？",
+     "多くの自治体で、高校生年代（18歳到達後最初の3月31日）まで対象が広がっています。ただし対象年齢や自己負担は自治体ごとに異なるため、お住まいの区市町村の公式ページで確認してください。"),
+    ("所得制限はありますか？",
+     "23区を中心に、所得による制限を設けない自治体が増えています。多摩・島しょ地域でも撤廃が進んでいますが、審査があったり一部負担が残ったりする場合があります。"),
+    ("通院のたびに窓口でお金がかかりますか？",
+     "窓口負担のない「完全無料」の自治体が多い一方で、国立市や多摩市のように通院1回あたり200円程度の一部負担が残る自治体もあります。"),
+    ("引っ越したら手続きは必要ですか？",
+     "子ども医療費助成は自治体ごとの制度のため、転入先で医療証を改めて申請するのが一般的です。転入日から一定期間内の申請が必要な場合があるので早めに手続きしましょう。"),
+    ("医療証はどうやってもらいますか？",
+     "出生届や転入届のあとに、区市町村の窓口・郵送・電子申請で交付を申請します。子どもの健康保険の加入状況がわかる書類を求められるのが一般的です。"),
+  ]},
 ]
 
 # ライフイベント別メタ（目的・年代の発見導線／カラー＝検証済みパレット slot1-5／アイコン）
@@ -2311,6 +2337,9 @@ def build_guides():
     ev_cards = "".join(
         f'<li><a href="/guide/{g[0]}/"><strong>{esc(g[2])}</strong>'
         f'<span class="pdesc">{esc(g[3])}</span></a></li>' for g in GUIDES_EV)
+    topic_cards = "".join(
+        f'<li><a href="/guide/{t["slug"]}/"><strong>{esc(t["h1"])}</strong>'
+        f'<span class="pdesc">{esc(t["description"][:48])}…</span></a></li>' for t in TOPIC_GUIDES)
     hub = wrap(f"""
 <h1>くらしの制度ガイド</h1>
 <p class="lead">「どんなときに、どんな給付金・手当・助成が受けられるのか」を、ライフイベントごとに整理した解説記事です。
@@ -2325,6 +2354,8 @@ def build_guides():
 <ul class="cmplist guidegrid">{ev_cards}
 <li><a href="/guide/how-to-find/"><strong>使える制度の探し方</strong>
 <span class="pdesc">自分が対象になる給付・手当を見つける手順</span></a></li></ul>
+<h2>テーマ別ガイド（制度を深掘り）</h2>
+<ul class="cmplist guidegrid">{topic_cards}</ul>
 {note}
 """)
     page(path="/guide/index.html", title=f"くらしの制度ガイド｜給付・手当・助成の基礎知識｜{SITE_NAME}",
@@ -2392,6 +2423,41 @@ def build_guides():
              og_type="article", article_meta=(GUIDE_UPDATED, GUIDE_UPDATED),
              jsonld=[guide_article_ld(h1title, f"/guide/{slug}/")],
              breadcrumb=[("トップ","/"),("くらしの制度ガイド","/guide/"),(ev_name,None)], body=body)
+        sitemap_urls.append((f"/guide/{slug}/","0.6"))
+
+    # ── テーマ別の深掘りガイド（本文は content/articles/<slug>.html を手書き）──
+    for t in TOPIC_GUIDES:
+        slug = t["slug"]
+        ev_slug = t.get("ev_slug")
+        ev_name = EVENTS[ev_slug][0] if ev_slug else None
+        with open(os.path.join(ROOT, "content", "articles", t["body_file"]), encoding="utf-8") as f:
+            article_html = f.read()
+        faq = t.get("faq") or []
+        faq_html = (f'<h2>{ic("help","hi")}よくある質問</h2>{faq_table_html(faq)}' if faq else "")
+        rel = ('<h2>子ども医療費助成を自治体で比べる</h2>'
+               '<p>東京都62自治体それぞれの子ども医療費助成の内容は、制度カテゴリの比較・一覧から確認できます。'
+               '各制度ページには公式ページへの出典リンクと最終確認日を掲載しています。</p>'
+               '<div class="cmpbox"><strong>あわせて確認する</strong><ul>'
+               '<li><a href="/hikaku/">制度カテゴリごとに自治体を比較する '+CHEV_R+'</a></li>'
+               '<li><a href="/ranking/childcare/">子育ての制度がある自治体をみる '+CHEV_R+'</a></li>'
+               '<li><a href="/guide/childcare/">子育て世帯が受けられる給付・手当の基礎知識 '+CHEV_R+'</a></li>'
+               '</ul></div>')
+        body = wrap(f"{article_html}\n{affiliate_html('guide', slug)}{rel}\n{faq_html}\n{note}\n")
+        jsonld = [guide_article_ld(t["h1"], f"/guide/{slug}/")]
+        if faq:
+            jsonld.append({"@context":"https://schema.org","@type":"FAQPage",
+              "mainEntity":[{"@type":"Question","name":q,
+                "acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]})
+        bc = [("トップ","/"),("くらしの制度ガイド","/guide/")]
+        if ev_name:
+            bc.append((ev_name,f"/guide/{ev_slug}/"))
+        bc.append((t["h1"],None))
+        page(path=f"/guide/{slug}/index.html",
+             title=f'{t["title"]}｜{SITE_SHORT}',
+             description=t["description"],
+             canonical=f"/guide/{slug}/",
+             og_type="article", article_meta=(GUIDE_UPDATED, GUIDE_UPDATED),
+             jsonld=jsonld, breadcrumb=bc, body=body)
         sitemap_urls.append((f"/guide/{slug}/","0.6"))
 
 # ── トップ ──────────────────────────────────────────────────────────────────
