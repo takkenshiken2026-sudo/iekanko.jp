@@ -1,0 +1,14 @@
+program_id,fact_type,value,evidence_url
+786,condition,村内に住所を有する義務教育就学期(6歳到達後最初の4月1日から15歳到達後最初の3月31日まで)にある児童を養育している方が対象。各種健康保険に加入していない方、生活保護受給者、児童福祉施設等に措置入所している方などは対象外。,https://www.vill.hinohara.tokyo.jp/0000001252.html
+853,condition,村内に住所があり、父母の死亡・離婚・重度障害などに該当する児童(18歳到達後最初の3月31日まで、中度以上の障害がある場合は20歳未満)とその児童を養育する父・母または養育者が対象。所得制限があり、各種健康保険に加入していない方や生活保護受給者は対象外。,https://www.vill.hinohara.tokyo.jp/0000001253.html
+854,application,申請窓口は福祉けんこう課子育て支援係(電話042-598-3122)。電子申請にも対応している。,https://www.vill.hinohara.tokyo.jp/0000001766.html
+854,condition,18歳に達する日以後の最初の3月31日までの児童を養育している方が対象。,https://www.vill.hinohara.tokyo.jp/0000001766.html
+898,condition,非課税世帯、均等割のみ課税世帯、または児童扶養手当受給世帯が対象。,https://www.vill.hinohara.tokyo.jp/0000002090.html
+899,condition,65歳以上で要介護1～5の判定を受け、前年度の住民税が非課税の者が対象。,https://www.vill.hinohara.tokyo.jp/0000002090.html
+900,condition,身体障害者手帳1種3級以上、愛の手帳2度以上、または精神障害者保健福祉手帳2級以上の者で、前年度の住民税が非課税の者が対象。,https://www.vill.hinohara.tokyo.jp/0000002090.html
+901,condition,65歳以上で中等度難聴、または医師に補聴器の装用が必要と認められた者が対象。,https://www.vill.hinohara.tokyo.jp/0000002090.html
+1445,application,申請先は檜原村企画財政課むらづくり推進係(電話042-519-9556)。補助金交付申請書(様式第1号)、造成工事見積書または工事請負契約書、施工箇所の図面及び現況写真、土地の登記簿謄本などを提出する。,https://www.vill.hinohara.tokyo.jp/0000001194.html
+1445,condition,村内に10年以上継続して居住し、かつ補助金交付後も引き続き居住する意思のある方が対象。自己の土地に住居を新築・増改築等を行うための土地造成工事で、村内の建設業者と請負契約を締結したものが対象となる。,https://www.vill.hinohara.tokyo.jp/0000001194.html
+1446,condition,下水道法第2条第8号に規定する処理区域内にある家屋のくみ取便所を水洗便所に改造し、排水設備を設置する工事をする者が対象。,https://www.vill.hinohara.tokyo.jp/0000002090.html
+1526,condition,村内に住所を有する65歳の方で、原則一度も予防接種を受けていない定期接種対象者が対象。,https://www.vill.hinohara.tokyo.jp/0000002090.html
+1527,condition,村内に住所があり、自己の所有または賃借する住宅の居住者が対象。1世帯あたり1回限り。,https://www.vill.hinohara.tokyo.jp/0000002090.html

@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+789,application,村役場民生課福祉介護係または各支所に申請する。必要書類は印鑑、申請者および児童の健康保険証、（その年の1月2日以降に転入した場合は）前住所地の区市町村長が発行する所得（課税・非課税）証明書。,https://www.niijima.com/kurashi/hoken_nenkin/fukushi/jidou_hitorioya/marunyu.html
+863,application,母子健康手帳を取得したときから出産後1年までの間に、必要書類を添えて村長（新島村役場）に申請する。必要書類は新島村出産前後支援事業助成金申請書、母子健康手帳、宿泊機関および医療機関が発行した領収書（コピー不可）。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000532.html
+863,condition,新島村に居住し住民基本台帳に記録がある者で、妊婦健康診査受診票の交付を受けている者、令和3年4月1日以降に出産した者、その他村長が認める者が対象。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000532.html
+864,application,補聴器を購入する前に、医師の意見欄が記載された新島村高齢者補聴器購入費助成金交付申請書（様式第1号）を、聴力検査の結果とともに検査日から3か月以内に村長へ提出する。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000606.html
+906,condition,村内に住所を有するひとり親家庭等の父または母および児童（または養育者と児童）で、健康保険等の医療給付を受けられる者が対象。児童は18歳に達する日の属する年度末まで（一定の障害がある場合は20歳未満）。前々年の所得が扶養親族数に応じた規則で定める額以上の場合や生活保護受給者は対象外で、所得制限がある。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000230.html
+907,application,日常生活用具給付等申請書（様式第1号）により村長（新島村役場民生課）に申請する。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000261.html
+907,condition,身体障害者（児）、知的障害者（児）、精神障害者、難病患者等であって、別表に定める当該用具を必要とする者が対象。用具ごとに障害程度等の要件があり、介護保険対象者は介護保険のサービス利用を優先する。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000261.html
+908,application,別に定める重度身体障害者（児）住宅設備改善費給付申請書に必要書類を添付して村長（新島村役場）に申請する。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000265.html
+909,application,自動車改造費助成申請書（様式第1号）に改造を行う業者の見積書（改造箇所および経費を明らかにしたもの）を添付し、運転免許証を提示のうえ村長（新島村役場）に申請する。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000266.html
+909,condition,18歳以上で身体障害者手帳1級・2級の上肢、下肢または体幹機能障害があり、自らが所有し運転する自動車の一部を改造する必要がある者が対象。本人または扶養義務者の前年の所得が特別障害者手当に係る所得制限限度額の範囲内であることが必要で、所得制限がある。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000266.html
+910,application,村長（新島村役場）に申請し、受給資格の認定を受ける必要がある。具体的な手続は規則で定める。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000267.html
+911,application,新島村障害者グループホーム家賃助成申請書（様式第1号）により村長（新島村役場）に申請する。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000549.html
+911,condition,"グループホームの入居者で当該グループホームの家賃を負担し、新島村から共同生活援助に係る訓練等給付費または特例訓練等給付費の支給決定を受けている18歳以上の知的障害者・身体障害者・難病等による障害者が対象。入居者の所得額が月額97,000円未満であることが必要で、所得制限がある。",https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000549.html
+1473,application,相談や申請の受付は、各区市が設置する地域の自立相談支援機関が、町村については西多摩福祉事務所および各支庁が行う。,https://www.fukushi.metro.tokyo.lg.jp/seikatsu/seikatsukonnkyuu/jiritsu
+1474,application,住宅入居費・生活支援費などの総合支援資金の相談・申請は、お住まいの区市町村の社会福祉協議会で受け付ける。,https://www.fukushi.metro.tokyo.lg.jp/seikatsu/seikatsu_kyoju_shuro/sumai

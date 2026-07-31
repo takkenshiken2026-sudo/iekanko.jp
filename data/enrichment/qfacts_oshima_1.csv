@@ -1,0 +1,17 @@
+program_id,fact_type,value,evidence_url
+787,application,医療証交付申請書に、健康保険情報がわかるもの・父母及び対象児童のマイナンバーがわかるもの・申請者の本人確認書類を添えて、福祉けんこう課または各出張所で申請する。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/iryouhi-marunyuu-maruko1.html
+859,application,福祉けんこう課子育て支援係で申請し、郵送での申請も可能。交付申請書に、対象児童の健康保険情報がわかるもの、父母及び対象児童のマイナンバーがわかるもの、申請者の本人確認書類を添付する（児童と別居の場合は別居監護申立書が必要）。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/koukouseitou.html
+860,application,出産後3ヶ月以内に福祉けんこう課窓口で申請する。申請書兼報告書・請求書・母子手帳・医師の証明書・口座のわかるもの・印鑑・入院日/出産日/退院日のわかる領収証や明細書（宿泊があった場合はその領収証）が必要。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/ninpusien.html
+860,condition,大島医療センターの医師の判断により島外医療機関で出産しなければならない者で、かつ医師から証明書の交付を受けた者が対象。一度は大島医療センター産婦人科で健診を受ける必要がある。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/ninpusien.html
+888,application,福祉けんこう課または各出張所で手続きする。医療証交付申請書に、健康保険情報・認定調書・戸籍謄本・養育費等申告書・本人確認書類・マイナンバーを添える。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/oya.html
+888,condition,大島町に住所を有し、父母の離婚・死亡・生死不明・拘禁・遺棄・DV保護命令、重度障害児、婚外子のいずれかに該当する児童（18歳到達後最初の3月31日まで。障害児は20歳未満）とその扶養者が対象。生活保護受給者や児童福祉施設入所者は対象外で、所得制限がある。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/oya.html
+889,application,申請書に必要書類（世帯全員の住民票、成績証明書、入学許可証または合格通知書の写し、保護者の源泉徴収票または確定申告書の写し、保護者の納税証明書、健康診断書）を添付し、大島生涯学習センター郷内・教育文化課及び各出張所で提出する。連帯保証人1名が必要。,https://www.town.oshima.tokyo.jp/soshiki/kyouiku/r8-syougakukin.html
+889,condition,貸付の日の3年前から引き続き大島町に住所を有する人の子弟で、心身健全かつ経済的な理由により修学が困難と認められた人が対象。保護者が町民税等の過年度分を滞納していないこと、日本学生支援機構や東京都育英奨学金などの奨学資金を借り受けていないことが条件。,https://www.town.oshima.tokyo.jp/soshiki/kyouiku/r8-syougakukin.html
+890,application,大島町国民健康保険人間ドック助成金交付申請書に、人間ドック結果報告書・領収書・受診者本人名義の振込先口座がわかるもの・印鑑・問診票を添えて、大島町役場住民課または各出張所へ提出する。申請締め切りは受診した年度の3月31日。,https://www.town.oshima.tokyo.jp/soshiki/jumin/ninngenndokku.html
+891,application,町役場建設課及び各出張所に備付けの申込書に必要事項を記入のうえ、住民票の謄本（本籍・続柄記載）・所得証明書・納税証明書等の関係書類を添付して提出する。,https://www.town.oshima.tokyo.jp/soshiki/kensetsu/choei-jutaku-kazoku20250204.html
+1448,condition,大島町に住所を有する65歳以上で、住宅改修が必要と認められる方が対象。予防給付は介護認定非該当もしくは未申請の方、設備給付は要介護もしくは要支援の認定を受け身体機能の低下により既存設備の使用が困難と認められた方が対象。,https://www.town.oshima.tokyo.jp/soshiki/jumin/jiritujyuutaku.html
+1449,application,大島町地域包括支援センター（電話04992-2-0068）に相談して手続きする。介護保険証を用意する必要がある。,https://www.town.oshima.tokyo.jp/soshiki/jumin/yougu.html
+1450,application,福祉けんこう課子育て支援係で申請する。申請者の口座番号がわかるもの、申請者の本人確認書類、申請者・児童・配偶者のマイナンバーがわかるもの、申請者及び児童の戸籍謄本（育成手当のみ）、児童の身体障害者手帳・愛の手帳または所定の診断書（障害手当のみ）が必要。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/zidouikuseiteate.html
+1450,condition,育成手当は父母が離婚した児童など8つの要件のいずれかに該当する児童（18歳到達後最初の3月31日まで）を養育する方、障害手当は身体障害者手帳1～2級程度などに該当する20歳未満の者を扶養する方が対象。扶養親族等の人数に応じた所得制限がある。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/zidouikuseiteate.html
+1451,application,用具の給付等を希望する者は、日常生活用具給付・貸与申請書（様式第1号）を町長に提出する。町長が申請者の経済状況・身体状況・家屋環境及び住宅環境等を実地に調査し、給付等を行うかどうか決定する。,https://www.town.oshima.tokyo.jp/reiki_int/reiki_honbun/g156RG00000334.html
+1549,condition,大島町に住民登録があり、過去に帯状疱疹ワクチンを一度も接種したことのない方が対象。年度内に65歳を迎える方、60～64歳で特定の免疫障害がある方、経過措置として令和7～11年度にその年度内に70/75/80/85/90/95/100歳になる方が該当。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/reiwa5nenndo.html

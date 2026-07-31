@@ -1,0 +1,13 @@
+program_id,fact_type,value,evidence_url
+1564,application,申請には「新島村島外医療機関受診に係る交通費等の助成申請書（様式第1号）」の提出が必要。初回申請時は新島村診療所医師が発行する証明書を、がん等で継続治療の場合はおおむね1年ごとに病名・通院頻度が明記された医師の診断書を添付する。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000517.html
+1564,condition,新島村に住所を有し居住している者で、新島村診療所医師の島外医療機関受診証明書を受けた者等が対象。生活保護受給者や村税滞納世帯は対象外で、健康保険適用の受診であることが条件。所得制限の記載はない。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000517.html
+1565,application,助成金申請書を村長に提出して申請する（申請窓口・必要書類の詳細は本文に記載なし）。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000232.html
+1565,condition,村に住所を有し住民基本台帳に記録している者で、母子健康手帳を有し現に居住している者等が対象。母子健康手帳を取得したときから出産後1年までの間が支給対象期間で、所得制限の記載はない。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000232.html
+1566,application,妊婦給付認定申請書に、本人確認書類、振込口座が分かる書類、その他村長が必要と認める書類を添えて申請する。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000616.html
+1566,condition,対象は妊婦であって、申請時及び届出時に村に住民登録がある者。居住（住民登録）要件のみで、所得制限や年齢・保険加入の要件は記載されていない。,https://www.niijima.com/reiki_int/reiki_honbun/g158RG00000616.html
+1568,application,申請書類一式（様式）を入手のうえ、新島村役場企画財政課企画調整室（テクラス担当）宛に提出する。提出には必着の受付期間が設けられる。,https://www.niijima.com/soshiki/kikakuzaiseika/news/tekuras-2025.html
+1783,application,申請先は新島村役場民生課。身体障害者手帳または愛の手帳、健康保険証（後期高齢者医療被保険者証を含む）、印鑑、本人の区市町村民税（非）課税証明書等を持参して申請する。,https://www.niijima.com/kurashi/hoken_nenkin/fukushi/shougaisha/iryoujoseiseido.html
+1823,application,医療機関で予防接種を受け全額を支払った後、新島村さわやか健康センターの窓口で助成申請を行う。申請には、住所地を証明する書類、ワクチンの種類が記載された支払明細書等の接種を証明する書類、医療機関発行の領収書の原本、振込先が分かる書類（通帳の写し等）が必要。,https://www.niijima.com/facility/health-center_clinic/sawayakakenkou-center/news/2024-0325-1059-112.html
+1870,application,申請の窓口は新島村役場住民年金係、若郷支所、式根島支所。申請には印鑑、年金手帳、学生納付特例の場合は学生証、失業している場合は雇用保険受給資格者証や離職票が必要。,https://www.niijima.com/kurashi/hoken_nenkin/kokuminnenkin.html
+2252,condition,国民健康保険（後期高齢者医療を含む）に加入している方が死亡したときに支給される。,https://www.niijima.com/kurashi/hoken_nenkin/kokuminkenkouhoken.html
+2342,condition,病院の窓口で支払った額が、法で定められた限度額（世帯の所得状況や年齢構成により異なる）を超えて高額になった場合に、申請により超えた額の払い戻しを受けられる。,https://www.niijima.com/kurashi/hoken_nenkin/kokuminkenkouhoken.html

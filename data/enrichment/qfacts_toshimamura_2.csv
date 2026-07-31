@@ -1,0 +1,5 @@
+program_id,fact_type,value,evidence_url
+1670,condition,当村に住所を有し、かつ現に在住している妊娠中の女性で、出産後引き続き1年以上当村に在住することが確実と見込まれる方が対象。流産を含む妊娠後85日以上の出産が対象となる。,https://www.toshimamura.org/life/marriage/birth.html
+1869,application,申請先は利島村役場 住民課。申請の際は印鑑、年金手帳のほか、学生納付特例を申請する場合は学生証、失業している場合は雇用保険受給資格者証や離職票が必要。,https://www.toshimamura.org/life/pension/pension.html
+2251,condition,国民健康保険に加入している方が死亡したときに、葬祭を行った方に対して支給される。,https://www.toshimamura.org/life/pension/insurance.html
+2341,condition,病院の窓口で支払った額が高額になった場合が対象で、申請により、世帯の所得状況や年齢構成によって定められた限度額を超えた額が払い戻される。,https://www.toshimamura.org/life/pension/insurance.html

@@ -1,0 +1,12 @@
+program_id,fact_type,value,evidence_url
+1550,application,福祉けんこう課けんこう係の窓口で申請し、受け取った「風しん抗体検査申込書」を持参して検査を受けます。郵送・オンライン申請についての記載はありません。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/huusinnyobou.html
+1550,condition,接種日現在、大島町に住所を有する19歳以上の方が対象で、妊娠を希望する女性、その同居者、または妊婦と同居している方のいずれかに該当することが要件です。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/huusinnyobou.html
+1551,condition,1回目は生後12ヶ月から24ヶ月に至るまでの期間、2回目は小学校就学前の1年間（年長児）が接種対象です。既におたふくかぜにかかった方は対象外です。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/otahuku.html
+1552,application,大島医療センターで受診する場合は電話予約（予約専用 04992-2-2346）、巡回健診で受診する場合は大島町役場の福祉けんこう課・住民課の窓口へ申請します。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/39made.html
+1552,condition,大島町に住民登録があり39歳までの方が対象です。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/39made.html
+1553,application,大島医療センターに電話予約（予約専用 04992-2-2346、午後1時30分～4時30分）して受診します。所管は福祉けんこう課けんこう係です。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/hepatitis.html
+1553,condition,今年度中に40歳になる方、または今年度中に41歳以上になる方で職場等で受診機会のない方が対象です。大島町に住民登録があることが要件で、過去に一度検査を受けたことのある方は対象外です。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/hepatitis.html
+1554,application,実施医療機関の大島医療センターに電話予約（予約専用 04992-2-2346、午前9時～午後3時）して接種します。予診票は65歳の誕生日前月末頃に発送され、所管は福祉けんこう課けんこう係です。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/haienkyukinwaku.html
+1554,condition,接種当日に65歳の方（65歳の誕生日の前日から66歳の誕生日の前日まで）、または60歳以上65歳未満で心臓・腎臓・呼吸器機能もしくはHIVによる免疫機能に重度の障害がある方が対象です。これまでに高齢者肺炎球菌ワクチンを接種したことがない方に限ります。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/haienkyukinwaku.html
+2250,condition,国民健康保険の被保険者が亡くなった場合に、葬祭を行った方に対して葬祭費が支給されます。,https://www.town.oshima.tokyo.jp/soshiki/jumin/sousaihi.html
+2687,condition,大島医療センターの医師の判断により島外の医療機関で出産しなければならない方で、医師から証明書の交付を受けた方が対象です。対象者は出産前に大島医療センター産婦人科で最低1回健診を受診していることが必要です。,https://www.town.oshima.tokyo.jp/soshiki/kenkou/ninpusien.html
