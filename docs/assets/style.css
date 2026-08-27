@@ -241,10 +241,22 @@ ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);marg
 .chart-pr-row .prbox{flex:0 0 auto;width:100%;max-width:640px}
 }
 footer .copy{margin:.3rem 0 0}
-.doc h2{font-size:var(--fs-h2)}
+.doc h2{font-size:var(--fs-h2);margin-top:2rem;padding-bottom:.35rem;border-bottom:2px solid var(--badge)}
 .doc .lead{margin-bottom:1rem}
 ul.plainlist{margin:.3rem 0 .3rem 1.1rem;padding:0}
 ul.plainlist li{margin:.2rem 0}
+/* ── 特集(/tokushu/)の可読性 ── */
+.doc .notice{font-size:var(--fs-lg);line-height:1.7;margin:1rem 0 1.5rem}
+.doc .keypoint{background:var(--badge);border-left:4px solid var(--accent);border-radius:var(--radius-sm);padding:.75rem .95rem;margin:1rem 0;font-size:var(--fs-lg);line-height:1.75}
+.doc .keypoint strong{color:var(--accent)}
+.doc ul.plainlist{margin:.5rem 0 1rem 1.25rem}
+.doc ul.plainlist li{margin:.4rem 0;line-height:1.7}
+.doc table.cmp{margin:.2rem 0 .4rem}
+.doc .srcbox{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.7rem .95rem .7rem 1.35rem;margin:.5rem 0 1rem}
+.doc .srcbox li{margin:.4rem 0}
+.doc .srcbox li a{word-break:break-word}
+ul.guidegrid li{transition:border-color .12s ease,box-shadow .12s ease}
+ul.guidegrid li:hover{border-color:var(--accent);box-shadow:0 1px 6px rgba(21,88,214,.12)}
 
 /* ── ライフイベント・アクセント ── */
 .badge[style*="--pc"]{background:color-mix(in srgb,var(--pc) 16%,#fff);color:color-mix(in srgb,var(--pc) 72%,#111)}

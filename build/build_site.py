@@ -2615,7 +2615,7 @@ def build_features():
 <h1>特集｜注目の給付金・補助金・支援制度</h1>
 <p class="lead">災害や制度改正など、いま関心の高いテーマの給付金・補助金・支援制度を、公式情報をもとに1本ずつ整理してまとめる特設コーナーです。
 当サイト本体は東京都62自治体のくらしの制度を扱っていますが、こちらは全国的で時事性の高いテーマも対象にしています。</p>
-<p class="note">※各記事は発災・改正時点の情報をまとめたものです。金額・対象・受付期限・適用地域は日々更新されます。
+<p class="notice">各記事は制度の公表・改正時点の情報をまとめたものです。金額・対象・受付期限は年度や自治体によって変わります。
 実際の利用時は必ず各制度の<strong>公式ページ・自治体窓口</strong>で最新情報をご確認ください（<a href="/disclaimer/">免責事項</a>）。</p>
 <h2>公開中の特集</h2>
 <ul class="cmplist guidegrid">{cards}</ul>
@@ -2631,16 +2631,16 @@ def build_features():
         slug = f["slug"]; updated = f["updated"]
         with open(os.path.join(ROOT, "content", "tokushu", f["body_file"]), encoding="utf-8") as fp:
             article_html = fp.read()
-        alert = (f'<p class="note"><strong>最終更新日：{esc(updated)}</strong>／この特集は発災・公表時点の情報をまとめたものです。'
-                 '金額・対象・受付期限・適用市町村は日々更新されます。'
-                 'ご自身が対象になるかは、末尾の出典（公式ページ）と自治体の窓口で必ず最新情報をご確認ください'
+        alert = (f'<p class="notice"><strong>最終更新日：{esc(updated)}</strong>／この特集は制度の公表・改正時点の情報をまとめたものです。'
+                 '金額・対象・受付期限は年度や自治体によって変わります。'
+                 'ご自身が対象になるかは、末尾の出典（公式ページ）や自治体の窓口で必ず最新情報をご確認ください'
                  '（<a href="/disclaimer/">免責事項</a>）。</p>')
         faq = f.get("faq") or []
         faq_html = (f'<h2>{ic("help","hi")}よくある質問</h2>{faq_table_html(faq)}' if faq else "")
         src_items = "".join(
             f'<li><a href="{esc(u)}" rel="nofollow noopener" target="_blank">{esc(lab)}</a></li>'
             for lab,u in f.get("sources", []))
-        sources_html = (f'<h2>出典（公式情報）</h2><ul class="plainlist">{src_items}</ul>' if src_items else "")
+        sources_html = (f'<h2>出典（公式情報）</h2><ul class="srcbox">{src_items}</ul>' if src_items else "")
         body = wrap(f"""
 <span class="badge">{esc(f["badge"])}</span>
 <h1>{esc(f["h1"])}</h1>
@@ -3337,10 +3337,22 @@ ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);marg
 .chart-pr-row .prbox{flex:0 0 auto;width:100%;max-width:640px}
 }
 footer .copy{margin:.3rem 0 0}
-.doc h2{font-size:var(--fs-h2)}
+.doc h2{font-size:var(--fs-h2);margin-top:2rem;padding-bottom:.35rem;border-bottom:2px solid var(--badge)}
 .doc .lead{margin-bottom:1rem}
 ul.plainlist{margin:.3rem 0 .3rem 1.1rem;padding:0}
 ul.plainlist li{margin:.2rem 0}
+/* ── 特集(/tokushu/)の可読性 ── */
+.doc .notice{font-size:var(--fs-lg);line-height:1.7;margin:1rem 0 1.5rem}
+.doc .keypoint{background:var(--badge);border-left:4px solid var(--accent);border-radius:var(--radius-sm);padding:.75rem .95rem;margin:1rem 0;font-size:var(--fs-lg);line-height:1.75}
+.doc .keypoint strong{color:var(--accent)}
+.doc ul.plainlist{margin:.5rem 0 1rem 1.25rem}
+.doc ul.plainlist li{margin:.4rem 0;line-height:1.7}
+.doc table.cmp{margin:.2rem 0 .4rem}
+.doc .srcbox{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.7rem .95rem .7rem 1.35rem;margin:.5rem 0 1rem}
+.doc .srcbox li{margin:.4rem 0}
+.doc .srcbox li a{word-break:break-word}
+ul.guidegrid li{transition:border-color .12s ease,box-shadow .12s ease}
+ul.guidegrid li:hover{border-color:var(--accent);box-shadow:0 1px 6px rgba(21,88,214,.12)}
 
 /* ── ライフイベント・アクセント ── */
 .badge[style*="--pc"]{background:color-mix(in srgb,var(--pc) 16%,#fff);color:color-mix(in srgb,var(--pc) 72%,#111)}
