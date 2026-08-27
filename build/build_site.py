@@ -397,6 +397,70 @@ TOPIC_GUIDES = [
   ]},
 ]
 
+# ── 特集（/tokushu/）＝注目度の高い時事テーマの特設セクション ─────────────────
+# 東京都62自治体の「恒常制度」を扱う本体（DB由来）とは切り離した、非DBの編集記事。
+# 災害支援・物価高対策など、全国的で鮮度が命のテーマを1本ずつ手書きで公開する。
+# 復元パーサ(rebuild_db_from_docs.py)は docs/area/tokyo/.../seido/ しか見ないため、
+# ここを追加してもラウンドトリップ検証(verify.sh)には影響しない。
+# body_file: content/tokushu/<file> のHTML断片（<h2>以降の本文のみ。badge/h1/leadはメタで付与）。
+# updated : 記事ごとの最終更新日（ガイドの一括 GUIDE_UPDATED とは別に個別管理する）。
+# sources : (ラベル, 公式URL) の一次情報リンク。記事末尾に「出典（公式情報）」として掲載。
+SPECIAL_FEATURES = [
+ {"slug":"2026-kumamoto-jishin-shien",
+  "badge":"災害支援・熊本地震",
+  "updated":"2026-08-27",
+  "body_file":"2026-kumamoto-jishin-shien.html",
+  "h1":"令和8年熊本地震で使える給付・補助・支援制度まとめ（2026年）",
+  "title":"令和8年熊本地震の被災者支援まとめ｜生活再建支援金・見舞金・応急修理・事業者支援",
+  "description":"令和8年熊本地震（2026年7月28日）の被災者が使える給付・補助・支援制度を、被災者生活再建支援金（最大300万円）・災害弔慰金・住宅応急修理・中小企業向けの100%保証など、公式情報をもとに整理しました。罹災証明書の被害区分別の目安つき。",
+  "lead":"令和8年熊本地震（2026年7月28日）の被災者向けに、国・県・市町村が用意する給付金・補助・支援制度を整理しました。金額の大きい支援の多くは既存の法律を今回の災害に適用したもので、まずは市町村での罹災証明書の申請が出発点になります。",
+  "faq":[
+    ("被災者生活再建支援金はいくらもらえますか？",
+     "被害の程度（基礎支援金）と再建方法（加算支援金）に応じて、複数人世帯で最大300万円（全壊・解体・長期避難で建設・購入する場合）が目安です。単数世帯はその3/4になります。申請には市町村が発行する罹災証明書が必要です。"),
+    ("まず何から手続きすればよいですか？",
+     "お住まいの市町村に罹災証明書を申請し、住宅の被害区分（全壊・大規模半壊・中規模半壊など）の判定を受けるのが最初の一歩です。多くの支援制度がこの罹災証明書を前提にしています。"),
+    ("今回の地震で新しく作られた支援はありますか？",
+     "中小企業向けに、八代市・宇城市・御船町・嘉島町・氷川町の5市町を対象とした災害関係保証（100%保証・保証限度額最大2.8億円）や、県連携の高補助率のなりわい再建支援補助金などが本災害に合わせて発動しています。自治体独自の災害見舞金（熊本市は全壊5万円・半壊3万円）もあります。"),
+    ("情報はどこで確認すればよいですか？",
+     "本ページ末尾の出典（熊本県・熊本市・総務省・経済産業省など）の公式ページで最新情報を確認してください。金額・対象・受付期限は随時更新されます。"),
+  ],
+  "sources":[
+    ("熊本県：被災者生活再建支援金について","https://www.pref.kumamoto.jp/soshiki/27/276299.html"),
+    ("熊本市：被災者支援制度のご案内（冊子）","https://www.city.kumamoto.jp/kiji00372110/"),
+    ("熊本市：災害見舞金等の支給について","https://www.city.kumamoto.jp/kiji00372220/index.html"),
+    ("総務省：令和8年熊本地震 生活支援窓口案内（PDF）","https://www.soumu.go.jp/main_content/001084949.pdf"),
+    ("経済産業省：被災中小企業・小規模事業者支援措置","https://www.meti.go.jp/press/20260729003.html"),
+    ("気象庁：令和8年熊本地震 ポータルサイト","https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html"),
+    ("赤い羽根共同募金：令和8年熊本地震","https://www.akaihane.or.jp/saigai/2026kumamoto_earthquake/"),
+  ]},
+ {"slug":"2026-chiba-gouu-shien",
+  "badge":"災害支援・千葉豪雨",
+  "updated":"2026-08-27",
+  "body_file":"2026-chiba-gouu-shien.html",
+  "h1":"令和8年8月千葉豪雨で使える給付・補助・支援制度まとめ（2026年）",
+  "title":"令和8年8月千葉豪雨の被災者支援まとめ｜生活再建支援金・見舞金・応急修理・減免",
+  "description":"令和8年8月千葉豪雨（2026年8月13日〜、災害救助法21市4町適用）の被災者が使える給付・補助・支援制度を、被災者生活再建支援金・県独自の支援金・柏市の見舞金やポータブルクーラー無償貸出（新設）・住宅応急修理・各種減免まで公式情報をもとに整理しました。",
+  "lead":"令和8年8月千葉豪雨（2026年8月13日からの大雨）の被災者向けに、国・県・市町村の給付金・補助・支援制度を整理しました。床上浸水か床下浸水か、半壊以上かどうかで使える制度が変わるため、まずは市町村での罹災証明書の申請が出発点になります。",
+  "faq":[
+    ("床上浸水でも支援は受けられますか？",
+     "床上浸水は住宅の応急修理や自治体の災害見舞金（柏市は床上浸水30,000円）、上下水道料金の減免などの対象になり得ます。被害の程度に応じて千葉県独自の支援金が受けられる場合もあります。まずは市町村に罹災証明書を申請してください。"),
+    ("被災者生活再建支援金（最大300万円）は使えますか？",
+     "被災者生活再建支援法が適用された市町村で、住宅が全壊するなど一定以上の被害を受けた世帯が対象です。適用の有無・時期は各市で順次公表されているため、お住まいの市の最新のお知らせを確認してください。国の対象外の世帯には千葉県独自の補完的な支援金があります。"),
+    ("今回の豪雨で新しく作られた支援はありますか？",
+     "柏市では、罹災証明書を申請しエアコンが破損した世帯を対象に、ポータブルクーラーを無償貸出する制度（原則2週間・1世帯1台1回限り）を新設しました。入浴施設の無料開放なども行われています。"),
+    ("情報はどこで確認すればよいですか？",
+     "本ページ末尾の出典（千葉県・柏市・総務省・内閣府など）の公式ページで最新情報を確認してください。適用市町村・金額・受付期限は随時更新されます。"),
+  ],
+  "sources":[
+    ("千葉県：令和8年8月千葉豪雨に対する取組","https://www.pref.chiba.lg.jp/bousaik/press/2026/r8chibagouu-torikumi0818.html"),
+    ("千葉県：災害義援金の募集について","https://www.pref.chiba.lg.jp/bousaik/press/2026/r8-chibagouu-gienkin.html"),
+    ("柏市：被災された方に向けた支援情報まとめ","https://www.city.kashiwa.lg.jp/bosaianzen/anshinanzen/hisaishien/r808chiba_gou.html"),
+    ("総務省：令和8年8月千葉豪雨 生活支援窓口案内（PDF）","https://www.soumu.go.jp/main_content/001087238.pdf"),
+    ("内閣府（防災）：災害救助法の適用について（PDF）","https://www.bousai.go.jp/pdf/260814.pdf"),
+    ("国土交通省：令和8年8月千葉豪雨による被害状況等","https://www.mlit.go.jp/saigai/saigai_260813.html"),
+  ]},
+]
+
 # ライフイベント別メタ（目的・年代の発見導線／カラー＝検証済みパレット slot1-5／アイコン）
 # 第2要素は旧・年代ラベル（見出しと重複するためカードでは非表示。互換のためタプル位置は維持）
 EV_META = {
@@ -1309,6 +1373,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <a href="/hikaku/">制度を比較</a>
 <a href="/kurashi-data/">暮らしデータ</a>
 <a href="/guide/">ガイド</a>
+<a href="/tokushu/">特集</a>
 <a href="/#area">自治体一覧</a>
 </nav></div></header>
 <main>
@@ -1318,7 +1383,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <footer class="site">
 <p class="totop"><a href="#top">{CHEV_U} ページの先頭へ</a></p>
 <nav class="fnav" aria-label="サイト情報">
-<a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/kurashi-data/">暮らしデータ</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>{FOOTER_CONTACT_HTML}
+<a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/kurashi-data/">暮らしデータ</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/tokushu/">特集</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>{FOOTER_CONTACT_HTML}
 </nav>
 <p class="copy">© {ESTABLISHED} {esc(SITE_SHORT)}（東京都62自治体・出典付き / 最終確認日を明記）</p>
 </footer>
@@ -2498,6 +2563,83 @@ def build_guides():
              jsonld=jsonld, breadcrumb=bc, body=body)
         sitemap_urls.append((f"/guide/{slug}/","0.6"))
 
+# ── 特集（/tokushu/）─────────────────────────────────────────────────────────
+def feature_article_ld(headline, canonical, updated):
+    """特集記事用の Article 構造化データ。日付は記事ごとの updated（最終更新日）を使う。"""
+    return {"@context":"https://schema.org","@type":"Article",
+      "headline":headline,"inLanguage":"ja",
+      "datePublished":updated,"dateModified":updated,
+      "mainEntityOfPage":{"@type":"WebPage","@id":BASE_URL+canonical},
+      "author":{"@type":"Organization","name":SITE_SHORT,"url":BASE_URL+"/"},
+      "publisher":{"@type":"Organization","@id":BASE_URL+"/#org","name":SITE_SHORT,
+                   "logo":{"@type":"ImageObject","url":BASE_URL+"/assets/logo-mark.svg"}}}
+
+def build_features():
+    """注目度の高い時事テーマ（災害支援など）の特設セクション。本体のDB制度とは分離した
+    非DBの編集記事で、記事ごとに最終更新日と公式出典を明記する。"""
+    def wrap(inner):
+        return ('<article class="doc">'+inner+
+                f'<p class="backtop"><a href="/tokushu/">{CHEV_L} 特集の一覧にもどる</a></p></article>')
+    latest = max((f["updated"] for f in SPECIAL_FEATURES), default=GUIDE_UPDATED)
+
+    # ── 特集ハブ ──
+    cards = "".join(
+        f'<li><a href="/tokushu/{f["slug"]}/"><strong>{esc(f["h1"])}</strong>'
+        f'<span class="pdesc">{esc(f["badge"])}／最終更新 {esc(f["updated"])}</span></a></li>'
+        for f in SPECIAL_FEATURES)
+    hub = wrap(f"""
+<h1>特集｜注目の給付金・補助金・支援制度</h1>
+<p class="lead">災害や制度改正など、いま関心の高いテーマの給付金・補助金・支援制度を、公式情報をもとに1本ずつ整理してまとめる特設コーナーです。
+当サイト本体は東京都62自治体のくらしの制度を扱っていますが、こちらは全国的で時事性の高いテーマも対象にしています。</p>
+<p class="note">※各記事は発災・改正時点の情報をまとめたものです。金額・対象・受付期限・適用地域は日々更新されます。
+実際の利用時は必ず各制度の<strong>公式ページ・自治体窓口</strong>で最新情報をご確認ください（<a href="/disclaimer/">免責事項</a>）。</p>
+<h2>公開中の特集</h2>
+<ul class="cmplist guidegrid">{cards}</ul>
+""")
+    page(path="/tokushu/index.html",
+         title=f"特集｜注目の給付金・補助金・支援制度｜{SITE_NAME}",
+         description="災害支援や制度改正など、いま注目度の高い給付金・補助金・支援制度を公式情報をもとにまとめた特設コーナー。令和8年熊本地震・令和8年8月千葉豪雨の被災者支援などを掲載しています。",
+         canonical="/tokushu/", breadcrumb=[("トップ","/"),("特集",None)], body=hub)
+    sitemap_urls.append(("/tokushu/","0.7", latest))
+
+    # ── 個別特集記事（本文は content/tokushu/<body_file> を手書き）──
+    for f in SPECIAL_FEATURES:
+        slug = f["slug"]; updated = f["updated"]
+        with open(os.path.join(ROOT, "content", "tokushu", f["body_file"]), encoding="utf-8") as fp:
+            article_html = fp.read()
+        alert = (f'<p class="note"><strong>最終更新日：{esc(updated)}</strong>／この特集は発災・公表時点の情報をまとめたものです。'
+                 '金額・対象・受付期限・適用市町村は日々更新されます。'
+                 'ご自身が対象になるかは、末尾の出典（公式ページ）と自治体の窓口で必ず最新情報をご確認ください'
+                 '（<a href="/disclaimer/">免責事項</a>）。</p>')
+        faq = f.get("faq") or []
+        faq_html = (f'<h2>{ic("help","hi")}よくある質問</h2>{faq_table_html(faq)}' if faq else "")
+        src_items = "".join(
+            f'<li><a href="{esc(u)}" rel="nofollow noopener" target="_blank">{esc(lab)}</a></li>'
+            for lab,u in f.get("sources", []))
+        sources_html = (f'<h2>出典（公式情報）</h2><ul class="plainlist">{src_items}</ul>' if src_items else "")
+        body = wrap(f"""
+<span class="badge">{esc(f["badge"])}</span>
+<h1>{esc(f["h1"])}</h1>
+<p class="lead">{esc(f["lead"])}</p>
+{alert}
+{article_html}
+{sources_html}
+{faq_html}
+""")
+        jsonld = [feature_article_ld(f["h1"], f"/tokushu/{slug}/", updated)]
+        if faq:
+            jsonld.append({"@context":"https://schema.org","@type":"FAQPage",
+              "mainEntity":[{"@type":"Question","name":q,
+                "acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]})
+        page(path=f"/tokushu/{slug}/index.html",
+             title=f'{f["title"]}｜{SITE_SHORT}',
+             description=f["description"],
+             canonical=f"/tokushu/{slug}/",
+             og_type="article", article_meta=(updated, updated),
+             jsonld=jsonld,
+             breadcrumb=[("トップ","/"),("特集","/tokushu/"),(f["badge"],None)], body=body)
+        sitemap_urls.append((f"/tokushu/{slug}/","0.7", updated))
+
 # ── トップ ──────────────────────────────────────────────────────────────────
 def build_home(muni_stats, score, cat_entries=None):
     _tj={"special_ward":"区","city":"市","town":"町","village":"村"}
@@ -2880,6 +3022,7 @@ def main():
         build_ranking(ev, score, avg)
     build_static_pages()
     build_guides()
+    build_features()
     kd_n = build_kurashi_data()
     build_home(muni_stats, score, cat_entries)
     write_search_index(search_progs, cat_counts)
