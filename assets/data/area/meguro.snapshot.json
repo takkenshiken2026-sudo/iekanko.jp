@@ -1,0 +1,516 @@
+{
+  "slug": "meguro",
+  "name": "目黒区",
+  "benefits": [
+    {
+      "cid": "child_iwai",
+      "label": "出産・入学祝金",
+      "unit": "支給額",
+      "group": "childcare",
+      "group_label": "子育て",
+      "yen": 80000,
+      "href": "/area/tokyo/meguro/seido/2073/",
+      "rank": 2,
+      "n_ranked": 8,
+      "hikaku": "/hikaku/child_iwai/"
+    },
+    {
+      "cid": "house_taishin",
+      "label": "耐震改修助成",
+      "unit": "改修上限",
+      "group": "moving",
+      "group_label": "住まい",
+      "yen": 1800000,
+      "href": "/area/tokyo/meguro/seido/1964/",
+      "rank": 7,
+      "n_ranked": 30,
+      "hikaku": "/hikaku/house_taishin/"
+    },
+    {
+      "cid": "eld_hochoki",
+      "label": "補聴器助成",
+      "unit": "購入上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 70000,
+      "href": "/area/tokyo/meguro/seido/275/",
+      "rank": 14,
+      "n_ranked": 38,
+      "hikaku": "/hikaku/eld_hochoki/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/meguro/seido/2583/",
+      "rank": 30,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 1060000,
+      "median_commercial_yen_sqm": 1620000,
+      "n_points": 61,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 286
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 670,
+        "avg_price": 83058805,
+        "avg_area": 56.2,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 558,
+          "avg_price": 65954838,
+          "avg_area": 56.7,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 546,
+          "avg_price": 72806959,
+          "avg_area": 59.4,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 567,
+          "avg_price": 71929276,
+          "avg_area": 56.7,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 670,
+          "avg_price": 83058805,
+          "avg_area": 56.2,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 185,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "neighbors": [
+    {
+      "slug": "shibuya",
+      "name": "渋谷区",
+      "condo_avg_price": 117978483,
+      "land_median_yen_sqm": 1590000,
+      "station_sum_top5": 1774953
+    },
+    {
+      "slug": "shinagawa",
+      "name": "品川区",
+      "condo_avg_price": 83644444,
+      "land_median_yen_sqm": 930000,
+      "station_sum_top5": 1266868
+    },
+    {
+      "slug": "setagaya",
+      "name": "世田谷区",
+      "condo_avg_price": 69472415,
+      "land_median_yen_sqm": 742000,
+      "station_sum_top5": 613772
+    }
+  ],
+  "compare": {
+    "condo": [
+      {
+        "key": "self",
+        "slug": "meguro",
+        "name": "目黒区",
+        "value": 83058805,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "shibuya",
+        "name": "渋谷区",
+        "value": 117978483,
+        "href": "/area/tokyo/shibuya/"
+      },
+      {
+        "key": "near",
+        "slug": "shinagawa",
+        "name": "品川区",
+        "value": 83644444,
+        "href": "/area/tokyo/shinagawa/"
+      },
+      {
+        "key": "near",
+        "slug": "setagaya",
+        "name": "世田谷区",
+        "value": 69472415,
+        "href": "/area/tokyo/setagaya/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 44987723,
+        "href": null
+      }
+    ],
+    "land": [
+      {
+        "key": "self",
+        "slug": "meguro",
+        "name": "目黒区",
+        "value": 1060000,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "shibuya",
+        "name": "渋谷区",
+        "value": 1590000,
+        "href": "/area/tokyo/shibuya/"
+      },
+      {
+        "key": "near",
+        "slug": "shinagawa",
+        "name": "品川区",
+        "value": 930000,
+        "href": "/area/tokyo/shinagawa/"
+      },
+      {
+        "key": "near",
+        "slug": "setagaya",
+        "name": "世田谷区",
+        "value": 742000,
+        "href": "/area/tokyo/setagaya/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "meguro",
+        "name": "目黒区",
+        "value": 673009,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "shibuya",
+        "name": "渋谷区",
+        "value": 1774953,
+        "href": "/area/tokyo/shibuya/"
+      },
+      {
+        "key": "near",
+        "slug": "shinagawa",
+        "name": "品川区",
+        "value": 1266868,
+        "href": "/area/tokyo/shinagawa/"
+      },
+      {
+        "key": "near",
+        "slug": "setagaya",
+        "name": "世田谷区",
+        "value": 613772,
+        "href": "/area/tokyo/setagaya/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
+        "href": null
+      }
+    ]
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 10,
+    "top": [
+      {
+        "name": "中目黒",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 363724,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 196807
+          },
+          {
+            "year": 2019,
+            "passengers": 196777
+          },
+          {
+            "year": 2020,
+            "passengers": 131668
+          },
+          {
+            "year": 2021,
+            "passengers": 140240
+          },
+          {
+            "year": 2022,
+            "passengers": 155782
+          },
+          {
+            "year": 2023,
+            "passengers": 363724
+          }
+        ]
+      },
+      {
+        "name": "自由が丘",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 132419,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 158014
+          },
+          {
+            "year": 2019,
+            "passengers": 156160
+          },
+          {
+            "year": 2020,
+            "passengers": 104261
+          },
+          {
+            "year": 2021,
+            "passengers": 116068
+          },
+          {
+            "year": 2022,
+            "passengers": 125005
+          },
+          {
+            "year": 2023,
+            "passengers": 132419
+          }
+        ]
+      },
+      {
+        "name": "学芸大学",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 70598,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 78251
+          },
+          {
+            "year": 2019,
+            "passengers": 77850
+          },
+          {
+            "year": 2020,
+            "passengers": 57308
+          },
+          {
+            "year": 2021,
+            "passengers": 62867
+          },
+          {
+            "year": 2022,
+            "passengers": 67776
+          },
+          {
+            "year": 2023,
+            "passengers": 70598
+          }
+        ]
+      },
+      {
+        "name": "池尻大橋",
+        "company": "東急電鉄",
+        "line": "田園都市線",
+        "passengers": 60918,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 63346
+          },
+          {
+            "year": 2019,
+            "passengers": 63364
+          },
+          {
+            "year": 2020,
+            "passengers": 47659
+          },
+          {
+            "year": 2021,
+            "passengers": 527
+          },
+          {
+            "year": 2022,
+            "passengers": 56812
+          },
+          {
+            "year": 2023,
+            "passengers": 60918
+          }
+        ]
+      },
+      {
+        "name": "都立大学",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 45350,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 49233
+          },
+          {
+            "year": 2019,
+            "passengers": 49045
+          },
+          {
+            "year": 2020,
+            "passengers": 35277
+          },
+          {
+            "year": 2021,
+            "passengers": 40570
+          },
+          {
+            "year": 2022,
+            "passengers": 44353
+          },
+          {
+            "year": 2023,
+            "passengers": 45350
+          }
+        ]
+      },
+      {
+        "name": "大岡山",
+        "company": "東急電鉄",
+        "line": "目黒線",
+        "passengers": 45216,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 51937
+          },
+          {
+            "year": 2019,
+            "passengers": 51126
+          },
+          {
+            "year": 2020,
+            "passengers": 30580
+          },
+          {
+            "year": 2021,
+            "passengers": 36190
+          },
+          {
+            "year": 2022,
+            "passengers": 41367
+          },
+          {
+            "year": 2023,
+            "passengers": 45216
+          }
+        ]
+      },
+      {
+        "name": "駒場東大前",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 34257,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 39099
+          },
+          {
+            "year": 2019,
+            "passengers": 37851
+          },
+          {
+            "year": 2020,
+            "passengers": 18480
+          },
+          {
+            "year": 2021,
+            "passengers": 24995
+          },
+          {
+            "year": 2022,
+            "passengers": 31775
+          },
+          {
+            "year": 2023,
+            "passengers": 34257
+          }
+        ]
+      },
+      {
+        "name": "祐天寺",
+        "company": "東急電鉄",
+        "line": "東横線",
+        "passengers": 28970,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 31962
+          },
+          {
+            "year": 2019,
+            "passengers": 32013
+          },
+          {
+            "year": 2020,
+            "passengers": 23296
+          },
+          {
+            "year": 2021,
+            "passengers": 25761
+          },
+          {
+            "year": 2022,
+            "passengers": 27927
+          },
+          {
+            "year": 2023,
+            "passengers": 28970
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 673009,
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 266
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

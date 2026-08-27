@@ -1,0 +1,509 @@
+{
+  "slug": "nerima",
+  "name": "練馬区",
+  "benefits": [
+    {
+      "cid": "child_iwai",
+      "label": "出産・入学祝金",
+      "unit": "支給額",
+      "group": "childcare",
+      "group_label": "子育て",
+      "yen": 100000,
+      "href": "/area/tokyo/nerima/seido/41/",
+      "rank": 1,
+      "n_ranked": 8,
+      "hikaku": "/hikaku/child_iwai/"
+    },
+    {
+      "cid": "house_taishin",
+      "label": "耐震改修助成",
+      "unit": "改修上限",
+      "group": "moving",
+      "group_label": "住まい",
+      "yen": 1300000,
+      "href": "/area/tokyo/nerima/seido/1996/",
+      "rank": 14,
+      "n_ranked": 30,
+      "hikaku": "/hikaku/house_taishin/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/nerima/seido/2574/",
+      "rank": 38,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    },
+    {
+      "cid": "eld_omutsu",
+      "label": "高齢者紙おむつ",
+      "unit": "月額上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 5400,
+      "href": "/area/tokyo/nerima/seido/457/",
+      "rank": 17,
+      "n_ranked": 23,
+      "hikaku": "/hikaku/eld_omutsu/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 449000,
+      "median_commercial_yen_sqm": 825500,
+      "n_points": 149,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 121
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 885,
+        "avg_price": 44791638,
+        "avg_area": 60.2,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 601,
+          "avg_price": 41316805,
+          "avg_area": 62.3,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 703,
+          "avg_price": 42710526,
+          "avg_area": 62.3,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 679,
+          "avg_price": 45770250,
+          "avg_area": 61.7,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 885,
+          "avg_price": 44791638,
+          "avg_area": 60.2,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 100,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "neighbors": [
+    {
+      "slug": "suginami",
+      "name": "杉並区",
+      "condo_avg_price": 54510259,
+      "land_median_yen_sqm": 653500,
+      "station_sum_top5": 454190
+    },
+    {
+      "slug": "nakano",
+      "name": "中野区",
+      "condo_avg_price": 58193474,
+      "land_median_yen_sqm": 670000,
+      "station_sum_top5": 229976
+    },
+    {
+      "slug": "itabashi",
+      "name": "板橋区",
+      "condo_avg_price": 41818921,
+      "land_median_yen_sqm": 504000,
+      "station_sum_top5": null
+    }
+  ],
+  "compare": {
+    "condo": [
+      {
+        "key": "self",
+        "slug": "nerima",
+        "name": "練馬区",
+        "value": 44791638,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "suginami",
+        "name": "杉並区",
+        "value": 54510259,
+        "href": "/area/tokyo/suginami/"
+      },
+      {
+        "key": "near",
+        "slug": "nakano",
+        "name": "中野区",
+        "value": 58193474,
+        "href": "/area/tokyo/nakano/"
+      },
+      {
+        "key": "near",
+        "slug": "itabashi",
+        "name": "板橋区",
+        "value": 41818921,
+        "href": "/area/tokyo/itabashi/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 44987723,
+        "href": null
+      }
+    ],
+    "land": [
+      {
+        "key": "self",
+        "slug": "nerima",
+        "name": "練馬区",
+        "value": 449000,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "suginami",
+        "name": "杉並区",
+        "value": 653500,
+        "href": "/area/tokyo/suginami/"
+      },
+      {
+        "key": "near",
+        "slug": "nakano",
+        "name": "中野区",
+        "value": 670000,
+        "href": "/area/tokyo/nakano/"
+      },
+      {
+        "key": "near",
+        "slug": "itabashi",
+        "name": "板橋区",
+        "value": 504000,
+        "href": "/area/tokyo/itabashi/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "nerima",
+        "name": "練馬区",
+        "value": 252990,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "suginami",
+        "name": "杉並区",
+        "value": 454190,
+        "href": "/area/tokyo/suginami/"
+      },
+      {
+        "key": "near",
+        "slug": "nakano",
+        "name": "中野区",
+        "value": 229976,
+        "href": "/area/tokyo/nakano/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
+        "href": null
+      }
+    ]
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 8,
+    "top": [
+      {
+        "name": "練馬",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 116257,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 132938
+          },
+          {
+            "year": 2019,
+            "passengers": 133700
+          },
+          {
+            "year": 2020,
+            "passengers": 96962
+          },
+          {
+            "year": 2021,
+            "passengers": 101327
+          },
+          {
+            "year": 2022,
+            "passengers": 110966
+          },
+          {
+            "year": 2023,
+            "passengers": 116257
+          }
+        ]
+      },
+      {
+        "name": "上石神井",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 39751,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 44959
+          },
+          {
+            "year": 2019,
+            "passengers": 44893
+          },
+          {
+            "year": 2020,
+            "passengers": 33457
+          },
+          {
+            "year": 2021,
+            "passengers": 35354
+          },
+          {
+            "year": 2022,
+            "passengers": 38002
+          },
+          {
+            "year": 2023,
+            "passengers": 39751
+          }
+        ]
+      },
+      {
+        "name": "中村橋",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 37326,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 40792
+          },
+          {
+            "year": 2019,
+            "passengers": 41021
+          },
+          {
+            "year": 2020,
+            "passengers": 31059
+          },
+          {
+            "year": 2021,
+            "passengers": 33149
+          },
+          {
+            "year": 2022,
+            "passengers": 35844
+          },
+          {
+            "year": 2023,
+            "passengers": 37326
+          }
+        ]
+      },
+      {
+        "name": "江古田",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 30837,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 34021
+          },
+          {
+            "year": 2019,
+            "passengers": 35267
+          },
+          {
+            "year": 2020,
+            "passengers": 20042
+          },
+          {
+            "year": 2021,
+            "passengers": 24432
+          },
+          {
+            "year": 2022,
+            "passengers": 28785
+          },
+          {
+            "year": 2023,
+            "passengers": 30837
+          }
+        ]
+      },
+      {
+        "name": "武蔵関",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 28819,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 31943
+          },
+          {
+            "year": 2019,
+            "passengers": 32351
+          },
+          {
+            "year": 2020,
+            "passengers": 24063
+          },
+          {
+            "year": 2021,
+            "passengers": 25619
+          },
+          {
+            "year": 2022,
+            "passengers": 27659
+          },
+          {
+            "year": 2023,
+            "passengers": 28819
+          }
+        ]
+      },
+      {
+        "name": "新江古田",
+        "company": "東京都",
+        "line": "12号線大江戸線",
+        "passengers": 27685,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 28824
+          },
+          {
+            "year": 2019,
+            "passengers": 30008
+          },
+          {
+            "year": 2020,
+            "passengers": 22998
+          },
+          {
+            "year": 2021,
+            "passengers": 24317
+          },
+          {
+            "year": 2022,
+            "passengers": 18317
+          },
+          {
+            "year": 2023,
+            "passengers": 27685
+          }
+        ]
+      },
+      {
+        "name": "富士見台",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 26662,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 27884
+          },
+          {
+            "year": 2019,
+            "passengers": 27936
+          },
+          {
+            "year": 2020,
+            "passengers": 21197
+          },
+          {
+            "year": 2021,
+            "passengers": 22957
+          },
+          {
+            "year": 2022,
+            "passengers": 25153
+          },
+          {
+            "year": 2023,
+            "passengers": 26662
+          }
+        ]
+      },
+      {
+        "name": "桜台",
+        "company": "西武鉄道",
+        "line": "池袋線",
+        "passengers": 14704,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 15087
+          },
+          {
+            "year": 2019,
+            "passengers": 14889
+          },
+          {
+            "year": 2020,
+            "passengers": 11932
+          },
+          {
+            "year": 2021,
+            "passengers": 13090
+          },
+          {
+            "year": 2022,
+            "passengers": 14154
+          },
+          {
+            "year": 2023,
+            "passengers": 14704
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 252990,
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 100
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

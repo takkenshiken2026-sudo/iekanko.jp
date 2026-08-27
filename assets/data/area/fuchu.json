@@ -1,0 +1,334 @@
+{
+  "city_code": "13206",
+  "name": "府中市",
+  "slug": "fuchu",
+  "db_slug": "fuchuu-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 310000,
+    "median_commercial_yen_sqm": 418000,
+    "n_points": 77,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 84
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 364,
+      "avg_price": 41578571,
+      "avg_area": 69.0,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 269,
+        "avg_price": 36888847,
+        "avg_area": 68.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 268,
+        "avg_price": 36981343,
+        "avg_area": 67.9,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 290,
+        "avg_price": 39210689,
+        "avg_area": 68.2,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 364,
+        "avg_price": 41578571,
+        "avg_area": 69.0,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 92,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 3650,
+    "recent_avg_price": 47796246
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 14,
+    "top": [
+      {
+        "name": "分倍河原",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 83916,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 95736
+          },
+          {
+            "year": 2019,
+            "passengers": 95121
+          },
+          {
+            "year": 2020,
+            "passengers": 69114
+          },
+          {
+            "year": 2021,
+            "passengers": 74388
+          },
+          {
+            "year": 2022,
+            "passengers": 80296
+          },
+          {
+            "year": 2023,
+            "passengers": 83916
+          }
+        ]
+      },
+      {
+        "name": "府中",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 79760,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 90316
+          },
+          {
+            "year": 2019,
+            "passengers": 88769
+          },
+          {
+            "year": 2020,
+            "passengers": 62986
+          },
+          {
+            "year": 2021,
+            "passengers": 69727
+          },
+          {
+            "year": 2022,
+            "passengers": 75924
+          },
+          {
+            "year": 2023,
+            "passengers": 79760
+          }
+        ]
+      },
+      {
+        "name": "府中本町",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 31194,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 34978
+          },
+          {
+            "year": 2019,
+            "passengers": 34978
+          },
+          {
+            "year": 2020,
+            "passengers": 21608
+          },
+          {
+            "year": 2021,
+            "passengers": 23864
+          },
+          {
+            "year": 2022,
+            "passengers": 28108
+          },
+          {
+            "year": 2023,
+            "passengers": 31194
+          }
+        ]
+      },
+      {
+        "name": "北府中",
+        "company": "東日本旅客鉄道",
+        "line": "武蔵野線",
+        "passengers": 25034,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 30552
+          },
+          {
+            "year": 2019,
+            "passengers": 30552
+          },
+          {
+            "year": 2020,
+            "passengers": 24836
+          },
+          {
+            "year": 2021,
+            "passengers": 24562
+          },
+          {
+            "year": 2022,
+            "passengers": 24102
+          },
+          {
+            "year": 2023,
+            "passengers": 25034
+          }
+        ]
+      },
+      {
+        "name": "中河原",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 23842,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 26088
+          },
+          {
+            "year": 2019,
+            "passengers": 25845
+          },
+          {
+            "year": 2020,
+            "passengers": 19987
+          },
+          {
+            "year": 2021,
+            "passengers": 21536
+          },
+          {
+            "year": 2022,
+            "passengers": 23040
+          },
+          {
+            "year": 2023,
+            "passengers": 23842
+          }
+        ]
+      },
+      {
+        "name": "武蔵野台",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 22002,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 26121
+          },
+          {
+            "year": 2019,
+            "passengers": 26232
+          },
+          {
+            "year": 2020,
+            "passengers": 18902
+          },
+          {
+            "year": 2021,
+            "passengers": 20000
+          },
+          {
+            "year": 2022,
+            "passengers": 21169
+          },
+          {
+            "year": 2023,
+            "passengers": 22002
+          }
+        ]
+      },
+      {
+        "name": "東府中",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 20507,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 21787
+          },
+          {
+            "year": 2019,
+            "passengers": 21274
+          },
+          {
+            "year": 2020,
+            "passengers": 15709
+          },
+          {
+            "year": 2021,
+            "passengers": 17490
+          },
+          {
+            "year": 2022,
+            "passengers": 19309
+          },
+          {
+            "year": 2023,
+            "passengers": 20507
+          }
+        ]
+      },
+      {
+        "name": "西府",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 19780,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 20718
+          },
+          {
+            "year": 2019,
+            "passengers": 20718
+          },
+          {
+            "year": 2020,
+            "passengers": 17096
+          },
+          {
+            "year": 2021,
+            "passengers": 17150
+          },
+          {
+            "year": 2022,
+            "passengers": 18184
+          },
+          {
+            "year": 2023,
+            "passengers": 19780
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 243746,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

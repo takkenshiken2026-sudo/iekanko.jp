@@ -1,0 +1,300 @@
+{
+  "slug": "musashino",
+  "name": "武蔵野市",
+  "benefits": [
+    {
+      "cid": "low_aircon",
+      "label": "エアコン設置助成",
+      "unit": "助成上限",
+      "group": "retirement_unemployment",
+      "group_label": "生活支援",
+      "yen": 100000,
+      "href": "/area/tokyo/musashino/seido/1079/",
+      "rank": 16,
+      "n_ranked": 20,
+      "hikaku": "/hikaku/low_aircon/"
+    },
+    {
+      "cid": "eld_hochoki",
+      "label": "補聴器助成",
+      "unit": "購入上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 50000,
+      "href": "/area/tokyo/musashino/seido/761/",
+      "rank": 20,
+      "n_ranked": 38,
+      "hikaku": "/hikaku/eld_hochoki/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 620000,
+      "median_commercial_yen_sqm": 1470000,
+      "n_points": 42,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 167
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 252,
+        "avg_price": 61023015,
+        "avg_area": 61.7,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 215,
+          "avg_price": 51906046,
+          "avg_area": 62.6,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 202,
+          "avg_price": 55618811,
+          "avg_area": 65.3,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 216,
+          "avg_price": 62331944,
+          "avg_area": 65.7,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 252,
+          "avg_price": 61023015,
+          "avg_area": 61.7,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 136,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "neighbors": [
+    {
+      "slug": "mitaka",
+      "name": "三鷹市",
+      "condo_avg_price": 54268609,
+      "land_median_yen_sqm": 452000,
+      "station_sum_top5": 193101
+    },
+    {
+      "slug": "nishitokyo",
+      "name": "西東京市",
+      "condo_avg_price": 39725345,
+      "land_median_yen_sqm": 312000,
+      "station_sum_top5": 103269
+    },
+    {
+      "slug": "chofu",
+      "name": "調布市",
+      "condo_avg_price": 43284541,
+      "land_median_yen_sqm": 405500,
+      "station_sum_top5": 282704
+    }
+  ],
+  "compare": {
+    "condo": [
+      {
+        "key": "self",
+        "slug": "musashino",
+        "name": "武蔵野市",
+        "value": 61023015,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "mitaka",
+        "name": "三鷹市",
+        "value": 54268609,
+        "href": "/area/tokyo/mitaka/"
+      },
+      {
+        "key": "near",
+        "slug": "nishitokyo",
+        "name": "西東京市",
+        "value": 39725345,
+        "href": "/area/tokyo/nishitokyo/"
+      },
+      {
+        "key": "near",
+        "slug": "chofu",
+        "name": "調布市",
+        "value": 43284541,
+        "href": "/area/tokyo/chofu/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 44987723,
+        "href": null
+      }
+    ],
+    "land": [
+      {
+        "key": "self",
+        "slug": "musashino",
+        "name": "武蔵野市",
+        "value": 620000,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "mitaka",
+        "name": "三鷹市",
+        "value": 452000,
+        "href": "/area/tokyo/mitaka/"
+      },
+      {
+        "key": "near",
+        "slug": "nishitokyo",
+        "name": "西東京市",
+        "value": 312000,
+        "href": "/area/tokyo/nishitokyo/"
+      },
+      {
+        "key": "near",
+        "slug": "chofu",
+        "name": "調布市",
+        "value": 405500,
+        "href": "/area/tokyo/chofu/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "musashino",
+        "name": "武蔵野市",
+        "value": 373106,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "mitaka",
+        "name": "三鷹市",
+        "value": 193101,
+        "href": "/area/tokyo/mitaka/"
+      },
+      {
+        "key": "near",
+        "slug": "nishitokyo",
+        "name": "西東京市",
+        "value": 103269,
+        "href": "/area/tokyo/nishitokyo/"
+      },
+      {
+        "key": "near",
+        "slug": "chofu",
+        "name": "調布市",
+        "value": 282704,
+        "href": "/area/tokyo/chofu/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
+        "href": null
+      }
+    ]
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 2,
+    "top": [
+      {
+        "name": "吉祥寺",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 250254,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 287370
+          },
+          {
+            "year": 2019,
+            "passengers": 287370
+          },
+          {
+            "year": 2020,
+            "passengers": 198638
+          },
+          {
+            "year": 2021,
+            "passengers": 215750
+          },
+          {
+            "year": 2022,
+            "passengers": 237730
+          },
+          {
+            "year": 2023,
+            "passengers": 250254
+          }
+        ]
+      },
+      {
+        "name": "武蔵境",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 122852,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 137970
+          },
+          {
+            "year": 2019,
+            "passengers": 137970
+          },
+          {
+            "year": 2020,
+            "passengers": 95194
+          },
+          {
+            "year": 2021,
+            "passengers": 103510
+          },
+          {
+            "year": 2022,
+            "passengers": 116492
+          },
+          {
+            "year": 2023,
+            "passengers": 122852
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 373106,
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 147
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

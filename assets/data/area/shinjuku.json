@@ -1,0 +1,334 @@
+{
+  "city_code": "13104",
+  "name": "新宿区",
+  "slug": "shinjuku",
+  "db_slug": "shinjuku-ku",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 930000,
+    "median_commercial_yen_sqm": 2800000,
+    "n_points": 108,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 251
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 1283,
+      "avg_price": 76579111,
+      "avg_area": 51.6,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 902,
+        "avg_price": 58303769,
+        "avg_area": 51.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 967,
+        "avg_price": 60713029,
+        "avg_area": 51.8,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 986,
+        "avg_price": 71257707,
+        "avg_area": 53.2,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 1283,
+        "avg_price": 76579111,
+        "avg_area": 51.6,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 170,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 8557,
+    "recent_avg_price": 86990452
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 30,
+    "top": [
+      {
+        "name": "新宿",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 1301204,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 1578732
+          },
+          {
+            "year": 2019,
+            "passengers": 1578732
+          },
+          {
+            "year": 2020,
+            "passengers": 954146
+          },
+          {
+            "year": 2021,
+            "passengers": 1044356
+          },
+          {
+            "year": 2022,
+            "passengers": 1205116
+          },
+          {
+            "year": 2023,
+            "passengers": 1301204
+          }
+        ]
+      },
+      {
+        "name": "高田馬場",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 351420,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 423374
+          },
+          {
+            "year": 2019,
+            "passengers": 423374
+          },
+          {
+            "year": 2020,
+            "passengers": 279088
+          },
+          {
+            "year": 2021,
+            "passengers": 301468
+          },
+          {
+            "year": 2022,
+            "passengers": 334530
+          },
+          {
+            "year": 2023,
+            "passengers": 351420
+          }
+        ]
+      },
+      {
+        "name": "西武新宿",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 143181,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 184573
+          },
+          {
+            "year": 2019,
+            "passengers": 183666
+          },
+          {
+            "year": 2020,
+            "passengers": 121462
+          },
+          {
+            "year": 2021,
+            "passengers": 122945
+          },
+          {
+            "year": 2022,
+            "passengers": 135139
+          },
+          {
+            "year": 2023,
+            "passengers": 143181
+          }
+        ]
+      },
+      {
+        "name": "新宿三丁目",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 142867,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 167437
+          },
+          {
+            "year": 2019,
+            "passengers": 165247
+          },
+          {
+            "year": 2020,
+            "passengers": 100585
+          },
+          {
+            "year": 2021,
+            "passengers": 110177
+          },
+          {
+            "year": 2022,
+            "passengers": 129191
+          },
+          {
+            "year": 2023,
+            "passengers": 142867
+          }
+        ]
+      },
+      {
+        "name": "市ヶ谷",
+        "company": "東京地下鉄",
+        "line": "7号線南北線",
+        "passengers": 127095,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 150760
+          },
+          {
+            "year": 2019,
+            "passengers": 150922
+          },
+          {
+            "year": 2020,
+            "passengers": 98209
+          },
+          {
+            "year": 2021,
+            "passengers": 102747
+          },
+          {
+            "year": 2022,
+            "passengers": 116190
+          },
+          {
+            "year": 2023,
+            "passengers": 127095
+          }
+        ]
+      },
+      {
+        "name": "四ツ谷",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 111376,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 126982
+          },
+          {
+            "year": 2019,
+            "passengers": 127408
+          },
+          {
+            "year": 2020,
+            "passengers": 80366
+          },
+          {
+            "year": 2021,
+            "passengers": 87459
+          },
+          {
+            "year": 2022,
+            "passengers": 101016
+          },
+          {
+            "year": 2023,
+            "passengers": 111376
+          }
+        ]
+      },
+      {
+        "name": "新大久保",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 93452,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 102876
+          },
+          {
+            "year": 2019,
+            "passengers": 102876
+          },
+          {
+            "year": 2020,
+            "passengers": 62518
+          },
+          {
+            "year": 2021,
+            "passengers": 71444
+          },
+          {
+            "year": 2022,
+            "passengers": 87104
+          },
+          {
+            "year": 2023,
+            "passengers": 93452
+          }
+        ]
+      },
+      {
+        "name": "西新宿",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 77992,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 89547
+          },
+          {
+            "year": 2019,
+            "passengers": 91457
+          },
+          {
+            "year": 2020,
+            "passengers": 61921
+          },
+          {
+            "year": 2021,
+            "passengers": 61742
+          },
+          {
+            "year": 2022,
+            "passengers": 69891
+          },
+          {
+            "year": 2023,
+            "passengers": 77992
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 2065767,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}
