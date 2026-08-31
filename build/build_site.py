@@ -178,10 +178,14 @@ def affiliate_html_for_cats(cats, limit=AFFILIATE_MAX_PER_PAGE):
 GATE_MIN_CONFIDENCE = 82   # 制度の平均confidenceがこれ未満なら noindex
 
 # ── ライフイベント別ページ（自治体×イベントの一覧）のインデックス方針 ──────────
-# 制度名のリンク一覧が主体で本文が薄いため、AdSense審査中は noindex にして
-# 中身の濃い制度詳細ページで評価を受ける。審査通過後に環境変数
-# SEIDO_INDEX_LIFEEVENT=1 を設定して再ビルドすればインデックス対象に戻せる。
-INDEX_LIFEEVENT = os.environ.get("SEIDO_INDEX_LIFEEVENT", "0") == "1"
+# 「◯◯区の子育てで使える制度」等は検索意図が濃い主要導線。以前は本文が薄く
+# AdSense審査中の暫定措置として noindex にしていたが、審査通過を受けて既定でindex化。
+# 各ページには固有の解説リード・主な制度・FAQ（FAQPage構造化データ）を付与して
+# 一覧だけの薄いページにならないようにしている（build_muni_event 参照）。
+# 一時的に外したい場合は環境変数 SEIDO_INDEX_LIFEEVENT=0 でnoindexに戻せる。
+INDEX_LIFEEVENT = os.environ.get("SEIDO_INDEX_LIFEEVENT", "1") != "0"
+# ライフイベント別ページを index 対象とする最低制度数（これ未満は薄いページとして noindex）。
+LIFEEVENT_MIN_ITEMS = 3
 
 # ── 62自治体のローマ字スラッグ（公式ドメインに整合。豊島区toshima/利島村toshimamuraを分離）─
 SLUGS = {
@@ -222,6 +226,16 @@ EVENTS = {  # slug -> (表示名, 導入文)
  "moving":("引っ越し","転入・転出の手続きと、引っ越しに関わる助成・支援をまとめています。"),
  "retirement_unemployment":("退職・失業","退職・失業時の保険料軽減・給付・支援制度をまとめています。"),
  "elderly_care":("高齢・介護","高齢者・介護が必要な方が受けられる助成・サービスをまとめています。"),
+}
+
+# ライフイベント別ページ本文で使う編集リード（自治体差の要点を1〜2文で）。
+# 機械生成の一覧だけにならないよう、各ページに固有の解説文脈を添えるための素材。
+EV_LEDE = {
+ "pregnancy_birth":"妊娠・出産では、出産育児一時金のような国の給付は全国共通ですが、出産祝い金や妊婦健診・産後ケアの助成、不妊治療への上乗せは自治体によって大きく差が出ます。",
+ "childcare":"子育て支援は国の児童手当に加え、子ども医療費助成の対象年齢・自己負担や、認可外保育の補助額など、自治体独自の上乗せで手厚さが変わります。",
+ "moving":"引っ越しでは転入・転出の手続きに加えて、住宅取得・家賃・多世代同居などへの助成が用意されている場合があります。対象や金額の差が大きい分野です。",
+ "retirement_unemployment":"退職・失業時は雇用保険の給付に加え、国民健康保険料や国民年金の軽減、再就職・生活再建の支援が受けられます。自治体独自の相談・給付が加わることもあります。",
+ "elderly_care":"高齢・介護では介護保険サービスに加えて、紙おむつ支給・配食・住宅改修・補聴器助成など、自治体独自のサービスの有無と対象で手厚さが変わります。",
 }
 
 # ── 解説ガイドの本文（オリジナルの編集コンテンツ）────────────────────────────────
@@ -2150,6 +2164,45 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     desc = clip(f"{mn}で{ev_name}のときに受けられる給付金・手当・助成制度を一覧でまとめました。{ev_intro}", 118)
     yen_sum, n_amt = amount_sum_of_programs(items)
     stats_meta = area_stats_meta_html(mn, ev_name, len(items), yen_sum or None, n_amt, EV_META[ev_slug][2])
+
+    # ── ページ固有の編集リード（機械的な一覧だけにしないための独自本文）──
+    n_items = len(items)
+    top_names = [p["title"] for p in ordered[:3]]
+    top_txt = "、".join(top_names)
+    guide_slug = ev_slug.replace("_", "-")
+    yen_phrase = (f"（うち金額の分かるもの{n_amt}件・合計{esc(format_sum_yen(yen_sum))}）"
+                  if yen_sum and n_amt else "")
+    eg_html = (f"<p>たとえば<strong>{esc(top_txt)}</strong>などがあります。"
+               f"下の一覧では、制度ごとに対象・支給額・申請方法・期限を、"
+               f"公式情報の出典と最終確認日つきで確認できます。"
+               f"{esc(ev_name)}の全体像は<a href=\"/guide/{guide_slug}/\">"
+               f"{esc(ev_name)}でもらえるお金の基礎知識</a>でも解説しています。</p>") if top_names else ""
+    intro_html = (f'<div class="le-intro">'
+                  f'<p>{esc(mn)}では{esc(ev_name)}に関する給付金・手当・助成を'
+                  f'<strong>{n_items}件</strong>掲載しています{yen_phrase}。{esc(EV_LEDE.get(ev_slug,""))}</p>'
+                  f'{eg_html}</div>')
+
+    # ── FAQ（可視の表 + FAQPage構造化データ。自治体×イベント固有の一問一答）──
+    faq = [
+        (f"{mn}で{ev_name}のときにもらえるお金にはどんなものがありますか？",
+         f"{mn}では{ev_name}に関する制度を{n_items}件確認しています。"
+         + (f"{top_txt}などが代表的です。" if top_txt else "")
+         + "各制度の対象・金額・申請方法は、このページの一覧からご確認いただけます。"),
+        (f"{mn}の{ev_name}の制度は他の自治体と比べて手厚いですか？",
+         f"同じ{ev_name}でも金額・対象・条件は自治体ごとに異なります。"
+         f"このページ末尾の「{ev_name}の制度がある自治体をみる」から、東京都内での{mn}の位置づけを比較できます。"),
+        ("申請はどこですればよいですか？",
+         f"多くは{mn}の担当窓口や郵送・オンラインで受け付けています。"
+         "窓口・必要書類・期限は制度ごとに異なるため、各制度ページの申請方法と公式ページ（出典リンク）をご確認ください。"),
+        ("掲載されている金額や条件はいつ時点のものですか？",
+         "各制度に最終確認日と公式情報の出典リンクを掲載しています。"
+         "金額・条件は制度改定で変わるため、申請前に必ず公式ページで最新情報をご確認ください。"),
+    ]
+    faq_html = faq_table_html(faq)
+    faq_ld = {"@context":"https://schema.org","@type":"FAQPage",
+              "mainEntity":[{"@type":"Question","name":q,
+                             "acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]}
+
     body = f"""
 <div class="area-head">
 <div class="area-head-main">
@@ -2160,18 +2213,24 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
 </div>
 <figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
 </div>
+{intro_html}
 {listing}
 {relbox}
+<h2>{ic("help","hi")}よくある質問</h2>
+{faq_html}
 <p><a href="/area/tokyo/{slug}/">{CHEV_L} {esc(mn)}の制度一覧にもどる</a></p>
 {PLIST_JS if ordered else ""}"""
     il = {"@context":"https://schema.org","@type":"ItemList","itemListElement":[
         {"@type":"ListItem","position":i+1,"name":p["title"],
          "url":f"{BASE_URL}/area/tokyo/{slug}/seido/{p['id']}/"} for i,p in enumerate(ordered)]}
     bc=[("トップ","/"),(mn,f"/area/tokyo/{slug}/"),(ev_name,None)]
-    robots = "index,follow" if (items and INDEX_LIFEEVENT) else "noindex,follow"
+    idx_le = INDEX_LIFEEVENT and n_items >= LIFEEVENT_MIN_ITEMS
+    robots = "index,follow" if idx_le else "noindex,follow"
     page(path=url+"index.html", title=title, description=desc, canonical=url,
-         jsonld=[il], robots=robots, breadcrumb=bc, body=body, og_image=og_image_for(slug))
-    if items and INDEX_LIFEEVENT: sitemap_urls.append((url,"0.6"))
+         jsonld=[il, faq_ld], robots=robots, breadcrumb=bc, body=body, og_image=og_image_for(slug))
+    if idx_le:
+        dates=[p["last_verified_at"] for p in items if p["last_verified_at"]]
+        sitemap_urls.append((url, "0.7", max(dates) if dates else None))
 
 # ── 目的別ランキング表の並び替え（制度数／金額）──────────────────────────────
 RANK_TABLE_JS = """<script>
