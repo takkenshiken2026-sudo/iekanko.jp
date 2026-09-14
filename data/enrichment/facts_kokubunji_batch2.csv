@@ -1,0 +1,15 @@
+program_id,fact_type,value,evidence_url
+1608,benefit,"3歳未満は月15,000円、3歳〜高校生年代（18歳到達後最初の3月31日）まで月10,000円、第3子以降は0〜18歳一律月30,000円を支給（令和6年10月の制度拡充後）。",https://www.city.kokubunji.tokyo.jp/kurashi/kodomo/teate/1012493/1032536.html
+2136,condition,市から共同生活援助（グループホーム）の支給決定を受けた18歳以上の身体・知的障害者、または治療方法が確立していない疾病等による一定の障害がある18歳以上の方で、東京都知事の指定するグループホームに入居している方。,https://www.city.kokubunji.tokyo.jp/kurashi/syougaishien/1011466/zaitaku/1001623.html
+2286,amount,前年所得に応じ均等割額を7割・5割・2割軽減。未就学児は均等割を5割軽減（低所得軽減と併用時はさらに半額）。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/iryou/1011822/1001033.html
+2286,condition,低所得世帯の均等割軽減は申請不要で所得申告により自動判定。倒産・解雇・災害・疾病・死亡等で所得が著しく減少し納付が困難な世帯は、納期限前までに個別審査による減免を申請できる。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/iryou/1011822/1001033.html
+2324,amount,1か月の医療費の自己負担が所得区分に応じた自己負担限度額を超えた分を高額療養費として支給。限度額適用認定証またはマイナ保険証の利用で、窓口負担を限度額までにとどめられる。,https://www.city.kokubunji.tokyo.jp/kurashi/1011810/1011822/1011840/1001035.html
+2324,condition,国民健康保険・後期高齢者医療の加入者が対象。マイナ保険証を利用すれば事前手続き不要。利用しない場合は事前に限度額適用認定証等を申請する。後期高齢者医療の高額療養費は広域連合から届く申請書で申請する（事前申請不可）。,https://www.city.kokubunji.tokyo.jp/kurashi/1011810/1011822/1011840/1001035.html
+2458,condition,妊娠届出をした妊婦、および出生した子を養育する保護者が対象。妊娠届出時・出生後の面談（こんにちは赤ちゃん事業等）を受けたうえで、案内される二次元コードからLoGoフォームで申請する。,https://www.city.kokubunji.tokyo.jp/kurashi/kodomo/shussan/1029635.html
+2905,condition,国民健康保険の加入者が出産したときに支給（妊娠85日以降であれば死産・流産も対象）。以前加入していた社会保険の被保険者期間が1年以上あり、資格喪失後6か月以内の出産は、社会保険との選択制。,https://www.city.kokubunji.tokyo.jp/kurashi/1011810/1011822/1029620/index.html
+3031,amount,"受診費用の一部を助成。後期高齢者医療加入者は市の人間ドック（自己負担20,000円）利用で5,000円を補助し実質15,000円で受診できる。国民健康保険加入者も指定医療機関等での受診費用を助成。",https://www.city.kokubunji.tokyo.jp/kurashi/1011810/koureisha/1001043.html
+3031,condition,受診日に本市の国民健康保険（30歳以上）または後期高齢者医療制度に加入し、当該年度に市の人間ドックを申し込み、納期限の到来した保険料を完納している方。,https://www.city.kokubunji.tokyo.jp/kurashi/1011810/koureisha/1001043.html
+2771,condition,国分寺市在住で、離職・失業・病気などにより経済的に困窮し、あわせて生活上の課題を抱える方。市が国分寺市社会福祉協議会に委託して運営する。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/seikatsushien/1010847/1002059.html
+2233,amount,葬祭を行った方（喪主）に、国民健康保険は5万円、後期高齢者医療は7万円を支給（都内一律）。,https://www.city.kokubunji.tokyo.jp/kenkou-fukushi/iryou/1011822/1001034.html
+2734,benefit,0〜2歳児クラスの第2子以降および3〜5歳児クラスの保育費は0円（無償）。認証保育所等の利用者には、年齢・課税状況・第2子以降の別に応じた上限額の保護者助成金を支給。,https://www.city.kokubunji.tokyo.jp/kurashi/1008608/1008670/1022110.html
+2793,target,障害者総合支援法に基づき市が支給決定を行う、居宅で生活する障害者・障害児（視覚・聴覚・平衡・音声言語・肢体・呼吸器・内部障害・難病等）。,https://www.city.kokubunji.tokyo.jp/kurashi/syougaishien/1011466/yougu/index.html
