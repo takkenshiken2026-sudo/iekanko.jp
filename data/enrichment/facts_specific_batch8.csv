@@ -1,0 +1,9 @@
+program_id,fact_type,value,evidence_url
+2017,condition,市内の個人住宅・併用住宅に太陽光発電設備等を設置する市民（太陽光発電設備は公称最大出力1kWあたり2.5万円相当・上限10万円を補助）。,https://www.city.chofu.lg.jp/080020/p045028.html
+2967,amount,基金を活用し、区内の子どもの体験・交流事業の参加費用を無料または軽減する取組に助成する。,https://www.city.suginami.tokyo.jp/s059/1465.html
+2967,condition,杉並区内に在住・在学する小学4年生〜高校生を対象とする青少年健全育成事業を行うNPO法人・任意団体等（区外参加者は全体の5割未満）。,https://www.city.suginami.tokyo.jp/s059/1465.html
+1933,amount,介護用品（紙おむつ等）を支給し、介護にかかる経済的負担を軽減する。,https://www.town.hinode.tokyo.jp/0000000032.html
+1933,condition,65歳以上で要介護認定4または5と判定された住民税非課税の方、または寝たきり・失禁状態が認められる住民税非課税の方。,https://www.town.hinode.tokyo.jp/0000000032.html
+2101,amount,新生児の健やかな成長を願い、記念品を贈呈する（出産の日から90日以内に住民課へ申請）。,http://www.town.mizuho.tokyo.jp/kosodate/002/p000714.html
+2158,condition,保護者が府中市内に引き続き6か月以上居住し、高等学校・短期大学・大学・高等専門学校・特別支援学校高等部・専修学校に在学する方で、健康・学力・人物が良好で保護者の所得が制限額以下であること。,https://www.city.fuchu.tokyo.jp/kyoiku/sodan/shogakukin/shogakukin.html
+2982,condition,八王子市在住で50歳以上の方（帯状疱疹ワクチン任意接種の費用助成。公費助成は1セットのみ）。,https://www.city.hachioji.tokyo.jp/kurashi/hoken/007/yobosesshu/yoboannai/index.html
