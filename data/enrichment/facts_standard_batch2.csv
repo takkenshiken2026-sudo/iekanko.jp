@@ -1,0 +1,10 @@
+program_id,fact_type,value,evidence_url
+1337,condition,要介護・要支援認定を受けた在宅の方が、手すり設置・段差解消・滑り防止・扉や便器の取替え等を行う場合が対象。支給限度基準額20万円の範囲で費用の7〜9割を支給（介護保険）。,https://www.city.musashimurayama.lg.jp/koureisha/shien/1010576.html
+1338,condition,要介護・要支援認定を受けた方が、指定事業者から特定福祉用具（入浴・排せつ用具等）を購入した場合が対象。同一年度10万円を上限に費用の7〜9割を支給（介護保険）。,https://www.city.musashimurayama.lg.jp/koureisha/shien/1010576.html
+2416,amount,所得段階に応じた保険料の軽減（低所得の第1〜第3段階等）に加え、特別な事情がある場合は個別審査により保険料を減免する。,https://www.city.musashimurayama.lg.jp/koureisha/shien/kaigohoken/1003853.html
+2416,condition,武蔵村山市に住所がある介護保険第1号被保険者（65歳以上）で、災害・失業・所得の著しい減少など特別な事情により保険料の納付が困難な方等。低所得者への軽減措置もある。,https://www.city.musashimurayama.lg.jp/koureisha/shien/kaigohoken/1003853.html
+2629,condition,離職・廃業から2年以内、または休業等により収入が減少し、世帯の収入・資産が基準以下で、ハローワーク等で求職活動を行う方等（生活困窮者自立支援制度の全国制度）。,"https://www.city.komae.tokyo.jp/index.cfm/44,106585,342,3084,html"
+2925,condition,低所得世帯・高齢者世帯・障害者世帯等で他の制度を利用できない方が対象。都道府県社会福祉協議会が実施し、市区町村の社会福祉協議会が申請窓口となる（全国制度）。,https://www.city.shinjuku.lg.jp/fukushi/file07_05_00010.html
+2926,condition,低所得世帯等で緊急かつ一時的に生計維持が困難な方への少額貸付等。市区町村の社会福祉協議会が申請窓口となる（全国制度）。,https://www.city.ota.tokyo.jp/seikatsu/fukushi/shien/shikinkashitsuke.html
+2928,condition,低所得世帯等で緊急かつ一時的に生計維持が困難な方への少額貸付。市区町村の社会福祉協議会が申請窓口となる（全国制度）。,https://www.city.taito.lg.jp/kurashi/soudan/seikatsu/seikatsufukushi.html
+2940,condition,低所得世帯・高齢者世帯・障害者世帯等で他の制度を利用できない方が対象。福祉資金・教育支援資金・緊急小口資金等があり、社会福祉協議会が窓口となる（全国制度）。,https://www.city.katsushika.lg.jp/kurashi/1000055/1002320/1002328.html
