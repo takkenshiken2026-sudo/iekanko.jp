@@ -1,0 +1,10 @@
+program_id,fact_type,value,evidence_url
+3062,condition,70歳以上の村民が島外の医療機関へ通院する際、村民割引乗船券に加えて高齢者通院割引の証明書を交付する。,https://www.vill.ogasawara.tokyo.jp/iryou/
+3062,amount,おがさわら丸の二等運賃を助成する（島嶼会館での宿泊も一定泊数まで可）。,https://www.vill.ogasawara.tokyo.jp/iryou/
+2954,condition,本町以外の区市町村に居住している（または令和8年3月1日以前に居住していた）移住者で、入居後15日以内に大島町に住民登録できる方。,https://www.town.oshima.tokyo.jp/soshiki/kensetsu/jutakumokutekigai.html
+2960,condition,新島村の妊産婦で、島外（里帰り等）の医療機関で妊婦健診等を受ける方。,https://www.niijima.com/facility/health-center_clinic/sawayakakenkou-center/shinsei/ninpukenshinhijosei.html
+2795,condition,障害者総合支援法に基づき市区町村が支給決定を行う、居宅で生活する障害者・障害児等（日常生活用具の給付・補装具費の支給）。原則1割負担で、所得区分別の負担上限がある。,https://www.vill.hinohara.tokyo.jp/cmsfiles/contents/0000001/1124/syougai-r5.pdf
+2796,condition,障害者総合支援法に基づき市区町村が支給決定を行う、居宅で生活する障害者・障害児等（日常生活用具の給付・補装具費の支給）。原則1割負担で、所得区分別の負担上限がある。,https://www.toshimamura.org/life/pension/welfare.html
+2796,amount,対象品目・種目ごとの基準額により給付・支給する（原則1割の自己負担、所得区分別の上限あり）。,https://www.toshimamura.org/life/pension/welfare.html
+2799,condition,障害者総合支援法に基づき市区町村が支給決定を行う、居宅で生活する障害者・障害児等（日常生活用具の給付・補装具費の支給）。原則1割負担で、所得区分別の負担上限がある。,https://www.vill.ogasawara.tokyo.jp/wp-content/uploads/sites/2/2014/11/fukushi.pdf
+2799,amount,対象品目・種目ごとの基準額により給付・支給する（原則1割の自己負担、所得区分別の上限あり）。,https://www.vill.ogasawara.tokyo.jp/wp-content/uploads/sites/2/2014/11/fukushi.pdf
