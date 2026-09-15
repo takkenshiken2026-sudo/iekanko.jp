@@ -1,0 +1,16 @@
+program_id,fact_type,value,evidence_url
+2085,amount,子ども1人につき6万円分を支給（双子の場合は12万円分）。,https://kosodate-machida.tokyo.jp/soshiki/3/1/8/12491.html
+2085,condition,1歳の誕生日を迎えるお子さんの保護者が対象（アンケートの提出等が必要）。都内から1歳台で転入し転出元でバースデーサポートを受けていない場合も対象となることがある。,https://kosodate-machida.tokyo.jp/soshiki/3/1/8/12491.html
+2130,amount,市の助成により市営住宅並みの家賃負担で入居できる民間賃貸住宅（補助期間は最大10年間）。家賃債務保証料の低廉化補助は入居時1回・上限6万円。,https://www.city.hachioji.tokyo.jp/kurashi/life/003/001/sefunettojyutaku/index.html
+2130,condition,高齢者・障害者・子育て世帯などの住宅確保要配慮者で、所得が一定の基準以下で住宅に困っている方。,https://www.city.hachioji.tokyo.jp/kurashi/life/003/001/sefunettojyutaku/index.html
+2981,condition,高校生年代（15歳到達後最初の4月1日〜18歳到達後最初の3月31日）で健康保険に加入している方。所得制限なし（東京都のマル青）。,https://www.city.hachioji.tokyo.jp/kurashi/kosodate/002/002/p001080.html
+2485,condition,区内在住で75歳以上のひとり暮らしの方、または75歳以上のみで暮らす世帯が対象。区に登録した配食事業者が弁当を手渡しで届け、安否確認（見守り）を行う。,https://www.city.tokyo-nakano.lg.jp/dept/172000/d031000.html
+2584,condition,20歳以上で身体障害者手帳1・2級、愛の手帳1〜3度、脳性麻痺・進行性筋萎縮症等に該当する方。本人所得が限度額以内で、第2種手当・難病患者福祉手当の受給者、施設入所者、65歳以上の新規申請は対象外（区制度）。,https://www.city.tokyo-nakano.lg.jp/kenko_hukushi/syogai/tecyo-teate-nenkin/syogaisyafukushi1.html
+2649,amount,"対象品目ごとに上限額を設定して給付する（例: 腰掛便座51,500円、入浴補助用具90,000円等。限度額を超えた分は自己負担）。",https://www.city.tokyo-nakano.lg.jp/dept/nakano/d020050.html
+2649,condition,区内在住で介護保険の要介護認定で「自立」と認定された65歳以上の方。世帯全員の前年（1〜6月申請は前々年）の合計所得が200万円未満であること。,https://www.city.tokyo-nakano.lg.jp/dept/nakano/d020050.html
+2805,amount,福祉タクシー利用券・リフト付福祉タクシー利用券を交付（リフト付の車いす券は月1冊8枚で予約・迎車料金が無料等）。,https://www.city.tokyo-nakano.lg.jp/kenko_hukushi/syogai/taisyohinmokukakujyu/gaisyutsushien/fukushitaxiriyo.html
+2805,condition,前年の所得が中野区障害者福祉手当条例施行規則で定める額を超えず、特別養護老人ホームに入所していない障害者等。,https://www.city.tokyo-nakano.lg.jp/kenko_hukushi/syogai/taisyohinmokukakujyu/gaisyutsushien/fukushitaxiriyo.html
+3003,condition,区内の民間賃貸住宅に居住する（または居住しようとする）単身者で、固定・携帯電話を持つ方。高齢者・障害者・低所得者など住宅確保に特に配慮を要する方が対象で、要件を満たせば加入時の登録料を区が補助する。,https://www.city.tokyo-nakano.lg.jp/machizukuri/jyutaku/shien/anshinsumaipack.html
+2550,condition,その年度に葛飾区に住んでいる88歳（米寿）・99歳（白寿）・100歳・101歳以上の方が対象。申請不要で民生委員等を通じて届けられる。,https://www.city.katsushika.lg.jp/kenkou/1000052/1030186/1002144/1002203.html
+2084,condition,対象児が1歳1か月を迎えた月に案内が届き、同封のアンケート（申請書）を返送するとギフト券が郵送される。2歳の誕生日には子育て情報提供・育児相談を行う。,https://www.city.akishima.lg.jp/s049/020/010/040/20200925151717.html
+2226,amount,葬祭を行った方（喪主）に、国民健康保険は5万円、後期高齢者医療は7万円を支給（都内一律）。,https://www.city.akishima.lg.jp/s054/010/010/010/010/110/20140919143055.html
