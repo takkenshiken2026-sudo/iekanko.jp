@@ -1,0 +1,7 @@
+program_id,fact_type,value,evidence_url
+2944,amount,国の幼児教育・保育の無償化により3〜5歳児クラス（住民税非課税世帯は0〜2歳児クラスも）の保育料が無償。加えて町が第2子以降の軽減を行う。,https://www.town.hachijo.tokyo.jp/nursery/wp-content/uploads/2025/10/838191cab6192325e08690d9cf7da9d0-1.pdf
+2944,condition,八丈町内で認可保育所等を利用する子どもの保護者（3〜5歳児は国制度で無償、第2子以降は町の軽減対象）。,https://www.town.hachijo.tokyo.jp/nursery/wp-content/uploads/2025/10/838191cab6192325e08690d9cf7da9d0-1.pdf
+2945,amount,国の幼児教育・保育の無償化により3〜5歳児クラス（住民税非課税世帯は0〜2歳児クラスも）の保育料が無償。村の子育て支援として保育料を無償化する。,https://www.vill.ogasawara.tokyo.jp/sonmin/kosodate/
+2945,condition,小笠原村内で認可保育所等を利用する子どもの保護者。,https://www.vill.ogasawara.tokyo.jp/sonmin/kosodate/
+2686,amount,入院助産に要する費用を公費で負担する（世帯の課税状況に応じて自己負担が生じる場合がある）。,https://www.city.hachioji.tokyo.jp/kurashi/kosodate/001/004/index.html
+2686,condition,保健上入院して分娩する必要があるにもかかわらず、経済的理由により入院助産を受けることが困難な妊産婦（生活保護世帯・住民税非課税世帯等。児童福祉法に基づく入院助産）。,https://www.city.hachioji.tokyo.jp/kurashi/kosodate/001/004/index.html
