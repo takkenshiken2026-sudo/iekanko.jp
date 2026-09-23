@@ -1913,10 +1913,12 @@ def build_compare(cid, entries, counts=None):
 
     # 同じライフイベントの他カテゴリ比較への内部リンク
     sibs=[(c[0],c[1]) for c in TAXONOMY if c[2]==ev and c[0]!=cid and counts.get(c[0],0)>=3]
+    rank_li = (f'<li><a href="/ranking/kingaku/{cid}/">{esc(label)}が手厚い自治体ランキングでみる {CHEV_R}</a></li>'
+               if cid in CHART_SPEC else "")
     rel_html=""
-    if sibs:
+    if sibs or rank_li:
         lis="".join(f'<li><a href="/hikaku/{sid}/">東京都の「{esc(sl)}」を比較 {CHEV_R}</a></li>' for sid,sl in sibs[:8])
-        rel_html=f'<div class="cmpbox"><strong>同じ「{esc(ev_name)}」で自治体を比べる</strong><ul>{lis}</ul></div>'
+        rel_html=f'<div class="cmpbox"><strong>同じ「{esc(ev_name)}」で自治体を比べる</strong><ul>{rank_li}{lis}</ul></div>'
 
     # FAQ（可視 + 構造化データ）
     faq=[(f"東京都で{label}があるのはどの自治体ですか？",
@@ -2087,6 +2089,116 @@ def build_ranking(ev, score, avg=None):
     page(path=url+"index.html",title=title,description=desc,canonical=url,
          jsonld=[il],breadcrumb=bc,body=body)
     sitemap_urls.append((url,"0.8"))
+
+def build_amount_ranking(cid, entries):
+    """カテゴリ別『金額が手厚い自治体ランキング』（/ranking/kingaku/<cid>/）。
+    /hikaku/<cid>/ の比較とは別に『ランキング』検索意図を取りに行く。
+    固有の統計リード（最高額・平均・掲載数）で重複を避け、比較ページへ相互リンクする。"""
+    spec = CHART_SPEC.get(cid)
+    if not spec:
+        return 0
+    unit, mode, color = spec
+    label = CAT_BY_ID[cid][1]; ev = CAT_BY_ID[cid][2]; ev_name = EVENTS[ev][0]
+    url = f"/ranking/kingaku/{cid}/"
+    rows = amount_rank_rows(entries, mode, top_n=999)   # (yen, name, href, amount) 降順
+    n_amt = len(rows)
+    total = len({e[0]["id"] for e in entries})
+    idx = n_amt >= 5 and len(set(r[0] for r in rows)) >= 3
+    vals = [r[0] for r in rows]
+    top_name, top_yen = (rows[0][1], rows[0][0]) if rows else ("", 0)
+    avg = sum(vals) / len(vals) if vals else 0
+    chart = svg_amount_bars(rows[:15], mode, avg) if n_amt >= 4 else ""
+    chart_fig = (f'<figure class="cmpchart" style="--pc:{color}"><figcaption>'
+                 f'{esc(label)}の金額ランキング（上位{min(15, n_amt)}自治体／{esc(unit)}）</figcaption>{chart}'
+                 f'<p class="c-cap">公式情報から抽出した金額の目安（{esc(unit)}）。対象・条件により異なります。'
+                 f'破線は掲載{n_amt}自治体の平均の目安。</p></figure>') if chart else ""
+    trs = []
+    for i, (yen, name, href, _amt) in enumerate(rows, 1):
+        cls = ' class="top3"' if i <= 3 else ''
+        trs.append(f'<tr{cls}><td class="rk">{i}</td>'
+                   f'<td class="mn"><a href="{esc(href)}">{esc(name)}</a></td>'
+                   f'<td class="dt yen">{esc(format_rank_yen(yen, mode))}</td></tr>')
+    table = (f'<div class="tablewrap"><table class="cmp rank"><thead><tr>'
+             f'<th class="rk">順位</th><th class="mn">自治体</th>'
+             f'<th class="dt">{esc(unit)}</th></tr></thead>'
+             f'<tbody>{"".join(trs)}</tbody></table></div>') if rows else "<p>金額の記載がある自治体は現在準備中です。</p>"
+    lead = f'東京都で「{esc(label)}」の金額を掲載している{n_amt}自治体を、金額の目安が高い順にランキングしました。'
+    if rows:
+        lead += (f'最も手厚いのは<strong>{esc(top_name)}</strong>（{esc(format_rank_yen(top_yen, mode))}）、'
+                 f'掲載{n_amt}自治体の平均の目安は{esc(format_rank_yen(round(avg), mode))}です。')
+    lead += '金額は制度改定で変わるため、申請前に各自治体の公式ページ（出典）でご確認ください。'
+    faq = [
+        (f"{label}が一番手厚い東京都の自治体はどこですか？",
+         (f"当サイトの収録では{top_name}（{format_rank_yen(top_yen, mode)}）が最も高い目安です。" if rows else "")
+         + "金額の目安が高い順に、このページの一覧でご確認いただけます。"),
+        (f"{label}の金額は自治体でどのくらい違いますか？",
+         f"同じ{label}でも自治体ごとに金額・対象・条件が異なります。掲載{n_amt}自治体の平均の目安は"
+         + (format_rank_yen(round(avg), mode) if rows else "—") + "で、上位と下位で差があります。"),
+        ("掲載されている金額はいつ時点のものですか？",
+         "各自治体ページに最終確認日と公式情報の出典を掲載しています。金額は制度改定で変わるため、申請前に必ず公式ページで最新情報をご確認ください。"),
+    ]
+    faq_html = faq_table_html(faq)
+    rel = (f'<div class="cmpbox" style="--pc:{color}"><strong>あわせて見る</strong><ul>'
+           f'<li><a href="/hikaku/{cid}/">{esc(label)}を全市区町村で詳しく比較する {CHEV_R}</a></li>'
+           f'<li><a href="/ranking/{ev}/">{esc(ev_name)}の制度がある自治体ランキング {CHEV_R}</a></li>'
+           f'</ul></div>')
+    title = f"{label}が手厚い東京都の自治体ランキング【62市区町村】"
+    desc = clip(f"東京都の{label}を金額の目安が高い順にランキング。"
+                f"{('最高は'+top_name+'（'+format_rank_yen(top_yen, mode)+'）。') if rows else ''}"
+                f"掲載{n_amt}自治体を出典・確認日つきで比較できます。", 118)
+    body = f"""
+<div class="area-head"><div class="area-head-main">
+<span class="badge" style="--pc:{color}">{esc(ev_name)}</span>
+<h1>{esc(label)}が手厚い東京都の自治体ランキング</h1>
+<p class="lead">{lead}</p>
+</div></div>
+{chart_with_affiliate(chart_fig, affiliate_html("hikaku", cid))}
+{table}
+<p class="note">※金額は当サイトが公式情報から抽出した目安で、対象・条件により実際の受給額は異なります。金額の記載がある自治体のみを掲載しています（{n_amt}/{total}自治体）。</p>
+{rel}
+<h2>{ic("help","hi")}よくある質問</h2>
+{faq_html}
+<p><a href="/ranking/">{CHEV_L} ランキング一覧にもどる</a></p>"""
+    il = {"@context": "https://schema.org", "@type": "ItemList", "name": f"{label} 金額ランキング",
+          "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": r[1],
+                               "url": f"{BASE_URL}{r[2]}"} for i, r in enumerate(rows[:20])]}
+    faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
+              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
+    bc = [("トップ", "/"), ("ランキング", "/ranking/"), (label, None)]
+    page(path=url + "index.html", title=title, description=desc, canonical=url,
+         jsonld=[il, faq_ld], robots="index,follow" if idx else "noindex,follow",
+         breadcrumb=bc, body=body)
+    return 1 if idx else 0
+
+def build_ranking_hub(amount_built):
+    """/ranking/ ハブ。目的別ランキング＋カテゴリ別金額ランキングを一覧。"""
+    ev_lis = "".join(
+        f'<li><a href="/ranking/{ev}/">{esc(EVENTS[ev][0])}の制度がある自治体ランキング</a></li>'
+        for ev in EVENTS)
+    groups = {}
+    for cid in amount_built:
+        groups.setdefault(CAT_BY_ID[cid][2], []).append(cid)
+    secs = []
+    for ev in EVENTS:
+        cids = groups.get(ev, [])
+        if not cids:
+            continue
+        lis = "".join(f'<li><a href="/ranking/kingaku/{cid}/">{esc(CAT_BY_ID[cid][1])}が手厚い自治体</a></li>'
+                      for cid in cids)
+        color = EV_META[ev][2]
+        secs.append(f'<section class="cmpsec"><h2 class="cmpsec-h" style="--pc:{color}">'
+                    f'<span class="pic">{icon_svg(ev)}</span>{esc(EVENTS[ev][0])}</h2>'
+                    f'<ul class="cmplist">{lis}</ul></section>')
+    body = f"""
+<h1>東京都の給付・手当・助成 ランキング</h1>
+<p class="lead">「もらえるお金」が手厚い東京都の自治体を、目的別・制度別にランキング。金額の目安が高い順に62市区町村を比較できます。</p>
+<section class="cmpsec"><h2 class="cmpsec-h">目的別（制度がある自治体）</h2><ul class="cmplist">{ev_lis}</ul></section>
+{''.join(secs)}"""
+    page(path="/ranking/index.html",
+         title="東京都 給付・手当・助成のランキング｜金額が手厚い自治体",
+         description="子ども医療費・出産祝金・家賃補助・敬老祝金・補聴器助成など、東京都62自治体の給付・手当・助成を金額の目安でランキング。手厚い自治体が一目でわかります。",
+         canonical="/ranking/", breadcrumb=[("トップ", "/"), ("ランキング", None)], body=body)
+    sitemap_urls.append(("/ranking/", "0.8"))
 
 def purpose_cards_html(score):
     """目的・年代の発見カード（掲載数が多い例つきのリッチカード）。トップと /find/ で共用。"""
@@ -3190,6 +3302,8 @@ def main():
     build_find_hub(score)
     for ev in EVENTS:
         build_ranking(ev, score, avg)
+    amount_built = [cid for cid in CHART_SPEC if cid in cat_entries and build_amount_ranking(cid, cat_entries[cid])]
+    build_ranking_hub(amount_built)
     build_static_pages()
     build_guides()
     build_features()
