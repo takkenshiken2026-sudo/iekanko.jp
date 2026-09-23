@@ -1,0 +1,77 @@
+{
+  "city_code": "13303",
+  "name": "瑞穂町",
+  "slug": "mizuho",
+  "db_slug": "mizuho-cho",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 102400,
+    "median_commercial_yen_sqm": 131000,
+    "n_points": 19,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 28
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 3,
+      "avg_price": 5066666,
+      "avg_area": 46.7,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 1,
+        "avg_price": 3400000,
+        "avg_area": 25.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 1,
+        "avg_price": 7500000,
+        "avg_area": 50.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 2,
+        "avg_price": 4350000,
+        "avg_area": 40.0,
+        "price_classification": "01"
+      },
+      {
+        "year": 2025,
+        "n": 3,
+        "avg_price": 5066666,
+        "avg_area": 46.7,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 11,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 364,
+    "recent_avg_price": 77040659
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}
