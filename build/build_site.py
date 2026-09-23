@@ -409,6 +409,48 @@ TOPIC_GUIDES = [
     ("申し込みはどうすればよいですか？",
      "多くの自治体で事前の申請が必要です。母子健康手帳の交付時や出産前後に案内されることが多いので、利用を考えている場合は早めにお住まいの自治体の窓口や公式ページで手続きを確認しておくと安心です。"),
   ]},
+ {"slug":"ninkagai-hojo-hikaku",
+  "ev_slug":"childcare",
+  "body_file":"ninkagai-hojo-hikaku.html",
+  "h1":"認可外・認証保育の保育料補助は東京の自治体でどう違う？ 月額上限を比べてわかること",
+  "title":"認可外・認証保育の保育料補助を東京の自治体で比較｜0〜2歳児クラスの月額上限",
+  "description":"東京都の認可外・認証保育の保育料補助を、0〜2歳児クラスの月額上限で比較。中央・新宿・江東・足立区の例や、無償化との違い、課税世帯・多子世帯の扱いを公式出典つきで解説します。",
+  "faq":[
+    ("認可外保育の補助と無償化はどう違いますか？",
+     "国の幼児教育・保育の無償化は、3〜5歳児クラスと住民税非課税世帯の0〜2歳児クラスが対象で、月額の上限（3〜5歳37,000円、非課税0〜2歳42,000円）があります。これを超える分や課税世帯の0〜2歳児クラスを補うのが、自治体独自の保護者補助金です。"),
+    ("0〜2歳児クラスの補助上限はいくらが目安ですか？",
+     "課税世帯の0〜2歳児クラスで月額80,000円を上限とする区が複数あり、一つの目安です。ただし年齢クラス・課税状況・利用施設の種別で変わるため、各区の公式ページで確認してください。"),
+    ("補助を受けるには何が必要ですか？",
+     "施設等利用給付の『保育の必要性の認定』（父母ともに就労など）を事前に受ける必要がある場合があります。対象施設の範囲（都認証のみか、企業主導型等も含むか）も自治体で異なります。"),
+  ]},
+ {"slug":"kamiomutsu-josei-hikaku",
+  "ev_slug":"elderly_care",
+  "body_file":"kamiomutsu-josei-hikaku.html",
+  "h1":"高齢者の紙おむつ助成は東京の自治体でどう違う？ 月額上限と対象を比べてわかること",
+  "title":"高齢者の紙おむつ助成を東京の自治体で比較｜月額上限・在宅と入院の対象の違い",
+  "description":"東京都の高齢者向け紙おむつ助成を、月額上限（6,000〜7,500円が目安）と対象（在宅の要介護者／入院時）で比較。江東・北・目黒・墨田・台東区の例を公式出典つきで解説します。",
+  "faq":[
+    ("紙おむつ助成は誰が対象ですか？",
+     "大きく『在宅で生活する要介護高齢者』向けと『入院・施設入所で紙おむつが必要な場合』向けに分かれます。要介護度（要介護4・5に限る等）や住民税非課税などの要件が付く自治体があります。"),
+    ("月額の上限はいくらが目安ですか？",
+     "月額6,000〜7,500円程度を上限とする区が目安です。支給のしかたは現物支給・購入券・現金助成など自治体で異なります。"),
+    ("どこで申請できますか？",
+     "お住まいの区市町村の高齢福祉・介護保険の窓口です。要介護認定の区分や医師の意見書が必要な場合があるため、地域包括支援センターやケアマネジャーに相談するとスムーズです。"),
+  ]},
+ {"slug":"shussan-iwaikin-hikaku",
+  "ev_slug":"pregnancy_birth",
+  "body_file":"shussan-iwaikin-hikaku.html",
+  "h1":"自治体の出産祝い金・記念品は東京でどう違う？ 国の給付とは別のお祝いを比べる",
+  "title":"自治体の出産祝い金・記念品を東京で比較｜国の給付とは別のお祝いの違い",
+  "description":"東京都の自治体独自の出産祝い金・記念品を比較。出産育児一時金や国の応援給付とは別で、御蔵島村・三宅村・狛江市・台東区の例のように金額差が大きい分野です。公式出典つきで解説します。",
+  "faq":[
+    ("出産でもらえるお金は国と自治体で別々ですか？",
+     "はい。健康保険の出産育児一時金（原則50万円）と国の出産・子育て応援給付（計10万円相当）は全国共通です。これらとは別に、区市町村が独自に出産祝い金や記念品を用意している場合があります。"),
+    ("独自の出産祝い金が手厚いのはどんな自治体ですか？",
+     "現金の祝い金は多摩・島しょの一部に高額な例があり、23区は記念品・地域商品券タイプが中心の傾向です。金額・対象は自治体で大きく異なります。"),
+    ("受け取るのに条件はありますか？",
+     "一定の居住年数を条件にする自治体や、出産後◯日以内などの申請期限がある自治体があります。第2子以降で金額が上がる設計もあるため、各自治体の公式ページで確認してください。"),
+  ]},
 ]
 
 # ── 特集（/tokushu/）＝注目度の高い時事テーマの特設セクション ─────────────────
@@ -2168,9 +2210,113 @@ def build_amount_ranking(cid, entries):
     page(path=url + "index.html", title=title, description=desc, canonical=url,
          jsonld=[il, faq_ld], robots="index,follow" if idx else "noindex,follow",
          breadcrumb=bc, body=body)
+    if idx:
+        sitemap_urls.append((url, "0.7"))
     return 1 if idx else 0
 
-def build_ranking_hub(amount_built):
+REGION_META = {
+ "ku":   ("東京23区", "東京23区で"),
+ "tama": ("多摩地域", "多摩地域（26市・西多摩）で"),
+}
+_NISHITAMA = {"瑞穂町", "日の出町", "奥多摩町", "檜原村"}
+def region_of(name):
+    if name.endswith("区"): return "ku"
+    if name.endswith("市") or name in _NISHITAMA: return "tama"
+    return "island"
+
+def build_region_ranking(rk, ev, score):
+    """地域グループ（23区／多摩）× ライフイベントのランキング。
+    『23区で子育て支援が手厚い区』等、地域名との掛け合わせ需要を取りに行く。"""
+    rname, _rprefix = REGION_META[rk]
+    persona, _age, color, _ = EV_META[ev]
+    ev_name = EVENTS[ev][0]
+    url = f"/ranking/chiiki/{rk}/{ev}/"
+    rmunis = [m for m in munis if region_of(m["municipality_name"]) == rk]
+    def yen_of(m): return score[m["id"]][ev].get("yen_sum", 0) or 0
+    ranked = sorted(rmunis, key=lambda m: (-score[m["id"]][ev]["prog"], -yen_of(m), m["id"]))
+    with_prog = [m for m in ranked if score[m["id"]][ev]["prog"] > 0]
+    idx = len(with_prog) >= 5
+    unit_word = "区" if rk == "ku" else "自治体"
+    # チャート（上位15・制度数）
+    max_prog = max((score[m["id"]][ev]["prog"] for m in ranked), default=1) or 1
+    crows = []
+    for m in ranked[:15]:
+        s = score[m["id"]][ev]; yen = yen_of(m)
+        yen_txt = f'計{format_sum_yen(yen)}' if yen else "金額—"
+        crows.append((m["municipality_name"], s["prog"], None, "", f'{s["prog"]}制度 · {yen_txt}'))
+    chart = svg_bars(crows, max_prog, "制度") if crows else ""
+    chart_fig = (f'<figure class="cmpchart" style="--pc:{color}">'
+                 f'<figcaption>{esc(rname)}で{esc(ev_name)}の制度掲載数が多い{unit_word}（上位{len(crows)}）</figcaption>'
+                 f'{chart}<p class="c-cap">掲載制度数と、金額が分かる制度の合計の目安。'
+                 f'当サイトの収録に基づく目安で、実際の手厚さや受給可否を示すものではありません。</p></figure>') if chart else ""
+    # 順位表（全件）
+    trs = []
+    for rank, m in enumerate(ranked, 1):
+        s = score[m["id"]][ev]; slug = muni_slug(m); yen = yen_of(m)
+        cls = ' class="top3"' if rank <= 3 else ''
+        yen_cell = f'計{esc(format_sum_yen(yen))}' if yen else "—"
+        trs.append(f'<tr{cls}><td class="rk">{rank}</td>'
+                   f'<td class="mn"><a href="/area/tokyo/{slug}/{ev}/">{esc(m["municipality_name"])}</a></td>'
+                   f'<td class="dt">{s["prog"]}制度</td><td class="dt yen">{yen_cell}</td></tr>')
+    table = (f'<div class="tablewrap"><table class="cmp rank"><thead><tr>'
+             f'<th class="rk">順位</th><th class="mn">{unit_word}</th>'
+             f'<th class="dt">制度数</th><th class="dt">金額合計（目安）</th></tr></thead>'
+             f'<tbody>{"".join(trs)}</tbody></table></div>')
+    top = with_prog[0] if with_prog else (ranked[0] if ranked else None)
+    lead = f'{esc(rname)}（{len(rmunis)}{unit_word}）で、{esc(ev_name)}に関する制度の掲載数が多い順にランキングしました。'
+    if top:
+        ts = score[top["id"]][ev]
+        lead += f'掲載数が多いのは<strong>{esc(top["municipality_name"])}</strong>（{ts["prog"]}制度'
+        if yen_of(top): lead += f'・計{esc(format_sum_yen(yen_of(top)))}'
+        lead += '）です。'
+    lead += f'同じ{esc(ev_name)}でも{unit_word}ごとに金額や対象が異なるため、詳細は各{unit_word}のページと公式情報でご確認ください。'
+    faq = [
+        (f"{rname}で{ev_name}の支援が手厚い{unit_word}はどこですか？",
+         (f"当サイトの収録では{top['municipality_name']}が制度掲載数で上位です。" if top else "")
+         + f"{rname}の{unit_word}を掲載数の多い順にこのページで確認できます。金額や対象は各{unit_word}で異なります。"),
+        (f"{rname}と他の地域では制度は違いますか？",
+         f"国の制度は全国共通ですが、独自の上乗せ助成は{unit_word}ごとに異なります。"
+         "同じ制度でも金額・対象・条件に差があるため、住む地域で受け取れる支援が変わります。"),
+        ("掲載内容はいつ時点のものですか？",
+         "各制度ページに最終確認日と公式情報の出典を掲載しています。制度改定で変わるため、申請前に必ず公式ページで最新情報をご確認ください。"),
+    ]
+    faq_html = faq_table_html(faq)
+    other_rk = "tama" if rk == "ku" else "ku"
+    rel = (f'<div class="cmpbox" style="--pc:{color}"><strong>あわせて見る</strong><ul>'
+           f'<li><a href="/ranking/chiiki/{other_rk}/{ev}/">{esc(REGION_META[other_rk][0])}の{esc(ev_name)}ランキング {CHEV_R}</a></li>'
+           f'<li><a href="/ranking/{ev}/">東京都全体の{esc(ev_name)}ランキング {CHEV_R}</a></li>'
+           f'<li><a href="/hikaku/">制度カテゴリごとに自治体を比較する {CHEV_R}</a></li></ul></div>')
+    title = f"{rname}で{ev_name}支援が手厚い{unit_word}ランキング｜制度数・金額で比較"
+    desc = clip(f"{rname}の{unit_word}を、{ev_name}に関する制度の掲載数・金額でランキング。"
+                f"{('掲載数が多いのは'+top['municipality_name']+'。') if top else ''}"
+                f"住む地域で変わる支援の違いを出典つきで比較できます。", 118)
+    body = f"""
+<div class="area-head"><div class="area-head-main">
+<span class="badge" style="--pc:{color}">{esc(rname)}・{esc(persona)}</span>
+<h1>{esc(rname)}で{esc(ev_name)}支援が手厚い{unit_word}ランキング</h1>
+<p class="lead">{lead}</p>
+</div></div>
+{chart_with_affiliate(chart_fig, affiliate_html("ranking", ev))}
+{table}
+<p class="note">※掲載件数・金額合計は当サイトの収録状況に基づく目安です。月額と一時金を単純合算しているため、実際の手厚さや受給可否を示すものではありません。詳細・申請可否は各自治体の公式ページでご確認ください。</p>
+{rel}
+<h2>{ic("help","hi")}よくある質問</h2>
+{faq_html}
+<p><a href="/ranking/">{CHEV_L} ランキング一覧にもどる</a></p>"""
+    il = {"@context": "https://schema.org", "@type": "ItemList", "name": f"{rname} {ev_name} ランキング",
+          "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": m["municipality_name"],
+              "url": f"{BASE_URL}/area/tokyo/{muni_slug(m)}/{ev}/"} for i, m in enumerate(ranked[:20])]}
+    faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
+              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
+    bc = [("トップ", "/"), ("ランキング", "/ranking/"), (f"{rname}・{ev_name}", None)]
+    page(path=url + "index.html", title=title, description=desc, canonical=url,
+         jsonld=[il, faq_ld], robots="index,follow" if idx else "noindex,follow",
+         breadcrumb=bc, body=body)
+    if idx:
+        sitemap_urls.append((url, "0.8"))
+    return 1 if idx else 0
+
+def build_ranking_hub(amount_built, region_built=None):
     """/ranking/ ハブ。目的別ランキング＋カテゴリ別金額ランキングを一覧。"""
     ev_lis = "".join(
         f'<li><a href="/ranking/{ev}/">{esc(EVENTS[ev][0])}の制度がある自治体ランキング</a></li>'
@@ -2189,10 +2335,24 @@ def build_ranking_hub(amount_built):
         secs.append(f'<section class="cmpsec"><h2 class="cmpsec-h" style="--pc:{color}">'
                     f'<span class="pic">{icon_svg(ev)}</span>{esc(EVENTS[ev][0])}</h2>'
                     f'<ul class="cmplist">{lis}</ul></section>')
+    region_sec = ""
+    if region_built:
+        rlis = ""
+        for rk in ("ku", "tama"):
+            evs = [ev for (r, ev) in region_built if r == rk]
+            if not evs:
+                continue
+            inner = "".join(f'<li><a href="/ranking/chiiki/{rk}/{ev}/">'
+                            f'{esc(REGION_META[rk][0])}で{esc(EVENTS[ev][0])}が手厚い自治体</a></li>' for ev in EVENTS if ev in evs)
+            rlis += inner
+        if rlis:
+            region_sec = (f'<section class="cmpsec"><h2 class="cmpsec-h">地域で比べる（23区／多摩）</h2>'
+                          f'<ul class="cmplist">{rlis}</ul></section>')
     body = f"""
 <h1>東京都の給付・手当・助成 ランキング</h1>
-<p class="lead">「もらえるお金」が手厚い東京都の自治体を、目的別・制度別にランキング。金額の目安が高い順に62市区町村を比較できます。</p>
+<p class="lead">「もらえるお金」が手厚い東京都の自治体を、目的別・制度別・地域別にランキング。金額の目安が高い順に62市区町村を比較できます。</p>
 <section class="cmpsec"><h2 class="cmpsec-h">目的別（制度がある自治体）</h2><ul class="cmplist">{ev_lis}</ul></section>
+{region_sec}
 {''.join(secs)}"""
     page(path="/ranking/index.html",
          title="東京都 給付・手当・助成のランキング｜金額が手厚い自治体",
@@ -3303,7 +3463,8 @@ def main():
     for ev in EVENTS:
         build_ranking(ev, score, avg)
     amount_built = [cid for cid in CHART_SPEC if cid in cat_entries and build_amount_ranking(cid, cat_entries[cid])]
-    build_ranking_hub(amount_built)
+    region_built = [(rk, ev) for rk in ("ku", "tama") for ev in EVENTS if build_region_ranking(rk, ev, score)]
+    build_ranking_hub(amount_built, region_built)
     build_static_pages()
     build_guides()
     build_features()
