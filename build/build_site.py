@@ -14,7 +14,7 @@ DB(gov_life_support.sqlite3) から SEO最適化済みの静的HTMLを生成す�
 各ページ: <title>/meta description/canonical/OGP/robots(品質ゲート)/JSON-LD
 (BreadcrumbList, GovernmentService, FAQPage) / 出典リンク / 最終更新日 を出力。
 """
-import sqlite3, os, html, json, re, sys, csv
+import sqlite3, os, html, json, re, sys, csv, collections
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB   = os.environ.get("SEIDO_DB", os.path.join(ROOT, "gov_life_support.sqlite3"))
@@ -176,6 +176,20 @@ def affiliate_html_for_cats(cats, limit=AFFILIATE_MAX_PER_PAGE):
 
 # ── 品質ゲート（YMYL: 未検証の薄いページをインデックスさせない）────────────
 GATE_MIN_CONFIDENCE = 82   # 制度の平均confidenceがこれ未満なら noindex
+
+# ── 固有性ゲート（大量・薄い複製ページを noindex に絞り、評価をハブへ集約）──────
+# アルゴリズム降格（scaled/薄い自動生成コンテンツ判定）からの回復策。
+# 個別制度ページのうち「多数の自治体に同名で存在する標準/複製制度」や
+# 「固有情報が乏しいページ」を noindex,follow にし、検索結果に出すページを
+# 比較ハブ・自治体トップ・固有性の高い制度に絞る（詳細は audit/content-consolidation-plan.md）。
+#   SEIDO_UNIQ_GATE=0 でこのゲートを無効化（従来どおり confidence ゲートのみ）。
+#   SEIDO_STD_MUNIS: 同名制度が「この自治体数以上」に存在したら標準制度として noindex。
+#   SEIDO_MIN_FACTS: index に残す個別制度ページの最低 fact（対象/金額/条件等）数。
+UNIQ_GATE       = os.environ.get("SEIDO_UNIQ_GATE", "1") != "0"
+STD_MUNIS_MIN   = int(os.environ.get("SEIDO_STD_MUNIS", "5"))
+SEIDO_MIN_FACTS = int(os.environ.get("SEIDO_MIN_FACTS", "3"))
+#   SEIDO_REQUIRE_AMOUNT=0 で「具体的な金額を持つ制度のみ index」条件を外す。
+REQUIRE_AMOUNT  = os.environ.get("SEIDO_REQUIRE_AMOUNT", "1") != "0"
 
 # ── ライフイベント別ページ（自治体×イベントの一覧）のインデックス方針 ──────────
 # 「◯◯区の子育てで使える制度」等は検索意図が濃い主要導線。以前は本文が薄く
@@ -1595,6 +1609,39 @@ def gate_index(p, facts):
     if not conf: return False
     return (sum(conf)/len(conf)) >= GATE_MIN_CONFIDENCE
 
+# ── 固有性ゲート ─────────────────────────────────────────────────────────────
+# 同名制度が何自治体に存在するか（＝標準/複製制度かの判定）を一度だけ集計。
+# 復元DBでは normalized_title が空のため title をキーにする（COALESCEで吸収）。
+def _build_title_muni_count():
+    rows = c.execute("""
+        SELECT COALESCE(NULLIF(TRIM(p.normalized_title),''), TRIM(p.title)) AS k,
+               COUNT(DISTINCT pm.municipality_id) AS n
+        FROM programs p JOIN program_municipalities pm ON pm.program_id=p.id
+        WHERE p.status='active'
+        GROUP BY k""").fetchall()
+    return {r["k"]: r["n"] for r in rows}
+_title_muni_count = _build_title_muni_count()
+
+def _title_key(p):
+    return (p["normalized_title"] or p["title"] or "").strip()
+
+# 個別制度ページを index に残すか（confidence ゲート通過後にさらに固有性で絞る）。
+# 戻り値: (index するか, noindex理由)。理由は集計・可視化用。
+_gate_stats = collections.Counter()
+def indexworthy_reason(p, facts):
+    # 標準/複製制度（多数自治体に同名で存在）→ ハブに集約するため個別は noindex
+    dup = _title_muni_count.get(_title_key(p), 1)
+    if dup >= STD_MUNIS_MIN:
+        return False, "standard_dup"
+    # 固有情報（値のある fact）が乏しいページ → noindex
+    nfacts = sum(1 for f in facts if f[2])
+    if nfacts < SEIDO_MIN_FACTS:
+        return False, "thin"
+    # 具体的な金額を持たないページ（相談・手続き等）は比較価値が薄い → noindex
+    if REQUIRE_AMOUNT and not amount_or_benefit_of(facts):
+        return False, "no_amount"
+    return True, "unique"
+
 # ── 自治体スコア（制度掲載数など。発見導線の並べ替えに使用）──────────────────
 def compute_scores():
     ev_total={}
@@ -1815,6 +1862,13 @@ def faq_table_html(faq):
 def build_program(m, slug, p, cats, progs=None):
     facts = facts_of(p["id"])
     idx = gate_index(p, facts)
+    if not idx:
+        _gate_stats["low_confidence"] += 1
+    elif UNIQ_GATE:
+        idx, _reason = indexworthy_reason(p, facts)
+        _gate_stats[_reason] += 1
+    else:
+        _gate_stats["unique"] += 1
     robots = "index,follow" if idx else "noindex,follow"
     mn = m["municipality_name"]; title = p["title"]
     url = f"/area/tokyo/{slug}/seido/{p['id']}/"
@@ -3474,6 +3528,11 @@ def main():
     write_sitemap(); write_robots(); write_ads_txt(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
     print(f"生成完了: 自治体{len(muni_stats)} / 制度ページ{total_prog}（index {indexed} / noindex {total_prog-indexed}）")
+    print(f"  固有性ゲート内訳: index(unique)={_gate_stats['unique']} "
+          f"noindex[standard_dup={_gate_stats['standard_dup']} thin={_gate_stats['thin']} "
+          f"no_amount={_gate_stats['no_amount']} low_confidence={_gate_stats['low_confidence']}]  "
+          f"(UNIQ_GATE={'on' if UNIQ_GATE else 'off'} STD_MUNIS≥{STD_MUNIS_MIN} "
+          f"MIN_FACTS={SEIDO_MIN_FACTS} REQUIRE_AMOUNT={'on' if REQUIRE_AMOUNT else 'off'})")
     print(f"比較ページ: {len(cat_counts)}カテゴリ（index {cmp_pub}）")
     print(f"暮らしデータ: {kd_n}指標ランキング")
     print(f"sitemap URL数: {len(sitemap_urls)}  出力先: {OUT}")
