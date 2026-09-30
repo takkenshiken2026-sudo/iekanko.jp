@@ -1975,6 +1975,62 @@ def compare_links(cats):
     a="".join(f'<li><a href="/hikaku/{cid}/">東京都で「{esc(CAT_BY_ID[cid][1])}」を自治体比較 {CHEV_R}</a></li>' for cid in ls)
     return f'<div class="cmpbox"><strong>{ic("bars","hi")}東京都の他自治体と比べる</strong><ul>{a}</ul></div>'
 
+# ── 比較ページの独自コメント（数値駆動の「編集メモ」）──────────────────────────
+# 62自治体データから最高/最安/平均・対応状況の差を自然文で要約する。ハブごとに
+# 固有のテキストになるため、集約ページの独自価値（scaled-content降格からの回復の
+# 本丸）になる。定型文ではなく実データに基づくため、増減があれば文面も自動で変わる。
+def compare_insight_html(cid, label, entries, all_entries, have, n_amt):
+    pts = []
+    spec = CHART_SPEC.get(cid)
+    if spec and n_amt >= 3:
+        _unit, mode, _color = spec
+        rows = amount_rank_rows(entries, mode, top_n=999)
+        vals = [r[0] for r in rows]
+        if len(rows) >= 3 and len(set(vals)) >= 2:
+            top, low = rows[0], rows[-1]
+            avg = round(sum(vals) / len(vals))
+            pts.append(f'金額が最も手厚いのは<a href="{esc(top[2])}"><strong>{esc(top[1])}</strong></a>'
+                       f'（{esc(format_rank_yen(top[0], mode))}）。')
+            if low[0] > 0 and top[0] > low[0]:
+                ratio = top[0] / low[0]
+                gap = f'約{ratio:.1f}倍の差' if ratio >= 1.15 else 'ひらき'
+                pts.append(f'最も少ない{esc(low[1])}（{esc(format_rank_yen(low[0], mode))}）とは{gap}があります。')
+            pts.append(f'金額を掲載している{len(rows)}自治体の平均は{esc(format_rank_yen(avg, mode))}、'
+                       f'上位は{esc("・".join(r[1] for r in rows[:3]))}です。')
+    cov = COVERAGE_SPEC.get(cid)
+    if cov:
+        by_m = {}
+        for m, slug, p, amount, idx in all_entries:
+            blob = " ".join(str(x or "") for x in
+                            (p["title"], p["summary"], p["benefit_description"], p["target_description"], amount))
+            by_m.setdefault(m["id"], []).append(blob)
+        texts = [" ".join(bl) for bl in by_m.values()]
+        total = len(texts)
+        feats = []
+        for flabel, pat in cov["feats"]:
+            n = sum(1 for t in texts if re.search(pat, t))
+            if 0 < n < total:
+                feats.append((flabel, n))
+        feats.sort(key=lambda x: -x[1])
+        if feats and total:
+            seg = "、".join(f'「{esc(fl)}」{n}自治体' for fl, n in feats[:3])
+            pts.append(f'対応が分かれるのは{seg}（掲載{total}自治体中）。ここが自治体選びの分かれ目です。')
+    if not pts:
+        if n_amt:
+            pts.append(f'東京都で「{esc(label)}」を確認できたのは{have}自治体。'
+                       f'うち{n_amt}自治体が具体的な支給額・助成額を公表しています。')
+        else:
+            pts.append(f'東京都で「{esc(label)}」を確認できたのは{have}自治体です。'
+                       f'金額は非公表・要問い合わせの自治体が多く、対象・条件に自治体差があります。')
+    miss = len(munis) - have
+    if miss > 0 and have >= 3:
+        pts.append(f'残る{miss}自治体はこの制度が無いか、当サイトで未確認です（ページ下部の一覧に明記）。')
+    lis = "".join(f"<li>{t}</li>" for t in pts)
+    return (f'<section class="insight"><h2>{ic("info","hi")}この比較からわかること</h2>'
+            f'<ul class="insight-list">{lis}</ul>'
+            f'<p class="insight-note">※金額は当サイトが各自治体の公表情報から抽出した代表値の目安です。'
+            f'対象・条件で変わるため、申請前に各自治体ページの出典リンクで最新情報をご確認ください。</p></section>')
+
 # ── 比較ページ（被リンク磁石）────────────────────────────────────────────────
 def build_compare(cid, entries, counts=None):
     """entries: [(m, slug, program, amount, idx), ...]  同一カテゴリの全自治体分"""
@@ -2037,6 +2093,7 @@ def build_compare(cid, entries, counts=None):
 {photo_figure(*photo_for_cats([cid], ev), "evphoto")}
 </div>
 {chart_with_affiliate(compare_chart_html(cid, entries) + compare_coverage_html(cid, all_entries), affiliate_html("hikaku", cid))}
+{compare_insight_html(cid, label, entries, all_entries, have, n_amt)}
 <div class="tablewrap"><table class="cmp">
 <thead><tr><th>自治体</th><th>支給額・助成額</th><th>確認日</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table></div>
@@ -3767,6 +3824,11 @@ footer.site a{color:var(--muted)}
 .cmpbox ul{margin:.3rem 0 0;padding-left:1.1rem}
 .cmpbox p{margin:.3rem 0;color:var(--muted);font-size:var(--fs-sm)}
 .cmpbox p a{font-size:var(--fs-sm)}
+.insight{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:.9rem 1.1rem;margin:1.2rem 0}
+.insight h2{margin:.1rem 0 .5rem;font-size:var(--fs-h2)}
+.insight-list{margin:.2rem 0 .5rem;padding-left:1.2rem;line-height:1.75}
+.insight-list li{margin:.15rem 0}
+.insight-note{margin:.4rem 0 0;color:var(--muted);font-size:var(--fs-sm)}
 .tablewrap{overflow-x:auto;margin:.6rem 0}
 table.cmp{border-collapse:collapse;width:100%;font-size:var(--fs-lg)}
 table.cmp th,table.cmp td{border:1px solid var(--line);padding:.5rem .6rem;text-align:left;vertical-align:top}
