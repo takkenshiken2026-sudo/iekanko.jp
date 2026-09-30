@@ -1,0 +1,77 @@
+{
+  "city_code": "13222",
+  "name": "東久留米市",
+  "slug": "higashikurume",
+  "db_slug": "higashikurume-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 207500,
+    "median_commercial_yen_sqm": 315500,
+    "n_points": 36,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 56
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 102,
+      "avg_price": 20767647,
+      "avg_area": 66.1,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 85,
+        "avg_price": 20283529,
+        "avg_area": 67.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 84,
+        "avg_price": 18503571,
+        "avg_area": 64.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 79,
+        "avg_price": 17868354,
+        "avg_area": 63.8,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 102,
+        "avg_price": 20767647,
+        "avg_area": 66.1,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 46,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 1543,
+    "recent_avg_price": 38773609
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}
