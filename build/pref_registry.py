@@ -65,6 +65,8 @@ _SAITAMA_SLUGS = {
     "新座市": "niiza", "戸田市": "toda", "朝霞市": "asaka",
     "三郷市": "misato", "入間市": "iruma", "深谷市": "fukaya",
     "久喜市": "kuki", "鴻巣市": "kounosu", "ふじみ野市": "fujimino",
+    "狭山市": "sayama", "東松山市": "higashimatsuyama", "本庄市": "honjo",
+    "坂戸市": "sakado", "和光市": "wako", "八潮市": "yashio",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
