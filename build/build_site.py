@@ -1615,6 +1615,14 @@ def pref_crumb(m):
         return []
     return [(pref_name(code), f"/area/{pref_slug(code)}/")]
 
+# 都道府県コード -> その県の自治体数（比較ハブ等の「◯◯自治体」表示に使用）。
+PREF_MUNI_COUNT = collections.Counter(norm_code(m["prefecture_code"]) for m in munis)
+
+def hub_base(code):
+    """比較/ランキングのURL接頭辞。基準県(東京)は従来URL（接頭辞なし）、他県は /<県スラッグ>。
+    例) 東京: /hikaku/<cat>/ 、神奈川: /hikaku/kanagawa/<cat>/"""
+    return "" if norm_code(code) == AGG_PREF else f"/{pref_slug(code)}"
+
 def programs_of(mid):
     return c.execute("""
       SELECT p.* FROM programs p
@@ -1842,7 +1850,8 @@ def program_about(mn, title, ptype, fm):
         html_out += "<p>" + "、".join(proc) + "です。</p>"
     return html_out
 
-def build_faq(fm, title, mn, ptype, cats):
+def build_faq(fm, title, mn, ptype, cats, pref_code=None):
+    _pn = pref_name(norm_code(pref_code or AGG_PREF))
     """facts(fm)を元に、表や説明文とは別の言い回し・別角度でFAQを組み立てる。
     値そのものは実データだが、質問・前後の文はQ&A用に言い換え、丸写しの重複を避ける。
     データが無い項目は作らない（憶測しない）。最大6問。"""
@@ -1886,7 +1895,7 @@ def build_faq(fm, title, mn, ptype, cats):
     cl=[x for x in (cats or []) if x in CAT_BY_ID]
     if cl and len(out)<6:
         out.append(("同じような制度は他の自治体にもありますか？",
-            f"はい。東京都の他の自治体にも「{CAT_BY_ID[cl[0]][1]}」にあたる制度があり、金額や対象は自治体ごとに異なります。"
+            f"はい。{_pn}の他の自治体にも「{CAT_BY_ID[cl[0]][1]}」にあたる制度があり、金額や対象は自治体ごとに異なります。"
             f"当サイトの比較ページで、各自治体の内容を見比べられます。"))
     return out[:6]
 
@@ -1925,7 +1934,7 @@ def build_program(m, slug, p, cats, progs=None):
         src = f' <a class="src" href="{esc(ev)}" target="_blank" rel="nofollow noopener">出典</a>' if ev else ""
         dl.append(f'<div class="fact"><dt>{ic(FACT_ICONS.get(lbl,""),"fi")}{esc(lbl)}</dt>'
                   f'<dd>{esc(val)}{src}</dd></div>')
-    faq = build_faq(fm, title, mn, ptype, cats)
+    faq = build_faq(fm, title, mn, ptype, cats, norm_code(m["prefecture_code"]))
     official = p["official_url"] or (m["official_site_url"] or "")
     if "example.invalid" in official:  # 復元DBの「公式URL無し」ダミーは公式リンクを出さない
         official = ""
@@ -1976,7 +1985,7 @@ def build_program(m, slug, p, cats, progs=None):
         _facts_zone += (
             f'<p class="offnote">※金額・対象・申請方法は制度改定で変わることがあります。'
             f'最新情報は公式ページや{esc(mn)}の窓口で必ずご確認ください。</p>')
-    _tail_zone = related_programs(m, slug, p, progs) + compare_links(cats)
+    _tail_zone = related_programs(m, slug, p, progs) + compare_links(cats, norm_code(m["prefecture_code"]))
     _zones = [_header_zone, _about_zone, _facts_zone]
     if faq_html: _zones.append(faq_html)
     if official_html: _zones.append(official_html)
@@ -2008,11 +2017,13 @@ def build_program(m, slug, p, cats, progs=None):
     if idx: sitemap_urls.append((url, "0.8", p["last_verified_at"]))
     return idx
 
-def compare_links(cats):
+def compare_links(cats, pref_code=None):
     ls=[c for c in cats if c in CAT_BY_ID]
     if not ls: return ""
-    a="".join(f'<li><a href="/hikaku/{cid}/">東京都で「{esc(CAT_BY_ID[cid][1])}」を自治体比較 {CHEV_R}</a></li>' for cid in ls)
-    return f'<div class="cmpbox"><strong>{ic("bars","hi")}東京都の他自治体と比べる</strong><ul>{a}</ul></div>'
+    pref_code = norm_code(pref_code or AGG_PREF)
+    pn = pref_name(pref_code); hb = hub_base(pref_code)
+    a="".join(f'<li><a href="/hikaku{hb}/{cid}/">{esc(pn)}で「{esc(CAT_BY_ID[cid][1])}」を自治体比較 {CHEV_R}</a></li>' for cid in ls)
+    return f'<div class="cmpbox"><strong>{ic("bars","hi")}{esc(pn)}の他自治体と比べる</strong><ul>{a}</ul></div>'
 
 # ── 比較ページの独自コメント（数値駆動の「編集メモ」）──────────────────────────
 # 62自治体データから最高/最安/平均・対応状況の差を自然文で要約する。ハブごとに
@@ -2071,12 +2082,15 @@ def compare_insight_html(cid, label, entries, all_entries, have, n_amt):
             f'対象・条件で変わるため、申請前に各自治体ページの出典リンクで最新情報をご確認ください。</p></section>')
 
 # ── 比較ページ（被リンク磁石）────────────────────────────────────────────────
-def build_compare(cid, entries, counts=None):
-    """entries: [(m, slug, program, amount, idx), ...]  同一カテゴリの全自治体分"""
+def build_compare(cid, entries, counts=None, pref_code=None):
+    """entries: [(m, slug, program, amount, idx), ...]  単一都道府県の同一カテゴリ分"""
     counts = counts or {}
+    pref_code = norm_code(pref_code or AGG_PREF)
+    pn = pref_name(pref_code); hb = hub_base(pref_code); pcount = PREF_MUNI_COUNT.get(pref_code, 0)
+    pref_munis = [m for m in munis if norm_code(m["prefecture_code"]) == pref_code]
     label, ev = CAT_BY_ID[cid][1], CAT_BY_ID[cid][2]
     ev_name = EVENTS.get(ev,("",""))[0]
-    url = f"/hikaku/{cid}/"
+    url = f"/hikaku{hb}/{cid}/"
     all_entries = entries          # 集約前の全該当制度（対応状況の判定に使う）
     # 同一自治体に複数該当制度がある場合は1行に集約（金額記載あり→index対象を優先）
     best={}
@@ -2096,7 +2110,7 @@ def build_compare(cid, entries, counts=None):
                     f'<td>{amt}</td><td class="dt">{esc(p["last_verified_at"] or "")}</td></tr>')
     have=len(entries)
     n_amt=sum(1 for e in entries if e[3])
-    missing=[m["municipality_name"] for m in AGG_MUNIS if m["id"] not in {e[0]["id"] for e in entries}]
+    missing=[m["municipality_name"] for m in pref_munis if m["id"] not in {e[0]["id"] for e in entries}]
     miss_html=""
     if missing:
         miss_html=(f'<p class="miss"><strong>この制度が未確認の自治体（{len(missing)}）：</strong>'
@@ -2105,29 +2119,29 @@ def build_compare(cid, entries, counts=None):
     # 同じライフイベントの他カテゴリ比較への内部リンク
     sibs=[(c[0],c[1]) for c in TAXONOMY if c[2]==ev and c[0]!=cid and counts.get(c[0],0)>=3]
     rank_li = (f'<li><a href="/ranking/kingaku/{cid}/">{esc(label)}が手厚い自治体ランキングでみる {CHEV_R}</a></li>'
-               if cid in CHART_SPEC else "")
+               if cid in CHART_SPEC and pref_code == AGG_PREF else "")
     rel_html=""
     if sibs or rank_li:
-        lis="".join(f'<li><a href="/hikaku/{sid}/">東京都の「{esc(sl)}」を比較 {CHEV_R}</a></li>' for sid,sl in sibs[:8])
+        lis="".join(f'<li><a href="/hikaku{hb}/{sid}/">{esc(pn)}の「{esc(sl)}」を比較 {CHEV_R}</a></li>' for sid,sl in sibs[:8])
         rel_html=f'<div class="cmpbox"><strong>同じ「{esc(ev_name)}」で自治体を比べる</strong><ul>{rank_li}{lis}</ul></div>'
 
     # FAQ（可視 + 構造化データ）
-    faq=[(f"東京都で{label}があるのはどの自治体ですか？",
-          f"当サイトでは東京都{have}自治体で「{label}」に該当する制度を確認しています。各自治体の内容・金額・最終確認日はこのページの一覧で比較できます。"),
+    faq=[(f"{pn}で{label}があるのはどの自治体ですか？",
+          f"当サイトでは{pn}{have}自治体で「{label}」に該当する制度を確認しています。各自治体の内容・金額・最終確認日はこのページの一覧で比較できます。"),
          (f"{label}の金額は自治体によって違いますか？",
           f"はい。同じ{label}でも自治体ごとに金額・対象・条件が異なります。金額は制度改定で変わるため、申請前に各自治体の公式ページ（出典リンク）で最新情報をご確認ください。")]
     faq_html=faq_table_html(faq)
 
-    title=f"【{ev_name}】{label} 東京都62自治体を比較｜金額・対象一覧"
-    desc=clip(f"東京都の{label}を{have}自治体分まとめて比較。自治体ごとの金額・対象・最終確認日を一覧化。どの区市町村が手厚いかを出典付きで確認できます。",118)
+    title=f"【{ev_name}】{label} {pn}{pcount}自治体を比較｜金額・対象一覧"
+    desc=clip(f"{pn}の{label}を{have}自治体分まとめて比較。自治体ごとの金額・対象・最終確認日を一覧化。どの区市町村が手厚いかを出典付きで確認できます。",118)
     amt_note=(f"うち{n_amt}自治体は具体的な支給額・助成額を掲載しています。金額の記載がある自治体を上に表示しています。"
               if n_amt else "")
     body=f"""
 <div class="area-head">
 <div class="area-head-main">
 <span class="badge">{esc(ev_name)}</span>
-<h1>東京都の{esc(label)}を自治体で比較</h1>
-<p class="lead">東京都62自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>
+<h1>{esc(pn)}の{esc(label)}を自治体で比較</h1>
+<p class="lead">{esc(pn)}{pcount}自治体の「{esc(label)}」を横断比較しています（掲載 {have}自治体・各制度に出典/最終確認日つき）。{esc(amt_note)}</p>
 </div>
 {photo_figure(*photo_for_cats([cid], ev), "evphoto")}
 </div>
@@ -2141,13 +2155,16 @@ def build_compare(cid, entries, counts=None):
 {rel_html}
 <h2>{ic("help","hi")}よくある質問</h2>
 {faq_html}
-<p><a href="/hikaku/">{CHEV_L} 制度カテゴリ比較の一覧にもどる</a></p>"""
+<p><a href="/hikaku{hb}/">{CHEV_L} 制度カテゴリ比較の一覧にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{label} 自治体比較",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":e[0]["municipality_name"],
           "url":f"{BASE_URL}{area_base(e[1])}/seido/{e[2]['id']}/"} for i,e in enumerate(entries)]}
     faq_ld={"@context":"https://schema.org","@type":"FAQPage",
         "mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]}
-    bc=[("トップ","/"),("制度を比較する","/hikaku/"),(label,None)]
+    if pref_code == AGG_PREF:
+        bc=[("トップ","/"),("制度を比較する","/hikaku/"),(label,None)]
+    else:
+        bc=[("トップ","/"),(pn, f"/area/{pref_slug(pref_code)}/"),("制度を比較する", f"/hikaku{hb}/"),(label,None)]
     robots="index,follow" if have>=3 else "noindex,follow"
     page(path=url+"index.html",title=title,description=desc,canonical=url,
          jsonld=[il,faq_ld],robots=robots,breadcrumb=bc,body=body)
@@ -2155,15 +2172,17 @@ def build_compare(cid, entries, counts=None):
     if have>=3: sitemap_urls.append((url,"0.9", max(dates) if dates else None))
     return have
 
-def build_compare_index(cat_counts):
-    url="/hikaku/"
+def build_compare_index(cat_counts, pref_code=None):
+    pref_code = norm_code(pref_code or AGG_PREF)
+    pn = pref_name(pref_code); hb = hub_base(pref_code); pcount = PREF_MUNI_COUNT.get(pref_code, 0)
+    url=f"/hikaku{hb}/"
     groups={}
     for cid,label,ev,_,_ in TAXONOMY:
         groups.setdefault(ev,[]).append((cid,label,cat_counts.get(cid,0)))
     secs=[]
     for ev_slug,(ev_name,_) in EVENTS.items():
         items=groups.get(ev_slug,[])
-        lis="".join(f'<li><a href="/hikaku/{cid}/">{esc(label)}</a>'
+        lis="".join(f'<li><a href="/hikaku{hb}/{cid}/">{esc(label)}</a>'
                     f'<span class="cnt2">{n}自治体</span></li>' for cid,label,n in items if n>=3)
         if not lis: continue
         color=EV_META[ev_slug][2]
@@ -2171,12 +2190,16 @@ def build_compare_index(cat_counts):
             f'<span class="pic">{icon_svg(ev_slug)}</span>{esc(ev_name)}</h2>')
         secs.append(f'<section class="cmpsec">{h2}<ul class="cmplist">{lis}</ul></section>')
     body=f"""
-<h1>東京都の給付・手当・助成を「制度ごと」に自治体比較</h1>
-<p class="lead">同じ制度でも、金額や対象は自治体でこんなに違います。制度カテゴリを選ぶと、東京都62自治体の内容を横断比較できます。</p>
+<h1>{esc(pn)}の給付・手当・助成を「制度ごと」に自治体比較</h1>
+<p class="lead">同じ制度でも、金額や対象は自治体でこんなに違います。制度カテゴリを選ぶと、{esc(pn)}{pcount}自治体の内容を横断比較できます。</p>
 {''.join(secs)}"""
-    page(path=url+"index.html",title="東京都 給付・手当・助成の自治体比較一覧｜制度カテゴリ別",
-         description="児童手当・産後ケア・高齢者紙おむつ・家賃補助など、東京都62自治体の制度を制度カテゴリごとに横断比較。金額・対象の違いが一目でわかります。",
-         canonical=url,breadcrumb=[("トップ","/"),("制度を比較する",None)],body=body)
+    if pref_code == AGG_PREF:
+        bc=[("トップ","/"),("制度を比較する",None)]
+    else:
+        bc=[("トップ","/"),(pn, f"/area/{pref_slug(pref_code)}/"),("制度を比較する",None)]
+    page(path=url+"index.html",title=f"{pn} 給付・手当・助成の自治体比較一覧｜制度カテゴリ別",
+         description=clip(f"児童手当・産後ケア・高齢者紙おむつ・家賃補助など、{pn}{pcount}自治体の制度を制度カテゴリごとに横断比較。金額・対象の違いが一目でわかります。",118),
+         canonical=url,breadcrumb=bc,body=body)
     sitemap_urls.append((url,"0.9"))
 
 # ── 目的・年代の発見導線＋ランキング（差別化の核）──────────────────────────────
@@ -3628,7 +3651,7 @@ def main():
     score, avg = compute_scores()
     muni_stats=[]; total_prog=0; indexed=0
     muni_stats_by_pref={}   # 都道府県コード -> [(m,slug,制度数)]（県トップ生成用）
-    cat_entries={}
+    cat_entries_by_pref={}  # 都道府県コード -> {cid: [(m,slug,p,amount,idx)]}（県別比較ハブ用）
     search_progs=[]
     for m in munis:
         slug = muni_slug(m)
@@ -3637,7 +3660,9 @@ def main():
         progs, counts = build_muni(m, slug, score, avg)
         for ev_slug,(ev_name,ev_intro) in EVENTS.items():
             build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs)
-        agg = m["id"] in AGG_IDS   # 概観ページ（比較/ランキング/トップ/検索）に含める対象か
+        code = norm_code(m["prefecture_code"])
+        agg = m["id"] in AGG_IDS   # トップ/検索/ランキングの基準県（東京）か
+        pref_cat = cat_entries_by_pref.setdefault(code, {})
         for p in progs:
             total_prog+=1
             cats = classify(p["title"], p["summary"], p["benefit_description"], p["target_description"])
@@ -3645,23 +3670,27 @@ def main():
             idx = build_program(m, slug, p, cats, progs)
             if idx: indexed+=1
             amount = amount_or_benefit_of(facts)
-            if not agg:
-                continue   # 個別ページは生成済み。概観ページ用の集約には含めない
-            for cid in cats:
-                cat_entries.setdefault(cid,[]).append((m, slug, p, amount, idx))
-            summ = re.sub(r"\s+"," ",(p["plain_summary"] or p["summary"] or "")).strip()
-            search_progs.append({"s":slug,"i":p["id"],"t":p["title"],
-                                 "y":PT_JA.get(p["program_type"],"制度"),"d":clip(summ,64)})
-        muni_stats_by_pref.setdefault(norm_code(m["prefecture_code"]), []).append((m, slug, len(progs)))
+            for cid in cats:   # 比較ハブは県ごとに生成するため、県別に集約
+                pref_cat.setdefault(cid,[]).append((m, slug, p, amount, idx))
+            if agg:            # トップの横断検索は基準県（東京）のみ
+                summ = re.sub(r"\s+"," ",(p["plain_summary"] or p["summary"] or "")).strip()
+                search_progs.append({"s":slug,"i":p["id"],"t":p["title"],
+                                     "y":PT_JA.get(p["program_type"],"制度"),"d":clip(summ,64)})
+        muni_stats_by_pref.setdefault(code, []).append((m, slug, len(progs)))
         if agg:
             muni_stats.append((m, slug, len(progs)))
-    # 比較ページ（先に自治体数を数え、関連カテゴリの内部リンク判定に使う）
-    pre_counts={cid: len({e[0]["id"] for e in cat_entries[cid]}) for cid in cat_entries}
-    cat_counts={}
-    for cid in CAT_BY_ID:
-        if cid in cat_entries:
-            cat_counts[cid]=build_compare(cid, cat_entries[cid], pre_counts)
-    build_compare_index(cat_counts)
+    # 比較ページ（県ごとに生成。東京は従来URL /hikaku/<cat>/、他県は /hikaku/<県>/<cat>/）
+    cat_entries = cat_entries_by_pref.get(AGG_PREF, {})  # 東京（トップ/検索/ランキングで参照）
+    cat_counts = {}
+    for pcode, pcat in cat_entries_by_pref.items():
+        pre_counts={cid: len({e[0]["id"] for e in pcat[cid]}) for cid in pcat}
+        cc={}
+        for cid in CAT_BY_ID:
+            if cid in pcat:
+                cc[cid]=build_compare(cid, pcat[cid], pre_counts, pcode)
+        build_compare_index(cc, pcode)
+        if pcode == AGG_PREF:
+            cat_counts = cc
     build_find_hub(score)
     for ev in EVENTS:
         build_ranking(ev, score, avg)
