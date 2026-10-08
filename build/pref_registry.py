@@ -51,6 +51,8 @@ _KANAGAWA_SLUGS = {
     "伊勢原市": "isehara", "綾瀬市": "ayase", "逗子市": "zushi",
     "三浦市": "miura", "南足柄市": "minamiashigara",
     "葉山町": "hayama", "寒川町": "samukawa", "大磯町": "oiso",
+    "二宮町": "ninomiya", "大井町": "oi", "松田町": "matsuda",
+    "開成町": "kaisei", "愛川町": "aikawa",
 }
 
 # 埼玉県（フェーズ2・第2県。政令市・中核市から順次拡大）。スラッグは公式ドメインに整合。
