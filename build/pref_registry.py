@@ -103,10 +103,13 @@ _IBARAKI_SLUGS = {
     "神栖市": "kamisu", "筑西市": "chikusei", "龍ケ崎市": "ryugasaki",
 }
 
-# 栃木県（フェーズ2・第5県。県内現物給付。県庁所在地・人口上位市から順次拡大）。
+# 栃木県（フェーズ2・第5県。県内現物給付で窓口無料。県庁所在地・人口上位市から順次拡大）。
+# さくら市は千葉・佐倉市（sakura）とスラッグが衝突するため sakura-tochigi で分離。
 _TOCHIGI_SLUGS = {
     "宇都宮市": "utsunomiya", "小山市": "oyama", "栃木市": "tochigi",
     "足利市": "ashikaga", "佐野市": "sano", "那須塩原市": "nasushiobara",
+    "鹿沼市": "kanuma", "日光市": "nikko", "真岡市": "moka",
+    "大田原市": "ohtawara", "下野市": "shimotsuke", "さくら市": "sakura-tochigi",
 }
 
 # 群馬県（フェーズ2・第6県。福祉医療で現物給付・原則無料。県庁所在地・人口上位市から順次拡大）。
