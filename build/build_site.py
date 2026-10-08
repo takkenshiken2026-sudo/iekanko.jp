@@ -810,7 +810,7 @@ TAXONOMY = [
  ("preg_tamondo","多胎児支援","pregnancy_birth",["多胎","双子","ふたご","三つ子"],[]),
  ("child_teate","児童手当","childcare",["児童手当"],["調査委託","プロポーザル"]),
  ("child_fuyou","児童扶養手当(ひとり親)","childcare",["児童扶養手当"],[]),
- ("child_iryo","子ども・乳幼児医療費助成","childcare",["子ども医療費","乳幼児医療","子育て医療","義務教育就学児医療","高校生等医療","マル子","マル乳","こども医療費","子供医療費","子どもの医療費","子ども等医療","児童医療費","すこやか医療費","乳幼児の医療"],[]),
+ ("child_iryo","子ども・乳幼児医療費助成","childcare",["子ども医療費","乳幼児医療","子育て医療","義務教育就学児医療","高校生等医療","マル子","マル乳","こども医療費","子供医療費","子どもの医療費","子ども等医療","児童医療費","すこやか医療費","乳幼児の医療","小児医療"],[]),
  ("child_hitorioya","ひとり親家庭医療費助成(マル親)","childcare",["ひとり親家庭医療","母子家庭医療","ひとり親医療","マル親","ひとり親家庭.{0,3}医療","ひとり親家庭.{0,4}医療費"],[]),
  ("child_shugaku","就学援助","childcare",["就学援助","就学奨励","学用品費"],[]),
  ("child_hoiku_gen","保育料軽減・多子軽減","childcare",["保育料","副食費","給食費無償","第二子","多子"],["就学援助"]),
@@ -2808,9 +2808,11 @@ def build_muni(m, slug, score, avg):
     # 同一制度が複数ライフイベントに紐づく場合があるため、全体合計はプログラム単位で再計算
     total_yen, total_amt_n = amount_sum_of_programs(progs)
     mid=m["id"]
-    # ほかの市区町村（種別を問わず五十音順の近隣）を対等に回遊
+    # ほかの市区町村（同一都道府県内・種別を問わず五十音順の近隣）を対等に回遊
     _tj={"special_ward":"区","city":"市","town":"町","village":"村"}
-    _ordered=[x for x in sorted(munis, key=lambda z: YOMI.get(z["municipality_name"], z["municipality_name"])) if muni_slug(x)]
+    _pc=norm_code(m["prefecture_code"])
+    _ordered=[x for x in sorted(munis, key=lambda z: YOMI.get(z["municipality_name"], z["municipality_name"]))
+              if muni_slug(x) and norm_code(x["prefecture_code"])==_pc]
     _n=len(_ordered)
     _idx=next((i for i,x in enumerate(_ordered) if x["id"]==mid), None)
     others_html=""
