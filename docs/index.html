@@ -135,7 +135,7 @@ gtag('config','G-9TB0TXT8X0');
           ro:li.getAttribute('data-ro')||'',mt:mt?mt.textContent:'',
           href:a?a.getAttribute('href'):'#'};
  });
- var slug2nm={};munis.forEach(function(m){var s=(m.href.match(/\/area\/tokyo\/([^/]+)\//)||[])[1];if(s)slug2nm[s]=m.nm;});
+ var slug2nm={},slug2pref={};munis.forEach(function(m){var mm=m.href.match(/\/area\/([^/]+)\/([^/]+)\//);if(mm){slug2nm[mm[2]]=m.nm;slug2pref[mm[2]]=mm[1];}});
  var SUGGEST=[{t:'児童手当',u:'/hikaku/child_teate/'},{t:'家賃補助',u:'/hikaku/house_yachin/'},
   {t:'子ども・乳幼児医療費助成',u:'/hikaku/child_iryo/'},{t:'産後ケア',u:'/hikaku/preg_sango_care/'},
   {t:'出産・入学祝金',u:'/hikaku/child_iwai/'},{t:'高齢者の紙おむつ助成',u:'/hikaku/eld_omutsu/'},
@@ -203,7 +203,7 @@ gtag('config','G-9TB0TXT8X0');
   pp.sort(function(a,b){return a.s-b.s;});
   if(mm.length){head('市区町村');mm.slice(0,5).forEach(function(x){opt({pri:x.m.nm,badge:x.m.mt,href:x.m.href});});}
   if(cc.length){head('制度を自治体で比較');cc.slice(0,4).forEach(function(x){opt({pri:x.c.t,sec:x.c.n+'自治体で比較',href:x.c.u});});}
-  if(pp.length){head('制度');pp.slice(0,8).forEach(function(x){opt({pri:x.p.t,badge:x.p.y,sec:slug2nm[x.p.s]||'',href:'/area/tokyo/'+x.p.s+'/seido/'+x.p.i+'/'});});}
+  if(pp.length){head('制度');pp.slice(0,8).forEach(function(x){opt({pri:x.p.t,badge:x.p.y,sec:slug2nm[x.p.s]||'',href:'/area/'+(slug2pref[x.p.s]||'tokyo')+'/'+x.p.s+'/seido/'+x.p.i+'/'});});}
   if(!rows.length){
    if(idx){var li=document.createElement('li');li.className='hsac-none';li.textContent=loading?'読み込み中…':'該当する候補が見つかりません';ac.appendChild(li);ac.hidden=false;box.setAttribute('aria-expanded','true');return;}
    close();return;

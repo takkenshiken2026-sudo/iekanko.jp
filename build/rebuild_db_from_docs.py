@@ -17,39 +17,35 @@ build/build_site.py が参照する 6 テーブル
 import os, re, sys, html, glob, json, sqlite3
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOCS = os.path.join(ROOT, "docs")
+DOCS = os.environ.get("SEIDO_DOCS", os.path.join(ROOT, "docs"))  # 入力docs（サンドボックス検証用に上書き可）
+
+# 都道府県レジストリ（単一ソース。build_site.py と共有）。DB非依存なので復元時でも安全に import 可。
+sys.path.insert(0, os.path.join(ROOT, "build"))
+from pref_registry import PREFECTURES, SLUGS_BY_PREF, SLUG2CODE
 
 # 自治体スラッグ -> 公式サイトURL（生成物の JSON-LD provider.url から回収）
 def recover_muni_urls():
     prov = re.compile(r'"provider":\s*\{[^}]*?"url":\s*"(https?://[^"]+)"')
     out = {}
-    for fp in glob.glob(os.path.join(DOCS, "area", "tokyo", "*", "seido", "*", "index.html")):
-        slug = re.search(r"/tokyo/([^/]+)/seido", fp.replace("\\", "/")).group(1)
-        if slug in out:
+    for fp in glob.glob(os.path.join(DOCS, "area", "*", "*", "seido", "*", "index.html")):
+        mm = re.search(r"/area/([^/]+)/([^/]+)/seido", fp.replace("\\", "/"))
+        key = (mm.group(1), mm.group(2))   # (都道府県スラッグ, 自治体スラッグ)
+        if key in out:
             continue
         m = prov.search(open(fp, encoding="utf-8").read())
         if m:
-            out[slug] = m.group(1)
+            out[key] = m.group(1)
     return out
 SCHEMA = os.path.join(ROOT, "build", "schema.sql")
 OUT_DB = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "gov_life_support.sqlite3")
 
-# ── build_site.py と同一の対応表（逆引き）─────────────────────────────
-SLUGS = {
- "世田谷区":"setagaya","渋谷区":"shibuya","杉並区":"suginami","練馬区":"nerima","新宿区":"shinjuku",
- "港区":"minato","中央区":"chuo","江東区":"koto","大田区":"ota","千代田区":"chiyoda","文京区":"bunkyo",
- "台東区":"taito","墨田区":"sumida","品川区":"shinagawa","目黒区":"meguro","中野区":"nakano",
- "豊島区":"toshima","北区":"kita","荒川区":"arakawa","板橋区":"itabashi","足立区":"adachi",
- "葛飾区":"katsushika","江戸川区":"edogawa","八王子市":"hachioji","立川市":"tachikawa","武蔵野市":"musashino",
- "三鷹市":"mitaka","青梅市":"ome","府中市":"fuchu","昭島市":"akishima","調布市":"chofu","町田市":"machida",
- "小金井市":"koganei","小平市":"kodaira","日野市":"hino","東村山市":"higashimurayama","国分寺市":"kokubunji",
- "国立市":"kunitachi","福生市":"fussa","狛江市":"komae","東大和市":"higashiyamato","清瀬市":"kiyose",
- "東久留米市":"higashikurume","武蔵村山市":"musashimurayama","多摩市":"tama","稲城市":"inagi","羽村市":"hamura",
- "あきる野市":"akiruno","西東京市":"nishitokyo","瑞穂町":"mizuho","日の出町":"hinode","檜原村":"hinohara",
- "奥多摩町":"okutama","大島町":"oshima","利島村":"toshimamura","新島村":"niijima","神津島村":"kozushima",
- "三宅村":"miyake","御蔵島村":"mikurajima","八丈町":"hachijo","青ヶ島村":"aogashima","小笠原村":"ogasawara",
-}
-SLUG2NAME = {v: k for k, v in SLUGS.items()}
+# ── 対応表（build_site.py と単一ソース = pref_registry から導出）─────────────
+# pref_slug -> {muni_slug: 自治体名}（復元時のパス解釈に使用）
+SLUG2NAME_BY_PREF = {PREFECTURES[code][0]: {s: n for n, s in name2slug.items()}
+                     for code, name2slug in SLUGS_BY_PREF.items()}
+# 互換: 全県フラットな name->slug / slug->name（同名自治体の衝突は muni は (県,名) で解決）
+SLUGS = {n: s for name2slug in SLUGS_BY_PREF.values() for n, s in name2slug.items()}
+SLUG2NAME = {s: n for name2slug in SLUGS_BY_PREF.values() for n, s in name2slug.items()}
 
 EVENTS = {  # slug -> 表示名
  "pregnancy_birth":"妊娠・出産","childcare":"子育て","moving":"引っ越し",
@@ -101,11 +97,12 @@ ROBOTS_RE = re.compile(r'<meta name="robots" content="([^"]+)"')
 
 def parse_program_page(fp):
     t = open(fp, encoding="utf-8").read()
-    m = re.search(r"/tokyo/([^/]+)/seido/(\d+)/index\.html$", fp.replace("\\", "/"))
-    slug, pid = m.group(1), int(m.group(2))
-    mn = SLUG2NAME.get(slug)
+    m = re.search(r"/area/([^/]+)/([^/]+)/seido/(\d+)/index\.html$", fp.replace("\\", "/"))
+    pref_slug, slug, pid = m.group(1), m.group(2), int(m.group(3))
+    mn = SLUG2NAME_BY_PREF.get(pref_slug, {}).get(slug)
     if not mn:
         return None
+    pref_code = SLUG2CODE.get(pref_slug, "13")
     # title (h1 = "○○市の△△" -> strip muni prefix)
     h1 = strip_tags(TITLE_RE.search(t).group(1)) if TITLE_RE.search(t) else ""
     title = re.sub(r"^" + re.escape(mn) + r"の", "", h1).strip() or h1
@@ -145,7 +142,7 @@ def parse_program_page(fp):
     if not official and facts:
         official = facts[0][2]
     return {
-        "id": pid, "slug": slug, "muni": mn, "title": title or "制度",
+        "id": pid, "slug": slug, "muni": mn, "pref_code": pref_code, "title": title or "制度",
         "program_type": ptype, "summary": summary, "verified": verified,
         # 公式URLが取れない制度は、制度ごとに一意なダミー(example.invalid/slug/pid)にする。
         # official_url は NOT NULL かつ UNIQUE(title, official_url) のため、同名・公式URL無しの
@@ -157,16 +154,18 @@ def parse_program_page(fp):
     }
 
 def collect_life_events():
-    """目的別ページ docs/area/tokyo/<slug>/<event>/ から program_id -> {event} を復元"""
+    """目的別ページ docs/area/<pref>/<slug>/<event>/ から program_id -> {event} を復元"""
     pe = {}
-    for slug in SLUGS.values():
-        for ev in EVENTS:
-            fp = os.path.join(DOCS, "area", "tokyo", slug, ev, "index.html")
-            if not os.path.exists(fp):
-                continue
-            t = open(fp, encoding="utf-8").read()
-            for pid in set(int(x) for x in re.findall(r"/seido/(\d+)/", t)):
-                pe.setdefault(pid, set()).add(ev)
+    for code, name2slug in SLUGS_BY_PREF.items():
+        pref = PREFECTURES[code][0]
+        for slug in name2slug.values():
+            for ev in EVENTS:
+                fp = os.path.join(DOCS, "area", pref, slug, ev, "index.html")
+                if not os.path.exists(fp):
+                    continue
+                t = open(fp, encoding="utf-8").read()
+                for pid in set(int(x) for x in re.findall(r"/seido/(\d+)/", t)):
+                    pe.setdefault(pid, set()).add(ev)
     return pe
 
 # ── DB 構築 ──────────────────────────────────────────────────────────
@@ -177,17 +176,22 @@ def main():
     con.executescript(open(SCHEMA, encoding="utf-8").read())
     c = con.cursor()
 
-    # municipalities（SLUGS の順で id 付与。公式URLは生成物から回収）
+    # municipalities（都道府県レジストリの順で id 付与。公式URLは生成物から回収）
+    # 東京を先頭に、県ごとに連番。muni_id は (都道府県コード, 自治体名) で引く（同名衝突回避）。
     muni_urls = recover_muni_urls()
     muni_id = {}
-    for i, (name, slug) in enumerate(SLUGS.items(), start=1):
-        muni_id[name] = i
-        c.execute("""INSERT INTO municipalities
-            (id,prefecture_code,prefecture_name,municipality_code,municipality_name,
-             municipality_type,official_site_url,is_active)
-            VALUES (?,?,?,?,?,?,?,1)""",
-            (i, "13", "東京都", None, name, muni_type(name),
-             muni_urls.get(slug, f"https://www.example.invalid/{slug}")))
+    i = 0
+    for code, name2slug in SLUGS_BY_PREF.items():
+        pref_slug, pref_name = PREFECTURES[code][0], PREFECTURES[code][1]
+        for name, slug in name2slug.items():
+            i += 1
+            muni_id[(code, name)] = i
+            c.execute("""INSERT INTO municipalities
+                (id,prefecture_code,prefecture_name,municipality_code,municipality_name,
+                 municipality_type,official_site_url,is_active)
+                VALUES (?,?,?,?,?,?,?,1)""",
+                (i, code, pref_name, None, name, muni_type(name),
+                 muni_urls.get((pref_slug, slug), f"https://www.example.invalid/{slug}")))
 
     # life_events
     le_id = {}
@@ -200,7 +204,7 @@ def main():
 
     n_prog = n_fact = n_ple = 0
     seen_pid = set()
-    for fp in glob.glob(os.path.join(DOCS, "area", "tokyo", "*", "seido", "*", "index.html")):
+    for fp in glob.glob(os.path.join(DOCS, "area", "*", "*", "seido", "*", "index.html")):
         p = parse_program_page(fp)
         if not p or p["id"] in seen_pid:
             continue
@@ -217,7 +221,7 @@ def main():
         n_prog += 1
         c.execute("""INSERT OR IGNORE INTO program_municipalities
             (program_id,municipality_id,area_scope) VALUES (?,?, 'municipal')""",
-            (p["id"], muni_id[p["muni"]]))
+            (p["id"], muni_id[(p["pref_code"], p["muni"])]))
         for ft, val, evurl in p["facts"]:
             c.execute("""INSERT INTO program_facts
                 (program_id,fact_type,value,evidence_url,confidence_score,

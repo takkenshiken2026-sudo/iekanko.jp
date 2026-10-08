@@ -6,9 +6,9 @@ DB(gov_life_support.sqlite3) から SEO最適化済みの静的HTMLを生成す�
 
 生成物 -> docs/  (GitHub Pages 公開ディレクトリ)
   /                                  トップ
-  /area/tokyo/<muni>/                自治体ハブ
-  /area/tokyo/<muni>/<event>/        自治体 × ライフイベント
-  /area/tokyo/<muni>/seido/<id>/     制度詳細（本命ロングテール）
+  /area/<pref>/<muni>/               自治体ハブ（pref=都道府県スラッグ。現状 tokyo）
+  /area/<pref>/<muni>/<event>/       自治体 × ライフイベント
+  /area/<pref>/<muni>/seido/<id>/    制度詳細（本命ロングテール）
   /sitemap.xml  /robots.txt  /assets/style.css
 
 各ページ: <title>/meta description/canonical/OGP/robots(品質ゲート)/JSON-LD
@@ -16,9 +16,13 @@ DB(gov_life_support.sqlite3) から SEO最適化済みの静的HTMLを生成す�
 """
 import sqlite3, os, html, json, re, sys, csv, collections
 
+# 都道府県レジストリ（単一ソース。build/pref_registry.py）。復元(rebuild_db_from_docs)と共有。
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pref_registry import PREFECTURES, SLUGS_BY_PREF, pref_slug, pref_name, norm_code
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB   = os.environ.get("SEIDO_DB", os.path.join(ROOT, "gov_life_support.sqlite3"))
-OUT  = os.path.join(ROOT, "docs")
+OUT  = os.environ.get("SEIDO_OUT", os.path.join(ROOT, "docs"))  # 出力先（サンドボックス検証用に上書き可）
 
 # ▼ 本番ドメイン（canonical / sitemap / OGP に使用）。環境変数 SEIDO_BASE_URL で上書き可。
 BASE_URL = os.environ.get("SEIDO_BASE_URL", "https://iekanko.jp").rstrip("/")
@@ -208,21 +212,10 @@ INDEX_LIFEEVENT = os.environ.get("SEIDO_INDEX_LIFEEVENT", "1") != "0"
 # ライフイベント別ページを index 対象とする最低制度数（これ未満は薄いページとして noindex）。
 LIFEEVENT_MIN_ITEMS = 3
 
-# ── 62自治体のローマ字スラッグ（公式ドメインに整合。豊島区toshima/利島村toshimamuraを分離）─
-SLUGS = {
- "世田谷区":"setagaya","渋谷区":"shibuya","杉並区":"suginami","練馬区":"nerima","新宿区":"shinjuku",
- "港区":"minato","中央区":"chuo","江東区":"koto","大田区":"ota","千代田区":"chiyoda","文京区":"bunkyo",
- "台東区":"taito","墨田区":"sumida","品川区":"shinagawa","目黒区":"meguro","中野区":"nakano",
- "豊島区":"toshima","北区":"kita","荒川区":"arakawa","板橋区":"itabashi","足立区":"adachi",
- "葛飾区":"katsushika","江戸川区":"edogawa","八王子市":"hachioji","立川市":"tachikawa","武蔵野市":"musashino",
- "三鷹市":"mitaka","青梅市":"ome","府中市":"fuchu","昭島市":"akishima","調布市":"chofu","町田市":"machida",
- "小金井市":"koganei","小平市":"kodaira","日野市":"hino","東村山市":"higashimurayama","国分寺市":"kokubunji",
- "国立市":"kunitachi","福生市":"fussa","狛江市":"komae","東大和市":"higashiyamato","清瀬市":"kiyose",
- "東久留米市":"higashikurume","武蔵村山市":"musashimurayama","多摩市":"tama","稲城市":"inagi","羽村市":"hamura",
- "あきる野市":"akiruno","西東京市":"nishitokyo","瑞穂町":"mizuho","日の出町":"hinode","檜原村":"hinohara",
- "奥多摩町":"okutama","大島町":"oshima","利島村":"toshimamura","新島村":"niijima","神津島村":"kozushima",
- "三宅村":"miyake","御蔵島村":"mikurajima","八丈町":"hachijo","青ヶ島村":"aogashima","小笠原村":"ogasawara",
-}
+# ── 自治体スラッグ（名前->スラッグ）。定義は build/pref_registry.py（単一ソース）────────
+# 全都道府県ぶんをフラットに統合（後方互換。add_programs.py 等が SLUGS を参照）。
+# 同名自治体が複数県にある場合のスラッグ衝突は muni_slug/area_base 側で都道府県コードにより解決する。
+SLUGS = {name: slug for _code, _m in SLUGS_BY_PREF.items() for name, slug in _m.items()}
 
 # ── 62自治体の読み（五十音順の並べ替え用。区/市/町村を対等に一覧するため）──────────
 YOMI = {
@@ -1229,7 +1222,7 @@ def benefit_totals_by_event(progs, slug):
             "n_prog": len(items),
             "yen_sum": yen_sum,
             "n_amt": n_amt,
-            "href": f"/area/tokyo/{slug}/{ev_slug}/",
+            "href": f"{area_base(slug)}/{ev_slug}/",
         })
     return totals
 
@@ -1273,7 +1266,7 @@ def amount_rank_rows(entries, mode, top_n=5):
         if yen is None:
             continue
         mid = m["id"]
-        href = f"/area/tokyo/{slug}/seido/{p['id']}/"
+        href = f"{area_base(slug)}/seido/{p['id']}/"
         cur = best.get(mid)
         if cur is None or yen > cur[0]:
             best[mid] = (yen, m["municipality_name"], href, amount)
@@ -1581,7 +1574,28 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 
 # ── データ取得 ──────────────────────────────────────────────────────────────
 munis = c.execute("SELECT * FROM municipalities WHERE is_active=1 ORDER BY id").fetchall()
-def muni_slug(m): return SLUGS.get(m["municipality_name"])
+
+def muni_slug(m):
+    """自治体 -> URLスラッグ。都道府県コードで県別マップを引く（同名自治体の衝突回避）。"""
+    return SLUGS_BY_PREF.get(norm_code(m["prefecture_code"]), {}).get(m["municipality_name"])
+
+# スラッグ -> 都道府県スラッグ（全URL構築で /area/<県>/<自治体>/ を組むのに使う）。
+# 起動時に1回構築。スラッグが複数県で衝突するとURLが一意に決まらないため、ここで検知して止める。
+MUNI_PREF = {}
+for _m in munis:
+    _s = muni_slug(_m)
+    if not _s:
+        continue
+    _ps = pref_slug(_m["prefecture_code"])
+    if _s in MUNI_PREF and MUNI_PREF[_s] != _ps:
+        raise SystemExit(
+            f"[FATAL] 自治体スラッグ '{_s}' が複数都道府県で衝突しています "
+            f"({MUNI_PREF[_s]} / {_ps})。pref_registry.py でスラッグを一意にしてください。")
+    MUNI_PREF[_s] = _ps
+
+def area_base(slug):
+    """自治体スラッグ -> '/area/<県スラッグ>/<自治体スラッグ>'（末尾スラッシュなし）。"""
+    return f"/area/{MUNI_PREF.get(slug, 'tokyo')}/{slug}"
 
 def programs_of(mid):
     return c.execute("""
@@ -1721,7 +1735,7 @@ def program_cat_of(p):
 
 def program_row_html(p, slug, i, href=None):
     """制度一覧テーブル1行（ハブ／ライフイベント／関連で共通）。"""
-    href = href or f'/area/tokyo/{slug}/seido/{p["id"]}/'
+    href = href or f'{area_base(slug)}/seido/{p["id"]}/'
     amt = amount_of(facts_of(p["id"]))
     yen = extract_any_yen(amt) if amt else 0
     amt_disp = (amount_prefix(amt) + format_sum_yen(yen)) if yen else "—"
@@ -1878,7 +1892,7 @@ def build_program(m, slug, p, cats, progs=None):
         _gate_stats["unique"] += 1
     robots = "index,follow" if idx else "noindex,follow"
     mn = m["municipality_name"]; title = p["title"]
-    url = f"/area/tokyo/{slug}/seido/{p['id']}/"
+    url = f"{area_base(slug)}/seido/{p['id']}/"
     ptype = PT_JA.get(p["program_type"],"制度")
     h1 = f"{mn}の{title}"
     page_title = f"{mn}の{title}｜対象・金額・申請方法【{p['last_verified_at'] or ''}時点】"
@@ -1932,13 +1946,13 @@ def build_program(m, slug, p, cats, progs=None):
         f'<div class="area-head"><div class="area-head-main">'
         f'<span class="badge">{esc(ptype)}</span>'
         f'<h1>{esc(h1)}</h1>{summary_html}'
-        f'<p class="meta">最終確認日: <time>{esc(p["last_verified_at"] or "—")}</time> ／ 対象自治体: <a href="/area/tokyo/{slug}/">{esc(mn)}</a></p>'
+        f'<p class="meta">最終確認日: <time>{esc(p["last_verified_at"] or "—")}</time> ／ 対象自治体: <a href="{area_base(slug)}/">{esc(mn)}</a></p>'
         f'</div>'
         f'{photo_figure(_photo_fn, _photo_alt, "progphoto")}'
         f'</div>{trustbar}')
     _about_zone = (
         f'<h2>{ic("info","hi")}この制度について</h2>{program_about(mn, title, ptype, fm)}'
-        f'<p>{esc(mn)}で使えるほかの給付・手当は、<a href="/area/tokyo/{slug}/">{esc(mn)}の制度一覧</a>でまとめて確認できます。同じ制度の他自治体との比較は、ページ下部の比較リンクからどうぞ。</p>')
+        f'<p>{esc(mn)}で使えるほかの給付・手当は、<a href="{area_base(slug)}/">{esc(mn)}の制度一覧</a>でまとめて確認できます。同じ制度の他自治体との比較は、ページ下部の比較リンクからどうぞ。</p>')
     _facts_zone = f'<h2>{ic("clipboard","hi")}制度の内容</h2>{facts_html}'
     if not official_html:
         _facts_zone += (
@@ -1970,7 +1984,7 @@ def build_program(m, slug, p, cats, progs=None):
         blocks.append({"@context":"https://schema.org","@type":"FAQPage",
           "mainEntity":[{"@type":"Question","name":q,
             "acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]})
-    bc = [("トップ","/"),(f"{mn}",f"/area/tokyo/{slug}/"),(title,None)]
+    bc = [("トップ","/"),(f"{mn}",f"{area_base(slug)}/"),(title,None)]
     page(path=url+"index.html", title=page_title, description=desc, canonical=url,
          jsonld=blocks, robots=robots, breadcrumb=bc, body=body, og_image=og_image_for(slug))
     if idx: sitemap_urls.append((url, "0.8", p["last_verified_at"]))
@@ -2060,7 +2074,7 @@ def build_compare(cid, entries, counts=None):
     for m, slug, p, amount, idx in entries:
         mn=m["municipality_name"]
         amt = esc(clip(amount,80)) if amount else '<span class="na">記載を確認中</span>'
-        rows.append(f'<tr data-href="/area/tokyo/{slug}/seido/{p["id"]}/"><td class="mn"><a href="/area/tokyo/{slug}/seido/{p["id"]}/">{esc(mn)}</a></td>'
+        rows.append(f'<tr data-href="{area_base(slug)}/seido/{p["id"]}/"><td class="mn"><a href="{area_base(slug)}/seido/{p["id"]}/">{esc(mn)}</a></td>'
                     f'<td>{amt}</td><td class="dt">{esc(p["last_verified_at"] or "")}</td></tr>')
     have=len(entries)
     n_amt=sum(1 for e in entries if e[3])
@@ -2112,7 +2126,7 @@ def build_compare(cid, entries, counts=None):
 <p><a href="/hikaku/">{CHEV_L} 制度カテゴリ比較の一覧にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{label} 自治体比較",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":e[0]["municipality_name"],
-          "url":f"{BASE_URL}/area/tokyo/{e[1]}/seido/{e[2]['id']}/"} for i,e in enumerate(entries)]}
+          "url":f"{BASE_URL}{area_base(e[1])}/seido/{e[2]['id']}/"} for i,e in enumerate(entries)]}
     faq_ld={"@context":"https://schema.org","@type":"FAQPage",
         "mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]}
     bc=[("トップ","/"),("制度を比較する","/hikaku/"),(label,None)]
@@ -2191,10 +2205,10 @@ def build_ranking(ev, score, avg=None):
         yen=yen_of(m)
         yen_cell = f'計{esc(format_sum_yen(yen))}' if yen else "—"
         trs.append(
-            f'<tr{cls} data-href="/area/tokyo/{slug}/{ev}/" data-prog="{s["prog"]}" '
+            f'<tr{cls} data-href="{area_base(slug)}/{ev}/" data-prog="{s["prog"]}" '
             f'data-yen="{yen}" data-i="{rank}">'
             f'<td class="rk">{rank}</td>'
-            f'<td class="mn"><a href="/area/tokyo/{slug}/{ev}/">{esc(m["municipality_name"])}</a></td>'
+            f'<td class="mn"><a href="{area_base(slug)}/{ev}/">{esc(m["municipality_name"])}</a></td>'
             f'<td class="dt">{s["prog"]}制度</td>'
             f'<td class="dt yen">{yen_cell}</td></tr>')
     title=f"{ev_name}の制度がある東京都の自治体｜掲載数・金額でみる"
@@ -2244,7 +2258,7 @@ def build_ranking(ev, score, avg=None):
 <p><a href="/find/">{CHEV_L} 目的・年代から探す にもどる</a></p>"""
     il={"@context":"https://schema.org","@type":"ItemList","name":f"{ev_name}の制度がある東京都の自治体",
         "itemListElement":[{"@type":"ListItem","position":i+1,"name":m["municipality_name"],
-          "url":f"{BASE_URL}/area/tokyo/{muni_slug(m)}/{ev}/"} for i,m in enumerate(ranked[:20])]}
+          "url":f"{BASE_URL}{area_base(muni_slug(m))}/{ev}/"} for i,m in enumerate(ranked[:20])]}
     bc=[("トップ","/"),("目的・年代から探す","/find/"),(f"{ev_name}の自治体",None)]
     page(path=url+"index.html",title=title,description=desc,canonical=url,
          jsonld=[il],breadcrumb=bc,body=body)
@@ -2374,7 +2388,7 @@ def build_region_ranking(rk, ev, score):
         cls = ' class="top3"' if rank <= 3 else ''
         yen_cell = f'計{esc(format_sum_yen(yen))}' if yen else "—"
         trs.append(f'<tr{cls}><td class="rk">{rank}</td>'
-                   f'<td class="mn"><a href="/area/tokyo/{slug}/{ev}/">{esc(m["municipality_name"])}</a></td>'
+                   f'<td class="mn"><a href="{area_base(slug)}/{ev}/">{esc(m["municipality_name"])}</a></td>'
                    f'<td class="dt">{s["prog"]}制度</td><td class="dt yen">{yen_cell}</td></tr>')
     table = (f'<div class="tablewrap"><table class="cmp rank"><thead><tr>'
              f'<th class="rk">順位</th><th class="mn">{unit_word}</th>'
@@ -2423,7 +2437,7 @@ def build_region_ranking(rk, ev, score):
 <p><a href="/ranking/">{CHEV_L} ランキング一覧にもどる</a></p>"""
     il = {"@context": "https://schema.org", "@type": "ItemList", "name": f"{rname} {ev_name} ランキング",
           "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": m["municipality_name"],
-              "url": f"{BASE_URL}/area/tokyo/{muni_slug(m)}/{ev}/"} for i, m in enumerate(ranked[:20])]}
+              "url": f"{BASE_URL}{area_base(muni_slug(m))}/{ev}/"} for i, m in enumerate(ranked[:20])]}
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
     bc = [("トップ", "/"), ("ランキング", "/ranking/"), (f"{rname}・{ev_name}", None)]
@@ -2529,7 +2543,7 @@ def area_stats_meta_html(mn, ev_name, n_prog, yen_sum=None, n_amt=0, color=None)
 
 def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     mn = m["municipality_name"]
-    url = f"/area/tokyo/{slug}/{ev_slug}/"
+    url = f"{area_base(slug)}/{ev_slug}/"
     items = [p for p in progs if any(e["slug"]==ev_slug for e in events_of(p["id"]))]
     ordered, _ = order_programs_by_category(items)
     rows = "".join(program_row_html(p, slug, i) for i, p in enumerate(ordered))
@@ -2545,7 +2559,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
             '<p class="pnone" id="pnone" hidden>該当する制度が見つかりません。</p>')
     else:
         listing = "<p>該当する制度は現在準備中です。</p>"
-    other_lis="".join(f'<li><a href="/area/tokyo/{slug}/{s}/">{esc(mn)}の{esc(EVENTS[s][0])}の制度 {CHEV_R}</a></li>'
+    other_lis="".join(f'<li><a href="{area_base(slug)}/{s}/">{esc(mn)}の{esc(EVENTS[s][0])}の制度 {CHEV_R}</a></li>'
                       for s in EVENTS if s!=ev_slug)
     relbox=(f'<div class="cmpbox" style="--pc:{EV_META[ev_slug][2]}"><strong>関連して探す</strong><ul>'
             f'<li><a href="/ranking/{ev_slug}/">{esc(ev_name)}の制度がある自治体をみる {CHEV_R}</a></li>'
@@ -2608,12 +2622,12 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
 {relbox}
 <h2>{ic("help","hi")}よくある質問</h2>
 {faq_html}
-<p><a href="/area/tokyo/{slug}/">{CHEV_L} {esc(mn)}の制度一覧にもどる</a></p>
+<p><a href="{area_base(slug)}/">{CHEV_L} {esc(mn)}の制度一覧にもどる</a></p>
 {PLIST_JS if ordered else ""}"""
     il = {"@context":"https://schema.org","@type":"ItemList","itemListElement":[
         {"@type":"ListItem","position":i+1,"name":p["title"],
-         "url":f"{BASE_URL}/area/tokyo/{slug}/seido/{p['id']}/"} for i,p in enumerate(ordered)]}
-    bc=[("トップ","/"),(mn,f"/area/tokyo/{slug}/"),(ev_name,None)]
+         "url":f"{BASE_URL}{area_base(slug)}/seido/{p['id']}/"} for i,p in enumerate(ordered)]}
+    bc=[("トップ","/"),(mn,f"{area_base(slug)}/"),(ev_name,None)]
     idx_le = INDEX_LIFEEVENT and n_items >= LIFEEVENT_MIN_ITEMS
     robots = "index,follow" if idx_le else "noindex,follow"
     page(path=url+"index.html", title=title, description=desc, canonical=url,
@@ -2709,7 +2723,7 @@ PLIST_JS = """<script>
 </script>"""
 
 def build_muni(m, slug, score, avg):
-    mn = m["municipality_name"]; url = f"/area/tokyo/{slug}/"
+    mn = m["municipality_name"]; url = f"{area_base(slug)}/"
     progs = programs_of(m["id"])
     # 全制度を1つの一覧に（検索・カテゴリ絞り込み・並び替え可能）
     counts={}
@@ -2733,7 +2747,7 @@ def build_muni(m, slug, score, avg):
     if other_count>0:
         chip_html+=f'<button type="button" class="pchip2" data-ev="other" aria-pressed="false">その他<b>{other_count}</b></button>'
     purpose_links="".join(
-      f'<a href="/area/tokyo/{slug}/{ev_slug}/">{esc(EVENTS[ev_slug][0])}（{counts[ev_slug]}件）{CHEV_R}</a>'
+      f'<a href="{area_base(slug)}/{ev_slug}/">{esc(EVENTS[ev_slug][0])}（{counts[ev_slug]}件）{CHEV_R}</a>'
       for ev_slug in ev_order if counts.get(ev_slug,0)>0)
     purpose_html=(f'<p class="plist-purpose">目的・年代別のまとめページ：{purpose_links}</p>'
                   if purpose_links else "")
@@ -2765,7 +2779,7 @@ def build_muni(m, slug, score, avg):
             if lo==0: hi=min(_n,13)
             else: lo=max(0,_n-13)
         near=[_ordered[i] for i in range(lo,hi) if i!=_idx]
-        chips="".join(f'<a href="/area/tokyo/{muni_slug(x)}/"><em class="mt">{_tj.get(x["municipality_type"],"")}</em>{esc(x["municipality_name"])}</a>' for x in near)
+        chips="".join(f'<a href="{area_base(muni_slug(x))}/"><em class="mt">{_tj.get(x["municipality_type"],"")}</em>{esc(x["municipality_name"])}</a>' for x in near)
         others_html=(f'<section class="others"><h2>{ic("building","hi")}ほかの市区町村を見る</h2>'
                      f'<div class="ostrip">{chips}</div>'
                      f'<p class="more"><a href="/#area">{CHEV_R} 東京都62市区町村の一覧から探す</a></p></section>')
@@ -3210,7 +3224,7 @@ def build_home(muni_stats, score, cat_entries=None):
         return '<ul class="mgrid" id="mgrid">'+''.join(
           f'<li data-nm="{esc(m["municipality_name"])}" data-yo="{esc(YOMI.get(m["municipality_name"],""))}" '
           f'data-ro="{s}" data-g="{_grp.get(m["municipality_type"],"cho")}">'
-          f'<a href="/area/tokyo/{s}/">{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
+          f'<a href="{area_base(s)}/">{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
           for m,s,n in rows)+'</ul>'
     # 目的・年代の発見カード（トップの主要導線）
     pcards="".join(
@@ -3314,7 +3328,7 @@ def build_home(muni_stats, score, cat_entries=None):
           ro:li.getAttribute('data-ro')||'',mt:mt?mt.textContent:'',
           href:a?a.getAttribute('href'):'#'}};
  }});
- var slug2nm={{}};munis.forEach(function(m){{var s=(m.href.match(/\/area\/tokyo\/([^/]+)\//)||[])[1];if(s)slug2nm[s]=m.nm;}});
+ var slug2nm={{}},slug2pref={{}};munis.forEach(function(m){{var mm=m.href.match(/\/area\/([^/]+)\/([^/]+)\//);if(mm){{slug2nm[mm[2]]=m.nm;slug2pref[mm[2]]=mm[1];}}}});
  var SUGGEST=[{{t:'児童手当',u:'/hikaku/child_teate/'}},{{t:'家賃補助',u:'/hikaku/house_yachin/'}},
   {{t:'子ども・乳幼児医療費助成',u:'/hikaku/child_iryo/'}},{{t:'産後ケア',u:'/hikaku/preg_sango_care/'}},
   {{t:'出産・入学祝金',u:'/hikaku/child_iwai/'}},{{t:'高齢者の紙おむつ助成',u:'/hikaku/eld_omutsu/'}},
@@ -3382,7 +3396,7 @@ def build_home(muni_stats, score, cat_entries=None):
   pp.sort(function(a,b){{return a.s-b.s;}});
   if(mm.length){{head('市区町村');mm.slice(0,5).forEach(function(x){{opt({{pri:x.m.nm,badge:x.m.mt,href:x.m.href}});}});}}
   if(cc.length){{head('制度を自治体で比較');cc.slice(0,4).forEach(function(x){{opt({{pri:x.c.t,sec:x.c.n+'自治体で比較',href:x.c.u}});}});}}
-  if(pp.length){{head('制度');pp.slice(0,8).forEach(function(x){{opt({{pri:x.p.t,badge:x.p.y,sec:slug2nm[x.p.s]||'',href:'/area/tokyo/'+x.p.s+'/seido/'+x.p.i+'/'}});}});}}
+  if(pp.length){{head('制度');pp.slice(0,8).forEach(function(x){{opt({{pri:x.p.t,badge:x.p.y,sec:slug2nm[x.p.s]||'',href:'/area/'+(slug2pref[x.p.s]||'tokyo')+'/'+x.p.s+'/seido/'+x.p.i+'/'}});}});}}
   if(!rows.length){{
    if(idx){{var li=document.createElement('li');li.className='hsac-none';li.textContent=loading?'読み込み中…':'該当する候補が見つかりません';ac.appendChild(li);ac.hidden=false;box.setAttribute('aria-expanded','true');return;}}
    close();return;
@@ -3474,9 +3488,9 @@ def build_kurashi_data():
             m = name2muni[nm]; slug = muni_slug(m)
             cls = ' class="top3"' if rank <= 3 else ''
             trs.append(
-                f'<tr{cls} data-href="/area/tokyo/{slug}/" data-val="{v}" data-i="{rank}">'
+                f'<tr{cls} data-href="{area_base(slug)}/" data-val="{v}" data-i="{rank}">'
                 f'<td class="rk">{rank}</td>'
-                f'<td class="mn"><a href="/area/tokyo/{slug}/">{esc(nm)}</a></td>'
+                f'<td class="mn"><a href="{area_base(slug)}/">{esc(nm)}</a></td>'
                 f'<td class="dt">{esc(_kd_fmt(v, kind, unit))}</td></tr>')
         url = f"/kurashi-data/{key}/"
         title = f"東京都の{label}ランキング｜62自治体を比較【{esc(yr)}時点】"
@@ -3506,7 +3520,7 @@ def build_kurashi_data():
         il = {"@context": "https://schema.org", "@type": "ItemList",
               "name": f"東京都の{label}ランキング",
               "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": nm,
-                                   "url": f"{BASE_URL}/area/tokyo/{muni_slug(name2muni[nm])}/"}
+                                   "url": f"{BASE_URL}{area_base(muni_slug(name2muni[nm]))}/"}
                                   for i, (nm, _v) in enumerate(rows[:20])]}
         bc = [("トップ", "/"), ("暮らしデータ", "/kurashi-data/"), (f"{label}ランキング", None)]
         page(path=url + "index.html", title=title, description=desc, canonical=url,
