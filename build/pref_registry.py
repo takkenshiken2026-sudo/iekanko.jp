@@ -87,6 +87,8 @@ _SAITAMA_SLUGS = {
 _CHIBA_SLUGS = {
     "千葉市": "chiba", "船橋市": "funabashi", "松戸市": "matsudo",
     "市川市": "ichikawa", "柏市": "kashiwa",
+    "流山市": "nagareyama", "八千代市": "yachiyo", "習志野市": "narashino",
+    "浦安市": "urayasu", "佐倉市": "sakura", "成田市": "narita",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
