@@ -97,6 +97,12 @@ _IBARAKI_SLUGS = {
     "ひたちなか市": "hitachinaka", "土浦市": "tsuchiura", "古河市": "koga",
 }
 
+# 栃木県（フェーズ2・第5県。県内現物給付。県庁所在地・人口上位市から順次拡大）。
+_TOCHIGI_SLUGS = {
+    "宇都宮市": "utsunomiya", "小山市": "oyama", "栃木市": "tochigi",
+    "足利市": "ashikaga", "佐野市": "sano", "那須塩原市": "nasushiobara",
+}
+
 # 都道府県コード -> {自治体名: スラッグ}
 SLUGS_BY_PREF = {
     "13": _TOKYO_SLUGS,
@@ -104,6 +110,7 @@ SLUGS_BY_PREF = {
     "11": _SAITAMA_SLUGS,
     "12": _CHIBA_SLUGS,
     "08": _IBARAKI_SLUGS,
+    "09": _TOCHIGI_SLUGS,
 }
 
 
