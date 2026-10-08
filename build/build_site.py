@@ -1607,6 +1607,14 @@ AGG_PREF = os.environ.get("SEIDO_AGG_PREF", "13")  # 概観ページの対象都
 AGG_MUNIS = [m for m in munis if norm_code(m["prefecture_code"]) == AGG_PREF]
 AGG_IDS = {m["id"] for m in AGG_MUNIS}
 
+def pref_crumb(m):
+    """パンくずの都道府県レベル。基準県(東京)は従来どおり県を挟まず（差分ゼロ）、
+    他県は「トップ > <県> > <自治体>」として県トップ /area/<県>/ へリンクする。"""
+    code = norm_code(m["prefecture_code"])
+    if code == AGG_PREF:
+        return []
+    return [(pref_name(code), f"/area/{pref_slug(code)}/")]
+
 def programs_of(mid):
     return c.execute("""
       SELECT p.* FROM programs p
@@ -1994,7 +2002,7 @@ def build_program(m, slug, p, cats, progs=None):
         blocks.append({"@context":"https://schema.org","@type":"FAQPage",
           "mainEntity":[{"@type":"Question","name":q,
             "acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]})
-    bc = [("トップ","/"),(f"{mn}",f"{area_base(slug)}/"),(title,None)]
+    bc = [("トップ","/")] + pref_crumb(m) + [(f"{mn}",f"{area_base(slug)}/"),(title,None)]
     page(path=url+"index.html", title=page_title, description=desc, canonical=url,
          jsonld=blocks, robots=robots, breadcrumb=bc, body=body, og_image=og_image_for(slug))
     if idx: sitemap_urls.append((url, "0.8", p["last_verified_at"]))
@@ -2637,7 +2645,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
     il = {"@context":"https://schema.org","@type":"ItemList","itemListElement":[
         {"@type":"ListItem","position":i+1,"name":p["title"],
          "url":f"{BASE_URL}{area_base(slug)}/seido/{p['id']}/"} for i,p in enumerate(ordered)]}
-    bc=[("トップ","/"),(mn,f"{area_base(slug)}/"),(ev_name,None)]
+    bc=[("トップ","/")] + pref_crumb(m) + [(mn,f"{area_base(slug)}/"),(ev_name,None)]
     idx_le = INDEX_LIFEEVENT and n_items >= LIFEEVENT_MIN_ITEMS
     robots = "index,follow" if idx_le else "noindex,follow"
     page(path=url+"index.html", title=title, description=desc, canonical=url,
@@ -2824,7 +2832,7 @@ def build_muni(m, slug, score, avg):
 {others_html}
 {PLIST_JS}
 """
-    bc=[("トップ","/"),(mn,None)]
+    bc=[("トップ","/")] + pref_crumb(m) + [(mn,None)]
     page(path=url+"index.html", title=title, description=desc, canonical=url, breadcrumb=bc, body=body, og_image=og_image_for(slug))
     sitemap_urls.append((url,"0.7"))
     return progs, counts
@@ -3224,8 +3232,43 @@ def build_features():
              breadcrumb=[("トップ","/"),("特集","/tokushu/"),(f["badge"],None)], body=body)
         sitemap_urls.append((f"/tokushu/{slug}/","0.7", updated))
 
+# ── 県トップ（関東→都県→自治体 の中間層。基準県=東京はトップが県トップを兼ねる）──────
+def build_area_pref(code, stats):
+    """県トップ /area/<県>/ : その県の市区町村一覧（五十音順グリッド）。
+    基準県(東京)はトップ(/)が県トップを兼ねるため、ここでは他県のみ生成する。"""
+    pslug = pref_slug(code); pname = pref_name(code)
+    url = f"/area/{pslug}/"
+    _tj = {"special_ward":"区","city":"市","town":"町","village":"村"}
+    rows = sorted(stats, key=lambda x: (YOMI.get(x[0]["municipality_name"], x[0]["municipality_name"]), x[1]))
+    n_muni = len(rows)
+    grid = '<ul class="mgrid">' + "".join(
+        f'<li><a href="{area_base(s)}/">{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
+        for m, s, n in rows) + '</ul>'
+    il = {"@context":"https://schema.org","@type":"ItemList",
+          "itemListElement":[{"@type":"ListItem","position":i+1,
+            "name":m["municipality_name"],"url":f"{BASE_URL}{area_base(s)}/"}
+            for i,(m,s,n) in enumerate(rows)]}
+    h1 = f"{pname}で受けられる給付・手当・助成（市区町村一覧）"
+    title = f"{pname}の給付・手当・助成 市区町村一覧｜{SITE_SHORT}"
+    desc = clip(f"{pname}の市区町村ごとに、給付金・手当・助成・支援制度を出典付きでまとめています。"
+                f"お住まいの市区町村を選んで、受けられる制度をライフイベント別に確認できます。", 118)
+    body = f"""
+<section class="band band-white">
+<div class="bandin">
+<div class="area-head"><div class="area-head-main">
+<h1>{esc(h1)}</h1>
+<p class="lead">{esc(pname)}の{n_muni}市区町村について、給付・手当・助成を出典つきで整理しています。市区町村を選ぶと、妊娠・出産／子育て／引っ越し／退職・失業／高齢・介護のライフイベント別に制度を確認できます。</p>
+</div></div>
+<h2 class="fh">市区町村から探す（{esc(pname)}）</h2>
+{grid}
+</div>
+</section>"""
+    page(path=url + "index.html", title=title, description=desc, canonical=url,
+         jsonld=[il], breadcrumb=[("トップ","/"),(pname,None)], body=body)
+
+
 # ── トップ ──────────────────────────────────────────────────────────────────
-def build_home(muni_stats, score, cat_entries=None):
+def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
     _tj={"special_ward":"区","city":"市","town":"町","village":"村"}
     _grp={"special_ward":"ku","city":"shi","town":"cho","village":"cho"}
     # 62市区町村を対等に：五十音順の単一グリッド（区/市/町村の階層を廃し、種別は小バッジで表示）
@@ -3256,6 +3299,18 @@ def build_home(muni_stats, score, cat_entries=None):
     hero_map_html = (f'<div class="hero-map"><figure>'
         f'<div class="tokyomap-wrap">{_hero_svg}<span class="mtip" hidden></span></div>'
         f'</figure></div>{_map_js}') if _hero_svg else ""
+    # 関東の他の都県（データがある県のみ）。東京のみの間は空＝トップは従来どおり。
+    other_pref_html = ""
+    if other_prefs:
+        _lis = "".join(
+            f'<li><a href="/area/{ps}/">{esc(pn)}</a><span>{n}市区町村</span></li>'
+            for ps, pn, n in other_prefs)
+        other_pref_html = (
+            '<section class="band band-white" id="kanto-prefs"><div class="bandin">'
+            '<h2 class="fh">関東の他の都県から探す</h2>'
+            '<p class="lead2">関東エリアを順次拡大しています。都県を選ぶと市区町村の一覧に進みます。</p>'
+            f'<ul class="mgrid">{_lis}</ul>'
+            '</div></section>')
     body=f"""
 <section class="hero" aria-labelledby="hero-title">
 <div class="bandin hero-grid">
@@ -3300,7 +3355,7 @@ def build_home(muni_stats, score, cat_entries=None):
 {grid(all62)}
 <p class="mnone" id="mnone" hidden>該当する市区町村が見つかりません。条件を変えてお試しください。</p>
 </div>
-</section>
+</section>{other_pref_html}
 <section class="band band-soft">
 <div class="bandin">
 <h2 class="fh">{ic("bars","hi")}制度ごとに自治体を比べる</h2>
@@ -3572,6 +3627,7 @@ def build_kurashi_data():
 def main():
     score, avg = compute_scores()
     muni_stats=[]; total_prog=0; indexed=0
+    muni_stats_by_pref={}   # 都道府県コード -> [(m,slug,制度数)]（県トップ生成用）
     cat_entries={}
     search_progs=[]
     for m in munis:
@@ -3596,6 +3652,7 @@ def main():
             summ = re.sub(r"\s+"," ",(p["plain_summary"] or p["summary"] or "")).strip()
             search_progs.append({"s":slug,"i":p["id"],"t":p["title"],
                                  "y":PT_JA.get(p["program_type"],"制度"),"d":clip(summ,64)})
+        muni_stats_by_pref.setdefault(norm_code(m["prefecture_code"]), []).append((m, slug, len(progs)))
         if agg:
             muni_stats.append((m, slug, len(progs)))
     # 比較ページ（先に自治体数を数え、関連カテゴリの内部リンク判定に使う）
@@ -3615,7 +3672,15 @@ def main():
     build_guides()
     build_features()
     kd_n = build_kurashi_data()
-    build_home(muni_stats, score, cat_entries)
+    # 県トップ（基準県=東京以外でデータがある県のみ）＋ トップの都県導線
+    other_prefs=[]
+    for code, stats in muni_stats_by_pref.items():
+        if code == AGG_PREF or not stats:
+            continue
+        build_area_pref(code, stats)
+        other_prefs.append((pref_slug(code), pref_name(code), len(stats)))
+    other_prefs.sort(key=lambda x: x[0])
+    build_home(muni_stats, score, cat_entries, other_prefs)
     write_search_index(search_progs, cat_counts)
     write_sitemap(); write_robots(); write_ads_txt(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
