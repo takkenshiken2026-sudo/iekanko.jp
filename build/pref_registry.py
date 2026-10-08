@@ -71,6 +71,8 @@ _SAITAMA_SLUGS = {
     "加須市": "kazo", "羽生市": "hanyu", "富士見市": "fujimi",
     "蕨市": "warabi", "志木市": "shiki", "桶川市": "okegawa",
     "北本市": "kitamoto", "蓮田市": "hasuda", "幸手市": "satte",
+    "鶴ヶ島市": "tsurugashima", "日高市": "hidaka", "吉川市": "yoshikawa",
+    "白岡市": "shiraoka", "三芳町": "miyoshi",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
