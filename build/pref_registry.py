@@ -49,6 +49,8 @@ _KANAGAWA_SLUGS = {
     "厚木市": "atsugi", "小田原市": "odawara", "鎌倉市": "kamakura",
     "秦野市": "hadano", "海老名市": "ebina", "座間市": "zama",
     "伊勢原市": "isehara", "綾瀬市": "ayase", "逗子市": "zushi",
+    "三浦市": "miura", "南足柄市": "minamiashigara",
+    "葉山町": "hayama", "寒川町": "samukawa", "大磯町": "oiso",
 }
 
 # 埼玉県（フェーズ2・第2県。政令市・中核市から順次拡大）。スラッグは公式ドメインに整合。
