@@ -55,6 +55,7 @@ _KANAGAWA_SLUGS = {
 _SAITAMA_SLUGS = {
     "さいたま市": "saitama", "川口市": "kawaguchi", "川越市": "kawagoe",
     "越谷市": "koshigaya", "所沢市": "tokorozawa", "草加市": "soka",
+    "春日部市": "kasukabe", "上尾市": "ageo", "熊谷市": "kumagaya",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
