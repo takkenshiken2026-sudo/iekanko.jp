@@ -77,6 +77,8 @@ _SAITAMA_SLUGS = {
     "松伏町": "matsubushi", "寄居町": "yorii", "上里町": "kamisato",
     "毛呂山町": "moroyama", "越生町": "ogose", "滑川町": "namegawa",
     "嵐山町": "ranzan", "小川町": "ogawa", "川島町": "kawajima",
+    "吉見町": "yoshimi", "鳩山町": "hatoyama", "皆野町": "minano",
+    "長瀞町": "nagatoro",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
