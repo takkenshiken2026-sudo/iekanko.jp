@@ -47,6 +47,7 @@ _KANAGAWA_SLUGS = {
     "藤沢市": "fujisawa", "横須賀市": "yokosuka",
     "平塚市": "hiratsuka", "茅ヶ崎市": "chigasaki", "大和市": "yamato",
     "厚木市": "atsugi", "小田原市": "odawara", "鎌倉市": "kamakura",
+    "秦野市": "hadano", "海老名市": "ebina", "座間市": "zama",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
