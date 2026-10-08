@@ -103,6 +103,13 @@ _TOCHIGI_SLUGS = {
     "足利市": "ashikaga", "佐野市": "sano", "那須塩原市": "nasushiobara",
 }
 
+# 群馬県（フェーズ2・第6県。福祉医療で現物給付・原則無料。県庁所在地・人口上位市から順次拡大）。
+# 太田市は東京・大田区（ota）とスラッグが衝突するため ota-gunma で分離。
+_GUNMA_SLUGS = {
+    "前橋市": "maebashi", "高崎市": "takasaki", "太田市": "ota-gunma",
+    "伊勢崎市": "isesaki", "桐生市": "kiryu", "渋川市": "shibukawa",
+}
+
 # 都道府県コード -> {自治体名: スラッグ}
 SLUGS_BY_PREF = {
     "13": _TOKYO_SLUGS,
@@ -111,6 +118,7 @@ SLUGS_BY_PREF = {
     "12": _CHIBA_SLUGS,
     "08": _IBARAKI_SLUGS,
     "09": _TOCHIGI_SLUGS,
+    "10": _GUNMA_SLUGS,
 }
 
 
