@@ -73,6 +73,8 @@ _SAITAMA_SLUGS = {
     "北本市": "kitamoto", "蓮田市": "hasuda", "幸手市": "satte",
     "鶴ヶ島市": "tsurugashima", "日高市": "hidaka", "吉川市": "yoshikawa",
     "白岡市": "shiraoka", "三芳町": "miyoshi",
+    "伊奈町": "ina", "宮代町": "miyashiro", "杉戸町": "sugito",
+    "松伏町": "matsubushi", "寄居町": "yorii", "上里町": "kamisato",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
