@@ -186,7 +186,14 @@ GATE_MIN_CONFIDENCE = 82   # 制度の平均confidenceがこれ未満なら noin
 #   SEIDO_STD_MUNIS: 同名制度が「この自治体数以上」に存在したら標準制度として noindex。
 #   SEIDO_MIN_FACTS: index に残す個別制度ページの最低 fact（対象/金額/条件等）数。
 UNIQ_GATE       = os.environ.get("SEIDO_UNIQ_GATE", "1") != "0"
-STD_MUNIS_MIN   = int(os.environ.get("SEIDO_STD_MUNIS", "5"))
+# standard_dup ゲートは既定で無効化（2026-10 オーナー判断）。
+# 根拠: 同名制度（児童手当・妊婦健診・産後ケア等）でも個別ページの本文factsは
+#   自治体ごとにユニーク（金額・窓口・条件・出典が各自治体固有）であることを実測で確認済み
+#   （児童手当58/58・妊婦健診59/59・産後ケア44/44がユニーク）。
+#   「自治体名だけ差し替えた複製（doorway）」には当たらないため、全国共通制度も個別indexを解放する。
+#   薄い複製ページの流入防止は下の thin(SEIDO_MIN_FACTS) / no_amount(REQUIRE_AMOUNT) ガードが担保し、
+#   これが広告（AdSense）安全性の床になる。再び束ねたい場合は SEIDO_STD_MUNIS=5 で従来挙動に戻せる。
+STD_MUNIS_MIN   = int(os.environ.get("SEIDO_STD_MUNIS", "999"))
 SEIDO_MIN_FACTS = int(os.environ.get("SEIDO_MIN_FACTS", "3"))
 #   SEIDO_REQUIRE_AMOUNT=0 で「具体的な金額を持つ制度のみ index」条件を外す。
 REQUIRE_AMOUNT  = os.environ.get("SEIDO_REQUIRE_AMOUNT", "1") != "0"
