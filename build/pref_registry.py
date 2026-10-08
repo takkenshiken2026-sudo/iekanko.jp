@@ -91,12 +91,19 @@ _CHIBA_SLUGS = {
     "浦安市": "urayasu", "佐倉市": "sakura", "成田市": "narita",
 }
 
+# 茨城県（フェーズ2・第4県。マル福制度。県庁所在地・研究学園都市・人口上位市から順次拡大）。
+_IBARAKI_SLUGS = {
+    "水戸市": "mito", "つくば市": "tsukuba", "日立市": "hitachi",
+    "ひたちなか市": "hitachinaka", "土浦市": "tsuchiura", "古河市": "koga",
+}
+
 # 都道府県コード -> {自治体名: スラッグ}
 SLUGS_BY_PREF = {
     "13": _TOKYO_SLUGS,
     "14": _KANAGAWA_SLUGS,
     "11": _SAITAMA_SLUGS,
     "12": _CHIBA_SLUGS,
+    "08": _IBARAKI_SLUGS,
 }
 
 
