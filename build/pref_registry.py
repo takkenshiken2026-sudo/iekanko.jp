@@ -41,9 +41,10 @@ _TOKYO_SLUGS = {
  "三宅村":"miyake","御蔵島村":"mikurajima","八丈町":"hachijo","青ヶ島村":"aogashima","小笠原村":"ogasawara",
 }
 
-# 神奈川県（フェーズ2・第1弾。政令市から順次拡大）。スラッグは公式ドメインに整合。
+# 神奈川県（フェーズ2・第1弾。政令市→人口上位市へ順次拡大）。スラッグは公式ドメインに整合。
 _KANAGAWA_SLUGS = {
     "横浜市": "yokohama", "川崎市": "kawasaki", "相模原市": "sagamihara",
+    "藤沢市": "fujisawa", "横須賀市": "yokosuka",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
