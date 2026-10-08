@@ -54,6 +54,7 @@ _KANAGAWA_SLUGS = {
 # 埼玉県（フェーズ2・第2県。政令市・中核市から順次拡大）。スラッグは公式ドメインに整合。
 _SAITAMA_SLUGS = {
     "さいたま市": "saitama", "川口市": "kawaguchi", "川越市": "kawagoe",
+    "越谷市": "koshigaya", "所沢市": "tokorozawa", "草加市": "soka",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
