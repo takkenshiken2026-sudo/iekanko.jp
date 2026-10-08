@@ -75,6 +75,8 @@ _SAITAMA_SLUGS = {
     "白岡市": "shiraoka", "三芳町": "miyoshi",
     "伊奈町": "ina", "宮代町": "miyashiro", "杉戸町": "sugito",
     "松伏町": "matsubushi", "寄居町": "yorii", "上里町": "kamisato",
+    "毛呂山町": "moroyama", "越生町": "ogose", "滑川町": "namegawa",
+    "嵐山町": "ranzan", "小川町": "ogawa", "川島町": "kawajima",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
