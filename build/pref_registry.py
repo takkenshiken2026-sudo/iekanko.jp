@@ -99,6 +99,8 @@ _CHIBA_SLUGS = {
 _IBARAKI_SLUGS = {
     "水戸市": "mito", "つくば市": "tsukuba", "日立市": "hitachi",
     "ひたちなか市": "hitachinaka", "土浦市": "tsuchiura", "古河市": "koga",
+    "取手市": "toride", "牛久市": "ushiku", "守谷市": "moriya",
+    "神栖市": "kamisu", "筑西市": "chikusei", "龍ケ崎市": "ryugasaki",
 }
 
 # 栃木県（フェーズ2・第5県。県内現物給付。県庁所在地・人口上位市から順次拡大）。
