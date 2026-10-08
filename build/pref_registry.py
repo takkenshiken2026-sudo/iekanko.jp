@@ -45,6 +45,7 @@ _TOKYO_SLUGS = {
 _KANAGAWA_SLUGS = {
     "横浜市": "yokohama", "川崎市": "kawasaki", "相模原市": "sagamihara",
     "藤沢市": "fujisawa", "横須賀市": "yokosuka",
+    "平塚市": "hiratsuka", "茅ヶ崎市": "chigasaki", "大和市": "yamato",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
