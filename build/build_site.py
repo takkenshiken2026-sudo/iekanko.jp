@@ -1597,6 +1597,16 @@ def area_base(slug):
     """自治体スラッグ -> '/area/<県スラッグ>/<自治体スラッグ>'（末尾スラッシュなし）。"""
     return f"/area/{MUNI_PREF.get(slug, 'tokyo')}/{slug}"
 
+# ── 集約/概観ページの対象自治体 ──────────────────────────────────────────────
+# 比較ハブ(hikaku)・ランキング・トップの自治体グリッド・平均値など「複数自治体を
+# 横断集計する概観ページ」は、現状 東京都(13) のみを対象にする。
+# 個別ページ（自治体ハブ/ライフイベント/制度詳細）は全自治体ぶん生成する（munis を使う）。
+# 他県を公開する際は、県別の概観ページ生成（/hikaku/<県>/… 等）をここを起点に追加する。
+# これにより、他県データを投入しても東京の概観ページに他県が混入しない。
+AGG_PREF = os.environ.get("SEIDO_AGG_PREF", "13")  # 概観ページの対象都道府県コード
+AGG_MUNIS = [m for m in munis if norm_code(m["prefecture_code"]) == AGG_PREF]
+AGG_IDS = {m["id"] for m in AGG_MUNIS}
+
 def programs_of(mid):
     return c.execute("""
       SELECT p.* FROM programs p
@@ -1693,7 +1703,7 @@ def compute_scores():
                    "prog":muni_ev_prog.get(mid,{}).get(ev,0),
                    "yen_sum":muni_ev_yen.get(mid,{}).get(ev,0)}
         score[mid]=s
-    avg={ev: sum(score[m["id"]][ev]["cov"] for m in munis)/len(munis) for ev in EVENTS}
+    avg={ev: sum(score[m["id"]][ev]["cov"] for m in AGG_MUNIS)/len(AGG_MUNIS) for ev in EVENTS}
     return score, avg
 
 # ── 制度詳細ページ ──────────────────────────────────────────────────────────
@@ -2043,7 +2053,7 @@ def compare_insight_html(cid, label, entries, all_entries, have, n_amt):
         else:
             pts.append(f'東京都で「{esc(label)}」を確認できたのは{have}自治体です。'
                        f'金額は非公表・要問い合わせの自治体が多く、対象・条件に自治体差があります。')
-    miss = len(munis) - have
+    miss = len(AGG_MUNIS) - have
     if miss > 0 and have >= 3:
         pts.append(f'残る{miss}自治体はこの制度が無いか、当サイトで未確認です（ページ下部の一覧に明記）。')
     lis = "".join(f"<li>{t}</li>" for t in pts)
@@ -2078,7 +2088,7 @@ def build_compare(cid, entries, counts=None):
                     f'<td>{amt}</td><td class="dt">{esc(p["last_verified_at"] or "")}</td></tr>')
     have=len(entries)
     n_amt=sum(1 for e in entries if e[3])
-    missing=[m["municipality_name"] for m in munis if m["id"] not in {e[0]["id"] for e in entries}]
+    missing=[m["municipality_name"] for m in AGG_MUNIS if m["id"] not in {e[0]["id"] for e in entries}]
     miss_html=""
     if missing:
         miss_html=(f'<p class="miss"><strong>この制度が未確認の自治体（{len(missing)}）：</strong>'
@@ -2174,7 +2184,7 @@ def build_ranking(ev, score, avg=None):
     # yen_sum をスコアに載せる（無い場合は0）
     def yen_of(m):
         return score[m["id"]][ev].get("yen_sum", 0) or 0
-    ranked=sorted(munis, key=lambda m:(-score[m["id"]][ev]["prog"], -yen_of(m), m["id"]))
+    ranked=sorted(AGG_MUNIS, key=lambda m:(-score[m["id"]][ev]["prog"], -yen_of(m), m["id"]))
     top=ranked[:15]
     max_prog=max((score[m["id"]][ev]["prog"] for m in top), default=1) or 1
     rows_prog=[]
@@ -2185,7 +2195,7 @@ def build_ranking(ev, score, avg=None):
                           f'{s["prog"]}制度 · {yen_txt}'))
     chart_prog=svg_bars(rows_prog, max_prog, "制度")
 
-    ranked_yen=sorted(munis, key=lambda m:(-yen_of(m), -score[m["id"]][ev]["prog"], m["id"]))
+    ranked_yen=sorted(AGG_MUNIS, key=lambda m:(-yen_of(m), -score[m["id"]][ev]["prog"], m["id"]))
     top_yen=[m for m in ranked_yen if yen_of(m) > 0][:15]
     if not top_yen:
         top_yen=ranked_yen[:15]
@@ -2363,7 +2373,7 @@ def build_region_ranking(rk, ev, score):
     persona, _age, color, _ = EV_META[ev]
     ev_name = EVENTS[ev][0]
     url = f"/ranking/chiiki/{rk}/{ev}/"
-    rmunis = [m for m in munis if region_of(m["municipality_name"]) == rk]
+    rmunis = [m for m in AGG_MUNIS if region_of(m["municipality_name"]) == rk]
     def yen_of(m): return score[m["id"]][ev].get("yen_sum", 0) or 0
     ranked = sorted(rmunis, key=lambda m: (-score[m["id"]][ev]["prog"], -yen_of(m), m["id"]))
     with_prog = [m for m in ranked if score[m["id"]][ev]["prog"] > 0]
@@ -3571,6 +3581,7 @@ def main():
         progs, counts = build_muni(m, slug, score, avg)
         for ev_slug,(ev_name,ev_intro) in EVENTS.items():
             build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs)
+        agg = m["id"] in AGG_IDS   # 概観ページ（比較/ランキング/トップ/検索）に含める対象か
         for p in progs:
             total_prog+=1
             cats = classify(p["title"], p["summary"], p["benefit_description"], p["target_description"])
@@ -3578,12 +3589,15 @@ def main():
             idx = build_program(m, slug, p, cats, progs)
             if idx: indexed+=1
             amount = amount_or_benefit_of(facts)
+            if not agg:
+                continue   # 個別ページは生成済み。概観ページ用の集約には含めない
             for cid in cats:
                 cat_entries.setdefault(cid,[]).append((m, slug, p, amount, idx))
             summ = re.sub(r"\s+"," ",(p["plain_summary"] or p["summary"] or "")).strip()
             search_progs.append({"s":slug,"i":p["id"],"t":p["title"],
                                  "y":PT_JA.get(p["program_type"],"制度"),"d":clip(summ,64)})
-        muni_stats.append((m, slug, len(progs)))
+        if agg:
+            muni_stats.append((m, slug, len(progs)))
     # 比較ページ（先に自治体数を数え、関連カテゴリの内部リンク判定に使う）
     pre_counts={cid: len({e[0]["id"] for e in cat_entries[cid]}) for cid in cat_entries}
     cat_counts={}
