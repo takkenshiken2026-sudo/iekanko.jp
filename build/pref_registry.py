@@ -53,6 +53,8 @@ _KANAGAWA_SLUGS = {
     "葉山町": "hayama", "寒川町": "samukawa", "大磯町": "oiso",
     "二宮町": "ninomiya", "大井町": "oi", "松田町": "matsuda",
     "開成町": "kaisei", "愛川町": "aikawa",
+    "中井町": "nakai", "山北町": "yamakita", "箱根町": "hakone",
+    "真鶴町": "manazuru", "湯河原町": "yugawara", "清川村": "kiyokawa",
 }
 
 # 埼玉県（フェーズ2・第2県。政令市・中核市から順次拡大）。スラッグは公式ドメインに整合。

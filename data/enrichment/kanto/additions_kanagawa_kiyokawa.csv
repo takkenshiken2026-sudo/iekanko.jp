@@ -1,0 +1,3 @@
+municipality_slug,title,official_url,program_type,target,amount,benefit,application,condition,life_event,reliability,verified_date
+kiyokawa,小児医療費助成,https://www.town.kiyokawa.kanagawa.jp/soshiki/hokenhukushi/kosodate/Subsidy/358.html,medical_subsidy,清川村に住所がある0歳から満18歳になった日以後最初の3月31日（18歳年度末）までの児童。,保険適用分（保険診療の自己負担額）を助成。,医療証を医療機関で提示することで保険診療の自己負担分が助成される。,子育て健康福祉課（046-288-3861）へ医療証の交付を申請する。,清川村に住所があること。,childcare,reviewed,2026-10-08
+kiyokawa,産婦健康診査費用助成,https://www.town.kiyokawa.kanagawa.jp/soshiki/hokenhukushi/kosodate/maternity/360.html,subsidy,清川村在住の産婦。,"産後2週間（産後5日～21日）の産婦健康診査5,000円、産後1か月（産後22日～60日）の産婦健康診査5,000円を補助。",産婦健康診査（産後2週・産後1か月）の費用を補助。,補助券は妊娠後期の保健師訪問時や出生届の提出時などに交付される。問い合わせは子育て健康福祉課（046-288-3861）。,清川村在住であること。,pregnancy_birth,reviewed,2026-10-08
