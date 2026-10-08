@@ -117,6 +117,8 @@ _TOCHIGI_SLUGS = {
 _GUNMA_SLUGS = {
     "前橋市": "maebashi", "高崎市": "takasaki", "太田市": "ota-gunma",
     "伊勢崎市": "isesaki", "桐生市": "kiryu", "渋川市": "shibukawa",
+    "館林市": "tatebayashi", "藤岡市": "fujioka", "安中市": "annaka",
+    "みどり市": "midori", "富岡市": "tomioka", "沼田市": "numata",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
