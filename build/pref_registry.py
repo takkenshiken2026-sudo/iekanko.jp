@@ -51,10 +51,16 @@ _KANAGAWA_SLUGS = {
     "伊勢原市": "isehara", "綾瀬市": "ayase", "逗子市": "zushi",
 }
 
+# 埼玉県（フェーズ2・第2県。政令市・中核市から順次拡大）。スラッグは公式ドメインに整合。
+_SAITAMA_SLUGS = {
+    "さいたま市": "saitama", "川口市": "kawaguchi", "川越市": "kawagoe",
+}
+
 # 都道府県コード -> {自治体名: スラッグ}
 SLUGS_BY_PREF = {
     "13": _TOKYO_SLUGS,
     "14": _KANAGAWA_SLUGS,
+    "11": _SAITAMA_SLUGS,
 }
 
 
