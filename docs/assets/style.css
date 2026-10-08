@@ -18,8 +18,8 @@
   --pc-house:#1baf7a;
   --pc-job:#eda100;
   --pc-senior:#eb6834;
-  --radius:6px;
-  --radius-sm:4px;
+  --radius:4px;
+  --radius-sm:3px;
   /* サイズ役割: base本文 / sm補助UI / xsラベル / h2·h1·display見出し（mdはsm同義） */
   --fs-xs:.78rem;
   --fs-sm:.875rem;
@@ -126,9 +126,13 @@ table.cmp.rank td.yen{font-variant-numeric:tabular-nums;white-space:nowrap;color
 .evlinks{display:block;margin:.35rem 0 .1rem}
 .backtop{display:block;margin-top:1.6rem}
 ul.mgrid{list-style:none;padding:0;margin:.4rem 0 1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem}
-ul.mgrid li{border:1px solid var(--line);border-radius:var(--radius);padding:.5rem .7rem;display:flex;justify-content:space-between;align-items:baseline}
+ul.mgrid li{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:.5rem .7rem;display:flex;justify-content:space-between;align-items:baseline;transition:background .15s,border-color .15s,box-shadow .15s}
+ul.mgrid li:hover{background:var(--soft);border-color:var(--accent);box-shadow:0 1px 6px rgba(21,88,214,.12)}
 ul.mgrid li span{font-size:var(--fs-xs);color:var(--muted)}
 ul.mgrid li a{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg)}
+/* カード全体をクリック可能に（stretched link：リンクを疑似要素でカード全面に広げる） */
+ul.mgrid li a::after{content:"";position:absolute;inset:0;border-radius:inherit}
+ul.mgrid li:hover a{color:var(--accent);text-decoration:none}
 em.mt{font-style:normal;font-size:var(--fs-xs);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 .28rem;line-height:1.5;flex:none}
 p.lead2{color:var(--muted);font-size:var(--fs-sm);margin:.1rem 0 .6rem}
 .mfilter{margin:.2rem 0 .7rem}
