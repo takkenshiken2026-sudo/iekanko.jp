@@ -15,12 +15,12 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-EXP_MUNI=${EXP_MUNI:-187}
+EXP_MUNI=${EXP_MUNI:-193}
 EXP_EVENTS=${EXP_EVENTS:-5}
 # 既定値は現行baseline（2026-10: 神奈川33市町村＋埼玉63＋千葉11市＋茨城6市＋栃木6市＋群馬6市を追加後（関東1都6県すべてに展開）。東京62＋神奈川33＋埼玉63＋千葉11＋茨城6＋栃木6＋群馬6=187）。
 # 制度・自治体を増減したら都度この既定値も更新するか、環境変数で上書きすること。
-EXP_PROGRAMS=${EXP_PROGRAMS:-3377}
-EXP_FACTS=${EXP_FACTS:-16092}
+EXP_PROGRAMS=${EXP_PROGRAMS:-3389}
+EXP_FACTS=${EXP_FACTS:-16152}
 
 counts() {  # DB の主要件数を "muni events programs facts" として出力
   python3 - "$1" <<'PY'

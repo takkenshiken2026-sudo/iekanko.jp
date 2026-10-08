@@ -89,6 +89,8 @@ _CHIBA_SLUGS = {
     "市川市": "ichikawa", "柏市": "kashiwa",
     "流山市": "nagareyama", "八千代市": "yachiyo", "習志野市": "narashino",
     "浦安市": "urayasu", "佐倉市": "sakura", "成田市": "narita",
+    "市原市": "ichihara", "野田市": "noda", "木更津市": "kisarazu",
+    "我孫子市": "abiko", "鎌ケ谷市": "kamagaya", "印西市": "inzai",
 }
 
 # 茨城県（フェーズ2・第4県。マル福制度。県庁所在地・研究学園都市・人口上位市から順次拡大）。
