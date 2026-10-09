@@ -133,7 +133,7 @@ _TOCHIGI_SLUGS = {
     "矢板市": "yaita", "那須烏山市": "nasukarasuyama", "壬生町": "mibu",
     "野木町": "nogi", "上三川町": "kaminokawa", "高根沢町": "takanezawa",
     "益子町": "mashiko", "茂木町": "motegi", "市貝町": "ichikai",
-    "那須町": "nasu", "那珂川町": "tochigi-nakagawa",
+    "那須町": "nasu", "那珂川町": "tochigi-nakagawa", "塩谷町": "shioya",
 }
 
 # 群馬県（フェーズ2・第6県。福祉医療で現物給付・原則無料。県庁所在地・人口上位市から順次拡大）。
@@ -148,7 +148,7 @@ _GUNMA_SLUGS = {
     "みなかみ町": "minakami", "中之条町": "nakanojo", "甘楽町": "kanra",
     "下仁田町": "shimonita", "東吾妻町": "higashiagatsuma", "嬬恋村": "tsumagoi",
     "明和町": "meiwa", "千代田町": "chiyoda-gunma", "昭和村": "showa",
-    "草津町": "kusatsu",
+    "草津町": "kusatsu", "高山村": "takayama", "川場村": "kawaba",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
