@@ -101,6 +101,8 @@ _CHIBA_SLUGS = {
     "横芝光町": "yokoshibahikari", "酒々井町": "shisui", "一宮町": "ichinomiya",
     "大多喜町": "otaki", "九十九里町": "kujukuri", "多古町": "tako",
     "芝山町": "shibayama", "御宿町": "onjuku", "鋸南町": "kyonan", "白子町": "shirako",
+    "神崎町": "kozaki", "睦沢町": "mutsuzawa", "長生村": "chosei",
+    "長柄町": "nagara", "長南町": "chonan",
 }
 
 # 茨城県（フェーズ2・第4県。マル福制度。県庁所在地・研究学園都市・人口上位市から順次拡大）。
