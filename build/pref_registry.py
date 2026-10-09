@@ -101,6 +101,8 @@ _IBARAKI_SLUGS = {
     "ひたちなか市": "hitachinaka", "土浦市": "tsuchiura", "古河市": "koga",
     "取手市": "toride", "牛久市": "ushiku", "守谷市": "moriya",
     "神栖市": "kamisu", "筑西市": "chikusei", "龍ケ崎市": "ryugasaki",
+    "常総市": "joso", "笠間市": "kasama", "鹿嶋市": "kashima",
+    "坂東市": "bando", "石岡市": "ishioka", "那珂市": "naka",
 }
 
 # 栃木県（フェーズ2・第5県。県内現物給付で窓口無料。県庁所在地・人口上位市から順次拡大）。
