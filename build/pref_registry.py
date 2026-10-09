@@ -147,6 +147,8 @@ _GUNMA_SLUGS = {
     "邑楽町": "ora", "板倉町": "itakura", "榛東村": "shinto",
     "みなかみ町": "minakami", "中之条町": "nakanojo", "甘楽町": "kanra",
     "下仁田町": "shimonita", "東吾妻町": "higashiagatsuma", "嬬恋村": "tsumagoi",
+    "明和町": "meiwa", "千代田町": "chiyoda-gunma", "昭和村": "showa",
+    "草津町": "kusatsu",
 }
 
 # 都道府県コード -> {自治体名: スラッグ}
