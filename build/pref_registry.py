@@ -115,6 +115,8 @@ _IBARAKI_SLUGS = {
     "常陸大宮市": "hitachiomiya", "常陸太田市": "hitachiota", "北茨城市": "kitaibaraki",
     "高萩市": "takahagi", "稲敷市": "inashiki", "かすみがうら市": "kasumigaura",
     "桜川市": "sakuragawa", "鉾田市": "hokota", "潮来市": "itako",
+    "境町": "sakai", "大洗町": "oarai", "東海村": "tokai",
+    "美浦村": "miho", "茨城町": "ibaraki-machi",
 }
 
 # 栃木県（フェーズ2・第5県。県内現物給付で窓口無料。県庁所在地・人口上位市から順次拡大）。
