@@ -97,6 +97,7 @@ _CHIBA_SLUGS = {
     "銚子市": "choshi", "館山市": "tateyama", "大網白里市": "oamishirasato",
     "香取市": "katori", "富津市": "futtsu", "山武市": "sammu",
     "鴨川市": "kamogawa", "匝瑳市": "sosa", "いすみ市": "isumi",
+    "南房総市": "minamiboso", "勝浦市": "katsuura",
 }
 
 # 茨城県（フェーズ2・第4県。マル福制度。県庁所在地・研究学園都市・人口上位市から順次拡大）。
@@ -110,7 +111,7 @@ _IBARAKI_SLUGS = {
     "つくばみらい市": "tsukubamirai", "下妻市": "shimotsuma", "結城市": "yuki",
     "常陸大宮市": "hitachiomiya", "常陸太田市": "hitachiota", "北茨城市": "kitaibaraki",
     "高萩市": "takahagi", "稲敷市": "inashiki", "かすみがうら市": "kasumigaura",
-    "桜川市": "sakuragawa", "鉾田市": "hokota",
+    "桜川市": "sakuragawa", "鉾田市": "hokota", "潮来市": "itako",
 }
 
 # 栃木県（フェーズ2・第5県。県内現物給付で窓口無料。県庁所在地・人口上位市から順次拡大）。
