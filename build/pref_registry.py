@@ -128,6 +128,8 @@ _TOCHIGI_SLUGS = {
     "大田原市": "ohtawara", "下野市": "shimotsuke", "さくら市": "sakura-tochigi",
     "矢板市": "yaita", "那須烏山市": "nasukarasuyama", "壬生町": "mibu",
     "野木町": "nogi", "上三川町": "kaminokawa", "高根沢町": "takanezawa",
+    "益子町": "mashiko", "茂木町": "motegi", "市貝町": "ichikai",
+    "那須町": "nasu", "那珂川町": "tochigi-nakagawa",
 }
 
 # 群馬県（フェーズ2・第6県。福祉医療で現物給付・原則無料。県庁所在地・人口上位市から順次拡大）。
