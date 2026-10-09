@@ -93,6 +93,8 @@ _CHIBA_SLUGS = {
     "我孫子市": "abiko", "鎌ケ谷市": "kamagaya", "印西市": "inzai",
     "四街道市": "yotsukaido", "八街市": "yachimata", "白井市": "shiroi",
     "富里市": "tomisato", "茂原市": "mobara", "東金市": "togane",
+    "君津市": "kimitsu", "袖ケ浦市": "sodegaura", "旭市": "asahi",
+    "銚子市": "choshi", "館山市": "tateyama", "大網白里市": "oamishirasato",
 }
 
 # 茨城県（フェーズ2・第4県。マル福制度。県庁所在地・研究学園都市・人口上位市から順次拡大）。
