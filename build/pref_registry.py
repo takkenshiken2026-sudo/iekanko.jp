@@ -102,7 +102,7 @@ _CHIBA_SLUGS = {
     "大多喜町": "otaki", "九十九里町": "kujukuri", "多古町": "tako",
     "芝山町": "shibayama", "御宿町": "onjuku", "鋸南町": "kyonan", "白子町": "shirako",
     "神崎町": "kozaki", "睦沢町": "mutsuzawa", "長生村": "chosei",
-    "長柄町": "nagara", "長南町": "chonan",
+    "長柄町": "nagara", "長南町": "chonan", "栄町": "sakae",
 }
 
 # 茨城県（フェーズ2・第4県。マル福制度。県庁所在地・研究学園都市・人口上位市から順次拡大）。
@@ -121,6 +121,7 @@ _IBARAKI_SLUGS = {
     "美浦村": "miho", "茨城町": "ibaraki-machi",
     "五霞町": "goka", "八千代町": "yachiyo-ibaraki", "河内町": "kawachi",
     "利根町": "tone", "城里町": "shirosato", "大子町": "daigo",
+    "阿見町": "ami",
 }
 
 # 栃木県（フェーズ2・第5県。県内現物給付で窓口無料。県庁所在地・人口上位市から順次拡大）。
