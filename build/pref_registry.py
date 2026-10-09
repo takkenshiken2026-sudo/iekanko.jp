@@ -117,6 +117,8 @@ _IBARAKI_SLUGS = {
     "桜川市": "sakuragawa", "鉾田市": "hokota", "潮来市": "itako",
     "境町": "sakai", "大洗町": "oarai", "東海村": "tokai",
     "美浦村": "miho", "茨城町": "ibaraki-machi",
+    "五霞町": "goka", "八千代町": "yachiyo-ibaraki", "河内町": "kawachi",
+    "利根町": "tone", "城里町": "shirosato", "大子町": "daigo",
 }
 
 # 栃木県（フェーズ2・第5県。県内現物給付で窓口無料。県庁所在地・人口上位市から順次拡大）。
