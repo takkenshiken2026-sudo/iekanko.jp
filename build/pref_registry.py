@@ -98,6 +98,8 @@ _CHIBA_SLUGS = {
     "香取市": "katori", "富津市": "futtsu", "山武市": "sammu",
     "鴨川市": "kamogawa", "匝瑳市": "sosa", "いすみ市": "isumi",
     "南房総市": "minamiboso", "勝浦市": "katsuura",
+    "横芝光町": "yokoshibahikari", "酒々井町": "shisui", "一宮町": "ichinomiya",
+    "大多喜町": "otaki", "九十九里町": "kujukuri", "多古町": "tako",
 }
 
 # 茨城県（フェーズ2・第4県。マル福制度。県庁所在地・研究学園都市・人口上位市から順次拡大）。
