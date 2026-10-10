@@ -1,0 +1,2 @@
+municipality_slug,title,official_url,program_type,target,amount,benefit,application,condition,life_event,reliability,verified_date
+nakai,児童手当,https://www.town.nakai.kanagawa.jp/soshiki/fukushikakosodateshienhan/josei_teate/1/635.html,allowance,中井町に住民登録があり、高校生年代まで（18歳到達後最初の3月31日まで）の児童を養育する方。,"3歳未満は月15,000円、3歳〜高校生年代は第1子・第2子が月10,000円・第3子以降が月30,000円（第3子以降の算定には22歳年度末までの子を含む）。令和6年10月改正で所得制限を撤廃し、年6回（偶数月）に支給。",,市区町村の子育て関連窓口・郵送・電子申請（マイナポータル等）で申請。出生・転入の翌日から15日以内に申請する。,令和6年10月から所得制限を撤廃し特例給付も廃止。父母が別居の場合は所得の高い方が受給者。,childcare,reviewed,2026-10-10
