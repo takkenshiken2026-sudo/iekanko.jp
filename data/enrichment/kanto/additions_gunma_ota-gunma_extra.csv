@@ -1,0 +1,21 @@
+municipality_slug,title,official_url,program_type,target,amount,benefit,application,condition,life_event,reliability,verified_date
+ota-gunma,第3子以降保育料免除（助成）,https://www.city.ota.gunma.jp/005gyosei/0170-006kyoiku-kodomo/shiensaku.html,subsidy,婚姻していない子を3人以上養育し親子が太田市に住民登録している世帯の第3子以降の子,空欄,第3子以降の保育料を免除（準認可保育施設は助成）,入園決定後 入園月の前月末までに通知書同封の二次元コードからweb申請,親子が太田市に住民登録していること,childcare,reviewed,2026-10-10
+ota-gunma,令和8年度学校給食費助成事業・無料化事業,https://www.city.ota.gunma.jp/page/1434.html,subsidy,市立小学校・市立中学校（太田中を除く）・義務教育学校に在籍する児童生徒,空欄,学校給食費を無料化,空欄,空欄,childcare,reviewed,2026-10-10
+ota-gunma,不妊治療費助成,https://www.city.ota.gunma.jp/site/boshi-kenko/1965.html,medical_subsidy,法律上の婚姻関係にあり太田市に1年以上住民登録のある夫婦,生殖補助医療は保険適用外自己負担1回10万円まで（年度2回・通算5年度分）、その他不妊治療は保険適用外負担5万円まで,保険適用外の不妊治療費を助成,治療後に申請,太田市に1年以上住民登録があること,pregnancy_birth,reviewed,2026-10-10
+ota-gunma,不育症治療費助成,https://www.city.ota.gunma.jp/site/boshi-kenko/1964.html,medical_subsidy,夫婦のいずれか一方が治療終了日に太田市に1年以上住民登録があり医師が不育症治療を必要と認めた者,保険適用外の不育症治療・検査費用の2分の1（年度上限30万円・千円未満切捨）,保険適用外の不育症治療費を助成,治療終了後に申請,市税の滞納がなく医療保険加入,pregnancy_birth,reviewed,2026-10-10
+ota-gunma,小児・AYA世代のがん患者等の妊孕性温存療法助成事業（群馬県事業）,https://www.city.ota.gunma.jp/site/boshi-kenko/1048382.html,medical_subsidy,小児・AYA世代のがん患者等,空欄,がん治療前の妊孕性温存療法および温存後生殖補助医療に要する費用の一部を助成,空欄,空欄,pregnancy_birth,reviewed,2026-10-10
+ota-gunma,おたふくかぜ任意予防接種費用助成,https://www.city.ota.gunma.jp/site/boshi-kenko/1899.html,subsidy,太田市に住民登録のある1歳以上5歳未満（5歳の誕生日の前日まで）の子,3000円（1人1回）,おたふくかぜ任意接種費用を助成,市内実施医療機関で接種,既往者・すでに市の助成を受けた者は対象外,childcare,reviewed,2026-10-10
+ota-gunma,帯状疱疹ワクチン任意接種費用の一部助成,https://www.city.ota.gunma.jp/page/1028807.html,subsidy,50歳以上で定期接種対象外の市民,生ワクチン（ビケン）4000円、不活化ワクチン（シングリックス）1回10000円,帯状疱疹任意接種費用を一部助成,市内指定医療機関で接種,定期接種対象者は任意助成の対象外,elderly_care,reviewed,2026-10-10
+ota-gunma,インフルエンザ任意予防接種費用助成,https://www.city.ota.gunma.jp/page/1955.html,subsidy,重度障がいのある方（身体1・2級/療育A/精神1級）および中学3年・高校3年相当の方,自己負担1000円,インフルエンザ任意接種費用を助成,予診票を電子申請または保健センター窓口で発行,助成1回（重度障がいで13歳未満は2回）接種日の属する年度内に申請,childcare,reviewed,2026-10-10
+ota-gunma,新生児聴覚検査費用助成事業,https://www.city.ota.gunma.jp/005gyosei/0070-009kenko-dukuri/bosi/sinseiji-tyoukaku.html,subsidy,検査日に保護者が太田市民の新生児,上限3000円（1人1回、費用が3000円未満は実費が上限）,自動聴性脳幹反応（AABR）・耳音響放射（OAE）検査費用を助成,受診票を医療機関に提出（県外は後日保健センターで申請）,子が生後6か月になるまでに申請,pregnancy_birth,reviewed,2026-10-10
+ota-gunma,産婦健康診査費用助成,https://www.city.ota.gunma.jp/site/boshi-kenko/1927.html,subsidy,産後約2週間の産婦,上限4900円（1回限り）,産婦健康診査費用を助成,群馬県内・足利市内は受診票で申請不要、県外は出産後60日以内に申請,空欄,pregnancy_birth,reviewed,2026-10-10
+ota-gunma,1か月児健康診査費用助成,https://www.city.ota.gunma.jp/site/boshi-kenko/1033520.html,subsidy,生後約1か月児,上限4000円（1人1回）,1か月児健康診査費用を助成,群馬県内・足利市内は申請不要、県外は健診日から6か月以内に申請,空欄,pregnancy_birth,reviewed,2026-10-10
+ota-gunma,低所得妊婦の初回産科受診料支援事業,https://www.city.ota.gunma.jp/site/boshi-kenko/1032813.html,subsidy,低所得の妊婦,空欄,妊娠の判定検査のため初めて産科医療機関を受診する費用の一部を助成,保健センターへ申請,低所得であること,pregnancy_birth,reviewed,2026-10-10
+ota-gunma,介護用紙おむつの給付,https://www.city.ota.gunma.jp/page/3795.html,subsidy,在宅で要介護4・5の認定を受けた65歳以上の市民税非課税世帯の人,空欄,2か月ごとに一定量のおむつ等を給付,太田市社会福祉協議会へ申請,空欄,elderly_care,reviewed,2026-10-10
+ota-gunma,在宅高齢者出張理容サービス,https://www.city.ota.gunma.jp/page/3795.html,subsidy,在宅でねたきりの要介護4・5の65歳以上の人,住民税本人課税者は1回1000円負担,自宅での理髪サービスを年4回まで利用,空欄,空欄,elderly_care,reviewed,2026-10-10
+ota-gunma,緊急通報装置の貸与,https://www.city.ota.gunma.jp/page/3795.html,subsidy,ひとり暮らしで緊急性の高い疾病がある高齢者,空欄,緊急時に通報できる装置を貸与,空欄,空欄,elderly_care,reviewed,2026-10-10
+ota-gunma,家族介護慰労金,https://www.city.ota.gunma.jp/page/3795.html,allowance,在宅で65歳以上のねたきり高齢者を介護する家族,空欄,介護慰労金を支給,空欄,要介護4または5の状態が1年以上継続していること,elderly_care,reviewed,2026-10-10
+ota-gunma,はり・きゅう・マッサージ受療券,https://www.city.ota.gunma.jp/page/3795.html,subsidy,70歳以上の人,1枚1000円の割引券を年間4枚,市指定施術所で使える受療券を交付,空欄,空欄,elderly_care,reviewed,2026-10-10
+ota-gunma,長寿祝金,https://www.city.ota.gunma.jp/page/3795.html,allowance,77歳・88歳・100歳になる人,77歳・88歳は1万円分の太田市デジタル金券、100歳は5万円の現金,長寿祝金を贈呈,空欄,居住要件あり,elderly_care,reviewed,2026-10-10
+ota-gunma,太田市移住支援金事業,https://www.city.ota.gunma.jp/page/1640.html,subsidy,東京圏から太田市へ移住し就業等の要件を満たす人,単身60万円・世帯100万円、18歳未満の世帯員を帯同して移住する場合1人につき100万円加算（最大3人分）,移住に伴う一時的な経済負担の軽減を図る支援金,空欄,移住元の居住期間・就業等の要件,moving,reviewed,2026-10-10
+ota-gunma,新婚夫婦向け市営住宅入居推進事業,https://www.city.ota.gunma.jp/page/1026337.html,subsidy,結婚1年以内または婚姻予定で申込時に双方35歳未満の新婚世帯,空欄,市営住宅を低価格で貸出（入居者は市営住宅リフォーム補助金1世帯100万円まで・補助率2分の1も利用可）,空欄,空欄,moving,reviewed,2026-10-10
