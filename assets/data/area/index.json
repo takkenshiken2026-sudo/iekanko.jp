@@ -1,0 +1,502 @@
+{
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "municipalities": [
+    {
+      "slug": "minato",
+      "name": "港区",
+      "median_residential_yen_sqm": 2190000,
+      "condo_avg_price": 155764075,
+      "top_station": "品川",
+      "top_station_passengers": 548442
+    },
+    {
+      "slug": "chiyoda",
+      "name": "千代田区",
+      "median_residential_yen_sqm": 3485000,
+      "condo_avg_price": 122090140,
+      "top_station": "四ツ谷",
+      "top_station_passengers": 171852
+    },
+    {
+      "slug": "shibuya",
+      "name": "渋谷区",
+      "median_residential_yen_sqm": 1590000,
+      "condo_avg_price": 117978483,
+      "top_station": "渋谷",
+      "top_station_passengers": 1036352
+    },
+    {
+      "slug": "chuo",
+      "name": "中央区",
+      "median_residential_yen_sqm": 1685000,
+      "condo_avg_price": 112606259,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "shinagawa",
+      "name": "品川区",
+      "median_residential_yen_sqm": 930000,
+      "condo_avg_price": 83644444,
+      "top_station": "目黒",
+      "top_station_passengers": 455428
+    },
+    {
+      "slug": "meguro",
+      "name": "目黒区",
+      "median_residential_yen_sqm": 1060000,
+      "condo_avg_price": 83058805,
+      "top_station": "中目黒",
+      "top_station_passengers": 363724
+    },
+    {
+      "slug": "koto",
+      "name": "江東区",
+      "median_residential_yen_sqm": 585000,
+      "condo_avg_price": 79209212,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "shinjuku",
+      "name": "新宿区",
+      "median_residential_yen_sqm": 930000,
+      "condo_avg_price": 76579111,
+      "top_station": "新宿",
+      "top_station_passengers": 1301204
+    },
+    {
+      "slug": "bunkyo",
+      "name": "文京区",
+      "median_residential_yen_sqm": 1220000,
+      "condo_avg_price": 75928144,
+      "top_station": "茗荷谷",
+      "top_station_passengers": 76244
+    },
+    {
+      "slug": "setagaya",
+      "name": "世田谷区",
+      "median_residential_yen_sqm": 742000,
+      "condo_avg_price": 69472415,
+      "top_station": "三軒茶屋",
+      "top_station_passengers": 186743
+    },
+    {
+      "slug": "toshima",
+      "name": "豊島区",
+      "median_residential_yen_sqm": 780000,
+      "condo_avg_price": 64602713,
+      "top_station": "池袋",
+      "top_station_passengers": 979866
+    },
+    {
+      "slug": "musashino",
+      "name": "武蔵野市",
+      "median_residential_yen_sqm": 620000,
+      "condo_avg_price": 61023015,
+      "top_station": "吉祥寺",
+      "top_station_passengers": 250254
+    },
+    {
+      "slug": "nakano",
+      "name": "中野区",
+      "median_residential_yen_sqm": 670000,
+      "condo_avg_price": 58193474,
+      "top_station": "東中野",
+      "top_station_passengers": 71610
+    },
+    {
+      "slug": "kokubunji",
+      "name": "国分寺市",
+      "median_residential_yen_sqm": 316000,
+      "condo_avg_price": 57534437,
+      "top_station": "国分寺",
+      "top_station_passengers": 197982
+    },
+    {
+      "slug": "taito",
+      "name": "台東区",
+      "median_residential_yen_sqm": 937000,
+      "condo_avg_price": 57359806,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "suginami",
+      "name": "杉並区",
+      "median_residential_yen_sqm": 653500,
+      "condo_avg_price": 54510259,
+      "top_station": "荻窪",
+      "top_station_passengers": 160004
+    },
+    {
+      "slug": "mitaka",
+      "name": "三鷹市",
+      "median_residential_yen_sqm": 452000,
+      "condo_avg_price": 54268609,
+      "top_station": "三鷹",
+      "top_station_passengers": 167532
+    },
+    {
+      "slug": "kita",
+      "name": "北区",
+      "median_residential_yen_sqm": 582000,
+      "condo_avg_price": 52688869,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "arakawa",
+      "name": "荒川区",
+      "median_residential_yen_sqm": 612000,
+      "condo_avg_price": 51944773,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "sumida",
+      "name": "墨田区",
+      "median_residential_yen_sqm": 537000,
+      "condo_avg_price": 50550140,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "ota",
+      "name": "大田区",
+      "median_residential_yen_sqm": 563000,
+      "condo_avg_price": 48151704,
+      "top_station": "蒲田",
+      "top_station_passengers": 242214
+    },
+    {
+      "slug": "edogawa",
+      "name": "江戸川区",
+      "median_residential_yen_sqm": 395000,
+      "condo_avg_price": 47877163,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "koganei",
+      "name": "小金井市",
+      "median_residential_yen_sqm": 360000,
+      "condo_avg_price": 47136090,
+      "top_station": "武蔵小金井",
+      "top_station_passengers": 110668
+    },
+    {
+      "slug": "komae",
+      "name": "狛江市",
+      "median_residential_yen_sqm": 367500,
+      "condo_avg_price": 45557692,
+      "top_station": "狛江",
+      "top_station_passengers": 43389
+    },
+    {
+      "slug": "kunitachi",
+      "name": "国立市",
+      "median_residential_yen_sqm": 362500,
+      "condo_avg_price": 45183809,
+      "top_station": "国立",
+      "top_station_passengers": 94190
+    },
+    {
+      "slug": "nerima",
+      "name": "練馬区",
+      "median_residential_yen_sqm": 449000,
+      "condo_avg_price": 44791638,
+      "top_station": "練馬",
+      "top_station_passengers": 116257
+    },
+    {
+      "slug": "chofu",
+      "name": "調布市",
+      "median_residential_yen_sqm": 405500,
+      "condo_avg_price": 43284541,
+      "top_station": "調布",
+      "top_station_passengers": 115507
+    },
+    {
+      "slug": "itabashi",
+      "name": "板橋区",
+      "median_residential_yen_sqm": 504000,
+      "condo_avg_price": 41818921,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "fuchu",
+      "name": "府中市",
+      "median_residential_yen_sqm": 310000,
+      "condo_avg_price": 41578571,
+      "top_station": "分倍河原",
+      "top_station_passengers": 83916
+    },
+    {
+      "slug": "nishitokyo",
+      "name": "西東京市",
+      "median_residential_yen_sqm": 312000,
+      "condo_avg_price": 39725345,
+      "top_station": "田無",
+      "top_station_passengers": 66551
+    },
+    {
+      "slug": "katsushika",
+      "name": "葛飾区",
+      "median_residential_yen_sqm": 366000,
+      "condo_avg_price": 39230103,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "adachi",
+      "name": "足立区",
+      "median_residential_yen_sqm": 340000,
+      "condo_avg_price": 37244615,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "kodaira",
+      "name": "小平市",
+      "median_residential_yen_sqm": 250000,
+      "condo_avg_price": 36183425,
+      "top_station": "花小金井",
+      "top_station_passengers": 52593
+    },
+    {
+      "slug": "inagi",
+      "name": "稲城市",
+      "median_residential_yen_sqm": 263000,
+      "condo_avg_price": 33666981,
+      "top_station": "稲城",
+      "top_station_passengers": 19086
+    },
+    {
+      "slug": "machida",
+      "name": "町田市",
+      "median_residential_yen_sqm": 153000,
+      "condo_avg_price": 33017845,
+      "top_station": "町田",
+      "top_station_passengers": 254478
+    },
+    {
+      "slug": "tachikawa",
+      "name": "立川市",
+      "median_residential_yen_sqm": 273000,
+      "condo_avg_price": 32247342,
+      "top_station": "立川",
+      "top_station_passengers": 301256
+    },
+    {
+      "slug": "tama",
+      "name": "多摩市",
+      "median_residential_yen_sqm": 174500,
+      "condo_avg_price": 31046540,
+      "top_station": "京王多摩センター",
+      "top_station_passengers": 77670
+    },
+    {
+      "slug": "akishima",
+      "name": "昭島市",
+      "median_residential_yen_sqm": 187000,
+      "condo_avg_price": 30419685,
+      "top_station": "拝島",
+      "top_station_passengers": 55242
+    },
+    {
+      "slug": "hino",
+      "name": "日野市",
+      "median_residential_yen_sqm": 221000,
+      "condo_avg_price": 29573913,
+      "top_station": "豊田",
+      "top_station_passengers": 62452
+    },
+    {
+      "slug": "kiyose",
+      "name": "清瀬市",
+      "median_residential_yen_sqm": 197000,
+      "condo_avg_price": 29025000,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "higashiyamato",
+      "name": "東大和市",
+      "median_residential_yen_sqm": 176000,
+      "condo_avg_price": 28375862,
+      "top_station": "玉川上水",
+      "top_station_passengers": 23740
+    },
+    {
+      "slug": "hachioji",
+      "name": "八王子市",
+      "median_residential_yen_sqm": 117500,
+      "condo_avg_price": 27790693,
+      "top_station": "八王子",
+      "top_station_passengers": 151038
+    },
+    {
+      "slug": "higashimurayama",
+      "name": "東村山市",
+      "median_residential_yen_sqm": 192000,
+      "condo_avg_price": 24911250,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "akiruno",
+      "name": "あきる野市",
+      "median_residential_yen_sqm": 96700,
+      "condo_avg_price": 21000000,
+      "top_station": "秋川",
+      "top_station_passengers": 11800
+    },
+    {
+      "slug": "higashikurume",
+      "name": "東久留米市",
+      "median_residential_yen_sqm": 207500,
+      "condo_avg_price": 20767647,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "fussa",
+      "name": "福生市",
+      "median_residential_yen_sqm": 171000,
+      "condo_avg_price": 17257142,
+      "top_station": "牛浜",
+      "top_station_passengers": 8426
+    },
+    {
+      "slug": "hamura",
+      "name": "羽村市",
+      "median_residential_yen_sqm": 138500,
+      "condo_avg_price": 14731034,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "ome",
+      "name": "青梅市",
+      "median_residential_yen_sqm": 84300,
+      "condo_avg_price": 11831250,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "musashimurayama",
+      "name": "武蔵村山市",
+      "median_residential_yen_sqm": 120500,
+      "condo_avg_price": 11100000,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "mizuho",
+      "name": "瑞穂町",
+      "median_residential_yen_sqm": 102400,
+      "condo_avg_price": 5066666,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "hinode",
+      "name": "日の出町",
+      "median_residential_yen_sqm": 74250,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "okutama",
+      "name": "奥多摩町",
+      "median_residential_yen_sqm": 25500,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "hinohara",
+      "name": "檜原村",
+      "median_residential_yen_sqm": 19200,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "oshima",
+      "name": "大島町",
+      "median_residential_yen_sqm": null,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "toshimamura",
+      "name": "利島村",
+      "median_residential_yen_sqm": null,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "niijima",
+      "name": "新島村",
+      "median_residential_yen_sqm": null,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "kozushima",
+      "name": "神津島村",
+      "median_residential_yen_sqm": null,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "miyake",
+      "name": "三宅村",
+      "median_residential_yen_sqm": null,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "mikurajima",
+      "name": "御蔵島村",
+      "median_residential_yen_sqm": null,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "hachijo",
+      "name": "八丈町",
+      "median_residential_yen_sqm": null,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "aogashima",
+      "name": "青ヶ島村",
+      "median_residential_yen_sqm": null,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    },
+    {
+      "slug": "ogasawara",
+      "name": "小笠原村",
+      "median_residential_yen_sqm": null,
+      "condo_avg_price": null,
+      "top_station": null,
+      "top_station_passengers": null
+    }
+  ]
+}

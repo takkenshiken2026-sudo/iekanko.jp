@@ -1,0 +1,174 @@
+{
+  "city_code": "13215",
+  "name": "国立市",
+  "slug": "kunitachi",
+  "db_slug": "kokuritsu-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 362500,
+    "median_commercial_yen_sqm": 473500,
+    "n_points": 20,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 98
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 105,
+      "avg_price": 45183809,
+      "avg_area": 69.2,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 68,
+        "avg_price": 47485294,
+        "avg_area": 70.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 63,
+        "avg_price": 46682539,
+        "avg_area": 68.9,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 68,
+        "avg_price": 45867647,
+        "avg_area": 70.1,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 105,
+        "avg_price": 45183809,
+        "avg_area": 69.2,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 100,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 981,
+    "recent_avg_price": 61935066
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 3,
+    "top": [
+      {
+        "name": "国立",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 94190,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 108098
+          },
+          {
+            "year": 2019,
+            "passengers": 108098
+          },
+          {
+            "year": 2020,
+            "passengers": 77026
+          },
+          {
+            "year": 2021,
+            "passengers": 84140
+          },
+          {
+            "year": 2022,
+            "passengers": 90396
+          },
+          {
+            "year": 2023,
+            "passengers": 94190
+          }
+        ]
+      },
+      {
+        "name": "谷保",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 18884,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 20884
+          },
+          {
+            "year": 2019,
+            "passengers": 20884
+          },
+          {
+            "year": 2020,
+            "passengers": 15966
+          },
+          {
+            "year": 2021,
+            "passengers": 17004
+          },
+          {
+            "year": 2022,
+            "passengers": 18140
+          },
+          {
+            "year": 2023,
+            "passengers": 18884
+          }
+        ]
+      },
+      {
+        "name": "矢川",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 16014,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 16694
+          },
+          {
+            "year": 2019,
+            "passengers": 16694
+          },
+          {
+            "year": 2020,
+            "passengers": 13614
+          },
+          {
+            "year": 2021,
+            "passengers": 14182
+          },
+          {
+            "year": 2022,
+            "passengers": 15248
+          },
+          {
+            "year": 2023,
+            "passengers": 16014
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 129088,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

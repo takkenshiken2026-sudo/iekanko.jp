@@ -1,0 +1,174 @@
+{
+  "city_code": "13204",
+  "name": "三鷹市",
+  "slug": "mitaka",
+  "db_slug": "mitaka-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 452000,
+    "median_commercial_yen_sqm": 659000,
+    "n_points": 55,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 122
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 223,
+      "avg_price": 54268609,
+      "avg_area": 64.6,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 156,
+        "avg_price": 50614102,
+        "avg_area": 65.2,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 182,
+        "avg_price": 53058791,
+        "avg_area": 65.1,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 209,
+        "avg_price": 51153588,
+        "avg_area": 62.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 223,
+        "avg_price": 54268609,
+        "avg_area": 64.6,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 121,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 2256,
+    "recent_avg_price": 66847030
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 3,
+    "top": [
+      {
+        "name": "三鷹",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 167532,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 197414
+          },
+          {
+            "year": 2019,
+            "passengers": 197414
+          },
+          {
+            "year": 2020,
+            "passengers": 142798
+          },
+          {
+            "year": 2021,
+            "passengers": 147296
+          },
+          {
+            "year": 2022,
+            "passengers": 158830
+          },
+          {
+            "year": 2023,
+            "passengers": 167532
+          }
+        ]
+      },
+      {
+        "name": "三鷹台",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 19085,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 22741
+          },
+          {
+            "year": 2019,
+            "passengers": 22072
+          },
+          {
+            "year": 2020,
+            "passengers": 15700
+          },
+          {
+            "year": 2021,
+            "passengers": 17225
+          },
+          {
+            "year": 2022,
+            "passengers": 18309
+          },
+          {
+            "year": 2023,
+            "passengers": 19085
+          }
+        ]
+      },
+      {
+        "name": "井の頭公園",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 6484,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 6921
+          },
+          {
+            "year": 2019,
+            "passengers": 6814
+          },
+          {
+            "year": 2020,
+            "passengers": 4902
+          },
+          {
+            "year": 2021,
+            "passengers": 5804
+          },
+          {
+            "year": 2022,
+            "passengers": 6320
+          },
+          {
+            "year": 2023,
+            "passengers": 6484
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 193101,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}
