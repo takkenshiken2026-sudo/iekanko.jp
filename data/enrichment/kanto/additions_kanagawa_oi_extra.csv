@@ -1,0 +1,4 @@
+municipality_slug,title,official_url,program_type,target,amount,benefit,application,condition,life_event,reliability,verified_date
+oi,出産祝い金(第3子以降),https://www.town.oi.kanagawa.jp/soshiki/8/shusaniwai.html,allowance,出産日まで引き続き6か月以上町内に住所を有し2児を養育し第3子以降を出産し養育する方,新生児1人につき5万円,第3子以降の出産祝い金の支給,出産日から2か月以内にこども応援課へ申請または電子申請,,pregnancy_birth,reviewed,2026-10-10
+oi,新生児ゆめおおいギフト事業,https://www.town.oi.kanagawa.jp/soshiki/8/yumeooigift.html,subsidy,出生届を提出し大井町に住民登録をし保護者と同居している新生児,カタログギフト,新生児にカタログギフトを贈呈,こども応援課へ申請,,pregnancy_birth,reviewed,2026-10-10
+oi,妊産婦のタクシー利用料金助成,https://www.town.oi.kanagawa.jp/soshiki/8/ninnputakushi.html,subsidy,大井町に住民登録があり母子健康手帳の交付を受けてから出産後おおむね1か月までの妊産婦とおおむね3か月までの子ども,上限10000円,出産のための入退院や妊産婦健診の通院子の1か月3か月健診への移動のタクシー料金を助成,子の3か月健診受診日から3か月以内に子育て健康課へ申請,住所地からの移動に限る里帰り先からの移動は対象外,pregnancy_birth,reviewed,2026-10-10
