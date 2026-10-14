@@ -1,0 +1,11 @@
+municipality_slug,title,official_url,program_type,target,amount,benefit,application,condition,life_event,reliability,verified_date
+kamisato,上里町子育て世帯応援出産祝金・出産祝品,https://www.town.kamisato.saitama.jp/5803.htm,allowance,上里町で生まれた新生児の保護者,新生児1人につき1万円 第3子以降は3万円 別途祝品あり,祝金と祝品を支給 祝品は多機能いす及び食器セット 月齢フォトブロック お食い初めセットから1つ選択,子育て共生課窓口で出生から2か月以内に申請 振込口座が分かるものと印鑑を持参,出生時から継続して上里町に居住する予定であること,pregnancy_birth,reviewed,2026-10-10
+kamisato,乳児おむつ購入費助成事業,http://www.town.kamisato.saitama.jp/1515.htm,subsidy,1歳未満の乳児を養育する保護者,乳児1人につき上限1万円,紙おむつ 布おむつ おむつカバー おしりふきの購入費を助成,申請は1回のみ,1歳未満の乳児を養育していること,childcare,reviewed,2026-10-10
+kamisato,不妊治療費助成事業,https://www.town.kamisato.saitama.jp/2678.htm,medical_subsidy,保険適用外の不妊治療を受けた夫婦,同一夫婦1組につき年度1回 上限10万円 通算2年度まで,保険適用外の不妊治療の自己負担額を助成,保健センターへ申請,治療開始時の女性の年齢等の要件があること,pregnancy_birth,reviewed,2026-10-10
+kamisato,新生児聴覚検査助成,https://www.town.kamisato.saitama.jp/5558.htm,medical_subsidy,検査日に上里町に住所がある原則生後1か月以内の新生児,自動ABRは上限5000円 OAEは上限3000円,新生児聴覚検査費用の一部を助成,償還払い 検査実施日から1年以内に申請,検査日に町内に住所があること,pregnancy_birth,reviewed,2026-10-10
+kamisato,妊婦健康診査助成金（償還払い）,https://www.town.kamisato.saitama.jp/2672.htm,medical_subsidy,町と契約していない医療機関等で妊婦健診を受けた上里町の妊婦,自己負担額と助成券上限額のうち少ない方,助成券が使えなかった妊婦健診費用を償還払いで助成,受診日から1年以内に領収書 助成券 母子健康手帳 印鑑を添えて申請,契約外医療機関での受診等であること,pregnancy_birth,reviewed,2026-10-10
+kamisato,乳幼児予防接種費用助成,https://www.town.kamisato.saitama.jp/4091.htm,medical_subsidy,埼玉県外へ里帰り出産し指定医療機関で定期接種を受けられない乳幼児,支払った接種費用の全額 上限あり,定期予防接種の接種費用を助成,接種前に保健センターで手続き 接種から1年以内に請求,県外里帰り等で指定医療機関で接種できないこと,pregnancy_birth,reviewed,2026-10-10
+kamisato,高齢者補聴器購入費補助事業,https://www.town.kamisato.saitama.jp/item/14398.htm,subsidy,中等度難聴の高齢者,1人2万円 両耳片耳にかかわらず同額,補聴器購入費の一部を補助,申請前に耳鼻咽喉科で中等度難聴の意見書を取得し補助決定後に購入,中等度難聴であること,elderly_care,reviewed,2026-10-10
+kamisato,高齢者自転車用ヘルメット購入費補助,https://www.town.kamisato.saitama.jp/item/13168.htm,subsidy,町内在住で65歳以上の本人 町税等の滞納がない方,定額2000円 1人1回まで,安全認証を受けた3000円以上の新品ヘルメット購入費を補助,申請書兼請求書 印鑑 領収書等の写し 保証書等の写しや写真を提出,SGマーク等の認証を受けた新品を購入すること,elderly_care,reviewed,2026-10-10
+kamisato,高齢者お出かけサポート助成事業,https://www.town.kamisato.saitama.jp/7138.htm,subsidy,町内の高齢者,タクシー利用券を年度28枚交付 初乗運賃相当額を助成,タクシー利用料金の一部を助成,町へ申請,,elderly_care,reviewed,2026-10-10
+kamisato,保育料の完全無償化,https://www.town.kamisato.saitama.jp/6909.htm,subsidy,町内外の保育所認定こども園等に通う全ての子ども,保育料を全額無償化 主食費副食費教材費等の実費は対象外,子の年齢人数保護者の所得に関わらず保育料を無償化 令和6年4月から0歳から2歳児も対象,申請不要,保育所等に通っていること,childcare,reviewed,2026-10-10

@@ -1,0 +1,10 @@
+municipality_slug,title,official_url,program_type,target,amount,benefit,application,condition,life_event,reliability,verified_date
+ranzan,こどもの任意予防接種費用助成(おたふくかぜ・インフルエンザ),https://www.town.ranzan.saitama.jp/0000003426.html,medical_subsidy,おたふくかぜは1歳から4歳未満、インフルエンザは中学3年生及び高校3年生相当の方,自己負担300円,任意予防接種費用の一部を助成,健康いきいき課へ母子健康手帳を持参し接種券の発行を受ける、インフルエンザは対象者へ町から接種券を送付,助成対象は皮下注射のみで点鼻接種は対象外,childcare,reviewed,2026-10-10
+ranzan,大人の風しん予防接種費用助成,https://www.town.ranzan.saitama.jp/0000003560.html,medical_subsidy,妊娠を予定する女性及びその配偶者等,接種料金の半額、上限5000円,風しん予防接種費用の一部を助成,,妊婦の風しん感染予防を目的とした助成,pregnancy_birth,reviewed,2026-10-10
+ranzan,早期不妊検査費・不育症検査費助成事業(こうのとり健診推進事業),https://www.town.ranzan.saitama.jp/0000003806.html,medical_subsidy,不妊又は不育症の検査を受けた夫婦、女性の検査開始時年齢が43歳未満、町税を滞納していない方、不育症検査は2回以上の流産死産早期新生児死亡の既往等がある方,自己負担額が上限、女性の検査開始時年齢35歳未満は3万円それ以外は2万円、1000円未満切捨て,不妊検査費及び不育症検査費の一部を助成,,夫婦が医療機関で受けた検査でいずれか早い検査開始日から1年以内、特定不妊治療の一環の検査は対象外、夫婦1組につき不妊検査と不育症検査それぞれ1回限り,pregnancy_birth,reviewed,2026-10-10
+ranzan,妊産婦外出支援タクシー利用料金助成制度,https://www.town.ranzan.saitama.jp/0000003511.html,subsidy,妊産婦,500円券36枚、1回の乗車につき最高5枚まで利用可,外出時に利用するタクシー運賃の一部を助成,妊娠届出時に申請,有効期限は母子健康手帳交付日から2年,pregnancy_birth,reviewed,2026-10-10
+ranzan,小学校給食費の無償化,https://www.town.ranzan.saitama.jp/0000007878.html,subsidy,町立小学校に通う児童の保護者,全額、無償,小学校給食費を無償化,,令和8年4月から実施、中学校給食費は対象外,childcare,reviewed,2026-10-10
+ranzan,高齢者補聴器購入費助成,https://www.town.ranzan.saitama.jp/0000007838.html,subsidy,65歳以上の町民,1人20000円が上限、1人1回限り,補聴器購入費の一部を助成,嵐山町高齢者補聴器購入費助成金交付申請書を長寿生きがい課に提出,予算30万円の先着順、助成決定通知より先に補聴器を購入した場合は対象外,elderly_care,reviewed,2026-10-10
+ranzan,家族介護慰労金,https://www.town.ranzan.saitama.jp/0000005768.html,allowance,要介護者を介護する家族,10万円,介護する家族の負担軽減を目的に慰労金を支給,,申請は年度1回まで,elderly_care,reviewed,2026-10-10
+ranzan,高齢者外出支援タクシー助成券,https://www.town.ranzan.saitama.jp/0000007809.html,subsidy,運転免許証を所有しない(失効者を含む)70歳以上の町民,1枚500円の助成券を交付,外出時に利用するタクシー運賃の一部を助成,長寿生きがい課へ交付申請,,elderly_care,reviewed,2026-10-10
+ranzan,老人日常生活用具給付等事業,https://www.town.ranzan.saitama.jp/ranzan/reiki_int/reiki_honbun/e353RG00000546.html,subsidy,おおむね65歳以上の寝たきり老人やひとり暮らし老人等,,特殊寝台や緊急通報装置等の日常生活用具の給付レンタル貸与,,緊急通報装置はおおむね65歳以上のひとり暮らし老人等が対象,elderly_care,reviewed,2026-10-10

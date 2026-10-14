@@ -1,0 +1,4 @@
+municipality_slug,title,official_url,program_type,target,amount,benefit,application,condition,life_event,reliability,verified_date
+moroyama,第2子以降保育料無償化,https://www.town.moroyama.saitama.jp/soshikikarasagasu/kodomoka/hoikugakari/4_1/2638.html,subsidy,保育施設を利用する第2子以降の子ども,保育料全額無償(所得制限なし),,,令和7年4月から実施、保育料の滞納がある場合は対象外となることがある,childcare,reviewed,2026-10-10
+moroyama,保育施設給食費補助(副食費・主食費),https://www.town.moroyama.saitama.jp/soshikikarasagasu/kodomoka/hoikugakari/4_1/2638.html,subsidy,保育施設の3から5歳児クラスの子ども,副食費は月額5100円まで、主食費は月額500円まで,町が施設へ直接補助,保護者の手続きは不要,副食費は令和6年4月1日から、主食費は令和6年6月1日から,childcare,reviewed,2026-10-10
+moroyama,帯状疱疹予防接種費用助成(任意接種),https://www.town.moroyama.saitama.jp/soshikikarasagasu/hokencenter/iryo_kenko/yobousessyu/1/13128.html,medical_subsidy,接種日現在に毛呂山町に住民登録があり過去に帯状疱疹予防接種の助成を受けたことがなく定期接種対象外の50歳以上の人,1回につき5000円,,町指定医療機関で接種(指定医療機関以外では助成不可),生涯で生ワクチンまたは不活化ワクチンのいずれか一方、不活化ワクチンは2回まで助成,elderly_care,reviewed,2026-10-10
