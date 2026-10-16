@@ -1,0 +1,302 @@
+{
+  "city_code": "13211",
+  "name": "小平市",
+  "slug": "kodaira",
+  "db_slug": "kodaira-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 250000,
+    "median_commercial_yen_sqm": 328500,
+    "n_points": 59,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 67
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 181,
+      "avg_price": 36183425,
+      "avg_area": 70.1,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 129,
+        "avg_price": 36137984,
+        "avg_area": 71.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 128,
+        "avg_price": 35528906,
+        "avg_area": 72.1,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 133,
+        "avg_price": 35534586,
+        "avg_area": 69.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 181,
+        "avg_price": 36183425,
+        "avg_area": 70.1,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 80,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 2340,
+    "recent_avg_price": 48147948
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 7,
+    "top": [
+      {
+        "name": "花小金井",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 52593,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 59223
+          },
+          {
+            "year": 2019,
+            "passengers": 59220
+          },
+          {
+            "year": 2020,
+            "passengers": 42843
+          },
+          {
+            "year": 2021,
+            "passengers": 45498
+          },
+          {
+            "year": 2022,
+            "passengers": 49987
+          },
+          {
+            "year": 2023,
+            "passengers": 52593
+          }
+        ]
+      },
+      {
+        "name": "小平",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 34510,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 39464
+          },
+          {
+            "year": 2019,
+            "passengers": 38780
+          },
+          {
+            "year": 2020,
+            "passengers": 28336
+          },
+          {
+            "year": 2021,
+            "passengers": 30576
+          },
+          {
+            "year": 2022,
+            "passengers": 33184
+          },
+          {
+            "year": 2023,
+            "passengers": 34510
+          }
+        ]
+      },
+      {
+        "name": "小川",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 25763,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 30215
+          },
+          {
+            "year": 2019,
+            "passengers": 29859
+          },
+          {
+            "year": 2020,
+            "passengers": 21015
+          },
+          {
+            "year": 2021,
+            "passengers": 22507
+          },
+          {
+            "year": 2022,
+            "passengers": 24248
+          },
+          {
+            "year": 2023,
+            "passengers": 25763
+          }
+        ]
+      },
+      {
+        "name": "鷹の台",
+        "company": "西武鉄道",
+        "line": "国分寺線",
+        "passengers": 23939,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 26592
+          },
+          {
+            "year": 2019,
+            "passengers": 25914
+          },
+          {
+            "year": 2020,
+            "passengers": 16225
+          },
+          {
+            "year": 2021,
+            "passengers": 19693
+          },
+          {
+            "year": 2022,
+            "passengers": 23092
+          },
+          {
+            "year": 2023,
+            "passengers": 23939
+          }
+        ]
+      },
+      {
+        "name": "新小平",
+        "company": "東日本旅客鉄道",
+        "line": "武蔵野線",
+        "passengers": 21752,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 22978
+          },
+          {
+            "year": 2019,
+            "passengers": 22978
+          },
+          {
+            "year": 2020,
+            "passengers": 17054
+          },
+          {
+            "year": 2021,
+            "passengers": 18706
+          },
+          {
+            "year": 2022,
+            "passengers": 20568
+          },
+          {
+            "year": 2023,
+            "passengers": 21752
+          }
+        ]
+      },
+      {
+        "name": "一橋学園",
+        "company": "西武鉄道",
+        "line": "多摩湖線",
+        "passengers": 19852,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 21526
+          },
+          {
+            "year": 2019,
+            "passengers": 21189
+          },
+          {
+            "year": 2020,
+            "passengers": 15621
+          },
+          {
+            "year": 2021,
+            "passengers": 16983
+          },
+          {
+            "year": 2022,
+            "passengers": 18959
+          },
+          {
+            "year": 2023,
+            "passengers": 19852
+          }
+        ]
+      },
+      {
+        "name": "青梅街道",
+        "company": "西武鉄道",
+        "line": "多摩湖線",
+        "passengers": 7670,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 8446
+          },
+          {
+            "year": 2019,
+            "passengers": 8367
+          },
+          {
+            "year": 2020,
+            "passengers": 6293
+          },
+          {
+            "year": 2021,
+            "passengers": 6892
+          },
+          {
+            "year": 2022,
+            "passengers": 7528
+          },
+          {
+            "year": 2023,
+            "passengers": 7670
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 158557,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

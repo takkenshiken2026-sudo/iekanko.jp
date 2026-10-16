@@ -1,0 +1,334 @@
+{
+  "city_code": "13115",
+  "name": "杉並区",
+  "slug": "suginami",
+  "db_slug": "suginami-ku",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 653500,
+    "median_commercial_yen_sqm": 1040000,
+    "n_points": 116,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 176
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 848,
+      "avg_price": 54510259,
+      "avg_area": 55.6,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 622,
+        "avg_price": 45794212,
+        "avg_area": 54.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 634,
+        "avg_price": 50579810,
+        "avg_area": 57.6,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 613,
+        "avg_price": 54390701,
+        "avg_area": 58.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 848,
+        "avg_price": 54510259,
+        "avg_area": 55.6,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 121,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 8897,
+    "recent_avg_price": 74575328
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 18,
+    "top": [
+      {
+        "name": "荻窪",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 160004,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 181430
+          },
+          {
+            "year": 2019,
+            "passengers": 181430
+          },
+          {
+            "year": 2020,
+            "passengers": 134462
+          },
+          {
+            "year": 2021,
+            "passengers": 140732
+          },
+          {
+            "year": 2022,
+            "passengers": 152460
+          },
+          {
+            "year": 2023,
+            "passengers": 160004
+          }
+        ]
+      },
+      {
+        "name": "高円寺",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 92138,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 103526
+          },
+          {
+            "year": 2019,
+            "passengers": 103526
+          },
+          {
+            "year": 2020,
+            "passengers": 76498
+          },
+          {
+            "year": 2021,
+            "passengers": 80096
+          },
+          {
+            "year": 2022,
+            "passengers": 86592
+          },
+          {
+            "year": 2023,
+            "passengers": 92138
+          }
+        ]
+      },
+      {
+        "name": "西荻窪",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 83258,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 91556
+          },
+          {
+            "year": 2019,
+            "passengers": 91556
+          },
+          {
+            "year": 2020,
+            "passengers": 67034
+          },
+          {
+            "year": 2021,
+            "passengers": 72000
+          },
+          {
+            "year": 2022,
+            "passengers": 79272
+          },
+          {
+            "year": 2023,
+            "passengers": 83258
+          }
+        ]
+      },
+      {
+        "name": "阿佐ヶ谷",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 80642,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 92178
+          },
+          {
+            "year": 2019,
+            "passengers": 92178
+          },
+          {
+            "year": 2020,
+            "passengers": 68528
+          },
+          {
+            "year": 2021,
+            "passengers": 71294
+          },
+          {
+            "year": 2022,
+            "passengers": 76512
+          },
+          {
+            "year": 2023,
+            "passengers": 80642
+          }
+        ]
+      },
+      {
+        "name": "方南町",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線分岐線",
+        "passengers": 38148,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 38064
+          },
+          {
+            "year": 2019,
+            "passengers": 39769
+          },
+          {
+            "year": 2020,
+            "passengers": 30412
+          },
+          {
+            "year": 2021,
+            "passengers": 32003
+          },
+          {
+            "year": 2022,
+            "passengers": 34927
+          },
+          {
+            "year": 2023,
+            "passengers": 38148
+          }
+        ]
+      },
+      {
+        "name": "高井戸",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 37317,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 44392
+          },
+          {
+            "year": 2019,
+            "passengers": 44197
+          },
+          {
+            "year": 2020,
+            "passengers": 32257
+          },
+          {
+            "year": 2021,
+            "passengers": 33435
+          },
+          {
+            "year": 2022,
+            "passengers": 35673
+          },
+          {
+            "year": 2023,
+            "passengers": 37317
+          }
+        ]
+      },
+      {
+        "name": "久我山",
+        "company": "京王電鉄",
+        "line": "井の頭線",
+        "passengers": 37302,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 40722
+          },
+          {
+            "year": 2019,
+            "passengers": 40879
+          },
+          {
+            "year": 2020,
+            "passengers": 30329
+          },
+          {
+            "year": 2021,
+            "passengers": 33392
+          },
+          {
+            "year": 2022,
+            "passengers": 36028
+          },
+          {
+            "year": 2023,
+            "passengers": 37302
+          }
+        ]
+      },
+      {
+        "name": "八幡山",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 36715,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 43959
+          },
+          {
+            "year": 2019,
+            "passengers": 43346
+          },
+          {
+            "year": 2020,
+            "passengers": 31425
+          },
+          {
+            "year": 2021,
+            "passengers": 32793
+          },
+          {
+            "year": 2022,
+            "passengers": 34899
+          },
+          {
+            "year": 2023,
+            "passengers": 36715
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 454190,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}
