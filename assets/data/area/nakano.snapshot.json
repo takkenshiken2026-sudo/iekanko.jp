@@ -1,0 +1,504 @@
+{
+  "slug": "nakano",
+  "name": "中野区",
+  "benefits": [
+    {
+      "cid": "house_taishin",
+      "label": "耐震改修助成",
+      "unit": "改修上限",
+      "group": "moving",
+      "group_label": "住まい",
+      "yen": 1500000,
+      "href": "/area/tokyo/nakano/seido/1965/",
+      "rank": 11,
+      "n_ranked": 30,
+      "hikaku": "/hikaku/house_taishin/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/nakano/seido/2584/",
+      "rank": 37,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    },
+    {
+      "cid": "eld_omutsu",
+      "label": "高齢者紙おむつ",
+      "unit": "月額上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 6000,
+      "href": "/area/tokyo/nakano/seido/674/",
+      "rank": 16,
+      "n_ranked": 23,
+      "hikaku": "/hikaku/eld_omutsu/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 670000,
+      "median_commercial_yen_sqm": 1280000,
+      "n_points": 67,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 181
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 613,
+        "avg_price": 58193474,
+        "avg_area": 54.8,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 399,
+          "avg_price": 45616791,
+          "avg_area": 52.9,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 472,
+          "avg_price": 50803813,
+          "avg_area": 53.8,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 456,
+          "avg_price": 52465789,
+          "avg_area": 55.2,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 613,
+          "avg_price": 58193474,
+          "avg_area": 54.8,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 129,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "neighbors": [
+    {
+      "slug": "suginami",
+      "name": "杉並区",
+      "condo_avg_price": 54510259,
+      "land_median_yen_sqm": 653500,
+      "station_sum_top5": 454190
+    },
+    {
+      "slug": "shinjuku",
+      "name": "新宿区",
+      "condo_avg_price": 76579111,
+      "land_median_yen_sqm": 930000,
+      "station_sum_top5": 2065767
+    },
+    {
+      "slug": "toshima",
+      "name": "豊島区",
+      "condo_avg_price": 64602713,
+      "land_median_yen_sqm": 780000,
+      "station_sum_top5": 1367104
+    }
+  ],
+  "compare": {
+    "condo": [
+      {
+        "key": "self",
+        "slug": "nakano",
+        "name": "中野区",
+        "value": 58193474,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "suginami",
+        "name": "杉並区",
+        "value": 54510259,
+        "href": "/area/tokyo/suginami/"
+      },
+      {
+        "key": "near",
+        "slug": "shinjuku",
+        "name": "新宿区",
+        "value": 76579111,
+        "href": "/area/tokyo/shinjuku/"
+      },
+      {
+        "key": "near",
+        "slug": "toshima",
+        "name": "豊島区",
+        "value": 64602713,
+        "href": "/area/tokyo/toshima/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 44987723,
+        "href": null
+      }
+    ],
+    "land": [
+      {
+        "key": "self",
+        "slug": "nakano",
+        "name": "中野区",
+        "value": 670000,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "suginami",
+        "name": "杉並区",
+        "value": 653500,
+        "href": "/area/tokyo/suginami/"
+      },
+      {
+        "key": "near",
+        "slug": "shinjuku",
+        "name": "新宿区",
+        "value": 930000,
+        "href": "/area/tokyo/shinjuku/"
+      },
+      {
+        "key": "near",
+        "slug": "toshima",
+        "name": "豊島区",
+        "value": 780000,
+        "href": "/area/tokyo/toshima/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "nakano",
+        "name": "中野区",
+        "value": 229976,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "suginami",
+        "name": "杉並区",
+        "value": 454190,
+        "href": "/area/tokyo/suginami/"
+      },
+      {
+        "key": "near",
+        "slug": "shinjuku",
+        "name": "新宿区",
+        "value": 2065767,
+        "href": "/area/tokyo/shinjuku/"
+      },
+      {
+        "key": "near",
+        "slug": "toshima",
+        "name": "豊島区",
+        "value": 1367104,
+        "href": "/area/tokyo/toshima/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
+        "href": null
+      }
+    ]
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 12,
+    "top": [
+      {
+        "name": "東中野",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 71610,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 82468
+          },
+          {
+            "year": 2019,
+            "passengers": 82468
+          },
+          {
+            "year": 2020,
+            "passengers": 61528
+          },
+          {
+            "year": 2021,
+            "passengers": 64796
+          },
+          {
+            "year": 2022,
+            "passengers": 68824
+          },
+          {
+            "year": 2023,
+            "passengers": 71610
+          }
+        ]
+      },
+      {
+        "name": "中野坂上",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 70705,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 76810
+          },
+          {
+            "year": 2019,
+            "passengers": 77763
+          },
+          {
+            "year": 2020,
+            "passengers": 55735
+          },
+          {
+            "year": 2021,
+            "passengers": 59580
+          },
+          {
+            "year": 2022,
+            "passengers": 65946
+          },
+          {
+            "year": 2023,
+            "passengers": 70705
+          }
+        ]
+      },
+      {
+        "name": "新中野",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線",
+        "passengers": 32950,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 36122
+          },
+          {
+            "year": 2019,
+            "passengers": 36488
+          },
+          {
+            "year": 2020,
+            "passengers": 27442
+          },
+          {
+            "year": 2021,
+            "passengers": 28305
+          },
+          {
+            "year": 2022,
+            "passengers": 30917
+          },
+          {
+            "year": 2023,
+            "passengers": 32950
+          }
+        ]
+      },
+      {
+        "name": "鷺ノ宮",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 29582,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 33063
+          },
+          {
+            "year": 2019,
+            "passengers": 33147
+          },
+          {
+            "year": 2020,
+            "passengers": 24631
+          },
+          {
+            "year": 2021,
+            "passengers": 25919
+          },
+          {
+            "year": 2022,
+            "passengers": 28112
+          },
+          {
+            "year": 2023,
+            "passengers": 29582
+          }
+        ]
+      },
+      {
+        "name": "落合",
+        "company": "東京地下鉄",
+        "line": "5号線東西線",
+        "passengers": 25129,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 27280
+          },
+          {
+            "year": 2019,
+            "passengers": 27490
+          },
+          {
+            "year": 2020,
+            "passengers": 19128
+          },
+          {
+            "year": 2021,
+            "passengers": 20607
+          },
+          {
+            "year": 2022,
+            "passengers": 23076
+          },
+          {
+            "year": 2023,
+            "passengers": 25129
+          }
+        ]
+      },
+      {
+        "name": "野方",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 22400,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 25522
+          },
+          {
+            "year": 2019,
+            "passengers": 25560
+          },
+          {
+            "year": 2020,
+            "passengers": 18888
+          },
+          {
+            "year": 2021,
+            "passengers": 19979
+          },
+          {
+            "year": 2022,
+            "passengers": 21546
+          },
+          {
+            "year": 2023,
+            "passengers": 22400
+          }
+        ]
+      },
+      {
+        "name": "中野新橋",
+        "company": "東京地下鉄",
+        "line": "4号線丸ノ内線分岐線",
+        "passengers": 19605,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 20823
+          },
+          {
+            "year": 2019,
+            "passengers": 20884
+          },
+          {
+            "year": 2020,
+            "passengers": 16138
+          },
+          {
+            "year": 2021,
+            "passengers": 16789
+          },
+          {
+            "year": 2022,
+            "passengers": 18258
+          },
+          {
+            "year": 2023,
+            "passengers": 19605
+          }
+        ]
+      },
+      {
+        "name": "新井薬師前",
+        "company": "西武鉄道",
+        "line": "新宿線",
+        "passengers": 18903,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 22880
+          },
+          {
+            "year": 2019,
+            "passengers": 22176
+          },
+          {
+            "year": 2020,
+            "passengers": 16423
+          },
+          {
+            "year": 2021,
+            "passengers": 17112
+          },
+          {
+            "year": 2022,
+            "passengers": 18321
+          },
+          {
+            "year": 2023,
+            "passengers": 18903
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 229976,
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 91
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "city_code": "13116",
+  "name": "豊島区",
+  "slug": "toshima",
+  "db_slug": "toyoshima-ku",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 780000,
+    "median_commercial_yen_sqm": 1635000,
+    "n_points": 71,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 210
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 737,
+      "avg_price": 64602713,
+      "avg_area": 51.4,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 492,
+        "avg_price": 50229471,
+        "avg_area": 49.8,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 474,
+        "avg_price": 51110337,
+        "avg_area": 50.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 519,
+        "avg_price": 59100963,
+        "avg_area": 52.2,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 737,
+        "avg_price": 64602713,
+        "avg_area": 51.4,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 144,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 5605,
+    "recent_avg_price": 78295896
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 21,
+    "top": [
+      {
+        "name": "池袋",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 979866,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 1133988
+          },
+          {
+            "year": 2019,
+            "passengers": 1133988
+          },
+          {
+            "year": 2020,
+            "passengers": 752700
+          },
+          {
+            "year": 2021,
+            "passengers": 814980
+          },
+          {
+            "year": 2022,
+            "passengers": 917582
+          },
+          {
+            "year": 2023,
+            "passengers": 979866
+          }
+        ]
+      },
+      {
+        "name": "巣鴨",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 131550,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 154398
+          },
+          {
+            "year": 2019,
+            "passengers": 154398
+          },
+          {
+            "year": 2020,
+            "passengers": 105910
+          },
+          {
+            "year": 2021,
+            "passengers": 113474
+          },
+          {
+            "year": 2022,
+            "passengers": 126844
+          },
+          {
+            "year": 2023,
+            "passengers": 131550
+          }
+        ]
+      },
+      {
+        "name": "大塚",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 104504,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 117852
+          },
+          {
+            "year": 2019,
+            "passengers": 117852
+          },
+          {
+            "year": 2020,
+            "passengers": 86330
+          },
+          {
+            "year": 2021,
+            "passengers": 88786
+          },
+          {
+            "year": 2022,
+            "passengers": 97018
+          },
+          {
+            "year": 2023,
+            "passengers": 104504
+          }
+        ]
+      },
+      {
+        "name": "駒込",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 85438,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 99082
+          },
+          {
+            "year": 2019,
+            "passengers": 99082
+          },
+          {
+            "year": 2020,
+            "passengers": 70490
+          },
+          {
+            "year": 2021,
+            "passengers": 74118
+          },
+          {
+            "year": 2022,
+            "passengers": 81812
+          },
+          {
+            "year": 2023,
+            "passengers": 85438
+          }
+        ]
+      },
+      {
+        "name": "目白",
+        "company": "東日本旅客鉄道",
+        "line": "山手線",
+        "passengers": 65746,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 76380
+          },
+          {
+            "year": 2019,
+            "passengers": 76380
+          },
+          {
+            "year": 2020,
+            "passengers": 43072
+          },
+          {
+            "year": 2021,
+            "passengers": 52650
+          },
+          {
+            "year": 2022,
+            "passengers": 61680
+          },
+          {
+            "year": 2023,
+            "passengers": 65746
+          }
+        ]
+      },
+      {
+        "name": "東池袋",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 42748,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 44462
+          },
+          {
+            "year": 2019,
+            "passengers": 44120
+          },
+          {
+            "year": 2020,
+            "passengers": 30117
+          },
+          {
+            "year": 2021,
+            "passengers": 32410
+          },
+          {
+            "year": 2022,
+            "passengers": 38132
+          },
+          {
+            "year": 2023,
+            "passengers": 42748
+          }
+        ]
+      },
+      {
+        "name": "要町",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 38864,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 41430
+          },
+          {
+            "year": 2019,
+            "passengers": 41969
+          },
+          {
+            "year": 2020,
+            "passengers": 31084
+          },
+          {
+            "year": 2021,
+            "passengers": 32835
+          },
+          {
+            "year": 2022,
+            "passengers": 36047
+          },
+          {
+            "year": 2023,
+            "passengers": 38864
+          }
+        ]
+      },
+      {
+        "name": "千川",
+        "company": "東京地下鉄",
+        "line": "8号線有楽町線",
+        "passengers": 37251,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 40022
+          },
+          {
+            "year": 2019,
+            "passengers": 40617
+          },
+          {
+            "year": 2020,
+            "passengers": 30535
+          },
+          {
+            "year": 2021,
+            "passengers": 32057
+          },
+          {
+            "year": 2022,
+            "passengers": 34918
+          },
+          {
+            "year": 2023,
+            "passengers": 37251
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 1367104,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}
