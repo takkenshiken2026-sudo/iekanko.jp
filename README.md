@@ -1,6 +1,6 @@
-# iekanko.jp ｜ くらしの制度ナビ（東京都の給付・手当・助成 比較）
+# iekanko.jp ｜ くらしの制度ナビ（関東1都6県の給付・手当・助成 比較）
 
-東京都62自治体（23区・26市・5町・8村）の給付金・手当・助成・減免制度を、
+関東1都6県307自治体（東京62・埼玉63・千葉53・神奈川33・茨城42・群馬30・栃木24）の給付金・手当・助成・減免制度を、
 **出典URL・最終確認日つき**で自治体ごと／制度カテゴリごとに比較できる静的サイトです。
 
 - 公開URL: https://iekanko.jp
@@ -28,16 +28,20 @@ build/
 ```
 
 > 注: 元データDB（`gov_life_support.sqlite3`）と収集した生テキスト・レビュー用CSVは、
-> 内部作業用のためこのリポジトリには含めていません。サイトの再生成には別途DBが必要です。
+> 内部作業用のため `.gitignore` 対象でこのリポジトリには含めていません（含まれていないのが正常）。
+> ただし公開中の `docs/` が原本であり、`python3 build/rebuild_db_from_docs.py` で
+> DB を完全復元できます。詳細な更新・再生成フローは `build/MAINTENANCE.md` を参照。
 
 ## サイトの再生成
 
-`docs/` は `build/build_site.py` が DB から生成した成果物です。データを更新して
-作り直す場合は、リポジトリ直下に DB（`gov_life_support.sqlite3`）を置いて実行します。
+`docs/` は `build/build_site.py` が DB から生成した成果物です。手元に DB が無い場合は、
+まず docs から DB を復元してから再生成します（再生成は `PYTHONHASHSEED=0` 固定で決定的に）。
 
 ```bash
-# 本番ドメインは既定で https://iekanko.jp。必要なら SEIDO_BASE_URL で上書き可。
-python3 build/build_site.py
+# 1) docs から DB を復元（gov_life_support.sqlite3 が生成される）
+python3 build/rebuild_db_from_docs.py
+# 2) DB から docs を再生成。本番ドメインは既定で https://iekanko.jp、SEIDO_BASE_URL で上書き可。
+PYTHONHASHSEED=0 python3 build/build_site.py
 ```
 
 - 出力先は `docs/`。`CNAME` と `.nojekyll` は上書きされず保持されます。

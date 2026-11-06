@@ -1,4 +1,4 @@
-# iekanko.jp — くらしの制度ナビ（東京都62自治体の給付・手当・助成 比較サイト）
+# iekanko.jp — くらしの制度ナビ（関東1都6県307自治体の給付・手当・助成 比較サイト）
 
 静的サイト。`docs/` を GitHub Pages で公開している。ページは SQLite DB から
 `build/build_site.py` で生成する。
