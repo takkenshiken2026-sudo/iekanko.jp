@@ -26,7 +26,7 @@ OUT  = os.environ.get("SEIDO_OUT", os.path.join(ROOT, "docs"))  # 出力先（�
 
 # ▼ 本番ドメイン（canonical / sitemap / OGP に使用）。環境変数 SEIDO_BASE_URL で上書き可。
 BASE_URL = os.environ.get("SEIDO_BASE_URL", "https://iekanko.jp").rstrip("/")
-SITE_NAME = "くらしの制度ナビ｜東京都の給付・手当・助成 まるわかり比較"
+SITE_NAME = "くらしの制度ナビ｜関東1都6県の給付・手当・助成 まるわかり比較"
 SITE_SHORT = "くらしの制度ナビ"
 
 # ── 運営者情報（E-E-A-T用。★実名・連絡先を記入すると信頼性ページが完成します）──────
@@ -1566,7 +1566,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <nav class="fnav" aria-label="サイト情報">
 <a href="/">トップ</a>・<a href="/find/">目的・年代から探す</a>・<a href="/hikaku/">制度を比較する</a>・<a href="/kurashi-data/">暮らしデータ</a>・<a href="/guide/">くらしの制度ガイド</a>・<a href="/tokushu/">特集</a>・<a href="/about/">運営者情報</a>・<a href="/update-policy/">情報の更新方針</a>・<a href="/disclaimer/">免責事項</a>・<a href="/privacy/">プライバシーポリシー</a>{FOOTER_CONTACT_HTML}
 </nav>
-<p class="copy">© {ESTABLISHED} {esc(SITE_SHORT)}（東京都62自治体・出典付き / 最終確認日を明記）</p>
+<p class="copy">© {ESTABLISHED} {esc(SITE_SHORT)}（関東1都6県307自治体・出典付き / 最終確認日を明記）</p>
 </footer>
 <script>document.addEventListener("click",function(e){{var tr=e.target.closest("tr[data-href]");if(!tr||e.target.closest("a,button,input,label,select"))return;var u=tr.getAttribute("data-href");if(u)location.href=u;}});</script>
 </body></html>"""
@@ -2040,8 +2040,9 @@ def compare_links(cats, pref_code=None):
 # 62自治体データから最高/最安/平均・対応状況の差を自然文で要約する。ハブごとに
 # 固有のテキストになるため、集約ページの独自価値（scaled-content降格からの回復の
 # 本丸）になる。定型文ではなく実データに基づくため、増減があれば文面も自動で変わる。
-def compare_insight_html(cid, label, entries, all_entries, have, n_amt):
+def compare_insight_html(cid, label, entries, all_entries, have, n_amt, pref_code=None):
     pts = []
+    pn = pref_name(norm_code(pref_code or AGG_PREF))
     spec = CHART_SPEC.get(cid)
     if spec and n_amt >= 3:
         _unit, mode, _color = spec
@@ -2078,10 +2079,10 @@ def compare_insight_html(cid, label, entries, all_entries, have, n_amt):
             pts.append(f'対応が分かれるのは{seg}（掲載{total}自治体中）。ここが自治体選びの分かれ目です。')
     if not pts:
         if n_amt:
-            pts.append(f'東京都で「{esc(label)}」を確認できたのは{have}自治体。'
+            pts.append(f'{esc(pn)}で「{esc(label)}」を確認できたのは{have}自治体。'
                        f'うち{n_amt}自治体が具体的な支給額・助成額を公表しています。')
         else:
-            pts.append(f'東京都で「{esc(label)}」を確認できたのは{have}自治体です。'
+            pts.append(f'{esc(pn)}で「{esc(label)}」を確認できたのは{have}自治体です。'
                        f'金額は非公表・要問い合わせの自治体が多く、対象・条件に自治体差があります。')
     miss = len(AGG_MUNIS) - have
     if miss > 0 and have >= 3:
@@ -2157,7 +2158,7 @@ def build_compare(cid, entries, counts=None, pref_code=None):
 {photo_figure(*photo_for_cats([cid], ev), "evphoto")}
 </div>
 {chart_with_affiliate(compare_chart_html(cid, entries) + compare_coverage_html(cid, all_entries), affiliate_html("hikaku", cid))}
-{compare_insight_html(cid, label, entries, all_entries, have, n_amt)}
+{compare_insight_html(cid, label, entries, all_entries, have, n_amt, pref_code)}
 <div class="tablewrap"><table class="cmp">
 <thead><tr><th>自治体</th><th>支給額・助成額</th><th>確認日</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table></div>
@@ -2580,6 +2581,15 @@ def build_find_hub(score):
     sitemap_urls.append(("/find/","0.9"))
 
 # ── 自治体 × ライフイベント ─────────────────────────────────────────────────
+def area_map_html(m, slug, mn):
+    """自治体の位置図。地図SVGは東京都分のみ同梱しているため、他県では出力しない
+    （他県で出すと画像リンク切れ＋『東京都における○○』という誤キャプションになる）。"""
+    if norm_code(m["prefecture_code"]) != AGG_PREF:
+        return ""
+    return (f'<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" '
+            f'alt="東京都における{esc(mn)}の位置を示した地図" decoding="async">'
+            f'<figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>')
+
 def area_stats_meta_html(mn, ev_name, n_prog, yen_sum=None, n_amt=0, color=None):
     """自治体×ライフイベントページの件数・金額サマリー（数字を大きく表示）。"""
     pc = f' style="--pc:{color}"' if color else ''
@@ -2646,7 +2656,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
          + "各制度の対象・金額・申請方法は、このページの一覧からご確認いただけます。"),
         (f"{mn}の{ev_name}の制度は他の自治体と比べて手厚いですか？",
          f"同じ{ev_name}でも金額・対象・条件は自治体ごとに異なります。"
-         f"このページ末尾の「{ev_name}の制度がある自治体をみる」から、東京都内での{mn}の位置づけを比較できます。"),
+         f"このページ末尾の「{ev_name}の制度がある自治体をみる」から、{pref_name(norm_code(m['prefecture_code']))}内での{mn}の位置づけを比較できます。"),
         ("申請はどこですればよいですか？",
          f"多くは{mn}の担当窓口や郵送・オンラインで受け付けています。"
          "窓口・必要書類・期限は制度ごとに異なるため、各制度ページの申請方法と公式ページ（出典リンク）をご確認ください。"),
@@ -2667,7 +2677,7 @@ def build_muni_event(m, slug, ev_slug, ev_name, ev_intro, progs):
 <p class="lead">{esc(ev_intro)}</p>
 {stats_meta}
 </div>
-<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
+{area_map_html(m, slug, mn)}
 </div>
 {intro_html}
 {listing}
@@ -2834,9 +2844,14 @@ def build_muni(m, slug, score, avg):
             else: lo=max(0,_n-13)
         near=[_ordered[i] for i in range(lo,hi) if i!=_idx]
         chips="".join(f'<a href="{area_base(muni_slug(x))}/"><em class="mt">{_tj.get(x["municipality_type"],"")}</em>{esc(x["municipality_name"])}</a>' for x in near)
+        _pc = norm_code(m["prefecture_code"])
+        if _pc == AGG_PREF:
+            _more_link = f'<a href="/#area">{CHEV_R} 東京都62市区町村の一覧から探す</a>'
+        else:
+            _more_link = f'<a href="/area/{pref_slug(_pc)}/">{CHEV_R} {esc(pref_name(_pc))}の市区町村一覧から探す</a>'
         others_html=(f'<section class="others"><h2>{ic("building","hi")}ほかの市区町村を見る</h2>'
                      f'<div class="ostrip">{chips}</div>'
-                     f'<p class="more"><a href="/#area">{CHEV_R} 東京都62市区町村の一覧から探す</a></p></section>')
+                     f'<p class="more">{_more_link}</p></section>')
     title = f"{mn}で受けられる給付・手当・助成 一覧｜対象・金額まとめ"
     desc = clip(f"{mn}で受けられる給付金・手当・助成・支援制度を{len(progs)}件、ライフイベント別に出典付きでまとめました。妊娠出産・子育て・引っ越し・退職失業・高齢介護の制度が一目でわかります。",118)
     try:
@@ -2859,7 +2874,7 @@ def build_muni(m, slug, score, avg):
 <h1>{esc(mn)}で受けられる給付・手当・助成 一覧</h1>
 <p class="lead">{esc(mn)}にお住まいの方が使える制度をまとめました（{esc(lead_extra)}・出典/最終確認日つき）。検索・カテゴリ絞り込み・並び替えで探せます。</p>
 </div>
-<figure class="areamap"><img src="/assets/maps/{slug}.svg" width="760" height="395" alt="東京都における{esc(mn)}の位置を示した地図" decoding="async"><figcaption>東京都のなかの{esc(mn)}の位置</figcaption></figure>
+{area_map_html(m, slug, mn)}
 </div>
 {live_stats}
 {live_benefit}
