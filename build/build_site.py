@@ -1630,10 +1630,21 @@ def programs_of(mid):
       WHERE pm.municipality_id=? AND p.status='active'
       ORDER BY p.id""", (mid,)).fetchall()
 
+# fact値が丸ごと「データ無し」を意味するプレースホルダのみのものは、実質的な情報を
+# 持たないため非表示にする（本文生成の設計思想「存在しない情報は書かない」に合わせる）。
+# ※ 部分一致（例「…(助成額はページ非記載)」）は実データを含むので除外しない＝完全一致のみ。
+FACT_PLACEHOLDERS = {
+    "空欄", "記載なし", "金額はページ非記載", "（公式に記載なし）", "(公式に記載なし)",
+    "-", "—", "–", "ー", "未記載", "不明",
+}
+def _is_fact_placeholder(v):
+    return (v or "").strip() in FACT_PLACEHOLDERS
+
 def facts_of(pid):
     rows = c.execute("SELECT fact_type,value,evidence_url,confidence_score FROM program_facts WHERE program_id=? ORDER BY id",(pid,)).fetchall()
     seen=set(); out=[]
     for r in rows:
+        if _is_fact_placeholder(r["value"]): continue
         lbl,order = fact_label(r["fact_type"])
         key=(lbl, (r["value"] or "")[:20])
         if key in seen: continue
