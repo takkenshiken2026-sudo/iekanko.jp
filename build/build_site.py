@@ -3429,7 +3429,7 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
           ro:li.getAttribute('data-ro')||'',mt:mt?mt.textContent:'',
           href:a?a.getAttribute('href'):'#'}};
  }});
- var slug2nm={{}},slug2pref={{}};munis.forEach(function(m){{var mm=m.href.match(/\/area\/([^/]+)\/([^/]+)\//);if(mm){{slug2nm[mm[2]]=m.nm;slug2pref[mm[2]]=mm[1];}}}});
+ var slug2nm={{}},slug2pref={{}};munis.forEach(function(m){{var mm=m.href.match(/\\/area\\/([^/]+)\\/([^/]+)\\//);if(mm){{slug2nm[mm[2]]=m.nm;slug2pref[mm[2]]=mm[1];}}}});
  var SUGGEST=[{{t:'児童手当',u:'/hikaku/child_teate/'}},{{t:'家賃補助',u:'/hikaku/house_yachin/'}},
   {{t:'子ども・乳幼児医療費助成',u:'/hikaku/child_iryo/'}},{{t:'産後ケア',u:'/hikaku/preg_sango_care/'}},
   {{t:'出産・入学祝金',u:'/hikaku/child_iwai/'}},{{t:'高齢者の紙おむつ助成',u:'/hikaku/eld_omutsu/'}},
