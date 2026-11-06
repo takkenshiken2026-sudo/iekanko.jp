@@ -2893,7 +2893,7 @@ def site_graph():
     org = {"@type":"Organization","@id":BASE_URL+"/#org","name":SITE_SHORT,
            "url":BASE_URL+"/",
            "logo":BASE_URL+"/assets/logo-mark.svg",
-           "description":"東京都62自治体の給付金・手当・助成制度を、公式情報の出典と最終確認日つきで横断比較する情報サービス。"}
+           "description":"関東1都6県307自治体の給付金・手当・助成制度を、公式情報の出典と最終確認日つきで横断比較する情報サービス。"}
     if "【" not in CONTACT_EMAIL:
         org["contactPoint"] = {"@type":"ContactPoint","email":CONTACT_EMAIL,
                                "contactType":"customer support","areaServed":"JP","availableLanguage":"ja"}
@@ -3349,6 +3349,7 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
              's.addEventListener("pointerleave",function(){t.hidden=true;});})();</script>')
     hero_map_html = (f'<div class="hero-map"><figure>'
         f'<div class="tokyomap-wrap">{_hero_svg}<span class="mtip" hidden></span></div>'
+        f'<figcaption class="hero-mapcap">主要エリア：東京都（62市区町村）／他県は下の「関東の他の都県から探す」へ</figcaption>'
         f'</figure></div>{_map_js}') if _hero_svg else ""
     # 関東の他の都県（データがある県のみ）。東京のみの間は空＝トップは従来どおり。
     other_pref_html = ""
@@ -3359,16 +3360,16 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
         other_pref_html = (
             '<section class="band band-white" id="kanto-prefs"><div class="bandin">'
             '<h2 class="fh">関東の他の都県から探す</h2>'
-            '<p class="lead2">関東エリアを順次拡大しています。都県を選ぶと市区町村の一覧に進みます。</p>'
+            '<p class="lead2">東京都以外の関東6県も、各都県から市区町村の制度一覧に進めます。都県を選んでください。</p>'
             f'<ul class="mgrid">{_lis}</ul>'
             '</div></section>')
     body=f"""
 <section class="hero" aria-labelledby="hero-title">
 <div class="bandin hero-grid">
 <div class="hero-main">
-<p class="hero-eyebrow">東京都62市区町村の給付・手当・助成</p>
-<h1 id="hero-title"><span class="hero-tokyo">東京都</span>で<span class="hero-em">もらえるお金</span>が、<br class="hero-br">住む街ごとにひと目でわかる</h1>
-<p class="hero-lead">給付金・手当・助成を東京都62市区町村ごとに整理しました。出典と最終確認日つきなので、引っ越し先選びや制度の申請にそのまま使えます。</p>
+<p class="hero-eyebrow">関東1都6県307市区町村の給付・手当・助成</p>
+<h1 id="hero-title"><span class="hero-tokyo">関東</span>で<span class="hero-em">もらえるお金</span>が、<br class="hero-br">住む街ごとにひと目でわかる</h1>
+<p class="hero-lead">給付金・手当・助成を関東1都6県307市区町村ごとに整理しました。出典と最終確認日つきなので、引っ越し先選びや制度の申請にそのまま使えます。</p>
 <form class="hsearch" role="search" aria-label="市区町村を検索">
 <span class="hsearch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></span>
 <input type="search" id="hsearch" name="q" placeholder="市区町村・制度名で検索（例：世田谷 / 家賃補助 / 産後ケア）" aria-label="市区町村名・制度名で検索" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hsac" aria-autocomplete="list">
@@ -3393,7 +3394,7 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
 </section>
 <section class="band band-white" id="area">
 <div class="bandin">
-<h2 class="fh">{ic("home","hi")}お住まいの市区町村から探す（東京都62市区町村）</h2>
+<h2 class="fh">{ic("home","hi")}東京都の市区町村から探す（62市区町村）</h2>
 <p class="lead2">23区・多摩地域の市・町村・島しょを区別なく、五十音順で一覧しています。どの市区町村も同じ粒度で制度をまとめています。</p>
 <div class="mfilter">
 <div class="mchips" role="group" aria-label="種別で絞り込み">
@@ -3410,7 +3411,7 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
 <section class="band band-soft">
 <div class="bandin">
 <h2 class="fh">{ic("bars","hi")}制度ごとに自治体を比べる</h2>
-<p class="lead2">児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を東京都62市区町村で横断比較できます。</p>
+<p class="lead2">児童手当・産後ケア・高齢者紙おむつ・家賃補助など、同じ制度の金額・対象を市区町村ごとに横断比較できます（東京都62市区町村を中心に、他県は各都県の比較ページから）。</p>
 <p class="fmore"><a href="/hikaku/">{CHEV_R} 制度カテゴリ別の自治体比較を見る</a></p>
 </div>
 </section>
@@ -3540,7 +3541,7 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
 </script>
 """
     page(path="index.html", title=SITE_NAME,
-         description="東京都62自治体の給付金・手当・助成制度を、出典・最終確認日つきで自治体ごとに比較できるサービス。妊娠出産・子育て・引っ越し・退職失業・高齢介護のもらえるお金がわかります。",
+         description="関東1都6県307自治体の給付金・手当・助成制度を、出典・最終確認日つきで自治体ごとに比較できるサービス。妊娠出産・子育て・引っ越し・退職失業・高齢介護のもらえるお金がわかります。",
          canonical="/", jsonld=[site_graph()], breadcrumb=None, body=body)
     sitemap_urls.append(("/","1.0"))
 
@@ -4122,6 +4123,7 @@ ul.guidegrid li:hover{border-color:var(--accent);box-shadow:0 1px 6px rgba(21,88
 .hero-map figure{margin:0}
 .hero-map .tokyomap{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 .tokyomap-wrap{position:relative;line-height:0}
+.hero-mapcap{margin:.5rem 0 0;font-size:var(--fs-sm);color:var(--muted);line-height:1.5;text-align:center}
 .mtip{position:absolute;transform:translate(-50%,-140%);background:var(--fg);color:#fff;font-size:var(--fs-sm);font-weight:var(--fw-bold);padding:.18rem .5rem;border-radius:var(--radius-sm);white-space:nowrap;pointer-events:none;z-index:3;line-height:1.35}
 @media(max-width:820px){.hero-grid{flex-direction:column;align-items:stretch;gap:1.4rem}.hero-main,.hero-map{flex:0 0 auto}.hero-map{max-width:624px;margin:0 auto;width:100%}}
 .provnote{margin:1.3rem 0 0;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--track);padding:.55rem .75rem;border-radius:var(--radius-sm);line-height:1.65}
