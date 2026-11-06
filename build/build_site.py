@@ -3336,21 +3336,6 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
       f'<span class="pic">{icon_svg(ev)}</span><span>{esc(EV_META[ev][0])}</span></a>'
       for ev in EV_META)
     amt_sec = amount_rankings_html(cat_entries)
-    try:
-        _hero_svg = open(os.path.join(ROOT, "docs", "assets", "maps", "tokyo-interactive.svg"), encoding="utf-8").read()
-    except OSError:
-        _hero_svg = ""
-    _map_js=('<script>(function(){var w=document.querySelector(".tokyomap-wrap");if(!w)return;'
-             'var t=w.querySelector(".mtip"),s=w.querySelector("svg");if(!s)return;'
-             's.addEventListener("pointermove",function(e){var a=e.target.closest("a");'
-             'if(a&&a.getAttribute("aria-label")){t.textContent=a.getAttribute("aria-label");t.hidden=false;'
-             'var r=w.getBoundingClientRect();t.style.left=(e.clientX-r.left)+"px";t.style.top=(e.clientY-r.top)+"px";}'
-             'else{t.hidden=true;}});'
-             's.addEventListener("pointerleave",function(){t.hidden=true;});})();</script>')
-    hero_map_html = (f'<div class="hero-map"><figure>'
-        f'<div class="tokyomap-wrap">{_hero_svg}<span class="mtip" hidden></span></div>'
-        f'<figcaption class="hero-mapcap">主要エリア：東京都（62市区町村）／他県は下の「関東の他の都県から探す」へ</figcaption>'
-        f'</figure></div>{_map_js}') if _hero_svg else ""
     # 関東の他の都県（データがある県のみ）。東京のみの間は空＝トップは従来どおり。
     other_pref_html = ""
     if other_prefs:
@@ -3377,7 +3362,6 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
 <ul class="hsac" id="hsac" role="listbox" aria-label="候補の市区町村・制度" hidden></ul>
 </form>
 </div>
-{hero_map_html}
 </div>
 </section>
 <section class="band band-white">
@@ -4119,28 +4103,10 @@ ul.guidegrid li:hover{border-color:var(--accent);box-shadow:0 1px 6px rgba(21,88
 .hero-lead{margin:0 0 1.2rem;font-size:var(--fs-lg);color:var(--fg);line-height:1.75;max-width:40em;position:relative}
 .hero-grid{display:flex;gap:2rem;align-items:center}
 .hero-main{flex:1 1 460px;min-width:0}
-.hero-map{flex:0 1 480px;min-width:0}
-.hero-map figure{margin:0}
-.hero-map .tokyomap{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
-.tokyomap-wrap{position:relative;line-height:0}
-.hero-mapcap{margin:.5rem 0 0;font-size:var(--fs-sm);color:var(--muted);line-height:1.5;text-align:center}
-.mtip{position:absolute;transform:translate(-50%,-140%);background:var(--fg);color:#fff;font-size:var(--fs-sm);font-weight:var(--fw-bold);padding:.18rem .5rem;border-radius:var(--radius-sm);white-space:nowrap;pointer-events:none;z-index:3;line-height:1.35}
-@media(max-width:820px){.hero-grid{flex-direction:column;align-items:stretch;gap:1.4rem}.hero-main,.hero-map{flex:0 0 auto}.hero-map{max-width:624px;margin:0 auto;width:100%}}
+@media(max-width:820px){.hero-grid{flex-direction:column;align-items:stretch;gap:1.4rem}.hero-main{flex:0 0 auto}}
 .provnote{margin:1.3rem 0 0;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--track);padding:.55rem .75rem;border-radius:var(--radius-sm);line-height:1.65}
-.hero-stats{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.15rem;position:relative}
-.hero-stat{display:inline-flex;align-items:baseline;gap:.2rem;background:var(--bg);border:1px solid var(--line);
-  border-radius:999px;padding:.28rem .7rem;font-size:var(--fs-sm);color:var(--muted);font-weight:var(--fw-semi)}
-.hero-stat strong{color:var(--fg);font-size:var(--fs-lg);font-weight:var(--fw-black);font-variant-numeric:tabular-nums}
-.hero-cta{display:flex;flex-wrap:wrap;gap:.5rem;position:relative}
-.hero-btn{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-weight:var(--fw-bold);
-  font-size:var(--fs-md);padding:.58rem 1rem;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--bg);color:var(--fg);
-  text-decoration:none;transition:background .15s,border-color .15s}
-.hero-btn:hover{text-decoration:none;background:var(--soft);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
-.hero-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.hero-btn.primary:hover{background:color-mix(in srgb,var(--accent) 88%,#000);border-color:color-mix(in srgb,var(--accent) 88%,#000);color:#fff}
-.hero-btn.ghost{background:transparent}
 @media(min-width:640px){.hero-br{display:inline}}
-@media(max-width:520px){.hero{padding:1.7rem 1rem 1.6rem}.hero-cta .hero-btn{flex:1 1 calc(50% - .3rem);min-width:0}.hero-cta .hero-btn.ghost{flex-basis:100%}}
+@media(max-width:520px){.hero{padding:1.7rem 1rem 1.6rem}}
 .hsearch{position:relative;display:flex;align-items:stretch;gap:.4rem;margin:0 0 1.15rem;max-width:34em}
 .hsearch-ic{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--muted);display:inline-flex;pointer-events:none}
 .hsearch-ic svg{width:20px;height:20px}
