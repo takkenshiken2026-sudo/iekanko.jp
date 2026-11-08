@@ -370,6 +370,7 @@ GUIDES_EV = [
 TOPIC_GUIDES = [
  {"slug":"saitama-kodomo-iryohi-hikaku",
   "ev_slug":"childcare",
+  "pref":"11",
   "body_file":"saitama-kodomo-iryohi-hikaku.html",
   "h1":"埼玉県の子ども医療費助成を自治体で比較｜対象年齢・窓口負担・申請のポイント",
   "title":"埼玉県の子ども医療費助成を自治体で比較｜18歳まで・窓口無料・申請の違い",
@@ -2991,7 +2992,25 @@ def site_graph():
 # ── 静的ページ（運営者情報・更新方針・免責・プライバシー：YMYLの信頼性ページ）──────
 def build_static_pages():
     def wrap(inner):
-        return ('<article class="doc">'+inner+
+        # h2 に id を付与して自動目次を生成し、見出し直後に信頼チップを挿入する。
+        _heads = []
+        def _addid(m):
+            raw = m.group(1)
+            txt = re.sub(r'<[^>]+>', '', raw).strip()
+            hid = 'sec-' + str(len(_heads) + 1)
+            _heads.append((hid, txt))
+            return f'<h2 id="{hid}">{raw}</h2>'
+        doc = re.sub(r'<h2>(.*?)</h2>', _addid, inner, flags=re.S)
+        meta = ('<p class="docmeta"><span class="dchip">' + ic("check", "")
+                + '公式情報の出典つき</span><span class="dchip">各制度に最終確認日を明記</span></p>')
+        doc = re.sub(r'</h1>', lambda m: '</h1>\n' + meta, doc, count=1)
+        if len(_heads) >= 3:
+            lis = ''.join(f'<li><a href="#{h}">{esc(t)}</a></li>' for h, t in _heads)
+            toc = ('<nav class="doctoc" aria-label="目次"><p class="doctoc-h">このページの目次</p>'
+                   f'<ol>{lis}</ol></nav>')
+            doc = re.sub(r'(<p class="lead">.*?</p>)', lambda m: m.group(1) + '\n' + toc,
+                         doc, count=1, flags=re.S)
+        return ('<article class="doc">' + doc +
                 f'<p class="backtop"><a href="/">{CHEV_L} トップにもどる</a></p></article>')
 
     # 運営者名・連絡先が未設定（【要記入】のまま）でも体裁が崩れないよう分岐
@@ -3158,7 +3177,25 @@ def build_guides():
     """データの一覧とは別に、制度の全体像・探し方・比較の勘どころをまとめた
     オリジナルの解説記事。ライフイベントごとの基礎知識から、当サイトの比較ページへ導線を張る。"""
     def wrap(inner):
-        return ('<article class="doc">'+inner+
+        # h2 に id を付与して自動目次を生成し、見出し直後に信頼チップを挿入する。
+        _heads = []
+        def _addid(m):
+            raw = m.group(1)
+            txt = re.sub(r'<[^>]+>', '', raw).strip()
+            hid = 'sec-' + str(len(_heads) + 1)
+            _heads.append((hid, txt))
+            return f'<h2 id="{hid}">{raw}</h2>'
+        doc = re.sub(r'<h2>(.*?)</h2>', _addid, inner, flags=re.S)
+        meta = ('<p class="docmeta"><span class="dchip">' + ic("check", "")
+                + '公式情報の出典つき</span><span class="dchip">各制度に最終確認日を明記</span></p>')
+        doc = re.sub(r'</h1>', lambda m: '</h1>\n' + meta, doc, count=1)
+        if len(_heads) >= 3:
+            lis = ''.join(f'<li><a href="#{h}">{esc(t)}</a></li>' for h, t in _heads)
+            toc = ('<nav class="doctoc" aria-label="目次"><p class="doctoc-h">このページの目次</p>'
+                   f'<ol>{lis}</ol></nav>')
+            doc = re.sub(r'(<p class="lead">.*?</p>)', lambda m: m.group(1) + '\n' + toc,
+                         doc, count=1, flags=re.S)
+        return ('<article class="doc">' + doc +
                 f'<p class="backtop"><a href="/">{CHEV_L} トップにもどる</a></p></article>')
     note = ('<p class="note">※本ページは制度の全体像をつかむための一般的な解説です。'
             '金額・対象・期限・申請方法は自治体や年度によって異なり、改定されることがあります。'
@@ -3212,7 +3249,7 @@ def build_guides():
 「自分の街ではどうか」を確認することが、受け取れる支援を取りこぼさないコツです。</p>
 <h2>3. 住んでいる自治体で「実際の金額・対象」を確認する</h2>
 <p>同じ名前の制度でも、支給額や対象条件は自治体でかなり違います。当サイトの
-<a href="/hikaku/">制度カテゴリ別の自治体比較</a>では、制度ごとに東京都62自治体の内容を横断で並べて確認でき、
+<a href="/hikaku/">制度カテゴリ別の自治体比較</a>では、制度ごとに各自治体の内容を横断で並べて確認でき、
 各制度ページには<strong>公式ページへの出典リンク</strong>と<strong>最終確認日</strong>を明記しています。
 気になる制度は、必ず出典先の公式ページで最新の条件を確認してください。</p>
 <h2>4. 申請期限と必要書類を早めにチェックする</h2>
@@ -3267,12 +3304,15 @@ def build_guides():
         faq = t.get("faq") or []
         faq_html = (f'<h2>{ic("help","hi")}よくある質問</h2>{faq_table_html(faq)}' if faq else "")
         ev_guide_slug = {g[1]: g[0] for g in GUIDES_EV}.get(ev_slug, ev_slug)
+        _pref = t.get("pref")
+        _hb = hub_base(_pref) if _pref else ""
+        _scope = pref_name(_pref) if _pref else "東京都"
         rel = (f'<h2>{esc(ev_name)}の制度を自治体で比べる</h2>'
-               f'<p>東京都62自治体の{esc(ev_name)}に関する制度は、制度カテゴリの比較・一覧から確認できます。'
+               f'<p>{esc(_scope)}の{esc(ev_name)}に関する制度は、制度カテゴリの比較・一覧から確認できます。'
                '各制度ページには公式ページへの出典リンクと最終確認日を掲載しています。</p>'
                '<div class="cmpbox"><strong>あわせて確認する</strong><ul>'
-               '<li><a href="/hikaku/">制度カテゴリごとに自治体を比較する '+CHEV_R+'</a></li>'
-               f'<li><a href="/ranking/{ev_slug}/">{esc(ev_name)}の制度がある自治体をみる '+CHEV_R+'</a></li>'
+               f'<li><a href="/hikaku{_hb}/">{esc(_scope)}の制度カテゴリごとに自治体を比較する '+CHEV_R+'</a></li>'
+               f'<li><a href="/ranking{_hb}/{ev_slug}/">{esc(_scope)}で{esc(ev_name)}の制度がある自治体をみる '+CHEV_R+'</a></li>'
                f'<li><a href="/guide/{ev_guide_slug}/">{esc(ev_name)}の基礎知識ガイド '+CHEV_R+'</a></li>'
                '</ul></div>')
         body = wrap(f"{article_html}\n{affiliate_html('guide', slug)}{rel}\n{faq_html}\n{note}\n")
@@ -4136,6 +4176,25 @@ ul.plainlist li{margin:.2rem 0}
 .doc .srcbox{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.7rem .95rem .7rem 1.35rem;margin:.5rem 0 1rem}
 .doc .srcbox li{margin:.4rem 0}
 .doc .srcbox li a{word-break:break-word}
+/* ── 記事（ガイド/特集）の構成・可読性 ── */
+.doc{max-width:46rem;margin-left:auto;margin-right:auto}
+.doc h1{line-height:1.35}
+.doc p{line-height:1.9}
+.doc .lead{font-size:var(--fs-lg);line-height:1.85}
+.docmeta{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 .2rem}
+.dchip{display:inline-flex;align-items:center;gap:.3rem;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.2rem .66rem;line-height:1.5}
+.dchip svg{width:.9em;height:.9em;color:var(--accent)}
+.doctoc{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.85rem 1.05rem;margin:1.3rem 0 1.7rem}
+.doctoc-h{font-weight:var(--fw-bold);font-size:var(--fs-sm);color:var(--muted);margin:0 0 .45rem;letter-spacing:.02em}
+.doctoc ol{margin:0;padding-left:1.4rem}
+.doctoc li{margin:.28rem 0;line-height:1.55}
+.doctoc a{color:var(--fg);text-decoration:none}
+.doctoc a:hover{color:var(--accent);text-decoration:underline}
+.doc h2{scroll-margin-top:5rem}
+.doc .cmpbox{background:color-mix(in srgb,var(--accent) 6%,#fff);border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line));border-left:4px solid var(--accent);border-radius:var(--radius);padding:.9rem 1.1rem;margin:1.2rem 0}
+.doc .cmpbox strong{display:block;margin-bottom:.4rem;color:var(--fg)}
+.doc .cmpbox ul{margin:0;padding-left:1.2rem}
+.doc .cmpbox li{margin:.35rem 0;line-height:1.6}
 ul.guidegrid li{transition:border-color .12s ease,box-shadow .12s ease}
 ul.guidegrid li:hover{border-color:var(--accent);box-shadow:0 1px 6px rgba(21,88,214,.12)}
 
