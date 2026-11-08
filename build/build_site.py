@@ -2989,28 +2989,35 @@ def site_graph():
            "name":SITE_NAME,"inLanguage":"ja","publisher":{"@id":BASE_URL+"/#org"}}
     return {"@context":"https://schema.org","@graph":[org, web]}
 
+def _doc_enhance(inner, meta=True, toc=True):
+    """記事本文(.doc)に、h2 の id 付与・自動目次・信頼チップを付ける。
+    meta: H1 直下に『公式出典つき』等の信頼チップを出す（制度解説記事向け）。
+    toc : 見出し3本以上なら目次を lead の直後に挿入する。"""
+    _heads = []
+    def _addid(m):
+        raw = m.group(1)
+        txt = re.sub(r'<[^>]+>', '', raw).strip()
+        hid = 'sec-' + str(len(_heads) + 1)
+        _heads.append((hid, txt))
+        return f'<h2 id="{hid}">{raw}</h2>'
+    doc = re.sub(r'<h2>(.*?)</h2>', _addid, inner, flags=re.S)
+    if meta:
+        chips = ('<p class="docmeta"><span class="dchip">' + ic("check", "")
+                 + '公式情報の出典つき</span><span class="dchip">各制度に最終確認日を明記</span></p>')
+        doc = re.sub(r'</h1>', lambda m: '</h1>\n' + chips, doc, count=1)
+    if toc and len(_heads) >= 3:
+        lis = ''.join(f'<li><a href="#{h}">{esc(t)}</a></li>' for h, t in _heads)
+        toc_html = ('<nav class="doctoc" aria-label="目次"><p class="doctoc-h">このページの目次</p>'
+                    f'<ol>{lis}</ol></nav>')
+        doc = re.sub(r'(<p class="lead">.*?</p>)', lambda m: m.group(1) + '\n' + toc_html,
+                     doc, count=1, flags=re.S)
+    return doc
+
 # ── 静的ページ（運営者情報・更新方針・免責・プライバシー：YMYLの信頼性ページ）──────
 def build_static_pages():
     def wrap(inner):
-        # h2 に id を付与して自動目次を生成し、見出し直後に信頼チップを挿入する。
-        _heads = []
-        def _addid(m):
-            raw = m.group(1)
-            txt = re.sub(r'<[^>]+>', '', raw).strip()
-            hid = 'sec-' + str(len(_heads) + 1)
-            _heads.append((hid, txt))
-            return f'<h2 id="{hid}">{raw}</h2>'
-        doc = re.sub(r'<h2>(.*?)</h2>', _addid, inner, flags=re.S)
-        meta = ('<p class="docmeta"><span class="dchip">' + ic("check", "")
-                + '公式情報の出典つき</span><span class="dchip">各制度に最終確認日を明記</span></p>')
-        doc = re.sub(r'</h1>', lambda m: '</h1>\n' + meta, doc, count=1)
-        if len(_heads) >= 3:
-            lis = ''.join(f'<li><a href="#{h}">{esc(t)}</a></li>' for h, t in _heads)
-            toc = ('<nav class="doctoc" aria-label="目次"><p class="doctoc-h">このページの目次</p>'
-                   f'<ol>{lis}</ol></nav>')
-            doc = re.sub(r'(<p class="lead">.*?</p>)', lambda m: m.group(1) + '\n' + toc,
-                         doc, count=1, flags=re.S)
-        return ('<article class="doc">' + doc +
+        # 静的ページは制度解説ではないため、信頼チップ・目次は付けない。
+        return ('<article class="doc">' + inner +
                 f'<p class="backtop"><a href="/">{CHEV_L} トップにもどる</a></p></article>')
 
     # 運営者名・連絡先が未設定（【要記入】のまま）でも体裁が崩れないよう分岐
@@ -3177,25 +3184,7 @@ def build_guides():
     """データの一覧とは別に、制度の全体像・探し方・比較の勘どころをまとめた
     オリジナルの解説記事。ライフイベントごとの基礎知識から、当サイトの比較ページへ導線を張る。"""
     def wrap(inner):
-        # h2 に id を付与して自動目次を生成し、見出し直後に信頼チップを挿入する。
-        _heads = []
-        def _addid(m):
-            raw = m.group(1)
-            txt = re.sub(r'<[^>]+>', '', raw).strip()
-            hid = 'sec-' + str(len(_heads) + 1)
-            _heads.append((hid, txt))
-            return f'<h2 id="{hid}">{raw}</h2>'
-        doc = re.sub(r'<h2>(.*?)</h2>', _addid, inner, flags=re.S)
-        meta = ('<p class="docmeta"><span class="dchip">' + ic("check", "")
-                + '公式情報の出典つき</span><span class="dchip">各制度に最終確認日を明記</span></p>')
-        doc = re.sub(r'</h1>', lambda m: '</h1>\n' + meta, doc, count=1)
-        if len(_heads) >= 3:
-            lis = ''.join(f'<li><a href="#{h}">{esc(t)}</a></li>' for h, t in _heads)
-            toc = ('<nav class="doctoc" aria-label="目次"><p class="doctoc-h">このページの目次</p>'
-                   f'<ol>{lis}</ol></nav>')
-            doc = re.sub(r'(<p class="lead">.*?</p>)', lambda m: m.group(1) + '\n' + toc,
-                         doc, count=1, flags=re.S)
-        return ('<article class="doc">' + doc +
+        return ('<article class="doc">' + _doc_enhance(inner, meta=True, toc=True) +
                 f'<p class="backtop"><a href="/">{CHEV_L} トップにもどる</a></p></article>')
     note = ('<p class="note">※本ページは制度の全体像をつかむための一般的な解説です。'
             '金額・対象・期限・申請方法は自治体や年度によって異なり、改定されることがあります。'
@@ -3348,7 +3337,8 @@ def build_features():
     """注目度の高い時事テーマ（災害支援など）の特設セクション。本体のDB制度とは分離した
     非DBの編集記事で、記事ごとに最終更新日と公式出典を明記する。"""
     def wrap(inner):
-        return ('<article class="doc">'+inner+
+        # 特集は各記事の最終更新日アラートを別途出すため、信頼チップは付けず目次のみ付ける。
+        return ('<article class="doc">' + _doc_enhance(inner, meta=False, toc=True) +
                 f'<p class="backtop"><a href="/tokushu/">{CHEV_L} 特集の一覧にもどる</a></p></article>')
     latest = max((f["updated"] for f in SPECIAL_FEATURES), default=GUIDE_UPDATED)
 
@@ -4177,24 +4167,37 @@ ul.plainlist li{margin:.2rem 0}
 .doc .srcbox li{margin:.4rem 0}
 .doc .srcbox li a{word-break:break-word}
 /* ── 記事（ガイド/特集）の構成・可読性 ── */
-.doc{max-width:46rem;margin-left:auto;margin-right:auto}
-.doc h1{line-height:1.35}
-.doc p{line-height:1.9}
-.doc .lead{font-size:var(--fs-lg);line-height:1.85}
-.docmeta{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 .2rem}
-.dchip{display:inline-flex;align-items:center;gap:.3rem;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.2rem .66rem;line-height:1.5}
+.doc{max-width:44rem;margin-left:auto;margin-right:auto}
+.doc h1{font-size:clamp(1.5rem,3.4vw,1.95rem);line-height:1.4;letter-spacing:.01em;margin:.2rem 0 .55rem}
+.doc p{font-size:1.0625rem;line-height:2;letter-spacing:.012em;color:#2a3140;margin:0 0 1.25rem}
+.doc .lead{font-size:1.2rem;line-height:1.95;font-weight:500;color:var(--fg);margin:.5rem 0 1.4rem}
+.docmeta{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0 .2rem}
+.dchip{display:inline-flex;align-items:center;gap:.3rem;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.22rem .7rem;line-height:1.5}
 .dchip svg{width:.9em;height:.9em;color:var(--accent)}
-.doctoc{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.85rem 1.05rem;margin:1.3rem 0 1.7rem}
-.doctoc-h{font-weight:var(--fw-bold);font-size:var(--fs-sm);color:var(--muted);margin:0 0 .45rem;letter-spacing:.02em}
-.doctoc ol{margin:0;padding-left:1.4rem}
-.doctoc li{margin:.28rem 0;line-height:1.55}
+.doctoc{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:.9rem 1.1rem;margin:1.5rem 0 2rem}
+.doctoc-h{font-weight:var(--fw-bold);font-size:var(--fs-sm);color:var(--accent);margin:0 0 .5rem;letter-spacing:.03em}
+.doctoc ol{margin:0;padding-left:1.5rem}
+.doctoc li{margin:.34rem 0;line-height:1.6}
+.doctoc li::marker{color:var(--accent);font-weight:700}
 .doctoc a{color:var(--fg);text-decoration:none}
 .doctoc a:hover{color:var(--accent);text-decoration:underline}
-.doc h2{scroll-margin-top:5rem}
-.doc .cmpbox{background:color-mix(in srgb,var(--accent) 6%,#fff);border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line));border-left:4px solid var(--accent);border-radius:var(--radius);padding:.9rem 1.1rem;margin:1.2rem 0}
-.doc .cmpbox strong{display:block;margin-bottom:.4rem;color:var(--fg)}
+.doc h2{font-size:1.3rem;line-height:1.5;font-weight:var(--fw-black);margin:2.7rem 0 1rem;padding:.08rem 0 .08rem .8rem;border-left:4px solid var(--accent);border-bottom:0;scroll-margin-top:5rem}
+.doc h3{font-size:1.08rem;font-weight:var(--fw-bold);margin:1.8rem 0 .7rem}
+.doc p a,.doc li a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.doc p strong,.doc li strong{font-weight:700;color:var(--fg);background:linear-gradient(transparent 62%,color-mix(in srgb,var(--accent) 15%,transparent) 62%)}
+.doc ul.plainlist li::marker{color:var(--accent)}
+.doc .tablewrap{border:1px solid var(--line);border-radius:var(--radius);overflow-x:auto;margin:1rem 0 1.5rem}
+.doc table.cmp{margin:0;border:0;font-size:1rem}
+.doc table.cmp th,.doc table.cmp td{border:0;border-bottom:1px solid var(--line);padding:.66rem .82rem;line-height:1.65;vertical-align:top}
+.doc table.cmp thead th{background:var(--soft);color:var(--muted);font-size:var(--fs-sm);font-weight:var(--fw-bold);white-space:nowrap}
+.doc table.cmp tbody tr:nth-child(even){background:color-mix(in srgb,var(--soft) 55%,#fff)}
+.doc table.cmp tbody tr:last-child th,.doc table.cmp tbody tr:last-child td{border-bottom:0}
+.doc table.cmp th[scope=row]{font-weight:var(--fw-bold);color:var(--fg)}
+.doc .cmpbox{background:color-mix(in srgb,var(--accent) 6%,#fff);border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line));border-left:4px solid var(--accent);border-radius:var(--radius);padding:1rem 1.15rem;margin:1.5rem 0}
+.doc .cmpbox strong{display:block;margin-bottom:.5rem;color:var(--fg);font-size:1.05rem}
 .doc .cmpbox ul{margin:0;padding-left:1.2rem}
-.doc .cmpbox li{margin:.35rem 0;line-height:1.6}
+.doc .cmpbox li{margin:.4rem 0;line-height:1.6}
+.doc .cmpbox li a{font-weight:600}
 ul.guidegrid li{transition:border-color .12s ease,box-shadow .12s ease}
 ul.guidegrid li:hover{border-color:var(--accent);box-shadow:0 1px 6px rgba(21,88,214,.12)}
 

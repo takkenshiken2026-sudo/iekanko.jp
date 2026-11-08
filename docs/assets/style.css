@@ -265,24 +265,37 @@ ul.plainlist li{margin:.2rem 0}
 .doc .srcbox li{margin:.4rem 0}
 .doc .srcbox li a{word-break:break-word}
 /* ── 記事（ガイド/特集）の構成・可読性 ── */
-.doc{max-width:46rem;margin-left:auto;margin-right:auto}
-.doc h1{line-height:1.35}
-.doc p{line-height:1.9}
-.doc .lead{font-size:var(--fs-lg);line-height:1.85}
-.docmeta{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 .2rem}
-.dchip{display:inline-flex;align-items:center;gap:.3rem;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.2rem .66rem;line-height:1.5}
+.doc{max-width:44rem;margin-left:auto;margin-right:auto}
+.doc h1{font-size:clamp(1.5rem,3.4vw,1.95rem);line-height:1.4;letter-spacing:.01em;margin:.2rem 0 .55rem}
+.doc p{font-size:1.0625rem;line-height:2;letter-spacing:.012em;color:#2a3140;margin:0 0 1.25rem}
+.doc .lead{font-size:1.2rem;line-height:1.95;font-weight:500;color:var(--fg);margin:.5rem 0 1.4rem}
+.docmeta{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0 .2rem}
+.dchip{display:inline-flex;align-items:center;gap:.3rem;font-size:var(--fs-sm);color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.22rem .7rem;line-height:1.5}
 .dchip svg{width:.9em;height:.9em;color:var(--accent)}
-.doctoc{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:.85rem 1.05rem;margin:1.3rem 0 1.7rem}
-.doctoc-h{font-weight:var(--fw-bold);font-size:var(--fs-sm);color:var(--muted);margin:0 0 .45rem;letter-spacing:.02em}
-.doctoc ol{margin:0;padding-left:1.4rem}
-.doctoc li{margin:.28rem 0;line-height:1.55}
+.doctoc{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:.9rem 1.1rem;margin:1.5rem 0 2rem}
+.doctoc-h{font-weight:var(--fw-bold);font-size:var(--fs-sm);color:var(--accent);margin:0 0 .5rem;letter-spacing:.03em}
+.doctoc ol{margin:0;padding-left:1.5rem}
+.doctoc li{margin:.34rem 0;line-height:1.6}
+.doctoc li::marker{color:var(--accent);font-weight:700}
 .doctoc a{color:var(--fg);text-decoration:none}
 .doctoc a:hover{color:var(--accent);text-decoration:underline}
-.doc h2{scroll-margin-top:5rem}
-.doc .cmpbox{background:color-mix(in srgb,var(--accent) 6%,#fff);border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line));border-left:4px solid var(--accent);border-radius:var(--radius);padding:.9rem 1.1rem;margin:1.2rem 0}
-.doc .cmpbox strong{display:block;margin-bottom:.4rem;color:var(--fg)}
+.doc h2{font-size:1.3rem;line-height:1.5;font-weight:var(--fw-black);margin:2.7rem 0 1rem;padding:.08rem 0 .08rem .8rem;border-left:4px solid var(--accent);border-bottom:0;scroll-margin-top:5rem}
+.doc h3{font-size:1.08rem;font-weight:var(--fw-bold);margin:1.8rem 0 .7rem}
+.doc p a,.doc li a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.doc p strong,.doc li strong{font-weight:700;color:var(--fg);background:linear-gradient(transparent 62%,color-mix(in srgb,var(--accent) 15%,transparent) 62%)}
+.doc ul.plainlist li::marker{color:var(--accent)}
+.doc .tablewrap{border:1px solid var(--line);border-radius:var(--radius);overflow-x:auto;margin:1rem 0 1.5rem}
+.doc table.cmp{margin:0;border:0;font-size:1rem}
+.doc table.cmp th,.doc table.cmp td{border:0;border-bottom:1px solid var(--line);padding:.66rem .82rem;line-height:1.65;vertical-align:top}
+.doc table.cmp thead th{background:var(--soft);color:var(--muted);font-size:var(--fs-sm);font-weight:var(--fw-bold);white-space:nowrap}
+.doc table.cmp tbody tr:nth-child(even){background:color-mix(in srgb,var(--soft) 55%,#fff)}
+.doc table.cmp tbody tr:last-child th,.doc table.cmp tbody tr:last-child td{border-bottom:0}
+.doc table.cmp th[scope=row]{font-weight:var(--fw-bold);color:var(--fg)}
+.doc .cmpbox{background:color-mix(in srgb,var(--accent) 6%,#fff);border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line));border-left:4px solid var(--accent);border-radius:var(--radius);padding:1rem 1.15rem;margin:1.5rem 0}
+.doc .cmpbox strong{display:block;margin-bottom:.5rem;color:var(--fg);font-size:1.05rem}
 .doc .cmpbox ul{margin:0;padding-left:1.2rem}
-.doc .cmpbox li{margin:.35rem 0;line-height:1.6}
+.doc .cmpbox li{margin:.4rem 0;line-height:1.6}
+.doc .cmpbox li a{font-weight:600}
 ul.guidegrid li{transition:border-color .12s ease,box-shadow .12s ease}
 ul.guidegrid li:hover{border-color:var(--accent);box-shadow:0 1px 6px rgba(21,88,214,.12)}
 
