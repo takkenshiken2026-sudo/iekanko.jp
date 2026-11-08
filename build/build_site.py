@@ -2326,16 +2326,17 @@ def build_ranking(ev, score, pref_code=AGG_PREF, avg=None):
          jsonld=[il],breadcrumb=bc,body=body)
     sitemap_urls.append((url,"0.8"))
 
-def build_amount_ranking(cid, entries):
-    """カテゴリ別『金額が手厚い自治体ランキング』（/ranking/kingaku/<cid>/）。
+def build_amount_ranking(cid, entries, pref_code=AGG_PREF):
+    """カテゴリ別『金額が手厚い自治体ランキング』（/ranking[/<県>]/kingaku/<cid>/）。
     /hikaku/<cid>/ の比較とは別に『ランキング』検索意図を取りに行く。
     固有の統計リード（最高額・平均・掲載数）で重複を避け、比較ページへ相互リンクする。"""
     spec = CHART_SPEC.get(cid)
     if not spec:
         return 0
     unit, mode, color = spec
+    pn = pref_name(pref_code); hb = hub_base(pref_code); pcount = PREF_MUNI_COUNT.get(pref_code, 0)
     label = CAT_BY_ID[cid][1]; ev = CAT_BY_ID[cid][2]; ev_name = EVENTS[ev][0]
-    url = f"/ranking/kingaku/{cid}/"
+    url = f"/ranking{hb}/kingaku/{cid}/"
     rows = amount_rank_rows(entries, mode, top_n=999)   # (yen, name, href, amount) 降順
     n_amt = len(rows)
     total = len({e[0]["id"] for e in entries})
@@ -2358,13 +2359,13 @@ def build_amount_ranking(cid, entries):
              f'<th class="rk">順位</th><th class="mn">自治体</th>'
              f'<th class="dt">{esc(unit)}</th></tr></thead>'
              f'<tbody>{"".join(trs)}</tbody></table></div>') if rows else "<p>金額の記載がある自治体は現在準備中です。</p>"
-    lead = f'東京都で「{esc(label)}」の金額を掲載している{n_amt}自治体を、金額の目安が高い順にランキングしました。'
+    lead = f'{pn}で「{esc(label)}」の金額を掲載している{n_amt}自治体を、金額の目安が高い順にランキングしました。'
     if rows:
         lead += (f'最も手厚いのは<strong>{esc(top_name)}</strong>（{esc(format_rank_yen(top_yen, mode))}）、'
                  f'掲載{n_amt}自治体の平均の目安は{esc(format_rank_yen(round(avg), mode))}です。')
     lead += '金額は制度改定で変わるため、申請前に各自治体の公式ページ（出典）でご確認ください。'
     faq = [
-        (f"{label}が一番手厚い東京都の自治体はどこですか？",
+        (f"{label}が一番手厚い{pn}の自治体はどこですか？",
          (f"当サイトの収録では{top_name}（{format_rank_yen(top_yen, mode)}）が最も高い目安です。" if rows else "")
          + "金額の目安が高い順に、このページの一覧でご確認いただけます。"),
         (f"{label}の金額は自治体でどのくらい違いますか？",
@@ -2375,17 +2376,17 @@ def build_amount_ranking(cid, entries):
     ]
     faq_html = faq_table_html(faq)
     rel = (f'<div class="cmpbox" style="--pc:{color}"><strong>あわせて見る</strong><ul>'
-           f'<li><a href="/hikaku/{cid}/">{esc(label)}を全市区町村で詳しく比較する {CHEV_R}</a></li>'
-           f'<li><a href="/ranking/{ev}/">{esc(ev_name)}の制度がある自治体ランキング {CHEV_R}</a></li>'
+           f'<li><a href="/hikaku{hb}/{cid}/">{esc(label)}を全市区町村で詳しく比較する {CHEV_R}</a></li>'
+           f'<li><a href="/ranking{hb}/{ev}/">{esc(ev_name)}の制度がある自治体ランキング {CHEV_R}</a></li>'
            f'</ul></div>')
-    title = f"{label}が手厚い東京都の自治体ランキング【62市区町村】"
-    desc = clip(f"東京都の{label}を金額の目安が高い順にランキング。"
+    title = f"{label}が手厚い{pn}の自治体ランキング【{pcount}市区町村】"
+    desc = clip(f"{pn}の{label}を金額の目安が高い順にランキング。"
                 f"{('最高は'+top_name+'（'+format_rank_yen(top_yen, mode)+'）。') if rows else ''}"
                 f"掲載{n_amt}自治体を出典・確認日つきで比較できます。", 118)
     body = f"""
 <div class="area-head"><div class="area-head-main">
 <span class="badge" style="--pc:{color}">{esc(ev_name)}</span>
-<h1>{esc(label)}が手厚い東京都の自治体ランキング</h1>
+<h1>{esc(label)}が手厚い{esc(pn)}の自治体ランキング</h1>
 <p class="lead">{lead}</p>
 </div></div>
 {chart_with_affiliate(chart_fig, affiliate_html("hikaku", cid))}
@@ -2394,13 +2395,16 @@ def build_amount_ranking(cid, entries):
 {rel}
 <h2>{ic("help","hi")}よくある質問</h2>
 {faq_html}
-<p><a href="/ranking/">{CHEV_L} ランキング一覧にもどる</a></p>"""
+<p><a href="/ranking{hb}/">{CHEV_L} ランキング一覧にもどる</a></p>"""
     il = {"@context": "https://schema.org", "@type": "ItemList", "name": f"{label} 金額ランキング",
           "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": r[1],
                                "url": f"{BASE_URL}{r[2]}"} for i, r in enumerate(rows[:20])]}
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
-    bc = [("トップ", "/"), ("ランキング", "/ranking/"), (label, None)]
+    if pref_code == AGG_PREF:
+        bc = [("トップ", "/"), ("ランキング", "/ranking/"), (label, None)]
+    else:
+        bc = [("トップ", "/"), (pn, f"/area/{pref_slug(pref_code)}/"), ("ランキング", f"/ranking{hb}/"), (label, None)]
     page(path=url + "index.html", title=title, description=desc, canonical=url,
          jsonld=[il, faq_ld], robots="index,follow" if idx else "noindex,follow",
          breadcrumb=bc, body=body)
@@ -2563,19 +2567,34 @@ def build_ranking_hub(amount_built, region_built=None):
          canonical="/ranking/", breadcrumb=[("トップ", "/"), ("ランキング", None)], body=body)
     sitemap_urls.append(("/ranking/", "0.8"))
 
-def build_pref_ranking_hub(pref_code):
-    """他県（東京以外）のランキングハブ。目的別ランキングを一覧し、
+def build_pref_ranking_hub(pref_code, amount_built=None):
+    """他県（東京以外）のランキングハブ。目的別＋金額ランキングを一覧し、
     県トップ・県の制度比較・東京ランキングへ相互リンクする。"""
     pn = pref_name(pref_code); hb = hub_base(pref_code)
     pcount = PREF_MUNI_COUNT.get(pref_code, 0)
     ev_lis = "".join(
         f'<li><a href="/ranking{hb}/{ev}/">{esc(EVENTS[ev][0])}の制度がある自治体ランキング</a></li>'
         for ev in EVENTS)
+    groups = {}
+    for cid in (amount_built or []):
+        groups.setdefault(CAT_BY_ID[cid][2], []).append(cid)
+    amt_secs = []
+    for ev in EVENTS:
+        cids = groups.get(ev, [])
+        if not cids:
+            continue
+        lis = "".join(f'<li><a href="/ranking{hb}/kingaku/{cid}/">{esc(CAT_BY_ID[cid][1])}が手厚い自治体</a></li>'
+                      for cid in cids)
+        amt_secs.append(f'<section class="cmpsec"><h2 class="cmpsec-h" style="--pc:{EV_META[ev][2]}">'
+                        f'<span class="pic">{icon_svg(ev)}</span>{esc(EVENTS[ev][0])}（金額が手厚い自治体）</h2>'
+                        f'<ul class="cmplist">{lis}</ul></section>')
+    amt_block = (f'<h2 class="fh">金額で手厚い自治体をみる</h2>{"".join(amt_secs)}' if amt_secs else "")
     url = f"/ranking{hb}/"
     body = f"""
 <h1>{esc(pn)}の給付・手当・助成 ランキング</h1>
-<p class="lead">「もらえるお金」が手厚い{esc(pn)}の自治体を、目的別にランキング。制度の掲載数・金額の目安で{pcount}市区町村を比較できます。同じ制度でも金額・対象は自治体ごとに異なります。</p>
+<p class="lead">「もらえるお金」が手厚い{esc(pn)}の自治体を、目的別・金額別にランキング。制度の掲載数・金額の目安で{pcount}市区町村を比較できます。同じ制度でも金額・対象は自治体ごとに異なります。</p>
 <section class="cmpsec"><h2 class="cmpsec-h">目的別（制度がある自治体）</h2><ul class="cmplist">{ev_lis}</ul></section>
+{amt_block}
 <p class="fmore"><a href="/area/{pref_slug(pref_code)}/">{CHEV_R} {esc(pn)}の市区町村一覧</a>　<a href="/hikaku{hb}/">{CHEV_R} {esc(pn)}の制度カテゴリ比較</a></p>
 <p><a href="/ranking/">{CHEV_L} 東京都のランキングにもどる</a></p>"""
     bc = [("トップ", "/"), (pn, f"/area/{pref_slug(pref_code)}/"), ("ランキング", None)]
@@ -2608,12 +2627,22 @@ def purpose_cards_html(score):
     return f'<div class="pgrid">{"".join(cards)}</div>'
 
 def build_find_hub(score):
+    _other = [c for c in sorted(PREF_MUNI_COUNT) if c != AGG_PREF]
+    pref_sec = ""
+    if _other:
+        _plis = "".join(
+            f'<li><a href="/ranking/{pref_slug(c)}/">{esc(pref_name(c))}のランキング（{PREF_MUNI_COUNT.get(c,0)}市区町村）</a></li>'
+            for c in _other)
+        pref_sec = (f'<h2 class="fh">関東の他県から探す</h2>'
+                    f'<p class="lead2">東京都以外の関東6県も、県ごとに「制度が手厚い自治体」ランキングを確認できます。</p>'
+                    f'<ul class="cmplist">{_plis}</ul>')
     body=f"""
 <h1>目的・年代から制度がある地域を探す</h1>
 <p class="lead">ライフステージや目的を選ぶと、その分野の制度を掲載している東京都の自治体を件数順に確認できます。
 「引っ越し先選び」や「いま住む街で使える制度の確認」にお使いください。金額が分かる制度の合計もあわせて表示します。</p>
 {purpose_cards_html(score)}
 <p class="note">※掲載件数・金額合計は当サイトの収録状況に基づく目安です。詳細・最新情報は各自治体の公式ページでご確認ください。</p>
+{pref_sec}
 <p><a href="/hikaku/">制度カテゴリごとの自治体比較を見る {CHEV_R}</a></p>"""
     page(path="/find/index.html",title="目的・年代から探す｜東京都の制度がある自治体",
          description="子育て・シニア・引っ越し・出産・退職など、目的や年代から、関連制度を掲載している東京都の自治体を見つけられます。",
@@ -3746,16 +3775,20 @@ def main():
         if pcode == AGG_PREF:
             cat_counts = cc
     build_find_hub(score)
-    # 目的別ランキングを都県別に生成（東京は現行URL、他県は /ranking/<県>/…）。
+    # 目的別＋金額ランキングを都県別に生成（東京は現行URL、他県は /ranking/<県>/…）。
     _pref_codes = [AGG_PREF] + [c for c in sorted(PREF_MUNI_COUNT) if c != AGG_PREF]
+    tokyo_amount_built = []
     for _pc in _pref_codes:
         for ev in EVENTS:
             build_ranking(ev, score, _pc)
-        if _pc != AGG_PREF:
-            build_pref_ranking_hub(_pc)
-    amount_built = [cid for cid in CHART_SPEC if cid in cat_entries and build_amount_ranking(cid, cat_entries[cid])]
+        _pcat = cat_entries_by_pref.get(_pc, {})
+        _amt_built = [cid for cid in CHART_SPEC if cid in _pcat and build_amount_ranking(cid, _pcat[cid], _pc)]
+        if _pc == AGG_PREF:
+            tokyo_amount_built = _amt_built
+        else:
+            build_pref_ranking_hub(_pc, _amt_built)
     region_built = [(rk, ev) for rk in ("ku", "tama") for ev in EVENTS if build_region_ranking(rk, ev, score)]
-    build_ranking_hub(amount_built, region_built)
+    build_ranking_hub(tokyo_amount_built, region_built)
     build_static_pages()
     build_guides()
     build_features()
