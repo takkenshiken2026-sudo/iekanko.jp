@@ -3673,6 +3673,19 @@ def build_guides():
         sitemap_urls.append((f"/guide/{slug}/","0.6"))
 
     # ── テーマ別の深掘りガイド（本文は content/articles/<slug>.html を手書き）──
+    # 深掘りガイドを「テーマ」でまとめ、同一テーマの他都県版を相互リンクする（内部リンク強化）。
+    # テーマは slug から機械導出（県接頭辞と -hikaku を除き、表記ゆれを正準化）するため、
+    # 新しい県版を追加しても自動でクラスタに加わる。
+    def _guide_theme(s):
+        for _p in ("saitama-","chiba-","kanagawa-","tokyo-","ibaraki-","tochigi-","gunma-"):
+            if s.startswith(_p): s=s[len(_p):]; break
+        if s.endswith("-hikaku"): s=s[:-7]
+        return (s.replace("kamiomutsu-josei","kamiomutsu")
+                 .replace("kyushokuhi","kyushoku")
+                 .replace("kodomo-iryohi","kodomo-iryo"))
+    _theme_map={}
+    for _g in TOPIC_GUIDES:
+        _theme_map.setdefault(_guide_theme(_g["slug"]),[]).append(_g)
     for t in TOPIC_GUIDES:
         slug = t["slug"]
         ev_slug = t.get("ev_slug")
@@ -3685,6 +3698,14 @@ def build_guides():
         _pref = t.get("pref")
         _hb = hub_base(_pref) if _pref else ""
         _scope = pref_name(_pref) if _pref else "東京都"
+        _sibs = [g for g in _theme_map.get(_guide_theme(slug), []) if g["slug"] != slug]
+        sib_html = ""
+        if _sibs:
+            _sib_items = "".join(
+                f'<li><a href="/guide/{g["slug"]}/">{esc(pref_name(g["pref"]) if g.get("pref") else "東京都")}版をみる '+CHEV_R+'</a></li>'
+                for g in _sibs)
+            sib_html = ('<div class="cmpbox"><strong>同じテーマの他の都県版で比べる</strong><ul>'
+                        f'{_sib_items}</ul></div>')
         rel = (f'<h2>{esc(ev_name)}の制度を自治体で比べる</h2>'
                f'<p>{esc(_scope)}の{esc(ev_name)}に関する制度は、制度カテゴリの比較・一覧から確認できます。'
                '各制度ページには公式ページへの出典リンクと最終確認日を掲載しています。</p>'
@@ -3693,7 +3714,7 @@ def build_guides():
                f'<li><a href="/ranking{_hb}/{ev_slug}/">{esc(_scope)}で{esc(ev_name)}の制度がある自治体をみる '+CHEV_R+'</a></li>'
                f'<li><a href="/guide/{ev_guide_slug}/">{esc(ev_name)}の基礎知識ガイド '+CHEV_R+'</a></li>'
                '</ul></div>')
-        body = wrap(f"{article_html}\n{affiliate_html('guide', slug)}{rel}\n{faq_html}\n{note}\n")
+        body = wrap(f"{article_html}\n{affiliate_html('guide', slug)}{rel}\n{sib_html}\n{faq_html}\n{note}\n")
         jsonld = [guide_article_ld(t["h1"], f"/guide/{slug}/")]
         if faq:
             jsonld.append({"@context":"https://schema.org","@type":"FAQPage",
