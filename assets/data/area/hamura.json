@@ -1,0 +1,77 @@
+{
+  "city_code": "13227",
+  "name": "羽村市",
+  "slug": "hamura",
+  "db_slug": "hamura-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 138500,
+    "median_commercial_yen_sqm": 239500,
+    "n_points": 16,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 37
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 29,
+      "avg_price": 14731034,
+      "avg_area": 64.0,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 22,
+        "avg_price": 16859090,
+        "avg_area": 66.8,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 15,
+        "avg_price": 16266666,
+        "avg_area": 65.7,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 18,
+        "avg_price": 14816666,
+        "avg_area": 68.1,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 29,
+        "avg_price": 14731034,
+        "avg_area": 64.0,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 33,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 581,
+    "recent_avg_price": 88395524
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

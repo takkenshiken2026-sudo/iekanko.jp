@@ -1,0 +1,174 @@
+{
+  "city_code": "13220",
+  "name": "東大和市",
+  "slug": "higashiyamato",
+  "db_slug": "higashiyamato-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 176000,
+    "median_commercial_yen_sqm": 173000,
+    "n_points": 36,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 47
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 58,
+      "avg_price": 28375862,
+      "avg_area": 70.9,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 54,
+        "avg_price": 21561111,
+        "avg_area": 67.7,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 32,
+        "avg_price": 27678125,
+        "avg_area": 72.2,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 48,
+        "avg_price": 29989583,
+        "avg_area": 74.1,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 58,
+        "avg_price": 28375862,
+        "avg_area": 70.9,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 63,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 1027,
+    "recent_avg_price": 36184712
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 3,
+    "top": [
+      {
+        "name": "玉川上水",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 23740,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 12310
+          },
+          {
+            "year": 2019,
+            "passengers": 24696
+          },
+          {
+            "year": 2020,
+            "passengers": 17085
+          },
+          {
+            "year": 2021,
+            "passengers": 19933
+          },
+          {
+            "year": 2022,
+            "passengers": 23158
+          },
+          {
+            "year": 2023,
+            "passengers": 23740
+          }
+        ]
+      },
+      {
+        "name": "東大和市",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 23054,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 25965
+          },
+          {
+            "year": 2019,
+            "passengers": 25177
+          },
+          {
+            "year": 2020,
+            "passengers": 18620
+          },
+          {
+            "year": 2021,
+            "passengers": 20043
+          },
+          {
+            "year": 2022,
+            "passengers": 21983
+          },
+          {
+            "year": 2023,
+            "passengers": 23054
+          }
+        ]
+      },
+      {
+        "name": "桜街道",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 6624,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 3593
+          },
+          {
+            "year": 2019,
+            "passengers": 7063
+          },
+          {
+            "year": 2020,
+            "passengers": 5668
+          },
+          {
+            "year": 2021,
+            "passengers": 5851
+          },
+          {
+            "year": 2022,
+            "passengers": 6381
+          },
+          {
+            "year": 2023,
+            "passengers": 6624
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 53418,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

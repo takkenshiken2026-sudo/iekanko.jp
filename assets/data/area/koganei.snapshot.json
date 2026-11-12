@@ -1,0 +1,356 @@
+{
+  "slug": "koganei",
+  "name": "小金井市",
+  "benefits": [
+    {
+      "cid": "house_taishin",
+      "label": "耐震改修助成",
+      "unit": "改修上限",
+      "group": "moving",
+      "group_label": "住まい",
+      "yen": 300000,
+      "href": "/area/tokyo/koganei/seido/1969/",
+      "rank": 28,
+      "n_ranked": 30,
+      "hikaku": "/hikaku/house_taishin/"
+    },
+    {
+      "cid": "eld_hochoki",
+      "label": "補聴器助成",
+      "unit": "購入上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 30000,
+      "href": "/area/tokyo/koganei/seido/767/",
+      "rank": 37,
+      "n_ranked": 38,
+      "hikaku": "/hikaku/eld_hochoki/"
+    },
+    {
+      "cid": "dis_teate",
+      "label": "障害者福祉手当",
+      "unit": "月額",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 15500,
+      "href": "/area/tokyo/koganei/seido/1011/",
+      "rank": 25,
+      "n_ranked": 56,
+      "hikaku": "/hikaku/dis_teate/"
+    },
+    {
+      "cid": "eld_omutsu",
+      "label": "高齢者紙おむつ",
+      "unit": "月額上限",
+      "group": "elderly_care",
+      "group_label": "シニア",
+      "yen": 8000,
+      "href": "/area/tokyo/koganei/seido/999/",
+      "rank": 7,
+      "n_ranked": 23,
+      "hikaku": "/hikaku/eld_omutsu/"
+    }
+  ],
+  "housing": {
+    "land": {
+      "year": 2025,
+      "median_residential_yen_sqm": 360000,
+      "median_commercial_yen_sqm": 599000,
+      "n_points": 33,
+      "unit": "円/㎡",
+      "vs_tokyo_pct": 97
+    },
+    "condo": {
+      "label": "中古マンション等",
+      "latest": {
+        "year": 2025,
+        "n": 133,
+        "avg_price": 47136090,
+        "avg_area": 60.2,
+        "price_classification": "02"
+      },
+      "yearly": [
+        {
+          "year": 2022,
+          "n": 77,
+          "avg_price": 44145454,
+          "avg_area": 63.2,
+          "price_classification": "02"
+        },
+        {
+          "year": 2023,
+          "n": 108,
+          "avg_price": 41240740,
+          "avg_area": 62.9,
+          "price_classification": "02"
+        },
+        {
+          "year": 2024,
+          "n": 110,
+          "avg_price": 47131818,
+          "avg_area": 65.7,
+          "price_classification": "02"
+        },
+        {
+          "year": 2025,
+          "n": 133,
+          "avg_price": 47136090,
+          "avg_area": 60.2,
+          "price_classification": "02"
+        }
+      ],
+      "vs_tokyo_pct": 105,
+      "note": "成約価格（無い年は取引価格）。件数加重平均。"
+    },
+    "tokyo_median_residential_yen_sqm": 371000,
+    "tokyo_median_condo_price": 44987723
+  },
+  "neighbors": [
+    {
+      "slug": "fuchu",
+      "name": "府中市",
+      "condo_avg_price": 41578571,
+      "land_median_yen_sqm": 310000,
+      "station_sum_top5": 243746
+    },
+    {
+      "slug": "kodaira",
+      "name": "小平市",
+      "condo_avg_price": 36183425,
+      "land_median_yen_sqm": 250000,
+      "station_sum_top5": 158557
+    },
+    {
+      "slug": "kokubunji",
+      "name": "国分寺市",
+      "condo_avg_price": 57534437,
+      "land_median_yen_sqm": 316000,
+      "station_sum_top5": 263886
+    }
+  ],
+  "compare": {
+    "condo": [
+      {
+        "key": "self",
+        "slug": "koganei",
+        "name": "小金井市",
+        "value": 47136090,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "fuchu",
+        "name": "府中市",
+        "value": 41578571,
+        "href": "/area/tokyo/fuchu/"
+      },
+      {
+        "key": "near",
+        "slug": "kodaira",
+        "name": "小平市",
+        "value": 36183425,
+        "href": "/area/tokyo/kodaira/"
+      },
+      {
+        "key": "near",
+        "slug": "kokubunji",
+        "name": "国分寺市",
+        "value": 57534437,
+        "href": "/area/tokyo/kokubunji/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 44987723,
+        "href": null
+      }
+    ],
+    "land": [
+      {
+        "key": "self",
+        "slug": "koganei",
+        "name": "小金井市",
+        "value": 360000,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "fuchu",
+        "name": "府中市",
+        "value": 310000,
+        "href": "/area/tokyo/fuchu/"
+      },
+      {
+        "key": "near",
+        "slug": "kodaira",
+        "name": "小平市",
+        "value": 250000,
+        "href": "/area/tokyo/kodaira/"
+      },
+      {
+        "key": "near",
+        "slug": "kokubunji",
+        "name": "国分寺市",
+        "value": 316000,
+        "href": "/area/tokyo/kokubunji/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 371000,
+        "href": null
+      }
+    ],
+    "stations": [
+      {
+        "key": "self",
+        "slug": "koganei",
+        "name": "小金井市",
+        "value": 172572,
+        "href": null
+      },
+      {
+        "key": "near",
+        "slug": "fuchu",
+        "name": "府中市",
+        "value": 243746,
+        "href": "/area/tokyo/fuchu/"
+      },
+      {
+        "key": "near",
+        "slug": "kodaira",
+        "name": "小平市",
+        "value": 158557,
+        "href": "/area/tokyo/kodaira/"
+      },
+      {
+        "key": "near",
+        "slug": "kokubunji",
+        "name": "国分寺市",
+        "value": 263886,
+        "href": "/area/tokyo/kokubunji/"
+      },
+      {
+        "key": "tokyo",
+        "slug": null,
+        "name": "都内中央値",
+        "value": 252990,
+        "href": null
+      }
+    ]
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 3,
+    "top": [
+      {
+        "name": "武蔵小金井",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 110668,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 125156
+          },
+          {
+            "year": 2019,
+            "passengers": 125156
+          },
+          {
+            "year": 2020,
+            "passengers": 94742
+          },
+          {
+            "year": 2021,
+            "passengers": 99468
+          },
+          {
+            "year": 2022,
+            "passengers": 106684
+          },
+          {
+            "year": 2023,
+            "passengers": 110668
+          }
+        ]
+      },
+      {
+        "name": "東小金井",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 58060,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 63106
+          },
+          {
+            "year": 2019,
+            "passengers": 63106
+          },
+          {
+            "year": 2020,
+            "passengers": 43536
+          },
+          {
+            "year": 2021,
+            "passengers": 48372
+          },
+          {
+            "year": 2022,
+            "passengers": 55210
+          },
+          {
+            "year": 2023,
+            "passengers": 58060
+          }
+        ]
+      },
+      {
+        "name": "新小金井",
+        "company": "西武鉄道",
+        "line": "多摩川線",
+        "passengers": 3844,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 3966
+          },
+          {
+            "year": 2019,
+            "passengers": 4041
+          },
+          {
+            "year": 2020,
+            "passengers": 3095
+          },
+          {
+            "year": 2021,
+            "passengers": 3315
+          },
+          {
+            "year": 2022,
+            "passengers": 3624
+          },
+          {
+            "year": 2023,
+            "passengers": 3844
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 172572,
+    "unit": "人/日（乗降）",
+    "tokyo_median_sum_top5": 252990,
+    "vs_tokyo_pct": 68
+  },
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}
