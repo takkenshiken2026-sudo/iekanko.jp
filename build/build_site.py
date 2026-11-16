@@ -2556,6 +2556,64 @@ def guide_data_section(theme, cfg, pref_code, unit="助成上限の目安"):
     return (f'<h2>データで見る{pn}の{esc(label)}（収録{muni_cnt}自治体）</h2>'
             f'<p class="keypoint">{cover}{stat}</p>{table}{more}')
 
+# ── 国制度の特集を差別化する「自治体で差が出る部分」の実データ ──────────────
+# 国の制度は全国一律だが、上乗せの自治体独自支援は地域差が大きい。当サイトは
+# 関東1都6県の全自治体を収録しており、その収録自治体数（classify 由来＝/hikaku と同基準）
+# を提示して、競合（全国情報サイト）にはない固有データで特集を補強する。
+_KANTO_CAT_CACHE = None
+def _kanto_cat_counts():
+    global _KANTO_CAT_CACHE
+    if _KANTO_CAT_CACHE is None:
+        d = {}
+        for m in munis:
+            seen = set()
+            for p in programs_of(m["id"]):
+                for cid in classify(p["title"], p["summary"], p["benefit_description"], p["target_description"]):
+                    seen.add(cid)
+            for cid in seen:
+                d[cid] = d.get(cid, 0) + 1
+        _KANTO_CAT_CACHE = d
+    return _KANTO_CAT_CACHE
+
+# 特集slug -> (導入文, [(cid, 表示ラベル), ...])。国制度が全国一律である点を押さえつつ、
+# 自治体差のある関連制度の収録数を実データで示す。
+FEATURE_DATA = {
+    "2026-jido-teate": ("児童手当は2024年10月の拡充で全国一律（所得制限なし・高校生年代まで）になりました。一方、子育て世帯への上乗せ支援は自治体差が大きい分野です。",
+        [("child_iryo", "子ども医療費助成"), ("child_hoiku_gen", "保育料・給食費などの軽減"), ("child_iwai", "出産・入学祝金／子育てクーポン")]),
+    "2026-kodomo-teate-chigai": ("児童手当・児童扶養手当・特別児童扶養手当はいずれも国の制度で、基本は全国共通です。これに対し、医療費や祝金などの上乗せ支援は自治体ごとに異なります。",
+        [("child_iryo", "子ども医療費助成"), ("child_hitorioya", "ひとり親家庭医療費助成"), ("child_iwai", "出産・入学祝金")]),
+    "2026-jido-fuyo-teate": ("児童扶養手当は国の制度で、金額や所得制限は全国共通です。ひとり親家庭への上乗せ支援は、自治体ごとに内容が異なります。",
+        [("child_hitorioya", "ひとり親家庭医療費助成"), ("child_iryo", "子ども医療費助成")]),
+    "2026-shussan-hoken-tekiyo": ("出産費用の保険適用や出産育児一時金は国の仕組みで全国共通です。一方、出産費用の上乗せ助成や産後ケアは自治体で差があります。",
+        [("preg_shussanhi", "出産費用の自治体助成"), ("preg_sango_care", "産後ケア事業"), ("child_iwai", "出産祝金・子育てクーポン")]),
+    "2026-shougaiji-teate": ("特別児童扶養手当・障害児福祉手当は国の制度で全国共通です。障害のある子の医療・生活を支える上乗せ支援は、自治体で内容が異なります。",
+        [("dis_iryo", "重度心身障害者医療費助成"), ("child_iryo", "子ども医療費助成")]),
+    "2026-daredemo-tsuen": ("こども誰でも通園制度は国の新制度ですが、実施状況や上乗せの保育支援は自治体で異なります。",
+        [("child_ninkagai", "認可外保育料・一時預かり補助"), ("child_hoiku_gen", "保育料・多子軽減")]),
+    "2027-kaigo-hoken-kaisei": ("介護保険の制度改正は全国一律ですが、保険料の減免や介護用品など、高齢者向けの上乗せ支援は自治体で差があります。",
+        [("eld_kaigo_gen", "介護保険料の減免"), ("eld_omutsu", "高齢者紙おむつ助成"), ("eld_haishoku", "配食・見守り")]),
+}
+
+def feature_data_section(slug):
+    cfg = FEATURE_DATA.get(slug)
+    if not cfg:
+        return ""
+    intro, cats = cfg
+    counts = _kanto_cat_counts()
+    parts = [(lbl, cid, counts.get(cid, 0)) for cid, lbl in cats]
+    parts = [x for x in parts if x[2] > 0]
+    if not parts:
+        return ""
+    total = len(munis)
+    frag = "、".join(f'{esc(lbl)}は<strong>{n}自治体</strong>' for lbl, _cid, n in parts)
+    lis = "".join(f'<li><a href="/hikaku/{cid}/">{esc(lbl)}を自治体で比較する {CHEV_R}</a></li>'
+                  for lbl, cid, _n in parts)
+    return (f'<h2>自治体で差が出る「上乗せ支援」を比べる</h2>'
+            f'<p>{intro}当サイトは関東1都6県の全{total}自治体のくらしの制度を収録しています。'
+            f'収録データでは、{frag}で確認でき、金額・対象・窓口は地域で異なります。'
+            f'お住まいの自治体の内容は、下記の比較ページで確認できます。</p>'
+            f'<div class="cmpbox"><strong>自治体ごとに比較する</strong><ul>{lis}</ul></div>')
+
 def program_cat_of(p):
     """制度の代表カテゴリ（ライフイベント）と表示色を返す。
     returns: (ev_attr, catname, color)  ev_attr は data-ev 用の空白区切りslug。"""
@@ -4201,6 +4259,7 @@ def build_features():
 {photo_figure(_hfn, _halt, css="progphoto arthero", eager=True, base=WEB_BASE, credit="Pexels")}
 {alert}
 {article_html}
+{feature_data_section(slug)}
 {sources_html}
 {faq_html}
 """)
