@@ -1298,6 +1298,7 @@ def icon_svg(ev):
 
 # ── カテゴリ／ライフイベント別の雰囲気写真（docs/assets/photos/cropped/）──
 PHOTO_BASE = "/assets/photos/cropped"
+WEB_BASE = "/assets/photos/web"   # ネット収集（Pexels）のヒーロー画像。小さくクレジット表示
 EV_PHOTO = {
  "pregnancy_birth": ("preg-birth.jpg", "産院で新生児を抱く母親"),
  "childcare": ("child-hoiku.jpg", "保育園の室内で遊ぶ子どもたち"),
@@ -1368,12 +1369,15 @@ def photo_for_cats(cats, ev=None):
                 return EV_PHOTO[e]
     return EV_PHOTO.get(ev) or ("procedure-cityhall.jpg", "市区町村窓口の受付")
 
-def photo_figure(fn, alt, css="progphoto", eager=False):
+def photo_figure(fn, alt, css="progphoto", eager=False, base=None, credit=None):
     load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
+    b = base or PHOTO_BASE
+    cap = (f'<figcaption class="photocredit">写真: {esc(credit)}</figcaption>'
+           if credit else '')
     return (f'<figure class="{css}">'
-            f'<img src="{PHOTO_BASE}/{fn}" alt="{esc(alt)}" '
+            f'<img src="{b}/{fn}" alt="{esc(alt)}" '
             f'width="960" height="640" {load} decoding="async">'
-            f'</figure>')
+            f'{cap}</figure>')
 
 # ── 深掘りガイド・特集のヒーロー画像（cropped/ の雰囲気写真を流用。(ファイル名, alt)）──
 GUIDE_HERO = {
@@ -3894,7 +3898,7 @@ def build_guides():
 <h1>自分が使える給付金・手当の探し方</h1>
 <p class="lead">公的な支援は「知っていれば受け取れたのに、知らずに申請しなかった」ということが起こりがちです。
 自分が対象になりうる制度を見つけるための、基本的な手順を整理しました。</p>
-{photo_figure("procedure-cityhall.jpg","市区町村窓口の受付",css="progphoto arthero",eager=True)}
+{photo_figure("procedure-cityhall.jpg","市区町村窓口の受付",css="progphoto arthero",eager=True,base=WEB_BASE,credit="Pexels")}
 <h2>1. いまの「ライフイベント」から考える</h2>
 <p>給付・手当の多くは、妊娠・出産、子育て、引っ越し、退職・失業、高齢・介護といった
 「暮らしの節目」に結びついています。まずは自分や家族がいまどの段階にいるかを起点にすると、
@@ -3921,14 +3925,14 @@ def build_guides():
          og_type="article", article_meta=(GUIDE_UPDATED, GUIDE_UPDATED),
          jsonld=[guide_article_ld("自分が使える給付金・手当の探し方", "/guide/how-to-find/")],
          breadcrumb=[("トップ","/"),("くらしの制度ガイド","/guide/"),("使える制度の探し方",None)], body=htf,
-         og_image=f"{PHOTO_BASE}/procedure-cityhall.jpg")
+         og_image=f"{WEB_BASE}/procedure-cityhall.jpg")
     sitemap_urls.append(("/guide/how-to-find/","0.6"))
 
     # ── ライフイベント別ガイド ──
     for slug, ev_slug, h1title, short, lead, sections in GUIDES_EV:
         ev_name = EVENTS[ev_slug][0]
         _ehfn, _ehalt = photo_for_cats(None, ev_slug)
-        _eog = f"{PHOTO_BASE}/{_ehfn}"
+        _eog = f"{WEB_BASE}/{_ehfn}"
         secs_html = "".join(f"<h2>{esc(h)}</h2>\n{p}\n" for h,p in sections)
         rel = (f'<h2>{esc(ev_name)}の制度を自治体で比べる</h2>'
                f'<p>当サイトでは、{esc(ev_name)}に関する制度を掲載している東京都の自治体を件数順・金額順で確認できます。'
@@ -3942,7 +3946,7 @@ def build_guides():
 <span class="badge">{esc(ev_name)}</span>
 <h1>{esc(h1title)}</h1>
 <p class="lead">{esc(lead)}</p>
-{photo_figure(_ehfn, _ehalt, css="progphoto arthero", eager=True)}
+{photo_figure(_ehfn, _ehalt, css="progphoto arthero", eager=True, base=WEB_BASE, credit="Pexels")}
 {secs_html}{affiliate_html("guide", slug)}{rel}
 {note}
 """)
@@ -3976,9 +3980,9 @@ def build_guides():
         with open(os.path.join(ROOT, "content", "articles", t["body_file"]), encoding="utf-8") as f:
             article_html = f.read()
         _hfn, _halt = GUIDE_HERO.get(slug) or photo_for_cats(None, ev_slug)
-        _og = f"{PHOTO_BASE}/{_hfn}"
+        _og = f"{WEB_BASE}/{_hfn}"
         # リード文（最初の</p>）直後にヒーロー画像を挿入
-        article_html = article_html.replace("</p>", "</p>\n" + photo_figure(_hfn, _halt, css="progphoto arthero", eager=True), 1)
+        article_html = article_html.replace("</p>", "</p>\n" + photo_figure(_hfn, _halt, css="progphoto arthero", eager=True, base=WEB_BASE, credit="Pexels"), 1)
         faq = t.get("faq") or []
         faq_html = (f'<h2>{ic("help","hi")}よくある質問</h2>{faq_table_html(faq)}' if faq else "")
         ev_guide_slug = {g[1]: g[0] for g in GUIDES_EV}.get(ev_slug, ev_slug)
@@ -4065,7 +4069,7 @@ def build_features():
         with open(os.path.join(ROOT, "content", "tokushu", f["body_file"]), encoding="utf-8") as fp:
             article_html = fp.read()
         _hfn, _halt = FEATURE_HERO.get(slug) or ("procedure-cityhall.jpg", "市区町村窓口の受付")
-        _fog = f"{PHOTO_BASE}/{_hfn}"
+        _fog = f"{WEB_BASE}/{_hfn}"
         alert = (f'<p class="notice"><strong>最終更新日：{esc(updated)}</strong>／この特集は制度の公表・改正時点の情報をまとめたものです。'
                  '金額・対象・受付期限は年度や自治体によって変わります。'
                  'ご自身が対象になるかは、末尾の出典（公式ページ）や自治体の窓口で必ず最新情報をご確認ください'
@@ -4080,7 +4084,7 @@ def build_features():
 <span class="badge">{esc(f["badge"])}</span>
 <h1>{esc(f["h1"])}</h1>
 <p class="lead">{esc(f["lead"])}</p>
-{photo_figure(_hfn, _halt, css="progphoto arthero", eager=True)}
+{photo_figure(_hfn, _halt, css="progphoto arthero", eager=True, base=WEB_BASE, credit="Pexels")}
 {alert}
 {article_html}
 {sources_html}
@@ -4770,6 +4774,7 @@ p.mnone{color:var(--muted);font-size:var(--fs-sm);padding:.6rem 0}
 .progphoto,.evphoto{margin:.4rem 0 1rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--soft)}
 .arthero{margin:.3rem 0 1.5rem}
 .doc .arthero img{aspect-ratio:16/9}
+.photocredit{font-size:var(--fs-xs);color:var(--muted);text-align:right;margin-top:.2rem;line-height:1.3}
 .area-head .progphoto,.area-head .evphoto{flex:0 1 420px;margin:0;align-self:flex-start;max-width:100%}
 .progphoto img,.evphoto img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
 .evphoto{max-width:720px}
