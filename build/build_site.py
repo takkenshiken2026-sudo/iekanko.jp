@@ -1379,6 +1379,11 @@ def photo_figure(fn, alt, css="progphoto", eager=False, base=None, credit=None):
             f'width="960" height="640" {load} decoding="async">'
             f'{cap}</figure>')
 
+def gcard_thumb(fn, alt=""):
+    """一覧カード上部のサムネ画像（ネット収集のヒーロー画像 WEB_BASE から）。"""
+    return (f'<span class="gthumb"><img src="{WEB_BASE}/{fn}" alt="{esc(alt)}" '
+            f'width="320" height="180" loading="lazy" decoding="async"></span>')
+
 # ── 深掘りガイド・特集のヒーロー画像（cropped/ の雰囲気写真を流用。(ファイル名, alt)）──
 GUIDE_HERO = {
  "kanagawa-hochoki-hikaku": ("eld-hochoki.jpg","補聴器と充電ケース"),
@@ -4029,11 +4034,14 @@ def build_guides():
 
     # ── ガイド一覧（ハブ）──
     ev_cards = "".join(
-        f'<li><a href="/guide/{g[0]}/"><strong>{esc(g[2])}</strong>'
-        f'<span class="pdesc">{esc(g[3])}</span></a></li>' for g in GUIDES_EV)
+        f'<li><a href="/guide/{g[0]}/">{gcard_thumb(photo_for_cats(None, g[1])[0])}'
+        f'<span class="gtxt"><strong>{esc(g[2])}</strong>'
+        f'<span class="pdesc">{esc(g[3])}</span></span></a></li>' for g in GUIDES_EV)
     topic_cards = "".join(
-        f'<li><a href="/guide/{t["slug"]}/"><strong>{esc(t["h1"])}</strong>'
-        f'<span class="pdesc">{esc(t["description"][:48])}…</span></a></li>' for t in TOPIC_GUIDES)
+        f'<li><a href="/guide/{t["slug"]}/">'
+        f'{gcard_thumb((GUIDE_HERO.get(t["slug"]) or photo_for_cats(None, t.get("ev_slug")))[0])}'
+        f'<span class="gtxt"><strong>{esc(t["h1"])}</strong>'
+        f'<span class="pdesc">{esc(t["description"][:48])}…</span></span></a></li>' for t in TOPIC_GUIDES)
     hub = wrap(f"""
 <h1>くらしの制度ガイド</h1>
 <p class="lead">「どんなときに、どんな給付金・手当・助成が受けられるのか」を、ライフイベントごとに整理した解説記事です。
@@ -4046,8 +4054,9 @@ def build_guides():
 まずは自分のライフイベントに近いガイドから読み進めてみてください。</p>
 <h2>ライフイベント別ガイド</h2>
 <ul class="cmplist guidegrid">{ev_cards}
-<li><a href="/guide/how-to-find/"><strong>使える制度の探し方</strong>
-<span class="pdesc">自分が対象になる給付・手当を見つける手順</span></a></li></ul>
+<li><a href="/guide/how-to-find/">{gcard_thumb("procedure-cityhall.jpg","市区町村窓口の受付")}
+<span class="gtxt"><strong>使える制度の探し方</strong>
+<span class="pdesc">自分が対象になる給付・手当を見つける手順</span></span></a></li></ul>
 <h2>テーマ別ガイド（制度を深掘り）</h2>
 <ul class="cmplist guidegrid">{topic_cards}</ul>
 {note}
@@ -4217,8 +4226,10 @@ def build_features():
 
     # ── 特集ハブ ──
     cards = "".join(
-        f'<li><a href="/tokushu/{f["slug"]}/"><strong>{esc(f["h1"])}</strong>'
-        f'<span class="pdesc">{esc(f["badge"])}／最終更新 {esc(f["updated"])}</span></a></li>'
+        f'<li><a href="/tokushu/{f["slug"]}/">'
+        f'{gcard_thumb((FEATURE_HERO.get(f["slug"]) or ("procedure-cityhall.jpg",""))[0])}'
+        f'<span class="gtxt"><strong>{esc(f["h1"])}</strong>'
+        f'<span class="pdesc">{esc(f["badge"])}／最終更新 {esc(f["updated"])}</span></span></a></li>'
         for f in SPECIAL_FEATURES)
     hub = wrap(f"""
 <h1>特集｜注目の給付金・補助金・支援制度</h1>
@@ -5006,9 +5017,12 @@ ul.cmplist .cnt2{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
 .cmpsec-h .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius-sm);padding:5px}
 .cmpsec-h .pic .ev-ic{width:15px;height:15px}
 .homeguide{margin:1.9rem 0}
-ul.guidegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem;margin:.6rem 0}
-ul.guidegrid li{display:block;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}
+ul.guidegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.7rem;margin:.6rem 0}
+ul.guidegrid li{display:block;border:1px solid var(--line);border-radius:10px;padding:0;overflow:hidden}
 ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
+ul.guidegrid .gthumb{display:block;aspect-ratio:16/9;overflow:hidden;background:var(--soft);border-bottom:1px solid var(--line)}
+ul.guidegrid .gthumb img{display:block;width:100%;height:100%;object-fit:cover}
+ul.guidegrid .gtxt{display:block;padding:.6rem .8rem .75rem}
 ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem;font-weight:400}
 .fnav{margin:0 0 .7rem;line-height:2}
 .fnav a{color:var(--muted)}

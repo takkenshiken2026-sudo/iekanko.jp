@@ -227,9 +227,12 @@ ul.cmplist .cnt2{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
 .cmpsec-h .pic{flex:0 0 auto;display:inline-flex;color:#fff;background:var(--pc);border-radius:var(--radius-sm);padding:5px}
 .cmpsec-h .pic .ev-ic{width:15px;height:15px}
 .homeguide{margin:1.9rem 0}
-ul.guidegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem;margin:.6rem 0}
-ul.guidegrid li{display:block;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}
+ul.guidegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.7rem;margin:.6rem 0}
+ul.guidegrid li{display:block;border:1px solid var(--line);border-radius:10px;padding:0;overflow:hidden}
 ul.guidegrid li a{display:block;font-weight:600;text-decoration:none}
+ul.guidegrid .gthumb{display:block;aspect-ratio:16/9;overflow:hidden;background:var(--soft);border-bottom:1px solid var(--line)}
+ul.guidegrid .gthumb img{display:block;width:100%;height:100%;object-fit:cover}
+ul.guidegrid .gtxt{display:block;padding:.6rem .8rem .75rem}
 ul.guidegrid .pdesc{display:block;font-size:var(--fs-sm);color:var(--muted);margin-top:.2rem;font-weight:400}
 .fnav{margin:0 0 .7rem;line-height:2}
 .fnav a{color:var(--muted)}
