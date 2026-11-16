@@ -2449,6 +2449,104 @@ def amount_or_benefit_of(facts):
             return val
     return None
 
+# ── 深掘りガイド強化: 県×テーマの実データ集計 ───────────────────────────────
+# 量産テンプレ脱却＆「比較」の実質化のため、各ガイドのテーマを標準タクソノミの
+# カテゴリに対応づけ、その県の収録自治体を DB から実集計して本文へ差し込む。
+# カテゴリ範囲と記事の対象範囲が厳密に一致するテーマのみ自動データを出す。
+# 補聴器(eld_hochoki)・高齢者ワクチン(eld_vaccine)は、カテゴリが障害者/難聴児・
+# 肺炎球菌まで含み記事(加齢性難聴/帯状疱疹)より広く、本文と矛盾しうるため除外。
+GUIDE_THEME_CAT = {
+    "kamiomutsu": "eld_omutsu",
+    "sango-care": "preg_sango_care",
+    "kodomo-iryo": "child_iryo",
+    "ninkagai": "child_ninkagai",
+    "shussan-iwaikin": "child_iwai",
+    "hoikuryo": "child_hoiku_gen",
+}
+# 金額の順位表を出せる＝カテゴリ別の正確な抽出モードがあり、かつ単純な円額比較に
+# 馴染むカテゴリのみ。保育料軽減・医療費無料・産後ケア日額・認可外は coverage のみ。
+CAT_AMOUNT_MODE = {
+    "eld_omutsu": "monthly_cap",
+    "child_iwai": "child_gift",
+}
+# 抽出誤り（年額を月額扱い・別区分・所得基準の誤抽出）を弾く妥当レンジ（円）。
+# この範囲外の額は順位集計から除外する（誤った最大/最小を表に出さないため）。
+CAT_AMOUNT_BAND = {
+    "eld_omutsu": (1500, 15000),       # 高齢者紙おむつの月額上限として妥当な範囲
+    "child_iwai": (5000, 2000000),     # 出産・入学祝金として妥当な範囲
+}
+
+def _pref_theme_programs(cid, pref_code):
+    """指定カテゴリ・県の全自治体の該当制度を集める。
+    返り値: [(muni_row, program_row, amount_text|None, yen|None), ...]"""
+    pc = norm_code(pref_code)
+    out = []
+    for m in munis:
+        if norm_code(m["prefecture_code"]) != pc:
+            continue
+        for p in programs_of(m["id"]):
+            cats = classify(p["title"], p["summary"], p["benefit_description"], p["target_description"])
+            if cid not in cats:
+                continue
+            amt = amount_or_benefit_of(facts_of(p["id"]))
+            yen = extract_any_yen(amt) if amt else None
+            out.append((m, p, amt, yen))
+    return out
+
+def guide_data_section(slug, cid, pref_code, label, unit="助成上限の目安"):
+    """県×テーマの実データ節（HTML）を返す。データが無ければ空文字。
+    金額の順位表は CAT_AMOUNT_MODE にある（カテゴリ別の正確な抽出が可能な）
+    カテゴリのみ。それ以外は収録自治体数＋比較導線に留める（誤った順位を出さない）。"""
+    data = _pref_theme_programs(cid, pref_code)
+    if not data:
+        return ""
+    pn = pref_name(pref_code)
+    muni_cnt = len({m["id"] for m, _, _, _ in data})
+    if muni_cnt == 0:
+        return ""
+    pref_total = PREF_MUNI_COUNT.get(norm_code(pref_code), 0)
+    hb = hub_base(pref_code)
+    share = f'（{pn}全{pref_total}自治体中）' if pref_total else ''
+    mode = CAT_AMOUNT_MODE.get(cid)
+    band = CAT_AMOUNT_BAND.get(cid)
+    stat, table = "", ""
+    if mode:
+        best = {}
+        for m, p, amt, _yen in data:
+            yen = extract_rank_yen(amt, mode) if amt else None
+            if not yen:
+                continue
+            if band and not (band[0] <= yen <= band[1]):
+                continue
+            cur = best.get(m["id"])
+            if cur is None or yen > cur[0]:
+                best[m["id"]] = (yen, m["municipality_name"], f'{area_base(muni_slug(m))}/seido/{p["id"]}/')
+        ranked = sorted(best.values(), key=lambda x: (-x[0], x[1]))
+        if len(ranked) >= 5:
+            yens = [r[0] for r in ranked]
+            mid = yens[len(yens) // 2]
+            hi, lo = ranked[0], ranked[-1]
+            stat = (f'金額を確認できる{len(ranked)}自治体でみると、上限が最も高いのは'
+                    f'<strong>{esc(hi[1])}（{esc(format_rank_yen(hi[0], mode))}）</strong>、'
+                    f'最も低いのは{esc(lo[1])}（{esc(format_rank_yen(lo[0], mode))}）、'
+                    f'中央値は約{esc(format_rank_yen(mid, mode))}です。')
+            trs = "".join(
+                f'<tr><th scope="row">{i}</th>'
+                f'<td><a href="{esc(href)}">{esc(name)}</a></td>'
+                f'<td>{esc(format_rank_yen(yen, mode))}</td></tr>'
+                for i, (yen, name, href) in enumerate(ranked[:10], 1))
+            table = (f'<div class="tablewrap"><table class="cmp">'
+                     f'<thead><tr><th>順位</th><th>自治体</th><th>{esc(unit)}</th></tr></thead>'
+                     f'<tbody>{trs}</tbody></table></div>'
+                     f'<p class="arnote">※当サイト収録データから各自治体の代表的な上限額を抽出。'
+                     f'実際の支給は要件・区分で変わるため、正確な額は各自治体の公式ページでご確認ください。</p>')
+    cover = (f'{pn}で「{esc(label)}」にあたる制度を当サイトが収録しているのは'
+             f'<strong>{muni_cnt}自治体</strong>{share}。'
+             f'同じ制度名でも、対象・上限額・受け取り方は自治体ごとに異なります。')
+    more = (f'<p><a href="/hikaku{hb}/{cid}/">{pn}の{muni_cnt}自治体の{esc(label)}を金額・対象で比較する {CHEV_R}</a></p>')
+    return (f'<h2>データで見る{pn}の{esc(label)}（収録{muni_cnt}自治体）</h2>'
+            f'<p class="keypoint">{cover}{stat}</p>{table}{more}')
+
 def program_cat_of(p):
     """制度の代表カテゴリ（ライフイベント）と表示色を返す。
     returns: (ev_attr, catname, color)  ev_attr は data-ev 用の空白区切りslug。"""
@@ -3983,6 +4081,13 @@ def build_guides():
         _og = f"{WEB_BASE}/{_hfn}"
         # リード文（最初の</p>）直後にヒーロー画像を挿入
         article_html = article_html.replace("</p>", "</p>\n" + photo_figure(_hfn, _halt, css="progphoto arthero", eager=True, base=WEB_BASE, credit="Pexels"), 1)
+        # 県×テーマの実データ節（当サイト収録データの集計）をヒーロー直後に挿入
+        _theme = _guide_theme(slug)
+        _cid = GUIDE_THEME_CAT.get(_theme)
+        if _cid and _cid in CAT_BY_ID:
+            _dsec = guide_data_section(slug, _cid, t.get("pref") or AGG_PREF, CAT_BY_ID[_cid][1])
+            if _dsec:
+                article_html = article_html.replace("</figure>", "</figure>\n" + _dsec, 1)
         faq = t.get("faq") or []
         faq_html = (f'<h2>{ic("help","hi")}よくある質問</h2>{faq_table_html(faq)}' if faq else "")
         ev_guide_slug = {g[1]: g[0] for g in GUIDES_EV}.get(ev_slug, ev_slug)
@@ -4775,6 +4880,7 @@ p.mnone{color:var(--muted);font-size:var(--fs-sm);padding:.6rem 0}
 .arthero{margin:.3rem 0 1.5rem}
 .doc .arthero img{aspect-ratio:16/9}
 .photocredit{font-size:var(--fs-xs);color:var(--muted);text-align:right;margin-top:.2rem;line-height:1.3}
+.arnote{font-size:var(--fs-xs);color:var(--muted);margin:.35rem 0 1.2rem;line-height:1.5}
 .area-head .progphoto,.area-head .evphoto{flex:0 1 420px;margin:0;align-self:flex-start;max-width:100%}
 .progphoto img,.evphoto img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
 .evphoto{max-width:720px}
