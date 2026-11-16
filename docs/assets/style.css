@@ -166,6 +166,8 @@ p.mnone{color:var(--muted);font-size:var(--fs-sm);padding:.6rem 0}
 .area-head .areamap img{max-width:100%}
 .areamap figcaption{text-align:center;font-size:var(--fs-xs);color:var(--muted);margin-top:.25rem}
 .progphoto,.evphoto{margin:.4rem 0 1rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--soft)}
+.arthero{margin:.3rem 0 1.5rem}
+.doc .arthero img{aspect-ratio:16/9}
 .area-head .progphoto,.area-head .evphoto{flex:0 1 420px;margin:0;align-self:flex-start;max-width:100%}
 .progphoto img,.evphoto img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
 .evphoto{max-width:720px}
