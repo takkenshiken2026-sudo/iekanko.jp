@@ -374,7 +374,7 @@ TOPIC_GUIDES = [
   "body_file":"kanagawa-hochoki-hikaku.html",
   "h1":"神奈川県の高齢者補聴器助成を自治体で比較｜対象・上限額・申請のポイント",
   "title":"神奈川県の高齢者補聴器助成を自治体で比較｜上限額・対象・申請の違い",
-  "description":"神奈川県の加齢性難聴向け補聴器購入助成を、実施の有無・上限額・対象要件で比較。実施は約9市町にとどまり、上限は相模原市2万円〜南足柄市最大10.5万円と5倍以上の差。三浦市・横須賀市の実例と公式出典つきで、65歳以上・非課税などの要件と申請の流れを解説します。",
+  "description":"神奈川県の加齢性難聴向け補聴器購入助成を、実施の有無・上限額・対象要件で比較。実施は10市町ほどにとどまり、上限は相模原市2万円〜南足柄市最大10.5万円と5倍以上の差。三浦市・横須賀市の実例と公式出典つきで、65歳以上・非課税などの要件と申請の流れを解説します。",
   "faq":[
     ("神奈川県では補聴器の購入費はいくら助成されますか？",
      "高齢者（加齢性難聴）向けは自治体差が大きく、上限2万円（相模原市）から最大10万5,000円（南足柄市の専門店調整区分）まで開きがあります。『購入費の2分の1・上限6万円』という形が多く見られます。手帳が交付される重度の難聴は国の制度（補装具費支給）の対象です。"),
@@ -383,7 +383,7 @@ TOPIC_GUIDES = [
     ("先に補聴器を買っても助成されますか？",
      "購入前に補聴器相談医の診断を受け、事前に申請するのが基本です。先に購入すると対象外になる自治体が多いため、買う前に必ずお住まいの市町村の窓口で手続きの順番を確認してください。予算の上限で受付を終了する場合もあります。"),
     ("自分の市では実施していますか？",
-     "高齢者向けの補聴器助成を実施しているのは神奈川県内で約9市町にとどまり、全域には広がっていません。実施の有無は市町村で異なるため、比較ページやお住まいの自治体の公式ページで確認してください。"),
+     "高齢者向けの補聴器助成を実施しているのは神奈川県内で10市町ほどにとどまり、全域には広がっていません。実施の有無は市町村で異なるため、比較ページやお住まいの自治体の公式ページで確認してください。"),
   ]},
  {"slug":"chiba-sango-care-hikaku",
   "ev_slug":"pregnancy_birth",
@@ -2452,33 +2452,35 @@ def amount_or_benefit_of(facts):
 # ── 深掘りガイド強化: 県×テーマの実データ集計 ───────────────────────────────
 # 量産テンプレ脱却＆「比較」の実質化のため、各ガイドのテーマを標準タクソノミの
 # カテゴリに対応づけ、その県の収録自治体を DB から実集計して本文へ差し込む。
-# カテゴリ範囲と記事の対象範囲が厳密に一致するテーマのみ自動データを出す。
-# 補聴器(eld_hochoki)・高齢者ワクチン(eld_vaccine)は、カテゴリが障害者/難聴児・
-# 肺炎球菌まで含み記事(加齢性難聴/帯状疱疹)より広く、本文と矛盾しうるため除外。
-GUIDE_THEME_CAT = {
-    "kamiomutsu": "eld_omutsu",
-    "sango-care": "preg_sango_care",
-    "kodomo-iryo": "child_iryo",
-    "ninkagai": "child_ninkagai",
-    "shussan-iwaikin": "child_iwai",
-    "hoikuryo": "child_hoiku_gen",
-}
-# 金額の順位表を出せる＝カテゴリ別の正確な抽出モードがあり、かつ単純な円額比較に
-# 馴染むカテゴリのみ。保育料軽減・医療費無料・産後ケア日額・認可外は coverage のみ。
-CAT_AMOUNT_MODE = {
-    "eld_omutsu": "monthly_cap",
-    "child_iwai": "child_gift",
-}
-# 抽出誤り（年額を月額扱い・別区分・所得基準の誤抽出）を弾く妥当レンジ（円）。
-# この範囲外の額は順位集計から除外する（誤った最大/最小を表に出さないため）。
-CAT_AMOUNT_BAND = {
-    "eld_omutsu": (1500, 15000),       # 高齢者紙おむつの月額上限として妥当な範囲
-    "child_iwai": (5000, 2000000),     # 出産・入学祝金として妥当な範囲
+# 深掘りガイドのテーマ -> 実データ節の設定。
+#   cid     : 標準タクソノミのカテゴリID
+#   label   : 見出し等の表記（省略時は CAT_BY_ID のラベル）
+#   mode    : 金額順位表の抽出モード（省略時は件数＋導線のみ＝順位表を出さない）
+#   band    : 金額の妥当レンジ(円)。範囲外は誤抽出として順位から除外
+#   include : タイトル＋対象等に、このいずれかの語を含む制度に限定（記事の対象へ絞込）
+#   exclude : このいずれかの語を含む制度を除外
+# 補聴器・帯状疱疹ワクチンは、カテゴリが障害/難聴児・肺炎球菌等まで含み記事より広い
+# ため、include/exclude で「高齢者の加齢性難聴」「帯状疱疹」へ厳密に絞ってから集計する。
+GUIDE_THEME_DATA = {
+    "kamiomutsu":        {"cid": "eld_omutsu",       "mode": "monthly_cap", "band": (1500, 15000)},
+    "shussan-iwaikin":   {"cid": "child_iwai",       "mode": "child_gift",  "band": (5000, 2000000)},
+    "sango-care":        {"cid": "preg_sango_care"},
+    "kodomo-iryo":       {"cid": "child_iryo"},
+    "ninkagai":          {"cid": "child_ninkagai"},
+    "hoikuryo":          {"cid": "child_hoiku_gen"},
+    # 補聴器は「上限6万円」等の万円表記が多く purchase_cap で拾い切れないため件数のみ。
+    # （金額の比較表は各記事に手書きの正確な上限額表が既にある）
+    "hochoki":           {"cid": "eld_hochoki", "label": "高齢者の補聴器購入助成",
+                          "include": ("高齢", "加齢性", "65歳"),
+                          "exclude": ("難聴児", "18歳未満", "児補聴器", "児用", "中等度難聴児")},
+    "taijohoshin-vaccine": {"cid": "eld_vaccine", "label": "高齢者の帯状疱疹ワクチン助成",
+                            "include": ("帯状疱疹",)},
 }
 
-def _pref_theme_programs(cid, pref_code):
+def _pref_theme_programs(cid, pref_code, include=None, exclude=None):
     """指定カテゴリ・県の全自治体の該当制度を集める。
-    返り値: [(muni_row, program_row, amount_text|None, yen|None), ...]"""
+    include/exclude: タイトル＋対象＋概要＋給付内容に対する絞り込み語。
+    返り値: [(muni_row, program_row, amount_text|None), ...]"""
     pc = norm_code(pref_code)
     out = []
     for m in munis:
@@ -2488,31 +2490,38 @@ def _pref_theme_programs(cid, pref_code):
             cats = classify(p["title"], p["summary"], p["benefit_description"], p["target_description"])
             if cid not in cats:
                 continue
+            if include or exclude:
+                blob = " ".join(str(p[k] or "") for k in ("title", "summary", "benefit_description", "target_description"))
+                if include and not any(k in blob for k in include):
+                    continue
+                if exclude and any(k in blob for k in exclude):
+                    continue
             amt = amount_or_benefit_of(facts_of(p["id"]))
-            yen = extract_any_yen(amt) if amt else None
-            out.append((m, p, amt, yen))
+            out.append((m, p, amt))
     return out
 
-def guide_data_section(slug, cid, pref_code, label, unit="助成上限の目安"):
+def guide_data_section(theme, cfg, pref_code, unit="助成上限の目安"):
     """県×テーマの実データ節（HTML）を返す。データが無ければ空文字。
-    金額の順位表は CAT_AMOUNT_MODE にある（カテゴリ別の正確な抽出が可能な）
-    カテゴリのみ。それ以外は収録自治体数＋比較導線に留める（誤った順位を出さない）。"""
-    data = _pref_theme_programs(cid, pref_code)
+    金額の順位表は cfg['mode'] がある（正確な抽出が可能な）テーマのみ。
+    それ以外は収録自治体数＋比較導線に留める（誤った順位を出さない）。"""
+    cid = cfg["cid"]
+    label = cfg.get("label") or CAT_BY_ID[cid][1]
+    data = _pref_theme_programs(cid, pref_code, cfg.get("include"), cfg.get("exclude"))
     if not data:
         return ""
     pn = pref_name(pref_code)
-    muni_cnt = len({m["id"] for m, _, _, _ in data})
+    muni_cnt = len({m["id"] for m, _, _ in data})
     if muni_cnt == 0:
         return ""
     pref_total = PREF_MUNI_COUNT.get(norm_code(pref_code), 0)
     hb = hub_base(pref_code)
     share = f'（{pn}全{pref_total}自治体中）' if pref_total else ''
-    mode = CAT_AMOUNT_MODE.get(cid)
-    band = CAT_AMOUNT_BAND.get(cid)
+    mode = cfg.get("mode")
+    band = cfg.get("band")
     stat, table = "", ""
     if mode:
         best = {}
-        for m, p, amt, _yen in data:
+        for m, p, amt in data:
             yen = extract_rank_yen(amt, mode) if amt else None
             if not yen:
                 continue
@@ -4083,9 +4092,9 @@ def build_guides():
         article_html = article_html.replace("</p>", "</p>\n" + photo_figure(_hfn, _halt, css="progphoto arthero", eager=True, base=WEB_BASE, credit="Pexels"), 1)
         # 県×テーマの実データ節（当サイト収録データの集計）をヒーロー直後に挿入
         _theme = _guide_theme(slug)
-        _cid = GUIDE_THEME_CAT.get(_theme)
-        if _cid and _cid in CAT_BY_ID:
-            _dsec = guide_data_section(slug, _cid, t.get("pref") or AGG_PREF, CAT_BY_ID[_cid][1])
+        _cfg = GUIDE_THEME_DATA.get(_theme)
+        if _cfg and _cfg["cid"] in CAT_BY_ID:
+            _dsec = guide_data_section(_theme, _cfg, t.get("pref") or AGG_PREF)
             if _dsec:
                 article_html = article_html.replace("</figure>", "</figure>\n" + _dsec, 1)
         faq = t.get("faq") or []
