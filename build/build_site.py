@@ -56,6 +56,8 @@ else:
 GA_MEASUREMENT_ID = os.environ.get("SEIDO_GA_ID", "G-9TB0TXT8X0").strip()
 # Google AdSense パブリッシャーID（全ページの <head> に adsbygoogle.js を出力／ads.txt も生成）。空文字で無効化可。
 ADSENSE_CLIENT = os.environ.get("SEIDO_ADSENSE", "ca-pub-7927260139193410").strip()
+# Microsoft Clarity プロジェクトID（全ページの <head> に clarity タグを出力）。空文字で無効化可。
+CLARITY_ID = os.environ.get("SEIDO_CLARITY", "zgauiqe8px").strip()
 # プライバシーポリシーのアクセス解析表記。未設定なら記載を省略。
 ANALYTICS_NOTE = os.environ.get(
     "SEIDO_ANALYTICS",
@@ -2353,6 +2355,19 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
             f'<meta name="google-adsense-account" content="{ads_id}">\n'
             f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ads_id}" crossorigin="anonymous"></script>\n'
         )
+    clarity_tag = ""
+    if CLARITY_ID:
+        cid = esc(CLARITY_ID)
+        clarity_tag = (
+            f'<!-- Microsoft Clarity -->\n'
+            f'<script type="text/javascript">\n'
+            f'(function(c,l,a,r,i,t,y){{\n'
+            f'c[a]=c[a]||function(){{(c[a].q=c[a].q||[]).push(arguments)}};\n'
+            f't=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\n'
+            f'y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\n'
+            f'}})(window, document, "clarity", "script", "{cid}");\n'
+            f'</script>\n'
+        )
     doc = f"""<!doctype html>
 <html lang="ja">
 <head>
@@ -2382,7 +2397,7 @@ def page(*, path, title, description, canonical, jsonld=None, robots="index,foll
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/style.css">
-{adsense_tag}{ga_tag}{ld}</head>
+{adsense_tag}{ga_tag}{clarity_tag}{ld}</head>
 <body id="top">
 <header class="site"><div class="hbar">
 <a class="brand" href="/"><img class="brand-mark" src="/assets/logo-mark.svg" width="28" height="28" alt="" decoding="async">{esc(SITE_SHORT)}</a>
