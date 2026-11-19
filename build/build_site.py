@@ -1448,7 +1448,7 @@ CAT_PHOTO = {
  "child_shugaku": ("child-study-desk.jpg", "学習デスク"),
  "child_hoiku_gen": ("child-hoiku.jpg", "保育園の室内で遊ぶ子どもたち"),
  "child_ninkagai": ("child-baby-gear.jpg", "ベビー用品売り場"),
- "child_iwai": ("child-iwai-coupon.jpg", "ベビーカーの乳児ときょうだい"),
+ "child_iwai": ("iwai-shussan-noshi-baby.jpg", "「御祝」ののし袋と新生児"),
  "child_shogakukin": ("child-study-desk.jpg", "学習デスク"),
  "child_omutsu_baby": ("child-omutsu-milk.jpg", "乳児用おむつとミルク・哺乳瓶"),
  "child_ikusei": ("child-parent.jpg", "親子がノートPCを見る様子"),
