@@ -443,7 +443,9 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 .arlist li:first-child{border-top:0}
 .arrk{color:var(--muted);font-variant-numeric:tabular-nums;font-weight:var(--fw-bold)}
 .arlist li:nth-child(-n+3) .arrk{color:var(--pc,var(--accent))}
-.armn{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg)}
+.armn{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg);display:flex;flex-direction:column;gap:.1rem;min-width:0}
+.arpg{font-weight:400;font-size:var(--fs-xs);color:var(--muted);line-height:1.35}
+.arlist li{align-items:start}
 .aramt{color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:var(--fs-sm)}
 .armore a{color:var(--pc,var(--accent))}
 

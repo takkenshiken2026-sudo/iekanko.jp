@@ -2008,8 +2008,9 @@ def _rank_rows_from_hikaku(cid, mode, top_n=5):
             uniq[name] = (yen, name, href, amt)
     return sorted(uniq.values(), key=lambda x: (-x[0], x[1]))[:top_n]
 
-def amount_rank_rows(entries, mode, top_n=5):
-    """entries: [(m, slug, program, amount_text, idx), ...] -> [(yen, muni_name, href, amount_text)]"""
+def amount_rank_rows(entries, mode, top_n=5, keep_program=False):
+    """entries: [(m, slug, program, amount_text, idx), ...] -> [(yen, muni_name, href, amount_text)]
+    keep_program=True のときは末尾に制度名を付けた5要素 (…, program_title) を返す。"""
     best = {}
     for m, slug, p, amount, idx in entries:
         if not amount:
@@ -2021,16 +2022,19 @@ def amount_rank_rows(entries, mode, top_n=5):
         href = f"{area_base(slug)}/seido/{p['id']}/"
         cur = best.get(mid)
         if cur is None or yen > cur[0]:
-            best[mid] = (yen, m["municipality_name"], href, amount)
-    rows = sorted(best.values(), key=lambda x: (-x[0], x[1]))
-    return rows[:top_n]
+            best[mid] = (yen, m["municipality_name"], href, amount, p["title"])
+    rows = sorted(best.values(), key=lambda x: (-x[0], x[1]))[:top_n]
+    return rows if keep_program else [r[:4] for r in rows]
 
 def _amount_box_html(cid, title, unit, mode, color, rows):
     lis = []
-    for i, (yen, name, href, _amt) in enumerate(rows, 1):
+    for i, row in enumerate(rows, 1):
+        yen, name, href = row[0], row[1], row[2]
+        prog = row[4] if len(row) >= 5 else ""
+        prog_html = f'<small class="arpg">{esc(clip(prog, 32))}</small>' if prog else ""
         lis.append(
             f'<li><span class="arrk">{i}</span>'
-            f'<a class="armn" href="{esc(href)}">{esc(name)}</a>'
+            f'<a class="armn" href="{esc(href)}">{esc(name)}{prog_html}</a>'
             f'<span class="aramt">{esc(format_rank_yen(yen, mode))}</span></li>'
         )
     return (
@@ -2127,7 +2131,7 @@ def amount_rankings_html(cat_entries=None, top_n=5):
         boxes = []
         for cid, title, unit, mode in specs:
             if cat_entries and cid in cat_entries:
-                rows = amount_rank_rows(cat_entries[cid], mode, top_n)
+                rows = amount_rank_rows(cat_entries[cid], mode, top_n, keep_program=True)
             else:
                 rows = _rank_rows_from_hikaku(cid, mode, top_n)
             min_n = 2 if ev in ("moving", "pregnancy_birth", "retirement_unemployment") else 3
@@ -5282,7 +5286,9 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 .arlist li:first-child{border-top:0}
 .arrk{color:var(--muted);font-variant-numeric:tabular-nums;font-weight:var(--fw-bold)}
 .arlist li:nth-child(-n+3) .arrk{color:var(--pc,var(--accent))}
-.armn{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg)}
+.armn{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg);display:flex;flex-direction:column;gap:.1rem;min-width:0}
+.arpg{font-weight:400;font-size:var(--fs-xs);color:var(--muted);line-height:1.35}
+.arlist li{align-items:start}
 .aramt{color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:var(--fs-sm)}
 .armore a{color:var(--pc,var(--accent))}
 
