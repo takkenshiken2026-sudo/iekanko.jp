@@ -5064,9 +5064,8 @@ ul.plainlist li{margin:.2rem 0}
 .doc .srcbox li a{word-break:break-word}
 /* ── 記事（ガイド/特集）の構成・可読性 ── */
 .doc{max-width:44rem;margin-left:auto;margin-right:auto}
-/* ガイド一覧（ハブ）はPCで横に広く。本文テキストは読みやすい幅に保ち、カード一覧だけ全幅に広げる */
+/* ガイド一覧（ハブ）はPCで横に広く。リード文・目次・カード一覧すべてを全幅に広げる */
 .doc.dochub{max-width:none}
-.doc.dochub>p,.doc.dochub>.lead,.doc.dochub>.docmeta,.doc.dochub>.doctoc,.doc.dochub>.note{max-width:44rem}
 .doc h1{font-size:clamp(1.5rem,3.4vw,1.95rem);line-height:1.4;letter-spacing:.01em;margin:.2rem 0 .55rem}
 .doc p{font-size:1.0625rem;line-height:2;letter-spacing:.012em;color:#2a3140;margin:0 0 1.25rem}
 .doc .lead{font-size:1.2rem;line-height:1.95;font-weight:500;color:var(--fg);margin:.5rem 0 1.4rem}
