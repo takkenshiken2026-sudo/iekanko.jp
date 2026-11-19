@@ -4024,8 +4024,9 @@ def guide_article_ld(headline, canonical):
 def build_guides():
     """データの一覧とは別に、制度の全体像・探し方・比較の勘どころをまとめた
     オリジナルの解説記事。ライフイベントごとの基礎知識から、当サイトの比較ページへ導線を張る。"""
-    def wrap(inner):
-        return ('<article class="doc">' + _doc_enhance(inner, meta=True, toc=True) +
+    def wrap(inner, cls=""):
+        klass = "doc" + (f" {cls}" if cls else "")
+        return (f'<article class="{klass}">' + _doc_enhance(inner, meta=True, toc=True) +
                 f'<p class="backtop"><a href="/">{CHEV_L} トップにもどる</a></p></article>')
     note = ('<p class="note">※本ページは制度の全体像をつかむための一般的な解説です。'
             '金額・対象・期限・申請方法は自治体や年度によって異なり、改定されることがあります。'
@@ -4060,7 +4061,7 @@ def build_guides():
 <h2>テーマ別ガイド（制度を深掘り）</h2>
 <ul class="cmplist guidegrid">{topic_cards}</ul>
 {note}
-""")
+""", cls="dochub")
     page(path="/guide/index.html", title=f"くらしの制度ガイド｜給付・手当・助成の基礎知識｜{SITE_NAME}",
          description="妊娠・出産、子育て、引っ越し、退職・失業、高齢・介護など、ライフイベントごとにもらえる給付金・手当・助成の基礎知識と探し方をまとめた解説ガイドです。",
          canonical="/guide/", breadcrumb=[("トップ","/"),("くらしの制度ガイド",None)], body=hub)
@@ -5063,6 +5064,9 @@ ul.plainlist li{margin:.2rem 0}
 .doc .srcbox li a{word-break:break-word}
 /* ── 記事（ガイド/特集）の構成・可読性 ── */
 .doc{max-width:44rem;margin-left:auto;margin-right:auto}
+/* ガイド一覧（ハブ）はPCで横に広く。本文テキストは読みやすい幅に保ち、カード一覧だけ全幅に広げる */
+.doc.dochub{max-width:none}
+.doc.dochub>p,.doc.dochub>.lead,.doc.dochub>.docmeta,.doc.dochub>.doctoc,.doc.dochub>.note{max-width:44rem}
 .doc h1{font-size:clamp(1.5rem,3.4vw,1.95rem);line-height:1.4;letter-spacing:.01em;margin:.2rem 0 .55rem}
 .doc p{font-size:1.0625rem;line-height:2;letter-spacing:.012em;color:#2a3140;margin:0 0 1.25rem}
 .doc .lead{font-size:1.2rem;line-height:1.95;font-weight:500;color:var(--fg);margin:.5rem 0 1.4rem}
