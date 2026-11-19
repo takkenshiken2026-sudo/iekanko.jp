@@ -1543,7 +1543,7 @@ FEATURE_HERO = {
  "2026-tokyo-solar-chikuden": ("house-solar.jpg","住宅の太陽光パネルと蓄電池"),
  "2026-reskilling-shien": ("job-shurou.jpg","職業訓練・学び直しの様子"),
  "2026-kumamoto-jishin-shien": ("procedure-genkin-satsutaba.jpg","生活再建支援金などの現金給付"),
- "2026-chiba-gouu-shien": ("saigai-suigai.jpg","冠水した住宅街の様子"),
+ "2026-chiba-gouu-shien": ("saigai-gouu-suiro.jpg","豪雨で損壊した水路と流木（水害被災）"),
  "2026-denki-gas-hojo": ("kounetsu-gas-konro.jpg","青い炎のガスコンロ（電気・ガスの光熱費）"),
  "2026-daredemo-tsuen": ("child-hoiku.jpg","保育室で過ごす乳幼児"),
  "2026-kodomo-iryohi-kanto": ("child-clinic.jpg","小児科の待合室"),
