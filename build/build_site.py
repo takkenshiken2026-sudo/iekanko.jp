@@ -2026,27 +2026,24 @@ def amount_rank_rows(entries, mode, top_n=5, keep_program=False):
     rows = sorted(best.values(), key=lambda x: (-x[0], x[1]))[:top_n]
     return rows if keep_program else [r[:4] for r in rows]
 
-def medal_svg(rank):
-    """1〜3位のメダルアイコン（金・銀・銅、リボン付き円に順位数字）。"""
-    col = {1: "#e8a200", 2: "#9aa5b1", 3: "#c47d3f"}[rank]
-    return (f'<svg class="medal" viewBox="0 0 24 24" role="img" aria-label="{rank}位">'
-            f'<path d="M8 2.5l2.4 7M16 2.5l-2.4 7" fill="none" stroke="#c7ccd2" stroke-width="2" stroke-linecap="round"/>'
-            f'<circle cx="12" cy="15.5" r="6.8" fill="{col}" stroke="rgba(0,0,0,.14)" stroke-width="1"/>'
-            f'<text x="12" y="16" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#fff">{rank}</text>'
-            f'</svg>')
-
 def _amount_box_html(cid, title, unit, mode, color, rows):
+    # 金額に比例した横棒で自治体間の差を可視化（1位は金色で強調）。
+    maxy = max((r[0] for r in rows), default=1) or 1
     lis = []
     for i, row in enumerate(rows, 1):
         yen, name, href = row[0], row[1], row[2]
         prog = row[4] if len(row) >= 5 else ""
-        rk = medal_svg(i) if i <= 3 else str(i)
-        prog_html = f'<span class="arpg">{esc(clip(prog, 32))}</span>' if prog else ""
+        w = max(4, round(yen / maxy * 100))
+        top = " top" if i == 1 else ""
+        prog_html = f'<div class="arpg">{esc(clip(prog, 34))}</div>' if prog else ""
         lis.append(
-            f'<li><span class="arrk">{rk}</span>'
-            f'<a class="armn" href="{esc(href)}">{esc(name)}</a>'
-            f'<span class="aramt">{esc(format_rank_yen(yen, mode))}</span>'
-            f'{prog_html}</li>'
+            f'<li class="arrow{top}"><span class="arrk">{i}</span>'
+            f'<div class="armain">'
+            f'<div class="arline"><a class="armn" href="{esc(href)}">{esc(name)}</a>'
+            f'<span class="aramt">{esc(format_rank_yen(yen, mode))}</span></div>'
+            f'{prog_html}'
+            f'<div class="artrack"><div class="arfill" style="width:{w}%"></div></div>'
+            f'</div></li>'
         )
     return (
         f'<div class="arbox" style="--pc:{color}">'
@@ -5293,13 +5290,18 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 .arbox h3 a{color:var(--fg)}
 .arunit{margin:0 0 .45rem;font-size:var(--fs-xs);color:var(--muted)}
 .arlist{list-style:none;margin:0;padding:0}
-.arlist li{display:grid;grid-template-columns:1.75rem 1fr auto;grid-template-areas:"rank name amt" ". prog prog";column-gap:.5rem;align-items:center;padding:.42rem 0;border-top:1px solid var(--line);font-size:var(--fs-md)}
+.arlist li{display:grid;grid-template-columns:1.5rem 1fr;gap:.5rem;align-items:start;padding:.5rem 0;border-top:1px solid var(--line)}
 .arlist li:first-child{border-top:0}
-.arrk{grid-area:rank;justify-self:center;color:var(--muted);font-variant-numeric:tabular-nums;font-weight:var(--fw-bold)}
-.medal{display:block;width:1.6rem;height:1.6rem}
-.armn{grid-area:name;font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg);min-width:0}
-.arpg{grid-area:prog;font-weight:400;font-size:var(--fs-xs);color:var(--muted);line-height:1.35;margin-top:.05rem}
-.aramt{grid-area:amt;color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:var(--fs-sm)}
+.arrk{font-variant-numeric:tabular-nums;font-weight:var(--fw-bold);color:var(--muted);font-size:.95rem;padding-top:.05rem}
+.arlist li.top .arrk{color:var(--pc,var(--accent))}
+.armain{min-width:0}
+.arline{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+.armn{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg);min-width:0}
+.aramt{color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:var(--fs-sm);font-weight:var(--fw-bold)}
+.arpg{color:var(--muted);font-size:var(--fs-xs);margin:.04rem 0 .42rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.artrack{height:7px;border-radius:4px;background:var(--soft);overflow:hidden}
+.arfill{height:100%;border-radius:4px;background:var(--pc,var(--accent))}
+.arlist li.top .arfill{background:linear-gradient(90deg,#e0a500,#f2c94c)}
 .armore a{color:var(--pc,var(--accent))}
 
 /* ── 自治体：数字でみるダッシュボード ── */

@@ -439,13 +439,18 @@ table.cmp.rank tr.top3 td.mn a{font-weight:var(--mn-fw)}
 .arbox h3 a{color:var(--fg)}
 .arunit{margin:0 0 .45rem;font-size:var(--fs-xs);color:var(--muted)}
 .arlist{list-style:none;margin:0;padding:0}
-.arlist li{display:grid;grid-template-columns:1.75rem 1fr auto;grid-template-areas:"rank name amt" ". prog prog";column-gap:.5rem;align-items:center;padding:.42rem 0;border-top:1px solid var(--line);font-size:var(--fs-md)}
+.arlist li{display:grid;grid-template-columns:1.5rem 1fr;gap:.5rem;align-items:start;padding:.5rem 0;border-top:1px solid var(--line)}
 .arlist li:first-child{border-top:0}
-.arrk{grid-area:rank;justify-self:center;color:var(--muted);font-variant-numeric:tabular-nums;font-weight:var(--fw-bold)}
-.medal{display:block;width:1.6rem;height:1.6rem}
-.armn{grid-area:name;font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg);min-width:0}
-.arpg{grid-area:prog;font-weight:400;font-size:var(--fs-xs);color:var(--muted);line-height:1.35;margin-top:.05rem}
-.aramt{grid-area:amt;color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:var(--fs-sm)}
+.arrk{font-variant-numeric:tabular-nums;font-weight:var(--fw-bold);color:var(--muted);font-size:.95rem;padding-top:.05rem}
+.arlist li.top .arrk{color:var(--pc,var(--accent))}
+.armain{min-width:0}
+.arline{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+.armn{font-size:var(--mn-fs);font-weight:var(--mn-fw);color:var(--fg);min-width:0}
+.aramt{color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:var(--fs-sm);font-weight:var(--fw-bold)}
+.arpg{color:var(--muted);font-size:var(--fs-xs);margin:.04rem 0 .42rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.artrack{height:7px;border-radius:4px;background:var(--soft);overflow:hidden}
+.arfill{height:100%;border-radius:4px;background:var(--pc,var(--accent))}
+.arlist li.top .arfill{background:linear-gradient(90deg,#e0a500,#f2c94c)}
 .armore a{color:var(--pc,var(--accent))}
 
 /* ── 自治体：数字でみるダッシュボード ── */
