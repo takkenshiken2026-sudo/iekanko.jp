@@ -1316,11 +1316,11 @@ CAT_PHOTO = {
  "preg_tamondo": ("preg-tamondo-support.jpg", "多胎児家庭支援の相談窓口"),
  "child_teate": ("child-parent.jpg", "親子がノートPCを見る様子"),
  "child_fuyou": ("child-parent.jpg", "親子がノートPCを見る様子"),
- "child_iryo": ("child-iryo-clinic.jpg", "子ども医療費助成の窓口"),
+ "child_iryo": ("child-clinic.jpg", "小児科の待合室"),
  "child_hitorioya": ("child-hitorioya-clinic.jpg", "ひとり親家庭医療費助成の窓口"),
  "child_shugaku": ("child-study-desk.jpg", "学習デスク"),
  "child_hoiku_gen": ("child-hoiku.jpg", "保育園の室内で遊ぶ子どもたち"),
- "child_ninkagai": ("child-ninkagai.jpg", "認可外保育・ベビーシッター"),
+ "child_ninkagai": ("child-baby-gear.jpg", "ベビー用品売り場"),
  "child_iwai": ("child-iwai-coupon.jpg", "ベビーカーの乳児ときょうだい"),
  "child_shogakukin": ("child-study-desk.jpg", "学習デスク"),
  "child_omutsu_baby": ("child-omutsu-milk.jpg", "乳児用おむつとミルク・哺乳瓶"),
@@ -1331,17 +1331,17 @@ CAT_PHOTO = {
  "house_reform": ("house-reform.jpg", "住宅の手すり設置工事"),
  "house_taishin": ("house-taishin.jpg", "耐震補強工事"),
  "house_eco": ("house-solar.jpg", "住宅の太陽光パネル"),
- "job_kokuho": ("procedure-cityhall.jpg", "国保・年金の市区町村窓口"),
- "job_nenkin": ("procedure-cityhall.jpg", "市区町村窓口の受付"),
+ "job_kokuho": ("procedure-mynumber.jpg", "マイナンバーカードと手続き"),
+ "job_nenkin": ("procedure-mynumber.jpg", "マイナンバーカードと手続き"),
  "job_shurou": ("job-shurou.jpg", "自宅で書類を確認して手続きを進める人"),
  "job_kashitsuke": ("job-kashitsuke-consult.jpg", "緊急小口貸付の相談窓口"),
  "job_konkyu": ("job-kashitsuke-consult.jpg", "生活困窮者自立支援の相談窓口"),
  "job_shobyo": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
  "med_kogaku": ("dis-iryo-hospital.jpg", "医療費助成の申請窓口"),
  "med_sosai": ("med-sosai.jpg", "葬儀場の祭壇"),
- "eld_omutsu": ("eld-omutsu.jpg", "高齢者向け紙おむつなどの介護用品"),
+ "eld_omutsu": ("eld-care-equipment.jpg", "高齢者向け紙おむつなどの介護用品"),
  "eld_kaigo_gen": ("eld-kaigo-consult.jpg", "介護保険料減免の相談窓口"),
- "eld_hochoki": ("eld-hochoki.jpg", "補聴器と充電ケース"),
+ "eld_hochoki": ("eld-kaigo-card.jpg", "介護保険被保険者証"),
  "eld_jutaku": ("house-reform.jpg", "住宅の手すり設置工事"),
  "eld_vaccine": ("eld-vaccine-consult.jpg", "高齢者ワクチン助成の窓口"),
  "eld_kinkyu": ("eld-home-care.jpg", "在宅介護の様子"),
@@ -1367,7 +1367,7 @@ def photo_for_cats(cats, ev=None):
             e = CAT_BY_ID[cid][2]
             if e in EV_PHOTO:
                 return EV_PHOTO[e]
-    return EV_PHOTO.get(ev) or ("procedure-cityhall.jpg", "市区町村窓口の受付")
+    return EV_PHOTO.get(ev) or ("procedure-kyufukin.jpg", "給付金の案内")
 
 def photo_figure(fn, alt, css="progphoto", eager=False, base=None, credit=None):
     load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
@@ -1386,21 +1386,21 @@ def gcard_thumb(fn, alt=""):
 
 # ── 深掘りガイド・特集のヒーロー画像（cropped/ の雰囲気写真を流用。(ファイル名, alt)）──
 GUIDE_HERO = {
- "kanagawa-hochoki-hikaku": ("eld-hochoki.jpg","補聴器と充電ケース"),
+ "kanagawa-hochoki-hikaku": ("eld-kaigo-card.jpg","介護保険被保険者証"),
  "chiba-sango-care-hikaku": ("preg-sango-care.jpg","産後ケアの様子"),
  "sango-care-hikaku": ("preg-sango-care.jpg","産後ケアの様子"),
  "kanagawa-sango-care-hikaku": ("preg-sango-care.jpg","産後ケアの様子"),
  "saitama-sango-care-hikaku": ("preg-sango-care.jpg","産後ケアの様子"),
- "kodomo-iryohi-hikaku": ("child-iryo-clinic.jpg","子ども医療費助成の窓口"),
- "saitama-kodomo-iryohi-hikaku": ("child-iryo-clinic.jpg","子ども医療費助成の窓口"),
- "chiba-kodomo-iryohi-hikaku": ("child-iryo-clinic.jpg","子ども医療費助成の窓口"),
- "kanagawa-kodomo-iryohi-hikaku": ("child-iryo-clinic.jpg","小児医療費助成の窓口"),
+ "kodomo-iryohi-hikaku": ("child-clinic.jpg","小児科の待合室"),
+ "saitama-kodomo-iryohi-hikaku": ("child-clinic.jpg","小児科の待合室"),
+ "chiba-kodomo-iryohi-hikaku": ("child-clinic.jpg","小児科の待合室"),
+ "kanagawa-kodomo-iryohi-hikaku": ("child-clinic.jpg","小児科の待合室"),
  "taijohoshin-vaccine-hikaku": ("eld-vaccine-consult.jpg","ワクチン助成の窓口"),
- "ninkagai-hojo-hikaku": ("child-ninkagai.jpg","認可外保育・ベビーシッター"),
- "kamiomutsu-josei-hikaku": ("eld-omutsu.jpg","高齢者向け紙おむつなどの介護用品"),
- "saitama-kamiomutsu-hikaku": ("eld-omutsu.jpg","高齢者向け紙おむつなどの介護用品"),
- "chiba-kamiomutsu-hikaku": ("eld-omutsu.jpg","高齢者向け紙おむつなどの介護用品"),
- "kanagawa-kamiomutsu-hikaku": ("eld-omutsu.jpg","高齢者向け紙おむつなどの介護用品"),
+ "ninkagai-hojo-hikaku": ("child-baby-gear.jpg","ベビー用品売り場"),
+ "kamiomutsu-josei-hikaku": ("eld-care-equipment.jpg","高齢者向け紙おむつなどの介護用品"),
+ "saitama-kamiomutsu-hikaku": ("eld-care-equipment.jpg","高齢者向け紙おむつなどの介護用品"),
+ "chiba-kamiomutsu-hikaku": ("eld-care-equipment.jpg","高齢者向け紙おむつなどの介護用品"),
+ "kanagawa-kamiomutsu-hikaku": ("eld-care-equipment.jpg","高齢者向け紙おむつなどの介護用品"),
  "shussan-iwaikin-hikaku": ("child-iwai-coupon.jpg","ベビーカーの乳児ときょうだい"),
  "saitama-shussan-iwaikin-hikaku": ("child-iwai-coupon.jpg","ベビーカーの乳児ときょうだい"),
  "chiba-shussan-iwaikin-hikaku": ("child-iwai-coupon.jpg","ベビーカーの乳児ときょうだい"),
@@ -1415,12 +1415,12 @@ FEATURE_HERO = {
  "2026-tokyo-funin-ranshi": ("preg-funin-consult.jpg","不妊治療・卵子凍結の相談窓口"),
  "2026-tokyo-solar-chikuden": ("house-solar.jpg","住宅の太陽光パネルと蓄電池"),
  "2026-reskilling-shien": ("job-shurou.jpg","職業訓練・学び直しの様子"),
- "2026-kumamoto-jishin-shien": ("procedure-cityhall.jpg","被災者生活支援の窓口"),
+ "2026-kumamoto-jishin-shien": ("procedure-kyufukin.jpg","被災者支援の給付金"),
  "2026-chiba-gouu-shien": ("saigai-suigai.jpg","冠水した住宅街の様子"),
  "2026-denki-gas-hojo": ("eld-aircon.jpg","室内のエアコンと電気・ガスの光熱費"),
  "2026-daredemo-tsuen": ("child-hoiku.jpg","保育室で過ごす乳幼児"),
- "2026-kodomo-iryohi-kanto": ("child-iryo-clinic.jpg","子ども医療費助成の窓口"),
- "2026-nenshu-no-kabe": ("procedure-cityhall.jpg","働き方と社会保険の相談窓口"),
+ "2026-kodomo-iryohi-kanto": ("child-clinic.jpg","小児科の待合室"),
+ "2026-nenshu-no-kabe": ("procedure-mynumber.jpg","マイナンバーカードと手続き"),
  "2027-kyufu-zeigaku-kojo": ("procedure-kyufukin.jpg","給付金の案内"),
  "2026-kogaku-ryoyohi": ("med-clinic-waiting.jpg","医療機関の受付・待合"),
  "2027-kaigo-hoken-kaisei": ("eld-kaigo-consult.jpg","介護保険の相談窓口"),
@@ -1430,7 +1430,7 @@ FEATURE_HERO = {
  "2026-myna-hokensho": ("procedure-mynumber.jpg","マイナンバーカードと保険証利用"),
  "2026-jido-fuyo-teate": ("child-hitorioya-clinic.jpg","ひとり親家庭の相談窓口"),
  "2026-koyo-hoken-kaisei": ("job-shurou.jpg","職業訓練・学び直しの様子"),
- "2026-nenkin-kaisei": ("procedure-cityhall.jpg","年金の相談窓口"),
+ "2026-nenkin-kaisei": ("procedure-mynumber.jpg","マイナンバーカードと手続き"),
  "2026-kodomo-teate-chigai": ("child-parent.jpg","親子がノートPCを見る様子"),
  "2026-shougaiji-teate": ("dis-teate-consult.jpg","障害のある子の手当の相談窓口"),
 }
@@ -4055,7 +4055,7 @@ def build_guides():
 まずは自分のライフイベントに近いガイドから読み進めてみてください。</p>
 <h2>ライフイベント別ガイド</h2>
 <ul class="cmplist guidegrid">{ev_cards}
-<li><a href="/guide/how-to-find/">{gcard_thumb("procedure-cityhall.jpg","市区町村窓口の受付")}
+<li><a href="/guide/how-to-find/">{gcard_thumb("procedure-kyufukin.jpg","給付金の案内")}
 <span class="gtxt"><strong>使える制度の探し方</strong>
 <span class="pdesc">自分が対象になる給付・手当を見つける手順</span></span></a></li></ul>
 <h2>テーマ別ガイド（制度を深掘り）</h2>
@@ -4073,7 +4073,7 @@ def build_guides():
 <h1>自分が使える給付金・手当の探し方</h1>
 <p class="lead">公的な支援は「知っていれば受け取れたのに、知らずに申請しなかった」ということが起こりがちです。
 自分が対象になりうる制度を見つけるための、基本的な手順を整理しました。</p>
-{photo_figure("procedure-cityhall.jpg","市区町村窓口の受付",css="progphoto arthero",eager=True,base=WEB_BASE,credit=None)}
+{photo_figure("procedure-kyufukin.jpg","給付金の案内",css="progphoto arthero",eager=True,base=WEB_BASE,credit=None)}
 <h2>1. いまの「ライフイベント」から考える</h2>
 <p>給付・手当の多くは、妊娠・出産、子育て、引っ越し、退職・失業、高齢・介護といった
 「暮らしの節目」に結びついています。まずは自分や家族がいまどの段階にいるかを起点にすると、
@@ -4100,7 +4100,7 @@ def build_guides():
          og_type="article", article_meta=(GUIDE_UPDATED, GUIDE_UPDATED),
          jsonld=[guide_article_ld("自分が使える給付金・手当の探し方", "/guide/how-to-find/")],
          breadcrumb=[("トップ","/"),("くらしの制度ガイド","/guide/"),("使える制度の探し方",None)], body=htf,
-         og_image=f"{WEB_BASE}/procedure-cityhall.jpg")
+         og_image=f"{WEB_BASE}/procedure-kyufukin.jpg")
     sitemap_urls.append(("/guide/how-to-find/","0.6"))
 
     # ── ライフイベント別ガイド ──
@@ -4228,7 +4228,7 @@ def build_features():
     # ── 特集ハブ ──
     cards = "".join(
         f'<li><a href="/tokushu/{f["slug"]}/">'
-        f'{gcard_thumb((FEATURE_HERO.get(f["slug"]) or ("procedure-cityhall.jpg",""))[0])}'
+        f'{gcard_thumb((FEATURE_HERO.get(f["slug"]) or ("procedure-kyufukin.jpg",""))[0])}'
         f'<span class="gtxt"><strong>{esc(f["h1"])}</strong>'
         f'<span class="pdesc">{esc(f["badge"])}／最終更新 {esc(f["updated"])}</span></span></a></li>'
         for f in SPECIAL_FEATURES)
@@ -4252,7 +4252,7 @@ def build_features():
         slug = f["slug"]; updated = f["updated"]
         with open(os.path.join(ROOT, "content", "tokushu", f["body_file"]), encoding="utf-8") as fp:
             article_html = fp.read()
-        _hfn, _halt = FEATURE_HERO.get(slug) or ("procedure-cityhall.jpg", "市区町村窓口の受付")
+        _hfn, _halt = FEATURE_HERO.get(slug) or ("procedure-kyufukin.jpg", "給付金の案内")
         _fog = f"{WEB_BASE}/{_hfn}"
         alert = (f'<p class="notice"><strong>最終更新日：{esc(updated)}</strong>／この特集は制度の公表・改正時点の情報をまとめたものです。'
                  '金額・対象・受付期限は年度や自治体によって変わります。'
