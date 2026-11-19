@@ -1,0 +1,13 @@
+{
+  "name": "くらしの制度ナビ",
+  "short_name": "制度ナビ",
+  "description": "東京都62自治体の給付・手当・助成を出典つきで比較",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1558d6",
+  "icons": [
+    {"src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}

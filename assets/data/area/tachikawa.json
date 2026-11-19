@@ -1,0 +1,334 @@
+{
+  "city_code": "13202",
+  "name": "立川市",
+  "slug": "tachikawa",
+  "db_slug": "tachikawa-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 273000,
+    "median_commercial_yen_sqm": 890000,
+    "n_points": 55,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 74
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 207,
+      "avg_price": 32247342,
+      "avg_area": 61.4,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 146,
+        "avg_price": 31312328,
+        "avg_area": 60.7,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 157,
+        "avg_price": 29488535,
+        "avg_area": 61.7,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 148,
+        "avg_price": 35962162,
+        "avg_area": 63.6,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 207,
+        "avg_price": 32247342,
+        "avg_area": 61.4,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 72,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 2491,
+    "recent_avg_price": 47158691
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 12,
+    "top": [
+      {
+        "name": "立川",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 301256,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 337024
+          },
+          {
+            "year": 2019,
+            "passengers": 337024
+          },
+          {
+            "year": 2020,
+            "passengers": 244066
+          },
+          {
+            "year": 2021,
+            "passengers": 261640
+          },
+          {
+            "year": 2022,
+            "passengers": 288914
+          },
+          {
+            "year": 2023,
+            "passengers": 301256
+          }
+        ]
+      },
+      {
+        "name": "立川北",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 41798,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 22212
+          },
+          {
+            "year": 2019,
+            "passengers": 44151
+          },
+          {
+            "year": 2020,
+            "passengers": 30526
+          },
+          {
+            "year": 2021,
+            "passengers": 34045
+          },
+          {
+            "year": 2022,
+            "passengers": 40305
+          },
+          {
+            "year": 2023,
+            "passengers": 41798
+          }
+        ]
+      },
+      {
+        "name": "玉川上水",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 38665,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 42827
+          },
+          {
+            "year": 2019,
+            "passengers": 42416
+          },
+          {
+            "year": 2020,
+            "passengers": 29750
+          },
+          {
+            "year": 2021,
+            "passengers": 33445
+          },
+          {
+            "year": 2022,
+            "passengers": 37552
+          },
+          {
+            "year": 2023,
+            "passengers": 38665
+          }
+        ]
+      },
+      {
+        "name": "立川南",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 30522,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 15975
+          },
+          {
+            "year": 2019,
+            "passengers": 32366
+          },
+          {
+            "year": 2020,
+            "passengers": 22685
+          },
+          {
+            "year": 2021,
+            "passengers": 25476
+          },
+          {
+            "year": 2022,
+            "passengers": 29866
+          },
+          {
+            "year": 2023,
+            "passengers": 30522
+          }
+        ]
+      },
+      {
+        "name": "西国立",
+        "company": "東日本旅客鉄道",
+        "line": "南武線",
+        "passengers": 18464,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 20370
+          },
+          {
+            "year": 2019,
+            "passengers": 20370
+          },
+          {
+            "year": 2020,
+            "passengers": 15998
+          },
+          {
+            "year": 2021,
+            "passengers": 16894
+          },
+          {
+            "year": 2022,
+            "passengers": 17884
+          },
+          {
+            "year": 2023,
+            "passengers": 18464
+          }
+        ]
+      },
+      {
+        "name": "立飛",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 13844,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 6208
+          },
+          {
+            "year": 2019,
+            "passengers": 12986
+          },
+          {
+            "year": 2020,
+            "passengers": 9537
+          },
+          {
+            "year": 2021,
+            "passengers": 10789
+          },
+          {
+            "year": 2022,
+            "passengers": 13156
+          },
+          {
+            "year": 2023,
+            "passengers": 13844
+          }
+        ]
+      },
+      {
+        "name": "武蔵砂川",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 11760,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 12203
+          },
+          {
+            "year": 2019,
+            "passengers": 12255
+          },
+          {
+            "year": 2020,
+            "passengers": 9195
+          },
+          {
+            "year": 2021,
+            "passengers": 10123
+          },
+          {
+            "year": 2022,
+            "passengers": 11196
+          },
+          {
+            "year": 2023,
+            "passengers": 11760
+          }
+        ]
+      },
+      {
+        "name": "西武立川",
+        "company": "西武鉄道",
+        "line": "拝島線",
+        "passengers": 11329,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 11977
+          },
+          {
+            "year": 2019,
+            "passengers": 11705
+          },
+          {
+            "year": 2020,
+            "passengers": 8953
+          },
+          {
+            "year": 2021,
+            "passengers": 9661
+          },
+          {
+            "year": 2022,
+            "passengers": 10623
+          },
+          {
+            "year": 2023,
+            "passengers": 11329
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 430705,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

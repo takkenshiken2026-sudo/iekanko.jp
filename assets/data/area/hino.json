@@ -1,0 +1,334 @@
+{
+  "city_code": "13212",
+  "name": "日野市",
+  "slug": "hino",
+  "db_slug": "hino-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 221000,
+    "median_commercial_yen_sqm": 475000,
+    "n_points": 60,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 60
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 161,
+      "avg_price": 29573913,
+      "avg_area": 67.8,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 123,
+        "avg_price": 22715447,
+        "avg_area": 64.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 139,
+        "avg_price": 25989928,
+        "avg_area": 65.1,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 126,
+        "avg_price": 26380952,
+        "avg_area": 65.9,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 161,
+        "avg_price": 29573913,
+        "avg_area": 67.8,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 66,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 2282,
+    "recent_avg_price": 38515118
+  },
+  "stations": {
+    "year": 2023,
+    "n_stations": 10,
+    "top": [
+      {
+        "name": "豊田",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 62452,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 70664
+          },
+          {
+            "year": 2019,
+            "passengers": 70664
+          },
+          {
+            "year": 2020,
+            "passengers": 53230
+          },
+          {
+            "year": 2021,
+            "passengers": 55048
+          },
+          {
+            "year": 2022,
+            "passengers": 58778
+          },
+          {
+            "year": 2023,
+            "passengers": 62452
+          }
+        ]
+      },
+      {
+        "name": "高幡不動",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 49257,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 60235
+          },
+          {
+            "year": 2019,
+            "passengers": 58426
+          },
+          {
+            "year": 2020,
+            "passengers": 37938
+          },
+          {
+            "year": 2021,
+            "passengers": 42577
+          },
+          {
+            "year": 2022,
+            "passengers": 47988
+          },
+          {
+            "year": 2023,
+            "passengers": 49257
+          }
+        ]
+      },
+      {
+        "name": "日野",
+        "company": "東日本旅客鉄道",
+        "line": "中央線",
+        "passengers": 44812,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 54514
+          },
+          {
+            "year": 2019,
+            "passengers": 54514
+          },
+          {
+            "year": 2020,
+            "passengers": 39120
+          },
+          {
+            "year": 2021,
+            "passengers": 40472
+          },
+          {
+            "year": 2022,
+            "passengers": 42746
+          },
+          {
+            "year": 2023,
+            "passengers": 44812
+          }
+        ]
+      },
+      {
+        "name": "南平",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 9680,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 10799
+          },
+          {
+            "year": 2019,
+            "passengers": 10722
+          },
+          {
+            "year": 2020,
+            "passengers": 8132
+          },
+          {
+            "year": 2021,
+            "passengers": 8906
+          },
+          {
+            "year": 2022,
+            "passengers": 9354
+          },
+          {
+            "year": 2023,
+            "passengers": 9680
+          }
+        ]
+      },
+      {
+        "name": "甲州街道",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 8725,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 4540
+          },
+          {
+            "year": 2019,
+            "passengers": 9087
+          },
+          {
+            "year": 2020,
+            "passengers": 7007
+          },
+          {
+            "year": 2021,
+            "passengers": 7418
+          },
+          {
+            "year": 2022,
+            "passengers": 8233
+          },
+          {
+            "year": 2023,
+            "passengers": 8725
+          }
+        ]
+      },
+      {
+        "name": "平山城址公園",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 7704,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 8562
+          },
+          {
+            "year": 2019,
+            "passengers": 8402
+          },
+          {
+            "year": 2020,
+            "passengers": 6239
+          },
+          {
+            "year": 2021,
+            "passengers": 6860
+          },
+          {
+            "year": 2022,
+            "passengers": 7291
+          },
+          {
+            "year": 2023,
+            "passengers": 7704
+          }
+        ]
+      },
+      {
+        "name": "万願寺",
+        "company": "多摩都市モノレール",
+        "line": "多摩都市モノレール線",
+        "passengers": 7563,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 4093
+          },
+          {
+            "year": 2019,
+            "passengers": 8108
+          },
+          {
+            "year": 2020,
+            "passengers": 6024
+          },
+          {
+            "year": 2021,
+            "passengers": 6633
+          },
+          {
+            "year": 2022,
+            "passengers": 7504
+          },
+          {
+            "year": 2023,
+            "passengers": 7563
+          }
+        ]
+      },
+      {
+        "name": "百草園",
+        "company": "京王電鉄",
+        "line": "京王線",
+        "passengers": 7247,
+        "yearly": [
+          {
+            "year": 2018,
+            "passengers": 7697
+          },
+          {
+            "year": 2019,
+            "passengers": 7620
+          },
+          {
+            "year": 2020,
+            "passengers": 6012
+          },
+          {
+            "year": 2021,
+            "passengers": 6627
+          },
+          {
+            "year": 2022,
+            "passengers": 7062
+          },
+          {
+            "year": 2023,
+            "passengers": 7247
+          }
+        ]
+      }
+    ],
+    "sum_top5_passengers": 174926,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

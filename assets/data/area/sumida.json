@@ -1,0 +1,77 @@
+{
+  "city_code": "13107",
+  "name": "墨田区",
+  "slug": "sumida",
+  "db_slug": "sumida-ku",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 537000,
+    "median_commercial_yen_sqm": 843000,
+    "n_points": 41,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 145
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 714,
+      "avg_price": 50550140,
+      "avg_area": 53.9,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 496,
+        "avg_price": 44752620,
+        "avg_area": 56.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 447,
+        "avg_price": 45152572,
+        "avg_area": 55.0,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 489,
+        "avg_price": 46028220,
+        "avg_area": 54.4,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 714,
+        "avg_price": 50550140,
+        "avg_area": 53.9,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 112,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 5982,
+    "recent_avg_price": 62935857
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}

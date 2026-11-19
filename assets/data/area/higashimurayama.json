@@ -1,0 +1,77 @@
+{
+  "city_code": "13213",
+  "name": "東村山市",
+  "slug": "higashimurayama",
+  "db_slug": "higashimurayama-shi",
+  "land": {
+    "year": 2025,
+    "median_residential_yen_sqm": 192000,
+    "median_commercial_yen_sqm": 343000,
+    "n_points": 42,
+    "unit": "円/㎡",
+    "vs_tokyo_pct": 52
+  },
+  "condo": {
+    "label": "中古マンション等",
+    "latest": {
+      "year": 2025,
+      "n": 160,
+      "avg_price": 24911250,
+      "avg_area": 65.5,
+      "price_classification": "02"
+    },
+    "yearly": [
+      {
+        "year": 2022,
+        "n": 135,
+        "avg_price": 23882222,
+        "avg_area": 65.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2023,
+        "n": 113,
+        "avg_price": 24992035,
+        "avg_area": 64.5,
+        "price_classification": "02"
+      },
+      {
+        "year": 2024,
+        "n": 109,
+        "avg_price": 25558715,
+        "avg_area": 66.7,
+        "price_classification": "02"
+      },
+      {
+        "year": 2025,
+        "n": 160,
+        "avg_price": 24911250,
+        "avg_area": 65.5,
+        "price_classification": "02"
+      }
+    ],
+    "vs_tokyo_pct": 55,
+    "note": "成約価格（無い年は取引価格）。件数加重平均。"
+  },
+  "trade_meta": {
+    "latest_year": 2025,
+    "latest_quarter": 4,
+    "total_transactions": 2165,
+    "recent_avg_price": 35184110
+  },
+  "stations": {
+    "year": null,
+    "n_stations": 0,
+    "top": [],
+    "sum_top5_passengers": 0,
+    "unit": "人/日（乗降）"
+  },
+  "tokyo_median_residential_yen_sqm": 371000,
+  "tokyo_median_condo_price": 44987723,
+  "source": {
+    "land": "地価公示・都道府県地価調査（2025年）",
+    "trade": "不動産情報ライブラリ 取引価格・成約価格",
+    "stations": "国土数値情報 駅別乗降客数",
+    "license": "国土交通省系オープンデータ"
+  }
+}
