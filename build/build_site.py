@@ -1542,13 +1542,13 @@ FEATURE_HERO = {
  "2026-tokyo-funin-ranshi": ("preg-funin-consult.jpg","不妊治療・卵子凍結の相談窓口"),
  "2026-tokyo-solar-chikuden": ("house-solar.jpg","住宅の太陽光パネルと蓄電池"),
  "2026-reskilling-shien": ("job-shurou.jpg","職業訓練・学び直しの様子"),
- "2026-kumamoto-jishin-shien": ("procedure-kyufukin.jpg","被災者支援の給付金"),
+ "2026-kumamoto-jishin-shien": ("procedure-genkin-satsutaba.jpg","生活再建支援金などの現金給付"),
  "2026-chiba-gouu-shien": ("saigai-suigai.jpg","冠水した住宅街の様子"),
  "2026-denki-gas-hojo": ("eld-aircon.jpg","室内のエアコンと電気・ガスの光熱費"),
  "2026-daredemo-tsuen": ("child-hoiku.jpg","保育室で過ごす乳幼児"),
  "2026-kodomo-iryohi-kanto": ("child-clinic.jpg","小児科の待合室"),
  "2026-nenshu-no-kabe": ("procedure-mynumber.jpg","マイナンバーカードと手続き"),
- "2027-kyufu-zeigaku-kojo": ("procedure-kyufukin.jpg","給付金の案内"),
+ "2027-kyufu-zeigaku-kojo": ("procedure-genkin-shinsatsu.jpg","給付金・定額減税の案内（新紙幣）"),
  "2026-kogaku-ryoyohi": ("med-clinic-waiting.jpg","医療機関の受付・待合"),
  "2027-kaigo-hoken-kaisei": ("eld-kaigo-consult.jpg","介護保険の相談窓口"),
  "2026-tashi-daigaku-mushoka": ("child-parent.jpg","大学進学を控えた親子"),
@@ -4197,7 +4197,7 @@ def build_guides():
 まずは自分のライフイベントに近いガイドから読み進めてみてください。</p>
 <h2>ライフイベント別ガイド</h2>
 <ul class="cmplist guidegrid">{ev_cards}
-<li><a href="/guide/how-to-find/">{gcard_thumb("procedure-kyufukin.jpg","給付金の案内")}
+<li><a href="/guide/how-to-find/">{gcard_thumb("procedure-genkin-ougi.jpg","給付金の案内")}
 <span class="gtxt"><strong>使える制度の探し方</strong>
 <span class="pdesc">自分が対象になる給付・手当を見つける手順</span></span></a></li></ul>
 <h2>テーマ別ガイド（制度を深掘り）</h2>
@@ -4215,7 +4215,7 @@ def build_guides():
 <h1>自分が使える給付金・手当の探し方</h1>
 <p class="lead">公的な支援は「知っていれば受け取れたのに、知らずに申請しなかった」ということが起こりがちです。
 自分が対象になりうる制度を見つけるための、基本的な手順を整理しました。</p>
-{photo_figure("procedure-kyufukin.jpg","給付金の案内",css="progphoto arthero",eager=True,base=WEB_BASE,credit=None)}
+{photo_figure("procedure-genkin-ougi.jpg","給付金の案内",css="progphoto arthero",eager=True,base=WEB_BASE,credit=None)}
 <h2>1. いまの「ライフイベント」から考える</h2>
 <p>給付・手当の多くは、妊娠・出産、子育て、引っ越し、退職・失業、高齢・介護といった
 「暮らしの節目」に結びついています。まずは自分や家族がいまどの段階にいるかを起点にすると、
@@ -4242,7 +4242,7 @@ def build_guides():
          og_type="article", article_meta=(GUIDE_UPDATED, GUIDE_UPDATED),
          jsonld=[guide_article_ld("自分が使える給付金・手当の探し方", "/guide/how-to-find/")],
          breadcrumb=[("トップ","/"),("くらしの制度ガイド","/guide/"),("使える制度の探し方",None)], body=htf,
-         og_image=f"{WEB_BASE}/procedure-kyufukin.jpg")
+         og_image=f"{WEB_BASE}/procedure-genkin-ougi.jpg")
     sitemap_urls.append(("/guide/how-to-find/","0.6"))
 
     # ── ライフイベント別ガイド ──
