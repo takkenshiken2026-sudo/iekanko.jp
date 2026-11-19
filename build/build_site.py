@@ -1300,17 +1300,17 @@ def icon_svg(ev):
 PHOTO_BASE = "/assets/photos/cropped"
 WEB_BASE = "/assets/photos/web"   # ネット収集（Pexels）のヒーロー画像。小さくクレジット表示
 EV_PHOTO = {
- "pregnancy_birth": ("preg-birth.jpg", "産院で新生児を抱く母親"),
+ "pregnancy_birth": ("preg-birth.jpg", "母子健康手帳を見る妊婦と夫"),
  "childcare": ("child-hoiku.jpg", "保育園の室内で遊ぶ子どもたち"),
  "moving": ("moving-boxes.jpg", "引越し用段ボール箱"),
- "retirement_unemployment": ("job-shurou.jpg", "職業訓練の指導風景"),
+ "retirement_unemployment": ("job-shurou.jpg", "自宅で書類を確認して手続きを進める人"),
  "elderly_care": ("eld-home-care.jpg", "在宅介護の様子"),
 }
 # 比較カテゴリごとの上書き（無い場合はライフイベント写真へフォールバック）
 CAT_PHOTO = {
  "preg_kenshin": ("preg-boshi-techo.jpg", "母子健康手帳"),
- "preg_gift": ("preg-birth.jpg", "産院で新生児を抱く母親"),
- "preg_shussanhi": ("preg-birth.jpg", "産院で新生児を抱く母親"),
+ "preg_gift": ("preg-birth.jpg", "母子健康手帳を見る妊婦と夫"),
+ "preg_shussanhi": ("preg-birth.jpg", "母子健康手帳を見る妊婦と夫"),
  "preg_sango_care": ("preg-sango-care.jpg", "産後ケアの様子"),
  "preg_funin": ("preg-funin-consult.jpg", "不妊・不育治療助成の相談窓口"),
  "preg_tamondo": ("preg-tamondo-support.jpg", "多胎児家庭支援の相談窓口"),
@@ -1333,7 +1333,7 @@ CAT_PHOTO = {
  "house_eco": ("house-solar.jpg", "住宅の太陽光パネル"),
  "job_kokuho": ("procedure-cityhall.jpg", "国保・年金の市区町村窓口"),
  "job_nenkin": ("procedure-cityhall.jpg", "市区町村窓口の受付"),
- "job_shurou": ("job-shurou.jpg", "職業訓練の指導風景"),
+ "job_shurou": ("job-shurou.jpg", "自宅で書類を確認して手続きを進める人"),
  "job_kashitsuke": ("job-kashitsuke-consult.jpg", "緊急小口貸付の相談窓口"),
  "job_konkyu": ("job-kashitsuke-consult.jpg", "生活困窮者自立支援の相談窓口"),
  "job_shobyo": ("med-clinic-waiting.jpg", "医療機関の受付・待合"),
@@ -1426,7 +1426,7 @@ FEATURE_HERO = {
  "2027-kaigo-hoken-kaisei": ("eld-kaigo-consult.jpg","介護保険の相談窓口"),
  "2026-tashi-daigaku-mushoka": ("child-parent.jpg","大学進学を控えた親子"),
  "2026-jido-teate": ("child-parent.jpg","親子がノートPCを見る様子"),
- "2026-shussan-hoken-tekiyo": ("preg-birth.jpg","産院で新生児を抱く母親"),
+ "2026-shussan-hoken-tekiyo": ("preg-birth.jpg","母子健康手帳を見る妊婦と夫"),
  "2026-myna-hokensho": ("procedure-mynumber.jpg","マイナンバーカードと保険証利用"),
  "2026-jido-fuyo-teate": ("child-hitorioya-clinic.jpg","ひとり親家庭の相談窓口"),
  "2026-koyo-hoken-kaisei": ("job-shurou.jpg","職業訓練・学び直しの様子"),
@@ -4073,7 +4073,7 @@ def build_guides():
 <h1>自分が使える給付金・手当の探し方</h1>
 <p class="lead">公的な支援は「知っていれば受け取れたのに、知らずに申請しなかった」ということが起こりがちです。
 自分が対象になりうる制度を見つけるための、基本的な手順を整理しました。</p>
-{photo_figure("procedure-cityhall.jpg","市区町村窓口の受付",css="progphoto arthero",eager=True,base=WEB_BASE,credit="Pexels")}
+{photo_figure("procedure-cityhall.jpg","市区町村窓口の受付",css="progphoto arthero",eager=True,base=WEB_BASE,credit=None)}
 <h2>1. いまの「ライフイベント」から考える</h2>
 <p>給付・手当の多くは、妊娠・出産、子育て、引っ越し、退職・失業、高齢・介護といった
 「暮らしの節目」に結びついています。まずは自分や家族がいまどの段階にいるかを起点にすると、
@@ -4121,7 +4121,7 @@ def build_guides():
 <span class="badge">{esc(ev_name)}</span>
 <h1>{esc(h1title)}</h1>
 <p class="lead">{esc(lead)}</p>
-{photo_figure(_ehfn, _ehalt, css="progphoto arthero", eager=True, base=WEB_BASE, credit="Pexels")}
+{photo_figure(_ehfn, _ehalt, css="progphoto arthero", eager=True, base=WEB_BASE, credit=None)}
 {secs_html}{affiliate_html("guide", slug)}{rel}
 {note}
 """)
@@ -4157,7 +4157,7 @@ def build_guides():
         _hfn, _halt = GUIDE_HERO.get(slug) or photo_for_cats(None, ev_slug)
         _og = f"{WEB_BASE}/{_hfn}"
         # リード文（最初の</p>）直後にヒーロー画像を挿入
-        article_html = article_html.replace("</p>", "</p>\n" + photo_figure(_hfn, _halt, css="progphoto arthero", eager=True, base=WEB_BASE, credit="Pexels"), 1)
+        article_html = article_html.replace("</p>", "</p>\n" + photo_figure(_hfn, _halt, css="progphoto arthero", eager=True, base=WEB_BASE, credit=None), 1)
         # 県×テーマの実データ節（当サイト収録データの集計）をヒーロー直後に挿入
         _theme = _guide_theme(slug)
         _cfg = GUIDE_THEME_DATA.get(_theme)
@@ -4268,7 +4268,7 @@ def build_features():
 <span class="badge">{esc(f["badge"])}</span>
 <h1>{esc(f["h1"])}</h1>
 <p class="lead">{esc(f["lead"])}</p>
-{photo_figure(_hfn, _halt, css="progphoto arthero", eager=True, base=WEB_BASE, credit="Pexels")}
+{photo_figure(_hfn, _halt, css="progphoto arthero", eager=True, base=WEB_BASE, credit=None)}
 {alert}
 {article_html}
 {feature_data_section(slug)}
