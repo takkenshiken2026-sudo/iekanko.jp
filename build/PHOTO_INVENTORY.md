@@ -68,3 +68,40 @@
 | `saigai-suigai.jpg` | 冠水した市街地の道路（旧・千葉豪雨。差替で未使用） | ● | ● | — |
 
 合計: cropped 42点 / web 29点 / ユニーク 47点
+
+---
+
+## 原本（アップロード元画像：`docs/assets/photos/` 直下）
+
+掲載用の `cropped/`・`web/` を生成する元画像。今セッションで追加した15点。
+
+| ファイル名 | 概要 | 解像度 | 派生の有無 |
+|---|---|---|---|
+| `genkin-shinsatsu.webp` | 新紙幣・扇状 | 1920px | → procedure-genkin-shinsatsu（C/W） |
+| `genkin-mansatsu-coins.jpg` | 一万円札束＋硬貨 | 683px | → procedure-genkin-satsutaba（W） |
+| `genkin-satsu-coins-fan.jpg` | 札を扇状＋硬貨 | 701px | → procedure-genkin-ougi（W） |
+| `genkin-satsu-coins-yellow.jpg` | 札＋硬貨（黄背景） | 548px | 未使用 |
+| `genkin-kyusatsu-coins.jpg` | 旧紙幣・扇状＋硬貨 | 640px | 未使用 |
+| `iwai-shussan-noshi-baby.jpg` | 御祝のし袋＋新生児 | 740px | → cropped（C） |
+| `iwai-shussan-noshi.jpg` | 御出産お祝のし袋 | 678px | → web（W） |
+| `iwai-oiwai-noshi.jpg` | 御祝のし袋（桜） | 678px | → cropped（C） |
+| `iwai-oiwai-noshi-genkin.jpg` | 御祝のし袋＋現金（正方形） | 554px | 未使用 |
+| `kounetsu-gas-konro.jpg` | ガスコンロの青い炎 | 700px | → web（W） |
+| `house-living-light.jpg` | 夜の暖色照明リビング | 532px | 未使用（用途未定） |
+| `house-interior-modern.jpg` | モダン間接照明リビング | 548px | 未使用（用途未定） |
+| `saigai-gouu-suiro.jpg` | 豪雨で損壊した水路・流木 | 1000px | → web（W） |
+| `saigai-gouu-ame.jpg` | 地面を叩く豪雨 | 1000px | 未使用 |
+| `saigai-gouu-ki.jpg` | 木立に降る豪雨 | 1200px | 未使用 |
+
+## その他の画像・データ資産（写真以外）
+
+| 場所 | 種類 | 点数 | 内容・注意点 |
+|---|---|---|---|
+| `docs/assets/og/<slug>.png` | OG画像 | 62 | 自治体別OG（1200×630）。**東京62自治体のみ**。他県は共通 `og.png` にフォールバック（リンク切れなし）。生成元 `build/build_og_images.py` |
+| `docs/assets/og.png` | OG画像 | 1 | 全自治体共通のOGフォールバック |
+| `docs/assets/maps/<slug>.svg` | 位置図 | 62 | 自治体の位置地図。**東京62自治体のみ**。`area_map_html` が東京以外では非出力（ガード済み・誤キャプション防止） |
+| `docs/assets/data/area/*.json` | 相場データ | 125 | 相場グラフ用データ（`<slug>.json`＋`.snapshot.json`）。**東京62自治体分**。別DB `data/reinfolib_tokyo.db` から生成 |
+
+### 注意：東京以外（6県）には自治体別のOG・地図・相場データが無い
+`og/`・`maps/`・`data/area` はいずれも東京62自治体のみ。神奈川・埼玉・千葉・茨城・栃木・群馬の自治体ページでは、
+OGは共通画像、地図・相場グラフは非表示（いずれもリンク切れは発生しない設計）。他県へ展開する場合は別途生成が必要。
