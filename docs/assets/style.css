@@ -141,7 +141,10 @@ p.lead2{color:var(--muted);font-size:var(--fs-sm);margin:.1rem 0 .6rem}
 .mchip b{font-weight:var(--fw-semi);font-size:var(--fs-xs);opacity:.7}
 .mchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
 .mchip.on b{opacity:.85}
+ul.mgrid[hidden]{display:none}
 ul.mgrid li[hidden]{display:none}
+.preftabs{row-gap:.45rem}
+.preftabs .prefchip{padding:.34rem .8rem}
 p.mnone{color:var(--muted);font-size:var(--fs-sm);padding:.6rem 0}
 /* ── 自治体：制度の全一覧（検索・絞り込み・並び替え）── */
 .plist-sec{margin:1.4rem 0}

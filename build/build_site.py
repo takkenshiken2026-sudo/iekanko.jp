@@ -4326,35 +4326,36 @@ def build_area_pref(code, stats):
 
 
 # ── トップ ──────────────────────────────────────────────────────────────────
-def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
-    _tj={"special_ward":"区","city":"市","town":"町","village":"村"}
-    _grp={"special_ward":"ku","city":"shi","town":"cho","village":"cho"}
-    # 62市区町村を対等に：五十音順の単一グリッド（区/市/町村の階層を廃し、種別は小バッジで表示）
-    all62=sorted(muni_stats, key=lambda x: (YOMI.get(x[0]["municipality_name"], x[0]["municipality_name"]), x[1]))
-    def grid(rows):
-        return '<ul class="mgrid" id="mgrid">'+''.join(
-          f'<li data-nm="{esc(m["municipality_name"])}" data-yo="{esc(YOMI.get(m["municipality_name"],""))}" '
-          f'data-ro="{s}" data-g="{_grp.get(m["municipality_type"],"cho")}">'
-          f'<a href="{area_base(s)}/">{esc(m["municipality_name"])}</a><span>{n}件</span></li>'
-          for m,s,n in rows)+'</ul>'
-    # 目的・年代の発見カード（トップの主要導線）
-    pcards="".join(
-      f'<a class="pchip" href="/ranking/{ev}/" style="--pc:{EV_META[ev][2]}">'
-      f'<span class="pic">{icon_svg(ev)}</span><span>{esc(EV_META[ev][0])}</span></a>'
-      for ev in EV_META)
+def build_home(muni_stats, score, cat_entries=None, other_prefs=None, stats_by_pref=None):
+    # エリア段階式検索（都県タブ → 市区町村グリッド）用のデータ整形。
+    # 都県の表示順は東京を主役として先頭に、以降は関東の慣用順（人口規模順に近い）。
+    _pref_order = ["13", "14", "11", "12", "08", "09", "10"]
+    _sbp = stats_by_pref or {AGG_PREF: muni_stats}
+    _ordered = [
+        (c, sorted(_sbp[c], key=lambda x: (YOMI.get(x[0]["municipality_name"], x[0]["municipality_name"]), x[1])))
+        for c in _pref_order if _sbp.get(c)
+    ]
+    _total_muni = sum(len(rows) for _, rows in _ordered)
+    def _muni_li(m, s, n, code):
+        return (f'<li data-nm="{esc(m["municipality_name"])}" '
+                f'data-yo="{esc(YOMI.get(m["municipality_name"], ""))}" '
+                f'data-ro="{s}" data-pref="{code}">'
+                f'<a href="{area_base(s)}/">{esc(m["municipality_name"])}</a><span>{n}件</span></li>')
+    # 都県タブ（既定＝東京都）。東京パネルは既存の横断検索JSとの互換のため id=mgrid。
+    area_tabs = "".join(
+        f'<button type="button" class="mchip prefchip{" on" if c == AGG_PREF else ""}" '
+        f'role="tab" data-pref="{c}" aria-selected="{"true" if c == AGG_PREF else "false"}" '
+        f'aria-controls="{"mgrid" if c == AGG_PREF else "pg-" + c}">'
+        f'{esc(pref_name(c))}<b>{len(rows)}</b></button>'
+        for c, rows in _ordered)
+    # 都県ごとの市区町村グリッド（東京以外は hidden。切替はクライアントで行う）。
+    area_panels = "".join(
+        f'<ul class="mgrid" id="{"mgrid" if c == AGG_PREF else "pg-" + c}" '
+        f'data-pref="{c}" role="tabpanel" aria-label="{esc(pref_name(c))}の市区町村"'
+        f'{"" if c == AGG_PREF else " hidden"}>'
+        + "".join(_muni_li(m, s, n, c) for m, s, n in rows) + "</ul>"
+        for c, rows in _ordered)
     amt_sec = amount_rankings_html(cat_entries)
-    # 関東の他の都県（データがある県のみ）。東京のみの間は空＝トップは従来どおり。
-    other_pref_html = ""
-    if other_prefs:
-        _lis = "".join(
-            f'<li><a href="/area/{ps}/">{esc(pn)}</a><span>{n}市区町村</span></li>'
-            for ps, pn, n in other_prefs)
-        other_pref_html = (
-            '<section class="band band-white" id="kanto-prefs"><div class="bandin">'
-            '<h2 class="fh">関東の他の都県から探す</h2>'
-            '<p class="lead2">東京都以外の関東6県も、各都県から市区町村の制度一覧に進めます。都県を選んでください。</p>'
-            f'<ul class="mgrid">{_lis}</ul>'
-            '</div></section>')
     body=f"""
 <section class="hero" aria-labelledby="hero-title">
 <div class="bandin hero-grid">
@@ -4371,34 +4372,33 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
 </div>
 </div>
 </section>
-<section class="band band-white">
+<section class="band band-white" id="area">
+<div class="bandin">
+<h2 class="fh">{ic("home","hi")}エリアから探す（関東1都6県・{_total_muni}市区町村）</h2>
+<p class="lead2">まずお住まい・お探しの都県を選んでください。市区町村の一覧が表示され、選ぶと妊娠・出産／子育て／引っ越し／退職・失業／高齢・介護のライフイベント別に、受けられる給付・手当・助成を確認できます。</p>
+<div class="mfilter">
+<div class="mchips preftabs" role="tablist" aria-label="都県を選ぶ">
+{area_tabs}
+</div>
+</div>
+<div id="areapanels">
+{area_panels}
+</div>
+<p class="mnone" id="mnone" hidden>該当する市区町村が見つかりません。条件を変えてお試しください。</p>
+</div>
+</section>
+<section class="band band-soft">
 <div class="bandin">
 <h2 class="fh">{ic("compass","hi")}目的・年代から制度がある地域を探す</h2>
 {purpose_cards_html(score)}
 <p class="fmore"><a href="/find/">{CHEV_R} 目的・年代から探す をすべて見る</a></p>
 </div>
 </section>
-<section class="band band-soft">
+<section class="band band-white">
 <div class="bandin">
 {amt_sec}
 </div>
 </section>
-<section class="band band-white" id="area">
-<div class="bandin">
-<h2 class="fh">{ic("home","hi")}東京都の市区町村から探す（62市区町村）</h2>
-<p class="lead2">23区・多摩地域の市・町村・島しょを区別なく、五十音順で一覧しています。どの市区町村も同じ粒度で制度をまとめています。</p>
-<div class="mfilter">
-<div class="mchips" role="group" aria-label="種別で絞り込み">
-<button type="button" class="mchip on" data-f="all" aria-pressed="true">すべて<b>62</b></button>
-<button type="button" class="mchip" data-f="ku" aria-pressed="false">区<b>23</b></button>
-<button type="button" class="mchip" data-f="shi" aria-pressed="false">市<b>26</b></button>
-<button type="button" class="mchip" data-f="cho" aria-pressed="false">町村・島しょ<b>13</b></button>
-</div>
-</div>
-{grid(all62)}
-<p class="mnone" id="mnone" hidden>該当する市区町村が見つかりません。条件を変えてお試しください。</p>
-</div>
-</section>{other_pref_html}
 <section class="band band-soft">
 <div class="bandin">
 <h2 class="fh">{ic("bars","hi")}制度ごとに自治体を比べる</h2>
@@ -4408,28 +4408,19 @@ def build_home(muni_stats, score, cat_entries=None, other_prefs=None):
 </section>
 <script>
 (function(){{
- var g=document.getElementById('mgrid'),
-     none=document.getElementById('mnone'),
-     chips=[].slice.call(document.querySelectorAll('.mchip')),
-     lis=[].slice.call(g.querySelectorAll('li')),f='all';
- function apply(){{
-  var shown=0;
-  lis.forEach(function(li){{
-   var vis=(f==='all'||li.getAttribute('data-g')===f);
-   li.hidden=!vis;if(vis)shown++;
-  }});
-  none.hidden=shown>0;
- }}
- chips.forEach(function(c){{c.addEventListener('click',function(){{
-  f=c.getAttribute('data-f');
-  chips.forEach(function(x){{var on=x===c;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on);}});
-  apply();
+ var tabs=[].slice.call(document.querySelectorAll('.prefchip')),
+     panels=[].slice.call(document.querySelectorAll('#areapanels>ul'));
+ if(!tabs.length)return;
+ tabs.forEach(function(t){{t.addEventListener('click',function(){{
+  var pf=t.getAttribute('data-pref');
+  tabs.forEach(function(x){{var on=x===t;x.classList.toggle('on',on);x.setAttribute('aria-selected',on);}});
+  panels.forEach(function(p){{p.hidden=p.getAttribute('data-pref')!==pf;}});
  }});}});
 }})();
 (function(){{
  var box=document.getElementById('hsearch');if(!box)return;
  var form=box.closest('form'),ac=document.getElementById('hsac'),
-     grid=document.getElementById('mgrid');if(!form||!ac||!grid)return;
+     grid=document.getElementById('areapanels');if(!form||!ac||!grid)return;
  var munis=[].slice.call(grid.querySelectorAll('li')).map(function(li){{
   var a=li.querySelector('a'),mt=li.querySelector('.mt');
   return {{nm:li.getAttribute('data-nm')||'',yo:li.getAttribute('data-yo')||'',
@@ -4738,7 +4729,7 @@ def main():
         build_area_pref(code, stats)
         other_prefs.append((pref_slug(code), pref_name(code), len(stats)))
     other_prefs.sort(key=lambda x: x[0])
-    build_home(muni_stats, score, cat_entries, other_prefs)
+    build_home(muni_stats, score, cat_entries, other_prefs, muni_stats_by_pref)
     write_search_index(search_progs, cat_counts)
     write_sitemap(); write_robots(); write_ads_txt(); write_css()
     cmp_pub=sum(1 for v in cat_counts.values() if v>=3)
@@ -4932,7 +4923,10 @@ p.lead2{color:var(--muted);font-size:var(--fs-sm);margin:.1rem 0 .6rem}
 .mchip b{font-weight:var(--fw-semi);font-size:var(--fs-xs);opacity:.7}
 .mchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
 .mchip.on b{opacity:.85}
+ul.mgrid[hidden]{display:none}
 ul.mgrid li[hidden]{display:none}
+.preftabs{row-gap:.45rem}
+.preftabs .prefchip{padding:.34rem .8rem}
 p.mnone{color:var(--muted);font-size:var(--fs-sm);padding:.6rem 0}
 /* ── 自治体：制度の全一覧（検索・絞り込み・並び替え）── */
 .plist-sec{margin:1.4rem 0}
